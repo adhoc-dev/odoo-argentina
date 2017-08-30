@@ -52,6 +52,11 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_supplier_form"/>
             <field name="arch" type="xml">
+                <field name="company_currency_id" position="before">
+                    <!-- TODO add  attrs="{'invisible': [('currency_rate', '=', False)]}" -->
+                    <field name="aux_currency_rate"/>
+                </field>
+
                 <field name="journal_id" position="after">
                     <field name="afip_responsability_type_id" states="open,paid"/>
                 </field>

@@ -33,6 +33,12 @@ class AccountInvoice(models.Model):
         # TODO make it editable, we have to change move create method
         readonly=True,
     )
+    aux_currency_rate = fields.Float(
+        string='Currency Rate',
+        compute='_compute_aux_currency_rate',
+        inverse='_inverse_aux_currency_rate',
+        digits=(10, 6),
+    )
     # computed_currency_rate = fields.Float(
     #     string='Currency Rate',
     #     compute='_compute_currency_rate',
@@ -154,6 +160,41 @@ class AccountInvoice(models.Model):
         readonly=True,
         states={'draft': [('readonly', False)]},
     )
+
+    @api.multi
+    @api.constrains('currency_id')
+    @api.onchange('currency_id')
+    def onchange_currency(self):
+        """
+        Si cambia la moneda eliminamos la cotización forzada
+        """
+        for rec in self:
+            rec.currency_rate = False
+
+    @api.multi
+    @api.depends('currency_id')
+    def _compute_aux_currency_rate(self):
+        """
+        Este campo es auxiliar y permite:
+        a) mostrar cotización antes de confirmar la factura
+        b) forzar una cotización
+        """
+        for rec in self:
+            if rec.currency_rate:
+                currency_rate = rec.currency_rate
+            elif rec.company_id.currency_id == rec.currency_id:
+                currency_rate = 1.0
+            else:
+                currency = self.currency_id.with_context(
+                    date=self.date_invoice or fields.Date.context_today(self))
+                currency_rate = currency.compute(
+                    1., self.company_id.currency_id, round=False)
+            rec.aux_currency_rate = currency_rate
+
+    @api.multi
+    def _inverse_aux_currency_rate(self):
+        for rec in self:
+            rec.currency_rate = rec.aux_currency_rate
 
     @api.one
     def _get_argentina_amounts(self):
@@ -299,11 +340,11 @@ class AccountInvoice(models.Model):
         # TODO depreciar esta funcion y convertir a currency_rate campo
         # calculado que la calcule en funcion a los datos del move
         if self.localization == 'argentina':
-            currency = self.currency_id.with_context(
-                date=self.date_invoice or fields.Date.context_today(self))
-            if self.company_id.currency_id == currency:
+            if self.company_id.currency_id == self.currency_id:
                 currency_rate = 1.0
             else:
+                currency = self.currency_id.with_context(
+                    date=self.date_invoice or fields.Date.context_today(self))
                 currency_rate = currency.compute(
                     1., self.company_id.currency_id, round=False)
             return {
