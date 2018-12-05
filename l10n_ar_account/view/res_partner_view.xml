@@ -90,9 +90,4 @@
         </field>
     </record>
 
-<<<<<<< HEAD
 </odoo>
-=======
-    </data>
-</openerp>
->>>>>>> cf3b5be... [FIX] move the part of code who change the location of field ref to another view inherit with base odoo view (#277)
