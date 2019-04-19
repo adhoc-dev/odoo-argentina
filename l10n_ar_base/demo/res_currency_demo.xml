@@ -5,7 +5,7 @@
 <!-- como por ahora no podemos hacer ars la base, seteamos rate para que ars quede bien respecto al USD -->
 
     <record id="base.rateARS" model="res.currency.rate">
-        <field name="rate">23.29</field>
+        <field name="rate">23.29</field>  --> no hacemos nada, cambia mucho
     </record>
 <!--          <record id="base.rateARS" model="res.currency.rate">
         <field name="rate">1.00</field>

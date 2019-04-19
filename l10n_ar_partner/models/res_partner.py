@@ -7,27 +7,14 @@ _logger = logging.getLogger(__name__)
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    # TODO see if we want to make vat computed from main_id_number
-    # for compatibiltiy with other modules. We try to make vat "main_id_number"
-    # but we raise some issues
-    # vat = fields.Char(
-    # )
-    # TODO podriamos agregar tambien que el cuit se guarde en el vat con lo de
-    # AR... si es necesario y entonces llamamos a vat en vez de cuit
-    # field used only some argentinian methods that requires a CUIT and not
-    # any other
+    # probamos llevarlos como campos calculados y si dicen algo los pasamoas a metodo
     cuit = fields.Char(
         compute='_compute_cuit',
     )
     formated_cuit = fields.Char(
         compute='_compute_formated_cuit',
     )
-    # no podemos hacerlo asi porque cuando se pide desde algun lugar
-    # quiere computar para todos los partners y da error para los que no
-    # tienen por mas que no lo pedimos
-    # cuit_required = fields.Char(
-    #     compute='_compute_cuit_required',
-    # )
+    # renombrado y se computa y setee a VAT (no haria falta store)
     main_id_number = fields.Char(
         compute='_compute_main_id_number',
         inverse='_inverse_main_id_number',
@@ -60,6 +47,10 @@ class ResPartner(models.Model):
             cuit = rec.cuit
             rec.formated_cuit = "{0}-{1}-{2}".format(
                 cuit[0:2], cuit[2:10], cuit[10:])
+
+    # llevar a res.country estos campos desde l10n_ar_account
+    # cuit_fisica = fields..
+    # cuit_fisica = fields
 
     @api.multi
     @api.depends(
@@ -149,87 +140,3 @@ class ResPartner(models.Model):
                 return recs.name_get()
         return super(ResPartner, self).name_search(
             name, args=args, operator=operator, limit=limit)
-
-    @api.multi
-    def update_partner_data_from_afip(self):
-        """
-        Funcion que llama al wizard para actualizar data de partners desde afip
-        sin abrir wizard.
-        Podríamos mejorar  pasando un argumento para sobreescribir o no valores
-        que esten o no definidos
-        Podriamos mejorarlo moviento lógica del wizard a esta funcion y que el
-        wizard use este método.
-        """
-
-        for rec in self:
-            wiz = rec.env[
-                'res.partner.update.from.padron.wizard'].with_context(
-                active_ids=rec.ids, active_model=rec._name).create({})
-            wiz.change_partner()
-            wiz.update_selection()
-
-    @api.model
-    def try_write_commercial(self, data):
-        """ User for website. capture the validation errors and return them.
-        return (error, error_message) = (dict[fields], list(str()))
-        """
-        error = dict()
-        error_message = []
-        main_id_number = data.get('main_id_number', False)
-        main_id_category_id = data.get('main_id_category_id', False)
-        afip_responsability_type_id = data.get('afip_responsability_type_id',
-                                               False)
-
-        if main_id_number and main_id_category_id:
-            commercial_partner = self.env['res.partner'].sudo().browse(
-                int(data.get('commercial_partner_id', False)))
-            try:
-                values = {
-                    'main_id_number': main_id_number,
-                    'main_id_category_id': int(main_id_category_id),
-                    'afip_responsability_type_id':
-                        int(afip_responsability_type_id)
-                        if afip_responsability_type_id else False,
-                }
-                commercial_fields = ['main_id_number', 'main_id_category_id',
-                                     'afip_responsability_type_id']
-                values = commercial_partner.remove_readonly_required_fields(
-                    commercial_fields, values)
-                with self.env.cr.savepoint():
-                    commercial_partner.write(values)
-            except Exception as exception_error:
-                _logger.error(exception_error)
-                error['main_id_number'] = 'error'
-                error['main_id_category_id'] = 'error'
-                error_message.append(_(exception_error))
-        return error, error_message
-
-    @api.multi
-    def remove_readonly_required_fields(self, required_fields, values):
-        """ In some cases we have information showed to the user in the form
-        that is required but that is already set and readonly.
-        We do not really update this fields and then here we are trying to
-        write them: the problem is that this fields has a constraint if
-        we are trying to re-write them (even when is the same value).
-
-        This method remove this (field, values) for the values to write in
-        order to do avoid the constraint and not re-writted again when they
-        has been already writted.
-
-        param: @required_fields: (list) fields of the fields that we want to
-               check
-        param: @values (dict) the values of the web form
-
-        return: the same values to write and they do not include
-        required/readonly fields.
-        """
-        self.ensure_one()
-        for r_field in required_fields:
-            value = values.get(r_field)
-            if r_field.endswith('_id'):
-                if self[r_field].id == value:
-                    values.pop(r_field, False)
-            else:
-                if self[r_field] == value:
-                    values.pop(r_field, False)
-        return values

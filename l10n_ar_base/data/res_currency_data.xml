@@ -8,7 +8,7 @@
         <!-- <field name="rounding" eval="0.001"/> -->
     </record>
 
-    <!-- in argentina we are used to position of symbol before -->
+    <!-- in argentina we are used to position of symbol before --> PR A ODOO
     <record id="base.ARS" model="res.currency">
         <field name="position">before</field>
         <!-- we need a rounding of 3 digits because of possible errors on taxes rounding when using discounts, you can replicate with 6 lines of 3.52 with 45% discount using electronic invoice. We have also try using round globally of odoo but it does not work ok on base calculation of account.invoice.tax -->
