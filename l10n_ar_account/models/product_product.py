@@ -9,14 +9,11 @@ class ProductProduct(models.Model):
 
     _inherit = 'product.product'
 
-    @api.multi
     def action_invoice_analysis(self):
         return {
             'type': 'ir.actions.act_window',
             'res_model': 'account.invoice.line.report',
-            # 'res_model': 'account.invoice.report',
             'view_mode': 'tree,pivot,graph',
-            # 'view_mode': 'tree,graph',
             'view_type': 'form',
             'domain': [('product_id', 'in', self.ids)],
             'context': {
