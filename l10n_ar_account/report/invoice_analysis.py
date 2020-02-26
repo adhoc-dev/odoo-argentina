@@ -69,7 +69,7 @@ class AccountInvoiceLineReport(models.Model):
     afip_activity_id = fields.Many2one(
         'afip.activity',
         'AFIP Activity',
-        help='AFIP activity, used for IVA f2002 report',
+        help='AFIP activity, used for Padron',
         readonly=True,
     )
     company_id = fields.Many2one('res.company', 'Company', readonly=True)
@@ -145,7 +145,7 @@ class AccountInvoiceLineReport(models.Model):
         "account_invoice"."user_id" AS "user_id",--n
         "account_invoice"."company_id" AS "company_id",--n
         "account_invoice"."type" AS "type",
-        "account_invoice"."state_id" AS "state_id",--n
+        -- "account_invoice"."state_id" AS "state_id",--n
 
         "account_invoice"."document_type_id" AS "document_type_id",
         "account_invoice"."state" AS "state",
