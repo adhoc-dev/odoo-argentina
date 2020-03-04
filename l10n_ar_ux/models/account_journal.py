@@ -24,4 +24,7 @@ class AccountJournal(models.Model):
             'BFERCEL': _('Online'),
             'FEERCELP': _('Billing Plus'),
             'FEERCEL': _('Online'),
+            'RAW_MAW': _('Electronic Invoice '),
+            'BFEWS': _('Electronic Fiscal Bond'),
+            'FEEWS': _('Electronic Export Voucher'),
         }
