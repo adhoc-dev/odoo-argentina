@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 # For copyright and license notices, see __openerp__.py file in module root
 # directory
@@ -25,7 +24,6 @@ class ProductProduct(models.Model):
         String='Location 2',
     )
 
-    @api.multi
     def get_invoice_analisis(self):
         context = {
             'search_default_product_id': self.id,

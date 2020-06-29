@@ -18,7 +18,6 @@ class SaleOrder(models.Model):
         string='Tiempo De Preparacion',
     )
 
-    @api.multi
     def action_invoice_create(self, grouped=False, final=False):
         """Quieren que cuando se haga una devolucion, si se factura en dolares,
         se use la cotizacion de la confirmación de la venta (para no acreditar)
@@ -72,7 +71,6 @@ class SaleOrder(models.Model):
                 grouped=grouped, final=final)
         return invoice_ids
 
-    @api.multi
     def action_confirm(self):
         param = self.env['ir.config_parameter'].sudo().get_param(
             'sale_order_action_confirm')
@@ -88,7 +86,6 @@ class SaleOrder(models.Model):
                 body=_('Orden validada con "no tracking=%s"') % param)
         return res
 
-    @api.multi
     def _compute_get_preparation_time(self):
         for rec in self.filtered(lambda x:
                                  x.company_id.preparation_time_variable):
@@ -99,7 +96,6 @@ class SaleOrder(models.Model):
                 rec.order_line) * preparation_time_variable + (
                 preparation_time_fixed)
 
-    @api.multi
     def update_requested_date(self):
         self.ensure_one()
         if self.sale_preparetion_time:
