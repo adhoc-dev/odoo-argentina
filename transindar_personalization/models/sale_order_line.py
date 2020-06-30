@@ -3,9 +3,6 @@
 # directory
 ##############################################################################
 from odoo import fields, models, api
-import logging
-
-_logger = logging.getLogger(__name__)
 
 
 class SaleOrderLine(models.Model):
@@ -14,17 +11,14 @@ class SaleOrderLine(models.Model):
 
     supplier_code = fields.Char(
         related='product_id.product_tmpl_id.supplier_code',
-        readonly=True,
     )
 
     internal_code = fields.Char(
         related='product_id.internal_code',
-        readonly=True,
     )
 
     product_brand_id = fields.Many2one(
         related='product_id.product_tmpl_id.product_brand_id',
-        readonly=True,
     )
 
     additional_description = fields.Char()

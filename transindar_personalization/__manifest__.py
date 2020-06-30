@@ -41,7 +41,6 @@
         'product_internal_code',
         'account_invoice_control',
         'sale_order_type',
-        'sale_order_dates',
         'purchase_ux',
         'product_replenishment_cost',
         'sale_order_type_automation',

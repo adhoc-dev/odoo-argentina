@@ -3,7 +3,6 @@
 # directory
 ##############################################################################
 from odoo import fields, models
-# from odoo.osv import expression
 
 
 class ProductTemplate(models.Model):
@@ -16,6 +15,7 @@ class ProductTemplate(models.Model):
     supplier_code = fields.Char(
         related='seller_ids.product_code',
         string="Supplier Code",
+        readonly=False,
     )
 
     location_1 = fields.Char()

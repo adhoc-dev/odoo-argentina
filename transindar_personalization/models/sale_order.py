@@ -2,7 +2,7 @@
 # For copyright and license notices, see __manifest__.py file in module root
 # directory
 ##############################################################################
-from odoo import fields, models, api, _
+from odoo import fields, models, _
 from datetime import timedelta
 import logging
 
@@ -18,7 +18,7 @@ class SaleOrder(models.Model):
         string='Tiempo De Preparacion',
     )
 
-    def action_invoice_create(self, grouped=False, final=False):
+    def _create_invoices(self, grouped=False, final=False):
         """Quieren que cuando se haga una devolucion, si se factura en dolares,
         se use la cotizacion de la confirmación de la venta (para no acreditar)
         mayor importe en pesos del que pago.
@@ -32,7 +32,7 @@ class SaleOrder(models.Model):
         una OV en una moneda se podría estar facturando en esa moneda en otra
         cia que tenga esa moneda como base y habria algun tipo de inconsistencia
         """
-        invoice_ids = []
+        invoices = self.env['account.move']
 
         if final:
             other_currency_sales = self.filtered(
@@ -40,20 +40,20 @@ class SaleOrder(models.Model):
             self -= other_currency_sales
 
             for other_currency_sale in other_currency_sales:
-                invoice_ids += super(
-                    SaleOrder, other_currency_sale).action_invoice_create(
+                invoices += super(
+                    SaleOrder, other_currency_sale)._create_invoices(
                     grouped=grouped, final=final)
-                for refund in self.env['account.invoice'].browse(
-                    invoice_ids).filtered(
+                for refund in invoices.filtered(
                     lambda x:
                         x.type == 'out_refund' and
                         x.currency_id != x.company_id.currency_id):
 
                     company_currency = refund.company_id.currency_id
-                    original_invoices = self.env['account.invoice.line'].search(
+                    original_invoices = self.env['account.move.line'].search(
                         [('sale_line_ids', 'in', refund.invoice_line_ids.
                           mapped('sale_line_ids').ids),
-                         ('invoice_id.type', '=', 'out_invoice')]).mapped('invoice_id')
+                         ('move_id.type', '=', 'out_invoice')]).mapped(
+                        'move_id')
                     if not original_invoices:
                         continue
                     self.env['account.change.currency'].with_context(
@@ -67,9 +67,9 @@ class SaleOrder(models.Model):
 
         # self podria no tener elementos a estas alturas
         if self:
-            invoice_ids += super(SaleOrder, self).action_invoice_create(
+            invoices += super(SaleOrder, self)._create_invoices(
                 grouped=grouped, final=final)
-        return invoice_ids
+        return invoices
 
     def action_confirm(self):
         param = self.env['ir.config_parameter'].sudo().get_param(
@@ -87,14 +87,16 @@ class SaleOrder(models.Model):
         return res
 
     def _compute_get_preparation_time(self):
-        for rec in self.filtered(lambda x:
-                                 x.company_id.preparation_time_variable):
-            preparation_time_variable = (
-                rec.company_id.preparation_time_variable)
-            preparation_time_fixed = rec.company_id.preparation_time_fixed
-            rec.sale_preparetion_time = len(
-                rec.order_line) * preparation_time_variable + (
-                preparation_time_fixed)
+        for rec in self:
+            if rec.company_id.preparation_time_variable:
+                preparation_time_variable = (
+                    rec.company_id.preparation_time_variable)
+                preparation_time_fixed = rec.company_id.preparation_time_fixed
+                rec.sale_preparetion_time = len(
+                    rec.order_line) * preparation_time_variable + (
+                    preparation_time_fixed)
+            else:
+                rec.sale_preparetion_time = 0
 
     def update_requested_date(self):
         self.ensure_one()

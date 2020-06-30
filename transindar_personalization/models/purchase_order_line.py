@@ -13,7 +13,7 @@ class PurchaseOrderLine(models.Model):
     # afecte por ahora, lo dejamos en este modulo
     @api.onchange('product_qty', 'product_uom')
     def _onchange_quantity(self):
-        res = super(PurchaseOrderLine, self)._onchange_quantity()
+        res = super()._onchange_quantity()
         if not self.product_id:
             return
 
