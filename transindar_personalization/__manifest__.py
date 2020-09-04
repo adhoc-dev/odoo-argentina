@@ -45,6 +45,7 @@
         'product_replenishment_cost',
         'sale_order_type_automation',
         'sale_order_validity',
+        'account_invoice_move_currency',
     ],
     'data': [
     ],

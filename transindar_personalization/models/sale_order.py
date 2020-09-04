@@ -60,7 +60,7 @@ class SaleOrder(models.Model):
                         active_id=refund.id).create({
                             'currency_to_id': company_currency.id,
                             'currency_rate': original_invoices.sorted(
-                                lambda x: x.currency_rate)[0].currency_rate,
+                                lambda x: x.l10n_ar_currency_rate)[0].l10n_ar_currency_rate,
                             'change_type': 'value',
                             'save_secondary_currency': True,
                         }).change_currency()
