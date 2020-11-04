@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- Add you code here -->
+    <!-- res.partner inherit form view -->
+    <record id="view_partner_form_inherit" model="ir.ui.view">
+      <field name="name">res.partner.inherit.view.form</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <!-- Add your xpath here -->
+        <field name="type" position="before">
+          <field name="birthdate"/>
+          <field name="age" attrs="{'invisible': [('birthdate','=',False)]}"/>
+        </field>
+        <field name="l10n_ar_afip_responsibility_type_id" position="after">
+          <field name="credit_card_id"/>
+        </field>
+        <field name="category_id" position="after">
+          <field name="bank_id"/>
+        </field>
+      </field>
+    </record>
+</odoo>

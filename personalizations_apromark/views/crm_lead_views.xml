@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+        <!-- Add you code here -->
+        <!-- crm.lead inherit form view -->
+        <record id="crm_lead_view_form_inherit" model="ir.ui.view">
+            <field name="name">crm.lead.inherit.view.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <field name="team_id" position="after">
+                    <field name="uen_id"/>
+                </field>
+                <xpath expr="//group[@name='lead_priority']//field[@name='tag_ids']" position="after">
+                    <field name="product_id"/>
+                    <field name="location_id"/>
+                </xpath>
+            </field>
+        </record>
+        <!-- crm.lead inherit tree view -->
+        <record id="crm_case_tree_view_leads_inherit" model="ir.ui.view">
+            <field name="name">crm.lead.inherit.view.tree</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <field name="phone" position="replace">
+                    <field name="mobile" optional="show" class="o_force_ltr"/>
+                </field>
+                <field name="priority" position="after">
+                    <field name="campaign_id"/>
+                    <field name="medium_id"/>
+                    <field name="source_id"/>
+                    <field name="referred"/>
+                </field>
+            </field>
+        </record>
+</odoo>
