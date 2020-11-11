@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': 'Personalizations Apromark',
     'version': '13.0.1.1.0',
@@ -10,7 +9,10 @@
     'images': [
     ],
     'depends': [
-        'base', 'crm', 'contacts', 'stock', 'l10n_ar','account_analytic_default'
+        'crm',
+        'sale',
+        'l10n_ar',
+        'account_analytic_default',
     ],
     'data': [
         'security/ir.model.access.csv',
