@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 {
     'name': 'Personalizations Apromark',
-    'version': '13.0.1.0.0',
+    'version': '13.0.1.1.0',
     'sequence': 14,
     'summary': '',
     'author': 'ADHOC SA',
@@ -10,7 +9,10 @@
     'images': [
     ],
     'depends': [
-        'base', 'crm', 'contacts', 'stock', 'l10n_ar'
+        'crm',
+        'sale',
+        'l10n_ar',
+        'account_analytic_default',
     ],
     'data': [
         'security/ir.model.access.csv',
