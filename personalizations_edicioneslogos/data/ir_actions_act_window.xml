@@ -1,0 +1,498 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_509_781d84ca">
+    <field name="name">Document Page</field>
+    <field name="res_model">document.page</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain">[('parent_id','=',11)]</field>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">inlineview</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_513_a4f3d362">
+    <field name="name">Edición Masiva (Oportunidades)</field>
+    <field name="res_model">mass.editing.wizard</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_model_id" ref="crm.model_crm_lead"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'mass_editing_object' : 2}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">new</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_622_3696f78a">
+    <field name="name">Edición Masiva (Diarios)</field>
+    <field name="res_model">mass.editing.wizard</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_model_id" ref="account.model_account_journal"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'mass_editing_object' : 3}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">new</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_625_69a291e0">
+    <field name="name">Edición Masiva (Ubicaciones)</field>
+    <field name="res_model">mass.editing.wizard</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_model_id" ref="stock.model_stock_location"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'mass_editing_object' : 4}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">new</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_626_84dde8a8">
+    <field name="name">Edición Masiva (Tipo de Operacion)</field>
+    <field name="res_model">mass.editing.wizard</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_model_id" ref="stock.model_stock_picking_type"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'mass_editing_object' : 5}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">new</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_627_fd9b4a37">
+    <field name="name">Edición Masiva (Secuencias)</field>
+    <field name="res_model">mass.editing.wizard</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_model_id" ref="account.model_ir_sequence"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'mass_editing_object' : 6}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">new</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_628_d94136eb">
+    <field name="name">Lineas de Inventario</field>
+    <field name="res_model">stock.inventory.line</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_642_59eb304b">
+    <field name="name">Edición Masiva (Stock.move)</field>
+    <field name="res_model">mass.editing.wizard</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'mass_editing_object' : 7}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">new</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_643_0d9569df">
+    <field name="name">Edición Masiva (Product Template)</field>
+    <field name="res_model">mass.editing.wizard</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_model_id" ref="account.model_product_template"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'mass_editing_object' : 8}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">new</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_644_185dee5a">
+    <field name="name">Edición Masiva (Categoria producto)</field>
+    <field name="res_model">mass.editing.wizard</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_model_id" ref="account.model_product_template"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'mass_editing_object' : 9}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">new</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_648_49cde2ad">
+    <field name="name">Lineas de factura</field>
+    <field name="res_model">account.invoice.line</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_649_922797dc">
+    <field name="name">Enviar mail (Invitacion)</field>
+    <field name="res_model">mail.compose.message</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_model_id" ref="account.model_res_partner"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'default_composition_mode': 'mass_mail', 'default_template_id' : 32, 'default_use_template': True}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">new</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_657_364240d6">
+    <field name="name">Edición Masiva (Product Variant)</field>
+    <field name="res_model">mass.editing.wizard</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_model_id" ref="account.model_product_product"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'mass_editing_object' : 12}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">new</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_671_dac79f01">
+    <field name="name">Purge modules</field>
+    <field name="res_model">cleanup.purge.wizard.module</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_672_a5858875">
+    <field name="name">Purge models</field>
+    <field name="res_model">cleanup.purge.wizard.model</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_673_c1e49eda">
+    <field name="name">Purge columns</field>
+    <field name="res_model">cleanup.purge.wizard.column</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_674_f0aea842">
+    <field name="name">Purge tables</field>
+    <field name="res_model">cleanup.purge.wizard.table</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_675_aeb9d134">
+    <field name="name">Purge data entries that refer to missing resources</field>
+    <field name="res_model">cleanup.purge.wizard.data</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_761_b0cb2569">
+    <field name="name">Proyectos</field>
+    <field name="res_model">board.board</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_795_e9924aa0">
+    <field name="name">Exportaciones</field>
+    <field name="res_model">board.board</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_796_8dada997">
+    <field name="name">Ediciones</field>
+    <field name="res_model">board.board</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_797_6a1d5ac2">
+    <field name="name">website</field>
+    <field name="res_model">website</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_805_c7296e94">
+    <field name="name">Transferencias</field>
+    <field name="res_model">stock.picking</field>
+    <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'default_picking_type_id': active_id, 'contact_display': 'partner_address', 'search_default_picking_type_id': [active_id]}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">tree,form,calendar</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_1074_f62300e9">
+    <field name="name">Edición Masiva (Prod template)</field>
+    <field name="res_model">mass.editing.wizard</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_model_id" ref="account.model_product_template"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'mass_editing_object' : 13}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">new</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_1090_18ea15ea">
+    <field name="name">Edición Masiva (Partners)</field>
+    <field name="res_model">mass.editing.wizard</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_model_id" ref="account.model_res_partner"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'mass_editing_object' : 1}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">new</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_1343_dafea061">
+    <field name="name">Analisis de Facturas (07/02/2020 19:05:38 UTC)</field>
+    <field name="res_model">x_bi_sql_view.logos_invoice_analysis</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">tree,pivot,graph</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_1356_e39aa62c">
+    <field name="name">Edición Masiva (Habilitar stock negativo en productos)</field>
+    <field name="res_model">mass.editing.wizard</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_model_id" ref="account.model_product_template"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'mass_editing_object' : 15}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">new</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form, tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_1405_3335f3ff">
+    <field name="name">Estrategia de retirada</field>
+    <field name="res_model">product.putaway</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_1414_f7df09ad">
+    <field name="name">Edición Masiva (Cuenta Analitica)</field>
+    <field name="res_model">mass.editing.wizard</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_model_id" ref="account.model_account_move_line"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'mass_editing_object' : 16}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">new</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form, tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_1432_346b6d0d">
+    <field name="name">Proyectos por compañia</field>
+    <field name="res_model">x_partner_project</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_1433_357bac42">
+    <field name="name">Logos digital</field>
+    <field name="res_model">x_project</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_edicioneslogos.ir_act_window_1459_76ad91c1">
+    <field name="name">Edición Masiva (Canales de venta)</field>
+    <field name="res_model">mass.editing.wizard</field>
+    <field eval="False" name="search_view_id"/>
+    <field name="binding_model_id" ref="delivery.model_sale_order"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'mass_editing_object' : 17}</field>
+    <field eval="False" name="domain"/>
+    <field eval="False" name="filter"/>
+    <field name="limit">80</field>
+    <field name="target">new</field>
+    <field name="type">ir.actions.act_window</field>
+    <field eval="False" name="usage"/>
+    <field eval="False" name="view_id"/>
+    <field name="view_mode">form, tree</field>
+  </record>
+</odoo>

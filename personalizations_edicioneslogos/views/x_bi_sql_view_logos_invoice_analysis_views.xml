@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_4651_0b07295d">
+    <field name="name">Analisis de Facturas</field>
+    <field name="model">x_bi_sql_view.logos_invoice_analysis</field>
+    <field eval="True" name="active"/>
+    <field name="arch" type="xml">
+      <search string="Invoices Line Logos Analysis">
+        <filter string="Sale Invoice" domain="[('x_type','=','out_invoice')]"/>
+        <filter string="Sale Refund" domain="[('x_type','=','out_refund')]"/>
+        <filter string="Purchase Invoice" domain="[('x_type','=','in_invoice')]"/>
+        <filter string="Purchase Refund" domain="[('x_type','=','in_refund')]"/>
+        <separator/>
+        <filter string="Draft" domain="[('x_state','in',['draft','proforma','proforma2'])]" help="Draft Invoices"/>
+        <filter string="Invoiced" name="current" domain="[('x_state','not in', ('draft','cancel'))]" help="Open and Paid Invoices"/>
+        <field name="x_barcode"/>
+        <field name="x_city"/>
+        <field name="x_state_id"/>
+        <field name="x_country_id"/>
+        <field name="x_company_id"/>
+        <field name="x_user_id"/>
+        <field name="x_team_id"/>
+        <field name="x_product_id"/>
+        <field name="x_collection_id"/>
+        <field name="x_editorial_id"/>
+        <field name="x_product_category_id" filter_domain="[('x_product_category_id', 'child_of', self)]"/>
+        <field name="x_partner_id"/>
+        <group expand="1" string="Group By...">
+          <filter string="Partner" name="partner" context="{'group_by':'x_partner_id'}"/>
+          <filter string="Salesman" name="user" context="{'group_by':'x_user_id'}"/>
+          <filter string="Sales Team" name="section" context="{'group_by':'x_team_id'}"/>
+          <filter string="Product" context="{'group_by':'x_product_id'}"/>
+          <filter string="Product Category" name="category_product" context="{'group_by':'x_product_category_id'}"/>
+          <filter string="Editorial" context="{'group_by':'x_editorial_id'}"/>
+          <filter string="Collection" context="{'group_by':'x_collection_id'}"/>
+          <filter string="State" icon="terp-stock_effects-object-colorize" context="{'group_by':'x_state'}"/>
+          <filter string="Journal Type" icon="terp-stock_symbol-selection" context="{'group_by':'x_type'}"/>
+          <filter string="Journal" icon="terp-folder-orange" context="{'group_by':'x_journal_id'}"/>
+          <filter string="Company" icon="terp-go-home" context="{'group_by':'x_company_id'}"/>
+          <filter string="City" icon="" context="{'group_by':'x_city'}"/>
+          <filter string="State" icon="" context="{'group_by':'x_state_id'}"/>
+          <filter string="Country" icon="" context="{'group_by':'x_country_id'}"/>
+        </group>
+      </search>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_4652_96869427">
+    <field name="name">Analisis de Facturas</field>
+    <field name="model">x_bi_sql_view.logos_invoice_analysis</field>
+    <field eval="True" name="active"/>
+    <field name="arch" type="xml">
+      <tree colors="blue:state == 'draft';gray:state in ('cancel','paid');black:state in ('proforma','proforma2')" string="Invoices Line Logos Analysis">
+        <field name="x_number"/>
+        <field name="x_date_invoice"/>
+        <field name="x_journal_id"/>
+        <field name="x_type" invisible="1"/>
+        <field name="x_partner_id"/>
+        <field name="x_barcode"/>
+        <field name="x_product_id"/>
+        <field name="x_price_unit"/>
+        <field name="x_quantity" sum="Total"/>
+        <field name="x_price_gross_subtotal" sum="Total"/>
+        <field name="x_discount"/>
+        <field name="x_discount_amount" sum="Total"/>
+        <field name="x_price_subtotal" sum="Total"/>
+        <field name="x_price_subtotal_signed" string="Subtotal en moneda de compañía" sum="Total"/>
+        <field name="x_date_due" invisible="1"/>
+        <field name="x_state"/>
+        <field name="x_city" invisible="1"/>
+        <field name="x_state_id" invisible="1"/>
+        <field name="x_country_id" invisible="1"/>
+        <field name="x_user_id" invisible="0"/>
+        <field name="x_editorial_id" invisible="1"/>
+        <field name="x_collection_id" invisible="1"/>
+        <field name="x_company_id" invisible="1"/>
+        <field name="x_product_category_id" invisible="1"/>
+      </tree>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_4675_cfbbc8f4">
+    <field name="name">Analisis de Facturas</field>
+    <field name="model">x_bi_sql_view.logos_invoice_analysis</field>
+    <field eval="True" name="active"/>
+    <field name="arch" type="xml">
+      <tree string="Analysis">
+        <field name="x_price_unit"/>
+        <field name="x_discount"/>
+        <field name="x_price_subtotal_signed"/>
+        <field name="x_quantity"/>
+        <field name="x_price_subtotal"/>
+        <field name="x_price_gross_subtotal"/>
+        <field name="x_discount_amount"/>
+        <field name="x_partner_id"/>
+        <field name="x_product_id"/>
+        <field name="x_date_due"/>
+        <field name="x_number"/>
+        <field name="x_journal_id"/>
+        <field name="x_user_id"/>
+        <field name="x_team_id"/>
+        <field name="x_company_id"/>
+        <field name="x_type"/>
+        <field name="x_state"/>
+        <field name="x_date_invoice"/>
+        <field name="x_amount_total"/>
+        <field name="x_barcode"/>
+        <field name="x_editorial_id"/>
+        <field name="x_collection_id"/>
+        <field name="x_product_category_id"/>
+        <field name="x_customer"/>
+        <field name="x_supplier"/>
+        <field name="x_state_id"/>
+        <field name="x_country_id"/>
+        <field name="x_city"/>
+      </tree>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_4676_f1495d25">
+    <field name="name">Analisis de Facturas</field>
+    <field name="model">x_bi_sql_view.logos_invoice_analysis</field>
+    <field eval="True" name="active"/>
+    <field name="arch" type="xml">
+      <graph string="Analysis" type="bar" stacked="True"/>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_4677_3e2dfc01">
+    <field name="name">Analisis de Facturas</field>
+    <field name="model">x_bi_sql_view.logos_invoice_analysis</field>
+    <field eval="True" name="active"/>
+    <field name="arch" type="xml">
+      <pivot string="Analysis" stacked="True"/>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_4678_3d4e12b9">
+    <field name="name">Analisis de Facturas</field>
+    <field name="model">x_bi_sql_view.logos_invoice_analysis</field>
+    <field eval="True" name="active"/>
+    <field name="arch" type="xml">
+      <search string="Analysis">
+        <field name="x_price_unit"/>
+        <field name="x_discount"/>
+        <field name="x_price_subtotal_signed"/>
+        <field name="x_quantity"/>
+        <field name="x_price_subtotal"/>
+        <field name="x_price_gross_subtotal"/>
+        <field name="x_discount_amount"/>
+        <field name="x_partner_id"/>
+        <field name="x_product_id"/>
+        <field name="x_date_due"/>
+        <field name="x_number"/>
+        <field name="x_journal_id"/>
+        <field name="x_user_id"/>
+        <field name="x_team_id"/>
+        <field name="x_company_id"/>
+        <field name="x_type"/>
+        <field name="x_state"/>
+        <field name="x_date_invoice"/>
+        <field name="x_amount_total"/>
+        <field name="x_barcode"/>
+        <field name="x_editorial_id"/>
+        <field name="x_collection_id"/>
+        <field name="x_product_category_id"/>
+        <field name="x_customer"/>
+        <field name="x_supplier"/>
+        <field name="x_state_id"/>
+        <field name="x_country_id"/>
+        <field name="x_city"/>
+        <group expand="1" string="Group By"/>
+      </search>
+    </field>
+  </record>
+</odoo>

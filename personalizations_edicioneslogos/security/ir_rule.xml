@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.rule" id="personalizations_edicioneslogos.ir_rule_288_b27c9243">
+    <field name="name">Access Analisis de Facturas</field>
+    <field name="model_id" ref="personalizations_edicioneslogos.model_x_bi_sql_view_logos_invoice_analysis"/>
+    <field eval="True" name="active"/>
+    <field name="domain_force"><![CDATA[[]]]></field>
+    <field eval="[(6, 0, [])]" name="groups"/>
+    <field eval="True" name="perm_create"/>
+    <field eval="True" name="perm_read"/>
+    <field eval="True" name="perm_unlink"/>
+    <field eval="True" name="perm_write"/>
+  </record>
+</odoo>

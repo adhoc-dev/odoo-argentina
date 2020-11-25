@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_5314_6bbf0f75">
+    <field name="name">x_partner_project.tree</field>
+    <field name="model">x_partner_project</field>
+    <field eval="True" name="active"/>
+    <field name="arch" type="xml">
+      <tree string="partner_project" editable="top">
+        <field name="x_campaign_id"/>
+        <field name="x_partner_id"/>
+        <field name="x_project_ids" widget="many2many_tags"/>
+      </tree>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_5324_00290752">
+    <field name="name">project.tree</field>
+    <field name="model">x_partner_project</field>
+    <field eval="True" name="active"/>
+    <field name="arch" type="xml">
+      <search string="Search project partner">
+        <field name="x_campaign_id" string="Campaña"/>
+        <field name="x_partner_id" string="Partner"/>
+        <field name="x_project_ids" string="Proyecto"/>
+        <field name="x_user_id" string="Comercial"/>
+        <field name="x_country_id" string="Pais"/>
+        <field name="x_state" string="Provincia"/>
+        <separator/>
+        <filter string="Comercial" name="user_id"/>
+        <filter string="País" name="country_id"/>
+        <filter string="Provincia" name="state_id"/>
+        <group expand="0" string="Group By">
+          <filter string="comercial" context="{'group_by':'x_user_id'}"/>
+          <filter string="País" context="{'group_by' : 'x_country_id'}"/>
+          <filter string="Provincia" context="{'group_by' : 'x_state'}"/>
+        </group>
+      </search>
+    </field>
+  </record>
+</odoo>

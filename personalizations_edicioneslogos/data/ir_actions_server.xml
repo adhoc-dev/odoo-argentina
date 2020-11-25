@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.actions.server" id="personalizations_edicioneslogos.ir_act_server_485_e65c511f">
+    <field name="name">Recordatorio de lead</field>
+    <field name="sequence">5</field>
+    <field name="model_id" ref="crm.model_crm_lead"/>
+    <field name="state">email</field>
+    <field name="binding_type">action</field>
+    <field name="crud_model_id" ref="crm.model_crm_lead"/>
+    <field name="code"><![CDATA[# You can use the following variables:
+#  - self: ORM model of the record on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - pool: ORM model pool (i.e. self.pool)
+#  - cr: database cursor
+#  - uid: current user id
+#  - context: current context
+#  - time: Python time module
+#  - workflow: Workflow engine
+# If you plan to return an action, assign: action = {...}]]></field>
+  </record>
+  <record model="ir.actions.server" id="personalizations_edicioneslogos.ir_act_server_1045_2bcd0e4c">
+    <field name="name">Crear Factura desde Picking</field>
+    <field name="sequence">5</field>
+    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="state">code</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="binding_type">action</field>
+    <field name="crud_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="code"><![CDATA[context = dict(env.context)
+object = record
+for rec in object.browse(context.get('active_ids', [])):
+      journal_id = env['account.invoice'].default_get(['journal_id'])[
+          'journal_id']
+      invoice_line_obj = env['account.invoice.line']
+      invoice_obj = env['account.invoice']
+      if rec.sale_id or rec.picking_type_code != 'incoming' or rec.location_id.usage != 'customer' or rec.state != 'done':
+            raise Warning("No puede generar factura para este picking")
+      invoices = []
+      invoice_vals = {
+            'origin': rec.name,
+            'type': 'out_refund',
+            'account_id': rec.partner_id.property_account_receivable_id.id,
+            'partner_id': rec.partner_id.id,
+            'journal_id': journal_id,
+            'currency_id': rec.x_pricelist_id.currency_id.id,
+            'comment': rec.note,
+            'company_id': rec.company_id.id,
+            'pricelist_id': rec.x_pricelist_id,
+            'picking_ids': [(4, rec.id)]
+      }
+      invoice = invoice_obj.create(invoice_vals)
+      invoices.append(invoice.id)
+      for pack_operation in rec.move_line_ids:
+            account = pack_operation.product_id.property_account_income_id \
+                or pack_operation.product_id.categ_id.\
+                property_account_income_categ_id
+            if not account:
+                  raise Warning(
+                      ('Please define income account for this product:'
+                       '"%s" (id:%d) - or for its category: "%s".') %
+                      (pack_operation.product_id.name,
+                       pack_operation.product_id.id,
+                       pack_operation.product_id.categ_id.name))
+
+            fpos = rec.partner_id.property_account_position_id
+            if fpos:
+                  account = fpos.map_account(account)
+            tmp_line = invoice_line_obj.new(
+                  {'product_id': pack_operation.product_id.id,
+                   'invoice_id': invoice.id})
+            tmp_line._onchange_product_id()
+            invoice_line_vals = {
+                'name': tmp_line.name,
+                'account_id': account.id,
+                'product_id': pack_operation.product_id.id,
+                'uom_id': tmp_line.uom_id.id,
+                'quantity': pack_operation.qty_done,
+                'price_unit': tmp_line.price_unit,
+                'invoice_id':tmp_line.invoice_id.id,
+                'invoice_line_tax_ids': [(6, 0, tmp_line.invoice_line_tax_ids.ids)]
+            }
+            inv_line = invoice_line_obj.create(invoice_line_vals)
+actions = env.ref('account.action_invoice_tree1')
+action_read = actions.read()[0]
+action_read['domain'] = [('id', 'in', invoices)]
+action = action_read]]></field>
+  </record>
+  <record model="ir.actions.server" id="personalizations_edicioneslogos.ir_act_server_1091_b5531b27">
+    <field name="name">Republicar asientos contables</field>
+    <field name="sequence">5</field>
+    <field name="model_id" ref="account.model_account_move"/>
+    <field name="state">code</field>
+    <field name="binding_model_id" ref="account.model_account_move"/>
+    <field name="binding_type">action</field>
+    <field name="crud_model_id" ref="account.model_account_move"/>
+    <field name="code"><![CDATA[context = dict(env.context)
+object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the record on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+ids = context.get('active_ids',[])
+
+if ids:
+    recods = env['account.move'].browse(ids)
+    recods.button_cancel()
+    recods.post()]]></field>
+  </record>
+  <record model="ir.actions.server" id="personalizations_edicioneslogos.ir_act_server_1346_044f3ee6">
+    <field name="name">Envio de factura</field>
+    <field name="sequence">5</field>
+    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="state">email</field>
+    <field name="binding_type">action</field>
+    <field name="code"><![CDATA[# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+
+
+]]></field>
+  </record>
+  <record model="ir.actions.server" id="personalizations_edicioneslogos.ir_act_server_1359_5ee36b3a">
+    <field name="name">Envio de mail con factura adjunta</field>
+    <field name="sequence">5</field>
+    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"><![CDATA[record.message_post_with_template(87)
+
+
+
+]]></field>
+  </record>
+  <record model="ir.actions.server" id="personalizations_edicioneslogos.ir_act_server_1360_df829d6f">
+    <field name="name">agregar seguidor</field>
+    <field name="sequence">5</field>
+    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"><![CDATA[# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+for rec in records.filtered(lambda x: x.sale_id.user_id.partner_id):
+    rec.message_subscribe([rec.sale_id.user_id.partner_id.id], force=False)
+
+
+]]></field>
+  </record>
+  <record model="ir.actions.server" id="personalizations_edicioneslogos.ir_act_server_1428_448a19db">
+    <field name="name">Envío de correo de seguimiento </field>
+    <field name="sequence">5</field>
+    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="state">code</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="binding_type">action</field>
+    <field name="code"><![CDATA[# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+record.message_post_with_template(94)
+
+
+
+]]></field>
+  </record>
+</odoo>

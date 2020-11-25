@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_5313_e7ae969b">
+    <field name="name">x_project.tree</field>
+    <field name="model">x_project</field>
+    <field eval="True" name="active"/>
+    <field name="arch" type="xml">
+      <tree string="Proyectos" editable="top">
+        <field name="x_name"/>
+        <field name="x_moodle_code"/>
+      </tree>
+    </field>
+  </record>
+</odoo>
