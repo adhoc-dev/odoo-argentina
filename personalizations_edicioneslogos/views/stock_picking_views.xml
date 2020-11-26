@@ -1,26 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_3163_39c4c757">
-    <field name="name">Vista personalizada agrega x_pricelist_id</field>
+  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_3163">
+    <field name="name">stock.picking.form</field>
     <field name="model">stock.picking</field>
     <field name="inherit_id" ref="stock.view_picking_form"/>
-    <field eval="True" name="active"/>
-    <field name="arch" type="xml">
-      <field name="invoice_ids" position="after">
-        <field name="x_usage" invisible="1"/>
-        <field name="x_pricelist_id" attrs="{'invisible':['|','|',('sale_id','!=', False),('picking_type_code','!=', 'incoming'),('x_usage', '!=', 'customer')], 'required':[('sale_id','=', False),('picking_type_code','=', 'incoming'),('x_usage', '=', 'customer')]}"/>
-      </field>
-    </field>
-  </record>
-  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_5307_054ffe2c">
-    <field name="name">x_seguimiento</field>
-    <field name="model">stock.picking</field>
-    <field name="inherit_id" ref="stock.view_picking_form"/>
-    <field eval="True" name="active"/>
-    <field name="arch" type="xml">
-      <xpath expr="//field[@name='partner_id']" position="after">
-        <field name="x_seguimiento"/>
-      </xpath>
+    <field type="xml" name="arch">
+        <button name="button_validate" position="after">
+          <button name="create_invoice_from_picking" attrs="{'invisible':['|','|',('sale_id','!=', False),('picking_type_code','!=', 'incoming'),('x_usage', '!=', 'customer')]}" string="NC de devolucion" type="object" class="oe_highlight"/>
+        </button>
+        <field name="origin" position="after">
+          <field name="x_usage" invisible="1"/>
+          <field name="x_pricelist_id" attrs="{'invisible':['|','|',('sale_id','!=', False),('picking_type_code','!=', 'incoming'),('x_usage', '!=', 'customer')], 'required':[('sale_id','=', False),('picking_type_code','=', 'incoming'),('x_usage', '=', 'customer')]}"/>
+        </field>
+        <xpath expr="//field[@name='partner_id']" position="after">
+          <field name="x_seguimiento"/>
+        </xpath>
     </field>
   </record>
 </odoo>

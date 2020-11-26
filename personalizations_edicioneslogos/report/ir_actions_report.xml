@@ -1,74 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
   <record model="ir.actions.report" id="l10n_ar_aeroo_stock.action_aeroo_report_ar_stock_picking">
-    <field name="name">Remito Argentino de Aeroo</field>
-    <field name="model">stock.picking</field>
-    <field name="report_name">aeroo_report_ar_picking</field>
-    <field name="report_type">aeroo</field>
-    <field eval="False" name="attachment"/>
-    <field eval="False" name="attachment_use"/>
-    <field name="binding_type">action</field>
-    <field eval="False" name="multi"/>
-    <field eval="False" name="paperformat_id"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">l10n_ar_aeroo_stock/report/aeroo_report_ar_picking.odt</field>
-    <field eval="True" name="process_sep"/>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+    <field name="report_file">personalizations_edicioneslogos/report/aeroo_report_ar_picking.odt</field>
   </record>
-  <record model="ir.actions.report" id="personalizations_edicioneslogos.ir_act_report_xml_638_1164697c">
-    <field name="name">Logos - Reporte de Catálogo de Productos - ODS</field>
-    <field name="model">product.product_catalog_report</field>
-    <field name="report_name">report_logos_product_catalog_ods</field>
-    <field name="report_type">aeroo</field>
-    <field eval="False" name="attachment"/>
-    <field eval="False" name="attachment_use"/>
-    <field name="binding_type">action</field>
-    <field eval="False" name="multi"/>
-    <field eval="False" name="paperformat_id"/>
-  </record>
-  <record model="ir.actions.report" id="personalizations_edicioneslogos.ir_act_report_xml_1046_97aa9521">
+  <record model="ir.actions.report" id="ir_act_report_xml_1046">
     <field name="name">Picking Labels CA Report</field>
     <field name="model">stock.picking</field>
     <field name="report_name">picking_labels_ca</field>
     <field name="report_type">aeroo</field>
-    <field eval="False" name="attachment"/>
-    <field eval="False" name="attachment_use"/>
-    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field name="binding_type">report</field>
-    <field eval="False" name="multi"/>
-    <field eval="False" name="paperformat_id"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_edicioneslogos/report/picking_labels_ca.odt</field>
     <field eval="False" name="process_sep"/>
     <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_odt_odt"/>
-  </record>
-  <record model="ir.actions.report" id="l10n_ar_aeroo_stock.action_aeroo_report_ar_stock_remito">
-    <field name="name">Remito pre-impreso</field>
-    <field name="model">stock.picking</field>
-    <field name="report_name">aeroo_report_ar_remito</field>
-    <field name="report_type">aeroo</field>
-    <field eval="False" name="attachment"/>
-    <field eval="False" name="attachment_use"/>
-    <field name="binding_type">report</field>
-    <field eval="False" name="multi"/>
-    <field eval="False" name="paperformat_id"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">l10n_ar_aeroo_stock/report/aeroo_report_ar_remito.odt</field>
-    <field eval="True" name="process_sep"/>
-    <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
   </record>
-  <record model="ir.actions.report" id="personalizations_edicioneslogos.ir_act_report_xml_1370_209b613b">
-    <field name="name">Remito Argentino de Aeroo email</field>
-    <field name="model">stock.picking</field>
-    <field name="report_name">aeroo_report_ar_picking_mail</field>
-    <field name="report_type">aeroo</field>
-    <field eval="False" name="attachment"/>
-    <field eval="False" name="attachment_use"/>
-    <field name="binding_type">action</field>
-    <field eval="False" name="multi"/>
-    <field eval="False" name="paperformat_id"/>
+  <record model="ir.actions.report" id="l10n_ar_aeroo_stock.action_aeroo_report_ar_stock_remito">
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_edicioneslogos/report/aeroo_report_ar_remito.odt</field>
   </record>
 </odoo>

@@ -1,120 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <record model="ir.ui.menu" id="personalizations_edicioneslogos.ir_ui_menu_477_4e519562">
-    <field name="name">Lineas de Inventario</field>
-    <field name="parent_id" ref="stock.menu_stock_inventory_control"/>
-    <field name="sequence">10</field>
-    <field name="action" ref="personalizations_edicioneslogos.ir_act_window_628_d94136eb"/>
-    <field eval="True" name="active"/>
-    <field eval="False" name="web_icon"/>
-  </record>
-  <record model="ir.ui.menu" id="personalizations_edicioneslogos.ir_ui_menu_578_0a14e4fc">
-    <field name="name">Proyectos</field>
-    <field name="parent_id" ref="base.menu_reporting_dashboard"/>
-    <field name="sequence">10</field>
-    <field name="action" ref="personalizations_edicioneslogos.ir_act_window_761_b0cb2569"/>
-    <field eval="True" name="active"/>
-    <field eval="False" name="web_icon"/>
-  </record>
-  <record model="ir.ui.menu" id="personalizations_edicioneslogos.ir_ui_menu_612_9083184d">
-    <field name="name">Exportaciones</field>
-    <field name="parent_id" ref="base.menu_reporting_dashboard"/>
-    <field name="sequence">10</field>
-    <field name="action" ref="personalizations_edicioneslogos.ir_act_window_795_e9924aa0"/>
-    <field eval="True" name="active"/>
-    <field eval="False" name="web_icon"/>
-  </record>
-  <record model="ir.ui.menu" id="personalizations_edicioneslogos.ir_ui_menu_613_0e1e888e">
-    <field name="name">Ediciones</field>
-    <field name="parent_id" ref="base.menu_reporting_dashboard"/>
-    <field name="sequence">10</field>
-    <field name="action" ref="personalizations_edicioneslogos.ir_act_window_796_8dada997"/>
-    <field eval="True" name="active"/>
-    <field eval="False" name="web_icon"/>
-  </record>
-  <record model="ir.ui.menu" id="personalizations_edicioneslogos.ir_ui_menu_1071_665210d1">
-    <field name="name">Analisis de Facturas</field>
-    <field name="parent_id" ref="bi_sql_editor.menu_bi_sql_editor"/>
-    <field eval="False" name="sequence"/>
-    <field name="action" ref="personalizations_edicioneslogos.ir_act_window_1343_dafea061"/>
-    <field eval="True" name="active"/>
-    <field eval="False" name="web_icon"/>
-  </record>
-  <record model="ir.ui.menu" id="personalizations_edicioneslogos.ir_ui_menu_1100_2679b528">
-    <field name="name">Doc. Comercial</field>
-    <field eval="False" name="parent_id"/>
-    <field name="sequence">10</field>
-    <field eval="True" name="active"/>
-    <field eval="[(6, 0, [ref('portal_sale_distributor.group_portal_distributor')])]" name="groups_id"/>
-    <field eval="False" name="web_icon"/>
-  </record>
-  <record model="ir.ui.menu" id="personalizations_edicioneslogos.ir_ui_menu_1106_98236b3b">
-    <field name="name">Estrategia de retirada</field>
-    <field name="parent_id" ref="stock.menu_warehouse_config"/>
-    <field name="sequence">10</field>
-    <field name="action" ref="personalizations_edicioneslogos.ir_act_window_1405_3335f3ff"/>
-    <field eval="True" name="active"/>
-    <field eval="False" name="web_icon"/>
-  </record>
-  <record model="ir.ui.menu" id="personalizations_edicioneslogos.ir_ui_menu_1116_ecc4c20c">
-    <field name="name">Proyectos por compañía</field>
-    <field name="parent_id" ref="sale.product_menu_catalog"/>
-    <field name="sequence">10</field>
-    <field name="action" ref="personalizations_edicioneslogos.ir_act_window_1432_346b6d0d"/>
-    <field eval="True" name="active"/>
-    <field eval="False" name="web_icon"/>
-  </record>
-  <record model="ir.ui.menu" id="personalizations_edicioneslogos.ir_ui_menu_1117_eb191cbb">
-    <field name="name">Logos Digital</field>
-    <field name="parent_id" ref="sale.menu_sale_config"/>
-    <field name="sequence">10</field>
-    <field name="action" ref="personalizations_edicioneslogos.ir_act_window_1433_357bac42"/>
-    <field eval="True" name="active"/>
-    <field eval="False" name="web_icon"/>
-  </record>
-  <record model="ir.ui.menu" id="personalizations_edicioneslogos.ir_ui_menu_1122_41b579e7">
-    <field name="name">Depósito</field>
-    <field name="parent_id" ref="ks_dashboard_ninja.board_menu_root"/>
-    <field name="sequence">10</field>
-    <field eval="True" name="active"/>
-    <field eval="[(6, 0, [ref('stock.group_stock_manager'), ref('stock.group_stock_user')])]" name="groups_id"/>
-    <field eval="False" name="web_icon"/>
-  </record>
-  <record model="ir.ui.menu" id="personalizations_edicioneslogos.ir_ui_menu_1123_72ea4941">
-    <field name="name">Marketing</field>
-    <field name="parent_id" ref="ks_dashboard_ninja.board_menu_root"/>
-    <field name="sequence">10</field>
-    <field eval="True" name="active"/>
-    <field eval="False" name="web_icon"/>
-  </record>
-  <record model="ir.ui.menu" id="personalizations_edicioneslogos.ir_ui_menu_1124_6c1b52dd">
-    <field name="name">Ventas</field>
-    <field name="parent_id" ref="ks_dashboard_ninja.board_menu_root"/>
-    <field name="sequence">10</field>
-    <field eval="True" name="active"/>
-    <field eval="False" name="web_icon"/>
-  </record>
-  <record model="ir.ui.menu" id="personalizations_edicioneslogos.ir_ui_menu_1125_db94b82a">
-    <field name="name">Distribuidores</field>
-    <field name="parent_id" ref="ks_dashboard_ninja.board_menu_root"/>
-    <field name="sequence">10</field>
-    <field eval="True" name="active"/>
-    <field eval="False" name="web_icon"/>
-  </record>
-  <record model="ir.ui.menu" id="personalizations_edicioneslogos.ir_ui_menu_1132_d5f6cdea">
-    <field name="name">E Commerce</field>
-    <field name="parent_id" ref="ks_dashboard_ninja.board_menu_root"/>
-    <field name="sequence">10</field>
-    <field eval="True" name="active"/>
-    <field eval="[(6, 0, [ref('sales_team.group_sale_manager')])]" name="groups_id"/>
-    <field eval="False" name="web_icon"/>
-  </record>
-  <record model="ir.ui.menu" id="personalizations_edicioneslogos.ir_ui_menu_1133_6fda1638">
-    <field name="name">Integralis - Mobiclass</field>
-    <field name="parent_id" ref="ks_dashboard_ninja.board_menu_root"/>
-    <field name="sequence">10</field>
-    <field eval="True" name="active"/>
-    <field eval="[(6, 0, [ref('sales_team.group_sale_manager')])]" name="groups_id"/>
-    <field eval="False" name="web_icon"/>
-  </record>
+    <record model="ir.ui.menu" id="ir_ui_menu_1100">
+      <field name="name">Doc. Comercial</field>
+      <field name="sequence">10</field>
+      <field name="groups_id" eval="[(6, 0, [ref('portal_sale_distributor.group_portal_distributor')])]"/>
+    </record>
+    <record model="ir.ui.menu" id="ir_ui_menu_1116">
+      <field name="name">Proyectos por compañía</field>
+      <field ref="sale.product_menu_catalog" name="parent_id"/>
+      <field name="sequence">10</field>
+      <field ref="ir_act_window_1432" name="action"/>
+    </record>
+    <record model="ir.ui.menu" id="ir_ui_menu_1117">
+      <field name="name">Logos Digital</field>
+      <field ref="sale.menu_sale_config" name="parent_id"/>
+      <field name="sequence">10</field>
+      <field ref="ir_act_window_1433" name="action"/>
+    </record>
 </odoo>

@@ -1,36 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_3306_4b04f363">
-    <field name="name">Vista Personalizada - PERSONALIZACION DESACTIVADA POR ACTUALIZACION a V11</field>
+  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_3306">
+    <field name="name">res.partner.form.view</field>
     <field name="model">res.partner</field>
     <field name="inherit_id" ref="base.view_partner_form"/>
-    <field eval="True" name="active"/>
     <field name="arch" type="xml">
       <field name="user_id" position="after">
         <field name="team_id" completion="1"/>
       </field>
-    </field>
-  </record>
-  <record model="ir.ui.view" id="personalizations_edicioneslogos.odoo_studio_res_part_dbcb71f8-90d8-4d64-9d28-9b5b8485af98">
-    <field name="name">Odoo Studio: res.partner.form customization</field>
-    <field name="model">res.partner</field>
-    <field name="inherit_id" ref="base.view_partner_form"/>
-    <field eval="True" name="active"/>
-    <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='user_id']" position="after">
+      <xpath expr="//field[@name='user_id']" position="after">
           <field name="x_colegio"/>
-        </xpath>
-      </data>
-    </field>
-  </record>
-  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_5315_5ee1dcbf">
-    <field name="name">Page x_project_ids</field>
-    <field name="model">res.partner</field>
-    <field name="inherit_id" ref="base.view_partner_form"/>
-    <field eval="True" name="active"/>
-    <field name="arch" type="xml">
-      <xpath expr="//page[@name='sales_purchases']" position="after">
+      </xpath>
+       <xpath expr="//page[@name='sales_purchases']" position="after">
         <page string="Proyectos">
           <field name="x_project_ids" string="Proyectos">
             <tree editable="top">

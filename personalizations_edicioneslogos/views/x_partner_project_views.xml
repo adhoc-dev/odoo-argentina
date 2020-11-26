@@ -1,9 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_5314_6bbf0f75">
+  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_5314">
     <field name="name">x_partner_project.tree</field>
     <field name="model">x_partner_project</field>
-    <field eval="True" name="active"/>
     <field name="arch" type="xml">
       <tree string="partner_project" editable="top">
         <field name="x_campaign_id"/>
@@ -12,10 +11,9 @@
       </tree>
     </field>
   </record>
-  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_5324_00290752">
-    <field name="name">project.tree</field>
+  <record model="ir.ui.view" id="personalizations_edicioneslogos.ir_ui_view_5324">
+    <field name="name">project.search</field>
     <field name="model">x_partner_project</field>
-    <field eval="True" name="active"/>
     <field name="arch" type="xml">
       <search string="Search project partner">
         <field name="x_campaign_id" string="Campaña"/>

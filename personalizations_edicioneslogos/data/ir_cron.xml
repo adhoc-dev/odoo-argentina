@@ -1,20 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <record model="ir.cron" id="personalizations_edicioneslogos.ir_cron_35_cb426eeb">
-    <field name="name">Refresh Materialized View x_bi_sql_view_logos_invoice_analysis</field>
-    <field name="sequence">5</field>
-    <field name="model_id" ref="bi_sql_editor.model_bi_sql_view"/>
-    <field name="state">code</field>
-    <field name="binding_type">action</field>
-    <field name="code">model._refresh_materialized_view_cron([1])</field>
-    <field eval="True" name="active"/>
-    <field name="interval_number">1</field>
-    <field name="interval_type">days</field>
-    <field name="numbercall">-1</field>
-    <field eval="False" name="doall"/>
-    <field name="priority">5</field>
-  </record>
-  <record model="ir.cron" id="personalizations_edicioneslogos.ir_cron_37_36d7f5c4">
+  <record model="ir.cron" id="ir_cron_37">
     <field name="name">Carrito de compra abandonado</field>
     <field name="sequence">5</field>
     <field name="model_id" ref="delivery.model_sale_order"/>
