@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_tg2.ir_ui_view_1730_1b53afa1" model="ir.ui.view">
+    <field name="name">personalizacion agregado de producto a empleados</field>
+    <field name="model">hr.employee</field>
+    <field name="inherit_id" ref="sale_timesheet.hr_timesheet_employee_extd_form"/>
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//group[@name='timesheet']/div" position="replace">
+</xpath>
+        <xpath expr="//group[@name='timesheet']/label" position="replace">
+          <field name="x_product_id"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

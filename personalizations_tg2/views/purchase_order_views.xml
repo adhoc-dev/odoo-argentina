@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_tg2.ir_ui_view_1886_15d3681b" model="ir.ui.view">
+    <field name="name">Agregado de cuentas y etiquetas analiticas</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.purchase_order_form"/>
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="date_order" position="after">
+          <field name="x_account_analytic_id" groups="purchase.group_analytic_accounting"/>
+          <field name="x_analytic_tag_ids" groups="purchase.group_analytic_accounting" widget="many2many_tags" options="{'color_field': 'color'}"/>
+        </field>
+        <xpath expr="//field[@name='order_line']" position="attributes">
+          <attribute name="context">{'default_account_analytic_id' : x_account_analytic_id, 'default_analytic_tag_ids' : x_analytic_tag_ids}</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

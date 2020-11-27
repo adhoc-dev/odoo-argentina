@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="l10n_ar_aeroo_stock.action_aeroo_report_ar_stock_picking" model="ir.actions.report">
+    <field name="name">Comprobante de Entrega</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">aeroo_report_ar_picking</field>
+    <field name="report_type">aeroo</field>
+    <field name="attachment" eval="False"/>
+    <field name="attachment_use" eval="False"/>
+    <field name="binding_type">report</field>
+    <field name="multi" eval="False"/>
+    <field name="paperformat_id" eval="False"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">l10n_ar_aeroo_stock/report/aeroo_report_ar_picking.odt</field>
+    <field name="process_sep" eval="True"/>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="l10n_ar_aeroo_stock.action_aeroo_report_ar_stock_remito" model="ir.actions.report">
+    <field name="name">Remito pre-impreso</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">aeroo_report_ar_remito</field>
+    <field name="report_type">aeroo</field>
+    <field name="attachment" eval="False"/>
+    <field name="attachment_use" eval="False"/>
+    <field name="binding_type">report</field>
+    <field name="multi" eval="False"/>
+    <field name="paperformat_id" eval="False"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">l10n_ar_aeroo_stock/report/aeroo_report_ar_remito.odt</field>
+    <field name="process_sep" eval="True"/>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+</odoo>

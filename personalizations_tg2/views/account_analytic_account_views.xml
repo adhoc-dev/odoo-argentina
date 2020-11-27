@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_tg2.ir_ui_view_1729_8ec9a6f8" model="ir.ui.view">
+    <field name="name">personalizacion agregado de líneas de presupeusto y botones a cuentas analiticas</field>
+    <field name="model">account.analytic.account</field>
+    <field name="inherit_id" ref="account_analytic_parent.view_account_analytic_account_form"/>
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <button position="before">
+          <button class="oe_stat_button" type="action" name="150" icon="fa-tasks" string="Rubros" widget="statinfo" attrs="{'invisible': [('parent_id', '!=', False)]}" domain="[('parent_id', '=', id)]" context="{'search_default_parent_id': id}"/>
+        </button>
+        <sheet>
+          <notebook attrs="{'invisible': [('parent_id', '=', False)]}">
+            <page string="Lineas de Presupuesto">
+              <field name="x_budget_line_ids" context="{'default_x_presupuestado': True}">
+                <tree editable="bottom">
+                  <field name="product_id"/>
+                  <field name="unit_amount"/>
+                  <field name="amount"/>
+                  <field name="x_presupuestado" invisible="1"/>
+                </tree>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_tg2.ir_ui_view_1731_1b14c32e" model="ir.ui.view">
+    <field name="name">personalizacion  - agreado campo parent a busquedass</field>
+    <field name="model">account.analytic.account</field>
+    <field name="inherit_id" ref="analytic.view_account_analytic_account_search"/>
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <search>
+        <field name="parent_id"/>
+      </search>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,8 @@
+The following relational data haven't been exported because they either refer
+to a model that Studio doesn't export, or have no XML id:
+
+Record: personalizations_tg2.ir_act_server_660_1b2f8787
+Model: ir.actions.server
+Field: fields_lines
+Type: one2many
+Value: ir.server.object.lines(661,) ('ir.server.object.lines,661')

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_tg2.ir_ui_view_1801_026f0b19" model="ir.ui.view">
+    <field name="name">Add state</field>
+    <field name="model">stock.picking</field>
+    <field name="inherit_id" ref="stock.view_picking_form"/>
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='product_uom']" position="after">
+        <field name="state"/>
+      </xpath>
+    </field>
+  </record>
+  <record id="personalizations_tg2.ir_ui_view_1888_cd732fe0" model="ir.ui.view">
+    <field name="name">Agregado de cta y tag analíticas</field>
+    <field name="model">stock.picking</field>
+    <field name="inherit_id" ref="stock.view_picking_form"/>
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="backorder_id" position="after">
+          <field name="x_account_analytic_id" groups="analytic.group_analytic_accounting" attrs="{'invisible':[('picking_type_code', '!=', 'outgoing')]}"/>
+          <field name="x_analytic_tag_ids" groups="analytic.group_analytic_accounting" widget="many2many_tags" options="{'color_field': 'color'}" attrs="{'invisible':[('picking_type_code', '!=', 'outgoing')]}"/>
+        </field>
+        <xpath expr="//field[@name='move_lines']" position="attributes">
+          <attribute name="context">{'picking_type_code': picking_type_code, 'default_picking_id': id, 'form_view_ref':'stock.view_move_picking_form', 'address_in_id': partner_id, 'default_picking_type_id': picking_type_id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id, 'default_analytic_account_id' : x_account_analytic_id, 'default_analytic_tag_ids' : x_analytic_tag_ids}</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>
