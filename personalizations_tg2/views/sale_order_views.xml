@@ -1,10 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <record id="personalizations_tg2.ir_ui_view_1799_911ce596" model="ir.ui.view">
+  <record id="personalizations_tg2.ir_ui_view_1799" model="ir.ui.view">
     <field name="name">Agregar campos "cerrado" y " monto a facturar"</field>
     <field name="model">sale.order</field>
     <field name="inherit_id" ref="sale.view_order_tree"/>
-    <field name="active" eval="True"/>
     <field name="arch" type="xml">
       <field name="amount_total" position="after">
         <field name="x_closed"/>
@@ -12,16 +11,15 @@
       </field>
     </field>
   </record>
-  <record id="personalizations_tg2.ir_ui_view_1800_583fbce3" model="ir.ui.view">
+  <record id="personalizations_tg2.ir_ui_view_1800" model="ir.ui.view">
     <field name="name">Boton para cerrar o abrir OV</field>
     <field name="model">sale.order</field>
     <field name="inherit_id" ref="sale.view_order_form"/>
-    <field name="active" eval="True"/>
     <field name="arch" type="xml">
       <button name="action_done" position="after">
         <field name="x_closed" invisible="1"/>
-        <button string="Cerrar Orden" name="660" type="action" attrs="{'invisible': [('x_closed', '=', True)]}"/>
-        <button string="Abrir Orden" name="660" type="action" attrs="{'invisible': [('x_closed', '!=', True)]}"/>
+        <button string="Cerrar Orden" name="change_order_state" type="object" attrs="{'invisible': [('x_closed', '=', True)]}"/>
+        <button string="Abrir Orden" name="change_order_state" type="object" attrs="{'invisible': [('x_closed', '!=', True)]}"/>
       </button>
     </field>
   </record>

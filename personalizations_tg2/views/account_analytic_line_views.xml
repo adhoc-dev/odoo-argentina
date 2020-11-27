@@ -1,17 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <record id="personalizations_tg2.ir_ui_view_1675_aaddde0a" model="ir.ui.view">
+  <record id="personalizations_tg2.ir_ui_view_1675" model="ir.ui.view">
     <field name="name">Personalizacion - agregado de es presupuesto o no a lineas analiticas. Tiene sentido? lo podriamos borrar?</field>
     <field name="model">account.analytic.line</field>
     <field name="inherit_id" ref="analytic.view_account_analytic_line_tree"/>
-    <field name="active" eval="True"/>
     <field name="arch" type="xml">
       <field name="currency_id" position="after">
         <field name="x_presupuestado"/>
       </field>
     </field>
   </record>
-  <record id="personalizations_tg2.ir_ui_view_1728_812aba35" model="ir.ui.view">
+  <record id="personalizations_tg2.ir_ui_view_1728" model="ir.ui.view">
     <field name="name">personalización - pedir cuenta analítica cuano se crean registros de partes de horas</field>
     <field name="model">account.analytic.line</field>
     <field name="inherit_id" ref="timesheet_grid.timesheet_view_form"/>
