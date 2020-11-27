@@ -1,4 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-personalizations_apromark.location_user,Location group_user,personalizations_apromark.model_crm_location,base.group_user,1,1,1,1
-personalizations_apromark.strategic_business_unit_user,Strategic_business_unit group_user,personalizations_apromark.model_crm_strategic_business_unit,base.group_user,1,1,1,1
 personalizations_apromark.credit_card_user,Credit_card group_user,personalizations_apromark.model_res_partner_credit_card,base.group_user,1,1,1,1
+personalizations_apromark.location_user,Location group_user,personalizations_apromark.model_crm_location,base.group_user,1,1,1,1

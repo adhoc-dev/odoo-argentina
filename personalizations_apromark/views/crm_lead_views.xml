@@ -9,12 +9,9 @@
             <field name="arch" type="xml">
                 <!-- Add your xpath here -->
                 <field name="team_id" position="after">
-                    <field name="uen_id"/>
-                </field>
-                <xpath expr="//group[@name='lead_priority']//field[@name='tag_ids']" position="after">
                     <field name="product_id"/>
                     <field name="location_id"/>
-                </xpath>
+                </field>
             </field>
         </record>
         <!-- crm.lead inherit tree view -->
