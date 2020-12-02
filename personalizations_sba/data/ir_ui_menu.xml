@@ -5,70 +5,51 @@
     <field ref="sale.prod_config_main" name="parent_id"/>
     <field name="sequence">2</field>
     <field ref="personalizations_sba.editorial_631b8856-31da-4186-a9d7-2877172402bd" name="action"/>
-    <field eval="False" name="web_icon"/>
   </record>
   <record id="personalizations_sba.ventas_autor_b48672da-1298-42fb-a35f-312cc7467684" model="ir.ui.menu">
     <field name="name">Autor</field>
     <field ref="sale.prod_config_main" name="parent_id"/>
     <field name="sequence">3</field>
     <field ref="personalizations_sba.autor_b30dda7b-d49d-4e8c-b669-8b3fc18f5420" name="action"/>
-    <field eval="False" name="web_icon"/>
-  </record>
-  <record id="personalizations_sba.ventas_679e2960-b183-421d-a3d3-446eb7bfed10" model="ir.ui.menu">
-    <field eval="False" name="name"/>
-    <field ref="sale.sale_menu_root" name="parent_id"/>
-    <field name="sequence">10</field>
-    <field ref="personalizations_sba._fc3bb2ca-0103-4f0b-85af-6dbc5f232540" name="action"/>
-    <field eval="False" name="active"/>
-    <field eval="False" name="web_icon"/>
   </record>
   <record id="personalizations_sba.ventas_version_7fddc6d9-7524-4dcb-9d12-f66949de6e12" model="ir.ui.menu">
     <field name="name">Version</field>
     <field ref="sale.prod_config_main" name="parent_id"/>
-    <field eval="False" name="sequence"/>
     <field ref="personalizations_sba.version_448d7ff4-754f-4b9a-84ff-db32216279b1" name="action"/>
-    <field eval="False" name="web_icon"/>
   </record>
   <record id="personalizations_sba.inventario_idioma_93facfa2-1dc8-459c-b878-cea1589f0f54" model="ir.ui.menu">
     <field name="name">Idioma</field>
     <field ref="stock.menu_product_in_config_stock" name="parent_id"/>
     <field name="sequence">5</field>
     <field ref="personalizations_sba.idioma_2d7ba543-c763-476a-8606-0a20f573a5fb" name="action"/>
-    <field eval="False" name="web_icon"/>
   </record>
   <record id="personalizations_sba.inventario_version_fdb190a0-c747-40a7-ab08-a8cfe34a5695" model="ir.ui.menu">
     <field name="name">Version</field>
     <field ref="stock.menu_product_in_config_stock" name="parent_id"/>
     <field name="sequence">4</field>
     <field ref="personalizations_sba.version_ebee6c9a-9be2-4ca9-9343-569ea88af4cd" name="action"/>
-    <field eval="False" name="web_icon"/>
   </record>
   <record id="personalizations_sba.inventario_familia_b827f529-d3b5-4243-bec7-18a6772a778f" model="ir.ui.menu">
     <field name="name">Familia</field>
     <field ref="stock.menu_product_in_config_stock" name="parent_id"/>
     <field name="sequence">1</field>
     <field ref="personalizations_sba.familia_0e7e4ebe-a874-4f95-bc5d-07607334bb74" name="action"/>
-    <field eval="False" name="web_icon"/>
   </record>
   <record id="personalizations_sba.inventario_presupues_ddc7f2bf-3bdb-4b27-8082-88496f358e19" model="ir.ui.menu">
     <field name="name">Presupuesto</field>
     <field ref="stock.menu_product_in_config_stock" name="parent_id"/>
     <field name="sequence">2</field>
     <field ref="personalizations_sba.presupuesto_b411c27d-3845-4e4e-94f5-5629cf57eaee" name="action"/>
-    <field eval="False" name="web_icon"/>
   </record>
   <record id="personalizations_sba.inventario_subcatego_2162f153-b5c2-4b1b-8b49-0ce35b23c289" model="ir.ui.menu">
     <field name="name">Subcategoria</field>
     <field ref="stock.menu_product_in_config_stock" name="parent_id"/>
     <field name="sequence">3</field>
     <field ref="personalizations_sba.subcategoria_845250b2-a5db-4736-b96a-bf6f1d6f2394" name="action"/>
-    <field eval="False" name="web_icon"/>
   </record>
   <record id="personalizations_sba.productos_e85f115a-e603-4798-bcc6-de05977c681e" model="ir.ui.menu">
     <field name="name">Productos</field>
-    <field eval="False" name="parent_id"/>
     <field name="sequence">10</field>
-    <field eval="False" name="action"/>
     <field name="web_icon">fa fa-diamond,#f1c40f,#34495e</field>
   </record>
   <record id="personalizations_sba.productos_productos_409f3d37-4c28-4c2c-9e61-a45d99075a81" model="ir.ui.menu">
@@ -76,6 +57,5 @@
     <field ref="personalizations_sba.productos_e85f115a-e603-4798-bcc6-de05977c681e" name="parent_id"/>
     <field name="sequence">10</field>
     <field ref="personalizations_sba.productos_92da052d-a3e8-4b83-8f21-b0317fedeb78" name="action"/>
-    <field eval="False" name="web_icon"/>
   </record>
 </odoo>

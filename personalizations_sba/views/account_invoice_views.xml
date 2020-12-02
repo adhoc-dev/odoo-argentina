@@ -25,7 +25,7 @@
           <field name="x_state_invoice" invisible="1"/>
           <!--<field name="x_invoice_nd_id" invisible="0"/>-->
           <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|',('x_state_invoice','!=','vencida_sin_nd')]}">
-        Tiene una factura vencida y sin ND generada para generarla haga click<bold><button name="722" string="⇒ Generar ND" class="oe_link oe_inline" type="action"/></bold>
+        Tiene una factura vencida y sin ND generada para generarla haga click<bold><button name="create_debt_invoice" string="⇒ Generar ND" class="oe_link oe_inline" type="object"/></bold>
 </div>
           <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|',('x_invoice_nd_id','=', False), ('state','!=','open')]}">
         Tiene una <bold><field name="x_invoice_nd_id" string="ND"/></bold> asociada por intereses

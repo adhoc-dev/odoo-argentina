@@ -4,7 +4,7 @@
     <field name="name">Vista personalizada	(recargo por mora)</field>
     <field name="model">account.debt.line</field>
     <field ref="account_debt_management.view_account_debt_line_tree" name="inherit_id"/>
-    <field name="arch" type="xml">
+    <field type="xml" name="arch">
       <field name="financial_amount_residual" position="after">
         <field name="x_x_state_invoice"/>
         <field name="invoice_id" invisible="1"/>

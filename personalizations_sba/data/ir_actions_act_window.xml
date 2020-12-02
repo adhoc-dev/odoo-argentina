@@ -3,263 +3,55 @@
   <record id="personalizations_sba.editorial_631b8856-31da-4186-a9d7-2877172402bd" model="ir.actions.act_window">
     <field name="name">Editorial</field>
     <field name="res_model">x_product_editorial</field>
-    <field eval="False" name="search_view_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">current</field>
     <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
     <field name="view_mode">tree,form</field>
   </record>
   <record id="personalizations_sba.autor_b30dda7b-d49d-4e8c-b669-8b3fc18f5420" model="ir.actions.act_window">
     <field name="name">Autor</field>
     <field name="res_model">x_product_autor</field>
-    <field eval="False" name="search_view_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">current</field>
     <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
-    <field name="view_mode">tree,form</field>
-  </record>
-  <record id="personalizations_sba._fc3bb2ca-0103-4f0b-85af-6dbc5f232540" model="ir.actions.act_window">
-    <field eval="False" name="name"/>
-    <field name="res_model">x_product_version</field>
-    <field eval="False" name="search_view_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">current</field>
-    <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
     <field name="view_mode">tree,form</field>
   </record>
   <record id="personalizations_sba.version_448d7ff4-754f-4b9a-84ff-db32216279b1" model="ir.actions.act_window">
     <field name="name">Version</field>
     <field name="res_model">x_product_version</field>
-    <field eval="False" name="search_view_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">current</field>
     <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
     <field name="view_mode">tree,form</field>
   </record>
   <record id="personalizations_sba.idioma_2d7ba543-c763-476a-8606-0a20f573a5fb" model="ir.actions.act_window">
     <field name="name">Idioma</field>
     <field name="res_model">x_product_language</field>
-    <field eval="False" name="search_view_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">current</field>
     <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
     <field name="view_mode">tree,form</field>
   </record>
   <record id="personalizations_sba.version_ebee6c9a-9be2-4ca9-9343-569ea88af4cd" model="ir.actions.act_window">
     <field name="name">Version</field>
     <field name="res_model">x_product_version</field>
-    <field eval="False" name="search_view_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">current</field>
     <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
     <field name="view_mode">tree,form</field>
   </record>
   <record id="personalizations_sba.familia_0e7e4ebe-a874-4f95-bc5d-07607334bb74" model="ir.actions.act_window">
     <field name="name">Familia</field>
     <field name="res_model">x_product_familia</field>
-    <field eval="False" name="search_view_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">current</field>
     <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
     <field name="view_mode">tree,form</field>
   </record>
   <record id="personalizations_sba.presupuesto_b411c27d-3845-4e4e-94f5-5629cf57eaee" model="ir.actions.act_window">
     <field name="name">Presupuesto</field>
     <field name="res_model">x_product_categoria</field>
-    <field eval="False" name="search_view_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">current</field>
     <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
     <field name="view_mode">tree,form</field>
   </record>
   <record id="personalizations_sba.subcategoria_845250b2-a5db-4736-b96a-bf6f1d6f2394" model="ir.actions.act_window">
     <field name="name">Subcategoria</field>
     <field name="res_model">x_product_subcategoria</field>
-    <field eval="False" name="search_view_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">current</field>
     <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
     <field name="view_mode">tree,form</field>
   </record>
   <record id="personalizations_sba.productos_92da052d-a3e8-4b83-8f21-b0317fedeb78" model="ir.actions.act_window">
     <field name="name">Productos</field>
     <field name="res_model">product.product</field>
-    <field eval="False" name="search_view_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">current</field>
     <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
     <field name="view_mode">kanban,tree,form</field>
-  </record>
-  <record id="personalizations_sba.ir_act_window_719" model="ir.actions.act_window">
-    <field name="name">Edición Masiva (Comercial)</field>
-    <field name="res_model">mass.editing.wizard</field>
-    <field eval="False" name="search_view_id"/>
-    <field ref="account.model_res_partner" name="binding_model_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{'mass_editing_object' : 11}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">new</field>
-    <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
-    <field name="view_mode">form, tree</field>
-  </record>
-  <record id="personalizations_sba.ir_act_window_720" model="ir.actions.act_window">
-    <field name="name">Edición Masiva (Canal de Ventas)</field>
-    <field name="res_model">mass.editing.wizard</field>
-    <field eval="False" name="search_view_id"/>
-    <field ref="account.model_account_invoice" name="binding_model_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{'mass_editing_object' : 12}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">new</field>
-    <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
-    <field name="view_mode">form, tree</field>
-  </record>
-  <record id="personalizations_sba.ir_act_window_730" model="ir.actions.act_window">
-    <field name="name">Edición Masiva (Comercial Facturas)</field>
-    <field name="res_model">mass.editing.wizard</field>
-    <field eval="False" name="search_view_id"/>
-    <field ref="account.model_account_invoice" name="binding_model_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{'mass_editing_object' : 19}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">new</field>
-    <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
-    <field name="view_mode">form, tree</field>
-  </record>
-  <record id="personalizations_sba.ir_act_window_731" model="ir.actions.act_window">
-    <field name="name">Edición Masiva (OrdenVenta)</field>
-    <field name="res_model">mass.editing.wizard</field>
-    <field eval="False" name="search_view_id"/>
-    <field ref="delivery.model_sale_order" name="binding_model_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{'mass_editing_object' : 20}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">new</field>
-    <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
-    <field name="view_mode">form, tree</field>
-  </record>
-  <record id="personalizations_sba.ir_act_window_732" model="ir.actions.act_window">
-    <field name="name">Edición Masiva (OrdenVentaComercial)</field>
-    <field name="res_model">mass.editing.wizard</field>
-    <field eval="False" name="search_view_id"/>
-    <field ref="delivery.model_sale_order" name="binding_model_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{'mass_editing_object' : 21}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">new</field>
-    <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
-    <field name="view_mode">form, tree</field>
-  </record>
-  <record id="personalizations_sba.ir_act_window_734" model="ir.actions.act_window">
-    <field name="name">Edición Masiva (PresupuestoCambioCanal)</field>
-    <field name="res_model">mass.editing.wizard</field>
-    <field eval="False" name="search_view_id"/>
-    <field ref="delivery.model_sale_order" name="binding_model_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{'mass_editing_object' : 23}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">new</field>
-    <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
-    <field name="view_mode">form, tree</field>
-  </record>
-  <record id="personalizations_sba.ir_act_window_780" model="ir.actions.act_window">
-    <field name="name">Edición Masiva (Familia)</field>
-    <field name="res_model">mass.editing.wizard</field>
-    <field eval="False" name="search_view_id"/>
-    <field ref="account.model_product_template" name="binding_model_id"/>
-    <field name="binding_type">action</field>
-    <field name="context">{'mass_editing_object' : 27}</field>
-    <field eval="False" name="domain"/>
-    <field eval="False" name="filter"/>
-    <field name="limit">80</field>
-    <field name="target">new</field>
-    <field name="type">ir.actions.act_window</field>
-    <field eval="False" name="usage"/>
-    <field eval="False" name="view_id"/>
-    <field name="view_mode">form</field>
   </record>
 </odoo>
