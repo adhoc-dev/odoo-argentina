@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_sba.ir_act_server_717" model="ir.actions.server">
+    <field name="name">Cambiar los usuarios de total a modificacion</field>
+    <field ref="account.model_account_journal" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"><![CDATA[# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+for rec in records:
+    rec.write({
+      'user_ids': [(3, x.id) for x in rec.user_ids],
+      'modification_user_ids': [(6, 0, rec.user_ids.ids)]
+    })
+
+
+
+]]></field>
+  </record>
+  <record id="personalizations_sba.ir_act_server_722" model="ir.actions.server">
+    <field name="name">Crear ND por recardos por mora</field>
+    <field ref="account.model_account_invoice" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"><![CDATA[# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+# raise Warning(model._name)
+PRODUCT_ID = env['ir.config_parameter'].sudo().get_param('product.nd_mora')
+# if model._name != 'account.invoice':
+invoice_id = env.context.get('invoice_id', False)
+if invoice_id:
+  record = env['account.invoice'].browse(invoice_id)
+elif model._name != 'account.invoice':
+  raise Warning("No se puede generar la ND desde un modelo que no sea el de factura")
+def prepare_interest_invoice(partner, amount, journal):
+    comment = "Recargo por mora de la factura {}".format(record.document_number)
+    account_id = record.account_id.id or partner.property_account_receivable_id.id
+
+    invoice_vals = {
+        'type': 'out_invoice',
+        'account_id': account_id,
+        'partner_id': partner.id,
+        'journal_id': journal.id,
+        'comment': comment,
+        'origin': record.document_number,
+        'currency_id': record.company_id.currency_id.id,
+        'payment_term_id': partner.property_payment_term_id.id or False,
+        'fiscal_position_id': partner.property_account_position_id.id,
+        'date_invoice': datetime.datetime.today().strftime("%Y-%m-%d"),
+        'company_id': record.company_id.id,
+        'user_id': partner.user_id.id or False
+    }
+    return invoice_vals
+
+def prepare_interest_invoice_line(invoice, partner, amount):
+    company = record.company_id
+    try:
+      product = env['product.product'].browse(PRODUCT_ID)
+    except Exception:
+      raise Warning("No tienen configurado el producto")
+    line_values = {}
+    line_data = env['account.invoice.line'].with_context(
+        force_company=company.id).new(dict(
+            product_id= product.id,
+            quantity=1.0,
+            invoice_id=invoice.id,
+            partner_id=partner.id,
+        ))
+    line_data._onchange_product_id()
+
+    if not line_data.account_id:
+        raise Warning(
+            'El producto {} no esta correctamente configurado, falta la cuenta contable.'.format(product.name))
+
+    line_data['price_unit'] = amount
+    line_data['name'] = line_data.product_id.name + '.\n' + invoice.comment
+
+
+    for field in line_data._cache:
+      line_values[field] = line_data[field]
+    values = line_data._convert_to_write(line_values)
+    return values
+
+def create_invoice():
+    partner = record.partner_id
+    amount = record.x_monto_cargo - record.amount_total
+    journal = record.journal_id
+    invoice_vals = prepare_interest_invoice(partner, amount, journal)
+    invoice = record.with_context(internal_type='debit_note').create(invoice_vals)
+
+    env['account.invoice.line'].create(
+        prepare_interest_invoice_line(invoice, partner, amount))
+    invoice.compute_taxes()
+    invoice.message_post(body="Factura de recargo por mora creada de la factura {}".format(record.document_number))
+    return invoice.id
+
+
+def main():
+    
+    invoice_id = create_invoice()
+    record.write({'x_invoice_nd_id': invoice_id})
+ 
+    actions = env.ref('account.action_invoice_tree1')
+    action_read = actions.read()[0]
+    res = env.ref('account.invoice_form', False)
+    action_read['views'] = [(res and res.id or False, 'form')]
+    action_read['res_id'] = invoice_id
+    return action_read
+
+
+action = main()]]></field>
+  </record>
+</odoo>

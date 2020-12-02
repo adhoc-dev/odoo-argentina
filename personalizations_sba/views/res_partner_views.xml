@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_sba.odoo_studio_res_part_597891dc-6767-4e7f-862d-2ea32ce3304c" model="ir.ui.view">
+    <field name="name">Odoo Studio: res.partner.form customization</field>
+    <field name="model">res.partner</field>
+    <field ref="base.view_partner_form" name="inherit_id"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/div[1]/field[@name='street']" position="attributes">
+          <attribute name="attrs">{"readonly": [["type","=","contact"],["parent_id","!=",False]]}</attribute>
+          <attribute name="required">1</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/div[1]/field[@name='state_id']" position="attributes">
+          <attribute name="attrs">{"readonly": [["type","=","contact"],["parent_id","!=",False]]}</attribute>
+          <attribute name="required">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='afip_responsability_type_id']" position="attributes">
+          <attribute name="attrs">{"invisible": [["is_company","=",False],["parent_id","!=",False]]}</attribute>
+          <attribute name="required">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='main_id_category_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="required">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='main_id_number']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="required">1</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/div[1]/field[@name='phone']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/div[2]/field[@name='mobile']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="required">1</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='email']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="required">1</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='lang']" position="after">
+          <field name="x_studio_field_NJxF6" string="id_odoo8"/>
+          <field name="x_studio_field_HZyaK" string="Fecha Nacimiento"/>
+          <field name="x_studio_field_PCg5t" string="Género"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_sba.odoo_studio_res_part_dcf834f7-b669-4145-8079-630f012206e7" model="ir.ui.view">
+    <field name="name">Odoo Studio: res.partner.kanban customization</field>
+    <field name="model">res.partner</field>
+    <field ref="base.res_partner_kanban_view" name="inherit_id"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='type']" position="after">
+          <field name="x_stage_id"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_sba.odoo_studio_res_part_c7014feb-f2b0-462a-9b7c-3a7ffdd744e7" model="ir.ui.view">
+    <field name="name">Odoo Studio: res.partner.tree customization</field>
+    <field name="model">res.partner</field>
+    <field ref="base.view_partner_tree" name="inherit_id"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='display_name']" position="after">
+          <field name="mobile"/>
+        </xpath>
+        <xpath expr="//field[@name='partner_state']" position="after">
+          <field name="property_product_pricelist"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

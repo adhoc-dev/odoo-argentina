@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_sba.ir_ui_view_2093" model="ir.ui.view">
+    <field name="name">Vista personalizada (Recargo con mora)</field>
+    <field name="model">product.pricelist</field>
+    <field ref="product.product_pricelist_view" name="inherit_id"/>
+    <field name="arch" type="xml">
+      <field name="discount_policy" position="after">
+        <field name="x_porcentaje_cargo_extra"/>
+      </field>
+    </field>
+  </record>
+</odoo>

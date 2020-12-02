@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_sba.odoo_studio_stock_pi_73725f6f-2b67-462a-96af-c0c7ab46606e" model="ir.ui.view">
+    <field name="name">Odoo Studio: stock.picking.form customization</field>
+    <field name="model">stock.picking</field>
+    <field ref="stock.view_picking_form" name="inherit_id"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='location_id']" position="after">
+          <field name="x_studio_field_oowCd" string="Destinatario"/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='move_lines']/tree[1]/field[@name='is_locked']" position="after">
+          <field name="x_studio_field_yBQWe" string="ISBN"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>
