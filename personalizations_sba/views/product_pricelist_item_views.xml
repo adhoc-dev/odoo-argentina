@@ -5,11 +5,9 @@
     <field name="model">product.pricelist.item</field>
     <field ref="product.product_pricelist_item_tree_view" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='applied_on']" position="after">
           <field name="x_studio_field_uHw31"/>
         </xpath>
-      </data>
     </field>
   </record>
 </odoo>

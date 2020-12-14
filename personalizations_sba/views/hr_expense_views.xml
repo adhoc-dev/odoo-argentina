@@ -5,7 +5,6 @@
     <field name="model">hr.expense</field>
     <field ref="hr_expense.hr_expense_form_view" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='analytic_account_id']" position="attributes">
           <attribute name="attrs">{"readonly": [["state","in",["done","post"]]]}</attribute>
           <attribute name="required">1</attribute>
@@ -13,7 +12,6 @@
         <xpath expr="//field[@name='payment_mode']" position="attributes">
           <attribute name="widget">selection</attribute>
         </xpath>
-      </data>
     </field>
   </record>
 </odoo>

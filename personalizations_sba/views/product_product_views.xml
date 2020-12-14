@@ -5,11 +5,9 @@
     <field name="model">product.product</field>
     <field ref="product.product_kanban_view" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//kanban[1]/templates[1]/t[1]/div[1]/div[2]/strong[1]/field[@name='name']" position="after">
           <field display="false" name="x_studio_field_5G9jj"/>
         </xpath>
-      </data>
     </field>
   </record>
   <record id="personalizations_sba.odoo_studio_product__9ca64b94-1d20-4315-a820-ad8af930fc02" model="ir.ui.view">
@@ -17,14 +15,12 @@
     <field name="model">product.product</field>
     <field ref="product.product_product_tree_view" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='default_code']" position="before">
           <field name="x_studio_field_5G9jj"/>
         </xpath>
         <xpath expr="//field[@name='virtual_available']" position="after">
           <field name="x_studio_field_NlwHP"/>
         </xpath>
-      </data>
     </field>
   </record>
   <record id="personalizations_sba.odoo_studio_product__0e53611d-abd5-4817-b1a8-3edc5f8fb3eb" model="ir.ui.view">
@@ -32,11 +28,9 @@
     <field name="model">product.product</field>
     <field ref="stock_account.view_stock_product_tree2" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='display_name']" position="before">
           <field name="barcode"/>
         </xpath>
-      </data>
     </field>
   </record>
 </odoo>

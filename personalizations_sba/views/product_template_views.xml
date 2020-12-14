@@ -5,7 +5,6 @@
     <field name="model">product.template</field>
     <field ref="product.product_template_only_form_view" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='barcode']" position="attributes">
           <attribute name="attrs">{}</attribute>
         </xpath>
@@ -40,7 +39,6 @@
             </group>
           </page>
         </xpath>
-      </data>
     </field>
   </record>
   <record id="personalizations_sba.odoo_studio_product__88bfecd5-0166-4e8b-8fb3-fe7731892749" model="ir.ui.view">
@@ -48,14 +46,12 @@
     <field name="model">product.template</field>
     <field ref="product.product_template_tree_view" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='sequence']" position="after">
           <field name="x_studio_field_5G9jj"/>
         </xpath>
         <xpath expr="//field[@name='virtual_available']" position="after">
           <field name="x_studio_field_EqNtz"/>
         </xpath>
-      </data>
     </field>
   </record>
   <record id="personalizations_sba.odoo_studio_product__4c0e90a7-5b92-446b-b157-d2c8f06698df" model="ir.ui.view">
@@ -63,7 +59,6 @@
     <field name="model">product.template</field>
     <field ref="product.product_template_search_view" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='attribute_line_ids']" position="after">
           <field name="x_studio_field_euxHW"/>
           <field name="x_studio_field_EqNtz"/>
@@ -75,7 +70,6 @@
           <filter context="{'group_by': 'x_studio_field_nqwdw'}" name="x_studio_field_nqwdw" string="Versión"/>
           <filter context="{'group_by': 'x_studio_field_euxHW'}" name="x_studio_field_euxHW" string="Autor"/>
         </xpath>
-      </data>
     </field>
   </record>
 </odoo>

@@ -5,14 +5,12 @@
     <field name="model">sale.order</field>
     <field ref="sale.view_order_form" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="before">
           <field name="x_isbn_order_line"/>
         </xpath>
         <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="attributes">
           <attribute name="attrs">{'column_invisible': [('parent.state', '!=', 'draft')]}</attribute>
         </xpath>
-      </data>
     </field>
   </record>
   <record id="personalizations_sba.odoo_studio_sale_ord_d61c6bc4-bad2-467d-a945-30636acbe519" model="ir.ui.view">
@@ -20,14 +18,12 @@
     <field name="model">sale.order</field>
     <field ref="sale.view_order_form" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='pricelist_id']" position="attributes">
           <attribute name="attrs">{"readonly": [["state","not in",["sent"]]]}</attribute>
         </xpath>
         <xpath expr="//field[@name='origin']" position="attributes">
           <attribute name="attrs">{}</attribute>
         </xpath>
-      </data>
     </field>
   </record>
   <record id="personalizations_sba.odoo_studio_sale_ord_8faab9fb-5808-4a5a-9f1c-65dfc44fff66" model="ir.ui.view">
@@ -35,11 +31,9 @@
     <field name="model">sale.order</field>
     <field ref="sale.view_order_tree" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='invoice_status']" position="after">
           <field name="origin"/>
         </xpath>
-      </data>
     </field>
   </record>
   <record id="personalizations_sba.odoo_studio_sale_ord_54504b35-d373-49d3-9e41-046c981a59bd" model="ir.ui.view">
@@ -47,7 +41,6 @@
     <field name="model">sale.order</field>
     <field ref="sale.sale_order_view_search_inherit_sale" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='analytic_account_id']" position="after">
           <field name="internal_notes"/>
         </xpath>
@@ -57,7 +50,6 @@
         <xpath expr="//search[1]/group[1]/filter[not(@name)][3]" position="after">
           <filter context="{'group_by': 'invoice_status'}" name="invoice_status" string="Estado de Factura"/>
         </xpath>
-      </data>
     </field>
   </record>
 </odoo>

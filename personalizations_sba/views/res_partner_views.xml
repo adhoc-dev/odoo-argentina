@@ -5,7 +5,6 @@
     <field name="model">res.partner</field>
     <field ref="base.view_partner_form" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <field name="credit_limit" position="after">
           <field name="nbr_open_invoices" string="Límite de facturas abiertas permitidas" readonly="True"/>
         </field>
@@ -45,7 +44,6 @@
           <field name="x_studio_field_HZyaK" string="Fecha Nacimiento"/>
           <field name="x_studio_field_PCg5t" string="Género"/>
         </xpath>
-      </data>
     </field>
   </record>
 
@@ -66,11 +64,9 @@
     <field name="model">res.partner</field>
     <field ref="base.res_partner_kanban_view" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='type']" position="after">
           <field name="x_stage_id"/>
         </xpath>
-      </data>
     </field>
   </record>
   <record id="personalizations_sba.odoo_studio_res_part_c7014feb-f2b0-462a-9b7c-3a7ffdd744e7" model="ir.ui.view">
@@ -78,14 +74,12 @@
     <field name="model">res.partner</field>
     <field ref="base.view_partner_tree" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='display_name']" position="after">
           <field name="mobile"/>
         </xpath>
         <xpath expr="//field[@name='partner_state']" position="after">
           <field name="property_product_pricelist"/>
         </xpath>
-      </data>
     </field>
   </record>
 </odoo>

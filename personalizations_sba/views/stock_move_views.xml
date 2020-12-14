@@ -5,11 +5,9 @@
     <field name="model">stock.move</field>
     <field ref="stock.view_move_tree" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='picking_partner_id']" position="after">
           <field name="x_studio_field_yBQWe"/>
         </xpath>
-      </data>
     </field>
   </record>
 </odoo>

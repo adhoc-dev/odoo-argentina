@@ -5,11 +5,9 @@
     <field name="model">stock.quant</field>
     <field ref="stock.view_stock_quant_tree" name="inherit_id"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='product_id']" position="before">
           <field name="x_studio_field_2oKwz" string="ISBN"/>
         </xpath>
-      </data>
     </field>
   </record>
 </odoo>
