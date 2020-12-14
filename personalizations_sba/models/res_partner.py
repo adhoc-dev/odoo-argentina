@@ -9,3 +9,4 @@ class ResPartner(models.Model):
     x_studio_field_Gjamn = fields.Datetime(string="Fecha nacimiento", copy=False)
     x_studio_field_HZyaK = fields.Date(string="Fecha Nacimiento", copy=False)
     x_studio_field_PCg5t = fields.Selection(string="Género", selection=[['Femenino', 'Femenino'], ['Masculino', 'Masculino']], copy=False)
+    nbr_open_invoices = fields.Integer(string="Cantidad de facturas abiertas permitidas")

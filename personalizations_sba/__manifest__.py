@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_sba',
-    'version': '11.0.1.0',
+    'version': '11.0.2.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -15,6 +15,7 @@
         'helpdesk',
     ],
     'data': [
+        'security/personalizations_sba_security.xml',
         'views/account_debt_line_views.xml',
         'views/account_invoice_views.xml',
         'views/hr_expense_views.xml',
