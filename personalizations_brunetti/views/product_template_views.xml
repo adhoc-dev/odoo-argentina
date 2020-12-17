@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_brunetti.ir_ui_view_2194">
+    <field name="name">Personalización "Información sobre el stock (#22554)"</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_tree_view"/>
+    <field type="xml" name="arch">
+      <field name="virtual_available" position="before">
+        <field name="immediately_usable_qty" string="Stock Real"/>
+        <field name="incoming_qty" string="Compras Confirmadas"/>
+      </field>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_brunetti.ir_ui_view_2230">
+    <field name="name">create_date</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+    <field type="xml" name="arch">
+      <xpath expr="//field[@name='partner_id']" position="after">
+        <field name="create_date" widget="date"/>
+      </xpath>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_brunetti.ir_ui_view_2233">
+    <field name="name">create_date.inherit</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+    <field type="xml" name="arch">
+      <xpath expr="//div[@class='oe_kanban_content']" position="inside">
+        <label for="create_date">Fecha de creación:</label>
+        <field name="create_date" widget="date"/>
+      </xpath>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_brunetti.ir_ui_view_2236">
+    <field name="name">deadline_inherit</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+    <field type="xml" name="arch">
+      <xpath expr="//div[@class='oe_kanban_bottom_left']" position="inside">
+        <H6>
+          <field name="activity_date_deadline" widget="date"/>
+        </H6>
+      </xpath>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_brunetti.ir_ui_view_2272">
+    <field name="name">Agregar boton desechado</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+    <field type="xml" name="arch">
+      <button name="274" position="after">
+        <button name="837" string="Desechado" type="action" class="oe_highlight" attrs="{'invisible': [('stage_id','=',6)]}"/>
+      </button>
+    </field>
+  </record>
+</odoo>

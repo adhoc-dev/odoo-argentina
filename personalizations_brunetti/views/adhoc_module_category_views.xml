@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_brunetti.ir_ui_view_223">
+    <field name="name">adhoc.module.category.kanban - PERSONALIZACION DESACTIVADA POR ACTUALIZACION a V11</field>
+    <field name="model">adhoc.module.category</field>
+    <field name="active" eval="False"/>
+    <field type="xml" name="arch">
+      <kanban create="false">
+        <field name="id"/>
+        <field name="name"/>
+        <field name="color"/>
+        <field name="count_subcategories"/>
+        <field name="count_modules"/>
+        <field name="visibility"/>
+        <field name="contracted_product"/>
+        <field name="contracted"/>
+        <field name="server_mode"/>
+        <templates>
+          <t t-name="kanban-box">
+            <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_center text-center">
+              <!-- oe_kanban_global_click -->
+              <!-- we add with so all cards has same width -->
+              <h4 style="width:160px" class="text-center">
+                <strong>
+                  <field name="name"/>
+                </strong>
+              </h4>
+              <!-- TODO agregar imagen de categoria -->
+              <!-- <div class="oe_right">
+                            <a name="open_barcode_interface" type="object">
+                                <img src="/stock/static/src/img/scan.png" alt="Click to launch the barcode interface" class="oe_stock_scan_image" title="Click to launch the barcode interface"/>
+                            </a>
+                        </div> -->
+              <div class="oe_center" t-if="record.contracted.raw_value == false">
+                <t t-if="!record.server_mode.raw_value">
+                  <p class="text-center">Contactar a ADHOC<br/>para contratar</p>
+                </t>
+                <t t-if="record.server_mode.raw_value">
+                  <p class="text-center">Categoría no contratada<br/><button name="button_try_not_prod" type="object">Probar en <field name="server_mode"/></button></p>
+                </t>
+              </div>
+              <div class="oe_center" t-if="record.contracted.raw_value">
+                <a name="action_modules" type="object" t-if="record.count_modules.raw_value != 0">
+                  <field name="count_revised_modules" widget="gauge" style="margin-top:7px; width:160px; height: 120px;" options="{                                         'max_field': 'count_modules',                                         'label': 'Revised',}">Módulos</field>
+                </a>
+                <a name="action_subcategories" type="object" t-if="record.count_subcategories.raw_value != 0">
+                  <field name="count_revised_subcategories" widget="gauge" style="margin-top:7px; width:160px; height: 120px;" options="{                                         'max_field': 'count_subcategories',                                         'label': 'Revised',}">Subcategorías</field>
+                </a>
+              </div>
+              <div class="oe_center text-center" t-if="record.contracted_product.raw_value == 'try_not_prod'">
+                <button name="button_cancel_try_not_prod" type="object" string="La desinstalación se debe hacer manualmente">Cancelar Prueba</button>
+              </div>
+            </div>
+          </t>
+        </templates>
+      </kanban>
+    </field>
+  </record>
+</odoo>
