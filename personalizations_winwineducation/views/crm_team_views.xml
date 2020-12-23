@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_winwineducation.ir_ui_view_5659_9fc3bd99" model="ir.ui.view">
+    <field name="name">x_type</field>
+    <field name="model">crm.team</field>
+    <field ref="sale.crm_team_salesteams_view_form" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <field name="user_id" position="after">
+        <field name="x_type"/>
+      </field>
+    </field>
+  </record>
+</odoo>

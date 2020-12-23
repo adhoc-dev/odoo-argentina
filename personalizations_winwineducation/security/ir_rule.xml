@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_winwineducation.ir_rule_220_58f9d77b" model="ir.rule">
+    <field name="name">survey_employees</field>
+    <field ref="survey.model_survey_user_input" name="model_id"/>
+    <field name="domain_force"><![CDATA[['|','|',('partner_id', '=', False), ('partner_id.company_id', '=', False), ('partner_id.company_id', 'in', company_ids)]]]></field>
+    <field eval="[(6, 0, [])]" name="groups"/>
+    <field eval="False" name="perm_create"/>
+    <field eval="True" name="perm_read"/>
+    <field eval="False" name="perm_unlink"/>
+    <field eval="False" name="perm_write"/>
+  </record>
+  <!-- <record id="evaluation.survey_portal_access" model="ir.rule">
+        <field name="domain_force">['|', ('survey_id.x_shared_survey_internally', '=', True),('partner_id','=',user.partner_id.id)]</field>
+  </record> -->
+</odoo>

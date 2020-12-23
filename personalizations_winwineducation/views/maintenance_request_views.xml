@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_winwineducation.odoo_studio_equipmen_cd33914c-44db-446d-9f88-ee79a837060b" model="ir.ui.view">
+    <field name="name">Odoo Studio: equipment.request.form customization</field>
+    <field name="model">maintenance.request</field>
+    <field ref="maintenance.hr_equipment_request_view_form" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='employee_id']" position="after">
+          <field name="x_studio_reportado_por" string="Reportado Por"/>
+          <field name="x_studio_email" string="email"/>
+        </xpath>
+        <xpath expr="//field[@name='maintenance_type']" position="after">
+          <field name="x_studio_costo_materiales" string="Costo Materiales Presupuestado"/>
+          <field name="x_studio_costo_mano_de_obra" string="Costo Mano de Obra Presupuestado"/>
+          <field filename="x_studio_adjuntar_presupuesto_filename" name="x_studio_adjuntar_presupuesto" string="Adjuntar Presupuesto" help="Adjunte aquí el presupuesto del proveedor"/>
+        </xpath>
+        <xpath expr="//field[@name='schedule_date']" position="attributes">
+          <attribute name="string">Fecha estimada de ejecución</attribute>
+        </xpath>
+        <xpath expr="//field[@name='priority']" position="after">
+          <field name="x_studio_agendar_presupuesto" string="Agendar Presupuesto" attrs="{}"/>
+          <field name="x_studio_costo_materiales_final" string="Costo Materiales Final"/>
+          <field name="x_studio_costo_mano_de_obra_final" string="Costo Mano de Obra Final"/>
+          <field invisible="1" name="x_studio_adjuntar_presupuesto_filename"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

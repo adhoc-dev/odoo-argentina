@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_winwineducation.ir_ui_menu_394_fc4e6bdd" model="ir.ui.menu">
+    <field name="name">Lineas de Informe Financiero</field>
+    <field ref="account.menu_finance_configuration" name="parent_id"/>
+    <field name="sequence">10</field>
+    <field ref="personalizations_winwineducation.ir_act_window_559_32894ce3" name="action"/>
+  </record>
+  <record id="personalizations_winwineducation.ir_ui_menu_601_497d56bc" model="ir.ui.menu">
+    <field name="name">Asignaturas</field>
+    <field ref="hr.menu_hr_root" name="parent_id"/>
+    <field name="sequence">95</field>
+    <field ref="academic.action_academic_subject_subjects" name="action"/>
+    <field eval="[(6, 0, [ref('maintenance.group_equipment_manager')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_winwineducation.ir_ui_menu_619_41589445" model="ir.ui.menu">
+    <field name="name">Motivos No Vacante</field>
+    <field ref="crm.crm_menu_config" name="parent_id"/>
+    <field name="sequence">10</field>
+    <field ref="personalizations_winwineducation.ir_act_window_990_a8170af6" name="action"/>
+  </record>
+  <record id="personalizations_winwineducation.ir_ui_menu_tipo_de_mora" model="ir.ui.menu">
+    <field name="name">Tipos de mora</field>
+    <field ref="account.account_management_menu" name="parent_id"/>
+    <field name="sequence">11</field>
+    <field ref="personalizations_winwineducation.ir_act_window_tipo_de_mora" name="action"/>
+  </record>
+</odoo>

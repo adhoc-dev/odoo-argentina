@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_winwineducation.ir_ui_view_5353_893b121a" model="ir.ui.view">
+    <field name="name">x_no_vacancy_specification_motive.form</field>
+    <field name="model">x_no_vacancy_specification_motive</field>
+    <field type="xml" name="arch">
+      <form>
+        <sheet>
+          <group>
+            <field name="x_name"/>
+            <field name="x_motive_no_vacancy"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  <record id="personalizations_winwineducation.ir_ui_view_5354_3c91c612" model="ir.ui.view">
+    <field name="name">x_no_vacancy_specification_motive.tree</field>
+    <field name="model">x_no_vacancy_specification_motive</field>
+    <field type="xml" name="arch">
+      <tree string="Motivos No Vacante" editable="bottom">
+        <field name="x_name" required="1"/>
+        <field name="x_motive_no_vacancy" required="1"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

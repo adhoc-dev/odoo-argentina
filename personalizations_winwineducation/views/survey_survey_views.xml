@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="survey_page_form_inherit" model="ir.ui.view">
+        <field name="name">Vista Personalizada</field>
+        <field name="model">survey.question</field>
+        <field name="inherit_id" ref="survey.survey_question_form"/>
+        <field name="arch" type="xml">
+            <field name="survey_id" position="after">
+                <group>
+                    <field name="show_anchor_partner"/>
+                </group>
+            </field>
+        </field>
+    </record>
+</odoo>

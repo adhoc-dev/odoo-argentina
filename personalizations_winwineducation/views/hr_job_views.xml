@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_winwineducation.ir_ui_view_5377_3f7316a8" model="ir.ui.view">
+    <field name="name">x_date_desired</field>
+    <field name="model">hr.job</field>
+    <field ref="hr.view_hr_job_form" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <field name="no_of_recruitment" position="after">
+        <field name="x_date_desired"/>
+      </field>
+    </field>
+  </record>
+</odoo>

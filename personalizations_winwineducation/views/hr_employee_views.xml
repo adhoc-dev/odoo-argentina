@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_winwineducation.odoo_studio_hr_emplo_e71e96b1-f732-4b2c-b891-f54e6d5b6223" model="ir.ui.view">
+    <field name="name">Odoo Studio: hr.employee.form customization</field>
+    <field name="model">hr.employee</field>
+    <field ref="hr.view_employee_form" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='mobile_phone']" position="replace">
+          <field name="x_studio_email_personal" string="Email personal"/>
+          <field name="x_studio_mvil_personal" string="Móvil personal"/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]" position="before">
+          <header>
+            <field name="x_studio_field_EjHsb" options="{'clickable': '1'}" widget="statusbar" string="Estado" attrs="{}" required="1"/>
+          </header>
+        </xpath>
+        <xpath expr="//field[@name='job_title']" position="after">
+          <field name="x_studio_asignaturas" widget="many2many_tags" string="Asignaturas"/>
+        </xpath>
+        <xpath expr="//field[@name='coach_id']" position="after">
+          <field name="x_studio_horas_asignadas_en_nuestro_colegio" string="Horas asignadas en nuestro colegio"/>
+        </xpath>
+        <xpath expr="//field[@name='resource_calendar_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="required"/>
+        </xpath>
+        <xpath expr="//field[@name='coach_id']" position="after">
+          <field name="x_studio_cantidad_de_horas_declaradas_titular" string="Cantidad de horas declaradas titular"/>
+        </xpath>
+        <xpath expr="//field[@name='tz']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='coach_id']" position="after">
+          <field name="x_studio_fecha_de_ingreso" string="Fecha de ingreso"/>
+        </xpath>
+        <xpath expr="//field[@name='country_id']" position="after">
+          <field name="x_studio_dni" string="D.N.I."/>
+          <field name="x_studio_cuil_1" string="C.U.I.L."/>
+        </xpath>
+        <xpath expr="//field[@name='identification_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='passport_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='bank_account_id']" position="after">
+          <field name="x_studio_tiene_obra_social_prepaga_o_servicio_de_emergencia" string="¿Tiene obra social, prepaga o servicio de emergencia?"/>
+          <field name="x_studio_nombre_y_plan_de_obra_social" string="Nombre y plan de Obra Social" attrs="{&quot;invisible&quot;: [[&quot;x_studio_tiene_obra_social_prepaga_o_servicio_de_emergencia&quot;,&quot;=&quot;,False]]}"/>
+          <field name="x_studio_field_7V8Ks" string="Número de socio" attrs="{&quot;invisible&quot;: [[&quot;x_studio_tiene_obra_social_prepaga_o_servicio_de_emergencia&quot;,&quot;=&quot;,False]]}"/>
+        </xpath>
+        <xpath expr="//field[@name='address_home_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='address_home_id']" position="after">
+          <field name="x_studio_domicilio" string="Domicilio real"/>
+          <field name="x_studio_depto_lote_uf_etc" string="Depto., Lote., UF., etc."/>
+          <field name="x_studio_localidad" string="Localidad"/>
+          <field name="x_studio_cdigo_postal" string="Código postal"/>
+          <field name="x_studio_provincia" string="Provincia"/>
+          <field name="x_studio_domicilio_legal" string="Domicilio legal"/>
+          <field name="emergency_contact"/>
+          <field name="emergency_phone"/>
+          <!-- <xpath expr="//field[@name='emergency_contact']" position="move"/>-->
+        </xpath> 
+        <xpath expr="//field[@name='km_home_work']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='children']" position="after">
+          <field name="x_studio_tiene_hijos_con_discapacidad" string="¿Tiene hijos con discapacidad?" attrs="{&quot;invisible&quot;: [[&quot;children&quot;,&quot;=&quot;,0]]}"/>
+        </xpath>
+        <xpath expr="//field[@name='certificate']" position="before">
+          <field name="x_studio_carrera_finalizada_1"/>
+        </xpath>
+        <xpath expr="//field[@name='study_school']" position="attributes">
+          <attribute name="string">Institución</attribute>
+        </xpath>
+        <xpath expr="//field[@name='study_school']" position="after">
+          <field name="x_studio_antigedad_docente" string="Antigüedad docente"/>
+          <field name="x_studio_otras_instituciones_en_las_que_trabaja" string="Otras instituciones en las que trabaja"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

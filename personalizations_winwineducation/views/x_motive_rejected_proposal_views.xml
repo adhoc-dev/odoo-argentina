@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_winwineducation.ir_ui_view_5371_bc913310" model="ir.ui.view">
+    <field name="name">Motivos Rechazo Propuesta Laboral</field>
+    <field name="model">x_motive_rejected_proposal</field>
+    <field type="xml" name="arch">
+      <tree editable="bottom">
+        <field name="x_name"/>
+      </tree>
+    </field>
+  </record>
+  <record id="personalizations_winwineducation.ir_ui_view_5373_51a450b1" model="ir.ui.view">
+    <field name="name">Motivos Rechazo Propuesta Laboral</field>
+    <field name="model">x_motive_rejected_proposal</field>
+    <field type="xml" name="arch">
+      <form>
+        <group>
+          <field name="x_name"/>
+        </group>
+      </form>
+    </field>
+  </record>
+</odoo>

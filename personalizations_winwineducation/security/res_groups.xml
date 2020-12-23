@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_winwineducation.res_groups_106_4c63f918" model="res.groups">
+    <field name="name">Aprobar Manteniminetos</field>
+  </record>
+  <record id="personalizations_winwineducation.res_groups_108_fc3636a4" model="res.groups">
+    <field name="name">Francisco</field>
+  </record>
+  <record id="personalizations_winwineducation.res_groups_109_8d9a4e4e" model="res.groups">
+    <field name="name">daiana</field>
+  </record>
+</odoo>
