@@ -1,6 +1,6 @@
 {
     'name': 'Personalizations Gestión Porcina',
-    'version': '11.0.1.1.0',
+    'version': '13.0.1.0.0',
     'sequence': 14,
     'summary': '',
     'author': 'ADHOC SA',
