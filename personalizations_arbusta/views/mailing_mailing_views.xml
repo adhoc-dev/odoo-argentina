@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.odoo_studio_mail_mas_07a8e2ca-3049-4564-9670-d79b23d63aa9" model="ir.ui.view">
+    <field name="name">Odoo Studio: mail.mass_mailing.tree customization</field>
+    <field name="model">mailing.mailing</field>
+    <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//tree[1]/field[@name='sent']" position="before">
+          <field name="create_date" widget="date"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

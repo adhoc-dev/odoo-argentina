@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.odoo_studio_project__9b99e58a-3d47-4393-9bff-f7713060db70" model="ir.ui.view">
+    <field name="name">Odoo Studio: project.task.form customization</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='helpdesk_ticket_id']" position="replace"/>
+        <xpath expr="//button[@name='action_assign_to_me']" position="attributes">
+          <attribute name="effect">False</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='user_id']" position="after">
+          <field name="id" attrs="{&quot;invisible&quot;: [&quot;&amp;&quot;,[&quot;project_id&quot;,&quot;!=&quot;,1131],[&quot;project_id&quot;,&quot;!=&quot;,1137]]}"/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='tag_ids']" position="after">
+          <field name="x_studio_field_J1l99" string="URL de Calendar" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1099]]}"/>
+          <field name="x_studio_field_sFveY" string="Tipo de evento" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1099]]}"/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
+          <group name="studio_group_atn9M">
+            <group name="studio_group_atn9M_left">
+              <field name="x_studio_field_wcedN" string="GDO Factor" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1137]]}"/>
+              <field name="x_studio_field_2WN1e" string="GDR Factor" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1131]]}"/>
+            </group>
+            <group name="studio_group_atn9M_right"/>
+          </group>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[not(@name)][1]/field[@name='timesheet_ids']/tree[1]/field[@name='name']" position="after">
+          <field name="x_studio_field_yC90r" studio-view-group-names="User" studio-view-group-ids="92" help="Cargar cantidad de casos de prueba creados, ejecutados; avisos; tickets resueltos, etc."/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[not(@name)][1]/field[@name='timesheet_ids']/form[1]/sheet[1]/group[1]/field[@name='name']" position="after">
+          <field name="x_studio_field_yC90r" studio-view-group-names="User" studio-view-group-ids="92"/>
+        </xpath>
+        <xpath expr="//field[@name='date_last_stage_update']" position="after">
+          <field name="x_studio_field_F2W07" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1137]]}" string="GDO Probabilidad" widget="selection"/>
+          <field name="x_studio_field_kEg9m" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1137]]}" string="GDO Ocurrencias previas"/>
+          <field name="x_studio_field_ojMh8" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1137]]}" string="GDO Potencial nuevos negocios"/>
+          <field name="x_studio_field_ZErzf" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1137]]}" string="GDO Potencial para expandir"/>
+          <field name="x_studio_field_hBfe8" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1137]]}" string="GDO Potencial mejora cump. legales"/>
+          <field name="x_studio_field_7xvsf" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1137]]}" string="GDO Potencial mejora SGC"/>
+          <field name="x_studio_field_3ndQr" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1137]]}" string="GDO Potencial mejora reputación"/>
+          <field name="x_studio_field_ixkkT" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1137]]}" string="GDO Costo potencial"/>
+          <field name="x_studio_field_dbSFl" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1131]]}" string="GDR Probabilidad" widget="selection"/>
+          <field name="x_studio_field_YGJ8m" string="GDR Ocurrencias previas" widget="selection" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1131]]}"/>
+          <field name="x_studio_field_v7s4v" string="GDR Impacto en la EN" widget="selection" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1131]]}"/>
+          <field name="x_studio_field_ZvKIG" string="GDR Impacto cumplimiento OyM (Dirección)" widget="selection" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1131]]}"/>
+          <field name="x_studio_field_GzL31" string="GDR Impacto OPS / Prod / Cliente" widget="selection" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1131]]}"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

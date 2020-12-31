@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.odoo_studio_account__4b98f14f-bea6-4606-be42-243684c5d904" model="ir.ui.view">
+    <field name="name">Odoo Studio: account.analytic.line.tree.hr_timesheet customization</field>
+    <field name="model">account.analytic.line</field>
+    <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='date']" position="after">
+          <field name="employee_id"/>
+        </xpath>
+        <xpath expr="//field[@name='task_id']" position="after">
+          <field name="x_studio_field_yC90r" widget="integer" string="TCs. Avisos. Registros"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.odoo_studio_account__df554039-4f62-4989-92ca-5c5aa2be25c8" model="ir.ui.view">
+    <field name="name">Odoo Studio: account.analytic.line.view.tree.with.user customization</field>
+    <field name="model">account.analytic.line</field>
+    <field name="inherit_id" ref="hr_timesheet.timesheet_view_tree_user"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//tree[1]/field[@name='employee_id']" position="replace"/>
+        <xpath expr="//tree[1]/field[@name='name']" position="after">
+          <field name="account_id"/>
+        </xpath>
+        <xpath expr="//field[@name='project_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='task_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='x_studio_field_yC90r']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.odoo_studio_account__c0a014ea-67dc-444c-bfe2-d71a9b79ea26" model="ir.ui.view">
+    <field name="name">Odoo Studio: account.analytic.line.tree customization</field>
+    <field name="model">account.analytic.line</field>
+    <field name="inherit_id" ref="analytic.view_account_analytic_line_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='company_id']" position="replace"/>
+        <xpath expr="//field[@name='date']" position="after">
+          <field name="employee_id"/>
+          <field name="department_id"/>
+        </xpath>
+        <xpath expr="//field[@name='unit_amount']" position="attributes">
+          <attribute name="optional"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.odoo_studio_account__e7a8051b-a546-4175-b339-4899e94db5da" model="ir.ui.view">
+    <field name="name">Odoo Studio: account.analytic.line.form customization</field>
+    <field name="model">account.analytic.line</field>
+    <field name="inherit_id" ref="analytic.view_account_analytic_line_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='account_id']" position="after">
+          <field name="employee_id"/>
+        </xpath>
+        <xpath expr="//field[@name='tag_ids']" position="attributes">
+          <attribute name="groups">hr.group_hr_user</attribute>
+        </xpath>
+        <xpath expr="//field[@name='ref']" position="attributes">
+          <attribute name="groups">hr.group_hr_user</attribute>
+        </xpath>
+        <xpath expr="//field[@name='amount']" position="attributes">
+          <attribute name="groups">hr.group_hr_user</attribute>
+        </xpath>
+        <xpath expr="//field[@name='product_id']" position="attributes">
+          <attribute name="groups">hr.group_hr_user</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.default_form_view_fo_0bc2b042-0278-41a2-8324-47e36cfc9f06" model="ir.ui.view">
+    <field name="name">Default form view for x_seguimientos_stage</field>
+    <field name="model">x_seguimientos_stage</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet string="Seguimientos etapas">
+          <div class="oe_title">
+            <h1>
+              <field name="x_name" required="1"/>
+            </h1>
+          </div>
+          <group name="studio_group_ac17ad">
+            <group name="studio_group_ac17ad_left"/>
+            <group name="studio_group_ac17ad_right"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+</odoo>

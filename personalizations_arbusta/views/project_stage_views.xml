@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.default_tree_view_fo_b81960eb-b494-4d09-bf82-3992fcdf507e" model="ir.ui.view">
+    <field name="name">Default tree view for project.stage</field>
+    <field name="model">project.stage</field>
+    <field name="arch" type="xml">
+      <tree string="Project Stage">
+        <field name="name" modifiers="{&quot;required&quot;: true}"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

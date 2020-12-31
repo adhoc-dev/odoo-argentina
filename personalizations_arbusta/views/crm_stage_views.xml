@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.odoo_studio_crm_stag_3b3c791f-84c7-4e7e-b66d-a65ba8ea2221" model="ir.ui.view">
+    <field name="name">Odoo Studio: crm.stage.form customization</field>
+    <field name="model">crm.stage</field>
+    <field name="inherit_id" ref="crm.crm_stage_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='probability']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

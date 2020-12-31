@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.helpdesk_helpdesk_ml_7be0b233-30b9-45b0-bb95-d7212e930154" model="res.groups">
+    <field name="name">Helpdesk MLS</field>
+    <field name="share" eval="True"/>
+    <field name="color" eval="False"/>
+    <field name="implied_ids" eval="[(6, 0, [])]"/>
+  </record>
+  <record id="personalizations_arbusta.empleados_confidenci_d42a72d7-91d7-45b3-a6fd-19d7edb94e91" model="res.groups">
+    <field name="name">Confidencial</field>
+    <field name="share" eval="False"/>
+    <field name="color" eval="False"/>
+    <field name="implied_ids" eval="[(6, 0, [])]"/>
+  </record>
+</odoo>

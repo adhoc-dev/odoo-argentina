@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.odoo_studio_account__d8a8a74e-ed4c-47f1-ba60-980312a1b7c5" model="ir.ui.view">
+    <field name="name">Odoo Studio: account.move.line.tree customization</field>
+    <field name="model">account.move.line</field>
+    <field name="inherit_id" ref="account.view_move_line_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='analytic_account_id']" position="after">
+          <field name="analytic_tag_ids" widget="many2many_tags"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

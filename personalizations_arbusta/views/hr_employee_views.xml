@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.odoo_studio_hr_emplo_bfd3e9c4-d580-4453-8542-bea6d21fea82" model="ir.ui.view">
+    <field name="name">Odoo Studio: hr.employee.tree customization</field>
+    <field name="model">hr.employee</field>
+    <field name="inherit_id" ref="hr.view_employee_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name='work_email' position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+        <xpath expr="//tree[1]/field[@name='name']" position="after">
+          <field name="x_studio_field_Ev7Dp"/>
+        </xpath>
+        <xpath expr="//field[@name='work_phone']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='company_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='department_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='department_id']" position="after">
+          <field name="x_department_id" string="Equipo"/>
+        </xpath>
+        <xpath expr="//field[@name='parent_id']" position="attributes">
+          <attribute name="string">Responsable / SO</attribute>
+        </xpath>
+        <xpath expr="//field[@name='parent_id']" position="after">
+          <field name="x_coach_id" string="PM / Coach"/>
+          <field name="x_studio_field_HkwZE"/>
+          <field name="x_studio_field_cTb35"/>
+          <field name="resource_calendar_id"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.ir_ui_view_2167_0cde3a3a" model="ir.ui.view">
+    <field name="name">Vista Personalizada - PERSONALIZACION DESACTIVADA POR ACTUALIZACION a V13</field>
+    <field name="model">hr.employee</field>
+    <field name="inherit_id" ref="hr_holidays.view_employee_form_leave_inherit"/>
+    <field name="active" eval="False"/>
+    <field name="arch" type="xml">
+      <button name="725" position="attributes">
+        <attribute name="attrs">{}</attribute>
+      </button>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.default_graph_view_f_6645d332-b264-450f-9e3c-ea4905a21fa4" model="ir.ui.view">
+    <field name="name">Default graph view for hr.employee</field>
+    <field name="model">hr.employee</field>
+    <field name="arch" type="xml">
+      <graph string="Employee">
+        <field name="name" modifiers="{}"/>
+      </graph>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.default_pivot_view_f_0bda6afc-af1e-4716-9109-7170d24c0b98" model="ir.ui.view">
+    <field name="name">Default pivot view for hr.employee</field>
+    <field name="model">hr.employee</field>
+    <field name="arch" type="xml">
+      <pivot string="Employee"/>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.odoo_studio_hr_emplo_69e58246-e54f-45e3-b44c-bc89fdaca294" model="ir.ui.view">
+    <field name="name">Odoo Studio: hr.employee.form customization</field>
+    <field name="model">hr.employee</field>
+    <field name="inherit_id" ref="hr.view_employee_form"/>
+    <field name="priority">15</field>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='work_phone']" position="replace"/>
+        <!-- <xpath expr="//button[@name='649']" position="replace"/> -->
+        <!-- <xpath expr="//button[@name='650']" position="replace"/>
+        <xpath expr="//button[@name='668']" position="attributes">
+          <attribute name="groups"/>
+        </xpath>
+        <xpath expr="//button[@name='1156']" position="attributes">
+          <attribute name="groups"/>
+        </xpath>
+        <xpath expr="//button[@name='166']" position="attributes">
+          <attribute name="groups"/>
+        </xpath> -->
+        <xpath expr="//field[@name='mobile_phone']" position="before">
+          <field name="x_studio_field_HkwZE"/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[2]" position="attributes">
+          <attribute name="groups">base.group_user</attribute>
+        </xpath>
+        <xpath expr="//field[@name='department_id']" position="before">
+          <field name="x_studio_field_Ev7Dp" groups="base.group_user"/>
+        </xpath>
+        <xpath expr="//field[@name='department_id']" position="after">
+          <field name="x_studio_field_2MSWR"/>
+        </xpath>
+        <xpath expr="//field[@name='job_id']" position="after">
+          <field name="x_studio_field_fZbCK"/>
+        </xpath>
+        <xpath expr="//field[@name='parent_id']" position="after">
+          <field name="coach_id"/>
+        </xpath>
+        <xpath expr="//page[@name='personal_information']" position="attributes">
+          <attribute name="groups">hr.group_hr_manager</attribute>
+        </xpath>
+        <xpath expr="//field[@name='certificate']" position="before">
+          <field name="level_study"/>
+          <field name="x_studio_field_bDsGO"/>
+          <field name="x_studio_field_t2GcX"/>
+          <field name="x_studio_field_HT2p1"/>
+        </xpath>
+        <xpath expr="//page[@name='hr_settings']" position="attributes">
+          <attribute name="groups">hr.group_hr_manager</attribute>
+        </xpath>
+         <group name="identification_group" position="replace">
+            <group string="Attendance" name="identification_group">
+                <field name="x_studio_field_lhpTm"/>
+                <field name="pin" string="PIN Code"/>
+                <label for="barcode"/>
+                <div class="o_row">
+                  <field name="barcode"/>
+                </div>
+            </group>
+        </group>
+        <field name='visa_no' position="before">
+          <field name="x_studio_field_ontRJ" string="Situación extranj."/>
+        </field>
+        <field name="user_id" position="before">
+          <field name="x_studio_field_RiU1z"/>
+          <field name="x_studio_field_awy5r"/>
+          <field name="x_studio_field_RFrXP"/>
+          <field name="x_studio_field_1jaDd"/>
+        </field>
+        <field name="certificate" position="attributes">
+          <attribute name="string">Nivel Alcanzado</attribute>
+          <attribute name="widget">selection</attribute>
+        </field>
+        <field name="study_school" position="attributes">
+          <attribute name="string">Institución</attribute>
+        </field>
+        <field name="study_field" position="attributes">
+          <attribute name="string">Unidad académica</attribute>
+        </field>
+        <xpath expr="//page[@name='hr_settings']//group" position="inside">
+          <group>
+            <group name="studio_group_vVfLs_left" string="Obra social / Prepaga">
+                <field name="x_studio_field_r6BXX" string="Nombre OS"/>
+                <field name="x_studio_field_tyBkm" string="Nombre Prepaga"/>
+                <field name="x_studio_field_bdBsj" string="Plan Prepaga"/>
+            </group>
+          </group>
+        </xpath>
+        <xpath expr="//field[@name='tz']" position="after">
+          <field name="x_studio_field_cTb35"/>
+          <field name="x_studio_field_VKdnN"/>
+          <field name="x_studio_field_CsHEC" widget="boolean_toggle" attrs="{'invisible': [['x_studio_field_cTb35','=','Full-time']]}"/> <!--pasar a otra pagina -->
+          <field name="x_studio_field_q5sPJ" widget="boolean" attrs="{'invisible': [['x_studio_field_cTb35','=','Full-time']]}"/>
+          <field name="x_studio_field_SHzlD" widget="boolean_toggle"/>
+          <field name="x_studio_field_na3Vg"/>
+        </xpath>
+        <button id="hr_presence_button" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </button>
+        <!-- <xpath expr="//form[1]/sheet[1]/div[not(@name)][1]/div[1]/notebook[1]/page[@name='public']" position="attributes">
+          <attribute name="groups">hr.group_hr_user</attribute>
+        </xpath> -->
+        <page name='public' position="attributes">
+          <attribute name="groups">hr.group_hr_manager</attribute>
+        </page>
+      </data>
+    </field>
+  </record>
+</odoo>

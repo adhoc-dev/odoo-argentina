@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.odoo_studio_helpdesk_048da1ab-daa2-449e-a160-7b1452888476" model="ir.ui.view">
+    <field name="name">Odoo Studio: helpdesk.ticket.tree customization</field>
+    <field name="model">helpdesk.ticket</field>
+    <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="display_name" position="before">
+          <field name="create_date" string="Fecha"/>
+          <field name="x_studio_field_f6gNw" groups="personalizations_arbusta.helpdesk_helpdesk_ml_7be0b233-30b9-45b0-bb95-d7212e930154"/>
+        </field>
+        <field name="display_name" position="after">
+          <field name="partner_email" attrs="{}" invisible="1"/>
+          <field name="team_id"/>
+          <field name="partner_name"/>
+        </field>
+        <xpath expr="//field[@name='partner_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='stage_id']" position="after">
+          <field name="sla_deadline" widget="date" attrs="{}" invisible="1"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.odoo_studio_helpdesk_2d2ed28e-2af3-474d-b635-f5dea830a6f2" model="ir.ui.view">
+    <field name="name">Odoo Studio: helpdesk.ticket.form customization</field>
+    <field name="model">helpdesk.ticket</field>
+    <field name="inherit_id" ref="helpdesk_timesheet.helpdesk_ticket_view_form_inherit_helpdesk_timesheet"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='is_closed']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+        </xpath>
+        <xpath expr="//field[@name='is_task_active']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+        </xpath>
+        <xpath expr="//field[@name='tag_ids']" position="attributes">
+          <attribute name="domain">[]</attribute>
+        </xpath>
+        <xpath expr="//field[@name='partner_id']" position="attributes">
+          <attribute name="string">Contacto</attribute>
+        </xpath>
+        <xpath expr="//field[@name='timesheet_ids']" position="attributes">
+          <attribute name="attrs">{"readonly": [["task_id","!=",False],"|",["is_closed","=",True],["is_task_active","=",False]]}</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+          <page name="studio_page_YDW8I" string="Resolución">
+            <group name="studio_group_YDW8I">
+              <field name="x_studio_field_oKrjW"/>
+            </group>
+          </page>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

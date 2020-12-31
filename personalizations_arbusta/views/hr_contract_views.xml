@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.odoo_studio_hr_contr_fa16534d-1389-41f9-afcb-737797065f63" model="ir.ui.view">
+    <field name="name">Odoo Studio: hr.contract.kanban customization</field>
+    <field name="model">hr.contract</field>
+    <field name="inherit_id" ref="hr_contract.hr_contract_view_kanban"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//kanban[1]" position="attributes">
+          <attribute name="default_group_by">state</attribute>
+        </xpath>
+        <xpath expr="//field[@name='job_id']" position="after">
+          <field display="full" name="date_start"/>
+          <field display="full" name="date_end"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.odoo_studio_hr_contr_ad7dd501-428c-4ef1-8927-05f25da881eb" model="ir.ui.view">
+    <field name="name">Odoo Studio: hr.contract.tree customization</field>
+    <field name="model">hr.contract</field>
+    <field name="inherit_id" ref="hr_contract.hr_contract_view_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='date_end']" position="replace"/>
+        <xpath expr="//field[@name='date_start']" position="replace"/>
+        <xpath expr="//field[@name='job_id']" position="replace">
+    <field name="x_studio_field_TiE3d" string="Oficina"/>
+  </xpath>
+        <xpath expr="//tree[1]/field[@name='name']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='resource_calendar_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.odoo_studio_hr_contr_b158a45a-39df-40b3-b699-66a29bc80e51" model="ir.ui.view">
+    <field name="name">Odoo Studio: hr.contract.form customization</field>
+    <field name="model">hr.contract</field>
+    <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]" position="replace">
+          <group name="studio_group_H7mpW">
+            <group name="studio_group_H7mpW_left">
+              <field name="x_studio_field_FKfYe" string="Comentarios"/>
+            </group>
+          </group>
+          <field name="wage" attrs="{}" invisible="1"/>
+        </xpath>
+        <xpath expr="//field[@name='employee_id']" position="after">
+          <field name="x_studio_field_VJN0Z" string="Responsable"/>
+        </xpath>
+
+        <xpath expr="//field[@name='job_id']" position="after">
+          <field name="x_studio_field_GSsUn" attrs="{'invisible': ['job_id','!=',10]}"/>
+          <field name="x_studio_field_mGr59" attrs="{'invisible': ['job_id','!=',10]}"/>
+          <field name="x_studio_field_eIfqe" attrs="{'invisible': ['job_id','!=',9]}"/>
+          <field name="date_start"/>
+          <field name="date_end"/>
+          <field name="trial_date_end" string="Fecha de Notificación" help="Fecha de envío de notificación al equipo de Capital Humano"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.default_graph_view_f_887f9fb4-4da7-4fdb-a056-60b9cbc588f4" model="ir.ui.view">
+    <field name="name">Default graph view for hr.contract</field>
+    <field name="model">hr.contract</field>
+    <field name="arch" type="xml">
+      <graph string="Contract">
+        <field name="name" modifiers="{&quot;required&quot;: true}"/>
+      </graph>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.default_pivot_view_f_e4f4b207-0ae4-4643-b97b-de87ad5c8e89" model="ir.ui.view">
+    <field name="name">Default pivot view for hr.contract</field>
+    <field name="model">hr.contract</field>
+    <field name="arch" type="xml">
+      <pivot string="Contract"/>
+    </field>
+  </record>
+</odoo>

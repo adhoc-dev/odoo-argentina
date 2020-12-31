@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.odoo_studio_hr_expen_b8d1ab46-bf08-4616-bbcd-b9d0f5e9e42f" model="ir.ui.view">
+    <field name="name">Odoo Studio: hr.expense.sheet.form customization</field>
+    <field name="model">hr.expense.sheet</field>
+    <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <!-- <xpath expr="//field[@name='responsible_id']" position="attributes">
+          <attribute name="invisible"/>
+          <attribute name="attrs">{"readonly": [["state","not in",["submit"]]]}</attribute>
+        </xpath> -->
+        <xpath expr="//field[@name='department_id']" position="attributes">
+          <attribute name="invisible"/>
+          <attribute name="attrs">{"readonly": [["state","in",["done","post"]]]}</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.odoo_studio_hr_expen_8a482b24-25bb-436c-8a09-6b3b05da8a39" model="ir.ui.view">
+    <field name="name">Odoo Studio: hr.expense.sheet.tree customization</field>
+    <field name="model">hr.expense.sheet</field>
+    <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//tree[1]/field[@name='name']" position="after">
+          <field name="create_date" widget="date"/>
+        </xpath>
+        <xpath expr="//field[@name='accounting_date']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

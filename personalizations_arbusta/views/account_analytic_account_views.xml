@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.default_graph_view_f_a27d8c8a-5730-419d-9b2c-c7edac67a750" model="ir.ui.view">
+    <field name="name">Default graph view for account.analytic.account</field>
+    <field name="model">account.analytic.account</field>
+    <field name="arch" type="xml">
+      <graph string="Analytic Account">
+        <field name="name" modifiers="{&quot;required&quot;: true}"/>
+      </graph>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.default_pivot_view_f_ebcbffdf-62ad-4f1f-9fa8-767eac2adfb0" model="ir.ui.view">
+    <field name="name">Default pivot view for account.analytic.account</field>
+    <field name="model">account.analytic.account</field>
+    <field name="arch" type="xml">
+      <pivot string="Analytic Account"/>
+    </field>
+  </record>
+</odoo>

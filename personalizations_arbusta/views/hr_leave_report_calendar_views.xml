@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.default_tree_view_fo_bbd467fb-359e-456b-aa27-69e302972afa" model="ir.ui.view">
+    <field name="name">Default tree view for hr.leave.report.calendar</field>
+    <field name="model">hr.leave.report.calendar</field>
+    <field name="arch" type="xml">
+      <tree string="Time Off Calendar" create="false" delete="false" edit="false">
+        <field name="name" modifiers="{&quot;readonly&quot;: true}"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

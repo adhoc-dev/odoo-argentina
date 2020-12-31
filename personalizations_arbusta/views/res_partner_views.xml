@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.ir_ui_view_2094_b91c1f8b" model="ir.ui.view">
+    <field name="name">Vista Personalizada</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+      <field name="street2" position="after">
+        <field name="x_barrio" placeholder="Barrio" class="o_address_street" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+        <field name="x_department" placeholder="Partido / Departamento / Centro" class="o_address_street" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+        <field name="x_zona" placeholder="Zona" class="o_address_street" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+      </field>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.odoo_studio_res_part_c60187a0-0a3d-4aef-8e92-cee40d813ea7" model="ir.ui.view">
+    <field name="name">Odoo Studio: res.partner.form customization</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name='email' position="after">
+          <field name="x_studio_field_qcof1" string="Email personal" widget="email"/>
+        </field>
+        <field name='lang' position="after">
+          <field name="x_studio_field_l5Gzo" string="Fecha de nacimiento"/>
+          <field name="x_studio_field_j5Qb2" string="Edad"/>
+          <field name="x_studio_field_t95ga" string="Titular OS / Prepaga" attrs="{&quot;invisible&quot;: [[&quot;category_id&quot;,&quot;=&quot;,&quot;arbuster&quot;]]}"/>
+        </field>
+      </data>
+    </field>
+  </record>
+</odoo>

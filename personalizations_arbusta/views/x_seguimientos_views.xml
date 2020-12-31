@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.default_form_view_fo_bc249f20-7231-4fc4-8ba5-ac4a6f9b20b0" model="ir.ui.view">
+    <field name="name">Default form view for x_seguimientos</field>
+    <field name="model">x_seguimientos</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet string="Seguimientos">
+          <div class="oe_title">
+            <h1>
+              <field name="x_name" required="1"/>
+            </h1>
+          </div>
+          <group name="studio_group_7016ea">
+            <group name="studio_group_7016ea_left"/>
+            <group name="studio_group_7016ea_right"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.default_tree_view_fo_5879494a-ea42-46c4-b67d-a792a0e7d9ca" model="ir.ui.view">
+    <field name="name">Default tree view for x_seguimientos</field>
+    <field name="model">x_seguimientos</field>
+    <field name="arch" type="xml">
+      <tree string="Seguimientos">
+        <field name="x_name" modifiers="{}"/>
+      </tree>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.default_kanban_view__b589505e-297c-462c-9b87-96914125701a" model="ir.ui.view">
+    <field name="name">Default kanban view for x_seguimientos</field>
+    <field name="model">x_seguimientos</field>
+    <field name="arch" type="xml">
+      <kanban string="Seguimientos">
+        <templates>
+          <t t-name="kanban-box">
+            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+              <div class="o_kanban_card_content">
+                <field name="x_name" modifiers="{}"/>
+              </div>
+            </div>
+          </t>
+        </templates>
+      </kanban>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.odoo_studio_default__e4400a60-0941-491c-9f51-8dff3a8e7ba8" model="ir.ui.view">
+    <field name="name">Odoo Studio: Default kanban view for x_seguimientos customization</field>
+    <field name="model">x_seguimientos</field>
+    <field name="inherit_id" ref="personalizations_arbusta.default_kanban_view__b589505e-297c-462c-9b87-96914125701a"/>
+    <field name="active" eval="False"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//kanban[1]" position="attributes">
+          <attribute name="default_group_by">x_studio_field_G9zCy</attribute>
+        </xpath>
+        <xpath expr="//kanban[1]/templates[1]" position="before">
+          <field name="x_stage_id"/>
+        </xpath>
+        <xpath expr="//field[@name='x_name']" position="after">
+          <field display="full" name="x_studio_field_TTmDr" bold="True"/>
+          <field display="full" name="x_studio_field_nZW1U"/>
+          <field display="full" name="x_studio_field_HIWV1" attrs="{&quot;invisible&quot;: [[&quot;x_studio_field_nZW1U&quot;,&quot;!=&quot;,&quot;Plan de Acción&quot;]]}"/>
+          <field display="full" name="x_studio_field_qDZi1" attrs="{&quot;invisible&quot;: [[&quot;x_studio_field_nZW1U&quot;,&quot;!=&quot;,&quot;Plan de Acción&quot;]]}"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.odoo_studio_default__3a509a8e-f905-4520-bd23-28ee4948c651" model="ir.ui.view">
+    <field name="name">Odoo Studio: Default tree view for x_seguimientos customization</field>
+    <field name="model">x_seguimientos</field>
+    <field name="inherit_id" ref="personalizations_arbusta.default_tree_view_fo_5879494a-ea42-46c4-b67d-a792a0e7d9ca"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='x_name']" position="before">
+          <field name="x_studio_field_5UmOW"/>
+        </xpath>
+        <xpath expr="//field[@name='x_name']" position="after">
+          <field name="x_studio_field_TTmDr"/>
+          <field name="x_studio_field_nZW1U"/>
+          <field name="x_studio_field_q3WdL"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.default_graph_view_f_6acb91b9-4750-4827-bf29-20e726daceb6" model="ir.ui.view">
+    <field name="name">Default graph view for x_seguimientos</field>
+    <field name="model">x_seguimientos</field>
+    <field name="arch" type="xml">
+      <graph string="Seguimientos">
+        <field name="x_name" modifiers="{}"/>
+      </graph>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.odoo_studio_default__649b94e4-2f30-4f23-86f6-25711fee9a88" model="ir.ui.view">
+    <field name="name">Odoo Studio: Default form view for x_seguimientos customization</field>
+    <field name="model">x_seguimientos</field>
+    <field name="inherit_id" ref="personalizations_arbusta.default_form_view_fo_bc249f20-7231-4fc4-8ba5-ac4a6f9b20b0"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//form[1]/sheet[1]" position="before">
+          <header>
+            <field name="x_studio_field_q3WdL" options="{'clickable': '1'}" widget="statusbar"/>
+          </header>
+        </xpath>
+        <xpath expr="//group[@name='studio_group_7016ea_left']" position="inside">
+          <field name="x_studio_field_5UmOW"/>
+          <field name="x_studio_field_TTmDr"/>
+          <field name="x_studio_field_2bqg4"/>
+          <field name="x_studio_field_f0rK8"/>
+        </xpath>
+        <xpath expr="//group[@name='studio_group_7016ea_right']" position="inside">
+          <field name="x_studio_field_nZW1U"/>
+          <field name="x_studio_instancia_del_pal" string="Instancia del PAL" attrs="{'invisible': [['x_studio_field_nZW1U','!=','PAL']],'required': [['x_studio_field_nZW1U','=','PAL']],}"/>
+          <field name="x_studio_instancia_del_proceso" string="Instancia del Proceso" attrs="{&quot;invisible&quot;: [[&quot;x_studio_field_nZW1U&quot;,&quot;!=&quot;,&quot;Casos puntuales&quot;]]}"/>
+          <field name="x_studio_field_2Ct4K" attrs="{'invisible': ['&amp;',['x_studio_field_nZW1U','!=','Plan de Acción'],['x_studio_field_nZW1U','!=','PAL']],'required': ['|',['x_studio_field_nZW1U','=','Plan de Acción'],['x_studio_field_nZW1U','=','PAL']]}" widget="url"/>
+          <field name="x_studio_field_HIWV1" attrs="{'invisible': ['&amp;',['x_studio_field_nZW1U','!=','Plan de Acción'],['x_studio_field_nZW1U','!=','PAL']],'required': ['|',['x_studio_field_nZW1U','=','Plan de Acción'],['x_studio_field_nZW1U','=','PAL']]}"/>
+          <field name="x_studio_field_qDZi1" attrs="{'invisible': ['&amp;',['x_studio_field_nZW1U','!=','Plan de Acción'],['x_studio_field_nZW1U','!=','PAL']],'required': ['|',['x_studio_field_nZW1U','=','Plan de Acción'],['x_studio_field_nZW1U','=','PAL']]}"/>
+        </xpath>
+        <xpath expr="//group[@name='studio_group_7016ea']" position="after">
+          <group name="studio_group_e0AEi">
+            <group name="studio_group_e0AEi_left">
+              <field name="x_studio_field_vzUZ2"/>
+            </group>
+            <group name="studio_group_e0AEi_right">
+              <field name="x_studio_field_9EuDY" string="Confidencial" groups="personalizations_arbusta.empleados_confidenci_d42a72d7-91d7-45b3-a6fd-19d7edb94e91"/>
+            </group>
+          </group>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]" position="after">
+          <div class="oe_chatter" name="studio_div_ef8755">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="activity_ids" widget="mail_activity"/>
+            <field name="message_ids" widget="mail_thread"/>
+          </div>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.odoo_studio_default__350a0bee-97c9-4cb3-b220-f24677c62dec" model="ir.ui.view">
+    <field name="name">Odoo Studio: Default kanban view for x_seguimientos customization</field>
+    <field name="model">x_seguimientos</field>
+    <field name="inherit_id" ref="personalizations_arbusta.default_kanban_view__b589505e-297c-462c-9b87-96914125701a"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//kanban[1]" position="attributes">
+          <attribute name="default_group_by">x_studio_field_q3WdL</attribute>
+        </xpath>
+        <xpath expr="//field[@name='x_name']" position="after">
+          <field display="full" name="x_studio_field_nZW1U" bold="True"/>
+          <field display="full" name="x_studio_field_TTmDr"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

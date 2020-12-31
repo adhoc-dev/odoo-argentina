@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_arbusta.equipo_9ff710b5-9bda-452d-95d5-6781763cc6c8" model="ir.actions.act_window">
+    <field name="name">Equipo</field>
+    <field name="res_model">maintenance.equipment</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="binding_view_types">list,form</field>
+    <field name="domain">['|',('employee_id', '=', active_id),('x_employee_ids', 'in', [active_id])]</field>
+    <field name="target">current</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <record id="personalizations_arbusta.ir_act_window_837" model="ir.actions.act_window">
+    <field name="name">Enviar mail (Confirmar resolución de incidencias )</field>
+    <field name="res_model">mail.compose.message</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="binding_model_id" ref="helpdesk.model_helpdesk_ticket"/>
+    <field name="binding_type">action</field>
+    <field name="binding_view_types">list,form</field>
+    <field name="context">{'default_composition_mode': 'mass_mail', 'default_template_id' : 53, 'default_use_template': True}</field>
+    <field name="target">new</field>
+    <field name="view_id" ref="mail.email_compose_message_wizard_form"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record id="personalizations_arbusta.dedicaciones_b4dff426-cfe2-483d-b49d-953ddb629e68" model="ir.actions.act_window">
+    <field name="name">Dedicaciones</field>
+    <field name="res_model">account.analytic.line</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="binding_view_types">list,form</field>
+    <field name="context">{'search_default_employee_id': active_id,'default_employee_id': active_id,'search_default_name': 'Dedicación 20',}</field>
+    <field name="domain">[('employee_id', '=', active_id)]</field>
+    <field name="target">current</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <record id="personalizations_arbusta.seguimientos_69239952-7ad8-4c4a-aaff-0f808a043505" model="ir.actions.act_window">
+    <field name="name">Conversaciones</field>
+    <field name="res_model">x_seguimientos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="binding_view_types">list,form</field>
+    <field name="groups_id" eval="[(6, 0, [ref('hr.group_hr_manager')])]"/>
+    <field name="target">current</field>
+    <field name="view_mode">kanban,tree,form,graph</field>
+  </record>
+  <record id="personalizations_arbusta.seguimientos_d968e514-5a8d-44de-9c50-66a1085739c7" model="ir.actions.act_window">
+    <field name="name">Seguimientos</field>
+    <field name="res_model">x_seguimientos</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="binding_view_types">list,form</field>
+    <field name="context">{'search_default_x_studio_field_TTmDr': active_id,'default_x_studio_field_TTmDr': active_id}</field>
+    <field name="domain">[('x_studio_field_TTmDr', '=', active_id)]</field>
+    <field name="target">current</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+</odoo>
