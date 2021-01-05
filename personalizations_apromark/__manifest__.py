@@ -11,12 +11,13 @@
     'depends': [
         'crm',
         'sale',
-        'l10n_ar',
+        'website_sale',
         'account_analytic_default',
     ],
     'data': [
         'security/ir.model.access.csv',
         'views/res_partner_views.xml',
+        'views/templates.xml',
         'views/crm_lead_views.xml',
     ],
     'application': False,

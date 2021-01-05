@@ -11,6 +11,7 @@
         <field name="type" position="before">
           <field name="birthdate"/>
           <field name="age" attrs="{'invisible': [('birthdate','=',False)]}"/>
+          <field name="highschool_complete"/>
         </field>
         <field name="l10n_ar_afip_responsibility_type_id" position="after">
           <field name="credit_card_id"/>

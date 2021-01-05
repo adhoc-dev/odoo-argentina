@@ -5,6 +5,7 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     birthdate = fields.Date(string='Fecha de Nacimiento')
+    highschool_complete = fields.Boolean(string='Secundario Completo')
     age = fields.Integer(string='Edad', compute="_compute_age")
     credit_card_id = fields.Many2one('res.partner.credit_card', 'Tarjeta de Crédito')
     bank_id = fields.Many2one(comodel_name='res.bank', string='Banco Emisor')
