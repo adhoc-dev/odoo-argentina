@@ -6,11 +6,11 @@ class ProjectProject(models.Model):
 
     x_studio_field_Aq37T = fields.Selection(string="Unidad",
                                             selection=[('Global', 'Global'),
-                                                        ('BD1', 'BD1'), ('BD2', 'BD2'),
-                                                        ('BT1', 'BT1'), ('BT2', 'BT2'),
-                                                        ('MD1', 'MD1'), ('MT1', 'MT1'),
-                                                        ('MOD1', 'MOD1'), ('MOT1', 'MOT1'),
-                                                        ('RD1', 'RD1'), ('RT1', 'RT1')],
+                                                       ('BD1', 'BD1'), ('BD2', 'BD2'),
+                                                       ('BT1', 'BT1'), ('BT2', 'BT2'),
+                                                       ('MD1', 'MD1'), ('MT1', 'MT1'),
+                                                       ('MOD1', 'MOD1'), ('MOT1', 'MOT1'),
+                                                       ('RD1', 'RD1'), ('RT1', 'RT1')],
                                             copy=False)
     x_studio_field_D7BUq = fields.Many2one(string="Service Owner", comodel_name="hr.employee",
                                            on_delete="set null", copy=False)

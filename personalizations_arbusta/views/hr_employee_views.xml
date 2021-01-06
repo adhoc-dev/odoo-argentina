@@ -129,6 +129,7 @@
           <field name="x_studio_field_ontRJ" string="Situación extranj."/>
         </field>
         <field name="user_id" position="before">
+          <field name="registry_date"/>
           <field name="x_studio_field_RiU1z"/>
           <field name="x_studio_field_awy5r"/>
           <field name="x_studio_field_RFrXP"/>

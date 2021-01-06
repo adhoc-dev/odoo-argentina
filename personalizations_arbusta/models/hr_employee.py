@@ -38,17 +38,18 @@ class HrEmployee(models.Model):
     x_studio_field_r6BXX = fields.Char(string="Nombre OS", copy=False)
     x_studio_field_bdBsj = fields.Char(string="Plan Prepaga", copy=False)
     level_reached = fields.Selection(string="Nivel alcanzado",
-                                   selection=[('Secundario Amondonado', 'Secundario Amondonado'),
-                                              ('Secundario en Curso', 'Secundario en Curso'),
-                                              ('Secundario Graduado', 'Secundario Graduado'),
-                                              ('Terciario Abandonado', 'Terciario Abandonado'),
-                                              ('Terciario en Curso', 'Terciario en Curso'),
-                                              ('Terciario Graduado', 'Terciario Graduado'),
-                                              ('Universitario Abandonado', 'Universitario Abandonado'),
-                                              ('Universitario en Curso', 'Universitario en Curso'),
-                                              ('Universitario Graduado', 'Universitario Graduado'),
-                                              ('Posgrado Máster en Curso', 'Posgrado Máster en Curso'),
-                                              ('Posgrado Máster Graduado', 'Posgrado Máster Graduado')], copy=False)
+                                     selection=[('Secundario Amondonado', 'Secundario Amondonado'),
+                                                ('Secundario en Curso', 'Secundario en Curso'),
+                                                ('Secundario Graduado', 'Secundario Graduado'),
+                                                ('Terciario Abandonado', 'Terciario Abandonado'),
+                                                ('Terciario en Curso', 'Terciario en Curso'),
+                                                ('Terciario Graduado', 'Terciario Graduado'),
+                                                ('Universitario Abandonado', 'Universitario Abandonado'),
+                                                ('Universitario en Curso', 'Universitario en Curso'),
+                                                ('Universitario Graduado', 'Universitario Graduado'),
+                                                ('Posgrado Máster en Curso', 'Posgrado Máster en Curso'),
+                                                ('Posgrado Máster Graduado', 'Posgrado Máster Graduado')],
+                                     copy=False)
     x_department_id = fields.Many2one(string="department_id", related="department_id",
                                       help="Solo se usa por el seguimiento", on_delete="set null", readonly=True)
     x_job_id = fields.Many2one(string="job_id", related="job_id", help="Por seguimiento",
@@ -142,6 +143,7 @@ class HrEmployee(models.Model):
     level_study = fields.Selection(string='Grado de Estudio',
                                    selection=[('es', 'Educación Superior'), ('em', 'Educación Media'),
                                               ('ep', 'Educación Primaria'), ('utu', 'UTU')])
+    registry_date = fields.Date(string='Alta', tracking=100, copy=False)
 
     def _compute_employee_maintenance_equip_count(self):
         results = self.env['maintenance.equipment'].read_group([('employee_id', 'in', self.ids)],
@@ -155,7 +157,9 @@ class HrEmployee(models.Model):
 
     def _compute_employee_account_analytic_line_count(self):
         results = self.env['account.analytic.line'].read_group([('employee_id', 'in', self.ids)],
-                                                                ['employee_id'], 'employee_id')
+                                                               ['employee_id'], 'employee_id')
         dic = {}
-        for x in results: dic[x['employee_id'][0]] = x['employee_id_count']
-        for record in self: record['employee_id_account_analytic_line_count'] = dic.get(record.id, 0)
+        for x in results:
+            dic[x['employee_id'][0]] = x['employee_id_count']
+        for record in self:
+            record['employee_id_account_analytic_line_count'] = dic.get(record.id, 0)

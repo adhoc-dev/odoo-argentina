@@ -13,18 +13,14 @@ class XSeguimientos(models.Model):
                                        readonly=True, copy=False, store=True)
     x_studio_field_f0rK8 = fields.Char(string="Responsable", related="x_studio_field_TTmDr.parent_id.name",
                                        readonly=True, tracking=100, copy=False, store=True)
-    x_studio_field_nZW1U = fields.Selection(string="Tipo de seguimiento",
-                                            selection=[('Apercibimiento', 'Apercibimiento'),
-                                                       ('Plan de Acción', 'Plan de Acción'),
-                                                       ('Notificación', 'Notificación'),
-                                                       ('Performance', 'Performance'),
-                                                       ('PAL', 'Plan de acompañamiento laboral'),
+    x_studio_field_nZW1U = fields.Selection(string="Tipo de Conversación",
+                                            selection=[('PAL', 'Plan de acompañamiento laboral'),
                                                        ('Casos puntuales', 'Casos puntuales'),
                                                        ('Otras conversaciones', 'Otras conversaciones')],
                                             tracking=100, copy=False)
-    x_studio_field_2Ct4K = fields.Char(string="Link PAL", copy=False)
-    x_studio_field_HIWV1 = fields.Date(string="Inicio PAL", copy=False)
-    x_studio_field_qDZi1 = fields.Date(string="Fin PAL", copy=False)
+    x_studio_field_2Ct4K = fields.Char(string="Link PAL", copy=False, tracking=100)
+    x_studio_field_HIWV1 = fields.Date(string="Inicio PAL", copy=False, tracking=100)
+    x_studio_field_qDZi1 = fields.Date(string="Fin PAL", copy=False, tracking=100)
     x_studio_field_5UmOW = fields.Date(string="Fecha", copy=False)
     x_studio_field_vzUZ2 = fields.Html(string="Descripción", copy=False)
     x_stage_id = fields.Many2one(string="Etapa", comodel_name="x_seguimientos_stage", on_delete="set null", copy=False)
@@ -53,4 +49,5 @@ class XSeguimientos(models.Model):
                                                              ('Cuarta devolución', 'Cuarta devolución'),
                                                              ('Definición del líder', 'Definición del líder'),
                                                              ('Reunión de cierre del plan',
-                                                              'Reunión de cierre del plan')], copy=False)
+                                                              'Reunión de cierre del plan')],
+                                                  copy=False, tracking=100)

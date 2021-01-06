@@ -9,9 +9,6 @@
         <xpath expr="//field[@name='planned_revenue']" position="attributes">
           <attribute name="help">Ingreso esperado total (contrato)</attribute>
         </xpath>
-        <xpath expr="//field[@name='partner_id']" position="before">
-          <field name="x_studio_field_6sUaP" widget="date" attrs="{}" required="1"/>
-        </xpath>
         <xpath expr="//field[@name='partner_id']" position="attributes">
           <attribute name="attrs">{"required": ["|",["stage_id","=",3],["stage_id","=",6]]}</attribute>
         </xpath>
@@ -19,6 +16,7 @@
           <field name="x_studio_field_9ZMsr" string="Origen" attrs="{'required': ['|',['stage_id','=',3],['stage_id','=',6]]}"/>
         </xpath>
         <xpath expr="//field[@name='date_deadline']" position="before">
+          <field name="x_project_currency"/>
           <field name="x_studio_field_eegYH" string="Rate mensual" attrs="{'required': ['|',['stage_id','=',3],['stage_id','=',6]]}" widget="monetary"/>
           <field name="x_studio_field_KPykh" string="Horas mensuales" attrs="{'required': ['|','|',['stage_id','=',3],['stage_id','=',6],['x_studio_field_KPykh','!=',0]]}"/>
           <field name="x_studio_field_dtLz9" string="Plazo (meses)" attrs="{'required': ['|',['stage_id','=',3],['stage_id','=',6]]}" help="Pueden cargarse decimales si no corresponde el mes entero"/>
@@ -71,26 +69,30 @@
           <attribute name="invisible">1</attribute>
           <attribute name="widget">date</attribute>
         </xpath>
-        <xpath expr="//field[@name='create_date']" position="after">
-          <field name="x_studio_field_6sUaP" string="Fecha de Alta" widget="date" attrs="{}" readonly="1"/>
-        </xpath>
         <xpath expr="//field[@name='activity_date_deadline']" position="attributes">
           <attribute name="attrs">{}</attribute>
         </xpath>
+        <field name="planned_revenue" position="after">
+          <field name="x_project_currency"/>
+        </field>
       </data>
     </field>
   </record>
-  <record id="personalizations_arbusta.odoo_studio_crm_lead_bba73f05-831f-423c-af7d-3f73077bb1f8" model="ir.ui.view">
-    <field name="name">Odoo Studio: crm.lead.form customization</field>
+  <!-- crm.lead inherit search view -->
+  <record id="view_id" model="ir.ui.view">
+    <field name="name">crm.lead.inherit.view.search</field>
     <field name="model">crm.lead</field>
-    <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+    <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//form[1]/sheet[1]/group[1]/group[not(@name)][6]" position="replace"/>
-        <xpath expr="//field[@name='x_studio_field_6sUaP']" position="attributes">
-          <attribute name="required"/>
-        </xpath>
-      </data>
+      <!-- Add your xpath here -->
+        <field name="city" position="after">
+          <field name="x_project_currency"/>
+        </field>
+        <filter name="country" position="after">
+          <filter string="Project Currency" name="Project Currency" domain="[]"  context="{'group_by': 'x_project_currency'}"/>
+        </filter>
+
+
     </field>
   </record>
 </odoo>

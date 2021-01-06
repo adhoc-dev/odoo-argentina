@@ -13,7 +13,6 @@ class CrmLead(models.Model):
     x_studio_field_hkOoC = fields.Date(string="Inicio estimado", copy=False)
     x_studio_field_KPykh = fields.Integer(string="Horas mensuales", copy=False)
     x_studio_field_eegYH = fields.Float(string="Rate mensual", copy=False)
-    x_studio_field_6sUaP = fields.Date(string="Fecha de Alta", copy=False)
     x_studio_field_9ZMsr = fields.Selection(string="Origen",
                                             selection=[('Farming Cross-Selling', 'Farming Cross-Selling'),
                                                        ('Farming Upselling', 'Farming Upselling'),
@@ -35,3 +34,4 @@ class CrmLead(models.Model):
     x_studio_field_lj29Z = fields.Char(string="Link Calculadora", copy=False)
     x_studio_field_Wq8M7 = fields.Char(string="Link Propuesta", copy=False)
     x_studio_field_jyLyQ = fields.Boolean(string="Check Capacity", tracking=100, copy=False)
+    x_project_currency = fields.Many2one(comodel_name='res.currency', string='Project Currency')
