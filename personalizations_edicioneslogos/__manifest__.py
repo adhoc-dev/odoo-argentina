@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 {
     'name': 'Personalizations Edicioneslogos',
-    'version': '11.0.1.0',
+    'version': '13.0.1.0.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [

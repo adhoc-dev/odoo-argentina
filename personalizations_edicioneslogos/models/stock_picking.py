@@ -9,7 +9,6 @@ class StockPicking(models.Model):
     x_usage = fields.Selection(string="Usage", related="location_id.usage", readonly=True, copy=False)
     x_seguimiento = fields.Text(string="Nº de seg. Correo argentino")
 
-    @api.multi
     def write(self, vals):
         if 'sale_id' in vals and vals.get('sale_id'):
             self.message_subscribe([self.env['sale.order'].browse(vals.get('sale_id')).user_id.partner_id.id], force=False)
