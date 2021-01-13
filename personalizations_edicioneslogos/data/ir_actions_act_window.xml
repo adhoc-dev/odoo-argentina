@@ -2,7 +2,7 @@
 <odoo>
   <record model="ir.actions.act_window" id="ir_act_window_648">
     <field name="name">Lineas de factura</field>
-    <field name="res_model">account.invoice.line</field>
+    <field name="res_model">account.move.line</field>
     <field name="type">ir.actions.act_window</field>
     <field name="view_mode">tree,form</field>
   </record>
@@ -16,12 +16,6 @@
     <field name="target">new</field>
     <field name="type">ir.actions.act_window</field>
     <field name="view_mode">form,tree</field>
-  </record>
-  <record model="ir.actions.act_window" id="ir_act_window_797">
-    <field name="name">website</field>
-    <field name="res_model">website</field>
-    <field name="type">ir.actions.act_window</field>
-    <field name="view_mode">tree,form</field>
   </record>
   <record model="ir.actions.act_window" id="ir_act_window_1432">
     <field name="name">Proyectos por compañia</field>

@@ -27,9 +27,9 @@
         <filter string="País" name="country_id"/>
         <filter string="Provincia" name="state_id"/>
         <group expand="0" string="Group By">
-          <filter string="comercial" context="{'group_by':'x_user_id'}"/>
-          <filter string="País" context="{'group_by' : 'x_country_id'}"/>
-          <filter string="Provincia" context="{'group_by' : 'x_state'}"/>
+          <filter string="comercial" name="x_user_id" context="{'group_by':'x_user_id'}"/>
+          <filter string="País" name="x_country_id" context="{'group_by' : 'x_country_id'}"/>
+          <filter string="Provincia" name="x_state" context="{'group_by' : 'x_state'}"/>
         </group>
       </search>
     </field>
