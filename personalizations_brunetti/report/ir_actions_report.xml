@@ -5,11 +5,7 @@
     <field name="model">stock.picking</field>
     <field name="report_name">aeroo_report_ar_picking_aux</field>
     <field name="report_type">aeroo</field>
-    <field name="attachment" eval="False"/>
-    <field name="attachment_use" eval="False"/>
     <field name="binding_type">action</field>
-    <field name="multi" eval="False"/>
-    <field name="paperformat_id" eval="False"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_brunetti/report/aeroo_report_ar_picking_aux.odt</field>
     <field name="process_sep" eval="True"/>
@@ -21,11 +17,7 @@
     <field name="model">stock.picking</field>
     <field name="report_name">aeroo_report_ar_picking_copy</field>
     <field name="report_type">aeroo</field>
-    <field name="attachment" eval="False"/>
-    <field name="attachment_use" eval="False"/>
     <field name="binding_type">action</field>
-    <field name="multi" eval="False"/>
-    <field name="paperformat_id" eval="False"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_brunetti/report/aeroo_report_ar_picking_copy.odt</field>
     <field name="process_sep" eval="True"/>
@@ -37,35 +29,23 @@
     <field name="model">account.payment.group</field>
     <field name="report_name">aeroo_report_ar_payment_copy</field>
     <field name="report_type">aeroo</field>
-    <field name="attachment" eval="False"/>
-    <field name="attachment_use" eval="False"/>
     <field name="binding_type">action</field>
-    <field name="multi" eval="False"/>
-    <field name="paperformat_id" eval="False"/>
   </record>
   <record model="ir.actions.report" id="personalizations_brunetti.ir_act_report_xml_559">
     <field name="name">Orden de Venta (SRL)</field>
     <field name="model">sale.order</field>
     <field name="report_name">aeroo_report_ar_sale_order_copy</field>
     <field name="report_type">aeroo</field>
-    <field name="attachment" eval="False"/>
-    <field name="attachment_use" eval="False"/>
     <field name="binding_model_id" ref="delivery.model_sale_order"/>
     <field name="binding_type">report</field>
-    <field name="multi" eval="False"/>
-    <field name="paperformat_id" eval="False"/>
   </record>
   <record model="ir.actions.report" id="personalizations_brunetti.ir_act_report_xml_560_064693fd">
     <field name="name">Remito Argentino de Aeroo (Aux - DUPLICADO)</field>
     <field name="model">stock.picking</field>
     <field name="report_name">aeroo_report_ar_picking_aux_copy</field>
     <field name="report_type">aeroo</field>
-    <field name="attachment" eval="False"/>
-    <field name="attachment_use" eval="False"/>
     <field name="binding_model_id" ref="delivery.model_stock_picking"/>
     <field name="binding_type">report</field>
-    <field name="multi" eval="False"/>
-    <field name="paperformat_id" eval="False"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_brunetti/report/aeroo_report_ar_picking_aux_copy.odt</field>
     <field name="process_sep" eval="True"/>
@@ -77,12 +57,8 @@
     <field name="model">stock.picking</field>
     <field name="report_name">aeroo_report_ar_picking_aux_copy_copy</field>
     <field name="report_type">aeroo</field>
-    <field name="attachment" eval="False"/>
-    <field name="attachment_use" eval="False"/>
     <field name="binding_model_id" ref="delivery.model_stock_picking"/>
     <field name="binding_type">report</field>
-    <field name="multi" eval="False"/>
-    <field name="paperformat_id" eval="False"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_brunetti/report/aeroo_report_ar_picking_aux_copy_copy.odt</field>
     <field name="process_sep" eval="True"/>
@@ -94,12 +70,8 @@
     <field name="model">stock.picking</field>
     <field name="report_name">aeroo_report_ar_picking_copy_copy</field>
     <field name="report_type">aeroo</field>
-    <field name="attachment" eval="False"/>
-    <field name="attachment_use" eval="False"/>
     <field name="binding_model_id" ref="delivery.model_stock_picking"/>
     <field name="binding_type">report</field>
-    <field name="multi" eval="False"/>
-    <field name="paperformat_id" eval="False"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_brunetti/report/aeroo_report_ar_picking_copy_copy.odt</field>
     <field name="process_sep" eval="True"/>
@@ -111,12 +83,8 @@
     <field name="model">stock.picking</field>
     <field name="report_name">aeroo_report_ar_picking_copy_copy_copy</field>
     <field name="report_type">aeroo</field>
-    <field name="attachment" eval="False"/>
-    <field name="attachment_use" eval="False"/>
     <field name="binding_model_id" ref="delivery.model_stock_picking"/>
     <field name="binding_type">report</field>
-    <field name="multi" eval="False"/>
-    <field name="paperformat_id" eval="False"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_brunetti/report/aeroo_report_ar_picking_copy_copy_copy.odt</field>
     <field name="process_sep" eval="True"/>
@@ -128,11 +96,7 @@
     <field name="model">stock.picking</field>
     <field name="report_name">aeroo_report_ar_remito</field>
     <field name="report_type">aeroo</field>
-    <field name="attachment" eval="False"/>
-    <field name="attachment_use" eval="False"/>
     <field name="binding_type">report</field>
-    <field name="multi" eval="False"/>
-    <field name="paperformat_id" eval="False"/>
     <field name="tml_source">file</field>
     <field name="report_file">l10n_ar_aeroo_stock/report/aeroo_report_ar_remito.odt</field>
     <field name="process_sep" eval="True"/>
