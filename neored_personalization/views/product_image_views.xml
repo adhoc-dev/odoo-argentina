@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_product_image_form">
+        <field name="name">product.image.form</field>
+        <field name="model">product.image</field>
+        <field name="inherit_id" ref="website_sale.view_product_image_form"/>
+        <field name="arch" type="xml">
+            <field name="product_tmpl_id" position="before">
+                <label class="small text-muted" for="neored_image_url" string="Neored Image Url"/>
+                <field name="neored_image_url" groups="base.group_no_one"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="cron_get_image_from_neored_image_url" model="ir.cron">
+        <field name="name">Descargar imagenes de productos</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    records.get_image_from_neored_image_url()
+    records.mapped('product_image_ids').filtered('neored_image_url')
+else:
+  # obtenemos productos con url de neored pero que no tienen o es distinta la ultima url sincronizada
+  env.cr.execute('select id from product_template where neored_image_url is not Null and (neored_image_url != last_syncked_neored_image_url or last_syncked_neored_image_url is null)')
+  res = env.cr.fetchall()
+  rec_ids = [x[0] for x in res]
+  # hacemos search para actualizar en bacth de 1000 y tmb para solo en activos
+  env['product.template'].search([('id', 'in', rec_ids)], limit=1000).get_image_from_neored_image_url()
+
+  # hacemos lo mismo para product images
+  env.cr.execute('select id from product_image where neored_image_url is not Null and (neored_image_url != last_syncked_neored_image_url or last_syncked_neored_image_url is null)')
+  res = env.cr.fetchall()
+  rec_ids = [x[0] for x in res]
+  # hacemos search para actualizar en bacth de 1000 y tmb para solo en activos
+  env['product.image'].search([('id', 'in', rec_ids)], limit=1000).get_image_from_neored_image_url()
+
+        </field>
+        <field name="interval_number">10</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+    </record>
+
+    <record id="cron_sync_product_taxes" model="ir.cron">
+        <field name="name">Sincronizar impuestos a través de compañías</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="state">code</field>
+        <field name="code">
+# el write es bastante pesado por culpa de la existencia de base.automations
+# usamos el limit para que no sea tan pesado en cada corrida
+limit = 10000
+odumbo_tax_ids = env['ir.model.data'].search([('module', '=', '__odumbo__'), ('model', '=', 'account.tax')]).mapped('res_id')
+
+for odumbo_tax in env['account.tax'].browse(odumbo_tax_ids):
+  other_taxes = env['account.tax'].search([('tax_group_id', '=', odumbo_tax.tax_group_id.id), ('type_tax_use', '=', odumbo_tax.type_tax_use), ('id', '!=', odumbo_tax.id)])
+  if not other_taxes:
+    continue
+  field = 'taxes_id' if odumbo_tax.type_tax_use == 'sale' else 'supplier_taxes_id'
+  domains = [(field, '!=', other_tax.id) for other_tax in other_taxes]
+  domain = [(field, '=', odumbo_tax.id)] + ['|'] * (len(domains)-1) + domains
+
+  products = env['product.template'].search(domain, limit=limit)
+  products.with_context(odumbo_sync=True).write({field: [(6, 0, [odumbo_tax.id] + other_taxes.ids)]})
+
+        </field>
+        <field name="interval_number">7</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+    </record>
+
+</odoo>
