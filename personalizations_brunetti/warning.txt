@@ -1,8 +1,0 @@
-The following relational data haven't been exported because they either refer
-to a model that Studio doesn't export, or have no XML id:
-
-Record: personalizations_brunetti.ir_act_server_837
-Model: ir.actions.server
-Field: fields_lines
-Type: one2many
-Value: ir.server.object.lines(838,) ('ir.server.object.lines,838')
