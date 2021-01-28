@@ -32,4 +32,10 @@
                 </field>
             </field>
         </record>
+        <record id="crm.crm_lead_action_pipeline_view_kanban" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+        </record>
+        <record id="crm.crm_lead_action_pipeline_view_tree" model="ir.actions.act_window.view">
+            <field name="sequence" eval="0"/>
+        </record>
 </odoo>
