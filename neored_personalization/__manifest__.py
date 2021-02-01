@@ -41,9 +41,10 @@
         'product_attribute_template',
         'product_uoms_purchase',
         'product_uoms_sale',
-        'delivery_hs_code',
+        'delivery',
         'account_reports',
         'product_template_tags',
+        'product_manufacturer',
     ],
     'data': [
         'views/product_template_views.xml',

@@ -6,7 +6,7 @@
         <field name="state">code</field>
         <field name="code">
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
-  fields_to_check = ['name', 'street', 'street2', 'city', 'zip', 'main_id_number', 'active', 'customer', 'supplier', 'is_company', 'afip_responsability_type_id', 'main_id_category_id',]
+  fields_to_check = ['name', 'street', 'street2', 'city', 'zip', 'vat', 'active', 'customer', 'supplier', 'is_company', 'l10n_ar_afip_responsibility_type_id', 'l10n_latam_identification_type_id',]
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
     data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
     if data_recs:
@@ -74,7 +74,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
         <field name="state">code</field>
         <field name="code">
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
-  fields_to_check = ['name', 'uom_type', 'factor_inv', 'rounding', 'afip_code', 'arba_code', 'active', 'category_id']
+  fields_to_check = ['name', 'uom_type', 'factor_inv', 'rounding', 'l10n_ar_afip_code', 'arba_code', 'active', 'category_id']
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
     data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
     if data_recs:
