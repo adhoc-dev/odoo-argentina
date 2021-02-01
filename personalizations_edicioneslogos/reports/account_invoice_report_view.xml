@@ -7,7 +7,6 @@
         <field name="inherit_id" ref="l10n_ar_ux.view_account_invoice_line_report_tree"/>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="state_id"/>
                 <field name="city"/>
             </field>
             <field name="product_id" position="after">
@@ -25,7 +24,6 @@
         <field name="inherit_id" ref="account.view_account_invoice_report_search"/>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="state_id"/>
                 <field name="city"/>
             </field>
             <field name="product_id" position="after">

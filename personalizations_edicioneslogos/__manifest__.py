@@ -1,6 +1,6 @@
 {
     'name': 'Personalizations Edicioneslogos',
-    'version': '13.0.1.0.0',
+    'version': '13.0.1.1.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
