@@ -55,6 +55,7 @@
         'data/base_automation_data.xml',
         'data/base_automation_unlink_data.xml',
         'data/ir_cron_data.xml',
+        'data/ir_actions_data.xml',
     ],
     'demo': [
     ],
