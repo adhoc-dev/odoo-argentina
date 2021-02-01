@@ -10,11 +10,12 @@ class StockPicking(models.Model):
     x_seguimiento = fields.Text(string="Nº de seg. Correo argentino")
 
     def write(self, vals):
+        res = super().write(vals)
         if 'sale_id' in vals and vals.get('sale_id'):
             self.message_subscribe([self.env['sale.order'].browse(vals.get('sale_id')).user_id.partner_id.id], force=False)
         if 'x_seguimiento' in vals and vals.get('x_seguimiento'):
             self.message_post_with_template(94)
-        return super().write(vals)
+        return res
 
 
     def create_invoice_from_picking(self):
