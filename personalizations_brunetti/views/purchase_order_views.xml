@@ -6,9 +6,8 @@
     <field name="inherit_id" ref="purchase.purchase_order_form"/>
     <field type="xml" name="arch">
       <xpath expr="//field[@name='internal_notes']" position="after">
-        <button name="827" type="action" string="Copiar notas a envío" class="oe_stat_button">
-    
-   </button>
+        <button name="%(personalizations_brunetti.ir_act_server_827)d" type="action" string="Copiar notas a envío" class="oe_stat_button">
+    </button>
       </xpath>
     </field>
   </record>

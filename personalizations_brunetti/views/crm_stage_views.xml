@@ -5,7 +5,7 @@
     <field name="model">crm.stage</field>
     <field name="inherit_id" ref="crm.crm_stage_form"/>
     <field type="xml" name="arch">
-      <field name="probability" position="after">
+      <field name="is_won" position="after">
         <field name="x_automation_stages"/>
         <field name="x_days_to_chages" attrs="{'invisible': [('x_automation_stages', '=', False)], 'required':[('x_automation_stages', '=', True)]}"/>
         <field name="x_to_stage_id" attrs="{'invisible': [('x_automation_stages', '=', False)],'required':[('x_automation_stages', '=', True)]}" domain="[('id', '!=', id)]"/>

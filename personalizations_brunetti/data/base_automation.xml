@@ -129,7 +129,7 @@ for lead in leads:
   </record>
   <record model="base.automation" id="personalizations_brunetti.base_automation_7">
     <field name="name">completar con leyenda BH SR</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">object_write</field>
     <field name="binding_type">action</field>
     <field name="filter_domain">["&amp;",["type","=","out_invoice"],["company_id","=",1]]</field>
@@ -206,7 +206,7 @@ if record.opportunity_id:
   </record>
   <record model="base.automation" id="personalizations_brunetti.base_automation_10">
     <field name="name">Etiqueta en facturas</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="binding_type">action</field>
     <field name="code"># Available variables:
@@ -259,23 +259,4 @@ for rec in records:
 </field>
     <field name="trigger">on_create_or_write</field>
   </record>
-  <record model="base.automation" id="personalizations_brunetti.ir_act_server_837">
-    <field name="name">Cambiar etapa</field>
-    <field name="sequence" eval="False"/>
-    <field name="model_id" ref="crm.model_crm_lead"/>
-    <field name="state">code</field>
-    <field name="binding_type">action</field>
-    <field name="code"># Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
-records.write({'stage_id': 6})
-</field>
-<field name="trigger">on_create_or_write</field>
-</record>
 </odoo>

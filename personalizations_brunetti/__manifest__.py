@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 {
     'name': 'personalizations_brunetti',
-    'version': '11.0.1.0',
+    'version': '13.0.1.0.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -13,22 +12,22 @@
         'delivery',
         'helpdesk',
         'inter_company_rules',
-        'l10n_ar_aeroo_stock',
         'mass_editing',
         'product',
         'purchase',
-        'report_aeroo',
     ],
     'data': [
-        'views/account_invoice_views.xml',
+
+        'data/ir_actions_server.xml',
+        'data/base_automation.xml',
+        'views/account_move_views.xml',
         'views/crm_lead_views.xml',
         'views/crm_stage_views.xml',
         'views/product_template_views.xml',
         'views/purchase_order_views.xml',
-        'report/ir_actions_report.xml',
-        'data/ir_cron.xml',
-        'data/base_automation.xml',
         'security/ir_rule.xml',
+        'data/ir_cron.xml',
+
     ],
     'application': False,
     'license': 'OPL-1',

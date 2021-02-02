@@ -3,13 +3,13 @@
   <record model="ir.ui.view" id="personalizations_brunetti.ir_ui_view_2230">
     <field name="name">create_date</field>
     <field name="model">crm.lead</field>
-    <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+    <field name="inherit_id" ref="crm.crm_lead_view_form"/>
     <field type="xml" name="arch">
       <xpath expr="//field[@name='partner_id']" position="after">
         <field name="create_date" widget="date"/>
       </xpath>
-       <button name="274" position="after">
-        <button name="837" string="Desechado" type="action" class="oe_highlight" attrs="{'invisible': [('stage_id','=',6)]}"/>
+       <button name="%(crm.crm_lead_lost_action)d" position="after">
+        <button name="%(personalizations_brunetti.ir_act_server_837)d" string="Desechado" type="action" class="oe_highlight" attrs="{'invisible': [('stage_id','=',6)]}"/>
       </button>
     </field>
   </record>

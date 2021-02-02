@@ -6,7 +6,6 @@
     <field name="inherit_id" ref="product.product_template_tree_view"/>
     <field type="xml" name="arch">
       <field name="virtual_available" position="before">
-        <field name="immediately_usable_qty" string="Stock Real"/>
         <field name="incoming_qty" string="Compras Confirmadas"/>
       </field>
     </field>
