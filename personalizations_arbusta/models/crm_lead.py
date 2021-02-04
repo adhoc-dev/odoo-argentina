@@ -7,8 +7,8 @@ class CrmLead(models.Model):
     x_studio_field_1IT3n = fields.Selection(string="Tipo de servicio",
                                             selection=[('Data Services', 'Data Services'),
                                                        ('Development', 'Development'),
-                                                       ('DIS', 'Digital Interaction Services'),
-                                                       ('Machine Learning Training', 'Machine Learning Training'),
+                                                       ('Digital Interaction Services',
+                                                        'Digital Interaction Services'),                                                       ('Machine Learning Training', 'Machine Learning Training'),
                                                        ('QA & Testing', 'QA & Testing')], copy=False)
     x_studio_field_hkOoC = fields.Date(string="Inicio estimado", copy=False)
     x_studio_field_KPykh = fields.Integer(string="Horas mensuales", copy=False)
