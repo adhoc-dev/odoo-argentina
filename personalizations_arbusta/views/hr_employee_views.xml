@@ -226,9 +226,11 @@
         <button id="hr_presence_button" position="attributes">
           <attribute name="invisible">1</attribute>
         </button>
-        <xpath expr="//field[@name='resource_calendar_id']//.." position="attributes">
+        <!-- Ticket 34968 -->
+        <xpath expr="//field[@name='tz']//.." position="attributes">
           <attribute name="groups"></attribute>
         </xpath>
+        <!-- Fin Ticket 34968 -->
         <page name='public' position="attributes">
           <attribute name="groups">hr.group_hr_manager</attribute>
         </page>
