@@ -53,7 +53,6 @@ class CalendarEvent(models.Model):
         related='prosecution_id.current_judged_id',
     )
 
-    @api.multi
     @api.constrains('prosecution_id')
     def update_attendee(self):
         for rec in self:

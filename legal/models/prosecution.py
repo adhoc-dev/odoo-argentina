@@ -14,7 +14,6 @@ class Prosecution(models.Model):
     _inherit = ['mail.thread']
     _rec_name = 'folder_name'
 
-    @api.multi
     def action_compute(self):
         for rec in self:
             rec.folder_name = '-'.join(
@@ -39,7 +38,6 @@ class Prosecution(models.Model):
         vals['opening_date_folder'] = date.today()
         return super(Prosecution, self).create(vals)
 
-    @api.multi
     @api.depends('radication_ids')
     def _get_data(self):
         for rec in self:
@@ -51,32 +49,27 @@ class Prosecution(models.Model):
                 rec.current_judged_id = []
                 rec.number_case_file = ''
 
-    @api.multi
     def _compute_audiences_event_count(self):
         for rec in self:
             rec.audiences_event_count = len(
                 rec.sudo().event_audiences_ids.filtered(
                     lambda x: x.state == 'draft'))
 
-    @api.multi
     def _compute_expiry_event_count(self):
         for rec in self:
             rec.expiry_event_count = len(
                 rec.sudo().event_expiry_ids.filtered(
                     lambda x: x.state == 'draft'))
 
-    @api.multi
     def _compute_claim_amount(self):
         for rec in self:
             rec.claim_amount = sum(rec.claim_ids.mapped('total'))
 
-    @api.multi
     @api.constrains('member_ids')
     def action_follow(self):
         for rec in self:
             rec.message_subscribe_users(self.member_ids.ids)
 
-    @api.multi
     @api.onchange('department_id')
     def auto_complete_auxiliar_field(self):
         for rec in self:
@@ -93,7 +86,6 @@ class Prosecution(models.Model):
                     lines.append((0, _, values))
                 rec.auxiliary_ids = lines
 
-    @api.multi
     def update_auxiliar_field(self):
         for rec in self:
             if rec.department_id:
@@ -322,26 +314,22 @@ class Prosecution(models.Model):
     )
     scene_sinister = fields.Char(string="Scene of the sinister")
 
-    @api.multi
     def set_open(self):
         for rec in self:
             rec.general_state = 'open'
             rec.re_opening_date_folder = date.today()
 
-    @api.multi
     def set_close(self):
         for rec in self:
             rec.general_state = 'closed'
             rec.close_date_folder = date.today()
             rec.re_opening_date_folder = False
 
-    @api.multi
     def _compute_invoices(self):
         for rec in self:
             if rec.invoice_ids:
                 rec.invoices = len(rec.invoice_ids)
 
-    @api.multi
     @api.constrains('general_state')
     def onchange_general_state(self):
         for rec in self:

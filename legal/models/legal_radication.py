@@ -29,7 +29,6 @@ class LegalRadication(models.Model):
         string='prosecution',
     )
 
-    @api.multi
     @api.depends(
         'judged_id', 'judged_id.location')
     def _compute_address(self):

@@ -40,7 +40,6 @@ class LegalExpertise(models.Model):
         compute='_compute_expertise_detail',
     )
 
-    @api.multi
     def _compute_expertise_detail(self):
         for rec in self:
             if rec.expertise_detail_ids:
@@ -52,7 +51,6 @@ class LegalExpertise(models.Model):
                              expertise_detail_item.value or ' ']) + '\n'
                 rec.expertise_detail = expertise_detail
 
-    @api.multi
     def action_done(self):
         for rec in self:
             if rec.state == 'pending':

@@ -25,7 +25,6 @@ class LegalOffice(models.Model):
 
     address = fields.Char()
 
-    @api.multi
     @api.depends('name', 'location')
     def _compute_display_name(self):
         for rec in self:

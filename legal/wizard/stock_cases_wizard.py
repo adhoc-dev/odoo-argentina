@@ -24,7 +24,6 @@ class StockCases(models.TransientModel):
         'legal.prosecution_type',
         string='Type of prosecution')
 
-    @api.multi
     def generate_report(self):
         self.ensure_one()
         return self.env['report'].with_context(

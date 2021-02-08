@@ -26,7 +26,6 @@ class LegalEvidence(models.Model):
         'legal.prosecution',
     )
 
-    @api.multi
     def action_done(self):
         for rec in self:
             if rec.state == 'pending':
