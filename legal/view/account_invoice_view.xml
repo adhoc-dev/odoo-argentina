@@ -5,7 +5,7 @@
     <!-- SEARCH VIEW -->
     <record id="view_account_invoice_filter" model="ir.ui.view">
         <field name="name">account.invoice.select</field>
-        <field name="model">account.invoice</field>
+        <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_account_invoice_filter"/>
         <field name="arch" type="xml">
             <field name="number" position="after">
@@ -20,7 +20,7 @@
     <!-- FORM -->
     <record id="invoice_form" model="ir.ui.view">
         <field name="name">account.invoice.form.inherit</field>
-        <field name="model">account.invoice</field>
+        <field name="model">account.move</field>
         <field name="inherit_id" ref="account.invoice_form"/>
         <field name="arch" type="xml">
             <!-- <field name="origin" position="before"> -->

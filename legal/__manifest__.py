@@ -28,7 +28,6 @@
         'calendar',
         'portal',
         'report_aeroo',
-        'l10n_ar_aeroo_base',
         'account'
     ],
     'data': [

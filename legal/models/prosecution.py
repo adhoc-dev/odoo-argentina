@@ -299,7 +299,7 @@ class Prosecution(models.Model):
     )
 
     invoice_ids = fields.One2many(
-        'account.invoice',
+        'account.move',
         'prosecution_id',
         string='invoices',
     )
