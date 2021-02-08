@@ -187,6 +187,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
     'purchase_ok', 'sale_ok',
     'categ_id', 'replenishment_cost_rule_id', 'product_brand_id', 'other_currency_id', 'replenishment_base_cost_currency_id', 'product_attribute_template_id',
     'manufacturer', 'product_abstract_id', 'uom_id',
+    'uom_po_id', 'description_website', 'list_price_type', 'sale_margin',
     'public_categ_ids', 'optional_product_ids', 'alternative_product_ids', 'accessory_product_ids', 'taxes_id', 'supplier_taxes_id',
   ]
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):

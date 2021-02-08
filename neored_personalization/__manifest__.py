@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Neored Personalizations',
-    'version': '13.0.1.0.0',
+    'version': '13.0.1.1.0',
     'category': 'Accounting',
     'sequence': 14,
     'summary': '',
@@ -35,7 +35,9 @@
         'product_internal_code',
         # solo para instalarlo en todos y que funcione bien odumbo sync
         # tmb necesarios por las automation rules que agregamos al final
+        'product_planned_price',
         'website_sale',
+        'website_sale_product_description',
         'product_dimension',
         'product_brand',
         'product_attribute_template',
