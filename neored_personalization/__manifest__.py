@@ -47,6 +47,7 @@
         'account_reports',
         'product_template_tags',
         'product_manufacturer',
+        'sale_product_configurator',
     ],
     'data': [
         'views/product_template_views.xml',
