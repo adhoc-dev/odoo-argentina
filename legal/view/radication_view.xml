@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+        <!-- FORM -->
+        <record id="view_legal_radication_form" model="ir.ui.view">
+            <field name="name">legal.radication.form</field>
+            <field name="model">legal.radication</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="date_court" required="True"/>
+                        <field name="judged_id"/>
+                        <field name="address"/>
+                    </group>
+                    <group colspan="2">
+                        <group>
+                            <field name="num_case_file"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- TREE -->
+        <record id="view_legal_radication_tree" model="ir.ui.view">
+            <field name="name">legal.radication.tree</field>
+            <field name="model">legal.radication</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="num_case_file"/>
+                    <field name="date_court"/>
+                    <field name="judged_id"/>
+                </tree>
+            </field>
+        </record>
+
+</odoo>

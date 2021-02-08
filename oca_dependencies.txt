@@ -1,1 +1,15 @@
 oca-brand https://github.com/OCA/brand.git
+odoo-enterprise git@github.com:odoo/enterprise.git
+ingadhoc-third-party-apps git@github.com:ingadhoc/third-party-apps.git
+ingadhoc-sale https://github.com/ingadhoc/sale.git
+ingadhoc-product https://github.com/ingadhoc/product.git
+ingadhoc-odoo-argentina https://github.com/ingadhoc/odoo-argentina.git
+ingadhoc-account-invoicing https://github.com/ingadhoc/account-invoicing.git
+ingadhoc-project https://github.com/ingadhoc/project.git
+ingadhoc-purchase https://github.com/ingadhoc/purchase.git
+ingadhoc-stock https://github.com/ingadhoc/stock.git
+ingadhoc-aeroo_reports https://github.com/ingadhoc/aeroo_reports.git
+ingadhoc-enterprise-extensions git@gitlab.com:ingadhoc/enterprise-extensions.git
+ingadhoc-partner https://github.com/ingadhoc/partner.git
+product-attribute
+brand
