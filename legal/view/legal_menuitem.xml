@@ -19,7 +19,6 @@
         <record id="action_legal_prosecution" model="ir.actions.act_window">
             <field name="name">Prosecution</field>
             <field name="res_model">legal.prosecution</field>
-            <field name="src_model">legal.prosecution</field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -30,7 +29,6 @@
         <record id="action_legal_lawyer" model="ir.actions.act_window">
             <field name="name">Lawyers</field>
             <field name="res_model">res.partner</field>
-            <field name="src_model">res.partner</field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -41,7 +39,6 @@
         <record id="action_model" model="ir.actions.act_window">
             <field name="name">Models</field>
             <field name="res_model">legal.model</field>
-            <field name="src_model">legal.model</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -51,7 +48,6 @@
         <record id="action_substate" model="ir.actions.act_window">
             <field name="name">Substates</field>
             <field name="res_model">legal.substate</field>
-            <field name="src_model">legal.substate</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -61,7 +57,6 @@
         <record id="action_type_prosecution" model="ir.actions.act_window">
             <field name="name">Types of prosecution</field>
             <field name="res_model">legal.prosecution_type</field>
-            <field name="src_model">legal.prosecution_type</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -71,7 +66,6 @@
         <record id="action_department" model="ir.actions.act_window">
             <field name="name">Department</field>
             <field name="res_model">legal.department</field>
-            <field name="src_model">legal.department</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -81,7 +75,6 @@
         <record id="action_status" model="ir.actions.act_window">
             <field name="name">Models</field>
             <field name="res_model">legal.status</field>
-            <field name="src_model">legal.status</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -91,7 +84,6 @@
         <record id="action_legal_office" model="ir.actions.act_window">
             <field name="name">Judgeds</field>
             <field name="res_model">legal.office</field>
-            <field name="src_model">legal.office</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -101,7 +93,6 @@
         <record id="action_auxiliary_fields" model="ir.actions.act_window">
             <field name="name">Auxiliary Fields</field>
             <field name="res_model">legal.auxiliary.field</field>
-            <field name="src_model">legal.auxiliary.field</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -111,7 +102,6 @@
         <record id="action_role" model="ir.actions.act_window">
             <field name="name">Roles</field>
             <field name="res_model">legal.role</field>
-            <field name="src_model">legal.role</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -121,7 +111,6 @@
         <record id="action_obligations" model="ir.actions.act_window">
             <field name="name">Obligations</field>
             <field name="res_model">legal.regulation</field>
-            <field name="src_model">legal.regulation</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -131,7 +120,6 @@
         <record id="action_news" model="ir.actions.act_window">
             <field name="name">News</field>
             <field name="res_model">legal.news</field>
-            <field name="src_model">legal.news</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -141,7 +129,6 @@
         <record id="action_claim_type" model="ir.actions.act_window">
             <field name="name">Claim Types</field>
             <field name="res_model">legal.claim.type</field>
-            <field name="src_model">legal.claim.type</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -151,7 +138,6 @@
         <record id="action_news_type" model="ir.actions.act_window">
             <field name="name">News Types</field>
             <field name="res_model">legal.news.type</field>
-            <field name="src_model">legal.news.type</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -161,7 +147,6 @@
         <record id="action_negotiation" model="ir.actions.act_window">
             <field name="name">Negotiation</field>
             <field name="res_model">legal.negotiation</field>
-            <field name="src_model">legal.negotiation</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -171,7 +156,6 @@
         <record id="action_evidence" model="ir.actions.act_window">
             <field name="name">Evidence</field>
             <field name="res_model">legal.evidence</field>
-            <field name="src_model">legal.evidence</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -181,7 +165,6 @@
         <record id="action_responsibility" model="ir.actions.act_window">
             <field name="name">Responsibilities</field>
             <field name="res_model">legal.responsibility</field>
-            <field name="src_model">legal.responsibility</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -191,7 +174,6 @@
         <record id="action_claim_category" model="ir.actions.act_window">
             <field name="name">Claim Category</field>
             <field name="res_model">legal.claim.category</field>
-            <field name="src_model">legal.claim.category</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -201,7 +183,6 @@
         <record id="action_offerer" model="ir.actions.act_window">
             <field name="name">Offerer</field>
             <field name="res_model">legal.offerer</field>
-            <field name="src_model">legal.offerer</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -211,7 +192,6 @@
         <record id="action_expertise_detail_type" model="ir.actions.act_window">
             <field name="name">Expertise Detail Type</field>
             <field name="res_model">legal.expertise.detail_type</field>
-            <field name="src_model">legal.expertise.detail_type</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -221,7 +201,6 @@
         <record id="action_expertise_type" model="ir.actions.act_window">
             <field name="name">Expertise  Type</field>
             <field name="res_model">legal.expertise.type</field>
-            <field name="src_model">legal.expertise.type</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -231,7 +210,6 @@
         <record id="action_negotiation_concept" model="ir.actions.act_window">
             <field name="name">Negotiation Concept</field>
             <field name="res_model">legal.negotiation.concept</field>
-            <field name="src_model">legal.negotiation.concept</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -241,7 +219,6 @@
         <record id="action_regulation_concept" model="ir.actions.act_window">
             <field name="name">Regulation Concept</field>
             <field name="res_model">legal.regulation.concept</field>
-            <field name="src_model">legal.regulation.concept</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -251,7 +228,6 @@
         <record id="action_evidence_type" model="ir.actions.act_window">
             <field name="name">Evidence Type</field>
             <field name="res_model">legal.evidence.type</field>
-            <field name="src_model">legal.evidence.type</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -262,7 +238,6 @@
         <record id="action_meeting_type" model="ir.actions.act_window">
             <field name="name">Meeting Type</field>
             <field name="res_model">legal.meeting.type</field>
-            <field name="src_model">legal.meeting.type</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>
@@ -272,7 +247,6 @@
         <record id="action_prosecution_state_detail" model="ir.actions.act_window">
             <field name="name">State Detail</field>
             <field name="res_model">prosecution.state_detail</field>
-            <field name="src_model">prosecution.state_detail</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref=""/>
             <field name="search_view_id" ref=""/>

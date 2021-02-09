@@ -50,6 +50,8 @@ class LegalExpertise(models.Model):
                             [expertise_detail_item.detail_type_id.name or ' ',
                              expertise_detail_item.value or ' ']) + '\n'
                 rec.expertise_detail = expertise_detail
+            else:
+                rec.expertise_detail = False
 
     def action_done(self):
         for rec in self:

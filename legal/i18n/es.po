@@ -1526,3 +1526,13 @@ msgstr "type prosecution"
 #: model:ir.ui.view,arch_db:legal.view_legal_prosecution_form
 msgid "⇒ Compute"
 msgstr "⇒ Computar"
+
+#. module: legal_portal
+#: model:ir.ui.menu,name:legal_portal.portal_legal
+msgid "Legal"
+msgstr "Juridico"
+
+#. module: legal_portal
+#: model:ir.ui.menu,name:legal_portal.portal_prosecution
+msgid "Prosecution"
+msgstr "Carpeta"

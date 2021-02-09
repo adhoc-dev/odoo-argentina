@@ -4,7 +4,7 @@
 
         <!-- SEARCH VIEW -->
         <record id="view_legal_expertise_filter" model="ir.ui.view">
-            <field name="name">legal.expertise.select</field>
+            <field name="name">legal.expertise.search</field>
             <field name="model">legal.expertise</field>
             <field name="arch" type="xml">
                 <search string="Event">
@@ -14,7 +14,7 @@
                         <field name="state" string="State"/>
                     </group>
                     <group expand="1" string="Group By...">
-                        <filter string="Type" icon="terp-personal" domain="[]" context="{'group_by':'type_id'}" />
+                        <filter name="type" string="Type" icon="terp-personal" domain="[]" context="{'group_by':'type_id'}" />
                     </group>
                 </search>
             </field>

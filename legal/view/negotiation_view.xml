@@ -12,7 +12,7 @@
                         <field name="date_proposal" string="Date Proposal"/>
                     </group>
                     <group expand="1" string="Group By...">
-                        <filter string="Concept" icon="terp-personal" domain="[]" context="{'group_by':'concept_id'}" />
+                        <filter name="concept" string="Concept" icon="terp-personal" domain="[]" context="{'group_by':'concept_id'}" />
                     </group>
                 </search>
             </field>

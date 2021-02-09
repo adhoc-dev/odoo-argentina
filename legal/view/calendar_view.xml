@@ -16,20 +16,20 @@
                 <field name="prosecution_id"/>
                 <field name="department_id"/>
                 <field name="partner_id" string="Customer"/>
-                <filter icon="terp-go-today" string="Confirm" domain="[('state','=','open')]"/>
-                <filter icon="terp-go-today" string="Unconfirm" domain="[('state','=','draft')]"/>
+                <filter icon="terp-go-today" name="confirm" string="Confirm" domain="[('state','=','open')]"/>
+                <filter icon="terp-go-today" name="unconfirm" string="Unconfirm" domain="[('state','=','draft')]"/>
                 <group>
                     <field name="start_date" string="Start Date From" filter_domain="['|',('start_date','&gt;=',self),('start_datetime','&gt;=',self)]"/>
                     <field name="start_date" string="Start Date To" filter_domain="['|',('start_date','&lt;=',self), ('start_datetime','&lt;=',self)]"/>
                 </group>
             </field>
             <group>
-                <filter string="Event Type" icon="terp-personal" domain="[]" context="{'group_by':'event_type'}" />
-                <filter string="Responsible" icon="terp-partner" context="{'group_by':'responsible_id'}"/>
-                <filter string="Prosecution Type" icon="terp-partner" context="{'group_by':'prosecution_type_id'}"/>
-                <filter string="State" icon="terp-partner" context="{'group_by':'state'}"/>
-                <filter string="Subtype" icon="terp-partner" context="{'group_by':'sub_type_id'}"/>
-                <filter string="Customer" icon="terp-partner" context="{'group_by':'partner_id'}"/>
+                <filter name="event_type" string="Event Type" icon="terp-personal" domain="[]" context="{'group_by':'event_type'}" />
+                <filter name="responsible" string="Responsible" icon="terp-partner" context="{'group_by':'responsible_id'}"/>
+                <filter name="prosecution_type" string="Prosecution Type" icon="terp-partner" context="{'group_by':'prosecution_type_id'}"/>
+                <filter name="state" string="State" icon="terp-partner" context="{'group_by':'state'}"/>
+                <filter name="subtype" string="Subtype" icon="terp-partner" context="{'group_by':'sub_type_id'}"/>
+                <filter name="customer" string="Customer" icon="terp-partner" context="{'group_by':'partner_id'}"/>
             </group>
         </field>
     </record>

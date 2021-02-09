@@ -68,7 +68,7 @@ class Prosecution(models.Model):
     @api.constrains('member_ids')
     def action_follow(self):
         for rec in self:
-            rec.message_subscribe_users(self.member_ids.ids)
+            rec.message_subscribe(self.member_ids.mapped('partner_id').ids)
 
     @api.onchange('department_id')
     def auto_complete_auxiliar_field(self):
@@ -236,7 +236,6 @@ class Prosecution(models.Model):
     partner_id = fields.Many2one(
         'res.partner',
         'Customer',
-        domain="[('customer','=',True)]",
     )
 
     num_sinister = fields.Char(
@@ -329,6 +328,8 @@ class Prosecution(models.Model):
         for rec in self:
             if rec.invoice_ids:
                 rec.invoices = len(rec.invoice_ids)
+            else:
+                rec.invoices = False
 
     @api.constrains('general_state')
     def onchange_general_state(self):

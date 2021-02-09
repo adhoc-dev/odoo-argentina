@@ -14,7 +14,7 @@
                         <field name="date" string="Date"/>
                     </group>
                     <group expand="1" string="Group By...">
-                        <filter string="Type" icon="terp-personal" domain="[]" context="{'group_by':'type_id'}" />
+                        <filter name="type" string="Type" icon="terp-personal" domain="[]" context="{'group_by':'type_id'}" />
                     </group>
                 </search>
             </field>

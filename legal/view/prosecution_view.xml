@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <odoo>
-
+    <data>
        <!-- SEARCH VIEW -->
         <record id="view_legal_prosecution_filter" model="ir.ui.view">
             <field name="name">legal.prosecution.select</field>
@@ -22,17 +22,17 @@
                         <field name="substate_id" string="Substate"/>
                     </group>
                     <group expand="1" string="Group By...">
-                        <filter string="Type prosecution" icon="terp-personal" domain="[]" context="{'group_by':'prosecution_type_id'}" />
-                        <filter string="Folder" icon="terp-partner" context="{'group_by':'folder_name'}"/>
-                        <filter string="Department" icon="terp-partner" context="{'group_by':'department_id'}"/>
-                        <filter string="Substate" icon="terp-partner" context="{'group_by':'substate_id'}"/>
-                        <filter string="Client" icon="terp-partner" context="{'group_by':'partner_id'}"/>
-                        <filter string="Current Judged" icon="terp-partner" context="{'group_by':'current_judged_id'}"/>
-                        <filter string="Openinig Date Folder" icon="terp-partner" context="{'group_by':'opening_date_folder'}"/>
-                        <filter string="Close Date Folder" icon="terp-partner" context="{'group_by':'close_date_folder'}"/>
-                        <filter string="Responsible" icon="terp-partner" context="{'group_by':'responsible_id'}"/>
-                        <filter string="Status" icon="terp-partner" context="{'group_by':'status_id'}"/>
-                        <filter string="General State" icon="terp-partner" context="{'group_by':'general_state'}"/>
+                        <filter name="type_prosecution" string="Type prosecution" icon="terp-personal" domain="[]" context="{'group_by':'prosecution_type_id'}" />
+                        <filter name="folder" string="Folder" icon="terp-partner" context="{'group_by':'folder_name'}"/>
+                        <filter name="department" string="Department" icon="terp-partner" context="{'group_by':'department_id'}"/>
+                        <filter name="substate" string="Substate" icon="terp-partner" context="{'group_by':'substate_id'}"/>
+                        <filter name="client" string="Client" icon="terp-partner" context="{'group_by':'partner_id'}"/>
+                        <filter name="current_jugded" string="Current Judged" icon="terp-partner" context="{'group_by':'current_judged_id'}"/>
+                        <filter name="opening_date_folder" string="Opening Date Folder" icon="terp-partner" context="{'group_by':'opening_date_folder'}"/>
+                        <filter name="close_date_folder" string="Close Date Folder" icon="terp-partner" context="{'group_by':'close_date_folder'}"/>
+                        <filter name="responsible" string="Responsible" icon="terp-partner" context="{'group_by':'responsible_id'}"/>
+                        <filter name="status" string="Status" icon="terp-partner" context="{'group_by':'status_id'}"/>
+                        <filter name="general_state" string="General State" icon="terp-partner" context="{'group_by':'general_state'}"/>
                     </group>
                 </search>
             </field>
@@ -208,7 +208,7 @@
             <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/>
             <field name="arch" type="xml">
                     <div name="buttons">
-                        <button type="action" class="oe_stat_button" id="invoice_button" icon="fa-pencil-square-o" name="%(account.action_invoice_tree1)d" context="{'search_default_prosecution_id': active_id,'default_partner_id': partner_id}">
+                        <button type="action" class="oe_stat_button" id="invoice_button" icon="fa-pencil-square-o" name="%(account.action_move_out_invoice_type)d" context="{'search_default_prosecution_id': active_id,'default_partner_id': partner_id}">
                         <field name="invoices" string="Invoices" widget="statinfo"/>
                         </button>
                     </div>
@@ -263,7 +263,7 @@
                                         <field name="status_id"/></a>
                                 </div>
                                 <div class="oe_kanban_bottom_right">
-                                    <img t-att-src="kanban_image('res.partner', 'image_small', record.responsible_id.raw_value)" t-att-title="record.responsible_id.value" width="40" height="35"/>
+                                    <img alt="responsible" t-att-src="kanban_image('res.partner', 'image_small', record.responsible_id.raw_value)" t-att-title="record.responsible_id.value" width="40" height="35"/>
                                 </div>
                                 <div class="oe_clear"/>
                             </div>
@@ -288,5 +288,5 @@
                 </tree>
             </field>
         </record>
-
+    </data>
 </odoo>
