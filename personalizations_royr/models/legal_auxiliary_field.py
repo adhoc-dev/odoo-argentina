@@ -8,7 +8,8 @@ from odoo import models, fields
 class LegalAuxiliaryField(models.Model):
 
     _name = 'legal.auxiliary.field'
-
+    _description = 'Campo Legal Auxiliar'
+    
     name = fields.Char()
 
     department_id = fields.Many2one(

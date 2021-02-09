@@ -8,6 +8,7 @@ from odoo import models, fields
 class LegalDepartment(models.Model):
 
     _name = 'legal.department'
+    _description = 'legal.department'
 
     name = fields.Char('Name')
     code = fields.Char('Code', required=True)

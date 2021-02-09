@@ -8,5 +8,6 @@ from odoo import models, fields
 class LegalResponsibility(models.Model):
 
     _name = 'legal.responsibility'
+    _description = 'legal.responsibility'
 
     name = fields.Char()

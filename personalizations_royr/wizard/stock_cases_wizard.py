@@ -2,11 +2,12 @@
 # For copyright and license notices, see __manifest__.py file in module root
 # directory
 ##############################################################################
-from odoo import models, fields, api
+from odoo import models, fields
 
 
 class StockCases(models.TransientModel):
     _name = 'legal.stock_cases'
+    _description = 'legal.stock_cases'
 
     from_date = fields.Date(
         string="From Date",

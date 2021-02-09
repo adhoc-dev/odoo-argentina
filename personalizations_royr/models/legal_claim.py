@@ -8,6 +8,7 @@ from odoo import models, fields
 class LegalClaim(models.Model):
 
     _name = 'legal.claim'
+    _description = 'legal.claim'
 
     total = fields.Float(
         string='Total Claim',

@@ -4,8 +4,10 @@
 ##############################################################################
 from odoo import models, fields
 
+
 class LegalNegotiationConcept(models.Model):
 
     _name = 'legal.negotiation.concept'
+    _description = 'legal.negotiation.concept'
 
     name = fields.Char()

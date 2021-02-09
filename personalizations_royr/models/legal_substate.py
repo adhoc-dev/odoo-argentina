@@ -8,5 +8,6 @@ from odoo import models, fields
 class LegalSubstate(models.Model):
 
     _name = 'legal.substate'
+    _description = 'legal.substate'
 
     name = fields.Char()

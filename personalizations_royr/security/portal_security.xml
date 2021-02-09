@@ -3,7 +3,7 @@
 
         <record id="portal_legal_rule" model="ir.rule">
             <field name="name">Portal Legal</field>
-            <field ref="legal.model_legal_prosecution" name="model_id"/>
+            <field ref="model_legal_prosecution" name="model_id"/>
             <field name="domain_force">[('partner_id','child_of',[user.commercial_partner_id.id])]</field>
             <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
             <field eval="0" name="perm_unlink"/>

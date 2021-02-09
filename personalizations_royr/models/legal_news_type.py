@@ -8,6 +8,6 @@ from odoo import models, fields
 class LegalNewsType(models.Model):
 
     _name = 'legal.news.type'
+    _description = 'legal.news.type'
 
     name = fields.Char()
-

@@ -27,8 +27,6 @@ access_legal_manager_part,legal.manager.part,model_legal_part,group_manager,1,1,
 access_legal_user_part,legal.user.part,model_legal_part,group_user,1,1,1,1
 access_legal_manager_claim_category,legal.manager.claim_category,model_legal_claim_category,group_manager,1,1,1,1
 access_legal_user_claim_category,legal.user.claim_category,model_legal_claim_category,group_user,1,1,1,1
-access_legal_manager_auxiliary_fields,legal.manager.auxiliary_field,model_legal_auxiliary_field,group_manager,1,1,1,1
-access_legal_user_auxiliary_fields,legal.user.auxiliary_field,model_legal_auxiliary_field,group_user,1,1,1,1
 access_legal_manager_claim_type,legal.manager.claim_type,model_legal_claim_type,group_manager,1,1,1,1
 access_legal_user_claim_type,legal.user.claim_type,model_legal_claim_type,group_user,1,1,1,1
 access_legal_manager_news_type,legal.manager.news_type,model_legal_news_type,group_manager,1,1,1,1

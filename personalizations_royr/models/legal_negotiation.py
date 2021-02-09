@@ -9,6 +9,7 @@ from datetime import date
 class LegalNegotiation(models.Model):
 
     _name = 'legal.negotiation'
+    _description = 'legal.negotiation'
 
     concept_id = fields.Many2one(
         'legal.negotiation.concept',

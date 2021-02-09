@@ -1,4 +1,4 @@
 "id","name"
-"claim.category_01","Incapacidad física"
-"claim.category_02","Incapacidad psíquica"
-"claim.category_03","Daño moral"
+"claim_category_01","Incapacidad física"
+"claim_category_02","Incapacidad psíquica"
+"claim_category_03","Daño moral"

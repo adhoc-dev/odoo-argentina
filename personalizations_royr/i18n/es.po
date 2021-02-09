@@ -862,7 +862,7 @@ msgid "Mail"
 msgstr "Mail"
 
 #. module: legal
-#: model:res.groups,name:legal.group_manager
+#: model:res.groups,name:personalizations_royr.group_manager
 msgid "Manager"
 msgstr "Responsable"
 

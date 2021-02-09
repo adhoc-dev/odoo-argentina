@@ -8,6 +8,7 @@ from odoo import models, fields, api, _
 class LegalExpertise(models.Model):
 
     _name = 'legal.expertise'
+    _description = 'legal.expertise'
 
     type_id = fields.Many2one(
         'legal.expertise.type',
@@ -34,10 +35,12 @@ class LegalExpertise(models.Model):
     expertise_detail_ids = fields.One2many(
         'legal.expertise.detail',
         'expertise_id',
+        string="Expertise Details"
     )
 
     expertise_detail = fields.Text(
         compute='_compute_expertise_detail',
+        string="Expertise Detail"
     )
 
     def _compute_expertise_detail(self):

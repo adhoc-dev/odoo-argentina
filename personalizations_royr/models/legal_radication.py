@@ -8,6 +8,7 @@ from odoo import models, fields, api
 class LegalRadication(models.Model):
 
     _name = 'legal.radication'
+    _description = 'legal.radication'
     _order = 'date_court desc'
 
     address = fields.Char(

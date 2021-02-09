@@ -8,5 +8,6 @@ from odoo import models, fields
 class LegalRegulationConcept(models.Model):
 
     _name = 'legal.regulation.concept'
+    _description = 'legal.regulation.concept'
 
     name = fields.Char()

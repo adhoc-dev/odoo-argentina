@@ -8,6 +8,7 @@ from odoo import models, fields
 class LegalMeetingType(models.Model):
 
     _name = 'legal.meeting.type'
+    _description = 'legal.meeting.type'
 
     name = fields.Char(string='Name')
     event_type = fields.Selection(

@@ -76,6 +76,8 @@
         'data/demo/legal.prosecution_type.csv',
         'data/demo/legal.department.csv',
         'data/demo/legal.prosecution.csv',
+        'data/demo/legal.responsibility.csv',
+        'data/demo/legal.evidence.type.csv'
     ],
     'installable': True,
     'auto_install': False,

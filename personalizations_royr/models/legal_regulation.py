@@ -9,6 +9,7 @@ from datetime import date
 class LegalRegulation(models.Model):
 
     _name = 'legal.regulation'
+    _description = 'legal.regulation'
 
     beneficiary = fields.Char()
 

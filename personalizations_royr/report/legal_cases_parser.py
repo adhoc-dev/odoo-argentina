@@ -8,17 +8,18 @@ from odoo import models, api
 class Parser(models.AbstractModel):
     _inherit = 'report.report_aeroo.abstract'
     _name = 'report.legal_cases_report_parser'
+    _description = 'report.legal_cases_report_parser'
 
     @api.model
     def aeroo_report(self, docids, data):
         if not data:
             data = {}
 
-        self.from_date = context.get('from_date', False)
-        self.to_date = context.get('to_date', False)
-        self.detail = context.get('detail', False)
-        self.responsible_id = context.get('responsible_id', False)
-        self.prosecution_type_id = context.get('prosecution_type_id', False)
+        self.from_date = self.env.context.get('from_date', False)
+        self.to_date = self.env.context.get('to_date', False)
+        self.detail = self.env.context.get('detail', False)
+        self.responsible_id = self.env.context.get('responsible_id', False)
+        self.prosecution_type_id = self.env.context.get('prosecution_type_id', False)
 
         data.update({
             'config': self.config,

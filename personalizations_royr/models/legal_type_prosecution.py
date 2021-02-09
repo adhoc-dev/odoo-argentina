@@ -5,6 +5,7 @@
 
 from odoo import models, fields
 
+
 class LegalTypeProsecution(models.Model):
 
     _name = 'legal.prosecution_type'

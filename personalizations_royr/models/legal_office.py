@@ -8,6 +8,7 @@ from odoo import models, fields, api
 class LegalOffice(models.Model):
 
     _name = 'legal.office'
+    _description = 'legal.office'
     _rec_name = 'display_name'
 
     name = fields.Char()

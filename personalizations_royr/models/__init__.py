@@ -10,16 +10,13 @@ from . import legal_claim
 from . import legal_claim_type
 from . import legal_claim_category
 from . import legal_meeting_type
-from . import legal_department
 from . import legal_substate
 from . import legal_models
-from . import legal_office
 from . import prosecution
 from . import legal_radication
 from . import legal_regulation_concept
 from . import legal_status
 from . import legal_regulation
-from . import legal_news
 from . import legal_parts
 from . import legal_role
 from . import legal_evidence
@@ -38,7 +35,4 @@ from . import legal_expertise_detail_type
 from . import res_partner
 from . import account_invoice
 from . import legal_responsibility
-from . import legal_offerer
-from . import legal_expertise
 from . import calendar_event
-from . import legal_meeting_type

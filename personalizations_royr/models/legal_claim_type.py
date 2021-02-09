@@ -9,6 +9,7 @@ from odoo import models, fields
 class LegalClaimType(models.Model):
 
     _name = 'legal.claim.type'
+    _description = 'legal.claim.type'
 
     name = fields.Char()
 

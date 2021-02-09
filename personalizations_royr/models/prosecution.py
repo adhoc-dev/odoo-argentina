@@ -18,7 +18,7 @@ class Prosecution(models.Model):
         for rec in self:
             rec.folder_name = '-'.join(
                 [str(rec.department_id.code), rec.partner_id.name[0],
-                 self.env['ir.sequence'].get('legal.prosecution')]
+                 self.env['ir.sequence'].next_by_code('legal.prosecution')]
             )
 
     @api.model
@@ -33,13 +33,13 @@ class Prosecution(models.Model):
             name += '-' + partner_obj.browse(
                 vals.get('partner_id', False)).name[0]
         name += '-' + \
-            self.env['ir.sequence'].get('legal.prosecution')
+            self.env['ir.sequence'].next_by_code('legal.prosecution')
         vals['folder_name'] = name
         vals['opening_date_folder'] = date.today()
         return super(Prosecution, self).create(vals)
 
     @api.depends('radication_ids')
-    def _get_data(self):
+    def _compute_get_data(self):
         for rec in self:
             if rec.radication_ids:
                 rec.current_judged_id = rec.radication_ids[
@@ -223,7 +223,7 @@ class Prosecution(models.Model):
     current_judged_id = fields.Many2one(
         'legal.office',
         string='Current Judged',
-        compute='_get_data',
+        compute='_compute_get_data',
         store=True,
     )
 
@@ -244,7 +244,7 @@ class Prosecution(models.Model):
 
     number_case_file = fields.Char(
         'Number of case file',
-        compute='_get_data',
+        compute='_compute_get_data',
         store=True,
     )
 
@@ -342,6 +342,7 @@ class Prosecution(models.Model):
 
 class ProsecutionStateDetail(models.Model):
     _name = 'prosecution.state_detail'
+    _description = 'prosecution.state_detail'
     _order = 'sequence'
 
     name = fields.Char('Name')

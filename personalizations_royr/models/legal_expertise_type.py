@@ -8,5 +8,6 @@ from odoo import models, fields
 class LegalExpertiseType(models.Model):
 
     _name = 'legal.expertise.type'
+    _description = 'legal.expertise.type'
 
     name = fields.Char()

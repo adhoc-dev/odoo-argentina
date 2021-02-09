@@ -9,6 +9,7 @@ from datetime import date
 class LegalNews(models.Model):
 
     _name = 'legal.news'
+    _description = 'legal.news'
     _rec_name = 'description'
 
     description = fields.Char()
@@ -24,4 +25,3 @@ class LegalNews(models.Model):
     prosecution_id = fields.Many2one(
         'legal.prosecution',
     )
-

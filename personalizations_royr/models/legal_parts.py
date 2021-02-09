@@ -8,6 +8,7 @@ from odoo import models, fields
 class LegalPart(models.Model):
 
     _name = 'legal.part'
+    _description = 'legal.part'
 
     age = fields.Integer()
 

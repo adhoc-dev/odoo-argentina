@@ -4,8 +4,10 @@
 ##############################################################################
 from odoo import models, fields
 
+
 class LegalEvidenceType(models.Model):
 
     _name = 'legal.evidence.type'
+    _description = 'legal.evidence.type'
 
     name = fields.Char('Name')
