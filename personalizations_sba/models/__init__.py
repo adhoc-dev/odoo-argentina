@@ -6,9 +6,8 @@ from . import x_product_language
 from . import x_product_subcategoria
 from . import x_product_version
 from . import x_res_partner_stage
-from . import account_debt_line
-from . import account_invoice
-from . import account_invoice_line
+from . import account_move
+from . import account_move_line
 from . import product_pricelist
 from . import product_pricelist_item
 from . import product_template
