@@ -73,7 +73,6 @@
         'website_sale_product_description',
         'location_security',
         'account_journal_security',
-        'stock_picking_batch',
         'base_name_search_improved',
         'product_attribute_template',
         'product_template_tags',
