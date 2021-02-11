@@ -84,6 +84,7 @@
         'barcodes',
         'account_3way_match',
         'mass_operation_abstract',
+        'product_pricelist',
         'product_replenishment_cost_sale_margin',
     ],
     'data': [
