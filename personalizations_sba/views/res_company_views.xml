@@ -5,7 +5,7 @@
     <field name="model">res.company</field>
     <field ref="base.view_company_form" name="inherit_id"/>
     <field name="arch" type="xml">
-      <field name="report_footer" position="after">
+      <field name="currency_id" position="after">
         <field name="x_rango_fecha_recargo"/>
       </field>
     </field>

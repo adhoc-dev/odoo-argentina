@@ -2,8 +2,8 @@
 <odoo>
   <record id="personalizations_sba.ir_ui_view_1879" model="ir.ui.view">
     <field name="name">isbn.inherit</field>
-    <field name="model">account.invoice</field>
-    <field ref="account.invoice_form" name="inherit_id"/>
+    <field name="model">account.move</field>
+    <field ref="account.view_move_form" name="inherit_id"/>
     <field name="arch" type="xml">
         <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='product_id']" position="before">
           <field name="x_isbn"/>
@@ -15,55 +15,45 @@
   </record>
   <record id="personalizations_sba.ir_ui_view_2088" model="ir.ui.view">
     <field name="name">Vista Personalizada(Recargo por mora)</field>
-    <field name="model">account.invoice</field>
-    <field ref="account.invoice_form" name="inherit_id"/>
+    <field name="model">account.move</field>
+    <field ref="account.view_move_form" name="inherit_id"/>
     <field name="arch" type="xml">
         <header position="after">
           <field name="x_state_invoice" invisible="1"/>
           <!--<field name="x_invoice_nd_id" invisible="0"/>-->
-          <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|',('x_state_invoice','!=','vencida_sin_nd')]}">
+          <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', '|', ('x_state_invoice','!=','vencida_sin_nd'),('type', 'not in', ['out_invoice', 'out_refund','out_receipt'])]}">
         Tiene una factura vencida y sin ND generada para generarla haga click<bold><button name="create_debt_invoice" string="⇒ Generar ND" class="oe_link oe_inline" type="object"/></bold>
 </div>
-          <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|',('x_invoice_nd_id','=', False), ('state','!=','open')]}">
+          <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', '|',('x_invoice_nd_id','=', False), ('state','!=','open'), ('type', 'not in', ['out_invoice', 'out_refund','out_receipt'])]}">
         Tiene una <bold><field name="x_invoice_nd_id" string="ND"/></bold> asociada por intereses
   </div>
         </header>
-        <field name="date_due" position="after">
-          <field name="x_fecha_segundo_venc"/>
+        <field name="invoice_date_due" position="after">
+          <field name="x_fecha_segundo_venc" attrs="{'invisible': [('type', 'not in', ['out_invoice', 'out_refund','out_receipt'])]}"/>
         </field>
         <field name="amount_total" position="after">
-          <field name="x_monto_cargo" string="Importe a pagar segundo vencimiento"/>
+          <field name="x_monto_cargo" string="Importe a pagar segundo vencimiento" attrs="{'invisible': [('type', 'not in', ['out_invoice', 'out_refund','out_receipt'])]}"/>
         </field>
     </field>
   </record>
   <record id="personalizations_sba.ir_ui_view_2089" model="ir.ui.view">
     <field name="name">Vista personalizada(recargo por mora)</field>
-    <field name="model">account.invoice</field>
-    <field ref="account.invoice_tree" name="inherit_id"/>
+    <field name="model">account.move</field>
+    <field ref="account.view_invoice_tree" name="inherit_id"/>
     <field name="arch" type="xml">
       <field name="state" position="after">
-        <field name="x_state_invoice"/>
+        <field name="x_state_invoice" invisible="context.get('default_type') not in ('out_invoice', 'out_refund','out_receipt')"/>
       </field>
     </field>
   </record>
   <record id="personalizations_sba.ir_ui_view_2090" model="ir.ui.view">
     <field name="name">Vista Personalizada(Recargo por mora)</field>
-    <field name="model">account.invoice</field>
+    <field name="model">account.move</field>
     <field ref="account.view_account_invoice_filter" name="inherit_id"/>
     <field name="arch" type="xml">
       <filter name="paid" position="after">
         <filter name="x_state_invoice" string="Vencida sin notas de debito emitidas" domain="[('x_state_invoice', '=', 'vencida_sin_nd')]"/>
       </filter>
-    </field>
-  </record>
-  <record id="personalizations_sba.odoo_studio_account__0d3cb73d-f2e4-426c-a751-cf1d9559ecb1" model="ir.ui.view">
-    <field name="name">Odoo Studio: account.invoice.select customization</field>
-    <field name="model">account.invoice</field>
-    <field ref="account.view_account_invoice_filter" name="inherit_id"/>
-    <field name="arch" type="xml">
-        <xpath expr="//search[1]/group[1]/filter[not(@name)][6]" position="after">
-          <filter context="{'group_by': 'x_state_invoice'}" name="x_state_invoice" string="Estado de vencimiento de factura"/>
-        </xpath>
     </field>
   </record>
 </odoo>

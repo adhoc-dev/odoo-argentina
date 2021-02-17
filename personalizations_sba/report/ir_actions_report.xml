@@ -1,22 +1,36 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <record id="l10n_ar_aeroo_einvoice.action_aeroo_report_ar_einvoice" model="ir.actions.report">
+  <record id="action_aeroo_report_ar_einvoice" model="ir.actions.report">
+    <field name="name">Argentinian Aeroo Electronic Invoice</field>
+    <field name="model">account.move</field>
+    <field name="report_name">aeroo_report_ar_einvoice</field>
+    <field name="report_type">aeroo</field>
+    <field name="in_format">oo-odt</field>
     <field name="report_file">personalizations_sba/report/aeroo_report_ar_einvoice.odt</field>
+    <field name="tml_source">file</field>
+    <field name="process_sep" eval="True"/>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+    <field name="print_report_name">(object.state == 'draft' and 'PROFORMA' or (object.document_type_id.report_name or 'Comprobante')) + " " + (object.name or '')</field>
   </record>
-  <record id="l10n_ar_aeroo_stock.action_aeroo_report_ar_stock_remito" model="ir.actions.report">
+  <record id="action_aeroo_report_ar_stock_remito" model="ir.actions.report">
+    <field name="name">Remito pre-impreso</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">aeroo_report_ar_remito</field>
+    <field name="report_type">aeroo</field>
+    <field name="in_format">oo-odt</field>
     <field name="report_file">personalizations_sba/report/aeroo_report_ar_remito.odt</field>
+    <field name="tml_source">file</field>
+    <field name="process_sep" eval="True"/>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+    <field name="print_report_name">'Remito ' + (','.join(object.voucher_ids.mapped('number')))</field>
   </record>
   <record id="ir_act_report_xml_715" model="ir.actions.report">
     <field name="name">Remito pre-impreso existencias</field>
     <field name="model">stock.picking</field>
     <field name="report_name">aeroo_report_ar_remito_existencias</field>
     <field name="report_type">aeroo</field>
-    <field eval="False" name="attachment"/>
-    <field eval="False" name="attachment_use"/>
     <field ref="delivery.model_stock_picking" name="binding_model_id"/>
     <field name="binding_type">report</field>
-    <field eval="False" name="multi"/>
-    <field eval="False" name="paperformat_id"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_sba/report/aeroo_report_ar_remito_existencias.odt</field>
     <field eval="True" name="process_sep"/>

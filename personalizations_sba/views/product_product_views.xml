@@ -25,10 +25,10 @@
   </record>
   <record id="personalizations_sba.odoo_studio_product__0e53611d-abd5-4817-b1a8-3edc5f8fb3eb" model="ir.ui.view">
     <field name="name">Odoo Studio: product.stock.tree.2 customization</field>
-    <field name="model">product.product</field>
-    <field ref="stock_account.view_stock_product_tree2" name="inherit_id"/>
+    <field name="model">stock.valuation.layer</field>
+    <field ref="stock_account.stock_valuation_layer_tree" name="inherit_id"/>
     <field name="arch" type="xml">
-        <xpath expr="//field[@name='display_name']" position="before">
+        <xpath expr="//field[@name='product_id']" position="before">
           <field name="barcode"/>
         </xpath>
     </field>

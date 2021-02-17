@@ -8,7 +8,7 @@
         <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='location_id']" position="after">
           <field name="x_studio_field_oowCd" string="Destinatario"/>
         </xpath>
-        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='move_lines']/tree[1]/field[@name='is_locked']" position="after">
+        <xpath expr="//field[@name='move_ids_without_package']/tree[1]/field[@name='is_locked']" position="after">
           <field name="x_studio_field_yBQWe" string="ISBN"/>
         </xpath>
     </field>
