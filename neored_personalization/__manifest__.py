@@ -31,6 +31,7 @@
     'depends': [
         'product_replenishment_cost',
         'purchase_ux',
+        'account_followup',
         'base_automation',
         'product_internal_code',
         # solo para instalarlo en todos y que funcione bien odumbo sync
