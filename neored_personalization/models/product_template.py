@@ -27,7 +27,7 @@ class ProductTemplate(models.Model):
         for rec in self.filtered('neored_image_url'):
             try:
                 rec.write({
-                    'image': self.env['base_import.import']._import_image_by_url(
+                    'image_1920': self.env['base_import.import']._import_image_by_url(
                         rec.neored_image_url, session, 'neored_image_url', 0),
                     'last_syncked_neored_image_url': rec.neored_image_url,
                 })
