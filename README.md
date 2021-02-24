@@ -1,4 +1,4 @@
-da[![Coverage Status](https://coveralls.io/repos/ingadhoc/personalizations/badge.png?branch=13.0)](https://coveralls.io/r/ingadhoc/personalizations?branch=13.0)
+[![Coverage Status](https://coveralls.io/repos/ingadhoc/personalizations/badge.png?branch=13.0)](https://coveralls.io/r/ingadhoc/personalizations?branch=13.0)
 [![Code Climate](https://codeclimate.com/github/ingadhoc/personalizations/badges/gpa.svg)](https://codeclimate.com/github/ingadhoc/personalizations)
 
 # Personalization Odoo Addons
