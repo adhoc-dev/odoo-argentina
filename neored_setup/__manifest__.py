@@ -70,6 +70,7 @@
         'price_security_planned_price',
         'product_dimension',
         'sale_cancel_reason',
+        'account_invoice_fiscal_position_update',
         'website_sale_product_description',
         'location_security',
         'account_journal_security',
