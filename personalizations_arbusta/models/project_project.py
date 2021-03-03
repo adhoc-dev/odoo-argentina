@@ -57,8 +57,5 @@ class ProjectProject(models.Model):
     x_studio_field_d19Se = fields.Many2many(string="Skills requeridos", comodel_name="hr.skill",
                                             relation="x_hr_skill_project_project_rel", column1="project_project_id",
                                             column2="hr_skill_id", on_delete="cascade", copy=False)
-    x_studio_field_9w4KH = fields.Integer(string="Tareas", copy=False)
-    x_studio_field_Lys9g = fields.Integer(string="Lógica del negocio", copy=False)
-    x_studio_field_SKjuT = fields.Integer(string="SLA - Métricas", copy=False)
-    x_studio_field_o2hcY = fields.Integer(string="Herramientas", copy=False)
+    link_analisis = fields.Char(string='Link Análisis')
     description = fields.Html()

@@ -50,10 +50,7 @@
             <group name="studio_group_RDkiG">
               <group name="studio_group_RDkiG_left">
                 <field name="x_studio_field_OJHzP" string="Complejidad" widget="selection"/>
-                <field name="x_studio_field_Lys9g" string="Lógica del negocio" widget="integer"/>
-                <field name="x_studio_field_9w4KH" string="Tareas" widget="integer"/>
-                <field name="x_studio_field_o2hcY" string="Herramientas"/>
-                <field name="x_studio_field_SKjuT" string="SLA - Métricas"/>
+                <field name="link_analisis" widget="url"/>
               </group>
               <group name="studio_group_RDkiG_right">
                   <field name="x_studio_field_d19Se" widget="many2many_tags" string="Skills requeridos"/>
