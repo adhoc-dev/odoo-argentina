@@ -70,7 +70,7 @@
     <field name="name">Odoo Studio: hr.employee.form customization</field>
     <field name="model">hr.employee</field>
     <field name="inherit_id" ref="hr.view_employee_form"/>
-    <field name="priority">15</field>
+    <field name="priority">99</field>
     <field name="arch" type="xml">
       <data>
         <xpath expr="//field[@name='work_phone']" position="replace"/>
@@ -85,31 +85,91 @@
         <xpath expr="//button[@name='166']" position="attributes">
           <attribute name="groups"/>
         </xpath> -->
-        <xpath expr="//field[@name='mobile_phone']" position="before">
-          <field name="x_studio_field_HkwZE"/>
-        </xpath>
+        <field name="department_id" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="job_id" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="parent_id" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="work_email" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="company_id" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="address_home_id" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="private_email" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="phone" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="emergency_phone" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="emergency_contact" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="country_id" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="identification_id" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="gender" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="birthday" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="children" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="user_id" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="timesheet_manager_id" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="leave_manager_id" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="resource_calendar_id" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="tz" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name='mobile_phone' position="before">
+          <field name="x_studio_field_HkwZE" required='1'/>
+        </field>
         <xpath expr="//form[1]/sheet[1]/group[1]/group[2]" position="attributes">
           <attribute name="groups">base.group_user</attribute>
         </xpath>
         <xpath expr="//field[@name='department_id']" position="before">
-          <field name="x_studio_field_Ev7Dp" groups="base.group_user"/>
+          <field name="x_studio_field_Ev7Dp" required='1' groups="base.group_user"/>
         </xpath>
         <xpath expr="//field[@name='department_id']" position="after">
           <field name="x_studio_field_2MSWR"/>
         </xpath>
-        <xpath expr="//field[@name='job_id']" position="after">
-          <field name="x_studio_field_fZbCK"/>
-        </xpath>
+        <field name='job_id' position="after">
+          <field name="x_studio_field_fZbCK" required='1'/>
+        </field>
         <xpath expr="//field[@name='parent_id']" position="after">
-          <field name="coach_id"/>
+          <field name="coach_id" required='1'/>
         </xpath>
         <xpath expr="//page[@name='personal_information']" position="attributes">
           <attribute name="groups">hr.group_hr_manager</attribute>
         </xpath>
         <xpath expr="//field[@name='certificate']" position="before">
-          <field name="level_study"/>
-          <field name="x_studio_field_bDsGO"/>
-          <field name="x_studio_field_t2GcX"/>
+          <field name="level_study" required='1'/>
+          <field name="x_studio_field_bDsGO" required='1'/>
+          <field name="x_studio_field_t2GcX" required='1'/>
           <field name="x_studio_field_HT2p1"/>
         </xpath>
         <xpath expr="//page[@name='hr_settings']" position="attributes">
@@ -117,7 +177,7 @@
         </xpath>
          <group name="identification_group" position="replace">
             <group string="Attendance" name="identification_group">
-                <field name="x_studio_field_lhpTm"/>
+                <field name="x_studio_field_lhpTm" required='1'/>
                 <field name="pin" string="PIN Code"/>
                 <label for="barcode"/>
                 <div class="o_row">
@@ -129,7 +189,7 @@
           <field name="x_studio_field_ontRJ" string="Situación extranj."/>
         </field>
         <field name="user_id" position="before">
-          <field name="registry_date"/>
+          <field name="registry_date" required='1'/>
           <field name="x_studio_field_RiU1z"/>
           <field name="x_studio_field_awy5r"/>
           <field name="x_studio_field_RFrXP"/>
@@ -137,6 +197,7 @@
         </field>
         <field name="certificate" position="attributes">
           <attribute name="string">Nivel Alcanzado</attribute>
+          <attribute name="required">1</attribute>
           <attribute name="widget">selection</attribute>
         </field>
         <field name="study_school" position="attributes">
@@ -155,12 +216,12 @@
           </group>
         </xpath>
         <xpath expr="//field[@name='tz']" position="after">
-          <field name="x_studio_field_cTb35"/>
-          <field name="x_studio_field_VKdnN"/>
+          <field name="x_studio_field_cTb35" required='1'/>
+          <field name="x_studio_field_VKdnN" required='1'/>
           <field name="x_studio_field_CsHEC" widget="boolean_toggle" attrs="{'invisible': [['x_studio_field_cTb35','=','Full-time']]}"/> <!--pasar a otra pagina -->
           <field name="x_studio_field_q5sPJ" widget="boolean" attrs="{'invisible': [['x_studio_field_cTb35','=','Full-time']]}"/>
           <field name="x_studio_field_SHzlD" widget="boolean_toggle"/>
-          <field name="x_studio_field_na3Vg"/>
+          <field name="x_studio_field_na3Vg" required='1'/>
         </xpath>
         <button id="hr_presence_button" position="attributes">
           <attribute name="invisible">1</attribute>
