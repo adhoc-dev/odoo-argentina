@@ -88,6 +88,7 @@
         'product_replenishment_cost_sale_margin',
     ],
     'data': [
+        'data/res_groups_data.xml',
     ],
     'demo': [
     ],
