@@ -344,7 +344,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = [
     'sequence', 'price', 'min_qty', 'delay', 'product_code', 'product_code_2', 'sequence', 'date_start', 'date_end',
-    'name', 'product_id', 'product_tmpl_id', 'product_uom', 'replenishment_cost_rule_id', 'currency_id',
+    'name', 'product_id', 'product_uom', 'replenishment_cost_rule_id', 'currency_id',
   ]
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
     data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
