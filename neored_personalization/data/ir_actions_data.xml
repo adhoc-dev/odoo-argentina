@@ -7,17 +7,17 @@
         <field name="binding_model_id" ref="model_product_template"/>
         <field name="state">code</field>
         <field name="code">
+# PARAMETROS
+# setear to_uom_id o dejar que se evalue por contexto
+to_uom_id = False
+# FIN PARAMETROS
+
 if not record.user_has_groups('base.group_system'):
   raise Warning("No esta habilitado para usar esta accion")
 record.ensure_one()
 
+to_uom_id = env.context.get('to_uom_id', to_uom_id)
 
-to_uom_id = 1   # ACA VA EL ID DE LA UOM A CAMBIAR
-
-
-
-
-# to_uom_id = len(record.uom_ids.filtered(lambda x: x.uom_id != record.uom_id)) == 1 and record.uom_ids.filtered(lambda x: x.uom_id != record.uom_id).uom_id.id or False
 if not to_uom_id:
   raise Warning("No se puede cambiar de Unidad de medida si no define una unidad diferente a la del producto en las UOMS")
 def product_uom_change(product_id, new_uom):
@@ -29,11 +29,11 @@ def product_uom_change(product_id, new_uom):
         except KeyError:
             continue
         field_name = field.name
-        
+
         if not model._auto or not model._fields.get(field_name) or not field.store or not model._fields.get('product_id'):
             continue  # Discard SQL views + invalid fields + non-stored fields
         records = model.search([('product_id', 'in', product_id.product_variant_ids.ids)])
-       
+
         if records:
             # raise Warning(new_uom.name)
             records._write({field_name: new_uom})
