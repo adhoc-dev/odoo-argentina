@@ -17,21 +17,38 @@
                 </xpath>
             </field>
         </record>
-        <!-- crm.lead inherit tree view -->
         <record id="crm_case_tree_view_leads_inherit" model="ir.ui.view">
             <field name="name">crm.lead.inherit.view.tree</field>
             <field name="model">crm.lead</field>
             <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
             <field name="arch" type="xml">
-                <!-- Add your xpath here -->
                 <field name="phone" position="replace">
                     <field name="mobile" optional="show" class="o_force_ltr"/>
+                </field>
+                <field name="tag_ids" position="attributes">
+                    <attribute name="optional">show</attribute>
+                </field>
+                <field name="tag_ids" position="after">
+                    <field name="product_id"/>
                 </field>
                 <field name="priority" position="after">
                     <field name="campaign_id"/>
                     <field name="medium_id"/>
                     <field name="source_id"/>
                     <field name="referred"/>
+                </field>
+            </field>
+        </record>
+        <record id="crm_lead_tree_opportunity_inherit" model="ir.ui.view">
+            <field name="name">crm.opportunity.inherit.view.tree</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+            <field name="arch" type="xml">
+                <field name="tag_ids" position="attributes">
+                    <attribute name="optional">show</attribute>
+                </field>
+                <field name="tag_ids" position="after">
+                    <field name="product_id"/>
                 </field>
             </field>
         </record>
