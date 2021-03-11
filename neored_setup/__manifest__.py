@@ -86,6 +86,7 @@
         'mass_operation_abstract',
         'product_pricelist',
         'product_replenishment_cost_sale_margin',
+        'product_untranslated',
     ],
     'data': [
         'data/res_groups_data.xml',
