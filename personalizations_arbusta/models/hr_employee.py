@@ -4,6 +4,8 @@ from odoo import models, fields
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
+    job_id = fields.Many2one(tracking=100)
+
     x_studio_field_HkwZE = fields.Selection(string="Oficina", selection=[('Buenos Aires', 'BUE'), ('Medellín', 'MED'),
                                                                          ('Montevideo', 'MON'), ('Rosario', 'ROS')],
                                             copy=False)
@@ -52,8 +54,6 @@ class HrEmployee(models.Model):
                                      copy=False)
     x_department_id = fields.Many2one(string="department_id", related="department_id",
                                       help="Solo se usa por el seguimiento", on_delete="set null", readonly=True)
-    x_job_id = fields.Many2one(string="job_id", related="job_id", help="Por seguimiento",
-                               on_delete="set null", readonly=True)
     x_parent_id = fields.Many2one(string="parent_id", related="parent_id", help="Por seguimiento",
                                   on_delete="set null", readonly=True)
     x_coach_id = fields.Many2one(string="coach_id", related="coach_id", help="Por seguimiento",
