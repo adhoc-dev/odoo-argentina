@@ -6,6 +6,7 @@ class AccountAnalyticLine(models.Model):
     _inherit = 'account.analytic.line'
 
     x_presupuestado = fields.Boolean(string="Presupuestado")
+    name = fields.Char(required=False)
 
     @api.onchange('unit_amount', 'product_id')
     def complete_analytic_price(self):

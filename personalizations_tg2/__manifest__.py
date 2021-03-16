@@ -1,15 +1,15 @@
 {
     'name': 'personalizations_tg2',
-    'version': '11.0.1.0',
+    'version': '13.0.1.0.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
         'account_analytic_parent',
         'helpdesk',
-        'l10n_ar_aeroo_stock',
         'purchase',
-        'sale_timesheet',
+        'hr_timesheet',
         'timesheet_grid',
+        'report_aeroo',
     ],
     'data': [
         'views/account_analytic_account_views.xml',

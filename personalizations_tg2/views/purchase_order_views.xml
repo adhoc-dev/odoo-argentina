@@ -6,8 +6,8 @@
     <field name="inherit_id" ref="purchase.purchase_order_form"/>
     <field name="arch" type="xml">
         <field name="date_order" position="after">
-          <field name="x_account_analytic_id" groups="purchase.group_analytic_accounting"/>
-          <field name="x_analytic_tag_ids" groups="purchase.group_analytic_accounting" widget="many2many_tags" options="{'color_field': 'color'}"/>
+          <field name="x_account_analytic_id" groups="analytic.group_analytic_accounting"/>
+          <field name="x_analytic_tag_ids" groups="analytic.group_analytic_accounting" widget="many2many_tags" options="{'color_field': 'color'}"/>
         </field>
         <xpath expr="//field[@name='order_line']" position="attributes">
           <attribute name="context">{'default_account_analytic_id' : x_account_analytic_id, 'default_analytic_tag_ids' : x_analytic_tag_ids}</attribute>

@@ -16,7 +16,7 @@
     <field name="model">sale.order</field>
     <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
-      <button name="action_done" position="after">
+      <button name="action_confirm" position="after">
         <field name="x_closed" invisible="1"/>
         <button string="Cerrar Orden" name="change_order_state" type="object" attrs="{'invisible': [('x_closed', '=', True)]}"/>
         <button string="Abrir Orden" name="change_order_state" type="object" attrs="{'invisible': [('x_closed', '!=', True)]}"/>
