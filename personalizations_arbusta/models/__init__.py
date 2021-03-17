@@ -10,6 +10,7 @@ from . import hr_contract
 from . import hr_employee
 from . import hr_expense
 from . import hr_leave
+from . import hr_employee_skill
 from . import maintenance_equipment
 from . import project_project
 from . import project_task

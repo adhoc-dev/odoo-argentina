@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'personalizations_arbusta',
-    'version': '13.0.1.11.1',
+    'version': '13.0.1.12.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -55,6 +55,7 @@
         'views/sale_subscription_views.xml',
         'views/x_seguimientos_views.xml',
         'views/x_seguimientos_stage_views.xml',
+        'views/hr_employee_skill_views.xml',
         'data/ir_actions_act_window.xml',
         'data/ir_ui_menu.xml',
     ],

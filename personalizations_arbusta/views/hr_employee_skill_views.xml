@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- ticket #34761 Vista lista para el modelo Nivel de habilidad para un empleado, odoo no tiene una definida,
+    si en version futura de odoo esta disponible ver si borrar esta. Importante el cliente nos pidio que lo mostraramos en
+    el orden que aparece, tomar esto en cuenta en el futuro si reusamos una de odoo -->
+    <record id="hr_employee_skill_view_tree" model="ir.ui.view">
+        <field name="name">hr.employee.skill.view.tree</field>
+        <field name="model">hr.employee.skill</field>
+        <field name="arch" type="xml">
+            <tree create="0" import="0">
+                <field name="skill_type_id"/>
+                <field name="skill_id"/>
+                <field name="employee_id"/>
+                <button type="object" name="action_open_employee" icon="fa-pencil-square-o" string="Ver Colaborador"/>
+                <field name="skill_level_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ticket #34761 Vista search para el modelo Nivel de habilidad para un empleado, odoo no tiene una definida,
+    * Esta la necesitamos permite poder buscar por:
+        * tipo de habilidad,
+        * nombre de habilidad
+        * nivel de habilidad.
+        * un empleado en especifico
+    * Tambien nos permite agrupar por tipo habilidad, habilidad y nivel de habilidad.
+    * Por ultimo, define dos filtros, para los colaboradores activos y los archivados -->
+    <record id="hr_employee_skill_view_search" model="ir.ui.view">
+        <field name="name">hr.employee.skill.view.search</field>
+        <field name="model">hr.employee.skill</field>
+        <field name="arch" type="xml">
+            <search string="Buscar por Habilidad">
+                <filter name="active_employees" string="Colaboradores Activos" domain="[('employee_id.active', '=', True)]"/>
+                <filter name="inactive_employees" string="Colaboradores Archivados" domain="[('employee_id.active', '=', False)]"/>
+                <field name="skill_type_id"/>
+                <field name="skill_id"/>
+                <field name="skill_level_id"/>
+                <field name="employee_id"/>
+                <group expand="0" string="Group By">
+                    <filter string="Tipo de Habilidad" name="groupby_skill_type" domain="[]" context="{'group_by': 'skill_type_id'}"/>
+                    <filter string="Habilidad" name="groupby_skill" domain="[]" context="{'group_by': 'skill_id'}"/>
+                    <filter string="Nivel de Habilidad" name="groupby_skill_level" domain="[]" context="{'group_by': 'skill_level_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ticket #34761 Accion para el modelo Nivel de habilidad para un empleado, odoo no tiene una definida,
+    Esta la usamos para poder usar el menu "Buscar por Habilidad" y asi mostrar la vista lista y search de niveles de habilidad para un empleado.
+    En esta activamos por defecto el filtro Colaboradores Activos, de esta manera escondemos los colaboradores inactivos -->
+    <record id="hr_employee_skill_action" model="ir.actions.act_window">
+        <field name="name">Buscar por Habilidad</field>
+        <field name="res_model">hr.employee.skill</field>
+        <field name="context">{'search_default_active_employees': 1}</field>
+    </record>
+
+    <!-- ticket #34761 Menu para el modelo Nivel de habilidad para un empleado, odoo no tiene uno definido,
+    Este menu permite ver una vislta lista y una vista de busqueda que permite a arbusta poder buscar emepleados por habilidad y nivel de habilidad,
+    creemos que es para ver como asginar recursos internos o planificar los participanes de sus proyectos-->
+    <menuitem id="hr_employee_skill_menu_act" name="Buscar por Habilidad" parent="hr.menu_hr_root" action="hr_employee_skill_action" sequence="90"/>
+
+</odoo>
