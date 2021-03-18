@@ -39,6 +39,7 @@ msgid "Invoice"
 msgstr "Comprobante de Cuota"
 
 #. module: account
+#: code:addons/account/controllers/portal.py:0
 #: model_terms:ir.ui.view,arch_db:account.portal_my_invoices
 #, python-format
 msgid "Invoice Date"
