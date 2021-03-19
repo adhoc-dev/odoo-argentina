@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 ADHOC SA
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <data>
+        <record id="view_account_payment_group_form_inherit" model="ir.ui.view">
+            <field name="name">vista personalizada</field>
+            <field name="model">account.payment.group</field>
+            <field name="inherit_id" ref="account_payment_group.view_account_payment_group_form"/>
+            <field name="arch" type="xml">
+                <field name="payment_date" position="attributes">
+                    <attribute name="attrs">{'readonly': [('partner_type','=','customer')]}</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
