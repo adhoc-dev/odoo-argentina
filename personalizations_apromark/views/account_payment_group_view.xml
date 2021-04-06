@@ -12,6 +12,37 @@
                 <field name="payment_date" position="attributes">
                     <attribute name="attrs">{'readonly': [('partner_type','=','customer')]}</attribute>
                 </field>
+                <!-- Ticket 37394 -->
+                <field name="communication" position="after">
+                    <field name="fecha_comprobante"/>
+                    <field name="nro_comprobante"/>
+                </field>
+            </field>
+        </record>
+        <!-- tree view modification -->
+        <record id="view_account_payment_group_tree_inherit" model="ir.ui.view">
+            <field name="name">Vistas Personalizada</field>
+            <field name="model">account.payment.group</field>
+            <field name="inherit_id" ref="account_payment_group.view_account_payment_group_tree"/>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <!-- Ticket 37394 -->
+                <field name="partner_id" position="before">
+                    <field name="fecha_comprobante"/>
+                    <field name="nro_comprobante"/>
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_account_payment_group_search">
+            <field name="name">account.payment.group.filter</field>
+            <field name="model">account.payment.group</field>
+            <field name="inherit_id" ref="account_payment_group.view_account_payment_group_search"/>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <field name="payment_methods" position="after">
+                    <field name="fecha_comprobante"/>
+                    <field name="nro_comprobante"/>
+                </field>
             </field>
         </record>
     </data>
