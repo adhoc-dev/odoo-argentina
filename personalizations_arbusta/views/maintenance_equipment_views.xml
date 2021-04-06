@@ -72,8 +72,8 @@
                 <field name="x_studio_field_oL0Da" string="RAM"/>
                 <field name="x_studio_field_KNn6W" string="Almacenamiento"/>
                 <field name="x_studio_field_Fma5o" string="MAC Adress"/>
-                <field name="x_studio_field_y7JgP" string="Teamviewer"/>
-                <field name="anydesk"/>
+                <field name="bateria"/>
+                <field name="adaptador"/>
               </group>
               <group name="studio_group_MlXpo_right">
                 <field name="x_studio_field_IcWSQ" string="SO"/>

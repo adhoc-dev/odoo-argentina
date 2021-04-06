@@ -17,8 +17,8 @@ class MaintenanceEquipment(models.Model):
                                       column1="maintenance_equipment_id", column2="hr_employee_id",
                                       on_delete="cascade")
     x_studio_field_Fma5o = fields.Char(string="MAC Adress", copy=False)
-    x_studio_field_y7JgP = fields.Integer(string="Teamviewer", copy=False)
-    anydesk = fields.Integer(string="Anydesk", copy=False)
+    bateria = fields.Char(string="Batería", copy=False)
+    adaptador = fields.Char(string="Adaptador", copy=False)
     x_studio_field_zSGQr = fields.Boolean(string="Uso part-time", copy=False)
     x_studio_field_BGI1f = fields.Boolean(string="Seguro", copy=False)
     x_studio_field_X4XKN = fields.Selection(string="Valoración",
