@@ -6,3 +6,4 @@ from . import product_attribute
 from . import res_partner
 from . import account_followup_report
 from . import uom_uom
+from . import stock_book

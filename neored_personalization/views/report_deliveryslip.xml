@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="custom_header_neored" priority="99" inherit_id="l10n_ar.custom_header">
-      <data priority="99">
         <xpath expr="//span[@t-esc='report_number']//.." position="replace">
-          <t t-if="o._name == 'stock.picking'">
+          <t t-if="not print_report_number">
           </t>
           <t t-else="">
             <t t-if="not pre_printed_report">
@@ -12,12 +11,16 @@
             </t>
           </t>
         </xpath>
-      </data>
     </template>
     <template id="report_delivery_document_neored" priority="99" inherit_id="stock.report_delivery_document">
         <t t-set="pre_printed_report" position="attributes">
           <attribute name="t-value">False</attribute>
         </t>
+        <!-- Ticket 36155 -->
+        <t t-set="pre_printed_report" position="after">
+           <t t-set="print_report_number" t-value="o.book_id.print_report_number"/>
+        </t>
+        <!-- Fin Ticket 36155 -->
         <!--Remito no está en estado done (hecho)-->
         <th name="th_sm_product" position="before">
           <th name="th_sm_cod_neored"><strong>Cod. Neored</strong></th>
