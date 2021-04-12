@@ -8,7 +8,7 @@
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['name', 'street', 'street2', 'city', 'zip', 'vat', 'active', 'is_company', 'l10n_ar_afip_responsibility_type_id', 'l10n_latam_identification_type_id',]
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -25,7 +25,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['name', 'parent_id',]
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -42,7 +42,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['name', 'parent_id', 'sequence', 'website_meta_title', 'website_meta_description', 'website_meta_keywords', 'website_meta_og_img',]
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -59,7 +59,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['name', 'measure_type',]
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -76,7 +76,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['name', 'uom_type', 'factor_inv', 'rounding', 'l10n_ar_afip_code', 'arba_code', 'active', 'category_id']
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -93,7 +93,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['name',]
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -110,7 +110,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['name', 'percentage_amount', 'fixed_amount', 'replenishment_cost_rule_id']
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -127,7 +127,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['name', 'description', 'logo', 'partner_id']
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -144,7 +144,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['name']
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -161,7 +161,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['name', 'sequence', 'create_variant',]
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -191,7 +191,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
     'public_categ_ids', 'optional_product_ids', 'alternative_product_ids', 'accessory_product_ids', 'taxes_id', 'supplier_taxes_id',
   ]
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -208,7 +208,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['default_code', 'barcode', 'weight', 'volume', 'product_length', 'product_height', 'product_width', 'product_tmpl_id', 'dimensional_uom_id',]
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -225,7 +225,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['sequence', 'sale_ok', 'purchase_ok', 'uom_id', 'product_tmpl_id']
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -242,7 +242,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['product_tmpl_id', 'attribute_id', 'value_ids']
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -259,7 +259,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['html_color', 'name', 'sequence', 'is_custom', 'attribute_id']
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -276,7 +276,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['product_tmpl_id', 'attribute_id', 'value_ids']
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -293,7 +293,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['price_extra', 'html_color', 'is_custom', 'product_attribute_value_id', 'product_tmpl_id']
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -310,7 +310,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['product_template_attribute_value_id', 'product_tmpl_id', 'value_ids']
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -327,7 +327,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = ['name', 'neored_image_url', 'product_tmpl_id']
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
@@ -347,7 +347,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
     'name', 'product_id', 'product_uom', 'replenishment_cost_rule_id', 'currency_id',
   ]
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
-    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', '=', records.ids), ('model', '=', record._name)])
+    data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
       raise Warning('No puede modificar algunos datos de estos registros porque son sincronizados desde la base de Neored.\n*Registros: %s\n*Campos protegidos: %s' % (
         data_recs.mapped('res_id'), fields_to_check))
