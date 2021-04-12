@@ -18,11 +18,11 @@
     <field name="model">crm.lead</field>
     <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
     <field type="xml" name="arch">
-      <xpath expr="//div[@class='oe_kanban_content']" position="inside">
+      <xpath expr="//div[hasclass('oe_kanban_content')]" position="inside">
         <label for="create_date">Fecha de creación:</label>
         <field name="create_date" widget="date"/>
       </xpath>
-       <xpath expr="//div[@class='oe_kanban_bottom_left']" position="inside">
+       <xpath expr="//div[hasclass('oe_kanban_bottom_left')]" position="inside">
         <H6>
           <field name="activity_date_deadline" widget="date"/>
         </H6>

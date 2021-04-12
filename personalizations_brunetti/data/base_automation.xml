@@ -137,7 +137,7 @@ for lead in leads:
   </record>
   <record model="base.automation" id="personalizations_brunetti.base_automation_8">
     <field name="name">PERSONALIZACIÓN: Agregar Adjuntos de Otros Documentos</field>
-    <field name="model_id" ref="account.model_mail_compose_message"/>
+    <field name="model_id" ref="mail.model_mail_compose_message"/>
     <field name="state">code</field>
     <field name="binding_type">action</field>
     <field name="code"># Available variables:
