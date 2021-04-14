@@ -17,7 +17,6 @@
           <field name="x_studio_field_J1l99" string="URL de Calendar" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1099]]}"/>
           <field name="x_studio_field_sFveY" string="Tipo de evento" attrs="{&quot;invisible&quot;: [[&quot;project_id&quot;,&quot;!=&quot;,1099]]}"/>
         </xpath>
-        </xpath>
         <xpath expr="//form[1]/sheet[1]/notebook[1]/page[not(@name)][1]/field[@name='timesheet_ids']/tree[1]/field[@name='name']" position="after">
           <field name="x_studio_field_yC90r" studio-view-group-names="User" studio-view-group-ids="92" help="Cargar cantidad de casos de prueba creados, ejecutados; avisos; tickets resueltos, etc."/>
         </xpath>
