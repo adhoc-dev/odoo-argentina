@@ -33,7 +33,6 @@
         'product_price_taxes_included',
         'product_planned_price',
         'sale_exception_price_security',
-        'sale_stock_availability',
         'product_brand',
         'website_sale_ux',
         'sale_quotation_products',

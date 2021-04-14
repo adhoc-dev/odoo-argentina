@@ -24,17 +24,5 @@ class ProductTemplate(models.Model):
 
     quantity_per_pack = fields.Char()
 
-    stk_tmp_ros = fields.Char(
-        'S. Rosario',
-    )
-
-    stk_tmp_sfe = fields.Char(
-        'S. Santa Fe',
-    )
-
-    stk_tmp_raf = fields.Char(
-        'S. Rafaela',
-    )
-
     next_deactivate = fields.Date(
     )
