@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Neored Setup',
-    'version': '13.0.1.0.0',
+    'version': '13.0.1.1.0',
     'category': 'Accounting',
     'sequence': 14,
     'summary': '',
@@ -87,6 +87,7 @@
         'product_pricelist',
         'product_replenishment_cost_sale_margin',
         'product_untranslated',
+        'portal_sale_distributor',
     ],
     'data': [
         'data/res_groups_data.xml',
