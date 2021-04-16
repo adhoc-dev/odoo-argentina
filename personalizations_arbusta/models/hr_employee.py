@@ -113,7 +113,7 @@ class HrEmployee(models.Model):
                                             selection=[('Automatización', 'Automatización'),
                                                        ('Comunicaciones', 'Comunicaciones'),
                                                        ('Mejora Contínua', 'Mejora Contínua'),
-                                                       ('Técnico', 'Técnico')], copy=False)
+                                                       ('Técnico', 'Técnico')], copy=False, tracking=100)
     x_studio_field_SHzlD = fields.Boolean(string="Homeoffice", copy=False)
     x_studio_field_CsHEC = fields.Boolean(string="Disponibilidad FT", tracking=100, copy=False)
     x_studio_field_q5sPJ = fields.Boolean(string="Validación FT", tracking=100, copy=False)
