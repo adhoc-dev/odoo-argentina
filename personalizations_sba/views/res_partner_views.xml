@@ -3,7 +3,8 @@
   <record id="personalizations_sba.odoo_studio_res_part_597891dc-6767-4e7f-862d-2ea32ce3304c" model="ir.ui.view">
     <field name="name">Odoo Studio: res.partner.form customization</field>
     <field name="model">res.partner</field>
-    <field ref="l10n_latam_base.view_partner_latam_form" name="inherit_id"/>
+    <field ref="base.view_partner_form" name="inherit_id"/>
+    <field name="priority">150</field>
     <field name="arch" type="xml">
         <field name="credit_limit" position="after">
           <field name="nbr_open_invoices" string="Límite de facturas abiertas permitidas" readonly="True"/>
@@ -77,9 +78,9 @@
         <xpath expr="//field[@name='display_name']" position="after">
           <field name="mobile"/>
         </xpath>
-        <xpath expr="//field[@name='partner_state']" position="after">
+        <tree>
           <field name="property_product_pricelist"/>
-        </xpath>
+        </tree>
     </field>
   </record>
 </odoo>

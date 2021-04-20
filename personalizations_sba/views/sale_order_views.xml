@@ -44,9 +44,9 @@
         <xpath expr="//field[@name='analytic_account_id']" position="after">
           <field name="internal_notes"/>
         </xpath>
-        <xpath expr="//field[@name='store_id']" position="after">
+        <field name="order_line" position="after">
           <field name="origin"/>
-        </xpath>
+        </field>
         <filter name="order_month" position="after">
           <filter context="{'group_by': 'invoice_status'}" name="invoice_status" string="Estado de Factura"/>
         </filter>

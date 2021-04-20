@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_sba',
-    'version': '13.0.1.0.0',
+    'version': '13.0.1.1.0',
     'category': 'Personalizations',
     'license': 'OPL-1',
     'author': 'ADHOC SA',
@@ -12,6 +12,9 @@
         'stock_ux',
         'helpdesk',
         'stock_request_ux',
+        'sale_exception_credit_limit',
+        'l10n_ar',
+        'product_management_group',
     ],
     'data': [
         'security/personalizations_sba_security.xml',
