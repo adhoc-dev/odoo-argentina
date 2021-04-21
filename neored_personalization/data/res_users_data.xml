@@ -1,0 +1,7 @@
+<odoo>
+    <data>
+        <record id="base.user_root" model="res.users">
+            <field name="name">NeoredBot</field>
+        </record>
+    </data>
+</odoo>
