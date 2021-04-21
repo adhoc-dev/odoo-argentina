@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.menu" id="personalizations_energe.inventario_packs_5cf01e01-5e5f-4991-a238-f8a84b2f0c3b">
+    <field name="name">Packs</field>
+    <field name="parent_id" ref="stock.menu_stock_inventory_control"/>
+    <field name="sequence">5</field>
+    <field name="action" ref="personalizations_energe.packs_3dfaa71b-0d2d-427d-9e93-ecf220e9b176"/>
+  </record>
+</odoo>

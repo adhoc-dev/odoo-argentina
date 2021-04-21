@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.actions.act_window" id="personalizations_energe.packs_3dfaa71b-0d2d-427d-9e93-ecf220e9b176">
+    <field name="name">Packs</field>
+    <field name="res_model">product.pack.line</field>
+    <field name="binding_type">action</field>
+    <field name="target">current</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+</odoo>

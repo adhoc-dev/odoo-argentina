@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energe.odoo_studio_sale_ord_07c5431b-9d7c-4179-81a0-70308723bead">
+    <field name="name">Odoo Studio: sale.order.form customization</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='confirmation_date']" position="attributes">
+          <attribute name="attrs">{"invisible": [["state","in",["draft","sent","cancel"]]]}</attribute>
+        </xpath>
+        <xpath expr="//field[@name='vat_discriminated']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="force_save">True</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

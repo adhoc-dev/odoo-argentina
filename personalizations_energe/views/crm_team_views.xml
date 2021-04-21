@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energe.odoo_studio_crm_team_ce1456ad-3ca9-4a93-811b-0361f019d3e2">
+    <field name="name">Odoo Studio: crm.team.tree customization</field>
+    <field name="model">crm.team</field>
+    <field name="inherit_id" ref="sales_team.crm_team_view_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='user_id']" position="after">
+          <field name="company_id"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+{
+    'name': 'personalizations_energe',
+    'version': '11.0.1.0',
+    'category': 'Personalizations',
+    'author': 'ADHOC SA',
+    'depends': [
+        'base',
+        'calendar',
+        'crm',
+        'delivery',
+        'l10n_ar_aeroo_stock',
+        'product_pack',
+        'report_aeroo',
+        'sale',
+        'sales_team',
+        'stock',
+    ],
+    'data': [
+        'views/crm_team_views.xml',
+        'views/product_pack_line_views.xml',
+        'views/sale_order_views.xml',
+        'data/ir_actions_act_window.xml',
+        'data/ir_actions_server.xml',
+        'data/ir_ui_menu.xml',
+        'data/base_automation.xml',
+    ],
+    'application': False,
+    'license': 'OPL-1',
+}
