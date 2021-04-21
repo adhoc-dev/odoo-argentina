@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'personalizations_energe',
-    'version': '11.0.1.0',
+    'version': '11.0.1.1.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
         'base',
+        'base_automation',
         'calendar',
         'crm',
         'delivery',
