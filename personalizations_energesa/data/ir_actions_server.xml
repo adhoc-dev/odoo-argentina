@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.actions.server" id="personalizations_energesa.ir_act_server_1164">
+    <field name="name">Actualizar valores de campos factura</field>
+    <field ref="delivery.model_sale_order" name="model_id"/>
+    <field name="state">code</field>
+    <field ref="delivery.model_sale_order" name="binding_model_id"/>
+    <field name="binding_type">action</field>
+    <field name="code"><![CDATA[# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+for rec in records:
+  env.add_todo(model._fields['x_invoice_total_amount'], rec)
+  env.add_todo(model._fields['x_sale_amount'], rec)
+  env.add_todo(model._fields['x_invoice_residual_amount'], rec)
+  model.recompute()
+
+
+
+]]></field>
+  </record>
+  <record model="ir.actions.server" id="personalizations_energesa.ir_act_server_1196">
+    <field name="name">Procesos: Actualizar campos B2B</field>
+    <field ref="product.model_product_pricelist_item" name="model_id"/>
+    <field name="state">code</field>
+    <field ref="product.model_product_pricelist_item" name="binding_model_id"/>
+    <field name="binding_type">action</field>
+    <field name="code"><![CDATA[# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+for rec in records:
+  env.add_todo(model._fields['x_product_lst_price'], rec)
+  env.add_todo(model._fields['x_b2b_price'], rec)
+  env.add_todo(model._fields['x_mark_up'], rec)
+  model.recompute()
+
+
+
+]]></field>
+  </record>
+  <record model="ir.actions.server" id="personalizations_energesa.ir_act_server_1199">
+    <field name="name">Actualizar valores OV</field>
+    <field ref="delivery.model_sale_order" name="model_id"/>
+    <field name="state">code</field>
+    <field ref="delivery.model_sale_order" name="binding_model_id"/>
+    <field name="binding_type">action</field>
+    <field name="code"><![CDATA[# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+for rec in records:
+  env.add_todo(model._fields['margin'], rec)
+  env.add_todo(model._fields['amount_untaxed'], rec)
+  env.add_todo(model._fields['x_total_replenishment_cost'], rec)
+  env.add_todo(model._fields['x_margin2'], rec)
+  model.recompute()
+
+
+
+]]></field>
+  </record>
+  <record model="ir.actions.server" id="personalizations_energesa.ir_act_server_1213">
+    <field name="name">Actualizar costo WH</field>
+    <field ref="account_analytic_default.model_stock_picking" name="model_id"/>
+    <field name="state">code</field>
+    <field ref="account_analytic_default.model_stock_picking" name="binding_model_id"/>
+    <field name="binding_type">action</field>
+    <field name="code"><![CDATA[# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+for rec in records:
+  env.add_todo(model._fields['x_total_standard_price'], rec)
+  model.recompute()
+
+
+]]></field>
+  </record>
+</odoo>

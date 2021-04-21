@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_procurem_7b96117c-9791-412b-ba0c-5fedc18115bf">
+    <field name="name">Odoo Studio: procurement.group.form customization</field>
+    <field name="model">procurement.group</field>
+    <field ref="stock.procurement_group_form_view" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//form[1]/sheet[1]/group[1]/field[@name='name']" position="before">
+          <field name="id"/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]/field[@name='name']" position="after">
+          <field name="sale_id"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_energesa.default_tree_view_fo_586eb16e-c6ae-4a95-8708-909cbf4bdefd">
+    <field name="name">Default tree view for procurement.group</field>
+    <field name="model">procurement.group</field>
+    <field type="xml" name="arch">
+      <tree string="Procurement Requisition" delete="false">
+        <field name="name" modifiers="{&quot;required&quot;: true}"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

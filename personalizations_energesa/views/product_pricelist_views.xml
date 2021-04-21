@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_product__f157a6f5-ff79-4dd8-9aa5-776d9e8d316a">
+    <field name="name">Odoo Studio: product.pricelist.form customization</field>
+    <field name="model">product.pricelist</field>
+    <field ref="product.product_pricelist_view" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='date_end']" position="replace"/>
+        <xpath expr="//field[@name='date_start']" position="replace"/>
+        <xpath expr="//form[1]/sheet[1]/div[not(@name)][2]/field[@name='item_ids']/tree[1]/field[@name='name']" position="after">
+          <field name="x_b2b_price"/>
+          <field name="x_mark_up"/>
+          <field name="x_product_lst_price"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

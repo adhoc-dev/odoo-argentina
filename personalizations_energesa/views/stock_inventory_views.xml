@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_stock_in_59420035-dcaf-4ff5-b6d5-db682e370fc9">
+    <field name="name">Odoo Studio: stock.inventory.tree customization</field>
+    <field name="model">stock.inventory</field>
+    <field ref="stock.view_inventory_tree" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='date']" position="after">
+          <field name="accounting_date"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

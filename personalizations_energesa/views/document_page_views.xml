@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_document_459036f9-2d57-4b40-8c01-955ff303ea39">
+    <field name="name">Odoo Studio: document.page.form customization</field>
+    <field name="model">document.page</field>
+    <field ref="document_page.view_wiki_form" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='parent_id']" position="after">
+          <field name="x_studio_field_EBTl8" widget="many2many_tags" domain="[&quot;|&quot;,[&quot;name&quot;,&quot;ilike&quot;,&quot;Área&quot;],[&quot;name&quot;,&quot;=&quot;,&quot;Auditoría Externa&quot;]]"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_document_66e49536-21b0-4287-8081-ae9d66f46a9c">
+    <field name="name">Odoo Studio: document.page.list customization</field>
+    <field name="model">document.page</field>
+    <field ref="document_page.view_wiki_tree" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//tree[1]/field[@name='name']" position="after">
+          <field name="x_studio_field_EBTl8" widget="many2many_tags"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_document_9e81fb5b-850e-444d-a22a-5c7954a0ad07">
+    <field name="name">Odoo Studio: document.page.category.tree customization</field>
+    <field name="model">document.page</field>
+    <field ref="document_page.view_category_tree" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//tree[1]/field[@name='name']" position="after">
+          <field name="x_studio_field_EBTl8" widget="many2many_tags"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

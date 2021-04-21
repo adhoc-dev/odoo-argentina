@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_helpdesk_accb835a-1903-4b2b-a904-c3171fd789ac">
+    <field name="name">Odoo Studio: helpdesk.stages.tree customization</field>
+    <field name="model">helpdesk.stage</field>
+    <field ref="helpdesk.helpdesk_stage_view_tree" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='sequence']" position="after">
+          <field name="id"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

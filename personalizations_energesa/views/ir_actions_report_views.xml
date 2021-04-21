@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_ir_actio_017b4b66-e0ba-4115-8078-22271e60e019">
+    <field name="name">Odoo Studio: ir.actions.report.tree customization</field>
+    <field name="model">ir.actions.report</field>
+    <field ref="base.act_report_xml_view_tree" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='attachment']" position="after">
+          <field name="sequence"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

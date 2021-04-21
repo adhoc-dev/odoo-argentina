@@ -1,0 +1,583 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="base.automation" id="personalizations_energesa.base_automation_4_b1838092">
+    <field name="name">Completar información de la iniciativa desde la mensajería</field>
+    <field ref="calendar.model_mail_message" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"># Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+
+def get_state(name='Mendoza'):
+    if name == "Bs. As.":
+        name = "Buenos Aires"
+    res = env['res.country.state'].search(
+        [('name', '=', name)]
+    )
+    return (res[0].id, res[0].name) if res else (False, False)
+
+
+def clean_msg_footer(mensaje):
+    mensaje = mensaje.replace(
+        "\r\n\r\n--\r\nEste e-mail ha sido enviado desde el widget de consulta de (http://energe.com.ar)\r\n&lt;/pre&gt;",
+        '').strip()
+    mensaje = mensaje.replace(
+        "\r\n\r\n--\r\nEste e-mail ha sido enviado desde el formulario de contacto de (http://energe.com.ar)\r\n&lt;/pre&gt;",
+        '').strip()
+    return mensaje
+
+
+def extract_pattern_web(mensaje):
+    """
+    De: nombre apellido &lt;correo@electronico&gt;
+    Teléfono: 12235346
+    Provincia: Nombre pronvical &lt;contacto.ba@energe.com.ar&gt;
+
+    Mensaje:
+    esto es mensaje
+    multi linea
+
+    --
+    Este e-mail ha sido enviado desde el formulario de contacto de (http://energe.com.ar)
+    """
+    values = dict()
+    name = str()
+    email = str()
+    phone = str()
+    state = str()
+    try:
+        mensaje = clean_msg_footer(mensaje)
+        for line in mensaje.splitlines():
+            if not line:
+                continue
+            if line.startswith("&lt;pre&gt;De: ") and not name:
+                name, email = line[9:].split('&amp;lt;')
+                name = name.strip()
+                if '@' in email:
+                    if email.endswith('&amp;gt;'):
+                        email = email[:-4]
+            elif line.startswith("Teléfono: ") and not phone:
+                phone = line[10:].strip()
+            elif line.startswith("Provincia: ") and not state:
+                state = line[11:].split('&amp;lt;')[0].strip()
+            elif line.startswith("Mensaje:"):
+                break
+            mensaje = mensaje.replace(line, '').strip()
+        mensaje = mensaje.replace("Mensaje:", '').strip()
+
+        state_id, state_name = get_state(state)
+        values = {
+            'description': mensaje,
+            'contact_name': name,
+            'email_from': email,
+            'phone': phone,
+            'state_id': state_id,
+            'state_name': state_name,
+        }
+    except:
+        pass
+    return values
+
+
+def extract_pattern_facebook(mensaje):
+    """
+    Nombre: Nombre y Apellido
+    Teléfono: +123456789
+    Correo electrónico: correo@electronico
+    Ciudad: Nombre Ciudad
+
+    Este es el mensaje
+    multi linea
+    """
+    values = dict()
+    name = str()
+    email = str()
+    phone = str()
+    city = str()
+    try:
+        for line in mensaje.splitlines():
+            mensaje = mensaje.replace(line, '').strip()
+            if not line:
+                continue
+            if (line.startswith("&lt;pre&gt;Nombre:") or line.startswith("Nombre:")) and not name:
+                name = line[12:].strip()
+            elif line.startswith("Teléfono:") and not phone:
+                phone = line[9:].strip()
+            elif line.startswith("Correo electrónico:") and not email:
+                email = line[19:].strip()
+            elif line.startswith("Ciudad:") and not city:
+                city = line[7:].strip()
+                break
+        mensaje = mensaje.replace("&lt;/pre&gt;", "").strip()
+        state_id, state_name = get_state()
+        values = {
+            'description': mensaje,
+            'contact_name': name,
+            'email_from': email,
+            'phone': phone,
+            'city': city,
+            'state_id': state_id,
+            'state_name': state_name,
+        }
+    except:
+        pass
+    return values
+
+
+active_model = env.context.get('active_model', False)
+active_ids = env.context.get('active_ids', [])
+
+if active_model == 'mail.message':
+    messages = env[active_model].search([('id', 'in', active_ids)])
+    lead_ids = [rec.res_id for rec in messages]
+elif active_model == 'crm.lead':
+    lead_ids = active_ids
+
+leads = env['crm.lead'].search([('id', 'in', lead_ids)])
+for lead in leads:
+    # Procesar datos de correo
+    ready = 'Los campos fueron actualizados desde el mensaje de correo'
+    msg_ready = [msg.body for msg in lead.message_ids if ready in str(msg.body)]
+    if not msg_ready:
+        # raise Warning("mensajes %s" % str([item.read([]) for item in lead.message_ids]))
+        for msg in lead.message_ids:
+            values = dict()
+            if msg.subject and msg.body.startswith("&lt;pre&gt;De:"):
+                values = extract_pattern_web(msg.body)
+            if msg.subject and msg.body.startswith("&lt;pre&gt;Nombre:"):
+                values = extract_pattern_facebook(msg.body)
+            if values:
+                state_name = values.pop('state_name', False)
+                lead.write(values)
+                state_id = values.pop('state_id', False)
+                if state_name:
+                    values.update({'state': state_name})
+                print_vals = '&lt;ul&gt;' + ''.join([
+                    '&lt;li&gt;&lt;b&gt;' + item + '&lt;/b&gt;: ' + str(values[item]) + '&lt;/li&gt;'
+                    for item in values]) + '&lt;/ul&gt;'
+                # raise Warning ("values %s" % print_vals)
+                lead.message_post(ready + '&lt;br/&gt;' + print_vals)
+</field>
+    <field name="filter_domain">["&amp;","&amp;",["model","=","crm.lead"],["subject","!=",False],["message_type","=","email"]]</field>
+    <field name="trigger">on_create</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.base_automation_5_b140b149">
+    <field name="name">Restricción al crear oportunidad</field>
+    <field ref="crm.model_crm_lead" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"># Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+if env.user.id != 1:
+  for rec in records:
+   if not rec.contact_name:
+     raise Warning("Para crear una oportunidad/iniciativa, primero debe completar el campo Nombre del contacto")
+   if not rec.phone:
+     raise Warning("Para crear una oportunidad/iniciativa, primero debe completar el campo Teléfono")
+   if not rec.campaign_id:
+     raise Warning("Para crear una oportunidad/iniciativa, primero debe completar el campo Campaña")
+</field>
+    <field eval="False" name="active"/>
+    <field name="trigger">on_create_or_write</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.base_automation_6">
+    <field name="name">Personalización: Actualizar Fechas en Documentos Relacionados al Modificar Proyecto</field>
+    <field ref="hr_timesheet.model_project_task" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"># Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+# Records might be void, so we loop just in case
+for task in records:
+  # Store our new date
+  new_date = task.date_start
+  if task.sale_line_id and task.sale_line_id and task.sale_line_id.order_id.procurement_group_id:
+    # Get the p.group and find all the related stock pickings
+    procurement_group = task.sale_line_id.order_id.procurement_group_id
+    stock_pickings = env['stock.picking'].search([('group_id', '=', procurement_group.id)])
+    for sp in stock_pickings:
+      # Update each related stock.picking
+      sp.write({'scheduled_date': new_date})
+
+
+
+</field>
+    <field name="trigger">on_write</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.bloquear_plantilla_e_8be42c00-a9f3-4f44-87c8-5ea48ac56ffe">
+    <field name="name">Procesos: Bloquear Plantilla Estandar de Materiales</field>
+    <field ref="account_analytic_default.model_stock_picking" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"># Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+if env.user.id != 1:
+      raise Warning("Esta orden de entrega es una plantilla estándar. Para usarla, por favor duplicarla y trabajar sobre el duplicado. Para modificarla desmarcar la casilla Es plantilla , guardar, luego editarla y volver a marcarla como plantilla para bloquearla")
+ 
+ 
+
+
+</field>
+    <field eval="False" name="active"/>
+    <field name="filter_domain">[["x_plantilla","=",1]]</field>
+    <field name="filter_pre_domain">[["x_plantilla","=",1]]</field>
+    <field name="trigger">on_write</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.base_automation_11">
+    <field name="name">Procesos: Req. Verificación Presupuesto</field>
+    <field ref="delivery.model_sale_order" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"># Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+if env.user.id != 1:
+ for rec in records:
+   if not rec.x_partner_shipping_street:
+     raise Warning("Para marcar OV como verificada, primero debe completar el campo Calle de Entrega")
+   if not rec.x_partner_shipping_city:
+     raise Warning("Para marcar OV como verificada, primero debe completar el campo Ciudad de Entrega")
+   if not rec.x_partner_shipping_state:
+     raise Warning("Para marcar OV como verificada, primero debe completar el campo Provincia de Entrega")
+   if not rec.x_partner_shipping_zip:
+     raise Warning("Para marcar OV como verificada, primero debe completar el campo CP de Entrega")
+   if not rec.x_partner_shipping_id_name:
+     raise Warning("Para marcar OV como verificada, primero debe completar el campo Nombre de Contacto de Entrega")
+   if not rec.x_partner_shipping_id_mobile and not rec.x_partner_shipping_id_phone:
+     raise Warning("Para marcar OV como verificada, primero debe completar al menos un Teléfono Entrega")
+   if not rec.x_partner_shipping_id_email:
+     raise Warning("Para marcar OV como verificada, primero debe completar el campo email de Entrega")
+     
+     
+   if not rec.x_partner_invoice_id_street:
+     raise Warning("Para marcar OV como verificada, primero debe completar el campo Calle de Facturación")
+   if not rec.x_partner_invoice_id_city:
+     raise Warning("Para marcar OV como verificada, primero debe completar el campo Ciudad de Facturación")
+   if not rec.x_partner_invoice_id_state_id_name:
+     raise Warning("Para marcar OV como verificada, primero debe completar el campo Provincia de Facturación")
+   if not rec.x_partner_invoice_id_zip:
+     raise Warning("Para marcar OV como verificada, primero debe completar el campo CP de Facturación")
+   if not rec.x_partner_invoice_id_name:
+     raise Warning("Para marcar OV como verificada, primero debe completar el campo Nombre de Contacto de Facturación")
+   if not rec.x_partner_invoice_id_mobile and not rec.x_partner_invoice_id_phone:
+     raise Warning("Para marcar OV como verificada, primero debe completar al menos un Teléfono Facturación")
+   if not rec.x_partner_invoice_id_email:
+     raise Warning("Para marcar OV como verificada, primero debe completar el campo email de Facturación")
+   if not rec.x_partner_invoice_id_afip_responsability_type_id_display_name:
+      raise Warning("Para marcar OV como verificada, primero debe completar el campo Tipo Responsable AFIP")
+   if not rec.x_partner_invoice_id_main_id_number:
+      raise Warning("Para marcar OV como verificada, primero debe completar el campo Identificación Principal")
+     
+   if not rec.payment_term_id:
+     raise Warning("Para marcar OV como verificada, primero debe completar el campo Plazo de Pago")
+     
+   if rec.team_id.name == 'Redefinir':
+     raise Warning("Para marcar OV como verificada, primero seleccionar un 'Canal de Ventas' válido")  
+     
+     
+   else: rec.write({'state': 'sent'})
+
+
+</field>
+    <field name="filter_domain">[["x_verificado","=",True]]</field>
+    <field name="filter_pre_domain">["&amp;","&amp;",["x_verificado","=",False],["state","!=","sale"],["state","!=","done"]]</field>
+    <field name="trigger">on_write</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.base_automation_12">
+    <field name="name">Procesos: Req. Confirm Presupuesto</field>
+    <field ref="delivery.model_sale_order" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"># Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+if env.user.id != 1:
+ for rec in records:
+   if not rec.x_verificado:
+     raise Warning("Para confirmar el presupuesto, el vendedor primero debe marcar el presupuesto como Verificado")
+
+</field>
+    <field name="filter_domain">[["state","=","sale"]]</field>
+    <field name="filter_pre_domain">["|",["state","=","draft"],["state","=","sent"]]</field>
+    <field name="trigger">on_write</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.req_confirm_oportuni_d9ea9fee-41c9-497f-bb55-6768a70cedc6">
+    <field name="name">Req. Confirm Oportunidad</field>
+    <field ref="crm.model_crm_lead" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"># Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+for rec in records:
+ if not rec.order_ids or any(x.state != 'sale' for x in rec.order_ids):
+     raise Warning("Para marcar una Iniciativa como Ganada, debe tener una OV Confirmada vinculada a dicha Iniciativa")
+
+
+
+</field>
+    <field eval="False" name="active"/>
+    <field name="filter_domain">[["stage_id.name","=","Ganado"]]</field>
+    <field name="filter_pre_domain">[["stage_id.name","!=","Ganado"]]</field>
+    <field name="trigger">on_write</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.base_automation_14">
+    <field name="name">Procesos: Bloquear Plantilla Estandar de PR</field>
+    <field ref="purchase_request.model_purchase_request" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"># Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+if env.user.id != 1:
+      raise Warning("Esta orden de entrega es una plantilla estándar. Para usarla, por favor duplicarla y trabajar sobre el duplicado. Para modificarla desmarcar la casilla Es plantilla , guardar, luego editarla y volver a marcarla como plantilla para bloquearla")
+ 
+ 
+
+
+</field>
+    <field name="filter_domain">[["x_plantilla","=",1]]</field>
+    <field name="filter_pre_domain">[["x_plantilla","=",1]]</field>
+    <field name="trigger">on_write</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.base_automation_15">
+    <field name="name">Pers - stock.picking - onchange group_id - Obtener Fecha Desde Tarea</field>
+    <field ref="account_analytic_default.model_stock_picking" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"># Actualizar Fecha Prevista desde una tarea
+sp = record
+if sp.group_id and sp.group_id.sale_id:
+  sale_order = env["sale.order"].browse(sp.group_id.sale_id.id)
+  for line in sale_order.order_line:
+    if line.task_id:
+      if line.task_id.date_start:
+        record.update({"scheduled_date": line.task_id.date_start })
+        break
+      
+# Actualizar group_id en lineas
+sp.move_lines.update({"group_id": sp.group_id.id })</field>
+    <field name="on_change_fields">group_id</field>
+    <field name="trg_date_range_type">day</field>
+    <field name="trigger">on_change</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.base_automation_16">
+    <field name="name">Pers - stock.picking - onchange move_lines - Obtener Fecha Desde Tarea</field>
+    <field ref="account_analytic_default.model_stock_picking" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"># Actualizar Fecha Prevista desde una tarea
+sp = record
+if sp.group_id and sp.group_id.sale_id:
+  sale_order = env["sale.order"].browse(sp.group_id.sale_id.id)
+  for line in sale_order.order_line:
+    if line.task_id:
+      if line.task_id.date_start:
+        record.update({"scheduled_date": line.task_id.date_start })
+        break</field>
+    <field name="on_change_fields">move_lines</field>
+    <field name="trg_date_range_type">day</field>
+    <field name="trigger">on_change</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.base_automation_17">
+    <field name="name">Pers - stock.picking - create &amp; write - Obtener Fecha Desde Tarea</field>
+    <field ref="account_analytic_default.model_stock_picking" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"># Actualizar Fecha Prevista desde una tarea
+sp = record
+if sp.group_id and sp.group_id.sale_id:
+  sale_order = env["sale.order"].browse(sp.group_id.sale_id.id)
+  for line in sale_order.order_line:
+    if line.task_id:
+      if line.task_id.date_start:
+        record.update({"scheduled_date": line.task_id.date_start })
+        break</field>
+    <field name="trigger">on_create_or_write</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.base_automation_18">
+    <field name="name">Procesos: lastdate_stage_update (Helpdesk)</field>
+    <field ref="helpdesk.model_helpdesk_ticket" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"># Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+record.update({'x_last_stage_update': datetime.datetime.now()})
+
+</field>
+    <field name="on_change_fields">stage_id</field>
+    <field name="trg_date_range_type">day</field>
+    <field name="trigger">on_change</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.base_automation_19">
+    <field name="name">Procesos: default_  date_start (Tareas Automaticas)</field>
+    <field ref="hr_timesheet.model_project_task" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"># Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+record[("date_start")] = (datetime.datetime.strptime( record.date_start, "%Y-%m-%d  %H:%M:%S") + datetime.timedelta( days = 297 )).strftime("%Y-%m-%d  %H:%M:%S")
+
+</field>
+    <field name="filter_domain">[["create_uid.id","=",1]]</field>
+    <field name="trigger">on_create</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.base_automation_20">
+    <field name="name">Procesos: Secuencia Línea Proveedor</field>
+    <field ref="product.model_product_supplierinfo" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"># Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+val = 1
+fmt = '%Y-%m-%d  %H:%M:%S'
+now = datetime.datetime.now().strftime("%Y-%m-%d  %H:%M:%S")
+d2 = datetime.datetime.strptime(now, fmt)
+
+registers = env['product.supplierinfo'].search([('product_tmpl_id','=',record.product_tmpl_id.id),('id','!=', record.id)], order = "sequence asc")
+if registers:
+  maxi = max(reg.write_date for reg in registers)
+
+  d1 = datetime.datetime.strptime(maxi, fmt) 
+  diff = (d2-d1).seconds
+
+  if diff &gt; 1:
+    for reg in registers:
+      val = val + 1
+      reg['sequence'] = val
+    record.write({'sequence': 1})
+</field>
+    <field name="trigger">on_create_or_write</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.base_automation_21">
+    <field name="name">Procesos: Crear Tarea Trámites FV</field>
+    <field ref="hr_timesheet.model_project_task" name="model_id"/>
+    <field name="state">object_create</field>
+    <field name="binding_type">action</field>
+    <field ref="hr_timesheet.model_project_task" name="crud_model_id"/>
+    <field name="filter_domain">["&amp;","&amp;",["project_id.id","=",23],["stage_id.id","!=",23],["stage_id.id","!=",90]]</field>
+    <field name="filter_pre_domain">["&amp;","&amp;",["project_id.id","=",23],["child_ids","=",False],"|",["stage_id.id","=",23],["stage_id.id","=",90]]</field>
+    <field name="trigger">on_write</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.base_automation_22">
+    <field name="name">Procesos: Req. Plazo pago y proveedor</field>
+    <field ref="purchase.model_purchase_order" name="model_id"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code"># Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+if env.user.id != 1:
+ for rec in records:
+   if not rec.partner_id or not rec.payment_term_id:
+     raise Warning("Para confirmar el presupuesto, se deben completar los campos Proveedor y  Plazos de Pago")
+</field>
+    <field name="filter_domain">["|",["state","=","purchase"],["state","=","done"]]</field>
+    <field name="filter_pre_domain">["&amp;",["state","!=","purchase"],["state","!=","done"]]</field>
+    <field name="trigger">on_write</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.base_automation_23">
+    <field name="name">Procesos: Email venta confirmada</field>
+    <field ref="delivery.model_sale_order" name="model_id"/>
+    <field name="state">email</field>
+    <field name="binding_type">action</field>
+    <field name="filter_domain">["|",["state","=","sale"],["state","=","done"]]</field>
+    <field name="filter_pre_domain">["&amp;","&amp;",["state","!=","sale"],["state","!=","done"],["state","!=","cancel"]]</field>
+    <field name="trigger">on_write</field>
+  </record>
+  <record model="base.automation" id="personalizations_energesa.base_automation_25">
+    <field name="name">Procesos: Email new ticket created</field>
+    <field ref="helpdesk.model_helpdesk_ticket" name="model_id"/>
+    <field name="state">email</field>
+    <field name="binding_type">action</field>
+    <field name="filter_domain">[["team_id","=",3]]</field>
+    <field name="trigger">on_create</field>
+  </record>
+</odoo>

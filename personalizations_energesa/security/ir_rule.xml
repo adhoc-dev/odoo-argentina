@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.rule" id="personalizations_energesa.ir_rule_260">
+    <field name="name">Project: multi-company</field>
+    <field ref="helpdesk.model_helpdesk_team" name="model_id"/>
+    <field name="domain_force"><![CDATA[['|',
+                                            ('company_id', '=', False),
+                                            ('company_id', 'child_of', [user.company_id.id]),
+                                        ]]]></field>
+    <field eval="[(6, 0, [])]" name="groups"/>
+    <field eval="True" name="perm_create"/>
+    <field eval="True" name="perm_read"/>
+    <field eval="True" name="perm_unlink"/>
+    <field eval="True" name="perm_write"/>
+  </record>
+  <record model="ir.rule" id="personalizations_energesa.ir_rule_275">
+    <field name="name">Helpdesk Self Ticket</field>
+    <field ref="helpdesk.model_helpdesk_ticket" name="model_id"/>
+    <field name="domain_force"><![CDATA[['|',('create_uid','=',user.id),('create_uid','=',False)]]]></field>
+    <field eval="[(6, 0, [ref('personalizations_energesa.res_groups_168')])]" name="groups"/>
+    <field eval="True" name="perm_create"/>
+    <field eval="True" name="perm_read"/>
+    <field eval="True" name="perm_unlink"/>
+    <field eval="True" name="perm_write"/>
+  </record>
+</odoo>

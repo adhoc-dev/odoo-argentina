@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_account__e5f570a5-275e-4c64-96db-6954bfc0513b">
+    <field name="name">Odoo Studio: account.invoice.form customization</field>
+    <field name="model">account.invoice</field>
+    <field ref="account.invoice_form" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/div[1]/field[@name='currency_id']" position="attributes">
+          <attribute name="attrs">{"readonly": [["state","=","draft"]]}</attribute>
+          <attribute name="readonly"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

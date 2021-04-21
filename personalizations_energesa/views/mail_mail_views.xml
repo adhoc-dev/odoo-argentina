@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_mail_mai_2eb67783-9424-4e6f-871f-abf649030f02">
+    <field name="name">Odoo Studio: mail.mail.tree customization</field>
+    <field name="model">mail.mail</field>
+    <field ref="mail.view_mail_tree" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='author_id']" position="after">
+          <field name="email_to"/>
+        </xpath>
+        <xpath expr="//field[@name='state']" position="attributes">
+          <attribute name="invisible"/>
+          <attribute name="attrs">{}</attribute>
+        </xpath>
+        <xpath expr="//field[@name='message_type']" position="attributes">
+          <attribute name="invisible"/>
+          <attribute name="attrs">{}</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

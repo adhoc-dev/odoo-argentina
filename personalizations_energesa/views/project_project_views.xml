@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_project__3dd08acf-6b3f-4cd3-940f-c54c1ac5acea">
+    <field name="name">Odoo Studio: project.project.tree customization</field>
+    <field name="model">project.project</field>
+    <field ref="project.view_project" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='sequence']" position="after">
+          <field name="id"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

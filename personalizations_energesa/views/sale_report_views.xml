@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.default_tree_view_fo_e16ea300-48d7-4373-aefa-c29e523fd248">
+    <field name="name">Default tree view for sale.report</field>
+    <field name="model">sale.report</field>
+    <field type="xml" name="arch">
+      <tree string="Sales Orders Statistics">
+        <field name="date" modifiers="{&quot;readonly&quot;: true}"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

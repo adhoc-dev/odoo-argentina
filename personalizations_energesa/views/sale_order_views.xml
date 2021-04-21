@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.ir_ui_view_1932">
+    <field name="name">Vista Personalizada</field>
+    <field name="model">sale.order</field>
+    <field ref="sale.view_order_tree" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <field name="invoice_status" position="after">
+        <field name="x_invoice_total_amount" sum="Total" widget="monetary"/>
+        <field name="x_invoice_residual_amount" sum="Total" widget="monetary"/>
+        <field name="x_sale_amount" sum="Total" widget="monetary"/>
+        <field name="x_task_stage"/>
+      </field>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_sale_ord_e99204a5-42c5-419a-91e6-edcc95b0539e">
+    <field name="name">Odoo Studio: sale.order.form customization</field>
+    <field name="model">sale.order</field>
+    <field ref="sale.view_order_form" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
+          <attribute name="attrs">{"readonly": [["state","not in",["sent","draft"]]]}</attribute>
+        </xpath>
+        <xpath expr="//field[@name='partner_shipping_id']" position="after">
+          <field name="x_verificado" string="Pedido de confirmación"/>
+        </xpath>
+        <xpath expr="//field[@name='validity_date']" position="attributes">
+          <attribute name="groups">__export__.res_groups_162_ab612302</attribute>
+        </xpath>
+        <xpath expr="//field[@name='confirmation_date']" position="attributes">
+          <attribute name="groups">sales_team.group_sale_manager</attribute>
+          <attribute name="readonly">0</attribute>
+        </xpath>
+        <xpath expr="//field[@name='pricelist_id']" position="attributes">
+          <attribute name="attrs">{"readonly": [["state","not in",["draft","sent"]]]}</attribute>
+          <attribute name="force_save">True</attribute>
+        </xpath>
+        <xpath expr="//field[@name='pricelist_id']" position="after">
+          <field name="x_invoice_total_amount" invisible="1" attrs="{}"/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/label[1]" position="attributes">
+          <attribute name="string">Tipo de facturación</attribute>
+        </xpath>
+        <xpath expr="//field[@name='type_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="groups">__export__.res_groups_166_aa02ba5c</attribute>
+        </xpath>
+        <xpath expr="//field[@name='payment_term_id']" position="attributes">
+          <attribute name="attrs">{"required": []}</attribute>
+        </xpath>
+        <xpath expr="//field[@name='payment_term_id']" position="after">
+          <field name="x_studio_field_fUR9d" string="USO ADMIN"/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/form[1]/group[1]/group[1]/field[@name='purchase_price']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="readonly">1</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/form[1]/field[@name='name']" position="attributes">
+          <attribute name="groups">sales_team.group_sale_manager</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='name']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="force_save">True</attribute>
+          <attribute name="readonly">1</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='discount']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+        </xpath>
+        <xpath expr="//field[@name='amount_untaxed']" position="before">
+          <field name="x_total_replenishment_cost" attrs="{}" string="Costo Total"/>
+        </xpath>
+        <xpath expr="//field[@name='margin']" position="after">
+          <field name="x_margin2" string="Margen (%)"/>
+        </xpath>
+        <xpath expr="//field[@name='procurement_group_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+        </xpath>
+        <xpath expr="//field[@name='team_id']" position="attributes">
+          <attribute name="attrs">{"required": [["state","!=","draft"]]}</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+          <page name="studio_page_fsIfO" string="Datos de Entrega">
+            <group name="studio_group_fsIfO">
+              <group name="studio_group_fsIfO_left">
+                <field name="x_partner_shipping_street" string="Calle Entrega"/>
+                <field name="x_partner_shipping_street2" string="Barrio Entrega"/>
+                <field name="x_partner_shipping_city" string="Ciudad Entrega"/>
+                <field name="x_partner_shipping_state" string="Provincia Entrega"/>
+                <field name="x_partner_shipping_zip" string="CP Entrega"/>
+              </group>
+              <group name="studio_group_fsIfO_right">
+                <field name="x_partner_shipping_id_name" string="Nombre Contacto Entrega"/>
+                <field name="x_partner_shipping_id_mobile" string="Celular Entrega"/>
+                <field name="x_partner_shipping_id_phone" string="Teléfono Entrega"/>
+                <field name="x_partner_shipping_id_email" string="Email Entrega"/>
+              </group>
+            </group>
+          </page>
+          <page name="studio_page_xIkCr" string="Datos de Facturación">
+            <group name="studio_group_xIkCr">
+              <group name="studio_group_xIkCr_left">
+                <field name="x_partner_invoice_id_street"/>
+                <field name="x_partner_invoice_id_street2" string="Barrio Facturación"/>
+                <field name="x_partner_invoice_id_city"/>
+                <field name="x_partner_invoice_id_state_id_name"/>
+                <field name="x_partner_invoice_id_zip"/>
+              </group>
+              <group name="studio_group_xIkCr_right">
+                <field name="x_partner_invoice_id_name"/>
+                <field name="x_partner_invoice_id_mobile" string="Celular Facturación"/>
+                <field name="x_partner_invoice_id_phone"/>
+                <field name="x_partner_invoice_id_email"/>
+                <field name="x_partner_invoice_id_afip_responsability_type_id_display_name"/>
+                <field name="x_partner_invoice_id_id_numbers_category_id_display_name"/>
+                <field name="x_partner_invoice_id_main_id_number"/>
+              </group>
+            </group>
+          </page>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]" position="after">
+          <group name="studio_group_7bBzi">
+            <group name="studio_group_7bBzi_left" string="Notas Cobranza">
+              <field name="x_studio_field_xjUhp" string="Ingresar las notas comenzando con la fecha" groups="base.group_user"/>
+              <field name="x_studio_field_N9ZS1" string="Fecha Estimada de Cobro"/>
+              <field name="x_studio_field_VU2in"/>
+            </group>
+          </group>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_sale_ord_8f36f795-35a2-4d7a-8a8f-0f6be89c122e">
+    <field name="name">Odoo Studio: sale.order.tree customization</field>
+    <field name="model">sale.order</field>
+    <field ref="sale.view_order_tree" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='date_order']" position="replace">
+          <field name="create_date"/>
+          <field name="validity_date"/>
+        </xpath>
+        <xpath expr="//field[@name='x_invoice_residual_amount']" position="after">
+          <field name="x_studio_field_fUR9d"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_sale_ord_a8d0b7d9-977f-4363-a770-291b35e2b38b">
+    <field name="name">Odoo Studio: sale.order.kanban customization</field>
+    <field name="model">sale.order</field>
+    <field ref="sale.view_sale_order_kanban" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//kanban[1]" position="attributes">
+          <attribute name="default_group_by">state</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_sale_ord_98619cc6-9be7-49a7-a9cf-2e39ec7de6b4">
+    <field name="name">Odoo Studio: sale.order.search.inherit.sale customization</field>
+    <field name="model">sale.order</field>
+    <field ref="sale.sale_order_view_search_inherit_sale" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//filter[@name='draft']" position="after">
+          <filter domain="[[&quot;state&quot;,&quot;=&quot;,&quot;sent&quot;]]" name="studio_filter_GEPsc" string="Solicitud de confirmación"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_res_user_87832a6b-e3c3-47f0-b5ff-b6250a85210d">
+    <field name="name">Odoo Studio: res.users.tree customization</field>
+    <field name="model">res.users</field>
+    <field ref="base.view_users_tree" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='login']" position="after">
+          <field name="default_sale_order_type_id"/>
+          <field name="sale_team_id"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_res_user_5efeb810-6c08-4a7c-af1f-4096a8233507">
+    <field name="name">Odoo Studio: res.users.form customization</field>
+    <field name="model">res.users</field>
+    <field ref="base.view_users_form" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='default_sale_order_type_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="required">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='default_sale_order_type_id']" position="after">
+          <field name="sale_team_id" attrs="{}"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

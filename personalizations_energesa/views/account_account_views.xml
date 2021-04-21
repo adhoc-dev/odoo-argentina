@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_account__31d25373-9cbb-4ba7-8ac9-a6981edaaefe">
+    <field name="name">Odoo Studio: account.account.list customization</field>
+    <field name="model">account.account</field>
+    <field ref="account.view_account_list" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//tree[1]/field[@name='name']" position="after">
+          <field name="group_id"/>
+        </xpath>
+        <xpath expr="//field[@name='user_type_id']" position="after">
+          <field name="tag_ids"/>
+          <field name="internal_type"/>
+        </xpath>
+        <xpath expr="//field[@name='currency_id']" position="after">
+          <field name="balance"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

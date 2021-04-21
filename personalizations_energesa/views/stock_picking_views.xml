@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_stock_pi_7f22d17c-b0b2-4362-a9cb-05d7baa57e17">
+    <field name="name">Odoo Studio: stock.picking.tree customization</field>
+    <field name="model">stock.picking</field>
+    <field ref="stock.vpicktree" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='origin']" position="after">
+          <field name="x_studio_field_cbfA4" string="OV Vinculada"/>
+        </xpath>
+        <xpath expr="//field[@name='state']" position="after">
+          <field name="create_date"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_stock_pi_5b1b2f6f-172a-43ab-8e5b-36e0932c1fa2">
+    <field name="name">Odoo Studio: stock.picking.form customization</field>
+    <field name="model">stock.picking</field>
+    <field ref="stock.view_picking_form" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='extra']/group[1]/group[2]/field[@name='group_id']" position="replace"/>
+        <xpath expr="//field[@name='analytic_account_id']" position="replace"/>
+        <xpath expr="//field[@name='partner_id']" position="attributes">
+          <attribute name="attrs">{"readonly": ["|",["state","in",["cancel","done"]],["x_plantilla","=",True]]}</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='location_dest_id']" position="after">
+          <field name="x_plantilla" attrs="{&quot;invisible&quot;: [[&quot;state&quot;,&quot;!=&quot;,&quot;draft&quot;]]}" string="Es plantilla estándar"/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='origin']" position="attributes">
+          <attribute name="attrs">{"readonly": ["|",["state","in",["cancel","done"]],["x_plantilla","=",True]]}</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='origin']" position="after">
+          <field name="group_id" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,}" attrs="{&quot;readonly&quot;: [[&quot;state&quot;,&quot;=&quot;,&quot;cancel&quot;]], &quot;required&quot;: [[&quot;state&quot;,&quot;!=&quot;,&quot;draft&quot;]]}" string="OV Vinculada" force_save="1"/>
+          <field name="__last_update" groups="__export__.res_groups_164_ee3ac17a"/>
+        </xpath>
+        <xpath expr="//field[@name='declared_value']" position="after">
+          <field name="x_total_standard_price" groups="__export__.res_groups_165_b1064a83"/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='move_lines']/tree[1]/field[@name='is_locked']" position="after">
+          <field name="id"/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='move_lines']/tree[1]/field[@name='product_id']" position="after">
+          <field name="x_standard_price" groups="__export__.res_groups_165_b1064a83"/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='move_lines']/tree[1]/field[@name='product_uom_qty']" position="after">
+          <field name="availability"/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='move_lines']/tree[1]" position="after">
+          <form string="Stock Moves" create="0" edit="0">
+            <header>
+              <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,assigned,done" modifiers="{&quot;readonly&quot;: true}"/>
+            </header>
+            <sheet name="studio_sheet_f6ea72">
+              <div class="oe_button_box" name="button_box">
+                <button name="action_get_account_moves" icon="fa-usd" class="oe_stat_button" string="Accounting Entries" type="object"/>
+                <field name="purchase_id" invisible="1" can_create="true" can_write="true" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <button name="action_view_linked_record" class="oe_stat_button" icon="fa-credit-card" string="Purchase Order" type="object" context="{'res_id': purchase_id, 'action_ref': 'purchase.purchase_form_action', 'form_view_ref': 'purchase.purchase_order_form'}" attrs="{'invisible': [('purchase_id', '=', False)]}" modifiers="{&quot;invisible&quot;: [[&quot;purchase_id&quot;, &quot;=&quot;, false]]}">
+                </button>
+                <field name="sale_id" invisible="1" can_create="true" can_write="true" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                <button name="action_view_linked_record" class="oe_stat_button" icon="fa-book" string="Sale Order" type="object" context="{'res_id': sale_id, 'action_ref': 'sale.action_orders', 'form_view_ref': 'sale.view_order_form'}" attrs="{'invisible': [('sale_id', '=', False)]}" modifiers="{&quot;invisible&quot;: [[&quot;sale_id&quot;, &quot;=&quot;, false]]}">
+                </button>
+              </div>
+              <group name="studio_group_0ab290">
+                <group name="main_grp" colspan="2">
+                  <group name="main_grp_col1">
+                    <field name="reference" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="location_id" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="location_dest_id" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true}"/>
+                    <field name="analytic_account_id" can_create="true" can_write="true" modifiers="{}"/>
+                  </group>
+                  <group name="main_grp_col2">
+                    <field name="product_id" on_change="1" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]]}"/>
+                    <label for="product_uom_qty"/>
+                    <div class="o_row" name="studio_div_17b1d5">
+                      <field name="product_uom_qty" modifiers="{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]]}"/>
+                      <field name="product_uom" options="{'no_open': True, 'no_create': True}" on_change="1" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Technical Settings / Manage Multiple Units of Measure&quot;, &quot;name&quot;: &quot;Manage Multiple Units of Measure&quot;, &quot;id&quot;: 26}]" modifiers="{&quot;required&quot;: true}"/>
+                    </div>
+                    <field name="name" invisible="1" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true}"/>
+                    <field name="date_expected" invisible="1" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]]}"/>
+                    <field name="date" attrs="{'invisible': [('state', '!=', 'done')]}" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;done&quot;]], &quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]]}"/>
+                  </group>
+                </group>
+                <group name="origin_grp" string="Origin">
+                  <field name="picking_id" readonly="1" on_change="1" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}"/>
+                  <field name="origin" modifiers="{}"/>
+                  <field name="group_id" on_change="1" can_create="true" can_write="true" modifiers="{}"/>
+                  <field name="procure_method" studio_groups="[{&quot;display_name&quot;: &quot;Technical Settings / Manage Push and Pull inventory flows&quot;, &quot;name&quot;: &quot;Manage Push and Pull inventory flows&quot;, &quot;id&quot;: 51}]" invisible="1" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true}"/>
+                  <field name="purchase_line_id" on_change="1" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}"/>
+                </group>
+                <group name="linked_group" string="Linked Moves" colspan="2" studio_groups="[{&quot;display_name&quot;: &quot;Extra Rights / Technical Features&quot;, &quot;name&quot;: &quot;Technical Features&quot;, &quot;id&quot;: 8}]">
+                  <field name="move_orig_ids" string="Origin Moves" readonly="1" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}">
+                    <tree decoration-muted="state == 'cancel'" default_order="date_expected, picking_id, sequence" string="Moves">
+                      <field name="date_expected" widget="date" on_change="1" modifiers="{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]]}"/>
+                      <field name="date" widget="date" modifiers="{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]]}"/>
+                      <field name="picking_id" string="Reference" invisible="1" can_create="true" can_write="true" modifiers="{&quot;column_invisible&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]]}"/>
+                      <field name="sequence" invisible="1" modifiers="{&quot;column_invisible&quot;: true}"/>
+                      <field name="origin" modifiers="{}"/>
+                      <field name="product_id" on_change="1" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]]}"/>
+                      <field name="product_uom_qty" modifiers="{&quot;required&quot;: true, &quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]]}"/>
+                      <field name="product_uom" options="{'no_open': True, 'no_create': True}" string="Unit of Measure" on_change="1" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Technical Settings / Manage Multiple Units of Measure&quot;, &quot;name&quot;: &quot;Manage Multiple Units of Measure&quot;, &quot;id&quot;: 26}]" modifiers="{&quot;required&quot;: true}"/>
+                      <field name="location_id" invisible="1" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+                      <field name="location_dest_id" invisible="1" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+                      <field name="create_date" invisible="1" modifiers="{&quot;column_invisible&quot;: true, &quot;readonly&quot;: true}"/>
+                      <field name="state" modifiers="{&quot;readonly&quot;: true}"/>
+                    </tree>
+                  </field>
+                  <field name="move_dest_ids" string="Destination Moves" readonly="1" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}">
+                                </field>
+                </group>
+                <group name="invoice_line" string="Invoice Lines" colspan="2" attrs="{'invisible':[('invoice_line_ids', '=', [])]}" modifiers="{&quot;invisible&quot;: [[&quot;invoice_line_ids&quot;, &quot;=&quot;, []]]}">
+                  <field name="invoice_line_ids" widget="one2many_list" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Accounting &amp; Finance / Billing and Payments&quot;, &quot;name&quot;: &quot;Billing and Payments&quot;, &quot;id&quot;: 31}]" modifiers="{&quot;readonly&quot;: true}"/>
+                </group>
+              </group>
+            </sheet>
+          </form>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_energesa.ir_ui_view_3235">
+    <field name="name">Personalización: stock.picking.form</field>
+    <field name="model">stock.picking</field>
+    <field ref="stock.view_picking_form" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//page[@name='extra']//field[@name='group_id']" position="replace">
+          <field name="group_id" attrs="{'readonly': [('is_locked', '=', True)]}" force_save="1"/>
+        </xpath>
+        <xpath expr="//field[@name='move_lines']//tree//field[@name='product_id']" position="after">
+          <field name="group_id" invisible="1" force_save="1"/>
+        </xpath>
+        <xpath expr="//field[@name='move_lines']" position="attributes">
+          <attribute name="context">{'picking_type_code': picking_type_code,'default_group_id': group_id, 'default_picking_id': id, 'form_view_ref':'stock.view_move_picking_form', 'address_in_id': partner_id, 'default_picking_type_id': picking_type_id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id}</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_energesa.default_pivot_view_f_1bfc3992-29f5-4d8d-952b-eef99fe5ba1e">
+    <field name="name">Default pivot view for stock.picking</field>
+    <field name="model">stock.picking</field>
+    <field type="xml" name="arch">
+      <pivot string="Transfer"/>
+    </field>
+  </record>
+</odoo>

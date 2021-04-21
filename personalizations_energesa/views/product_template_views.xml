@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_product__0c592de3-7d3d-4699-855d-4410078fcc4e">
+    <field name="name">Odoo Studio: product.template.product.tree customization</field>
+    <field name="model">product.template</field>
+    <field ref="product.product_template_tree_view" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//tree[1]/field[@name='name']" position="attributes">
+          <attribute name="string">Name______________________________________________________-</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_product__5c8594ba-335d-46d2-a346-8b27dcf32f95">
+    <field name="name">Odoo Studio: product.template.product.form customization</field>
+    <field name="model">product.template</field>
+    <field ref="product.product_template_only_form_view" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='taxed_lst_price']" position="after">
+          <field name="x_pack_cost" attrs="{&quot;invisible&quot;: [[&quot;pack&quot;,&quot;=&quot;,False]]}"/>
+        </xpath>
+        <xpath expr="//field[@name='seller_ids']" position="inside">
+          <tree string="Vendor Information">
+            <field name="sequence" widget="handle" modifiers="{}"/>
+            <field name="id"/>
+            <field name="name" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true}"/>
+            <field name="product_id" invisible="context.get('product_template_invisible_variant', False)" on_change="1" can_create="true" can_write="true" studio_groups="[{&quot;id&quot;: 30, &quot;name&quot;: &quot;Manage Product Variants&quot;, &quot;display_name&quot;: &quot;Technical Settings / Manage Product Variants&quot;}]" modifiers="{&quot;column_invisible&quot;: false}"/>
+            <field name="product_tmpl_id" string="Product" invisible="context.get('visible_product_tmpl_id', True)" can_create="true" can_write="true" modifiers="{&quot;column_invisible&quot;: true}"/>
+            <field name="min_qty" modifiers="{&quot;required&quot;: true}"/>
+            <field name="price" string="Price" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+            <field name="net_price" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}" modifiers="{}"/>
+            <field name="currency_id" invisible="1" on_change="1" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true, &quot;column_invisible&quot;: true}"/>
+            <field name="date_start" modifiers="{}"/>
+            <field name="date_end" modifiers="{}"/>
+            <field name="create_date"/>
+          </tree>
+        </xpath>
+        <xpath expr="//field[@name='pack_line_ids']" position="inside">
+          <tree string="Pack Product Lines" editable="bottom">
+            <field name="parent_product_id" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true}"/>
+            <field name="product_id" on_change="1" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true}"/>
+            <field name="quantity" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+            <field name="x_product_template_standard_price" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
+            <field name="x_subtotal" string="Subtotal" sum="Total"/>
+            <field name="discount" invisible="1" studio_groups="[{&quot;name&quot;: &quot;Discount on lines&quot;, &quot;id&quot;: 43, &quot;display_name&quot;: &quot;Technical Settings / Discount on lines&quot;}]" modifiers="{&quot;invisible&quot;: true, &quot;column_invisible&quot;: true}"/>
+          </tree>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

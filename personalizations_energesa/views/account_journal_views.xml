@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_account__a2f1e250-1aeb-450f-b0bd-b47a54dff5dc">
+    <field name="name">Odoo Studio: account.journal.tree customization</field>
+    <field name="model">account.journal</field>
+    <field ref="account.view_account_journal_tree" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='type']" position="after">
+          <field name="user_ids"/>
+          <field name="journal_restriction"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

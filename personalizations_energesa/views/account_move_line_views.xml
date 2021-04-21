@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_account__c5b52162-933a-4a55-8935-eab0c193a13c">
+    <field name="name">Odoo Studio: account.move.line.tree customization</field>
+    <field name="model">account.move.line</field>
+    <field ref="account.view_move_line_tree" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='full_reconcile_id']" position="after">
+          <field name="analytic_tag_ids" widget="many2many_tags"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

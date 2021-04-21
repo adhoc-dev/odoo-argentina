@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_account__71966561-eda7-401e-b79c-93867022cbf5">
+    <field name="name">Odoo Studio: account.check.form customization</field>
+    <field name="model">account.check</field>
+    <field ref="account_check.view_account_check_form" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='payment_date']" position="after">
+          <field name="x_fecha_reperfilada"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_account__5ac7f946-070e-4718-acdf-01123cd6173c">
+    <field name="name">Odoo Studio: account.check.tree customization</field>
+    <field name="model">account.check</field>
+    <field ref="account_check.view_account_check_tree" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='payment_date']" position="after">
+          <field name="x_fecha_reperfilada"/>
+        </xpath>
+        <xpath expr="//field[@name='state']" position="after">
+          <field name="owner_vat"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

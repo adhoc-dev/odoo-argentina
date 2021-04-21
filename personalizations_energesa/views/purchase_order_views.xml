@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_purchase_39cff5ee-b5c0-4a2b-b95b-7d78c41707f4">
+    <field name="name">Odoo Studio: purchase.order.form customization</field>
+    <field name="model">purchase.order</field>
+    <field ref="purchase.purchase_order_form" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='payment_term_id']" position="replace"/>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='analytic_tag_ids']" position="replace"/>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='account_analytic_id']" position="replace"/>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='company_id']" position="replace"/>
+        <xpath expr="//field[@name='partner_id']" position="attributes">
+          <attribute name="attrs">{"required": ["|",["state","=","purchase"],["state","=","done"]], "readonly": [["state","in",["cancel","purchase","done"]]]}</attribute>
+        </xpath>
+        <xpath expr="//field[@name='origin']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+        </xpath>
+        <xpath expr="//field[@name='origin']" position="after">
+          <field name="x_studio_field_708EL" string="Cuenta Analítica" attrs="{&quot;required&quot;: [[&quot;state&quot;,&quot;=&quot;,&quot;to approve&quot;]]}"/>
+          <field name="payment_term_id" attrs="{&quot;readonly&quot;: [[&quot;state&quot;,&quot;=&quot;,&quot;done&quot;]]}"/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='name']" position="after">
+          <field name="x_pr_group_id" groups="stock.group_stock_manager"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

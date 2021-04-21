@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_mrp_prod_af435aca-e53a-4344-9c16-40ebfe92d374">
+    <field name="name">Odoo Studio: mrp.production.tree customization</field>
+    <field name="model">mrp.production</field>
+    <field ref="mrp.mrp_production_tree_view" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <xpath expr="//field[@name='product_qty']" position="after">
+          <field name="qty_produced"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>
