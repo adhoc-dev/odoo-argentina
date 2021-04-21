@@ -72,7 +72,7 @@
     <field name="name">Default calendar view for helpdesk.ticket</field>
     <field name="model">helpdesk.ticket</field>
     <field type="xml" name="arch">
-      <calendar date_start="x_date_start" date_stop="" string="Default calendar view for helpdesk.ticket"/>
+      <calendar date_start="x_datetime_start" date_stop="" string="Default calendar view for helpdesk.ticket"/>
     </field>
   </record>
   <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_helpdesk_570acb25-8f03-4457-abcf-a77b57acf429">

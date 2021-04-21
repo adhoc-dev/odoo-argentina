@@ -33,12 +33,12 @@
     <field ref="personalizations_energesa.etiquetas_97ca272f-9069-4b80-acad-832aa8ebdca3" name="action"/>
     <field eval="False" name="active"/>
   </record>
-  <record model="ir.ui.menu" id="personalizations_energesa.proyecto_insta2_8552bebe-8c95-44b6-af6d-d1210f7fabe4">
+  <!-- <record model="ir.ui.menu" id="personalizations_energesa.proyecto_insta2_8552bebe-8c95-44b6-af6d-d1210f7fabe4">
     <field name="name">Insta2</field>
     <field ref="project.menu_main_pm" name="parent_id"/>
     <field name="sequence">10</field>
     <field ref="personalizations_energesa.insta2_3504d4ed-d422-482d-a50f-1e0a9549a780" name="action"/>
-  </record>
+  </record> -->
   <record model="ir.ui.menu" id="personalizations_energesa.ventas_forzar_entreg_4e002f2f-add9-4929-b604-61485e891054">
     <field name="name">FOrzar entrega</field>
     <field ref="sale.sale_menu_root" name="parent_id"/>

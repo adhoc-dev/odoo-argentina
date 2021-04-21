@@ -3,7 +3,7 @@
   <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_res_part_ee6a4699-d133-4b3d-b623-f6b386fd60fc">
     <field name="name">Odoo Studio: res.partner.form customization</field>
     <field name="model">res.partner</field>
-    <field ref="base.view_partner_form" name="inherit_id"/>
+    <field ref="purchase.view_partner_property_form" name="inherit_id"/>
     <field type="xml" name="arch">
       <data>
         <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='type']" position="before">

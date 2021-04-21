@@ -9,8 +9,8 @@ class ProductPricelistItem(models.Model):
     x_b2b_price = fields.Float(string="Precio B2B", compute="_compute_x_b2b_price", readonly=True, copy=False, store=True)
 
     def _compute_x_mark_up(self):
-        for rec in self:
-          rec['x_mark_up'] = (rec.x_product_lst_price / rec.x_b2b_price) - 1
+      for rec in self:
+        rec['x_mark_up'] = (rec.x_product_lst_price / rec.x_b2b_price) - 1 if rec.x_b2b_price != 0 else 0
 
     def _compute_x_product_lst_price(self):
         for rec in self:

@@ -4,7 +4,6 @@
     <field name="name">Edición Masiva (Producto)</field>
     <field name="res_model">mass.editing.wizard</field>
     <field ref="account.model_product_template" name="binding_model_id"/>
-    <field name="binding_type">action</field>
     <field name="context">{'mass_editing_object' : 1}</field>
     <field name="target">new</field>
     <field name="view_mode">form,tree</field>
@@ -13,7 +12,6 @@
     <field name="name">Edición Masiva (Usuarios)</field>
     <field name="res_model">mass.editing.wizard</field>
     <field ref="account_journal_security.model_res_users" name="binding_model_id"/>
-    <field name="binding_type">action</field>
     <field name="context">{'mass_editing_object' : 2}</field>
     <field name="target">new</field>
     <field name="view_mode">form,tree</field>
@@ -22,7 +20,6 @@
     <field name="name">Edición Masiva (Diarios)</field>
     <field name="res_model">mass.editing.wizard</field>
     <field ref="account.model_account_journal" name="binding_model_id"/>
-    <field name="binding_type">action</field>
     <field name="context">{'mass_editing_object' : 3}</field>
     <field name="target">new</field>
     <field name="view_mode">form,tree</field>
@@ -31,7 +28,6 @@
     <field name="name">Edición Masiva (Cuentas Analiticas)</field>
     <field name="res_model">mass.editing.wizard</field>
     <field ref="account_budget.model_account_analytic_account" name="binding_model_id"/>
-    <field name="binding_type">action</field>
     <field name="context">{'mass_editing_object' : 4}</field>
     <field name="target">new</field>
     <field name="view_mode">form,tree</field>
@@ -40,7 +36,6 @@
     <field name="name">Edición Masiva (Presupuestos de Venta)</field>
     <field name="res_model">mass.editing.wizard</field>
     <field ref="delivery.model_sale_order" name="binding_model_id"/>
-    <field name="binding_type">action</field>
     <field name="context">{'mass_editing_object' : 5}</field>
     <field name="target">new</field>
     <field name="view_mode">form,tree</field>
@@ -48,99 +43,67 @@
   <record model="ir.actions.act_window" id="personalizations_energesa.instaladores_cba3edde-011d-4ba5-8c70-ab702fa05a47">
     <field name="name">Instaladores</field>
     <field name="res_model">x_instaladores</field>
-    <field name="binding_type">action</field>
     <field name="target">current</field>
-    <field name="view_mode">tree,form</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_energesa.tipo_de_instalacion_b26b5e2e-925b-4a35-a9c7-ddb80843cb69">
     <field name="name">Tipo de Instalación</field>
     <field name="res_model">x_tipoinsta</field>
-    <field name="binding_type">action</field>
     <field name="target">current</field>
-    <field name="view_mode">tree,form</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_energesa.campana_080c5c6b-b4e2-49c6-adac-2b3f614fcee6">
     <field name="name">Campaña</field>
     <field name="res_model">utm.campaign</field>
-    <field name="binding_type">action</field>
     <field name="target">current</field>
-    <field name="view_mode">tree,form</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_energesa.etiquetas_97ca272f-9069-4b80-acad-832aa8ebdca3">
     <field name="name">Etiquetas</field>
     <field name="res_model">project.tags</field>
-    <field name="binding_type">action</field>
     <field name="target">current</field>
-    <field name="view_mode">tree,form</field>
-  </record>
-  <record model="ir.actions.act_window" id="personalizations_energesa.insta2_3504d4ed-d422-482d-a50f-1e0a9549a780">
-    <field name="name">Insta2</field>
-    <field name="res_model">x_project.task.instalador</field>
-    <field name="binding_type">action</field>
-    <field name="target">current</field>
-    <field name="view_mode">tree,form</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_energesa.forzar_entrega_6a719a10-0393-44c6-a2dd-0528b1a60b72">
     <field name="name">FOrzar entrega</field>
     <field name="res_model">sale.order</field>
-    <field name="binding_type">action</field>
     <field name="target">current</field>
-    <field name="view_mode">tree,form</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_energesa.forzar_entrega_dcd6d62c-9e5d-4bbf-b375-69a13710ee7d">
     <field name="name">FOrzar entrega</field>
     <field name="res_model">crossovered.budget</field>
-    <field name="binding_type">action</field>
     <field name="target">current</field>
-    <field name="view_mode">tree,form</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_energesa.registros_fa1a0bce-afc8-4ca8-9d60-5c4a8169c024">
     <field name="name">Registros</field>
     <field name="res_model">document.page</field>
-    <field name="binding_type">action</field>
     <field name="target">current</field>
-    <field name="view_mode">tree,form</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_energesa.packs_d49469e4-ba34-4867-8ddd-7dc18ed434f6">
     <field name="name">Packs</field>
     <field name="res_model">product.pack.line</field>
-    <field name="binding_type">action</field>
     <field name="target">current</field>
-    <field name="view_mode">tree,form</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_energesa.procurement_6a512580-8a74-4cd5-b9ae-6c8da9ea50ba">
     <field name="name">Procurement</field>
     <field name="res_model">procurement.group</field>
-    <field name="binding_type">action</field>
     <field name="target">current</field>
-    <field name="view_mode">tree,form</field>
+    <field name="vew_mode">tree,form</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_energesa.linea_proveedor_d6feb9dd-182c-419a-9b40-de3598361f2b">
     <field name="name">Línea Proveedor</field>
     <field name="res_model">product.supplierinfo</field>
-    <field name="binding_type">action</field>
     <field name="target">current</field>
-    <field name="view_mode">tree,form</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_energesa.grupo_de_abastecimie_7acd6760-311e-46b7-a30f-175cedc90d13">
     <field name="name">Grupo de abastecimiento</field>
     <field name="res_model">procurement.group</field>
-    <field name="binding_type">action</field>
     <field name="target">current</field>
-    <field name="view_mode">tree,form</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_energesa.lineas_de_tarifa_9f6f3fb8-4c8f-472d-a60b-2566134ab473">
     <field name="name">Líneas de tarifa</field>
     <field name="res_model">product.pricelist.item</field>
-    <field name="binding_type">action</field>
     <field name="target">current</field>
-    <field name="view_mode">tree,form</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_energesa.grupo_de_abastecimie_5f114100-66e7-45fe-8192-5bee71729802">
     <field name="name">Grupo de abastecimiento</field>
     <field name="res_model">procurement.group</field>
-    <field name="binding_type">action</field>
     <field name="target">current</field>
-    <field name="view_mode">tree,form</field>
   </record>
 </odoo>

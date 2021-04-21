@@ -21,6 +21,12 @@
     <field ref="stock.view_picking_form" name="inherit_id"/>
     <field type="xml" name="arch">
       <data>
+        <xpath expr="//field[@name='move_lines']//tree//field[@name='product_id']" position="after">
+          <field name="group_id" invisible="1" force_save="1"/>
+        </xpath>
+        <xpath expr="//field[@name='move_lines']" position="attributes">
+          <attribute name="context">{'picking_type_code': picking_type_code,'default_group_id': group_id, 'default_picking_id': id, 'form_view_ref':'stock.view_move_picking_form', 'address_in_id': partner_id, 'default_picking_type_id': picking_type_id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id}</attribute>
+        </xpath>
         <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='extra']/group[1]/group[2]/field[@name='group_id']" position="replace"/>
         <xpath expr="//field[@name='analytic_account_id']" position="replace"/>
         <xpath expr="//field[@name='partner_id']" position="attributes">
@@ -116,24 +122,6 @@
               </group>
             </sheet>
           </form>
-        </xpath>
-      </data>
-    </field>
-  </record>
-  <record model="ir.ui.view" id="personalizations_energesa.ir_ui_view_3235">
-    <field name="name">Personalización: stock.picking.form</field>
-    <field name="model">stock.picking</field>
-    <field ref="stock.view_picking_form" name="inherit_id"/>
-    <field type="xml" name="arch">
-      <data>
-        <xpath expr="//page[@name='extra']//field[@name='group_id']" position="replace">
-          <field name="group_id" attrs="{'readonly': [('is_locked', '=', True)]}" force_save="1"/>
-        </xpath>
-        <xpath expr="//field[@name='move_lines']//tree//field[@name='product_id']" position="after">
-          <field name="group_id" invisible="1" force_save="1"/>
-        </xpath>
-        <xpath expr="//field[@name='move_lines']" position="attributes">
-          <attribute name="context">{'picking_type_code': picking_type_code,'default_group_id': group_id, 'default_picking_id': id, 'form_view_ref':'stock.view_move_picking_form', 'address_in_id': partner_id, 'default_picking_type_id': picking_type_id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id}</attribute>
         </xpath>
       </data>
     </field>

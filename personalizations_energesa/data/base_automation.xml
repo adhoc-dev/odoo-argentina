@@ -4,7 +4,6 @@
     <field name="name">Completar información de la iniciativa desde la mensajería</field>
     <field ref="calendar.model_mail_message" name="model_id"/>
     <field name="state">code</field>
-    <field name="binding_type">action</field>
     <field name="code"># Available variables:
 #  - env: Odoo Environment on which the action is triggered
 #  - model: Odoo Model of the record on which the action is triggered; is a void recordset
@@ -173,7 +172,6 @@ for lead in leads:
     <field name="name">Restricción al crear oportunidad</field>
     <field ref="crm.model_crm_lead" name="model_id"/>
     <field name="state">code</field>
-    <field name="binding_type">action</field>
     <field name="code"># Available variables:
 #  - env: Odoo Environment on which the action is triggered
 #  - model: Odoo Model of the record on which the action is triggered; is a void recordset
@@ -200,7 +198,6 @@ if env.user.id != 1:
     <field name="name">Personalización: Actualizar Fechas en Documentos Relacionados al Modificar Proyecto</field>
     <field ref="hr_timesheet.model_project_task" name="model_id"/>
     <field name="state">code</field>
-    <field name="binding_type">action</field>
     <field name="code"># Available variables:
 #  - env: Odoo Environment on which the action is triggered
 #  - model: Odoo Model of the record on which the action is triggered; is a void recordset
@@ -227,37 +224,10 @@ for task in records:
 </field>
     <field name="trigger">on_write</field>
   </record>
-  <record model="base.automation" id="personalizations_energesa.bloquear_plantilla_e_8be42c00-a9f3-4f44-87c8-5ea48ac56ffe">
-    <field name="name">Procesos: Bloquear Plantilla Estandar de Materiales</field>
-    <field ref="account_analytic_default.model_stock_picking" name="model_id"/>
-    <field name="state">code</field>
-    <field name="binding_type">action</field>
-    <field name="code"># Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
-if env.user.id != 1:
-      raise Warning("Esta orden de entrega es una plantilla estándar. Para usarla, por favor duplicarla y trabajar sobre el duplicado. Para modificarla desmarcar la casilla Es plantilla , guardar, luego editarla y volver a marcarla como plantilla para bloquearla")
- 
- 
-
-
-</field>
-    <field eval="False" name="active"/>
-    <field name="filter_domain">[["x_plantilla","=",1]]</field>
-    <field name="filter_pre_domain">[["x_plantilla","=",1]]</field>
-    <field name="trigger">on_write</field>
-  </record>
   <record model="base.automation" id="personalizations_energesa.base_automation_11">
     <field name="name">Procesos: Req. Verificación Presupuesto</field>
     <field ref="delivery.model_sale_order" name="model_id"/>
     <field name="state">code</field>
-    <field name="binding_type">action</field>
     <field name="code"># Available variables:
 #  - env: Odoo Environment on which the action is triggered
 #  - model: Odoo Model of the record on which the action is triggered; is a void recordset
@@ -323,7 +293,6 @@ if env.user.id != 1:
     <field name="name">Procesos: Req. Confirm Presupuesto</field>
     <field ref="delivery.model_sale_order" name="model_id"/>
     <field name="state">code</field>
-    <field name="binding_type">action</field>
     <field name="code"># Available variables:
 #  - env: Odoo Environment on which the action is triggered
 #  - model: Odoo Model of the record on which the action is triggered; is a void recordset
@@ -338,7 +307,6 @@ if env.user.id != 1:
  for rec in records:
    if not rec.x_verificado:
      raise Warning("Para confirmar el presupuesto, el vendedor primero debe marcar el presupuesto como Verificado")
-
 </field>
     <field name="filter_domain">[["state","=","sale"]]</field>
     <field name="filter_pre_domain">["|",["state","=","draft"],["state","=","sent"]]</field>
@@ -348,7 +316,6 @@ if env.user.id != 1:
     <field name="name">Req. Confirm Oportunidad</field>
     <field ref="crm.model_crm_lead" name="model_id"/>
     <field name="state">code</field>
-    <field name="binding_type">action</field>
     <field name="code"># Available variables:
 #  - env: Odoo Environment on which the action is triggered
 #  - model: Odoo Model of the record on which the action is triggered; is a void recordset
@@ -362,9 +329,6 @@ if env.user.id != 1:
 for rec in records:
  if not rec.order_ids or any(x.state != 'sale' for x in rec.order_ids):
      raise Warning("Para marcar una Iniciativa como Ganada, debe tener una OV Confirmada vinculada a dicha Iniciativa")
-
-
-
 </field>
     <field eval="False" name="active"/>
     <field name="filter_domain">[["stage_id.name","=","Ganado"]]</field>
@@ -375,7 +339,6 @@ for rec in records:
     <field name="name">Procesos: Bloquear Plantilla Estandar de PR</field>
     <field ref="purchase_request.model_purchase_request" name="model_id"/>
     <field name="state">code</field>
-    <field name="binding_type">action</field>
     <field name="code"># Available variables:
 #  - env: Odoo Environment on which the action is triggered
 #  - model: Odoo Model of the record on which the action is triggered; is a void recordset
@@ -398,9 +361,8 @@ if env.user.id != 1:
   </record>
   <record model="base.automation" id="personalizations_energesa.base_automation_15">
     <field name="name">Pers - stock.picking - onchange group_id - Obtener Fecha Desde Tarea</field>
-    <field ref="account_analytic_default.model_stock_picking" name="model_id"/>
+    <field ref="stock.model_stock_picking" name="model_id"/>
     <field name="state">code</field>
-    <field name="binding_type">action</field>
     <field name="code"># Actualizar Fecha Prevista desde una tarea
 sp = record
 if sp.group_id and sp.group_id.sale_id:
@@ -419,9 +381,8 @@ sp.move_lines.update({"group_id": sp.group_id.id })</field>
   </record>
   <record model="base.automation" id="personalizations_energesa.base_automation_16">
     <field name="name">Pers - stock.picking - onchange move_lines - Obtener Fecha Desde Tarea</field>
-    <field ref="account_analytic_default.model_stock_picking" name="model_id"/>
+    <field ref="stock.model_stock_picking" name="model_id"/>
     <field name="state">code</field>
-    <field name="binding_type">action</field>
     <field name="code"># Actualizar Fecha Prevista desde una tarea
 sp = record
 if sp.group_id and sp.group_id.sale_id:
@@ -437,9 +398,8 @@ if sp.group_id and sp.group_id.sale_id:
   </record>
   <record model="base.automation" id="personalizations_energesa.base_automation_17">
     <field name="name">Pers - stock.picking - create &amp; write - Obtener Fecha Desde Tarea</field>
-    <field ref="account_analytic_default.model_stock_picking" name="model_id"/>
+    <field ref="stock.model_stock_picking" name="model_id"/>
     <field name="state">code</field>
-    <field name="binding_type">action</field>
     <field name="code"># Actualizar Fecha Prevista desde una tarea
 sp = record
 if sp.group_id and sp.group_id.sale_id:
@@ -455,7 +415,6 @@ if sp.group_id and sp.group_id.sale_id:
     <field name="name">Procesos: lastdate_stage_update (Helpdesk)</field>
     <field ref="helpdesk.model_helpdesk_ticket" name="model_id"/>
     <field name="state">code</field>
-    <field name="binding_type">action</field>
     <field name="code"># Available variables:
 #  - env: Odoo Environment on which the action is triggered
 #  - model: Odoo Model of the record on which the action is triggered; is a void recordset
@@ -477,7 +436,6 @@ record.update({'x_last_stage_update': datetime.datetime.now()})
     <field name="name">Procesos: default_  date_start (Tareas Automaticas)</field>
     <field ref="hr_timesheet.model_project_task" name="model_id"/>
     <field name="state">code</field>
-    <field name="binding_type">action</field>
     <field name="code"># Available variables:
 #  - env: Odoo Environment on which the action is triggered
 #  - model: Odoo Model of the record on which the action is triggered; is a void recordset
@@ -498,7 +456,6 @@ record[("date_start")] = (datetime.datetime.strptime( record.date_start, "%Y-%m-
     <field name="name">Procesos: Secuencia Línea Proveedor</field>
     <field ref="product.model_product_supplierinfo" name="model_id"/>
     <field name="state">code</field>
-    <field name="binding_type">action</field>
     <field name="code"># Available variables:
 #  - env: Odoo Environment on which the action is triggered
 #  - model: Odoo Model of the record on which the action is triggered; is a void recordset
@@ -533,7 +490,6 @@ if registers:
     <field name="name">Procesos: Crear Tarea Trámites FV</field>
     <field ref="hr_timesheet.model_project_task" name="model_id"/>
     <field name="state">object_create</field>
-    <field name="binding_type">action</field>
     <field ref="hr_timesheet.model_project_task" name="crud_model_id"/>
     <field name="filter_domain">["&amp;","&amp;",["project_id.id","=",23],["stage_id.id","!=",23],["stage_id.id","!=",90]]</field>
     <field name="filter_pre_domain">["&amp;","&amp;",["project_id.id","=",23],["child_ids","=",False],"|",["stage_id.id","=",23],["stage_id.id","=",90]]</field>
@@ -543,7 +499,6 @@ if registers:
     <field name="name">Procesos: Req. Plazo pago y proveedor</field>
     <field ref="purchase.model_purchase_order" name="model_id"/>
     <field name="state">code</field>
-    <field name="binding_type">action</field>
     <field name="code"># Available variables:
 #  - env: Odoo Environment on which the action is triggered
 #  - model: Odoo Model of the record on which the action is triggered; is a void recordset
@@ -567,7 +522,6 @@ if env.user.id != 1:
     <field name="name">Procesos: Email venta confirmada</field>
     <field ref="delivery.model_sale_order" name="model_id"/>
     <field name="state">email</field>
-    <field name="binding_type">action</field>
     <field name="filter_domain">["|",["state","=","sale"],["state","=","done"]]</field>
     <field name="filter_pre_domain">["&amp;","&amp;",["state","!=","sale"],["state","!=","done"],["state","!=","cancel"]]</field>
     <field name="trigger">on_write</field>
@@ -576,7 +530,6 @@ if env.user.id != 1:
     <field name="name">Procesos: Email new ticket created</field>
     <field ref="helpdesk.model_helpdesk_ticket" name="model_id"/>
     <field name="state">email</field>
-    <field name="binding_type">action</field>
     <field name="filter_domain">[["team_id","=",3]]</field>
     <field name="trigger">on_create</field>
   </record>
