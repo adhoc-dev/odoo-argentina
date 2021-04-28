@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_4884" model="ir.ui.view">
+    <field name="name">ver sucursal de destino en orden de compra iboggio</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="origin" position="replace"/>
+        <field name="date_planned" position="after">
+          <field name="picking_type_id"/>
+          <field name="create_uid"/>
+          <field name="x_monto_USD"/>
+          <field name="currency_id" invisible="1"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_4897" model="ir.ui.view">
+    <field name="name">agregar marca en compras iboggio</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.purchase_order_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="date_order" position="attributes">
+          <attribute name="readonly">1</attribute>
+        </field>
+        <field name="product_id" position="after">
+          <field name="x_product_brand_id"/>
+          <field name="x_supplier_code"/>
+        </field>
+        <field name="product_qty" position="after">
+          <field name="qty_received"/>
+          <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1775)d" icon="fa-building-o" type="action"/>
+          <button string="Traceability" name="%(personalizations_boggio.ir_act_server_1776)d" icon="fa-arrows-v" type="action"/>
+          <button type="action" name="%(personalizations_boggio.ir_act_server_1778)d" string="View Stock Detail" icon="fa-search-plus"/>
+        </field>
+        <field name="price_subtotal" position="after">
+          <field name="date_planned"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_4929" model="ir.ui.view">
+    <field name="name">busqueda de mis ordenes de compra iboggio</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase_ux.view_purchase_order_filter"/>
+    <field name="arch" type="xml">
+      <data>
+        <filter name="invoiced" position="after">
+          <separator/>
+          <filter string="Mis Comprobantes" domain="[('create_uid','=',uid)]" name="my_sale_orders_filter2"/>
+        </filter>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_4933" model="ir.ui.view">
+    <field name="name">sacar boton de cancelacion en ordenes de compra iboggio</field>
+    <field name="model">purchase.order</field>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_163')])]" name="groups_id"/>
+    <field name="inherit_id" ref="purchase.purchase_order_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <button name="button_cancel" position="replace"/>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5087" model="ir.ui.view">
+    <field name="name">cancelar compras para todos los compradores iboggio</field>
+    <field name="model">purchase.order</field>
+    <field eval="[(6, 0, [ref('purchase.group_purchase_user')])]" name="groups_id"/>
+    <field name="inherit_id" ref="purchase_ux.purchase_order_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <button name="button_cancel_remaining" position="replace"/>
+        <field name="delivery_status" position="replace"/>
+        <button name="update_prices_with_supplier_cost" position="replace"/>
+        <!-- agregamos boton de cancelar linea -->
+        <xpath expr="//field[@name='order_line']/tree/field[@name='qty_received']" position="after">
+          <field name="delivery_status" invisible="1"/>
+          <button name="button_cancel_remaining" type="object" string="Cancel remaining quanitity to be received. This will set line quantity equal to received qty and will cancel remaining moves" icon="fa-ban" confirm="This will set line quantity equal to received qty and will cancel remaining moves. This can not be undone. Are you sure you want to continue?" attrs="{'invisible': [('delivery_status', '!=', 'to receive')]}"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5930" model="ir.ui.view">
+    <field name="name">transporte en ordenes de compra iboggio</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.purchase_order_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="date_order" position="after">
+          <field name="x_carrier_id"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_7721" model="ir.ui.view">
+    <field name="name">filtro compras atrasadas (2meses)</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+    <field name="arch" type="xml">
+      <data>
+        <filter name="received" position="after">
+          <filter name="OC_atrasadas" string="Controlar con proveedor" domain="[('date_order', '&lt;=', (context_today()-relativedelta(days=45)).strftime('%Y-%m-%d')), ('delivery_status','=', 'to receive')]"/>
+        </filter>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_7785" model="ir.ui.view">
+    <field name="name">Odoo Studio: request.quotation.select customization</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='store_id']" position="after">
+          <field name="partner_ref"/>
+        </xpath>
+        <xpath expr="//search[1]/group[1]/filter[not(@name)][1]" position="before">
+          <filter context="{'group_by': 'create_uid'}" name="create_uid" string="Responsible"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_7867" model="ir.ui.view">
+    <field name="name">Odoo Studio: purchase.order.form customization</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.purchase_order_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='company_id']" position="after">
+          <field name="x_rotacion" readonly="1" attrs="{}"/>
+          <field name="x_rotacion_local" readonly="1" attrs="{}"/>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='date_planned']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='company_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='account_analytic_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='analytic_tag_ids']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_7945" model="ir.ui.view">
+    <field name="name">Odoo Studio: purchase.order.tree customization</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='picking_type_id']" position="after">
+          <field name="partner_ref"/>
+        </xpath>
+        <xpath expr="//field[@name='amount_total']" position="after">
+          <field name="x_rotacion"/>
+          <field name="x_rotacion_local"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_8138" model="ir.ui.view">
+    <field name="name">sacar boton confirmar (logistica)</field>
+    <field name="model">purchase.order</field>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_260')])]" name="groups_id"/>
+    <field name="inherit_id" ref="purchase.purchase_order_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//form[1]/header[1]/button[@name='button_confirm'][2]" position="replace"/>
+        <xpath expr="//form[1]/header[1]/button[@name='2322']" position="replace"/>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_8164" model="ir.ui.view">
+    <field name="name">sacar campo montos (logistica)</field>
+    <field name="model">purchase.order</field>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_260')])]" name="groups_id"/>
+    <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='x_monto_USD']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='amount_untaxed']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='amount_total']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

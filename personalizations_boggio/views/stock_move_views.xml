@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_4439" model="ir.ui.view">
+    <field name="name">Boggio Personalization stock.move.tree</field>
+    <field name="model">stock.move</field>
+    <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+    <field name="arch" type="xml">
+      <field name="name" position="attributes">
+        <attribute name="invisible">False</attribute>
+      </field>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5100" model="ir.ui.view">
+    <field name="name">agregar proveedor en productos a recibir iboggio</field>
+    <field name="model">stock.move</field>
+    <field name="inherit_id" ref="stock.view_move_tree_receipt_picking"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="origin" position="after">
+          <field name="picking_partner_id"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5348" model="ir.ui.view">
+    <field name="name">mostrar fecha de creacion iboggio</field>
+    <field name="model">stock.move</field>
+    <field name="inherit_id" ref="stock.view_move_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="create_date" position="replace"/>
+        <field name="date" position="replace"/>
+        <field name="state" position="before">
+          <field name="create_date"/>
+          <field name="date" string="Fecha Transferencia"/>
+          <field name="write_uid"/>
+          <!--<field name="lot_ids"/> -->
+          <field name="date_expected"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5512" model="ir.ui.view">
+    <field name="name">mostrar marca y codigo de proveedor iboggio</field>
+    <field name="model">stock.move</field>
+    <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="product_id" position="after">
+          <field name="x_supplier_code"/>
+          <field name="x_product_brand_id"/>
+          <button string="Traceability" name="%(personalizations_boggio.ir_act_server_1748)d" icon="fa-arrows-v" type="action"/>
+          <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1747)d" icon="fa-building-o" type="action"/>
+          <button type="action" name="%(personalizations_boggio.ir_act_server_1746)d" class="oe_stat_button" icon="fa-search-plus" string="Resumen Movimiento"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_6064" model="ir.ui.view">
+    <field name="name">botones en move de ventas</field>
+    <field name="model">stock.move</field>
+    <field name="inherit_id" ref="stock.view_move_tree_receipt_picking"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="product_id" position="after">
+          <button string="Traceability" name="%(personalizations_boggio.ir_act_server_1751)d" icon="fa-arrows-v" type="action"/>
+          <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1750)d" icon="fa-building-o" type="action"/>
+          <button type="action" name="%(personalizations_boggio.ir_act_server_1749)d" class="oe_stat_button" icon="fa-search-plus" string="Resumen Movimiento"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_7739" model="ir.ui.view">
+    <field name="name">Odoo Studio: stock.move.search customization</field>
+    <field name="model">stock.move</field>
+    <field name="inherit_id" ref="stock.view_move_search"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='origin']" position="after">
+          <field name="group_id"/>
+        </xpath>
+        <xpath expr="//field[@name='date']" position="attributes">
+          <attribute name="string">Fecha de transferencia</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_7931" model="ir.ui.view">
+    <field name="name">Odoo Studio: stock.move.tree customization</field>
+    <field name="model">stock.move</field>
+    <field name="inherit_id" ref="stock.view_move_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='vouchers']" position="after">
+          <field name="x_so_create_uid" string="Vendedor"/>
+          <field name="x_oc_create_uid" string="Comprador"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

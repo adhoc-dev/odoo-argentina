@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_4935" model="ir.ui.view">
+    <field name="name">usuarios en inventarios iboggio</field>
+    <field name="model">stock.inventory</field>
+    <field name="inherit_id" ref="stock.view_inventory_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="state" position="after">
+          <field name="create_uid"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5692" model="ir.ui.view">
+    <field name="name">origen inventario</field>
+    <field name="model">stock.inventory</field>
+    <field name="inherit_id" ref="stock.view_inventory_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="accounting_date" position="after">
+          <field name="x_origen"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_6063" model="ir.ui.view">
+    <field name="name">botones en inventario</field>
+    <field name="model">stock.inventory</field>
+    <field name="inherit_id" ref="stock.view_inventory_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="product_uom_id" position="after">
+          <button string="Traceability" name="%(personalizations_boggio.ir_act_server_1751)d" icon="fa-arrows-v" type="action"/>
+          <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1750)d" icon="fa-building-o" type="action"/>
+          <button type="action" name="%(personalizations_boggio.ir_act_server_1749)d" class="oe_stat_button" icon="fa-search-plus" string="Resumen Movimiento"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_7686" model="ir.ui.view">
+    <field name="name">validar control de inventario iboggio</field>
+    <field name="model">stock.inventory</field>
+    <field eval="[(6, 0, [ref('sales_team.group_sale_manager')])]" name="groups_id"/>
+    <field name="inherit_id" ref="stock.view_inventory_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <button name="action_done" position="replace"/>
+        <button name="action_cancel_draft" position="before">
+          <button name="action_done" states="confirm" string="Validar_Inventario" type="object" class="oe_highlight"/>
+        </button>
+      </data>
+    </field>
+  </record>
+</odoo>

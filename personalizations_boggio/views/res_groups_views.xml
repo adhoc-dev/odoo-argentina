@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_8036" model="ir.ui.view">
+    <field name="name">Default tree view for res.groups</field>
+    <field name="model">res.groups</field>
+    <field name="arch" type="xml">
+      <tree string="Access Groups">
+        <field name="full_name" modifiers="{&quot;readonly&quot;: true}"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

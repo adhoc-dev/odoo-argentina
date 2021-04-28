@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_5032" model="ir.ui.view">
+    <field name="name">usuario in cheques3 iboggio</field>
+    <field name="model">account.check</field>
+    <field name="inherit_id" ref="account_check.view_account_check_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="name" position="after">
+          <field name="create_uid"/>
+          <field name="create_date"/>
+        </field>
+        <field name="journal_id" position="attributes">
+          <attribute name="invisible">False</attribute>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5034" model="ir.ui.view">
+    <field name="name">sacar el create de cheques3 iboggio</field>
+    <field name="model">account.check</field>
+    <field name="inherit_id" ref="account_check.view_account_check_tree"/>
+    <field name="arch" type="xml">
+      <tree position="attributes">
+        <attribute name="create">false</attribute>
+      </tree>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5035" model="ir.ui.view">
+    <field name="name">sacar el create/edit y create_uid de cheques iboggio</field>
+    <field name="model">account.check</field>
+    <field name="inherit_id" ref="account_check.view_account_check_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <form position="attributes">
+          <attribute name="create">false</attribute>
+          <attribute name="edit">false</attribute>
+        </form>
+        <field name="payment_date" position="after">
+          <field name="create_uid"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5122" model="ir.ui.view">
+    <field name="name">buscar por importe cheques iboggio </field>
+    <field name="model">account.check</field>
+    <field name="inherit_id" ref="account_check.view_checks_search"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="name" position="after">
+          <field name="amount"/>
+        </field>
+      </data>
+    </field>
+  </record>
+</odoo>

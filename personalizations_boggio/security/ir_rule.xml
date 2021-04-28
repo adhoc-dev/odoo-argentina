@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_rule_309" model="ir.rule">
+    <field name="name">tile.all</field>
+    <field name="model_id" ref="web_dashboard_tile.model_tile_tile"/>
+    <field name="domain_force"><![CDATA[[(1,'=', 1)]]]></field>
+    <field eval="[(6, 0, [ref('base.group_system')])]" name="groups"/>
+    <field eval="True" name="perm_create"/>
+    <field eval="True" name="perm_read"/>
+    <field eval="True" name="perm_unlink"/>
+    <field eval="True" name="perm_write"/>
+  </record>
+  <record id="personalizations_boggio.ir_rule_475" model="ir.rule">
+    <field name="name">Project: multi-company</field>
+    <field name="model_id" ref="helpdesk.model_helpdesk_team"/>
+    <field name="domain_force"><![CDATA[['|',
+                                            ('company_id', '=', False),
+                                            ('company_id', 'child_of', [user.company_id.id]),
+                                        ]]]></field>
+    <field eval="[(6, 0, [])]" name="groups"/>
+    <field eval="True" name="perm_create"/>
+    <field eval="True" name="perm_read"/>
+    <field eval="True" name="perm_unlink"/>
+    <field eval="True" name="perm_write"/>
+  </record>
+  <record id="personalizations_boggio.ir_rule_496" model="ir.rule">
+    <field name="name">Mis Report</field>
+    <field name="model_id" ref="mis_builder.model_mis_report_instance"/>
+    <field name="domain_force"><![CDATA[[('x_studio_field_PQwWN', 'child_of', [user.id])]]]></field>
+    <field eval="[(6, 0, [ref('base.group_user')])]" name="groups"/>
+    <field eval="True" name="perm_create"/>
+    <field eval="True" name="perm_read"/>
+    <field eval="True" name="perm_unlink"/>
+    <field eval="True" name="perm_write"/>
+  </record>
+  <record id="personalizations_boggio.ir_rule_497" model="ir.rule">
+    <field name="name">Mis Report</field>
+    <field name="model_id" ref="mis_builder.model_mis_report_instance"/>
+    <field name="domain_force"><![CDATA[[(1,'=',1)]]]></field>
+    <field eval="[(6, 0, [ref('base.group_erp_manager')])]" name="groups"/>
+    <field eval="True" name="perm_create"/>
+    <field eval="True" name="perm_read"/>
+    <field eval="True" name="perm_unlink"/>
+    <field eval="True" name="perm_write"/>
+  </record>
+  <record id="personalizations_boggio.ir_rule_499" model="ir.rule">
+    <field name="name">account.analytic.line.billing.user</field>
+    <field name="model_id" ref="account.model_account_analytic_line"/>
+    <field name="domain_force"><![CDATA[[(1, '=', 1)]]]></field>
+    <field eval="[(6, 0, [ref('base.group_user')])]" name="groups"/>
+    <field eval="True" name="perm_create"/>
+    <field eval="False" name="perm_read"/>
+    <field eval="True" name="perm_unlink"/>
+    <field eval="True" name="perm_write"/>
+  </record>
+  <record id="personalizations_boggio.ir_rule_506" model="ir.rule">
+    <field name="name">Mail.channel: access only public and joined groups(COPY)</field>
+    <field name="model_id" ref="crm_livechat.model_mail_channel"/>
+    <field name="domain_force"><![CDATA[['|', '|',
+('public', '=', 'public'),
+'&', ('public', '=', 'private'), ('channel_partner_ids', 'in', [user.partner_id.id]),
+'&', ('public', '=', 'groups'), ('group_public_id', 'in', [g.id for g in user.groups_id])]]]></field>
+    <field eval="[(6, 0, [ref('base.group_user'), ref('base.group_portal'), ref('base.group_public')])]" name="groups"/>
+    <field eval="False" name="perm_create"/>
+    <field eval="True" name="perm_read"/>
+    <field eval="True" name="perm_unlink"/>
+    <field eval="True" name="perm_write"/>
+  </record>
+  <record id="personalizations_boggio.ir_rule_507" model="ir.rule">
+    <field name="name">Mail.channel: FULL access</field>
+    <field name="model_id" ref="crm_livechat.model_mail_channel"/>
+    <field name="domain_force"><![CDATA[[(1, '=', 1)]]]></field>
+    <field eval="[(6, 0, [ref('im_livechat.im_livechat_group_manager')])]" name="groups"/>
+    <field eval="True" name="perm_create"/>
+    <field eval="True" name="perm_read"/>
+    <field eval="True" name="perm_unlink"/>
+    <field eval="True" name="perm_write"/>
+  </record>
+</odoo>

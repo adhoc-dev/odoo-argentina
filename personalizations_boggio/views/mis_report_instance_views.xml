@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_7668" model="ir.ui.view">
+    <field name="name">Odoo Studio: mis.report.instance.view.form customization</field>
+    <field name="model">mis.report.instance</field>
+    <field name="inherit_id" ref="mis_builder.mis_report_instance_view_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='comparison_mode']" position="after">
+          <field name="x_studio_field_PQwWN" widget="many2many_tags"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

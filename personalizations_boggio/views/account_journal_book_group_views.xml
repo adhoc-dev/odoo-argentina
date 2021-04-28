@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_8029" model="ir.ui.view">
+    <field name="name">Default form view for account.journal.book.group</field>
+    <field name="model">account.journal.book.group</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet string="account.journal.book.group">
+          <group col="4">
+            <field name="name" modifiers="{&quot;required&quot;: true}"/>
+            <separator/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+</odoo>

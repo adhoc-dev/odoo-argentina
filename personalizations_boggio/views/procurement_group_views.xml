@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_5109" model="ir.ui.view">
+    <field name="name">agregado de creador del pedido iboggio</field>
+    <field name="model">procurement.group</field>
+    <field name="inherit_id" ref="stock.procurement_group_form_view"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="move_type" position="after">
+          <field name="create_uid"/>
+        </field>
+      </data>
+    </field>
+  </record>
+</odoo>

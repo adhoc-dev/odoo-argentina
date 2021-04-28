@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_5882" model="ir.ui.view">
+    <field name="name">Control remitos diarios</field>
+    <field name="model">x_controles_remitos_diarios</field>
+    <field name="arch" type="xml">
+      <tree string="Control Remitos Diarios">
+        <field name="x_fecha"/>
+        <field name="x_team_id"/>
+        <field name="x_write_uid2"/>
+        <field name="x_num_control"/>
+        <field name="x_num_desvio"/>
+        <field name="x_porc_correctos"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

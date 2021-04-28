@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_5131" model="ir.ui.view">
+    <field name="name">agregamos usuario iva venta iboggio</field>
+    <field name="model">account.vat.ledger</field>
+    <field name="inherit_id" ref="l10n_ar_account_vat_ledger.account_vat_ledger_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="name" position="after">
+          <field name="create_uid"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_7682" model="ir.ui.view">
+    <field name="name">Vista Personalizada: por tema de performance</field>
+    <field name="model">account.vat.ledger</field>
+    <field name="inherit_id" ref="l10n_ar_account_vat_ledger.account_vat_ledger_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <page name="invoices" position="replace"/>
+        <page name="summary" position="replace"/>
+      </data>
+    </field>
+  </record>
+</odoo>

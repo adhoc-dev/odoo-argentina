@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_4968" model="ir.ui.view">
+    <field name="name">ver usuario de contabilidad iboggio</field>
+    <field name="model">account.move.line</field>
+    <field name="inherit_id" ref="account.view_move_line_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="move_id" position="after">
+          <field name="create_uid" readonly="True"/>
+          <field name="create_date" readonly="True"/>
+          <field name="x_pricelist_id"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5178" model="ir.ui.view">
+    <field name="name">usuario en contabilidad</field>
+    <field name="model">account.move.line</field>
+    <field name="inherit_id" ref="account.view_move_line_tree"/>
+    <field name="arch" type="xml">
+      <field name="credit" position="before">
+        <field name="create_uid"/>
+      </field>
+    </field>
+  </record>
+</odoo>

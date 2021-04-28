@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_7737" model="ir.ui.view">
+    <field name="name">sacar boton cancelar entrega parcial</field>
+    <field name="model">stock.backorder.confirmation</field>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_162')])]" name="groups_id"/>
+    <field name="inherit_id" ref="stock.view_backorder_confirmation"/>
+    <field name="arch" type="xml">
+      <data>
+        <button name="process_cancel_backorder" position="replace"/>
+      </data>
+    </field>
+  </record>
+</odoo>

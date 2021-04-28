@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_8099" model="ir.ui.view">
+    <field name="name">Seteo de estados de remitos iboggio</field>
+    <field name="model">x_stock.picking.setstate</field>
+    <field name="arch" type="xml">
+      <form string="Transferir" modifiers="{}">
+        <header modifiers="{}">
+          <button type="action" name="%(personalizations_boggio.ir_act_server_2449)d" string="en Boggio" context="{ 'state_detail_ib': 1,'ismodel':'setstate'}" barcode_trigger="F1"/>
+          <button type="action" name="%(personalizations_boggio.ir_act_server_2452)d" barcode_trigger="F2" string="Flete Propio" context="{ 'state_detail_ib': 2,'ismodel':'setstate'}" options="{}"/>
+          <button type="action" name="%(personalizations_boggio.ir_act_server_2453)d" string="Recibido X Cliente" context="{ 'state_detail_ib': 3,'ismodel':'setstate'}" barcode_trigger="F3"/>
+          <button type="action" name="%(personalizations_boggio.ir_act_server_2454)d" string="Flete de Terceros" context="{ 'state_detail_ib': 10,'ismodel':'setstate'}" barcode_trigger="F10"/>
+          <button type="action" name="%(personalizations_boggio.ir_act_server_2455)d" string="Martin" context="{ 'state_detail_ib': 11,'ismodel':'setstate'}" barcode_trigger="F11"/>
+          <button type="action" name="%(personalizations_boggio.ir_act_server_2478)d" string="Transporte sin Lugar" context="{ 'state_detail_ib': 12,'ismodel':'setstate'}" barcode_trigger="F12"/>
+        </header>
+        <group modifiers="{}">
+          <field name="x_voucher_ids" widget="many2many_tags" can_create="false" can_write="true" modifiers="{}"/>
+          <field name="x_state"/>
+        </group>
+        <field name="x_barcode_scanned" widget="picking_barcode_handler" on_change="1" modifiers="{}"/>
+      </form>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_8101" model="ir.ui.view">
+    <field name="name">Seteo de estados de remitos iboggio</field>
+    <field name="model">x_stock.picking.setstate</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="x_voucher_ids" widget="many2many_tags"/>
+        <field name="x_state"/>
+        <field name="create_uid"/>
+        <field name="create_date"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

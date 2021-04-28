@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_5770" model="ir.ui.view">
+    <field name="name">descuentos de usuario iboggio</field>
+    <field name="model">res.users.discount_restriction</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="id"/>
+        <field name="create_date"/>
+        <field name="user_id"/>
+        <field name="min_discount"/>
+        <field name="max_discount"/>
+        <field name="pricelist_id"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

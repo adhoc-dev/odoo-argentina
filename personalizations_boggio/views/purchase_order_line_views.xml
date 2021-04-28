@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_4946" model="ir.ui.view">
+    <field name="name">Boggio personalization</field>
+    <field name="model">purchase.order.line</field>
+    <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="x_qty_available"/>
+        <field name="x_virtual_available"/>
+      </tree>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_4952" model="ir.ui.view">
+    <field name="name">boggio personalization</field>
+    <field name="model">purchase.order.line</field>
+    <field name="inherit_id" ref="purchase.purchase_order_line_search"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="order_id" position="after">
+          <field name="x_supplier_code"/>
+        </field>
+        <filter position="before">
+          <field name="x_location_id" widget="selection" context="{'location': self}"/>
+        </filter>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5016" model="ir.ui.view">
+    <field name="name">comprador en odc iboggio</field>
+    <field name="model">purchase.order.line</field>
+    <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="order_id" position="after">
+          <field name="create_uid"/>
+          <field name="date_order"/>
+          <field name="x_product_brand_id"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5017" model="ir.ui.view">
+    <field name="name">comprados en purchase lines iboggio</field>
+    <field name="model">purchase.order.line</field>
+    <field name="inherit_id" ref="purchase.purchase_order_line_search"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="partner_id" position="after">
+          <filter string="Mis Comprobantes" domain="[('create_uid','=',uid)]"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5019" model="ir.ui.view">
+    <field name="name">Boggio personalizations (en lineas desde menu lineas y desde facturas)</field>
+    <field name="model">purchase.order.line</field>
+    <field name="inherit_id" ref="purchase_ux.purchase_order_line_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="order_id" position="after">
+          <field name="x_supplier_code"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5773" model="ir.ui.view">
+    <field name="name">importar filas</field>
+    <field name="model">purchase.order.line</field>
+    <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+    <field name="arch" type="xml">
+      <tree position="attributes">
+        <attribute name="create">true</attribute>
+      </tree>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_7871" model="ir.ui.view">
+    <field name="name">Odoo Studio: purchase.order.line.search customization</field>
+    <field name="model">purchase.order.line</field>
+    <field name="inherit_id" ref="purchase.purchase_order_line_search"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='x_supplier_code']" position="after">
+          <field name="x_product_brand_id"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_8031" model="ir.ui.view">
+    <field name="name">Odoo Studio: purchase.order.line.tree customization</field>
+    <field name="model">purchase.order.line</field>
+    <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='create_uid']" position="after">
+          <field name="account_analytic_id"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

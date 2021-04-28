@@ -1,0 +1,634 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="l10n_ar_aeroo_sale.action_aeroo_report_ar_sale_order" model="ir.actions.report">
+    <field name="name">Orden de Venta / presupuesto Argentina de Aeroo</field>
+    <field name="model">sale.order</field>
+    <field name="report_name">aeroo_report_ar_sale_order</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_type">action</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">l10n_ar_aeroo_sale/report/aeroo_report_ar_sale_order.odt</field>
+    <field eval="True" name="process_sep"/>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="l10n_ar_aeroo_stock.action_aeroo_report_ar_stock_picking" model="ir.actions.report">
+    <field name="name">Remito Argentino de Aeroo Rafela</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">aeroo_report_ar_picking</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_type">action</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">l10n_ar_aeroo_stock/report/aeroo_report_ar_picking.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+    <field name="copies">2</field>
+  </record>
+  <record id="l10n_ar_aeroo_purchase.action_aeroo_report_ar_purchase_order" model="ir.actions.report">
+    <field name="name">Orden de Compra Argentina de Aeroo</field>
+    <field name="model">purchase.order</field>
+    <field name="report_name">aeroo_report_ar_purchase_order</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="inter_company_rules.model_purchase_order"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">l10n_ar_aeroo_purchase/report/aeroo_report_ar_purchase_order.odt</field>
+    <field eval="True" name="process_sep"/>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="l10n_ar_aeroo_einvoice.action_aeroo_report_ar_einvoice" model="ir.actions.report">
+    <field name="name">Factura Electrónica Argentina de Aeroo EM (mismo reporte)</field>
+    <field name="model">account.invoice</field>
+    <field name="report_name">aeroo_report_ar_einvoice</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account.model_account_invoice"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">l10n_ar_aeroo_einvoice/report/aeroo_report_ar_einvoice.odt</field>
+    <field eval="True" name="process_sep"/>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="l10n_ar_aeroo_payment_group.action_aeroo_report_ar_voucher" model="ir.actions.report">
+    <field name="name">Orden de pago y recibo</field>
+    <field name="model">account.voucher</field>
+    <field name="report_name">aeroo_report_ar_voucher</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_type">action</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">l10n_ar_aeroo_payment_group/report/aeroo_report_ar_voucher.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="l10n_ar_aeroo_payment_group.action_aeroo_report_ar_payment" model="ir.actions.report">
+    <field name="name">Pagos y recibos Argentinos de Aeroo</field>
+    <field name="model">account.payment.group</field>
+    <field name="report_name">aeroo_report_ar_payment</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account_multicurrency_ux.model_account_payment_group"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">l10n_ar_aeroo_payment_group/report/aeroo_report_ar_payment.odt</field>
+    <field eval="True" name="process_sep"/>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1217" model="ir.actions.report">
+    <field name="name">Proforma</field>
+    <field name="model">sale.order</field>
+    <field name="report_name">aeroo_report_ar_sale_order_proforma</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="delivery.model_sale_order"/>
+    <field eval="[(6, 0, [ref('sales_team.group_sale_manager')])]" name="groups_id"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_sale_order_proforma.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1233" model="ir.actions.report">
+    <field name="name">Picking (dep7)</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">picking_list_dep_7</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/picking_list_dep_7.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1234" model="ir.actions.report">
+    <field name="name">Picking (dep 22  ilum)</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">picking_list_dep22</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/picking_list_dep22.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1256" model="ir.actions.report">
+    <field name="name">Factura Electrónica Argentina (0020) EM (mismo reporte)</field>
+    <field name="model">account.invoice</field>
+    <field name="report_name">aeroo_report_ar_einvoice_0020</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_type">action</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_einvoice_0020.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1268" model="ir.actions.report">
+    <field name="name">Picking dep RAF</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">picking_list_RAF</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/picking_list_RAF.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1281" model="ir.actions.report">
+    <field name="name">Picking dep SFE</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">picking_list_SFE</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/picking_list_SFE.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1282" model="ir.actions.report">
+    <field name="name">Remito Argentino de Aeroo (Ros IND 0002)</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">aeroo_report_ar_picking0002</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_type">action</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking0002.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+    <field name="copies">2</field>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1290" model="ir.actions.report">
+    <field name="name">Remito - Reimpresion PDF</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">aeroo_report_ar_picking_reimpresion</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking_reimpresion.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+    <field name="copies">2</field>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1308" model="ir.actions.report">
+    <field name="name">Inventario (con precio)</field>
+    <field name="model">stock.inventory</field>
+    <field name="report_name">stock.report_inventory_copy</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="stock.model_stock_inventory"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/stock.report_inventory_copy.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1336" model="ir.actions.report">
+    <field name="name">Picking (reimpresion PDF)</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">picking_list_dep22_test</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/picking_list_dep22_test.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1339" model="ir.actions.report">
+    <field name="name">Remito Argentino de Aeroo (Ros ILUM 0005) </field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">aeroo_report_ar_picking_copy_copy</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_type">action</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking_copy_copy.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+    <field name="copies">2</field>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1346" model="ir.actions.report">
+    <field name="name">Pagos Argentinos de Aeroo (carlitos)</field>
+    <field name="model">account.payment.group</field>
+    <field name="report_name">aeroo_report_ar_payment_carlitos</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account_multicurrency_ux.model_account_payment_group"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_payment_carlitos.odt</field>
+    <field eval="True" name="process_sep"/>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1385" model="ir.actions.report">
+    <field name="name">Remito Argentino de Aeroo (super express)</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">aeroo_report_ar_picking0020</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_type">action</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking0020.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+    <field name="copies">3</field>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1386" model="ir.actions.report">
+    <field name="name">OC festo online</field>
+    <field name="model">purchase.order</field>
+    <field name="report_name">aeroo_report_ar_purchase_order_festo</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="inter_company_rules.model_purchase_order"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_purchase_order_festo.odt</field>
+    <field eval="True" name="process_sep"/>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1392" model="ir.actions.report">
+    <field name="name">Pendientes de Sucursales combinadas</field>
+    <field name="model">stock.move</field>
+    <field name="report_name">pend_suc</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_move"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/pend_suc.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1396" model="ir.actions.report">
+    <field name="name">Remito Argentino de Aeroo (SFE 0007)</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">aeroo_report_ar_picking0007</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_type">action</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking0007.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+    <field name="copies">2</field>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1398" model="ir.actions.report">
+    <field name="name">Factura Electrónica Argentina (0021) EM (mismo reporte)</field>
+    <field name="model">account.invoice</field>
+    <field name="report_name">aeroo_report_ar_einvoice_0021</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_type">action</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_einvoice_0021.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1423" model="ir.actions.report">
+    <field name="name">Factura Electrónica Argentina de Aeroo (multiples pedidos) EM (mismo reporte)</field>
+    <field name="model">account.invoice</field>
+    <field name="report_name">aeroo_report_ar_einvoice_copy</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account.model_account_invoice"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_einvoice_copy.odt</field>
+    <field eval="True" name="process_sep"/>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1458" model="ir.actions.report">
+    <field name="name">Presupuesto Control</field>
+    <field name="model">sale.order</field>
+    <field name="report_name">aeroo_report_ar_so_control</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="delivery.model_sale_order"/>
+    <field eval="[(6, 0, [ref('sales_team.group_sale_manager')])]" name="groups_id"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_so_control.odt</field>
+    <field eval="True" name="process_sep"/>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1485" model="ir.actions.report">
+    <field name="name">pendientes y remit.o (Envio automatico Clientes)</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">aeroo_report_ar_picking_clientes</field>
+    <field name="report_type">aeroo</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking_clientes.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1496" model="ir.actions.report">
+    <field name="name">Remito Argentino de Aeroo (Ros MOT 0008)</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">aeroo_report_ar_picking0008</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_type">action</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking0008.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+    <field name="copies">2</field>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1595" model="ir.actions.report">
+    <field name="name">Informe de clientes para credito</field>
+    <field name="model">sale.order</field>
+    <field name="report_name">info_cliente_so</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="delivery.model_sale_order"/>
+    <field eval="[(6, 0, [ref('base.group_user')])]" name="groups_id"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/info_cliente_so.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1596" model="ir.actions.report">
+    <field name="name">Pendientes de entrega de clientes</field>
+    <field name="model">sale.order</field>
+    <field name="report_name">pendientes_entrega_clientes</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="delivery.model_sale_order"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/pendientes_entrega_clientes.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1599" model="ir.actions.report">
+    <field name="name">Pendientes de entrega de proveedores</field>
+    <field name="model">purchase.order</field>
+    <field name="report_name">pendientes_entrega_proveedor_copy</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="inter_company_rules.model_purchase_order"/>
+    <field eval="[(6, 0, [ref('purchase.group_purchase_manager'), ref('purchase.group_purchase_user')])]" name="groups_id"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/pendientes_entrega_proveedor_copy.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1601" model="ir.actions.report">
+    <field name="name">Cuenta Corriente para Cliente</field>
+    <field name="model">sale.order</field>
+    <field name="report_name">cc_cliente_so</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="delivery.model_sale_order"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/cc_cliente_so.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1607" model="ir.actions.report">
+    <field name="name">Orden de Compra Argentina de Aeroo (Siemens)</field>
+    <field name="model">purchase.order</field>
+    <field name="report_name">aeroo_report_ar_purchase_order_Siemens</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_type">action</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_purchase_order_Siemens.odt</field>
+    <field eval="True" name="process_sep"/>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1627" model="ir.actions.report">
+    <field name="name">Factura Electrónica Argentina (0025) EM (mismo reporte)</field>
+    <field name="model">account.invoice</field>
+    <field name="report_name">aeroo_report_ar_einvoice_0025</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_type">action</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_einvoice_0025.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1636" model="ir.actions.report">
+    <field name="name">Etiqueta producto (multiples) (batch)</field>
+    <field name="model">stock.batch.picking</field>
+    <field name="report_name">etiquetaProductos_multiples_batch</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="stock_batch_picking.model_stock_batch_picking"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/etiquetaProductos_multiples_batch.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1637" model="ir.actions.report">
+    <field name="name">Etiqueta producto (multiples) (presupuesto)</field>
+    <field name="model">sale.order</field>
+    <field name="report_name">etiquetaProductos_multiples_presupuesto</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="delivery.model_sale_order"/>
+    <field eval="[(6, 0, [ref('base.group_user')])]" name="groups_id"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/etiquetaProductos_multiples_presupuesto.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1686" model="ir.actions.report">
+    <field name="name">Factura Electrónica Argentina (0022)  EM (mismo reporte)</field>
+    <field name="model">account.invoice</field>
+    <field name="report_name">aeroo_report_ar_einvoice_0020_copy</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_type">action</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_einvoice_0020_copy.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1753" model="ir.actions.report">
+    <field name="name">Picking (dep1 Laser)</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">picking_list_dep1_copy</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/picking_list_dep1_copy.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1782" model="ir.actions.report">
+    <field name="name">Etiqueta QR brother(multiples) (presupuesto) </field>
+    <field name="model">sale.order</field>
+    <field name="report_name">etiquetaQR_multiples_presupuesto</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="delivery.model_sale_order"/>
+    <field eval="[(6, 0, [ref('base.group_user')])]" name="groups_id"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/etiquetaQR_multiples_presupuesto.ods</field>
+    <field name="in_format">oo-ods</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1792" model="ir.actions.report">
+    <field name="name">Recepciones - Pendientes Batch2 (multiples)</field>
+    <field name="model">stock.batch.picking</field>
+    <field name="report_name">aeroo_stock_batch_picking2</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="stock_batch_picking.model_stock_batch_picking"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_stock_batch_picking2.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1794" model="ir.actions.report">
+    <field name="name">Informe Fabricacion</field>
+    <field name="model">sale.order</field>
+    <field name="report_name">info_fabricacion</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="delivery.model_sale_order"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/info_fabricacion.ods</field>
+    <field name="in_format">oo-ods</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
+  </record>
+  <record id="l10n_ar_aeroo_stock.action_aeroo_report_ar_stock_remito" model="ir.actions.report">
+    <field name="name">Remito pre-impreso</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">aeroo_report_ar_remito</field>
+    <field name="report_type">aeroo</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">l10n_ar_aeroo_stock/report/aeroo_report_ar_remito.odt</field>
+    <field eval="True" name="process_sep"/>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_2231" model="ir.actions.report">
+    <field name="name">Solicitud de devolucion</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">stock.picking_devoluciones</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field eval="False" name="multi"/>
+    <field name="paperformat_id" ref="base.paperformat_euro"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/stock.picking_devoluciones.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_2372" model="ir.actions.report">
+    <field name="name">informe de deuda de clientes general</field>
+    <field name="model">account.invoice</field>
+    <field name="report_name">deuda_clientes_general</field>
+    <field name="report_type">aeroo</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/deuda_clientes_general.ods</field>
+    <field name="in_format">oo-ods</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_ods"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_2400" model="ir.actions.report">
+    <field name="name">Control Indice de Rotacion (xls)</field>
+    <field name="model">purchase.order</field>
+    <field name="report_name">compras_control_xls</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="inter_company_rules.model_purchase_order"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/compras_control_xls.ods</field>
+    <field name="in_format">oo-ods</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_2407" model="ir.actions.report">
+    <field name="name">recepciones</field>
+    <field name="model">stock.move</field>
+    <field name="report_name">recepcion_sm</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_move"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/recepcion_sm.ods</field>
+    <field name="in_format">oo-ods</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_2420" model="ir.actions.report">
+    <field name="name">Control Indice de Rotacion (xls)</field>
+    <field name="model">stock.request.order</field>
+    <field name="report_name">control_IR</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="stock_request.model_stock_request_order"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/control_IR.ods</field>
+    <field name="in_format">oo-ods</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_2440" model="ir.actions.report">
+    <field name="name">Outlet</field>
+    <field name="model">sale.order.line</field>
+    <field name="report_name">outlet</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_sale_order_line"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/outlet.ods</field>
+    <field name="in_format">oo-ods</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_2445" model="ir.actions.report">
+    <field name="name">Imprimir etiqueta bultos</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">etiqueta de bultos</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/etiqueta de bultos.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_2450" model="ir.actions.report">
+    <field name="name">codigoBarraEstados</field>
+    <field name="model">stock.picking.state_detail</field>
+    <field name="report_name">codigo_barra_estados</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="stock_picking_state.model_stock_picking_state_detail"/>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/codigo_barra_estados.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_2475" model="ir.actions.report">
+    <field name="name">Remitos (aviso de estados)</field>
+    <field name="model">stock.picking</field>
+    <field name="report_name">Remitos_estados</field>
+    <field name="report_type">aeroo</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/Remitos_estados.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_2499" model="ir.actions.report">
+    <field name="name">Mis pendientes Automaticos</field>
+    <field name="model">sale.order</field>
+    <field name="report_name">sale_order_pendientes_automaticos</field>
+    <field name="report_type">aeroo</field>
+    <field eval="False" name="multi"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/sale_order_pendientes_automaticos.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+</odoo>

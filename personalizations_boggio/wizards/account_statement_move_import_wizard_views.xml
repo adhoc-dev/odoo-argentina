@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_5012" model="ir.ui.view">
+    <field name="name">fecha vencimiento conciliacion iboggio</field>
+    <field name="model">account.statement.move.import.wizard</field>
+    <field name="inherit_id" ref="account_statement_move_import.account_statement_move_import_wizard_form_view"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="date" position="after">
+          <field name="date_maturity"/>
+        </field>
+      </data>
+    </field>
+  </record>
+</odoo>

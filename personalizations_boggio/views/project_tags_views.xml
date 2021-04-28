@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_5778" model="ir.ui.view">
+    <field name="name">proyect.tags.tree iboggio</field>
+    <field name="model">project.tags</field>
+    <field eval="[(6, 0, [ref('purchase.group_purchase_manager')])]" name="groups_id"/>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="x_prioridad" min="1" max="5"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

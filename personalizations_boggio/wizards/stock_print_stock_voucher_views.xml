@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_4903" model="ir.ui.view">
+    <field name="name">borrar picking voucher de remitos iboggio</field>
+    <field name="model">stock.print_stock_voucher</field>
+    <field name="inherit_id" ref="stock_voucher.view_print_stock_voucher_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <button name="do_clean" position="replace"/>
+      </data>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_5002" model="ir.ui.view">
+    <field name="name">Boggio personalization</field>
+    <field name="model">stock.batch.picking</field>
+    <field name="inherit_id" ref="stock_batch_picking.stock_batch_picking_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="picker_id" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5004" model="ir.ui.view">
+    <field name="name">Boggio personalization</field>
+    <field name="model">stock.batch.picking</field>
+    <field name="inherit_id" ref="stock_batch_picking.stock_batch_picking_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="picker_id" position="after">
+          <field name="create_uid"/>
+        </field>
+        <field name="picker_id" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5005" model="ir.ui.view">
+    <field name="name">Boggio Personalization</field>
+    <field name="model">stock.batch.picking</field>
+    <field name="inherit_id" ref="stock_batch_picking.stock_batch_picking_search"/>
+    <field name="arch" type="xml">
+      <data>
+        <filter name="picker_id" position="replace">
+          <filter name="create_uid" string="Creado por" context="{'group_by':'create_uid'}"/>
+        </filter>
+        <field name="picker_id" position="after">
+          <field name="create_uid"/>
+        </field>
+        <field name="picker_id" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5039" model="ir.ui.view">
+    <field name="name">sacar boton de cancelacion de batch picking iboggio</field>
+    <field name="model">stock.batch.picking</field>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_146')])]" name="groups_id"/>
+    <field name="inherit_id" ref="stock_batch_picking.stock_batch_picking_form"/>
+    <field name="arch" type="xml">
+      <button name="action_cancel" position="replace"/>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5546" model="ir.ui.view">
+    <field name="name">Fecha remito e ingreso</field>
+    <field name="model">stock.batch.picking</field>
+    <field name="inherit_id" ref="stock_batch_picking.stock_batch_picking_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="date" position="before">
+          <field name="x_fecha_remito"/>
+          <field name="x_fecha_ingreso"/>
+        </field>
+        <field name="date" position="replace"/>
+        <field name="x_fecha_ingreso" position="after">
+          <field name="date" string="Fecha de procesamiento"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5550" model="ir.ui.view">
+    <field name="name">Fecha remito e ingreso obligatorias</field>
+    <field name="model">stock.batch.picking</field>
+    <field name="inherit_id" ref="stock_batch_picking.stock_batch_picking_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="x_fecha_remito" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <field name="x_fecha_ingreso" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_7823" model="ir.ui.view">
+    <field name="name">Odoo Studio: batch.picking.search customization</field>
+    <field name="model">stock.batch.picking</field>
+    <field name="inherit_id" ref="stock_batch_picking.stock_batch_picking_search"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//search[1]/field[@name='name']" position="after">
+          <field name="partner_id"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_7882" model="ir.ui.view">
+    <field name="name">Odoo Studio: stock.batch.picking.tree customization</field>
+    <field name="model">stock.batch.picking</field>
+    <field name="inherit_id" ref="stock_batch_picking.stock_batch_picking_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='picking_code']" position="after">
+          <field name="partner_id"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

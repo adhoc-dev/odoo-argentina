@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_4977" model="ir.ui.view">
+    <field name="name">ingreso de lote en mpr iboggio</field>
+    <field name="model">mrp.product.produce</field>
+    <field name="inherit_id" ref="mrp.view_mrp_product_produce_wizard"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="lot_id" position="attributes">
+          <attribute name="options">{'create': True, 'create_edit': True}</attribute>
+        </field>
+      </data>
+    </field>
+  </record>
+</odoo>

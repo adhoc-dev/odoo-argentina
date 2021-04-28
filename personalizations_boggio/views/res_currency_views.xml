@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_4979" model="ir.ui.view">
+    <field name="name">no permite modificar monedas iboggio</field>
+    <field name="model">res.currency</field>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_164')])]" name="groups_id"/>
+    <field name="inherit_id" ref="base.view_currency_tree"/>
+    <field name="arch" type="xml">
+      <tree position="attributes">
+        <attribute name="edit">false</attribute>
+        <attribute name="create">false</attribute>
+        <attribute name="delete">false</attribute>
+      </tree>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_4980" model="ir.ui.view">
+    <field name="name">no permite modificar monedas iboggio</field>
+    <field name="model">res.currency</field>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_164')])]" name="groups_id"/>
+    <field name="inherit_id" ref="base.view_currency_form"/>
+    <field name="arch" type="xml">
+      <form position="attributes">
+        <attribute name="edit">false</attribute>
+        <attribute name="create">false</attribute>
+        <attribute name="delete">false</attribute>
+      </form>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_4981" model="ir.ui.view">
+    <field name="name">no permite modificar monedas2 iboggio</field>
+    <field name="model">res.currency</field>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_164')])]" name="groups_id"/>
+    <field name="inherit_id" ref="base.view_currency_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <button name="%(base.act_view_currency_rates)d" position="replace"/>
+        <button name="action_get_pyafipws_currency_rate" position="replace"/>
+        <button name="action_get_pyafipws_currencies" position="replace"/>
+      </data>
+    </field>
+  </record>
+</odoo>

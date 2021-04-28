@@ -1,0 +1,605 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_667">
+    <field name="name">Estilos de productos web</field>
+    <field name="res_model">product.style</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_695">
+    <field name="name">Elemento de Lista de Precios</field>
+    <field name="res_model">product.pricelist.item</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_705">
+    <field name="name">Lineas de Reglas de Costos</field>
+    <field name="res_model">product.replenishment_cost.rule.item</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_708">
+    <field name="name">Supplier Info</field>
+    <field name="res_model">product.supplierinfo</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_709">
+    <field name="name">Inventory Line</field>
+    <field name="res_model">stock.inventory.line</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1144">
+    <field name="name">Marcas</field>
+    <field name="res_model">product.brand</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1164">
+    <field name="name">Estrategia de entrada</field>
+    <field name="res_model">product.putaway</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1218">
+    <field name="name">Replenishment cost rule</field>
+    <field name="res_model">product.replenishment_cost.rule</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1235">
+    <field name="name">Sale Line</field>
+    <field name="res_model">sale.order.line</field>
+    <field name="context">{'search_default_approved': 1}</field>
+    <field name="view_id" ref="sale.view_order_line_tree"/>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1242">
+    <field name="name">Extractos de Clientes (lista para gestion de deuda)</field>
+    <field name="res_model">res.partner</field>
+    <field name="context">{'search_default_with_balance': 1, 'search_default_customer': 1}</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1273">
+    <field name="name">Objetivo de proveedores</field>
+    <field name="res_model">board.board</field>
+    <field name="view_id" ref="personalizations_boggio.ir_ui_view_5038"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1288">
+    <field name="name">Sostenibilidad</field>
+    <field name="res_model">board.board</field>
+    <field name="view_id" ref="personalizations_boggio.ir_ui_view_5058"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1289">
+    <field name="name">Interno</field>
+    <field name="res_model">board.board</field>
+    <field name="view_id" ref="personalizations_boggio.ir_ui_view_5059"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1291">
+    <field name="name">prueba</field>
+    <field name="res_model">x_bve.prueba</field>
+    <field name="context">{'service_name': 'prueba'}</field>
+    <field name="view_mode">tree,graph,pivot</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1307">
+    <field name="name">pedidos sucursales</field>
+    <field name="res_model">x_bve.pedidossucursales</field>
+    <field name="context">{'service_name': 'pedidos sucursales'}</field>
+    <field name="view_mode">tree,graph,pivot</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1309">
+    <field name="name">Presupuesto de ventas Objetivo</field>
+    <field name="res_model">x_sales_target_budget</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1310">
+    <field name="name">Presupuesto de ventas objetivo</field>
+    <field name="res_model">x_sales_target_budget</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1313">
+    <field name="name">mis.report.instance.result.view.action.3</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1314">
+    <field name="name">mis.report.instance.result.view.action.4</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1316">
+    <field name="name">Reglas de reabastecimiento</field>
+    <field name="res_model">product.replenishment_cost.rule</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1323">
+    <field name="name">Etiquetas</field>
+    <field name="res_model">note.tag</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1332">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1333">
+    <field name="name">mis.report.instance.result.view.action.4</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1340">
+    <field name="name">mis.report.instance.result.view.action.10</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1345">
+    <field name="name">mis.report.instance.result.view.action.6</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1347">
+    <field name="name">Aprendizaje</field>
+    <field name="res_model">board.board</field>
+    <field name="view_id" ref="personalizations_boggio.ir_ui_view_5185"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1390">
+    <field name="name">mis.report.instance.result.view.action.10</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1395">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1401">
+    <field name="name">mis.report.instance.result.view.action.13</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1413">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1416">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1417">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1418">
+    <field name="name">mis.report.instance.result.view.action.15</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1419">
+    <field name="name">mis.report.instance.result.view.action.6</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1420">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1422">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1433">
+    <field name="name">mis.report.instance.result.view.action.6</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1434">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1435">
+    <field name="name">mis.report.instance.result.view.action.15</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1436">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1437">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1449">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1450">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1451">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1464">
+    <field name="name">mis.report.instance.result.view.action.5</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1473">
+    <field name="name">mis.report.instance.result.view.action.15</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1474">
+    <field name="name">mis.report.instance.result.view.action.9</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1475">
+    <field name="name">mis.report.instance.result.view.action.9</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1476">
+    <field name="name">mis.report.instance.result.view.action.14</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1497">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1506">
+    <field name="name">mis.report.instance.result.view.action.15</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1507">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1508">
+    <field name="name">mis.report.instance.result.view.action.15</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1509">
+    <field name="name">mis.report.instance.result.view.action.15</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1511">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1512">
+    <field name="name">mis.report.instance.result.view.action.6</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1513">
+    <field name="name">mis.report.instance.result.view.action.15</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1514">
+    <field name="name">mis.report.instance.result.view.action.6</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1515">
+    <field name="name">mis.report.instance.result.view.action.7</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1516">
+    <field name="name">mis.report.instance.result.view.action.15</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1521">
+    <field name="name">Razon de la devolucion</field>
+    <field name="res_model">x_devolucion_tags.devolucion_tags</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1530">
+    <field name="name">Etiquetas de cuenta iboggio</field>
+    <field name="res_model">account.account.tag</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1556">
+    <field name="name">Origen no confomidad</field>
+    <field name="res_model">x_origin_nonconformity</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1557">
+    <field name="name">Origen no conformidad</field>
+    <field name="res_model">x_origin_nonconformity</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1558">
+    <field name="name">Origen no conformidad</field>
+    <field name="res_model">x_origin_nonconformity</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1559">
+    <field name="name">Origen</field>
+    <field name="res_model">x_origen_tags</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1560">
+    <field name="name">Origen no conformidad</field>
+    <field name="res_model">x_origen_tags</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1592">
+    <field name="name">mis.report.instance.result.view.action.8</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1604">
+    <field name="name">Acción a mejorar</field>
+    <field name="res_model">mgmtsystem.nonconformity</field>
+    <field name="view_mode">kanban,tree,form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1606">
+    <field name="name">Descuentos Permitidos usuario</field>
+    <field name="res_model">res.users.discount_restriction</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1633">
+    <field name="name">Enviar correo (Envío automático de Factura)</field>
+    <field name="res_model">mail.compose.message</field>
+    <field name="binding_model_id" ref="account.model_account_invoice"/>
+    <field name="context">{'default_composition_mode': 'mass_mail', 'default_template_id' : 37, 'default_use_template': True}</field>
+    <field name="target">new</field>
+    <field name="view_id" ref="mail.email_compose_message_wizard_form"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1644">
+    <field name="name">Enviar correo (Pago anticipado)</field>
+    <field name="res_model">mail.compose.message</field>
+    <field name="binding_model_id" ref="account.model_account_invoice"/>
+    <field name="context">{'default_composition_mode': 'mass_mail', 'default_template_id' : 98, 'default_use_template': True}</field>
+    <field name="target">new</field>
+    <field name="view_id" ref="mail.email_compose_message_wizard_form"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1665">
+    <field name="name">Enviar correo (Aviso de contacto WEB)</field>
+    <field name="res_model">mail.compose.message</field>
+    <field name="binding_model_id" ref="crm.model_crm_lead"/>
+    <field name="context">{'default_composition_mode': 'mass_mail', 'default_template_id' : 100, 'default_use_template': True}</field>
+    <field name="target">new</field>
+    <field name="view_id" ref="mail.email_compose_message_wizard_form"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1668">
+    <field name="name">Enviar correo (Apertura de cuenta corriente)</field>
+    <field name="res_model">mail.compose.message</field>
+    <field name="binding_model_id" ref="account.model_res_partner"/>
+    <field name="context">{'default_composition_mode': 'mass_mail', 'default_template_id' : 101, 'default_use_template': True}</field>
+    <field name="target">new</field>
+    <field name="view_id" ref="mail.email_compose_message_wizard_form"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1670">
+    <field name="name">Resultado Encuesta Clientes</field>
+    <field name="res_model">x_resultado_encuesta</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1672">
+    <field name="name">Encuesta Clientes iboggio 2</field>
+    <field name="res_model">x_resultado_encuesta</field>
+    <field name="view_mode">graph,tree,form,pivote</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1677">
+    <field name="name">mis.report.instance.result.view.action.22</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1678">
+    <field name="name">Controles de remitos diarios - Iboggio</field>
+    <field name="res_model">x_controles_remitos_diarios</field>
+    <field name="view_mode">tree,form,graph,pivote</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1683">
+    <field name="name">mis.report.instance.result.view.action.23</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1737">
+    <field name="name">Beta - Acopios DP</field>
+    <field name="res_model">x_acopio_dt</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1745">
+    <field name="name">Listado Eventos</field>
+    <field name="res_model">event.registration</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2211">
+    <field name="name">Fila de Lista de Materiales iboggio</field>
+    <field name="res_model">mrp.bom.line</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2220">
+    <field name="name">mis.report.instance.result.view.action.8</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="context">{'uid': 49, 'mis_report_filters': {}, 'search_disable_custom_filters': True, 'tz': 'America/Argentina/Buenos_Aires', 'params': {'action': 2153}, 'active_id': 8, 'lang': 'es_AR', 'active_ids': [8], 'active_model': 'mis.report.instance'}</field>
+    <field name="view_id" ref="mis_builder.mis_report_instance_result_view_form"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2225">
+    <field name="name">Abrir PS-06</field>
+    <field name="res_model">sale.order</field>
+    <field name="view_id" ref="mgmtsystem.system_form"/>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2226">
+    <field name="name">mis.report.instance.result.view.action.19</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="context">{'active_id': 19, 'lang': 'es_AR', 'active_model': 'mis.report.instance', 'mis_report_filters': {}, 'params': {'action': 2153}, 'tz': 'America/Argentina/Buenos_Aires', 'search_disable_custom_filters': True, 'uid': 44, 'active_ids': [19]}</field>
+    <field name="view_id" ref="mis_builder.mis_report_instance_result_view_form"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2227">
+    <field name="name">Mis Reports iboggio</field>
+    <field name="res_model">mis.report.instance</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2242">
+    <field name="name">Categoria web producto iboggio</field>
+    <field name="res_model">product.public.category</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2247">
+    <field name="name">Remitos iboggio</field>
+    <field name="res_model">stock.picking</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2248">
+    <field name="name">Enviar mail (Acción a mejorar por email)</field>
+    <field name="res_model">mail.compose.message</field>
+    <field name="binding_model_id" ref="mgmtsystem_nonconformity.model_mgmtsystem_nonconformity"/>
+    <field name="context">{'default_composition_mode': 'mass_mail', 'default_template_id' : 70, 'default_use_template': True}</field>
+    <field name="target">new</field>
+    <field name="view_id" ref="mail.email_compose_message_wizard_form"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2268">
+    <field name="name">mis.report.instance.result.view.action.18</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="context">{'uid': 163, 'lang': 'es_AR', 'active_id': 18, 'tz': 'America/Argentina/Buenos_Aires', 'active_ids': [18], 'params': {'action': 2227}, 'active_model': 'mis.report.instance', 'search_disable_custom_filters': True, 'mis_report_filters': {}}</field>
+    <field name="view_id" ref="mis_builder.mis_report_instance_result_view_form"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2269">
+    <field name="name">mis.report.instance.result.view.action.18</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="context">{'uid': 163, 'lang': 'es_AR', 'active_id': 18, 'tz': 'America/Argentina/Buenos_Aires', 'active_ids': [18], 'params': {'action': 2227}, 'active_model': 'mis.report.instance', 'search_disable_custom_filters': True, 'mis_report_filters': {}}</field>
+    <field name="view_id" ref="mis_builder.mis_report_instance_result_view_form"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2280">
+    <field name="name">mis.report.instance.result.view.action.15</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="context">{'uid': 44, 'active_model': 'mis.report.instance', 'active_ids': [15], 'active_id': 15, 'search_disable_custom_filters': True, 'params': {'action': 2153}, 'mis_report_filters': {}, 'lang': 'es_AR', 'tz': 'America/Argentina/Buenos_Aires'}</field>
+    <field name="view_id" ref="mis_builder.mis_report_instance_result_view_form"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2282">
+    <field name="name">mis.report.instance.result.view.action.1</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="context">{'active_model': 'mis.report.instance', 'active_id': 1, 'active_ids': [1], 'search_disable_custom_filters': True, 'uid': 44, 'tz': 'America/Argentina/Buenos_Aires', 'lang': 'es_AR', 'mis_report_filters': {}, 'params': {}}</field>
+    <field name="view_id" ref="mis_builder.mis_report_instance_result_view_form"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2283">
+    <field name="name">mis.report.instance.result.view.action.8</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="context">{'active_model': 'mis.report.instance', 'active_id': 8, 'active_ids': [8], 'search_disable_custom_filters': True, 'uid': 44, 'tz': 'America/Argentina/Buenos_Aires', 'lang': 'es_AR', 'mis_report_filters': {}, 'params': {'action': 2153}}</field>
+    <field name="view_id" ref="mis_builder.mis_report_instance_result_view_form"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2284">
+    <field name="name">Ubicacion iboggio</field>
+    <field name="res_model">stock.location</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2285">
+    <field name="name">Estrategia de entrada iboggio</field>
+    <field name="res_model">product.putaway</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2291">
+    <field name="name">Putway lista2 iboggio</field>
+    <field name="res_model">stock.product.putaway.strategy</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2307">
+    <field name="name">mis.report.instance.result.view.action.1</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="context">{'tz': 'America/Argentina/Buenos_Aires', 'params': {}, 'active_ids': [1], 'lang': 'es_AR', 'uid': 6, 'active_model': 'mis.report.instance', 'active_id': 1, 'mis_report_filters': {}, 'search_disable_custom_filters': True}</field>
+    <field name="view_id" ref="mis_builder.mis_report_instance_result_view_form"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2308">
+    <field name="name">mis.report.instance.result.view.action.19</field>
+    <field name="res_model">mis.report.instance</field>
+    <field name="context">{'tz': 'America/Argentina/Buenos_Aires', 'params': {'action': 2153}, 'active_ids': [19], 'lang': 'es_AR', 'uid': 6, 'active_model': 'mis.report.instance', 'active_id': 19, 'mis_report_filters': {}, 'search_disable_custom_filters': True}</field>
+    <field name="view_id" ref="mis_builder.mis_report_instance_result_view_form"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2317">
+    <field name="name">Atributos iboggio</field>
+    <field name="res_model">product.attribute.line</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2334">
+    <field name="name">Enviar mail (Accion a mejorar)</field>
+    <field name="res_model">mail.compose.message</field>
+    <field name="binding_model_id" ref="mgmtsystem_nonconformity.model_mgmtsystem_nonconformity"/>
+    <field name="context">{'default_composition_mode': 'mass_mail', 'default_template_id' : 84, 'default_use_template': True}</field>
+    <field name="target">new</field>
+    <field name="view_id" ref="mail.email_compose_message_wizard_form"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2340">
+    <field name="name">Enviar mail (Envio automatico de pendiente a sucursales_plantilla)</field>
+    <field name="res_model">mail.compose.message</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="context">{'default_composition_mode': 'mass_mail', 'default_template_id' : 142, 'default_use_template': True}</field>
+    <field name="target">new</field>
+    <field name="view_id" ref="mail.email_compose_message_wizard_form"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2345">
+    <field name="name">Actividades pendientes iboggio</field>
+    <field name="res_model">mail.activity</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2355">
+    <field name="name">Roturas de stock iboggio</field>
+    <field name="res_model">x_stock_breakout</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2356">
+    <field name="name">Roturas de Stock iboggio2</field>
+    <field name="res_model">x_stock_breakout</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2395">
+    <field name="name">Atributo de Producto iboggio</field>
+    <field name="res_model">product.attribute</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2396">
+    <field name="name">Valores de atributo iboggio</field>
+    <field name="res_model">product.attribute.value</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2397">
+    <field name="name">Products attributes templates</field>
+    <field name="res_model">product.attribute.template</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2424">
+    <field name="name">Disponibilidad</field>
+    <field name="res_model">calendar.appointment.slot</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2425">
+    <field name="name">Citas en linea</field>
+    <field name="res_model">calendar.appointment.type</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2426">
+    <field name="name">Filas de factura</field>
+    <field name="res_model">account.invoice.line</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2439">
+    <field name="name">Enviar mail (Entrega de materiales)</field>
+    <field name="res_model">mail.compose.message</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="context">{'default_composition_mode': 'mass_mail', 'default_template_id' : 138, 'default_use_template': True}</field>
+    <field name="target">new</field>
+    <field name="view_id" ref="mail.email_compose_message_wizard_form"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2441">
+    <field name="name">Estado pedidos iboggio</field>
+    <field name="res_model">stock.picking.state_detail</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2451">
+    <field name="name">Seteo de estados de remitos iboggio</field>
+    <field name="res_model">x_stock.picking.setstate</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2477">
+    <field name="name">Enviar mail (Envio Automatico de aviso de estado de remitos)</field>
+    <field name="res_model">mail.compose.message</field>
+    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="context">{'default_composition_mode': 'mass_mail', 'default_template_id' : 150, 'default_use_template': True}</field>
+    <field name="target">new</field>
+    <field name="view_id" ref="mail.email_compose_message_wizard_form"/>
+    <field name="view_mode">form,tree</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2530">
+    <field name="name">tableros iboggio</field>
+    <field name="res_model">add.mis.report.instance.dashboard.wizard</field>
+  </record>
+  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2531">
+    <field name="name">mis iboggio2</field>
+    <field name="res_model">mis.report.instance</field>
+  </record>
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_5114" model="ir.ui.view">
+    <field name="name">ver fechas proyecto iboggio</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_tree2"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="date_deadline" poistion="replace"/>
+        <field name="user_id" position="after">
+          <field name="date_start"/>
+          <field name="date_deadline"/>
+          <field name="date_last_stage_update"/>
+          <field name="priority"/>
+          <field name="x_impacto"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5246" model="ir.ui.view">
+    <field name="name">fecha limite obligatorio iboggio</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="arch" type="xml">
+      <field name="date_deadline" position="attributes">
+        <attribute name="required">1</attribute>
+      </field>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5354" model="ir.ui.view">
+    <field name="name">tareas abiertas iboggio</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_search_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <filter name="unassigned" position="before">
+          <filter string="Tareas Abiertas" name="abiertas" domain="[ ['stage_id', 'not ilike', 'realizado'], ['stage_id', 'not ilike', 'cancel']]"/>
+        </filter>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_5822" model="ir.ui.view">
+    <field name="name">agregar impacto iboggio</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="date_deadline" position="after">
+          <field name="x_impacto"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_7910" model="ir.ui.view">
+    <field name="name">Odoo Studio: project.task.form customization</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='tag_ids']" position="after">
+          <field name="x_objetive"/>
+          <field name="x_score"/>
+        </xpath>
+        <xpath expr="//field[@name='partner_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

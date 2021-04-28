@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_7902" model="ir.ui.view">
+    <field name="name">listado de productos atributos y valores iboggio</field>
+    <field name="model">product.attribute.line</field>
+    <field name="arch" type="xml">
+      <tree string="Account Journal">
+        <field name="create_date"/>
+        <field name="create_uid"/>
+        <field name="attribute_id"/>
+        <field name="product_tmpl_id"/>
+        <field name="value_ids"/>
+        <field name="x_product_brand_id"/>
+      </tree>
+    </field>
+  </record>
+  <record id="personalizations_boggio.ir_ui_view_7930" model="ir.ui.view">
+    <field name="name">busqueda por producto Iboggio</field>
+    <field name="model">product.attribute.line</field>
+    <field name="arch" type="xml">
+      <search string="atributos">
+        <field name="product_tmpl_id"/>
+        <field name="attribute_id"/>
+        <field name="x_product_brand_id"/>
+      </search>
+    </field>
+  </record>
+</odoo>

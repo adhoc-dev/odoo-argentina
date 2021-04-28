@@ -1,0 +1,678 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_act_server_1245" model="ir.actions.server">
+    <field name="name">abrir stock por ubicacion en suggest</field>
+    <field name="model_id" ref="purchase_suggest.model_purchase_suggest"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="purchase_suggest.model_purchase_suggest"/>
+    <field name="code"><![CDATA[object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the record on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+action = object.product_id.view_stock_detail()]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1247" model="ir.actions.server">
+    <field name="name">Stock On Hand en suggest</field>
+    <field name="model_id" ref="purchase_suggest.model_purchase_suggest"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="purchase_suggest.model_purchase_suggest"/>
+    <field name="code"><![CDATA[object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the record on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+action = env.ref('stock.product_open_quants')
+action_read = action.read()[0]
+action_read['domain'] = [('product_id', '=', object.product_id.id)]
+action = action_read]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1257" model="ir.actions.server">
+    <field name="name">Stock On Hand en sale order line</field>
+    <field name="model_id" ref="account_analytic_default.model_sale_order_line"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="account_analytic_default.model_sale_order_line"/>
+    <field name="code"><![CDATA[object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the rhttp://erp.ingenieriaboggio.com.ar/web#notebook_page_358ecord on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+action = env.ref('stock.product_open_quants')
+action_read = action.read()[0]
+action_read['domain'] = [('product_id', '=', object.product_id.id)]
+action = action_read]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1300" model="ir.actions.server">
+    <field name="name">Stock Traceability en sale order line</field>
+    <field name="model_id" ref="account_analytic_default.model_sale_order_line"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="account_analytic_default.model_sale_order_line"/>
+    <field name="code"><![CDATA[context = dict(env.context)
+object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the rhttp://erp.ingenieriaboggio.com.ar/web#notebook_page_358ecord on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+action = env.ref('stock.act_product_stock_move_open')
+action_read = action.read()[0]
+context = {
+    'search_default_future': 1,
+    'search_default_picking_type': 1,
+    'search_default_product_id': object.product_id.id,
+    'default_product_id': object.product_id.id}
+action_read['context'] = context
+action = action_read]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1689" model="ir.actions.server">
+    <field name="name">abrir stock por ubicacion en sale.order.line</field>
+    <field name="model_id" ref="account_analytic_default.model_sale_order_line"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="account_analytic_default.model_sale_order_line"/>
+    <field name="code"><![CDATA[object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the record on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+action = object.product_id.view_stock_detail()]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1739" model="ir.actions.server">
+    <field name="name">abrir stock por ubicacion en product.template lupa</field>
+    <field name="model_id" ref="account.model_product_template"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="account.model_product_template"/>
+    <field name="code"><![CDATA[object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the record on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+action = object.view_stock_detail()]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1740" model="ir.actions.server">
+    <field name="name">abrir stock por ubicacion en product.product lupa</field>
+    <field name="model_id" ref="account.model_product_product"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="account.model_product_product"/>
+    <field name="code"><![CDATA[object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the record on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+action = object.view_stock_detail()]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1741" model="ir.actions.server">
+    <field name="name">abrir stock por ubicacion en stock.picking lupa</field>
+    <field name="model_id" ref="delivery.model_stock_move_line"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="delivery.model_stock_move_line"/>
+    <field name="code"><![CDATA[active_id = env.context.get('active_id')
+active_model = env.context.get('active_model')
+if active_model != 'stock.move':
+  raise Warning('Active model erroneo')
+
+record = env[active_model].browse(active_id)
+
+action = record.product_id.view_stock_detail()
+]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1742" model="ir.actions.server">
+    <field name="name">Stock Traceability en stock picking</field>
+    <field name="model_id" ref="delivery.model_stock_move_line"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="delivery.model_stock_move_line"/>
+    <field name="code"><![CDATA[# context = dict(env.context)
+# object = record
+active_id = env.context.get('active_id')
+active_model = env.context.get('active_model')
+if active_model != 'stock.move':
+  raise Warning('Active model erroneo')
+
+record = env[active_model].browse(active_id)
+
+action = env.ref('stock.act_product_stock_move_open')
+action_read = action.read()[0]
+context = {
+    'search_default_future': 1,
+    'search_default_picking_type': 1,
+    'search_default_product_id': record.product_id.id,
+    'default_product_id': record.product_id.id}
+action_read['context'] = context
+action = action_read
+
+]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1743" model="ir.actions.server">
+    <field name="name">Stock On Hand en stock picking</field>
+    <field name="model_id" ref="delivery.model_stock_move_line"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="delivery.model_stock_move_line"/>
+    <field name="code"><![CDATA[
+# context = dict(env.context)
+# object = record
+active_id = env.context.get('active_id')
+active_model = env.context.get('active_model')
+if active_model != 'stock.move':
+  raise Warning('Active model erroneo')
+
+record = env[active_model].browse(active_id)
+
+
+action = env.ref('stock.product_open_quants')
+action_read = action.read()[0]
+action_read['domain'] = [('product_id', '=', record.product_id.id)]
+action = action_read
+
+]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1746" model="ir.actions.server">
+    <field name="name">abrir stock por ubicacion en stock.move lupa</field>
+    <field name="model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="code"><![CDATA[object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the record on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+action = object.product_id.view_stock_detail()]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1747" model="ir.actions.server">
+    <field name="name">Stock On Hand en stock move</field>
+    <field name="model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="code"><![CDATA[object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the rhttp://erp.ingenieriaboggio.com.ar/web#notebook_page_358ecord on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+action = env.ref('stock.product_open_quants')
+action_read = action.read()[0]
+action_read['domain'] = [('product_id', '=', object.product_id.id)]
+action = action_read]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1748" model="ir.actions.server">
+    <field name="name">Stock Traceability en stock move</field>
+    <field name="model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="code"><![CDATA[context = dict(env.context)
+object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the rhttp://erp.ingenieriaboggio.com.ar/web#notebook_page_358ecord on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+action = env.ref('stock.act_product_stock_move_open')
+action_read = action.read()[0]
+context = {
+    'search_default_future': 1,
+    'search_default_picking_type': 1,
+    'search_default_product_id': object.product_id.id,
+    'default_product_id': object.product_id.id}
+action_read['context'] = context
+action = action_read]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1749" model="ir.actions.server">
+    <field name="name">abrir stock por ubicacion en stock.inventory line lupa</field>
+    <field name="model_id" ref="stock.model_stock_inventory_line"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="stock.model_stock_inventory_line"/>
+    <field name="code"><![CDATA[object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the record on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+action = object.product_id.view_stock_detail()]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1750" model="ir.actions.server">
+    <field name="name">Stock On Hand en stock inventory line</field>
+    <field name="model_id" ref="stock.model_stock_inventory_line"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="stock.model_stock_inventory_line"/>
+    <field name="code"><![CDATA[object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the rhttp://erp.ingenieriaboggio.com.ar/web#notebook_page_358ecord on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+action = env.ref('stock.product_open_quants')
+action_read = action.read()[0]
+action_read['domain'] = [('product_id', '=', object.product_id.id)]
+action = action_read]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1751" model="ir.actions.server">
+    <field name="name">Stock Traceability en stock inventory line</field>
+    <field name="model_id" ref="stock.model_stock_inventory_line"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="stock.model_stock_inventory_line"/>
+    <field name="code"><![CDATA[context = dict(env.context)
+object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the rhttp://erp.ingenieriaboggio.com.ar/web#notebook_page_358ecord on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+action = env.ref('stock.act_product_stock_move_open')
+action_read = action.read()[0]
+context = {
+    'search_default_future': 1,
+    'search_default_picking_type': 1,
+    'search_default_product_id': object.product_id.id,
+    'default_product_id': object.product_id.id}
+action_read['context'] = context
+action = action_read]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1775" model="ir.actions.server">
+    <field name="name">Stock On Hand en purchase order line</field>
+    <field name="model_id" ref="product_replenishment_cost.model_purchase_order_line"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="product_replenishment_cost.model_purchase_order_line"/>
+    <field name="code"><![CDATA[object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the rhttp://erp.ingenieriaboggio.com.ar/web#notebook_page_358ecord on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+action = env.ref('stock.product_open_quants')
+action_read = action.read()[0]
+action_read['domain'] = [('product_id', '=', object.product_id.id)]
+action = action_read]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1776" model="ir.actions.server">
+    <field name="name">Stock Traceability en purchase order line</field>
+    <field name="model_id" ref="product_replenishment_cost.model_purchase_order_line"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="product_replenishment_cost.model_purchase_order_line"/>
+    <field name="code"><![CDATA[context = dict(env.context)
+object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the rhttp://erp.ingenieriaboggio.com.ar/web#notebook_page_358ecord on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+action = env.ref('stock.act_product_stock_move_open')
+action_read = action.read()[0]
+context = {
+    'search_default_future': 1,
+    'search_default_picking_type': 1,
+    'search_default_product_id': object.product_id.id,
+    'default_product_id': object.product_id.id}
+action_read['context'] = context
+action = action_read]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_1778" model="ir.actions.server">
+    <field name="name">abrir stock por ubicacion en purchase.order.line</field>
+    <field name="model_id" ref="product_replenishment_cost.model_purchase_order_line"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="product_replenishment_cost.model_purchase_order_line"/>
+    <field name="code"><![CDATA[object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the record on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+action = object.product_id.view_stock_detail()]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_2322" model="ir.actions.server">
+    <field name="name">Confirmar y enviar email compras</field>
+    <field name="model_id" ref="inter_company_rules.model_purchase_order"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="delivery.model_sale_order"/>
+    <field name="code"><![CDATA[context = dict(env.context)
+object = record
+
+if (object.x_rotacion>0):
+
+  model.browse(env.context.get('active_ids')).button_confirm()
+  if(object.state=='purchase'):
+    if (object.partner_id.id==80581):
+      #SIemens
+      env['mail.template'].browse(66).send_mail(object.id, force_send=True, raise_exception=False)
+    else:
+      #Resto de los proveedores
+      env['mail.template'].browse(15).send_mail(object.id, force_send=True, raise_exception=False)
+     
+    activity = env['mail.activity'].create({
+       'date_deadline': time.strftime("%Y-%m-%d", time.gmtime(time.time( )+4*24*60*60)),
+       'user_id': uid, 
+       'res_id': record.id,
+       'res_model_id':397,
+       'activity_type_id':4
+       })
+  else:
+    raise Warning('Es necesario confirmar la orden de compra')  
+else:
+  raise Warning('Es necesario revisar ROTACION')
+  #'user_id': record.create_uid.id,
+
+    #raise Warning('prueba')
+# Available locals:['partner_id', '=',50660]
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the record on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_2328" model="ir.actions.server">
+    <field name="name">Resetear ABC productos a D3 (ex C2)</field>
+    <field name="model_id" ref="account.model_product_template"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[products = env['product.template'].search(	['|', ['abc_sales_amount', 'not ilike', '3'], ['abc_sales_quantity', 'not ilike', 'D'],['active', '=', False]], limit=10000)
+for product in products:  
+
+  product.write({
+    'abc_sales_amount' : '3',
+    'abc_sales_quantity' : 'D',
+    'website_sequence':0
+    })
+
+
+
+
+# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+
+
+]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_2338" model="ir.actions.server">
+    <field name="name">Albaranes relacionados</field>
+    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+
+if record.group_id:
+  action = env.ref('stock.do_view_pickings').read()[0]
+  action['domain'] = [('group_id','=',record.group_id.id)]
+  action['context'] = {'search_default_available':1}
+
+
+
+]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_2414" model="ir.actions.server">
+    <field name="name">abrir stock por ubicacion en suggest</field>
+    <field name="model_id" ref="purchase.model_stock_warehouse_orderpoint"/>
+    <field name="state">code</field>
+    <field name="crud_model_id" ref="purchase_suggest.model_purchase_suggest"/>
+    <field name="code"><![CDATA[object = record
+# Available locals:
+#  - time, datetime, dateutil: Python libraries
+#  - env: Odoo Environement
+#  - model: Model of the record on which the action is triggered
+#  - object: Record on which the action is triggered if there is one, otherwise None
+#  - workflow: Workflow engine
+#  - log : log(message), function to log debug information in logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+action = object.product_id.view_stock_detail()]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_2449" model="ir.actions.server">
+    <field name="name">Estado de remitos entregados</field>
+    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[active_ids = env.context.get('active_ids')
+active_model = env.context.get('active_model')
+records_ib = env[active_model].browse(active_ids)
+
+ismodel  = env.context.get('ismodel')
+flete_id = env.context.get('state_detail_ib')
+#raise Warning(flete_id)
+
+if ismodel=='setstate':
+  #raise Warning(flete_id)
+  records_ib.write({  'x_state': flete_id })
+  for remito in records_ib.x_voucher_ids:
+     remito.picking_id.write({  'state_detail_id': flete_id })
+  
+else:  
+  # modelo de stock.picking
+  records_ib.write({  'state_detail_id': flete_id })
+     
+
+# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+
+
+]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_2452" model="ir.actions.server">
+    <field name="name">Estado de remitos (reenvio1)</field>
+    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[action = env['ir.actions.server'].browse(2449).run()
+
+# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+
+
+]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_2453" model="ir.actions.server">
+    <field name="name">Estado de remitos (reenvio2)</field>
+    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[action = env['ir.actions.server'].browse(2449).run()
+
+# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+
+
+]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_2454" model="ir.actions.server">
+    <field name="name">Estado de remitos (reenvio3)</field>
+    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[action = env['ir.actions.server'].browse(2449).run()
+
+# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+
+
+]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_2455" model="ir.actions.server">
+    <field name="name">Estado de remitos (reenvio4)</field>
+    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[action = env['ir.actions.server'].browse(2449).run()
+
+# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+
+
+]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_2478" model="ir.actions.server">
+    <field name="name">Estado de remitos (reenvio5)</field>
+    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[action = env['ir.actions.server'].browse(2449).run()
+
+# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+
+
+]]></field>
+  </record>
+  <record id="personalizations_boggio.ir_act_server_2551" model="ir.actions.server">
+    <field name="name">Calcula Info CC y DV</field>
+    <field name="model_id" ref="delivery.model_sale_order"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[venta_pesos = record.amount_untaxed*record.currency_id.inverse_rate
+desc_volumen = 100.0-record.pricelist_id.x_ajuste_lista*((venta_pesos>15000 and venta_pesos<=70000)  and (1.0-0.97) *(venta_pesos-15000)/(15000-70000) +1.0  or ((venta_pesos>70000 and venta_pesos<=300000) and (0.97-0.95)*(venta_pesos-70000)/(70000-300000)+0.97 or (venta_pesos>300000 and 0.95 or 1.0)))
+    
+desc_volumen1 = ' / DV: ' + str(round(desc_volumen,2))    
+
+x_info_cc =  record.team_id.id !=1 and (record.env['x_bi_sql_view.dias_deuda_cliente7'].search( [['x_partner_id', '=', record.commercial_partner_id.id]]) and ( str( record.env['x_bi_sql_view.dias_deuda_cliente7'].search( [['x_partner_id', '=', record.commercial_partner_id.id]]).x_diasdeuda_c)+' dias / d_venc: '+  str( record.env['x_bi_sql_view.dias_deuda_cliente7'].search( [['x_partner_id', '=', record.commercial_partner_id.id]]).x_deuda_venc) + "/ " + record.commercial_partner_id.abc_sales_amount+record.commercial_partner_id.x_abc_sales_freq) or "--") or "-portal-"
+    
+record.write({'x_info_cc': x_info_cc +  desc_volumen1 })
+  
+    
+    
+# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+
+
+]]></field>
+  </record>
+</odoo>

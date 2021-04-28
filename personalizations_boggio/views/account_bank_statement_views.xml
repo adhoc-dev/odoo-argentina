@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_view_5040" model="ir.ui.view">
+    <field name="name">usuario en conciliaciones de caja iboggio</field>
+    <field name="model">account.bank.statement</field>
+    <field name="inherit_id" ref="account.view_bank_statement_tree"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="name" position="after">
+          <field name="create_uid"/>
+        </field>
+      </data>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,367 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_boggio.ir_ui_menu_499" model="ir.ui.menu">
+    <field name="name">Estilos de productos web</field>
+    <field name="parent_id" ref="sale.prod_config_main"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_667"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_530" model="ir.ui.menu">
+    <field name="name">Lineas de Reglas de Costos</field>
+    <field name="parent_id" ref="product_replenishment_cost.menu_product_replenshiment_cost_rule"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_705"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_531" model="ir.ui.menu">
+    <field name="name">Supplier Info</field>
+    <field name="parent_id" ref="sale.prod_config_main"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_708"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_532" model="ir.ui.menu">
+    <field name="name">Inventory Line</field>
+    <field name="parent_id" ref="stock.menu_stock_inventory_control"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_709"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_665" model="ir.ui.menu">
+    <field name="name">Facturas Iboggio</field>
+    <field name="parent_id" ref="crm.crm_menu_pipeline"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="account.action_invoice_tree1"/>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_111')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_874" model="ir.ui.menu">
+    <field name="name">Marcas</field>
+    <field name="parent_id" ref="sale.prod_config_main"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1144"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_893" model="ir.ui.menu">
+    <field name="name">Estrategia de entrada</field>
+    <field name="parent_id" ref="stock.menu_warehouse_config"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1164"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_941" model="ir.ui.menu">
+    <field name="name">Replenishment cost rule</field>
+    <field name="parent_id" ref="product_replenishment_cost.menu_product_replenshiment_cost_rule"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1218"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_944" model="ir.ui.menu">
+    <field name="name">Marcas(iboggio)</field>
+    <field name="parent_id" ref="crm.crm_menu_pipeline"/>
+    <field name="sequence">50</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1144"/>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_158')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_945" model="ir.ui.menu">
+    <field name="name">Replenishment cost rule(iboggio)</field>
+    <field name="parent_id" ref="crm.crm_menu_pipeline"/>
+    <field name="sequence">50</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1218"/>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_158')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_948" model="ir.ui.menu">
+    <field name="name">Talonario remitos iboggio</field>
+    <field name="parent_id" ref="stock.menu_stock_inventory_control"/>
+    <field name="sequence">50</field>
+    <field name="action" ref="stock_voucher.stock_book_actions"/>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_159')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_958" model="ir.ui.menu">
+    <field name="name">Exactos de Clientes (lista)</field>
+    <field name="parent_id" ref="account.menu_finance_receivables"/>
+    <field name="sequence">33</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1242"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_969" model="ir.ui.menu">
+    <field name="name">Monedas</field>
+    <field eval="False" name="parent_id"/>
+    <field name="sequence">20</field>
+    <field name="action" ref="base.action_currency_form"/>
+    <field eval="[(6, 0, [ref('base.group_user'), ref('base.group_multi_currency')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_981" model="ir.ui.menu">
+    <field name="name">Objetivo de proveedores</field>
+    <field name="parent_id" ref="base.menu_reporting_dashboard"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1273"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_982" model="ir.ui.menu">
+    <field name="name">Correos electrónicos</field>
+    <field name="parent_id" ref="account.account_reports_management_menu"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="mail.action_view_mail_mail"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_998" model="ir.ui.menu">
+    <field name="name">Interno</field>
+    <field name="parent_id" ref="base.menu_reporting_dashboard"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1289"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1026" model="ir.ui.menu">
+    <field name="name">Reglas de reabastecimiento</field>
+    <field name="parent_id" ref="purchase.menu_product_in_config_purchase"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1316"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1037" model="ir.ui.menu">
+    <field name="name">Etiquetas</field>
+    <field name="parent_id" ref="note.menu_note_notes"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1323"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1043" model="ir.ui.menu">
+    <field name="name">Mis Reports</field>
+    <field eval="False" name="parent_id"/>
+    <field name="sequence">10</field>
+    <field eval="False" name="action"/>
+    <field eval="[(6, 0, [ref('sales_team.group_sale_manager'), ref('sales_team.group_sale_salesman_all_leads')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1050" model="ir.ui.menu">
+    <field name="name">Sostenibilidad</field>
+    <field name="parent_id" ref="base.menu_reporting_dashboard"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1288"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1051" model="ir.ui.menu">
+    <field name="name">Aprendizaje</field>
+    <field name="parent_id" ref="base.menu_reporting_dashboard"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1347"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1162" model="ir.ui.menu">
+    <field name="name">Razon de la devolucion</field>
+    <field name="parent_id" ref="stock.menu_stock_config_settings"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1521"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1167" model="ir.ui.menu">
+    <field name="name">Etiquetas de cuenta iboggio</field>
+    <field name="parent_id" ref="account.menu_finance_configuration"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1530"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1189" model="ir.ui.menu">
+    <field name="name">Supplier Info iboggio</field>
+    <field name="parent_id" ref="crm.crm_menu_pipeline"/>
+    <field name="sequence">50</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_708"/>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_158')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1194" model="ir.ui.menu">
+    <field name="name">Origen no conformidad</field>
+    <field name="parent_id" ref="mgmtsystem.menu_mgmtsystem_configuration"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1560"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1222" model="ir.ui.menu">
+    <field name="name">Busqueda de remitos clientes iboggio</field>
+    <field name="parent_id" ref="crm.crm_menu_pipeline"/>
+    <field name="sequence">50</field>
+    <field name="action" ref="stock.action_picking_tree_all"/>
+    <field eval="[(6, 0, [ref('stock.group_stock_manager'), ref('stock.group_stock_user')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1224" model="ir.ui.menu">
+    <field name="name">Descuentos Permitidos usuario</field>
+    <field name="parent_id" ref="base.menu_users"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1606"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1246" model="ir.ui.menu">
+    <field name="name">Encuesta Clientes iboggio 2</field>
+    <field name="parent_id" ref="mgmtsystem.menu_mgmtsystem_main"/>
+    <field name="sequence">50</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1672"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1250" model="ir.ui.menu">
+    <field name="name">Controles de remitos diarios - Iboggio</field>
+    <field name="parent_id" ref="stock.menu_warehouse_report"/>
+    <field name="sequence">51</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1678"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1288" model="ir.ui.menu">
+    <field name="name">Beta - Acopios DP</field>
+    <field name="parent_id" ref="account.menu_finance_reports"/>
+    <field name="sequence">50</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1737"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1601" model="ir.ui.menu">
+    <field name="name">Facturas Iboggio	</field>
+    <field name="parent_id" ref="sale.menu_sale_invoicing"/>
+    <field name="sequence">50</field>
+    <field name="action" ref="account.action_invoice_tree1"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1611" model="ir.ui.menu">
+    <field name="name">Fila de Lista de Materiales iboggio</field>
+    <field name="parent_id" ref="mrp.menu_mrp_reporting"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2211"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1614" model="ir.ui.menu">
+    <field name="name">Mis Reports iboggio</field>
+    <field name="parent_id" ref="sale.menu_sale_report"/>
+    <field name="sequence">50</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2227"/>
+    <field eval="[(6, 0, [ref('base.group_user')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1619" model="ir.ui.menu">
+    <field name="name">Categoria web producto iboggio</field>
+    <field name="parent_id" ref="website_sale.menu_catalog"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2242"/>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_252')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1620" model="ir.ui.menu">
+    <field name="name">Remitos iboggio</field>
+    <field name="parent_id" ref="sale.menu_sale_invoicing"/>
+    <field name="sequence">51</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2247"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1629" model="ir.ui.menu">
+    <field name="name">Ubicacion iboggio</field>
+    <field name="parent_id" ref="stock.menu_stock_inventory_control"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2284"/>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_255')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1630" model="ir.ui.menu">
+    <field name="name">Estrategia de entrada iboggio</field>
+    <field name="parent_id" ref="stock.menu_stock_inventory_control"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2285"/>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_255')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1631" model="ir.ui.menu">
+    <field name="name">Putway lista2 iboggio</field>
+    <field name="parent_id" ref="stock.menu_warehouse_report"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2291"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1648" model="ir.ui.menu">
+    <field name="name">Chatbot</field>
+    <field name="parent_id" ref="sale.sale_menu_root"/>
+    <field name="sequence">50</field>
+    <field eval="False" name="action"/>
+    <field eval="[(6, 0, [ref('sales_team.group_sale_salesman_all_leads')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1635" model="ir.ui.menu">
+    <field name="name">Atributos iboggio</field>
+    <field name="parent_id" ref="personalizations_boggio.ir_ui_menu_1648"/>
+    <field name="sequence">40</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2317"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1636" model="ir.ui.menu">
+    <field name="name">Reglas de descuentos</field>
+    <field name="parent_id" ref="purchase.menu_purchase_control"/>
+    <field name="sequence">50</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_1218"/>
+    <field eval="[(6, 0, [ref('purchase.group_purchase_user')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1637" model="ir.ui.menu">
+    <field name="name">Reglas de abastecimiento</field>
+    <field name="parent_id" ref="purchase.menu_purchase_control"/>
+    <field name="sequence">49</field>
+    <field name="action" ref="stock.action_orderpoint_form"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1645" model="ir.ui.menu">
+    <field name="name">Actividades pendientes iboggio</field>
+    <field name="parent_id" ref="crm.crm_menu_report"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2345"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1646" model="ir.ui.menu">
+    <field name="name">Roturas de stock iboggio</field>
+    <field name="parent_id" ref="purchase.menu_purchase_control"/>
+    <field name="sequence">50</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2355"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1649" model="ir.ui.menu">
+    <field name="name">Atributo de Producto iboggio</field>
+    <field name="parent_id" ref="personalizations_boggio.ir_ui_menu_1648"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2395"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1650" model="ir.ui.menu">
+    <field name="name">Valores de atributo iboggio</field>
+    <field name="parent_id" ref="personalizations_boggio.ir_ui_menu_1648"/>
+    <field name="sequence">20</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2396"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1651" model="ir.ui.menu">
+    <field name="name">Products attributes templates</field>
+    <field name="parent_id" ref="personalizations_boggio.ir_ui_menu_1648"/>
+    <field name="sequence">30</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2397"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1657" model="ir.ui.menu">
+    <field name="name">Categorías eCommerce</field>
+    <field name="parent_id" ref="sale.product_menu_catalog"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="website_sale.product_public_category_action"/>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_158')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1658" model="ir.ui.menu">
+    <field name="name">Supplier Info</field>
+    <field name="parent_id" ref="sale.product_menu_catalog"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_708"/>
+    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_158')])]" name="groups_id"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1665" model="ir.ui.menu">
+    <field name="name">Disponibilidad</field>
+    <field eval="False" name="parent_id"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2424"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1666" model="ir.ui.menu">
+    <field name="name">Citas en linea</field>
+    <field eval="False" name="parent_id"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2425"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1667" model="ir.ui.menu">
+    <field name="name">Filas de factura</field>
+    <field name="parent_id" ref="account.menu_finance_receivables"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2426"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1670" model="ir.ui.menu">
+    <field name="name">Estado pedidos iboggio</field>
+    <field name="parent_id" ref="stock.menu_warehouse_report"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2441"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1671" model="ir.ui.menu">
+    <field name="name">Seteo estados de remitos iboggio</field>
+    <field eval="False" name="parent_id"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2451"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1679" model="ir.ui.menu">
+    <field name="name">Transferir</field>
+    <field name="parent_id" ref="personalizations_boggio.ir_ui_menu_1671"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2247"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1680" model="ir.ui.menu">
+    <field name="name">Seteo de estados de remitos iboggio</field>
+    <field name="parent_id" ref="personalizations_boggio.ir_ui_menu_1671"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2451"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1686" model="ir.ui.menu">
+    <field name="name">tableros iboggio</field>
+    <field name="parent_id" ref="mis_builder.mis_report_conf_menu"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2530"/>
+  </record>
+  <record id="personalizations_boggio.ir_ui_menu_1687" model="ir.ui.menu">
+    <field name="name">mis iboggio2</field>
+    <field name="parent_id" ref="mis_builder.mis_report_conf_menu"/>
+    <field name="sequence">10</field>
+    <field name="action" ref="personalizations_boggio.ir_act_window_2531"/>
+  </record>
+</odoo>
