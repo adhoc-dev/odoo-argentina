@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 {
     'name': 'personalizations_energe',
-    'version': '11.0.1.1.0',
+    'version': '13.0.1.1.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -10,10 +9,8 @@
         'calendar',
         'crm',
         'delivery',
-        'l10n_ar_aeroo_stock',
         'product_pack',
-        'report_aeroo',
-        'sale',
+        'l10n_ar_sale',
         'sales_team',
         'stock',
     ],
