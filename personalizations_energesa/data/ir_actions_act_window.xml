@@ -1,45 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <record model="ir.actions.act_window" id="personalizations_energesa.ir_act_window_584">
-    <field name="name">Edición Masiva (Producto)</field>
-    <field name="res_model">mass.editing.wizard</field>
-    <field ref="account.model_product_template" name="binding_model_id"/>
-    <field name="context">{'mass_editing_object' : 1}</field>
-    <field name="target">new</field>
-    <field name="view_mode">form,tree</field>
-  </record>
-  <record model="ir.actions.act_window" id="personalizations_energesa.ir_act_window_585">
-    <field name="name">Edición Masiva (Usuarios)</field>
-    <field name="res_model">mass.editing.wizard</field>
-    <field ref="account_journal_security.model_res_users" name="binding_model_id"/>
-    <field name="context">{'mass_editing_object' : 2}</field>
-    <field name="target">new</field>
-    <field name="view_mode">form,tree</field>
-  </record>
-  <record model="ir.actions.act_window" id="personalizations_energesa.ir_act_window_618">
-    <field name="name">Edición Masiva (Diarios)</field>
-    <field name="res_model">mass.editing.wizard</field>
-    <field ref="account.model_account_journal" name="binding_model_id"/>
-    <field name="context">{'mass_editing_object' : 3}</field>
-    <field name="target">new</field>
-    <field name="view_mode">form,tree</field>
-  </record>
-  <record model="ir.actions.act_window" id="personalizations_energesa.ir_act_window_623">
-    <field name="name">Edición Masiva (Cuentas Analiticas)</field>
-    <field name="res_model">mass.editing.wizard</field>
-    <field ref="account_budget.model_account_analytic_account" name="binding_model_id"/>
-    <field name="context">{'mass_editing_object' : 4}</field>
-    <field name="target">new</field>
-    <field name="view_mode">form,tree</field>
-  </record>
-  <record model="ir.actions.act_window" id="personalizations_energesa.ir_act_window_656">
-    <field name="name">Edición Masiva (Presupuestos de Venta)</field>
-    <field name="res_model">mass.editing.wizard</field>
-    <field ref="delivery.model_sale_order" name="binding_model_id"/>
-    <field name="context">{'mass_editing_object' : 5}</field>
-    <field name="target">new</field>
-    <field name="view_mode">form,tree</field>
-  </record>
   <record model="ir.actions.act_window" id="personalizations_energesa.instaladores_cba3edde-011d-4ba5-8c70-ab702fa05a47">
     <field name="name">Instaladores</field>
     <field name="res_model">x_instaladores</field>
