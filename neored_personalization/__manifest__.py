@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Neored Personalizations',
-    'version': '13.0.1.8.0',
+    'version': '13.0.1.9.0',
     'category': 'Accounting',
     'sequence': 14,
     'summary': '',
@@ -59,7 +59,9 @@
         'views/product_image_views.xml',
         'views/product_supplierinfo_views.xml',
         'views/stock_book_views.xml',
-        'views/report_deliveryslip.xml',
+        'views/report_delivery_document.xml',
+        'views/report_invoice_document.xml',
+        'views/report_saleorder_document.xml',
         'security/ir.model.access.csv',
         'data/res_partner_categories_data.xml',
         'data/product_data.xml',
