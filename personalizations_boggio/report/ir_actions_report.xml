@@ -554,7 +554,7 @@
     <field name="model">stock.move</field>
     <field name="report_name">recepcion_sm</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="binding_model_id" ref="stock.model_stock_move"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/recepcion_sm.ods</field>

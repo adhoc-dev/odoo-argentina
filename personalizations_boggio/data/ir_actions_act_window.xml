@@ -91,7 +91,7 @@
     <field name="res_model">mis.report.instance</field>
     <field name="view_mode">form</field>
   </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1316">
+  <record id="personalizations_boggio.ir_act_window_1316" model="ir.actions.act_window">
     <field name="name">Reglas de reabastecimiento</field>
     <field name="res_model">product.replenishment_cost.rule</field>
   </record>
@@ -405,7 +405,7 @@
     <field name="name">Listado Eventos</field>
     <field name="res_model">event.registration</field>
   </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2211">
+  <record id="personalizations_boggio.ir_act_window_2211" model="ir.actions.act_window">
     <field name="name">Fila de Lista de Materiales iboggio</field>
     <field name="res_model">mrp.bom.line</field>
   </record>
@@ -526,7 +526,7 @@
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2340">
     <field name="name">Enviar mail (Envio automatico de pendiente a sucursales_plantilla)</field>
     <field name="res_model">mail.compose.message</field>
-    <field name="binding_model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="binding_model_id" ref="stock.model_stock_move"/>
     <field name="context">{'default_composition_mode': 'mass_mail', 'default_template_id' : 142, 'default_use_template': True}</field>
     <field name="target">new</field>
     <field name="view_id" ref="mail.email_compose_message_wizard_form"/>

@@ -47,7 +47,7 @@ personalizations_boggio.ir_model_access_2376,stock.product.putaway.strategy ubic
 personalizations_boggio.ir_model_access_2377,product.style.admin,website_sale.model_product_style,sales_team.group_sale_manager,True,True,True,True
 personalizations_boggio.ir_model_access_2378,x_stock_breakout	_empleado,personalizations_boggio.model_x_stock_breakout,base.group_user,True,True,True,False
 personalizations_boggio.ir_model_access_2379,x_stock_breakout	_user,personalizations_boggio.model_x_stock_breakout,purchase.group_purchase_manager,True,True,True,True
-personalizations_boggio.ir_model_access_2380,mail push para evitar errores reportados por lisandro (se deberia borrar en v12+),mail_push.model_mail_push_device,False,True,False,False,False
+personalizations_boggio.ir_model_access_2380,mail push para evitar errores reportados por lisandro (se deberia borrar en v12+),mail_push.model_mail_push_device,,True,False,False,False
 personalizations_boggio.ir_model_access_2381,chatbot escritura,product_variant_o2o.model_product_attribute_line,personalizations_boggio.res_groups_257,True,True,True,False
 personalizations_boggio.ir_model_access_2382,chatbot,website_sale_comparison.model_product_attribute,personalizations_boggio.res_groups_257,True,True,True,False
 personalizations_boggio.ir_model_access_2383,chatbot2,l10n_ar_website_sale.model_product_attribute_value,personalizations_boggio.res_groups_257,True,True,True,True

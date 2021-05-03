@@ -240,7 +240,7 @@ for rec in records:
   </record>
   <record id="personalizations_boggio.base_automation_46" model="base.automation">
     <field name="name">Asignar cta analítica a los moves</field>
-    <field name="model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="model_id" ref="stock.model_stock_move"/>
     <field name="state">code</field>
     <field name="code"># Available variables:
 #  - env: Odoo Environment on which the action is triggered

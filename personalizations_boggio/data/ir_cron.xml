@@ -39,9 +39,9 @@ for product in records.with_context(force_company=company_id).mapped('product_va
   </record>
   <record id="personalizations_boggio.ir_cron_166" model="ir.cron">
     <field name="name">Envio automatico de pendiente a sucursales</field>
-    <field name="model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="model_id" ref="stock.model_stock_move"/>
     <field name="state">code</field>
-    <field name="binding_model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="binding_model_id" ref="stock.model_stock_move"/>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 
 vector_rechazo = env['stock.move'].search([['partner_id', 'in', [46655,52762] ], ['picking_type_id', 'in',[10,28,29] ], ['create_date', '&lt;=', time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime(time.time( )-1*24*60*60))],['state', '=', 'assigned']]).filtered(lambda r: r.product_id.with_context(warehouse=r.picking_id.picking_type_id.warehouse_id.id).qty_available&gt;0)

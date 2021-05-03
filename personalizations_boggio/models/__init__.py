@@ -3,6 +3,7 @@ from . import x_devolucion_tags_devolucion_tags
 from . import x_origen_tags
 from . import x_stock_picking_setstate
 from . import x_stock_breakout
+from . import res_partner
 from . import account_invoice
 from . import account_invoice_line
 from . import account_move_line
@@ -22,7 +23,6 @@ from . import project_tags
 from . import project_task
 from . import purchase_order
 from . import purchase_order_line
-from . import res_partner
 from . import res_partner_industry
 from . import sale_order
 from . import sale_order_line
