@@ -232,7 +232,7 @@
         </xpath>
         <!-- Fin Ticket 34968 -->
         <page name='public' position="attributes">
-          <attribute name="groups">hr.group_hr_manager</attribute>
+          <attribute name="groups">hr.group_hr_user</attribute>
         </page>
       </data>
     </field>

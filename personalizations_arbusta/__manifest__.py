@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'personalizations_arbusta',
-    'version': '13.0.1.18.0',
+    'version': '13.0.1.19.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
