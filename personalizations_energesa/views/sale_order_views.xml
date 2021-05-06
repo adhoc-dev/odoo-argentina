@@ -25,10 +25,7 @@
         <xpath expr="//field[@name='partner_shipping_id']" position="after">
           <field name="x_verificado" string="Pedido de confirmación"/>
         </xpath>
-        <xpath expr="//field[@name='validity_date']" position="attributes">
-          <attribute name="groups">__export__.res_groups_162_ab612302</attribute>
-        </xpath>
-        <xpath expr="//field[@name='confirmation_date']" position="attributes">
+        <xpath expr="//field[@name='date_order']" position="attributes">
           <attribute name="groups">sales_team.group_sale_manager</attribute>
           <attribute name="readonly">0</attribute>
         </xpath>
@@ -39,12 +36,10 @@
         <xpath expr="//field[@name='pricelist_id']" position="after">
           <field name="x_invoice_total_amount" invisible="1" attrs="{}"/>
         </xpath>
-        <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/label[1]" position="attributes">
-          <attribute name="string">Tipo de facturación</attribute>
-        </xpath>
         <xpath expr="//field[@name='type_id']" position="attributes">
           <attribute name="attrs">{}</attribute>
-          <attribute name="groups">__export__.res_groups_166_aa02ba5c</attribute>
+          <attribute name="string">Tipo de facturación</attribute>
+          <attribute name="groups">personalizations_energesa.res_groups_166_aa02ba5c</attribute>
         </xpath>
         <xpath expr="//field[@name='payment_term_id']" position="attributes">
           <attribute name="attrs">{"required": []}</attribute>
@@ -113,7 +108,7 @@
                 <field name="x_partner_invoice_id_email"/>
                 <field name="x_partner_invoice_id_afip_responsability_type_id_display_name"/>
                 <field name="x_partner_invoice_id_id_numbers_category_id_display_name"/>
-                <field name="x_partner_invoice_id_main_id_number"/>
+                <field name="x_partner_invoice_id_vat"/>
               </group>
             </group>
           </page>

@@ -3,7 +3,7 @@
   <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_crm_lead_5d06c5fb-c5ca-4ea9-9dbf-1ff028ac14e1">
     <field name="name">Odoo Studio: crm.lead.form.opportunity customization</field>
     <field name="model">crm.lead</field>
-    <field ref="crm.crm_case_form_view_oppor" name="inherit_id"/>
+    <field ref="crm.crm_lead_view_form" name="inherit_id"/>
     <field type="xml" name="arch">
       <data>
         <xpath expr="//field[@name='planned_revenue']" position="attributes">
@@ -26,7 +26,7 @@
           <attribute name="attrs">{}</attribute>
           <attribute name="readonly">1</attribute>
         </xpath>
-        <xpath expr="//field[@name='campaign_id']" position="attributes">
+        <xpath expr="//page[@name='lead']/group[1]/group[3]/field[@name='campaign_id']" position="attributes">
           <attribute name="attrs">{}</attribute>
           <attribute name="required">1</attribute>
         </xpath>
@@ -44,10 +44,10 @@
   <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_crm_lead_8cb32ea6-efe6-44d6-8e08-b25c4c14a0b9">
     <field name="name">Odoo Studio: crm.lead.form.lead customization</field>
     <field name="model">crm.lead</field>
-    <field ref="crm.crm_case_form_view_leads" name="inherit_id"/>
+    <field ref="crm.crm_lead_view_form" name="inherit_id"/>
     <field type="xml" name="arch">
       <data>
-        <xpath expr="//field[@name='campaign_id']" position="replace"/>
+        <xpath expr="//group[@name='categorization']/field[@name='campaign_id']" position="replace"/>
         <xpath expr="//form[1]" position="attributes">
           <attribute name="create">false</attribute>
           <attribute name="delete">true</attribute>
@@ -61,7 +61,7 @@
           <attribute name="attrs">{}</attribute>
           <attribute name="required">1</attribute>
         </xpath>
-        <xpath expr="//field[@name='phone']" position="attributes">
+        <xpath expr="//field[@name='email_cc']/../field[@name='phone']" position="attributes">
           <attribute name="attrs">{}</attribute>
           <attribute name="required">1</attribute>
         </xpath>

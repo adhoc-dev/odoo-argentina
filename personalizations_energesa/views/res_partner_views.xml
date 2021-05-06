@@ -10,14 +10,13 @@
           <field name="id"/>
           <field name="x_location" placeholder="URL Google Maps" string="Ubicacion (URL GM)"/>
         </xpath>
-        <xpath expr="//field[@name='afip_responsability_type_id']" position="attributes">
+        <xpath expr="//field[@name='l10n_ar_afip_responsibility_type_id']" position="attributes">
           <attribute name="string">AFIP Responsability Type</attribute>
         </xpath>
         <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='email']" position="attributes">
           <attribute name="string">*Email</attribute>
         </xpath>
         <xpath expr="//field[@name='property_purchase_currency_id']" position="attributes">
-          <attribute name="attrs">{"required": [["supplier","=",True]]}</attribute>
           <attribute name="domain">[["name","!=","ARS"]]</attribute>
         </xpath>
       </data>
@@ -32,8 +31,6 @@
         <xpath expr="//search[1]/field[@name='name']" position="after">
           <field name="mobile"/>
           <field name="email"/>
-        </xpath>
-        <xpath expr="//field[@name='id_numbers']" position="after">
           <field name="id"/>
         </xpath>
       </data>

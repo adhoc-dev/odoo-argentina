@@ -79,7 +79,6 @@
     <field ref="project.view_task_kanban" name="inherit_id"/>
     <field type="xml" name="arch">
       <data>
-        <xpath expr="//kanban[1]/templates[1]/t[1]/div[1]/div[1]/div[1]/div[1]/small[1]/span[1]/i[1]" position="replace"/>
         <xpath expr="//field[@name='project_id']" position="replace">
           <field name="date_start" display="false" widget="date"/>
           <field display="false" name="x_duration" bold="True"/>
@@ -94,26 +93,19 @@
       </data>
     </field>
   </record>
-  <record model="ir.ui.view" id="personalizations_energesa.default_gantt_view_f_df00299e-ce35-4d41-87bc-ac857f35b48c">
+  <!-- <record model="ir.ui.view" id="personalizations_energesa.default_gantt_view_f_df00299e-ce35-4d41-87bc-ac857f35b48c">
     <field name="name">Default gantt view for project.task</field>
     <field name="model">project.task</field>
     <field type="xml" name="arch">
-      <gantt date_start="date_start" date_stop="date_end" string="Default gantt view for project.task"/>
-    </field>
-  </record>
-  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_default__1055a9af-5b6d-4824-b846-c5e9385684b9">
-    <field name="name">Odoo Studio: Default gantt view for project.task customization</field>
-    <field name="model">project.task</field>
-    <field ref="personalizations_energesa.default_gantt_view_f_df00299e-ce35-4d41-87bc-ac857f35b48c" name="inherit_id"/>
-    <field type="xml" name="arch">
       <data>
+        <gantt date_start="date_start" date_stop="date_end" string="Default gantt view for project.task"/>
         <xpath expr="//gantt[1]" position="attributes">
           <attribute name="date_stop">date_deadline</attribute>
           <attribute name="type">gantt</attribute>
         </xpath>
       </data>
     </field>
-  </record>
+  </record> -->
   <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_project__7e9a0b91-18fa-429e-baa1-f26c6951c958">
     <field name="name">Odoo Studio: project.task.calendar customization</field>
     <field name="model">project.task</field>

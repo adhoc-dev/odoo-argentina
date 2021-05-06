@@ -6,10 +6,13 @@
     <field ref="helpdesk.helpdesk_ticket_view_form" name="inherit_id"/>
     <field type="xml" name="arch">
       <data>
-        <xpath expr="//field[@name='company_id']" position="replace">
+        <xpath expr="//field[@name='company_id']" position="after">
           <field name="x_datetime_start" string="Fecha Inicio" attrs="{&quot;required&quot;: [&quot;&amp;&quot;,[&quot;team_id&quot;,&quot;=&quot;,3],[&quot;stage_id&quot;,&quot;!=&quot;,23]], &quot;invisible&quot;: [[&quot;team_id&quot;,&quot;!=&quot;,3]]}"/>
           <field name="x_last_stage_update" attrs="{}" invisible="1"/>
         </xpath>
+        <field name="company_id" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
         <xpath expr="//field[@name='team_id']" position="attributes">
           <attribute name="attrs">{"invisible": [["team_id","!=",3]]}</attribute>
         </xpath>
@@ -84,7 +87,7 @@
         <xpath expr="//field[@name='partner_id']" position="after">
           <field display="full" name="x_datetime_start"/>
         </xpath>
-        <xpath expr="//kanban[1]/templates[1]/t[1]/div[1]/div[2]/div[5]/field[@name='priority']" position="after">
+        <xpath expr="//div[hasclass('oe_kanban_bottom_left')]/field[@name='priority']" position="after">
           <field display="full" name="ticket_type_id"/>
         </xpath>
       </data>

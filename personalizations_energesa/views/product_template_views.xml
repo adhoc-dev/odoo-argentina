@@ -19,7 +19,7 @@
     <field type="xml" name="arch">
       <data>
         <xpath expr="//field[@name='taxed_lst_price']" position="after">
-          <field name="x_pack_cost" attrs="{&quot;invisible&quot;: [[&quot;pack&quot;,&quot;=&quot;,False]]}"/>
+          <field name="x_pack_cost" attrs="{&quot;invisible&quot;: [[&quot;pack_ok&quot;,&quot;=&quot;,False]]}"/>
         </xpath>
         <xpath expr="//field[@name='seller_ids']" position="inside">
           <tree string="Vendor Information">
@@ -44,7 +44,7 @@
             <field name="quantity" on_change="1" modifiers="{&quot;required&quot;: true}"/>
             <field name="x_product_template_standard_price" on_change="1" modifiers="{&quot;readonly&quot;: true}"/>
             <field name="x_subtotal" string="Subtotal" sum="Total"/>
-            <field name="discount" invisible="1" studio_groups="[{&quot;name&quot;: &quot;Discount on lines&quot;, &quot;id&quot;: 43, &quot;display_name&quot;: &quot;Technical Settings / Discount on lines&quot;}]" modifiers="{&quot;invisible&quot;: true, &quot;column_invisible&quot;: true}"/>
+            <field name="sale_discount" invisible="1" studio_groups="[{&quot;name&quot;: &quot;Discount on lines&quot;, &quot;id&quot;: 43, &quot;display_name&quot;: &quot;Technical Settings / Discount on lines&quot;}]" modifiers="{&quot;invisible&quot;: true, &quot;column_invisible&quot;: true}"/>
           </tree>
         </xpath>
       </data>

@@ -31,9 +31,9 @@ class SaleOrder(models.Model):
     x_partner_invoice_id_mobile = fields.Char(string="Celular Facturación", related="partner_invoice_id.mobile", readonly=True, copy=False, store=True)
     x_partner_invoice_id_email = fields.Char(string="Mail Facturación", related="partner_invoice_id.email", readonly=True, copy=False, store=True)
     x_partner_invoice_id_street2 = fields.Char(string="Barrio Facturación", related="partner_invoice_id.street2", readonly=True, copy=False, store=True)
-    x_partner_invoice_id_main_id_number = fields.Char(string="N° Identificación Principal", related="partner_invoice_id.main_id_number", readonly=True, copy=False, store=True)
+    x_partner_invoice_id_vat = fields.Char(string="N° Identificación Principal", related="partner_invoice_id.vat", readonly=True, copy=False, store=True)
     x_partner_invoice_id_id_numbers_category_id_display_name = fields.Char(string="Tipo Identificación Principal", related="partner_invoice_id.id_numbers.category_id.display_name", readonly=True, copy=False, store=True)
-    x_partner_invoice_id_afip_responsability_type_id_display_name = fields.Char(string="Tipo AFIP", related="partner_invoice_id.afip_responsability_type_id.display_name", readonly=True, copy=False, store=True)
+    x_partner_invoice_id_afip_responsability_type_id_display_name = fields.Char(string="Tipo AFIP", related="partner_invoice_id.l10n_ar_afip_responsibility_type_id.display_name", readonly=True, copy=False, store=True)
     x_total_replenishment_cost = fields.Monetary(string="Costo Total", compute="_compute_x_total_replenishment_cost", readonly=True, copy=False, store=True)
     x_margin2 = fields.Float(string="Margin2", compute="_compute_x_margin2", track_visibility="always", readonly=True, copy=False, store=True)
 

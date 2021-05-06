@@ -44,7 +44,7 @@
     <field name="name">Procurement</field>
     <field name="res_model">procurement.group</field>
     <field name="target">current</field>
-    <field name="vew_mode">tree,form</field>
+    <field name="view_mode">tree,form</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_energesa.linea_proveedor_d6feb9dd-182c-419a-9b40-de3598361f2b">
     <field name="name">Línea Proveedor</field>

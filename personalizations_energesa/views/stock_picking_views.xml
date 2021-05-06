@@ -21,10 +21,10 @@
     <field ref="stock.view_picking_form" name="inherit_id"/>
     <field type="xml" name="arch">
       <data>
-        <xpath expr="//field[@name='move_lines']//tree//field[@name='product_id']" position="after">
+        <xpath expr="//field[@name='move_ids_without_package']//tree//field[@name='product_id']" position="after">
           <field name="group_id" invisible="1" force_save="1"/>
         </xpath>
-        <xpath expr="//field[@name='move_lines']" position="attributes">
+        <xpath expr="//field[@name='move_ids_without_package']" position="attributes">
           <attribute name="context">{'picking_type_code': picking_type_code,'default_group_id': group_id, 'default_picking_id': id, 'form_view_ref':'stock.view_move_picking_form', 'address_in_id': partner_id, 'default_picking_type_id': picking_type_id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id}</attribute>
         </xpath>
         <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='extra']/group[1]/group[2]/field[@name='group_id']" position="replace"/>
@@ -40,21 +40,24 @@
         </xpath>
         <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='origin']" position="after">
           <field name="group_id" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,}" attrs="{&quot;readonly&quot;: [[&quot;state&quot;,&quot;=&quot;,&quot;cancel&quot;]], &quot;required&quot;: [[&quot;state&quot;,&quot;!=&quot;,&quot;draft&quot;]]}" string="OV Vinculada" force_save="1"/>
-          <field name="__last_update" groups="__export__.res_groups_164_ee3ac17a"/>
+          <field name="__last_update" groups="personalizations_energesa.res_groups_164_ee3ac17a"/>
         </xpath>
         <xpath expr="//field[@name='declared_value']" position="after">
-          <field name="x_total_standard_price" groups="__export__.res_groups_165_b1064a83"/>
+          <field name="x_total_standard_price" groups="personalizations_energesa.res_groups_165_b1064a83"/>
         </xpath>
-        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='move_lines']/tree[1]/field[@name='is_locked']" position="after">
+        <xpath expr="//field[@name='move_ids_without_package']//tree//field[@name='is_locked']" position="after">
           <field name="id"/>
         </xpath>
-        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='move_lines']/tree[1]/field[@name='product_id']" position="after">
-          <field name="x_standard_price" groups="__export__.res_groups_165_b1064a83"/>
+        <xpath expr="//field[@name='move_ids_without_package']//tree//field[@name='product_id']" position="after">
+          <field name="x_standard_price" groups="personalizations_energesa.res_groups_165_b1064a83"/>
         </xpath>
-        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='move_lines']/tree[1]/field[@name='product_uom_qty']" position="after">
+        <xpath expr="//field[@name='move_ids_without_package']//tree/field[@name='product_uom_qty']" position="after">
           <field name="availability"/>
         </xpath>
-        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='move_lines']/tree[1]" position="after">
+        <!-- 
+          comentamos toda esta seccion porque no está hecho elegantemente y probablemente no sea necesaria. TODO ver de implementar o borrar si no la solicitaron
+          si hay que reincorporarlo debemos agregar product_uom_category_id y company_id ya que lo usan dominios definidos en python (cada vez que se agregue el "product_uom" y "product_id")
+          <xpath expr="//field[@name='move_ids_without_package']//tree" position="after">
           <form string="Stock Moves" create="0" edit="0">
             <header>
               <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,assigned,done" modifiers="{&quot;readonly&quot;: true}"/>
@@ -122,7 +125,7 @@
               </group>
             </sheet>
           </form>
-        </xpath>
+        </xpath> -->
       </data>
     </field>
   </record>

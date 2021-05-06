@@ -271,7 +271,7 @@ if env.user.id != 1:
      raise Warning("Para marcar OV como verificada, primero debe completar el campo email de Facturación")
    if not rec.x_partner_invoice_id_afip_responsability_type_id_display_name:
       raise Warning("Para marcar OV como verificada, primero debe completar el campo Tipo Responsable AFIP")
-   if not rec.x_partner_invoice_id_main_id_number:
+   if not rec.x_partner_invoice_id_vat:
       raise Warning("Para marcar OV como verificada, primero debe completar el campo Identificación Principal")
      
    if not rec.payment_term_id:

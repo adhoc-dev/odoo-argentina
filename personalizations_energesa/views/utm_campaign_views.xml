@@ -1,4 +1,7 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<!-- 
+  En v13 ya deja de existir la vista tree y form de utm.campaign
+  
+  <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
   <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_utm_camp_de008d8a-d53a-4bc6-bbab-488a9d614173">
     <field name="name">Odoo Studio: utm.campaign.tree customization</field>
@@ -25,4 +28,4 @@
       </data>
     </field>
   </record>
-</odoo>
+</odoo> -->

@@ -13,9 +13,10 @@
           <field name="tag_ids"/>
           <field name="internal_type"/>
         </xpath>
-        <xpath expr="//field[@name='currency_id']" position="after">
+        <!-- Falta modulo account_move_helper -->
+        <!-- <xpath expr="//field[@name='currency_id']" position="after">
           <field name="balance"/>
-        </xpath>
+        </xpath> -->
       </data>
     </field>
   </record>
