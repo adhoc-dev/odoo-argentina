@@ -12,7 +12,6 @@ class ProductTemplate(models.Model):
     x_website_catalog = fields.Char(string="Website Catalog")
     x_replenishment_cost_moneda = fields.Float(string="Costo en Moneda", compute="_compute_x_replenishment_cost_moneda", help="Campo de iboggio que calcula el costo final del proveedor en moneda del proveedor", readonly=True, copy=False)
     x_google_product_category = fields.Integer(string="google_product_category", help="Campo para Google Merchant	")
-    x_ml_pack_qty = fields.Integer(string="MercadoLibre cantidad por pack", help="si la cantidad es mayor a cero se toma el multiplicador en descripcion y en precio")
     x_energy_efficiency_class = fields.Char(string="Eficiencia Energetica", help="Campos validos"
 "A+++"
 "A++"

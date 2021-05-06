@@ -219,7 +219,6 @@
           <field name="x_website_catalog" widget="url"/>
           <field name="x_documents"/>
           <field name="x_google_product_category"/>
-          <field name="x_ml_pack_qty"/>
           <field name="x_energy_efficiency_class"/>
           <field name="x_power"/>
           <field name="x_energiu"/>
