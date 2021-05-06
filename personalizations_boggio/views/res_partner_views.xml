@@ -97,7 +97,7 @@
     <field eval="[(6, 0, [ref('account.group_account_invoice')])]" name="groups_id"/>
     <field name="inherit_id" ref="base.view_partner_form"/>
     <field name="arch" type="xml">
-      <field name="credit_limit" position="after">
+      <field name="trust" position="after">
         <field name="x_credit_nosis_score"/>
       </field>
     </field>
@@ -181,6 +181,7 @@
   <record id="personalizations_boggio.ir_ui_view_7666" model="ir.ui.view">
     <field name="name">cambiar lugar del boton de deuda iboggio</field>
     <field name="model">res.partner</field>
+    <field name="priority" eval="99"/>
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_111'), ref('account.group_account_invoice')])]" name="groups_id"/>
     <field name="inherit_id" ref="base.view_partner_form"/>
     <field name="arch" type="xml">
@@ -203,6 +204,7 @@
     <field name="name">Odoo Studio: res.partner.form customization</field>
     <field name="model">res.partner</field>
     <field eval="[(6, 0, [ref('base.group_user'), ref('base.group_erp_manager'), ref('purchase.group_purchase_manager')])]" name="groups_id"/>
+    <field name="priority" eval="99"/>
     <field name="inherit_id" ref="base.view_partner_form"/>
     <field name="arch" type="xml">
       <data>

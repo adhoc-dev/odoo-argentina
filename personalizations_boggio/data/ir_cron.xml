@@ -557,7 +557,7 @@ template.send_mail(env['product.product'].search([], limit=1).id, force_send=Tru
   </record>
   <record id="personalizations_boggio.ir_cron_195" model="ir.cron">
     <field name="name">Envio automatico de aviso de estado de remitos</field>
-    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="model_id" ref="stock.model_stock_picking"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 

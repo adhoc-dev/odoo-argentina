@@ -61,26 +61,6 @@
     <field name="view_id" ref="personalizations_boggio.ir_ui_view_5059"/>
     <field name="view_mode">form</field>
   </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1291">
-    <field name="name">prueba</field>
-    <field name="res_model">x_bve.prueba</field>
-    <field name="context">{'service_name': 'prueba'}</field>
-    <field name="view_mode">tree,graph,pivot</field>
-  </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1307">
-    <field name="name">pedidos sucursales</field>
-    <field name="res_model">x_bve.pedidossucursales</field>
-    <field name="context">{'service_name': 'pedidos sucursales'}</field>
-    <field name="view_mode">tree,graph,pivot</field>
-  </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1309">
-    <field name="name">Presupuesto de ventas Objetivo</field>
-    <field name="res_model">x_sales_target_budget</field>
-  </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1310">
-    <field name="name">Presupuesto de ventas objetivo</field>
-    <field name="res_model">x_sales_target_budget</field>
-  </record>
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1313">
     <field name="name">mis.report.instance.result.view.action.3</field>
     <field name="res_model">mis.report.instance</field>
@@ -303,18 +283,6 @@
     <field name="name">Etiquetas de cuenta iboggio</field>
     <field name="res_model">account.account.tag</field>
   </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1556">
-    <field name="name">Origen no confomidad</field>
-    <field name="res_model">x_origin_nonconformity</field>
-  </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1557">
-    <field name="name">Origen no conformidad</field>
-    <field name="res_model">x_origin_nonconformity</field>
-  </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1558">
-    <field name="name">Origen no conformidad</field>
-    <field name="res_model">x_origin_nonconformity</field>
-  </record>
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1559">
     <field name="name">Origen</field>
     <field name="res_model">x_origen_tags</field>
@@ -373,15 +341,6 @@
     <field name="view_id" ref="mail.email_compose_message_wizard_form"/>
     <field name="view_mode">form,tree</field>
   </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1670">
-    <field name="name">Resultado Encuesta Clientes</field>
-    <field name="res_model">x_resultado_encuesta</field>
-  </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1672">
-    <field name="name">Encuesta Clientes iboggio 2</field>
-    <field name="res_model">x_resultado_encuesta</field>
-    <field name="view_mode">graph,tree,form,pivote</field>
-  </record>
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1677">
     <field name="name">mis.report.instance.result.view.action.22</field>
     <field name="res_model">mis.report.instance</field>
@@ -396,10 +355,6 @@
     <field name="name">mis.report.instance.result.view.action.23</field>
     <field name="res_model">mis.report.instance</field>
     <field name="view_mode">form</field>
-  </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1737">
-    <field name="name">Beta - Acopios DP</field>
-    <field name="res_model">x_acopio_dt</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1745">
     <field name="name">Listado Eventos</field>
@@ -556,14 +511,6 @@
     <field name="name">Products attributes templates</field>
     <field name="res_model">product.attribute.template</field>
   </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2424">
-    <field name="name">Disponibilidad</field>
-    <field name="res_model">calendar.appointment.slot</field>
-  </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2425">
-    <field name="name">Citas en linea</field>
-    <field name="res_model">calendar.appointment.type</field>
-  </record>
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2426">
     <field name="name">Filas de factura</field>
     <field name="res_model">account.invoice.line</field>
@@ -571,7 +518,7 @@
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2439">
     <field name="name">Enviar mail (Entrega de materiales)</field>
     <field name="res_model">mail.compose.message</field>
-    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field name="context">{'default_composition_mode': 'mass_mail', 'default_template_id' : 138, 'default_use_template': True}</field>
     <field name="target">new</field>
     <field name="view_id" ref="mail.email_compose_message_wizard_form"/>
@@ -588,7 +535,7 @@
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2477">
     <field name="name">Enviar mail (Envio Automatico de aviso de estado de remitos)</field>
     <field name="res_model">mail.compose.message</field>
-    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field name="context">{'default_composition_mode': 'mass_mail', 'default_template_id' : 150, 'default_use_template': True}</field>
     <field name="target">new</field>
     <field name="view_id" ref="mail.email_compose_message_wizard_form"/>

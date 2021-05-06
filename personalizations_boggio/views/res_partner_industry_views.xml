@@ -9,7 +9,7 @@
         <xpath expr="//tree[1]/field[@name='name']" position="before">
           <field name="display_name"/>
         </xpath>
-        <xpath expr="//field[@name='parent_id']" position="after">
+        <xpath expr="//field[@name='active']" position="after">
           <field name="x_objetivos"/>
         </xpath>
       </data>

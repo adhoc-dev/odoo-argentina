@@ -202,9 +202,9 @@ action = action_read
   </record>
   <record id="personalizations_boggio.ir_act_server_1746" model="ir.actions.server">
     <field name="name">abrir stock por ubicacion en stock.move lupa</field>
-    <field name="model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="model_id" ref="stock.model_stock_move"/>
     <field name="state">code</field>
-    <field name="crud_model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="crud_model_id" ref="stock.model_stock_move"/>
     <field name="code"><![CDATA[object = record
 # Available locals:
 #  - time, datetime, dateutil: Python libraries
@@ -219,9 +219,9 @@ action = object.product_id.view_stock_detail()]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1747" model="ir.actions.server">
     <field name="name">Stock On Hand en stock move</field>
-    <field name="model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="model_id" ref="stock.model_stock_move"/>
     <field name="state">code</field>
-    <field name="crud_model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="crud_model_id" ref="stock.model_stock_move"/>
     <field name="code"><![CDATA[object = record
 # Available locals:
 #  - time, datetime, dateutil: Python libraries
@@ -240,9 +240,9 @@ action = action_read]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1748" model="ir.actions.server">
     <field name="name">Stock Traceability en stock move</field>
-    <field name="model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="model_id" ref="stock.model_stock_move"/>
     <field name="state">code</field>
-    <field name="crud_model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="crud_model_id" ref="stock.model_stock_move"/>
     <field name="code"><![CDATA[context = dict(env.context)
 object = record
 # Available locals:
@@ -470,7 +470,7 @@ for product in products:
   </record>
   <record id="personalizations_boggio.ir_act_server_2338" model="ir.actions.server">
     <field name="name">Albaranes relacionados</field>
-    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="model_id" ref="stock.model_stock_picking"/>
     <field name="state">code</field>
     <field name="code"><![CDATA[# Available variables:
 #  - env: Odoo Environment on which the action is triggered
@@ -511,7 +511,7 @@ action = object.product_id.view_stock_detail()]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_2449" model="ir.actions.server">
     <field name="name">Estado de remitos entregados</field>
-    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="model_id" ref="stock.model_stock_picking"/>
     <field name="state">code</field>
     <field name="code"><![CDATA[active_ids = env.context.get('active_ids')
 active_model = env.context.get('active_model')
@@ -548,7 +548,7 @@ else:
   </record>
   <record id="personalizations_boggio.ir_act_server_2452" model="ir.actions.server">
     <field name="name">Estado de remitos (reenvio1)</field>
-    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="model_id" ref="stock.model_stock_picking"/>
     <field name="state">code</field>
     <field name="code"><![CDATA[action = env['ir.actions.server'].browse(2449).run()
 
@@ -568,7 +568,7 @@ else:
   </record>
   <record id="personalizations_boggio.ir_act_server_2453" model="ir.actions.server">
     <field name="name">Estado de remitos (reenvio2)</field>
-    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="model_id" ref="stock.model_stock_picking"/>
     <field name="state">code</field>
     <field name="code"><![CDATA[action = env['ir.actions.server'].browse(2449).run()
 
@@ -588,7 +588,7 @@ else:
   </record>
   <record id="personalizations_boggio.ir_act_server_2454" model="ir.actions.server">
     <field name="name">Estado de remitos (reenvio3)</field>
-    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="model_id" ref="stock.model_stock_picking"/>
     <field name="state">code</field>
     <field name="code"><![CDATA[action = env['ir.actions.server'].browse(2449).run()
 
@@ -608,7 +608,7 @@ else:
   </record>
   <record id="personalizations_boggio.ir_act_server_2455" model="ir.actions.server">
     <field name="name">Estado de remitos (reenvio4)</field>
-    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="model_id" ref="stock.model_stock_picking"/>
     <field name="state">code</field>
     <field name="code"><![CDATA[action = env['ir.actions.server'].browse(2449).run()
 
@@ -628,7 +628,7 @@ else:
   </record>
   <record id="personalizations_boggio.ir_act_server_2478" model="ir.actions.server">
     <field name="name">Estado de remitos (reenvio5)</field>
-    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="model_id" ref="stock.model_stock_picking"/>
     <field name="state">code</field>
     <field name="code"><![CDATA[action = env['ir.actions.server'].browse(2449).run()
 

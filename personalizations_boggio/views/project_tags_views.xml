@@ -7,7 +7,7 @@
     <field name="arch" type="xml">
       <tree>
         <field name="name"/>
-        <field name="x_prioridad" min="1" max="5"/>
+        <field name="x_prioridad"/>
       </tree>
     </field>
   </record>

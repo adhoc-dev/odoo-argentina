@@ -147,7 +147,7 @@ if len(object.opportunity_id)==0:
     <field name="binding_model_id" ref="crm.model_crm_lead"/>
     <field name="crud_model_id" ref="crm.model_crm_lead"/>
     <field name="filter_domain">[[u'stage_id', u'not ilike', u'perdi']]</field>
-    <field name="trg_date_id" ref="crm.field_crm_lead_activity_date_deadline"/>
+    <field name="trg_date_id" ref="mail.field_crm_lead_activity_date_deadline"/>
     <field name="trg_date_range">7</field>
     <field name="trg_date_range_type">day</field>
     <field name="trigger">on_time</field>
@@ -164,9 +164,9 @@ if len(object.opportunity_id)==0:
   <record id="personalizations_boggio.base_automation_38" model="base.automation">
     <field name="name">Envio automatico de remitos y pendientes (4 dias despues)</field>
     <field name="sequence">1</field>
-    <field name="model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="model_id" ref="stock.model_stock_picking"/>
     <field name="state">email</field>
-    <field name="crud_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="crud_model_id" ref="stock.model_stock_picking"/>
     <field name="filter_domain">["&amp;","&amp;","&amp;",["state","=","done"],["date_done","&gt;","2021-02-02 11:44:45"],"|",["partner_id.x_no_recibe_remito","=",False],["partner_id.parent_id.x_no_recibe_remito","=",False],["picking_type_id","in",[7,22,21,12,17]]]</field>
     <field name="trg_date_id" ref="stock.field_stock_picking_date_done"/>
     <field name="trg_date_range">4</field>

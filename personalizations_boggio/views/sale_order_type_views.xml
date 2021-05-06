@@ -3,7 +3,7 @@
   <record id="personalizations_boggio.ir_ui_view_8135" model="ir.ui.view">
     <field name="name">Odoo Studio: sale.order.type.form.view customization</field>
     <field name="model">sale.order.type</field>
-    <field name="inherit_id" ref="sale_order_type.sot_sale_order_type_form_view"/>
+    <field name="inherit_id" ref="sale_order_type_ux.sale_order_type_form_view"/>
     <field name="arch" type="xml">
       <data>
         <xpath expr="//field[@name='analytic_tag_ids']" position="after">

@@ -95,7 +95,7 @@
     <field name="model">stock.picking</field>
     <field name="report_name">picking_list_dep_7</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/picking_list_dep_7.odt</field>
@@ -107,7 +107,7 @@
     <field name="model">stock.picking</field>
     <field name="report_name">picking_list_dep22</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/picking_list_dep22.odt</field>
@@ -131,7 +131,7 @@
     <field name="model">stock.picking</field>
     <field name="report_name">picking_list_RAF</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/picking_list_RAF.odt</field>
@@ -143,7 +143,7 @@
     <field name="model">stock.picking</field>
     <field name="report_name">picking_list_SFE</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/picking_list_SFE.odt</field>
@@ -168,7 +168,7 @@
     <field name="model">stock.picking</field>
     <field name="report_name">aeroo_report_ar_picking_reimpresion</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking_reimpresion.odt</field>
@@ -193,7 +193,7 @@
     <field name="model">stock.picking</field>
     <field name="report_name">picking_list_dep22_test</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/picking_list_dep22_test.odt</field>
@@ -257,7 +257,7 @@
     <field name="model">stock.move</field>
     <field name="report_name">pend_suc</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account_analytic_default.model_stock_move"/>
+    <field name="binding_model_id" ref="stock.model_stock_move"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/pend_suc.odt</field>
@@ -457,7 +457,7 @@
     <field name="model">stock.picking</field>
     <field name="report_name">picking_list_dep1_copy</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/picking_list_dep1_copy.odt</field>
@@ -518,7 +518,7 @@
     <field name="model">stock.picking</field>
     <field name="report_name">stock.picking_devoluciones</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field eval="False" name="multi"/>
     <field name="paperformat_id" ref="base.paperformat_euro"/>
     <field name="tml_source">file</field>
@@ -578,7 +578,7 @@
     <field name="model">sale.order.line</field>
     <field name="report_name">outlet</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account_analytic_default.model_sale_order_line"/>
+    <field name="binding_model_id" ref="sale.model_sale_order_line"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/outlet.ods</field>
@@ -590,7 +590,7 @@
     <field name="model">stock.picking</field>
     <field name="report_name">etiqueta de bultos</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account_analytic_default.model_stock_picking"/>
+    <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/etiqueta de bultos.odt</field>

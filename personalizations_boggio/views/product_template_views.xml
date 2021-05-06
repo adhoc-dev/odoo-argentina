@@ -292,7 +292,7 @@
         </xpath>
         <!--campos que se podrian sacar para mejorar performance de busqueda-->
         <!-- este ya estaba invisible arriba, por lo cual se pueda sacar sin problemas-->
-        <xpath expr="//field[@name='standard_price']" position="replace"/>
+        <!-- <xpath expr="//field[@name='standard_price']" position="replace"/> -->
         <!-- campos de cantidades, son los que mas repercuten pero a priori muy necesarios -->
         <!--requiere ademas sacarlos de la vista tree que se agrega aca https://www.ingenieriaboggio.com.ar/web?debug=1#id=3858&view_type=form&model=ir.ui.view&action=25&menu_id=4-->
         <!--<xpath expr="//field[@name='virtual_available']" position="replace"/>-->

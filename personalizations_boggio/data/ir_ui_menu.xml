@@ -170,23 +170,11 @@
     <field name="sequence">10</field>
     <field name="action" ref="personalizations_boggio.ir_act_window_1606"/>
   </record>
-  <record id="personalizations_boggio.ir_ui_menu_1246" model="ir.ui.menu">
-    <field name="name">Encuesta Clientes iboggio 2</field>
-    <field name="parent_id" ref="mgmtsystem.menu_mgmtsystem_main"/>
-    <field name="sequence">50</field>
-    <field name="action" ref="personalizations_boggio.ir_act_window_1672"/>
-  </record>
   <record id="personalizations_boggio.ir_ui_menu_1250" model="ir.ui.menu">
     <field name="name">Controles de remitos diarios - Iboggio</field>
     <field name="parent_id" ref="stock.menu_warehouse_report"/>
     <field name="sequence">51</field>
     <field name="action" ref="personalizations_boggio.ir_act_window_1678"/>
-  </record>
-  <record id="personalizations_boggio.ir_ui_menu_1288" model="ir.ui.menu">
-    <field name="name">Beta - Acopios DP</field>
-    <field name="parent_id" ref="account.menu_finance_reports"/>
-    <field name="sequence">50</field>
-    <field name="action" ref="personalizations_boggio.ir_act_window_1737"/>
   </record>
   <record id="personalizations_boggio.ir_ui_menu_1601" model="ir.ui.menu">
     <field name="name">Facturas Iboggio	</field>
@@ -309,18 +297,6 @@
     <field name="sequence">10</field>
     <field name="action" ref="personalizations_boggio.ir_act_window_708"/>
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_158')])]" name="groups_id"/>
-  </record>
-  <record id="personalizations_boggio.ir_ui_menu_1665" model="ir.ui.menu">
-    <field name="name">Disponibilidad</field>
-    <field eval="False" name="parent_id"/>
-    <field name="sequence">10</field>
-    <field name="action" ref="personalizations_boggio.ir_act_window_2424"/>
-  </record>
-  <record id="personalizations_boggio.ir_ui_menu_1666" model="ir.ui.menu">
-    <field name="name">Citas en linea</field>
-    <field eval="False" name="parent_id"/>
-    <field name="sequence">10</field>
-    <field name="action" ref="personalizations_boggio.ir_act_window_2425"/>
   </record>
   <record id="personalizations_boggio.ir_ui_menu_1667" model="ir.ui.menu">
     <field name="name">Filas de factura</field>
