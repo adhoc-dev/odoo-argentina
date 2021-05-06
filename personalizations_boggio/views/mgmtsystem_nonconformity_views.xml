@@ -54,17 +54,39 @@
     <field name="arch" type="xml">
       <data>
         <filter name="current" position="after">
-          <separator orientation="vertical"/>
-          <filter name="Abiertas" domain="[('state', 'not in', ('cancel','done'))]" string="Abiertas"/>
-          <separator orientation="vertical"/>
-          <filter name="Clientes" domain="[('origin_ids', '=', 4 )]" string="Clientes"/>
-          <filter name="Proveedores" domain="[('x_origen_no_conformidad', '=', 1 )]" string="Proveedores"/>
-          <filter name="Proveedores" domain="[('x_origen_no_conformidad', '!=', 1 )]" string="No Proveedores"/>
-          <filter name="Interno" domain="[('x_origen_no_conformidad', '=', 3 )]" string="Interno"/>
-          <separator orientation="vertical"/>
-          <filter string="Mi Responsabilidad" domain="[('responsible_user_id','=',uid)]" name="my_resp"/>
-          <separator orientation="vertical"/>
-        </filter>
+                <separator orientation="vertical"/>
+                <filter name="Abiertas" domain="[('state', 'not in', ('cancel','done'))]" string="Abiertas"/>
+                <separator orientation="vertical"/>
+                <filter name="Clientes" domain="[('origin_ids', '=', 4 )]" string="Clientes"/>
+                <filter domain="[[&quot;origin_ids&quot;,&quot;ilike&quot;,&quot;aud%int&quot;]]" name="studio_filter_UrqL0" string="Auditoria interna"/>
+                <filter domain="[[&quot;origin_ids&quot;,&quot;ilike&quot;,&quot;audit%ext&quot;]]" name="studio_filter_2D6B1" string="Auditoria externa"/>
+                <filter name="Proveedores" domain="[('x_origen_no_conformidad', '=', 1 )]" string="Proveedores"/>
+                <filter name="Proveedores" domain="[('x_origen_no_conformidad', '!=', 1 )]" string="No Proveedores"/>
+                <filter name="Interno" domain="[('x_origen_no_conformidad', '=', 3 )]" string="Interno"/>
+                <separator orientation="vertical"/>
+               <filter string="Mi Responsabilidad" domain="[('responsible_user_id','=',uid)]" name="my_resp"/>
+          <filter domain="[('manager_user_id','=',uid)]" name="studio_filter_1fRGc" string="Mi Gestión"/>
+                <separator orientation="vertical"/>
+
+          </filter>
+          <xpath expr="//filter[@name='pending']" position="attributes">
+            <attribute name="domain">[["state","in",["analysis"]]]</attribute>
+          </xpath>
+
+          <xpath expr="//field[@name='ref']" position="after">
+            <field name="x_etiqueta"/>
+            <field name="x_origen_no_conformidad" string="Donde ocurrió el error"/>
+            <field name="partner_id" string="Partner Asociado"/>
+          </xpath>
+          <xpath expr="//field[@name='create_date']" position="after">
+            <field name="manager_user_id"/>
+          </xpath>
+          <xpath expr="//field[@name='company_id']" position="after">
+            <field name="origin_ids"/>
+          </xpath>
+          <xpath expr="//search[1]/group[2]/filter[5]" position="attributes">
+            <attribute name="string">Partner Asociado</attribute>
+          </xpath>
       </data>
     </field>
   </record>
@@ -77,39 +99,6 @@
         <field name="stage_id" position="after">
           <field name="x_impacto"/>
         </field>
-      </data>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_7743" model="ir.ui.view">
-    <field name="name">Odoo Studio: mgmtsystem.nonconformity.filter customization</field>
-    <field name="model">mgmtsystem.nonconformity</field>
-    <field name="inherit_id" ref="mgmtsystem_nonconformity.view_mgmtsystem_nonconformity_filter"/>
-    <field name="arch" type="xml">
-      <data>
-        <xpath expr="//filter[@name='pending']" position="attributes">
-          <attribute name="domain">[["state","in",["analysis"]]]</attribute>
-        </xpath>
-        <xpath expr="//filter[@name='Clientes']" position="after">
-          <filter domain="[[&quot;origin_ids&quot;,&quot;ilike&quot;,&quot;aud%int&quot;]]" name="studio_filter_UrqL0" string="Auditoria interna"/>
-          <filter domain="[[&quot;origin_ids&quot;,&quot;ilike&quot;,&quot;audit%ext&quot;]]" name="studio_filter_2D6B1" string="Auditoria externa"/>
-        </xpath>
-        <xpath expr="//filter[@name='my_resp']" position="after">
-          <filter domain="[('manager_user_id','=',uid)]" name="studio_filter_1fRGc" string="Mi Gestión"/>
-        </xpath>
-        <xpath expr="//field[@name='ref']" position="after">
-          <field name="x_etiqueta"/>
-          <field name="x_origen_no_conformidad" string="Donde ocurrió el error"/>
-          <field name="partner_id" string="Partner Asociado"/>
-        </xpath>
-        <xpath expr="//field[@name='create_date']" position="after">
-          <field name="manager_user_id"/>
-        </xpath>
-        <xpath expr="//field[@name='company_id']" position="after">
-          <field name="origin_ids"/>
-        </xpath>
-        <xpath expr="//search[1]/group[2]/filter[5]" position="attributes">
-          <attribute name="string">Partner Asociado</attribute>
-        </xpath>
       </data>
     </field>
   </record>
