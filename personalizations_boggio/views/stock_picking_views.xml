@@ -161,16 +161,6 @@
       </data>
     </field>
   </record>
-  <record id="personalizations_boggio.ir_ui_view_5879" model="ir.ui.view">
-    <field name="name">sacar razon de devolucion</field>
-    <field name="model">stock.picking</field>
-    <field name="inherit_id" ref="personalizations_boggio.ir_ui_view_5878"/>
-    <field name="arch" type="xml">
-      <data>
-        <field name="x_razon_devolucion" position="replace"/>
-      </data>
-    </field>
-  </record>
   <record id="personalizations_boggio.ir_ui_view_5921" model="ir.ui.view">
     <field name="name">traduccion boton factura</field>
     <field name="model">stock.picking</field>
@@ -205,10 +195,11 @@
   <record id="personalizations_boggio.ir_ui_view_7740" model="ir.ui.view">
     <field name="name">Odoo Studio: stock.picking.form customization</field>
     <field name="model">stock.picking</field>
+    <field name="priority" eval="199"/>
     <field name="inherit_id" ref="stock.view_picking_form"/>
     <field name="arch" type="xml">
       <data>
-        <xpath expr="//button[@name='button_scrap']" position="replace"/>
+        <!-- <xpath expr="//button[@name='button_scrap']" position="replace"/> -->
         <xpath expr="//field[@name='number_of_packages']" position="attributes">
           <attribute name="attrs">{}</attribute>
           <attribute name="force_save">True</attribute>

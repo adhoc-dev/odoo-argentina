@@ -329,13 +329,14 @@
   <record id="personalizations_boggio.ir_ui_view_7671" model="ir.ui.view">
     <field name="name">Odoo Studio: product.template.product.form customization</field>
     <field name="model">product.template</field>
+    <field name="priority" eval="199"/>
     <field name="inherit_id" ref="product.product_template_only_form_view"/>
     <field name="arch" type="xml">
       <data>
         <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='notes']/group[not(@name)][1]/group[3]" position="replace">
           <field name="quote_description"/>
         </xpath>
-        <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='purchase']/group[@name='costing']/group[@name='replenishment_cost']/div[@name='replenishment_base_cost']/label[2]" position="replace"/>
+        <!-- <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='purchase']/group[@name='costing']/group[@name='replenishment_cost']/div[@name='replenishment_base_cost']/label[2]" position="replace"/> -->
         <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='purchase']/group[@name='costing']/group[@name='replenishment_cost']/div[@name='replenishment_base_cost']/field[@name='replenishment_base_cost_on_currency']" position="replace"/>
         <xpath expr="//field[@name='standard_price']" position="attributes">
           <attribute name="attrs">{"readonly": [["valuation","=","real_time"]]}</attribute>

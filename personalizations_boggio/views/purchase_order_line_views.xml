@@ -78,6 +78,7 @@
     <field name="name">Odoo Studio: purchase.order.line.search customization</field>
     <field name="model">purchase.order.line</field>
     <field name="inherit_id" ref="purchase.purchase_order_line_search"/>
+    <field name="priority" eval="199"/>
     <field name="arch" type="xml">
       <data>
         <xpath expr="//field[@name='x_supplier_code']" position="after">
@@ -90,6 +91,7 @@
     <field name="name">Odoo Studio: purchase.order.line.tree customization</field>
     <field name="model">purchase.order.line</field>
     <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+    <field name="priority" eval="199"/>
     <field name="arch" type="xml">
       <data>
         <xpath expr="//field[@name='create_uid']" position="after">
