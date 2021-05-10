@@ -8,7 +8,7 @@
       <field name="user_id" position="after">
         <field name="team_id" completion="1"/>
       </field>
-      <xpath expr="//field[@name='user_id']" position="after">
+      <xpath expr="//group[@name='sale']//field[@name='user_id']" position="after">
           <field name="x_colegio"/>
       </xpath>
        <xpath expr="//page[@name='sales_purchases']" position="after">
