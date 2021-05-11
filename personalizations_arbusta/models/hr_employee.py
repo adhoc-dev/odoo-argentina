@@ -16,17 +16,9 @@ class HrEmployee(models.Model):
                                                        ('Estructura', 'Estructura')],
                                             tracking=100, copy=False)
     x_studio_field_fZbCK = fields.Selection(string="Seniority",
-                                            selection=[('Pre junior', 'Pre junior'), ('Junior', 'Junior'),
+                                            selection=[('N/A', 'N/A'),('Pre junior', 'Pre junior'), ('Junior', 'Junior'),
                                                        ('Semi Senior', 'Semi Senior'), ('Senior', 'Senior'),
                                                        ('Trainee', 'Trainee')], tracking=100, copy=False)
-    x_studio_field_l1LI4 = fields.Char(string="Equipo", copy=False)
-    x_studio_field_n8Q0h = fields.Selection(string="Causa",
-                                            selection=[('Acuerdo', 'Acuerdo'), ('Desvinculación', 'Desvinculación'),
-                                                       ('Renuncia: Mejor oferta', 'Renuncia: Mejor oferta'),
-                                                       ('Renuncia: M Personales', 'Renuncia: Motivos personales'),
-                                                       ('Renuncia: Próximo paso', 'Renuncia: Próximo paso')],
-                                            copy=False)
-    x_studio_field_bDsGO = fields.Char(string="Institución", copy=False)
     employee_id_maintenance_equip_count = fields.Integer(string="Asignado al empleado count",
                                                                 compute="_compute_employee_maintenance_equip_count",
                                                                 readonly=True, copy=False)
@@ -40,17 +32,7 @@ class HrEmployee(models.Model):
     x_studio_field_r6BXX = fields.Char(string="Nombre OS", copy=False)
     x_studio_field_bdBsj = fields.Char(string="Plan Prepaga", copy=False)
     level_reached = fields.Selection(string="Nivel alcanzado",
-                                     selection=[('Secundario Amondonado', 'Secundario Amondonado'),
-                                                ('Secundario en Curso', 'Secundario en Curso'),
-                                                ('Secundario Graduado', 'Secundario Graduado'),
-                                                ('Terciario Abandonado', 'Terciario Abandonado'),
-                                                ('Terciario en Curso', 'Terciario en Curso'),
-                                                ('Terciario Graduado', 'Terciario Graduado'),
-                                                ('Universitario Abandonado', 'Universitario Abandonado'),
-                                                ('Universitario en Curso', 'Universitario en Curso'),
-                                                ('Universitario Graduado', 'Universitario Graduado'),
-                                                ('Posgrado Máster en Curso', 'Posgrado Máster en Curso'),
-                                                ('Posgrado Máster Graduado', 'Posgrado Máster Graduado')],
+                                     selection=[('Incompleto', 'Incompleto'),('En curso', 'En curso'), ('Graduado', 'Graduado')],
                                      copy=False)
     x_department_id = fields.Many2one(string="department_id", related="department_id",
                                       help="Solo se usa por el seguimiento", on_delete="set null", readonly=True)
@@ -58,21 +40,6 @@ class HrEmployee(models.Model):
                                   on_delete="set null", readonly=True)
     x_coach_id = fields.Many2one(string="coach_id", related="coach_id", help="Por seguimiento",
                                  on_delete="set null", readonly=True)
-    x_studio_field_nCDAf = fields.Selection(string="Unidad académica",
-                                            selection=[('Agronomía', 'Agronomía'),
-                                                       ('Arquitectura', 'Arquitectura'),
-                                                       ('Arte y Diseño', 'Arte y Diseño'),
-                                                       ('Ciencia y Tecnología', 'Ciencia y Tecnología'),
-                                                       ('Comunicación', 'Comunicación'),
-                                                       ('Cs. Económicas', 'Cs. Económicas'),
-                                                       ('Cs. Exactas y Naturales', 'Cs. Exactas y Naturales'),
-                                                       ('Cs. Sociales', 'Cs. Sociales'),
-                                                       ('Cs. Veterinarias', 'Cs. Veterinarias'),
-                                                       ('Derecho', 'Derecho'), ('Educación', 'Educación'),
-                                                       ('Farmacia y Bioquímica', 'Farmacia y Bioquímica'),
-                                                       ('Filosofía y Letras', 'Filosofía y Letras'),
-                                                       ('Ingeniería', 'Ingeniería'), ('Medicina', 'Medicina'),
-                                                       ('Psicología', 'Psicología')], copy=False)
     x_studio_field_t2GcX = fields.Char(string="Carrera", copy=False)
     x_maintenance_equipment_ids = fields.Many2many(string="Equipos",
                                                    comodel_name="maintenance.equipment",
@@ -119,31 +86,31 @@ class HrEmployee(models.Model):
     x_studio_field_q5sPJ = fields.Boolean(string="Validación FT", tracking=100, copy=False)
     x_studio_field_ny2Ip = fields.Date(string="Fecha Baja", copy=False)
     x_studio_field_RiU1z = fields.Selection(string="Tipo de desvinculación",
-                                            selection=[('Despido', 'Despido'), ('Renuncia', 'Renuncia'),
+                                            selection=[('No pasó período de prueba','No pasó período de prueba'), ('Finalización de contrato','Finalización de contrato'),('Despido', 'Despido'), ('Renuncia', 'Renuncia'),
                                                        ('Otro', 'Otro')], copy=False)
     x_studio_field_awy5r = fields.Char(string="Comentarios baja", copy=False)
     x_studio_field_RFrXP = fields.Selection(string="Causa baja",
-                                            selection=[('Nuevo empleo', 'Nuevo empleo'),
-                                                       ('M Personales', 'Motivos personales')], copy=False)
+                                            selection=[('Estudio','Estudio'),('Nuevo empleo', 'Nuevo empleo'),
+                                                       ('Motivos Personales', 'Motivos personales')], copy=False)
     x_studio_field_1jaDd = fields.Selection(string="Motivo baja",
-                                            selection=[('Estudios', 'Estudios'),
-                                                       ('Deja de trabajar', 'Deja de trabajar'),
+                                            selection=[
                                                        ('Mudanza', 'Mudanza'),
-                                                       ('Necesidad de mejorar su situación económica',
-                                                        'Necesidad de mejorar su situación económica'),
-                                                       ('No ve posibilidades de crecimiento dentro de Arbusta',
-                                                        'No ve posibilidades de crecimiento dentro de Arbusta'),
-                                                       ('Propuesta laboral con mejor salario',
-                                                        'Propuesta laboral con mejor salario'),
-                                                       ('Proyectos más desafiantes', 'Proyectos más desafiantes'),
-                                                       ('Relación con su líder', 'Relación con su líder')],
+                                                       ('Relación con su líder', 'Relación con su líder'),
+                                                       ('Mejora Salarial','Mejora Salarial'),
+                                                       ('Posibilidades de desarrollo','Posibilidades de desarrollo'),
+                                                       ('Clima laboral','Clima laboral'),
+                                                       ('Cuidado del hogar','Cuidado del hogar'),
+                                                       ('Otros','Otros')],
                                             copy=False)
     x_studio_field_VKdnN = fields.Integer(string="Modalidad horas", copy=False)
     x_studio_field_na3Vg = fields.Boolean(string="Requiere conectividad", copy=False)
     level_study = fields.Selection(string='Grado de Estudio',
                                    selection=[('es', 'Educación Superior'), ('em', 'Educación Media'),
-                                              ('ep', 'Educación Primaria'), ('utu', 'UTU')])
+                                              ('ep', 'Educación Primaria'), ('utu', 'UTU'),
+                                              ('Secundaria','Secundaria'),('Terciaria','Terciaria'),
+                                              ('Universitaria','Universitaria'),('Posgrado/Master','Posgrado/Master')])
     registry_date = fields.Date(string='Alta', tracking=100, copy=False)
+    comunidad_arbustera = fields.Boolean(string='Comunidad Arbustera')
 
     def _compute_employee_maintenance_equip_count(self):
         results = self.env['maintenance.equipment'].read_group([('employee_id', 'in', self.ids)],

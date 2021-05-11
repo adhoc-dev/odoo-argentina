@@ -39,17 +39,6 @@
       </data>
     </field>
   </record>
-  <record id="personalizations_arbusta.ir_ui_view_2167_0cde3a3a" model="ir.ui.view">
-    <field name="name">Vista Personalizada - PERSONALIZACION DESACTIVADA POR ACTUALIZACION a V13</field>
-    <field name="model">hr.employee</field>
-    <field name="inherit_id" ref="hr_holidays.view_employee_form_leave_inherit"/>
-    <field name="active" eval="False"/>
-    <field name="arch" type="xml">
-      <button name="725" position="attributes">
-        <attribute name="attrs">{}</attribute>
-      </button>
-    </field>
-  </record>
   <record id="personalizations_arbusta.default_graph_view_f_6645d332-b264-450f-9e3c-ea4905a21fa4" model="ir.ui.view">
     <field name="name">Default graph view for hr.employee</field>
     <field name="model">hr.employee</field>
@@ -168,7 +157,6 @@
         </xpath>
         <xpath expr="//field[@name='certificate']" position="before">
           <field name="level_study" required='1'/>
-          <field name="x_studio_field_bDsGO" required='1'/>
           <field name="x_studio_field_t2GcX" required='1'/>
           <field name="x_studio_field_HT2p1"/>
         </xpath>
@@ -189,22 +177,19 @@
           <field name="x_studio_field_ontRJ" string="Situación extranj."/>
         </field>
         <field name="user_id" position="before">
+          <field name="comunidad_arbustera"/>
           <field name="registry_date" required='1'/>
+          <field name="x_studio_field_ny2Ip" required='1'/>
           <field name="x_studio_field_RiU1z"/>
           <field name="x_studio_field_awy5r"/>
           <field name="x_studio_field_RFrXP"/>
           <field name="x_studio_field_1jaDd"/>
         </field>
-        <field name="certificate" position="attributes">
-          <attribute name="string">Nivel Alcanzado</attribute>
-          <attribute name="required">1</attribute>
-          <attribute name="widget">selection</attribute>
+        <field name="certificate" position="replace">
+          <field name="level_reached"/>
         </field>
         <field name="study_school" position="attributes">
           <attribute name="string">Institución</attribute>
-        </field>
-        <field name="study_field" position="attributes">
-          <attribute name="string">Unidad académica</attribute>
         </field>
         <xpath expr="//page[@name='hr_settings']//group" position="inside">
           <group>
