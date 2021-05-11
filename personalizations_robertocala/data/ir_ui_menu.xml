@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.menu" id="personalizations_robertocala.ir_ui_menu_494">
+    <field name="name">Reglas de precios</field>
+    <field ref="sale.menu_product_pricelist_main" name="parent_id"/>
+    <field name="sequence">10</field>
+    <field ref="personalizations_robertocala.ir_act_window_659" name="action"/>
+  </record>
+  <record model="ir.ui.menu" id="personalizations_robertocala.ir_ui_menu_495">
+    <field name="name">Supplier Info</field>
+    <field eval="False" name="parent_id"/>
+    <field name="sequence">10</field>
+    <field ref="personalizations_robertocala.ir_act_window_660" name="action"/>
+  </record>
+</odoo>

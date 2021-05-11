@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="res.groups" id="personalizations_robertocala.res_groups_57">
+    <field name="name">Solo si/no</field>
+  </record>
+  <record model="res.groups" id="personalizations_robertocala.res_groups_58">
+    <field name="name">Stock</field>
+  </record>
+</odoo>

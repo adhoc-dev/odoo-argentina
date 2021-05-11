@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+personalizations_robertocala.ir_model_access_1190,sale.order,website_sale_stock.model_sale_order,base.group_portal,True,False,False,False
+personalizations_robertocala.ir_model_access_1191,sale.order.line,website_sale_stock.model_sale_order_line,base.group_portal,True,False,False,False

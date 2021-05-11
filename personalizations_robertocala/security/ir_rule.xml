@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.rule" id="personalizations_robertocala.ir_rule_142">
+    <field name="name">Product Product Read Only for employees, portal, public</field>
+    <field ref="account.model_product_product" name="model_id"/>
+    <field name="domain_force"><![CDATA[[('name', '=', False)]]]></field>
+    <field eval="[(6, 0, [ref('price_security.group_restrict_prices')])]" name="groups"/>
+    <field eval="True" name="perm_create"/>
+    <field eval="False" name="perm_read"/>
+    <field eval="True" name="perm_unlink"/>
+    <field eval="True" name="perm_write"/>
+  </record>
+  <record model="ir.rule" id="personalizations_robertocala.ir_rule_143">
+    <field name="name">Product Template Read Only for employees, portal, public</field>
+    <field ref="account.model_product_template" name="model_id"/>
+    <field name="domain_force"><![CDATA[[('name', '=', False)]]]></field>
+    <field eval="[(6, 0, [ref('price_security.group_restrict_prices')])]" name="groups"/>
+    <field eval="True" name="perm_create"/>
+    <field eval="False" name="perm_read"/>
+    <field eval="True" name="perm_unlink"/>
+    <field eval="True" name="perm_write"/>
+  </record>
+</odoo>

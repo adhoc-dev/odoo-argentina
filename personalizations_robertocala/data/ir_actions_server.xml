@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.actions.server" id="personalizations_robertocala.ir_act_server_1025">
+    <field name="name">[invoice_operations] Generar Facturas </field>
+    <field ref="account.model_account_invoice" name="model_id"/>
+    <field name="state">code</field>
+    <field ref="account.model_account_invoice" name="crud_model_id"/>
+    <field name="code"><![CDATA[object = record
+# CONFIG
+Distribuidora_ID = 1
+Roberto_Cala_ID = 3
+Iva_0_cala_ID = 5
+#Iva_21_cala_ID = 1
+#Iva_10_5_cala_ID = 7
+
+
+def move_invoice(invoice, company_id):
+    """
+    Moves the invoice to another company
+    """
+    invoice = invoice.with_context(force_company=company_id)
+
+    # Al escribir la compania limpiamos tmb las posicioens fiscales por constraint de que no puede haber compania y posicion de otra cia. Luego total el onchange termina asignando la compania que corresponda
+    invoice.write({'company_id': company_id, 'fiscal_position_id': False})
+
+    # Ugly hack para recalcular available_jorunal_document_type y journal_document_type_id y evitar constrain
+    if invoice.journal_document_type_id:
+        invoice.write({'journal_document_type_id': False, 'journal_id': invoice.with_context(
+            company_id=company_id, type=invoice.type)._default_journal().id, })
+
+    # Property fields to maintain
+    property_fields = {'payment_term_id': invoice.payment_term_id.id}
+    invoice._onchange_partner_id()
+    invoice._onchange_company()
+    invoice.write(property_fields)
+
+    invoice.compute_taxes()
+    return invoice
+
+
+def generate_child_invoice(invoice):
+    """
+    Generates invoices based on aux_percentage
+    Returns the created invoices
+    """
+    def get_aux_perc(line):
+        if line.product_id.x_operation_type == '50-50':
+            percentage = 50.0
+        elif line.product_id.x_operation_type == 'roberto_cala':
+            percentage = 100.0
+        elif line.product_id.x_operation_type == 'distribuidora':
+            percentage = 0.0
+        else:
+            percentage = False
+        # si es iva 10,5 devolver 50
+        # si es iva 21 devolver es 100
+        # si es iva 0 devolver es 0
+        return percentage
+
+    new_lines = []
+    for line in invoice.invoice_line_ids:
+        # get aux_perc limited by product config
+        line_aux_perc = get_aux_perc(line)
+        if not line_aux_perc:
+            continue
+        round_precision = 0
+        # if line.uom_id != line.product_id.uom_id and line_aux_perc == 50.0:
+        # round_precision = 1
+        # line.write({'quantity': line.uom_id._compute_qty(line.uom_id.id, line.quantity, line.product_id.uom_id.id)})
+        # calc move quantities (rounded)
+        new_quantity = round(
+            line.quantity * line_aux_perc / 100.0, round_precision)
+        if not new_quantity:
+            continue
+        # do move
+        # new_line = line.copy({'quantity': new_quantity,
+        #                       'uom_id': line.product_id.uom_id.id
+        #                       if line_aux_perc == 50.0 else line.uom_id.id})
+        new_line = line.copy({'quantity': new_quantity})
+        line.write({'quantity': line.quantity - new_quantity,
+                    # 'uom_id': line.product_id.uom_id.id,
+                    'invoice_line_tax_ids': [(6, 0, [Iva_0_cala_ID])]})
+        new_line.write({'sale_line_ids': [(6, 0, line.sale_line_ids.ids)]})
+        new_lines.append(new_line.id)
+        if abs(line.quantity) < 0.0001:
+            line.unlink()
+
+    # Solo generamos en Aux si alguna linea podia moverse
+    if new_lines:
+        new_invoice = invoice.copy({'invoice_line_ids': [(6, 0, new_lines)]})
+        new_invoice = move_invoice(new_invoice, Roberto_Cala_ID)
+    else:
+        new_invoice = invoice.browse()
+
+    # Si no queda nada en la factura original, se elimina
+    if not invoice.invoice_line_ids:
+        invoice.unlink()
+
+    # return generated invoices
+    return new_invoice
+
+
+def main():
+    invoices = object
+    invoices += generate_child_invoice(invoices)
+    actions = env.ref('account.action_invoice_tree1')
+    action_read = actions.read()[0]
+    action_read['domain'] = [('id', 'in', invoices.ids)]
+    return action_read
+
+
+action = main()]]></field>
+  </record>
+  <record model="ir.actions.server" id="personalizations_robertocala.ir_act_server_1273">
+    <field name="name">Uptade prices (de producto a ail)</field>
+    <field ref="account.model_account_invoice" name="model_id"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[# Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+for line in record.invoice_line_ids:
+    price_unit = line.product_id.standard_price
+    if (
+        price_unit and
+            record.currency_id != line.product_id.currency_id):
+        price_unit = line.product_id.currency_id.compute(
+            price_unit, record.currency_id)
+    if (
+            price_unit and line.uom_id and
+            line.product_id.uom_id != line.uom_id):
+        price_unit = line.product_id.uom_id._compute_price(price_unit,
+            to_unit=line.uom_id)
+    line.write({'price_unit': price_unit})
+
+
+
+
+
+]]></field>
+  </record>
+</odoo>

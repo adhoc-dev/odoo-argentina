@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_robertocala.ir_ui_view_4133_ab0fd09e">
+    <field name="name">Vista Personalizado</field>
+    <field name="model">sale.order</field>
+    <field ref="sale.view_order_form" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <data>
+        <field name="payment_term_id" position="after">
+          <field name="x_keep_remaining"/>
+        </field>
+        <xpath expr="//field[@name='order_line']/tree" position="attributes">
+          <attribute name="limit">300</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

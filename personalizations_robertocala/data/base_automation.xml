@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="base.automation" id="personalizations_robertocala.base_automation_3">
+    <field name="name">Actualizar cantidad segun product uom (ecommerce)</field>
+    <field ref="delivery.model_sale_order_line" name="model_id"/>
+    <field name="state">code</field>
+    <field name="code"># Available variables:
+#  - env: Odoo Environment on which the action is triggered
+#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
+#  - record: record on which the action is triggered; may be void
+#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
+#  - time, datetime, dateutil, timezone: useful Python libraries
+#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
+#  - Warning: Warning Exception to use with raise
+# To return an action, assign: action = {...}
+
+# solo ejecutamos si se esta modificando la cantidad
+
+if 'website_id' in env.context and records and env.context.get('old_values') and 'product_uom_qty' in env.context.get('old_values')[record.id]:
+  # hacemos todo esto para que desde ecommerce se agreguen automaticamente multiplos validos
+  for record in records.filtered('product_id'):
+    sale_product_uoms = record.product_id.get_product_uoms(record.product_id.uom_id, use='sale')
+    
+    # german solicito que no improtaba si habia varias y si la unidad del producto estaba en el listado, el queria que siempre se tome la primera
+    # if sale_product_uoms and record.product_uom not in sale_product_uoms:
+    if sale_product_uoms:
+
+      # obtenemos multipl minimo que podemos vender (por ej. 6 unidades
+      min_qty = sale_product_uoms[0]._compute_quantity(1.0, record.product_uom)
+
+      # cuantos multiplos estamos vendiendo, por ejemoplo 7 / 6 unidades = 1,16
+      multipls_min_qty = record.product_uom_qty / min_qty
+
+      # redondeamos para arriba, por ejemplo daria 2
+      multipls_min_qty = int(-(-multipls_min_qty // 1))
+
+      # convertimos a unidad de medida del producto (por ejemplo 2 de a 6 unidades serían 12)
+      qty = sale_product_uoms[0]._compute_quantity(multipls_min_qty, record.product_uom)
+
+      #raise Warning('multipls_min_qty %s, multipls_min_qty %s, qty %s' % (multipls_min_qty, multipls_min_qty, qty))
+      record.write({
+        # 'product_uom': sale_product_uoms[0].id,
+        'product_uom_qty': qty,
+      })
+
+
+
+</field>
+    <field name="trigger">on_write</field>
+  </record>
+</odoo>
