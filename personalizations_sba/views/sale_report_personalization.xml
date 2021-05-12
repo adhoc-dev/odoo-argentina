@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<odoo>
+    <template id="sale_add_isbn" inherit_id="sale.report_saleorder_document">
+       <xpath expr="//th[@name='th_description']" position="before">
+            <th name="th_x_isbnth_x_isbn_order_line_order_line" class="text-left">ISBN</th>
+        </xpath>
+        <xpath expr="//td[@name='td_name']" position="before">
+             <td name="td_x_isbn_order_line"><span t-field="line.x_isbn_order_line"/></td>
+        </xpath>
+    </template>
+
+    </odoo>

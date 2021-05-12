@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_sba',
-    'version': '13.0.1.1.0',
+    'version': '13.0.1.2.0',
     'category': 'Personalizations',
     'license': 'OPL-1',
     'author': 'ADHOC SA',
@@ -33,6 +33,8 @@
         'views/stock_move_views.xml',
         'views/stock_picking_views.xml',
         'views/stock_quant_views.xml',
+        'views/account_move_report_personalization.xml',
+        'views/sale_report_personalization.xml',
         'wizards/stock_return_picking_views.xml',
         'views/x_product_autor_views.xml',
         'views/x_product_categoria_views.xml',
