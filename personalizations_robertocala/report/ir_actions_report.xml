@@ -8,7 +8,7 @@
     <field ref="delivery.model_stock_picking" name="binding_model_id"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">stock_picking_labels/report/picking_labels.odt</field>
+    <field name="report_file">personalizations_robertocala/report/picking_labels.odt</field>
     <field name="in_format">oo-odt</field>
     <field ref="report_aeroo.report_mimetypes_pdf_odt" name="out_format"/>
   </record>
@@ -20,7 +20,7 @@
     <field ref="account.model_account_invoice" name="binding_model_id"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">l10n_ar_aeroo_einvoice/report/aeroo_report_ar_einvoice.odt</field>
+    <field name="report_file">personalizations_robertocala/report/aeroo_report_ar_einvoice.odt</field>
     <field eval="True" name="process_sep"/>
     <field name="in_format">oo-odt</field>
     <field ref="report_aeroo.report_mimetypes_pdf_odt" name="out_format"/>
@@ -44,7 +44,7 @@
     <field name="report_type">aeroo</field>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">l10n_ar_aeroo_stock/report/aeroo_report_ar_remito.odt</field>
+    <field name="report_file">personalizations_robertocala/report/aeroo_report_ar_remito.odt</field>
     <field eval="True" name="process_sep"/>
     <field name="in_format">oo-odt</field>
     <field ref="report_aeroo.report_mimetypes_pdf_odt" name="out_format"/>

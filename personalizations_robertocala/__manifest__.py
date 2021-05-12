@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'personalizations_robertocala',
-    'version': '11.0.1.0',
+    'version': '11.0.2.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
