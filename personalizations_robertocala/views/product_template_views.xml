@@ -26,7 +26,7 @@
         </xpath>
         <xpath expr="//field[@name='sequence']" position="after">
           <field name="barcode"/>
-          <field name="image_small" widget="image" string="Imagen"/>
+          <field name="image_128" widget="image" string="Imagen"/>
         </xpath>
         <xpath expr="//field[@name='default_code']" position="after">
           <field name="description" attrs="{}"/>

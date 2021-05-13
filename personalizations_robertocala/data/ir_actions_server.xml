@@ -2,9 +2,9 @@
 <odoo>
   <record model="ir.actions.server" id="personalizations_robertocala.ir_act_server_1025">
     <field name="name">[invoice_operations] Generar Facturas </field>
-    <field ref="account.model_account_invoice" name="model_id"/>
+    <field ref="account.model_account_move" name="model_id"/>
     <field name="state">code</field>
-    <field ref="account.model_account_invoice" name="crud_model_id"/>
+    <field ref="account.model_account_move" name="crud_model_id"/>
     <field name="code"><![CDATA[object = record
 # CONFIG
 Distribuidora_ID = 1
@@ -21,7 +21,7 @@ def move_invoice(invoice, company_id):
     invoice = invoice.with_context(force_company=company_id)
 
     # Al escribir la compania limpiamos tmb las posicioens fiscales por constraint de que no puede haber compania y posicion de otra cia. Luego total el onchange termina asignando la compania que corresponda
-    invoice.write({'company_id': company_id, 'fiscal_position_id': False})
+    invoice.write({'fiscal_position_id': False})
 
     # Ugly hack para recalcular available_jorunal_document_type y journal_document_type_id y evitar constrain
     if invoice.journal_document_type_id:
@@ -29,12 +29,11 @@ def move_invoice(invoice, company_id):
             company_id=company_id, type=invoice.type)._default_journal().id, })
 
     # Property fields to maintain
-    property_fields = {'payment_term_id': invoice.payment_term_id.id}
+    property_fields = {'invoice_payment_term_id': invoice.invoice_payment_term_id.id}
     invoice._onchange_partner_id()
     invoice._onchange_company()
     invoice.write(property_fields)
 
-    invoice.compute_taxes()
     return invoice
 
 
@@ -64,22 +63,15 @@ def generate_child_invoice(invoice):
         if not line_aux_perc:
             continue
         round_precision = 0
-        # if line.uom_id != line.product_id.uom_id and line_aux_perc == 50.0:
-        # round_precision = 1
-        # line.write({'quantity': line.uom_id._compute_qty(line.uom_id.id, line.quantity, line.product_id.uom_id.id)})
         # calc move quantities (rounded)
         new_quantity = round(
             line.quantity * line_aux_perc / 100.0, round_precision)
         if not new_quantity:
             continue
-        # do move
-        # new_line = line.copy({'quantity': new_quantity,
-        #                       'uom_id': line.product_id.uom_id.id
-        #                       if line_aux_perc == 50.0 else line.uom_id.id})
         new_line = line.copy({'quantity': new_quantity})
         line.write({'quantity': line.quantity - new_quantity,
                     # 'uom_id': line.product_id.uom_id.id,
-                    'invoice_line_tax_ids': [(6, 0, [Iva_0_cala_ID])]})
+                    'tax_ids': [(6, 0, [Iva_0_cala_ID])]})
         new_line.write({'sale_line_ids': [(6, 0, line.sale_line_ids.ids)]})
         new_lines.append(new_line.id)
         if abs(line.quantity) < 0.0001:
@@ -103,7 +95,7 @@ def generate_child_invoice(invoice):
 def main():
     invoices = object
     invoices += generate_child_invoice(invoices)
-    actions = env.ref('account.action_invoice_tree1')
+    actions = env.ref('account.action_move_out_invoice_type')
     action_read = actions.read()[0]
     action_read['domain'] = [('id', 'in', invoices.ids)]
     return action_read
@@ -113,7 +105,7 @@ action = main()]]></field>
   </record>
   <record model="ir.actions.server" id="personalizations_robertocala.ir_act_server_1273">
     <field name="name">Uptade prices (de producto a ail)</field>
-    <field ref="account.model_account_invoice" name="model_id"/>
+    <field ref="account.model_account_move" name="model_id"/>
     <field name="state">code</field>
     <field name="code"><![CDATA[# Available variables:
 #  - env: Odoo Environment on which the action is triggered
@@ -138,6 +130,14 @@ for line in record.invoice_line_ids:
         price_unit = line.product_id.uom_id._compute_price(price_unit,
             to_unit=line.uom_id)
     line.write({'price_unit': price_unit})
+    line._onchange_price_subtotal()
+    # recomputamos impuestos
+    line._onchange_mark_recompute_taxes()
+    #line.write({'exclude_from_invoice_tab:False})
+    line._onchange_balance()
+    invoice = line.mapped('move_id')
+    invoice._recompute_dynamic_lines(recompute_all_taxes=True)
+    invoice._onchange_invoice_line_ids()
 
 
 

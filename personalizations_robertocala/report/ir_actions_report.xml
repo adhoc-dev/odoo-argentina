@@ -6,19 +6,17 @@
     <field name="report_name">picking_labels</field>
     <field name="report_type">aeroo</field>
     <field ref="delivery.model_stock_picking" name="binding_model_id"/>
-    <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_robertocala/report/picking_labels.odt</field>
     <field name="in_format">oo-odt</field>
     <field ref="report_aeroo.report_mimetypes_pdf_odt" name="out_format"/>
   </record>
-  <record model="ir.actions.report" id="l10n_ar_aeroo_einvoice.action_aeroo_report_ar_einvoice">
+  <record model="ir.actions.report" id="personalizations_robertocala.action_aeroo_report_ar_einvoice">
     <field name="name">Argentinian Aeroo Electronic Invoice</field>
-    <field name="model">account.invoice</field>
+    <field name="model">account.move</field>
     <field name="report_name">aeroo_report_ar_einvoice</field>
     <field name="report_type">aeroo</field>
-    <field ref="account.model_account_invoice" name="binding_model_id"/>
-    <field eval="False" name="multi"/>
+    <field ref="account.model_account_move" name="binding_model_id"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_robertocala/report/aeroo_report_ar_einvoice.odt</field>
     <field eval="True" name="process_sep"/>
@@ -27,22 +25,20 @@
   </record>
   <record model="ir.actions.report" id="personalizations_robertocala.ir_act_report_xml_689_cb823eca">
     <field name="name">Factura Argentina de Aeroo (x)</field>
-    <field name="model">account.invoice</field>
+    <field name="model">account.move</field>
     <field name="report_name">account.report_invoice_copy</field>
     <field name="report_type">aeroo</field>
     <field name="binding_type">action</field>
-    <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_robertocala/report/account.report_invoice_copy.odt</field>
     <field name="in_format">oo-odt</field>
     <field ref="report_aeroo.report_mimetypes_pdf_odt" name="out_format"/>
   </record>
-  <record model="ir.actions.report" id="l10n_ar_aeroo_stock.action_aeroo_report_ar_stock_remito">
+  <record model="ir.actions.report" id="personalizations_robertocala.action_aeroo_report_ar_stock_remito">
     <field name="name">Remito pre-impreso</field>
     <field name="model">stock.picking</field>
     <field name="report_name">aeroo_report_ar_remito</field>
     <field name="report_type">aeroo</field>
-    <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_robertocala/report/aeroo_report_ar_remito.odt</field>
     <field eval="True" name="process_sep"/>

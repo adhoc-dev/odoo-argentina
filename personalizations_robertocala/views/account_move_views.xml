@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record model="ir.ui.view" id="personalizations_robertocala.ir_ui_view_1696">
+    <field name="name">price_security.invoice.form.inherit (esta vista no tiene sentido, está mal hecha, queda?)</field>
+    <field name="model">account.move</field>
+    <field ref="price_security.invoice_form" name="inherit_id"/>
+    <field type="xml" name="arch">
+      <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='invoice_line_tax_ids']" position="attributes">
+        <xpath expr="//field[@name='sale_type_id']" position="attributes">
+          <attribute name="readonly">1</attribute>
+        </xpath>
+        <!-- add readonly quantity-->
+        <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='quantity']" position="attributes">
+          <attribute name="readonly">1</attribute>
+        </xpath>
+      </xpath>
+    </field>
+  </record>
+  <record model="ir.ui.view" id="personalizations_robertocala.ir_ui_view_2742">
+    <field name="name">Vista Personalizada</field>
+    <field name="model">account.move</field>
+    <field name="priority">100</field>
+    <field ref="account.view_move_form" name="inherit_id"/>
+    <field type="xml" name="arch">
+
+      <button name="action_reverse" position="after">
+        <button name="%(personalizations_robertocala.ir_act_server_1025)d" type="action" string="Generar Facturas" attrs="{'invisible': ['|','|',('company_id', '=', 3), ('state', '!=', 'draft'), ('type', 'not in', ('out_invoice', 'out_refund'))]}" class="oe_highlight"/>
+      </button>
+      <field name="invoice_line_ids" position="before">
+        <button name="%(personalizations_robertocala.ir_act_server_1273)d" string="Update Prices" type="action" attrs="{'invisible':['|',('state','not in',['draft','sent']),('type', 'not in', ('in_invoice', 'in_refund'))]}"/>
+      </field>
+      <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']" position="attributes">
+        <attribute name="attrs">{'invisible':[('parent.type', 'in', ('in_invoice', 'in_refund'))]}</attribute>
+      </xpath>
+      <!-- <xpath expr="/field[@name='invoice_line_ids']/tree/field[@name='analytic_account_id']" position="attributes">
+        <attribute name="attrs">{'invisible':[('parent.type', 'in', ('in_invoice', 'in_refund'))]}</attribute>
+      </xpath>
+      <xpath expr="/field[@name='invoice_line_ids']/tree/field[@name='analytic_tag_ids']" position="attributes">
+        <attribute name="attrs">{'invisible':[('parent.type', 'in', ('in_invoice', 'in_refund'))]}</attribute>
+      </xpath> -->
+      <field name="quantity" position="after">
+        <field name="x_replenishment_base_cost_on_currency" attrs="{'invisible':[('parent.type', 'not in', ('in_invoice', 'in_refund'))]}"/>
+      </field>
+    </field>
+  </record>
+</odoo>
