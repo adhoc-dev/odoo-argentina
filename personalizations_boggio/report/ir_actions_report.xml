@@ -8,7 +8,7 @@
     <field name="binding_type">action</field>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">l10n_ar_aeroo_sale/report/aeroo_report_ar_sale_order.odt</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_sale_order.odt</field>
     <field eval="True" name="process_sep"/>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
@@ -21,7 +21,7 @@
     <field name="binding_type">action</field>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">l10n_ar_aeroo_stock/report/aeroo_report_ar_picking.odt</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
     <field name="copies">2</field>
@@ -34,7 +34,7 @@
     <field name="binding_model_id" ref="inter_company_rules.model_purchase_order"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">l10n_ar_aeroo_purchase/report/aeroo_report_ar_purchase_order.odt</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_purchase_order.odt</field>
     <field eval="True" name="process_sep"/>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
@@ -47,7 +47,7 @@
     <field name="binding_model_id" ref="account.model_account_invoice"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">l10n_ar_aeroo_einvoice/report/aeroo_report_ar_einvoice.odt</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_einvoice.odt</field>
     <field eval="True" name="process_sep"/>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
@@ -60,7 +60,7 @@
     <field name="binding_type">action</field>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">l10n_ar_aeroo_payment_group/report/aeroo_report_ar_voucher.odt</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_voucher.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
   </record>
@@ -72,7 +72,7 @@
     <field name="binding_model_id" ref="account_multicurrency_ux.model_account_payment_group"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">l10n_ar_aeroo_payment_group/report/aeroo_report_ar_payment.odt</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_payment.odt</field>
     <field eval="True" name="process_sep"/>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
