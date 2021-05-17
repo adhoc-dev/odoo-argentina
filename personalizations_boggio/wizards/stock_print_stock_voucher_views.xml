@@ -5,9 +5,7 @@
     <field name="model">stock.print_stock_voucher</field>
     <field name="inherit_id" ref="stock_voucher.view_print_stock_voucher_form"/>
     <field name="arch" type="xml">
-      <data>
-        <button name="do_clean" position="replace"/>
-      </data>
+      <button name="do_clean" position="replace"/>
     </field>
   </record>
 </odoo>

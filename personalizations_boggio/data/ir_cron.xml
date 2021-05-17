@@ -112,7 +112,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_172" model="ir.cron">
     <field name="name">Envio automatico de deuda dfavre</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -143,7 +143,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_173" model="ir.cron">
     <field name="name">Envio automatico de deuda fdiiorio</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -173,7 +173,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_174" model="ir.cron">
     <field name="name">Envio automatico de deuda fcordoba</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -203,7 +203,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_175" model="ir.cron">
     <field name="name">Envio automatico de deuda lboggio</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -234,7 +234,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_177" model="ir.cron">
     <field name="name">Envio automatico de deuda lcolak</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -265,7 +265,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_178" model="ir.cron">
     <field name="name">Envio automatico de deuda rcefarelli</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -296,7 +296,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_179" model="ir.cron">
     <field name="name">Envio automatico de deuda grossi</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -327,7 +327,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_180" model="ir.cron">
     <field name="name">Envio automatico de deuda fsanchez</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -358,7 +358,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_181" model="ir.cron">
     <field name="name">Envio automatico de deuda gsorribas</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -389,7 +389,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_182" model="ir.cron">
     <field name="name">Envio automatico de deuda pbotero</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -420,7 +420,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_183" model="ir.cron">
     <field name="name">Envio automatico de deuda cperez</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -451,7 +451,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_184" model="ir.cron">
     <field name="name">Envio automatico de deuda vcarlini</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -588,7 +588,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_196" model="ir.cron">
     <field name="name">Envio automatico de deuda afontana</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -619,7 +619,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_200" model="ir.cron">
     <field name="name">Envio automatico de deuda fperoni</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -1355,7 +1355,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_224" model="ir.cron">
     <field name="name">Envio automatico de deuda dgaliani</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -1386,7 +1386,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_225" model="ir.cron">
     <field name="name">Envio automatico de deuda fmonti</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -1417,7 +1417,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_226" model="ir.cron">
     <field name="name">Envio automatico de deuda mbarbagallo</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -1448,7 +1448,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_227" model="ir.cron">
     <field name="name">Envio automatico de deuda rbossana</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -1479,7 +1479,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_228" model="ir.cron">
     <field name="name">Envio automatico de deuda cmontrucchio</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -1510,7 +1510,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_229" model="ir.cron">
     <field name="name">Envio automatico de deuda jbarbotti</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -1541,7 +1541,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_230" model="ir.cron">
     <field name="name">Envio automatico de deuda jmandelli</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
@@ -1572,7 +1572,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_231" model="ir.cron">
     <field name="name">Envio automatico de deuda lombardo</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 

@@ -5,7 +5,6 @@
     <field name="model">product.attribute</field>
     <field name="inherit_id" ref="product.attribute_tree_view"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='add_to_name']" position="after">
           <field name="x_chatbot_required"/>
           <field name="x_chatbot_name"/>
@@ -14,7 +13,6 @@
           <field name="x_chatbot_question"/>
           <field name="x_chatbot_example"/>
         </xpath>
-      </data>
     </field>
   </record>
 </odoo>

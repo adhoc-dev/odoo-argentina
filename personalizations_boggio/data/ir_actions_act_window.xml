@@ -308,7 +308,7 @@
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1633">
     <field name="name">Enviar correo (Envío automático de Factura)</field>
     <field name="res_model">mail.compose.message</field>
-    <field name="binding_model_id" ref="account.model_account_invoice"/>
+    <field name="binding_model_id" ref="account.model_account_move"/>
     <field name="context">{'default_composition_mode': 'mass_mail', 'default_template_id' : 37, 'default_use_template': True}</field>
     <field name="target">new</field>
     <field name="view_id" ref="mail.email_compose_message_wizard_form"/>
@@ -317,7 +317,7 @@
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1644">
     <field name="name">Enviar correo (Pago anticipado)</field>
     <field name="res_model">mail.compose.message</field>
-    <field name="binding_model_id" ref="account.model_account_invoice"/>
+    <field name="binding_model_id" ref="account.model_account_move"/>
     <field name="context">{'default_composition_mode': 'mass_mail', 'default_template_id' : 98, 'default_use_template': True}</field>
     <field name="target">new</field>
     <field name="view_id" ref="mail.email_compose_message_wizard_form"/>

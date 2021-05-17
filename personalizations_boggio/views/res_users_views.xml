@@ -5,15 +5,13 @@
     <field name="model">res.users</field>
     <field name="inherit_id" ref="mail.view_users_form_mail"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="alias_contact" position="after">
-          <field name="email"/>
-          <field name="function"/>
-          <field name="phone"/>
-          <field name="mobile"/>
-          <field name="main_id_number"/>
-        </field>
-      </data>
+      <field name="alias_contact" position="after">
+        <field name="email"/>
+        <field name="function"/>
+        <field name="phone"/>
+        <field name="mobile"/>
+        <field name="main_id_number"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_4936" model="ir.ui.view">
@@ -21,14 +19,12 @@
     <field name="model">res.users</field>
     <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="email" position="after">
-          <field name="function"/>
-          <field name="phone"/>
-          <field name="mobile"/>
-          <field name="main_id_number"/>
-        </field>
-      </data>
+      <field name="email" position="after">
+        <field name="function"/>
+        <field name="phone"/>
+        <field name="mobile"/>
+        <field name="main_id_number"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5160" model="ir.ui.view">
@@ -36,12 +32,10 @@
     <field name="model">res.users</field>
     <field name="inherit_id" ref="base.view_users_simple_form"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="phone" position="before">
-          <field name="function"/>
-          <field name="email"/>
-        </field>
-      </data>
+      <field name="phone" position="before">
+        <field name="function"/>
+        <field name="email"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5543" model="ir.ui.view">

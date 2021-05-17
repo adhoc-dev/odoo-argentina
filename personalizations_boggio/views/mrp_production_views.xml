@@ -8,27 +8,12 @@
       <field name="product_id" position="attributes">
         <attribute name="domain">"[('bom_ids', '!=', False), ('bom_ids.active', '=', True)]"</attribute>
       </field>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_7926" model="ir.ui.view">
-    <field name="name">Odoo Studio: mrp.production.form customization</field>
-    <field name="model">mrp.production</field>
-    <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
-    <field name="arch" type="xml">
-      <data>
-        <xpath expr="//button[@name='button_scrap']" position="replace"/>
-        <xpath expr="//field[@name='location_src_id']" position="attributes">
-          <attribute name="attrs">{}</attribute>
-        </xpath>
-      </data>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_7946" model="ir.ui.view">
-    <field name="name">mark_as_done_invisible</field>
-    <field name="model">mrp.production</field>
-    <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
-    <field name="arch" type="xml">
-      <xpath expr="//button[@name='button_mark_done'][2]" position="replace"/>
+      <xpath expr="//button[@name='button_scrap']" position="replace"/>
+      <xpath expr="//field[@name='location_src_id']" position="attributes">
+        <attribute name="attrs">{}</attribute>
+      </xpath>
+      <!-- mark_as_done_invisible -->
+       <xpath expr="//button[@name='button_mark_done'][2]" position="replace"/>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_8176" model="ir.ui.view">

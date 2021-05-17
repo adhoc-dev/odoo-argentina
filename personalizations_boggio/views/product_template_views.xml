@@ -5,32 +5,30 @@
     <field name="model">product.template</field>
     <field name="inherit_id" ref="product.product_template_form_view"/>
     <field name="arch" type="xml">
-      <data>
-        <!-- inherit of common product form view -->
-        <!-- moved to l10n_ar_account -->
-        <!-- <xpath expr="//div[@name='button_box']" position="inside">
+      <!-- inherit of common product form view -->
+      <!-- moved to l10n_ar_account -->
+      <!-- <xpath expr="//div[@name='button_box']" position="inside">
                    <button class="oe_stat_button" string="Invoices Line Report" name="206" type="action" icon="fa-bar-chart-o" groups="account.group_account_invoice" domain="['product_id', 'in', self.product_variant_ids.ids]"/>
                 </xpath> -->
-        <group name="group_lots_and_weight" position="after">
-          <group name="ubicaciones_boggio">
-            <field name="x_location_aux"/>
-            <field name="location_1"/>
-            <field name="location_2"/>
-            <field name="x_ubica_sfe"/>
-            <field name="x_ubica_sfe2"/>
-            <field name="x_ubica_raf"/>
-            <field name="x_ubica_raf2"/>
-            <field name="location_id" readonly="1"/>
-            <field name="next_deactivate"/>
-          </group>
+      <group name="group_lots_and_weight" position="after">
+        <group name="ubicaciones_boggio">
+          <field name="x_location_aux"/>
+          <field name="location_1"/>
+          <field name="location_2"/>
+          <field name="x_ubica_sfe"/>
+          <field name="x_ubica_sfe2"/>
+          <field name="x_ubica_raf"/>
+          <field name="x_ubica_raf2"/>
+          <field name="location_id" readonly="1"/>
+          <field name="next_deactivate"/>
         </group>
-        <field name="type" position="after">
-          <field name="supplier_code"/>
-        </field>
-        <field name="uom_po_id" position="after">
-          <field name="quantity_per_pack"/>
-        </field>
-      </data>
+      </group>
+      <field name="type" position="after">
+        <field name="supplier_code"/>
+      </field>
+      <field name="uom_po_id" position="after">
+        <field name="quantity_per_pack"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_4431" model="ir.ui.view">
@@ -49,9 +47,7 @@
     <field name="model">product.template</field>
     <field name="inherit_id" ref="stock.product_template_form_view_procurement_button"/>
     <field name="arch" type="xml">
-      <data>
-        <button name="%(stock.action_view_change_product_quantity)d" position="replace"/>
-      </data>
+      <button name="%(stock.action_view_change_product_quantity)d" position="replace"/>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_4458" model="ir.ui.view">
@@ -73,12 +69,10 @@
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_144')])]" name="groups_id"/>
     <field name="inherit_id" ref="l10n_ar_account.product_template_form_view"/>
     <field name="arch" type="xml">
-      <data>
-        <button name="action_invoice_analysis" position="replace"/>
-        <xpath expr="//div[@name='button_box']" position="inside">
-          <button class="oe_stat_button" string="Invoices Line Report" name="action_invoice_analysis" type="object" icon="fa-bar-chart-o"/>
-        </xpath>
-      </data>
+      <button name="action_invoice_analysis" position="replace"/>
+      <xpath expr="//div[@name='button_box']" position="inside">
+        <button class="oe_stat_button" string="Invoices Line Report" name="action_invoice_analysis" type="object" icon="fa-bar-chart-o"/>
+      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_4864" model="ir.ui.view">
@@ -87,28 +81,26 @@
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_158')])]" name="groups_id"/>
     <field name="inherit_id" ref="product.product_template_tree_view"/>
     <field name="arch" type="xml">
-      <data>
-        <!-- inherit of product tree view -->
-        <field name="default_code" position="before">
-          <field name="quantity_per_pack" string="U.E."/>
-        </field>
-        <field name="sequence" position="replace"/>
-        <field name="list_price" position="after">
-          <field name="sale_margin" string="Utilidad"/>
-          <field name="replenishment_cost_rule_id" string="R. Costo"/>
-        </field>
-        <field name="product_brand_id" position="after">
-          <field name="main_seller_id" string="Proveedor"/>
-        </field>
-        <field name="list_price" position="before">
-          <field name="replenishment_cost" string="Costo" widget="monetary"/>
-          <field name="x_replenishment_cost_moneda" string="C. Moneda" widget="monetary"/>
-          <field name="currency_id" invisible="1"/>
-          <field name="taxed_lst_price" invisible="1"/>
-          <field name="uom_id" invisible="1"/>
-          <field name="internal_code"/>
-        </field>
-      </data>
+      <!-- inherit of product tree view -->
+      <field name="default_code" position="before">
+        <field name="quantity_per_pack" string="U.E."/>
+      </field>
+      <field name="sequence" position="replace"/>
+      <field name="list_price" position="after">
+        <field name="sale_margin" string="Utilidad"/>
+        <field name="replenishment_cost_rule_id" string="R. Costo"/>
+      </field>
+      <field name="product_brand_id" position="after">
+        <field name="main_seller_id" string="Proveedor"/>
+      </field>
+      <field name="list_price" position="before">
+        <field name="replenishment_cost" string="Costo" widget="monetary"/>
+        <field name="x_replenishment_cost_moneda" string="C. Moneda" widget="monetary"/>
+        <field name="currency_id" invisible="1"/>
+        <field name="taxed_lst_price" invisible="1"/>
+        <field name="uom_id" invisible="1"/>
+        <field name="internal_code"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_4869" model="ir.ui.view">
@@ -117,12 +109,10 @@
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_158'), ref('sales_team.group_sale_manager')])]" name="groups_id"/>
     <field name="inherit_id" ref="website_sale.product_template_form_view"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="website_style_ids" position="replace"/>
-        <field name="public_categ_ids" position="after">
-          <field name="website_style_ids" widget="many2many_tags"/>
-        </field>
-      </data>
+      <field name="website_style_ids" position="replace"/>
+      <field name="public_categ_ids" position="after">
+        <field name="website_style_ids" widget="many2many_tags"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_4895" model="ir.ui.view">
@@ -130,28 +120,16 @@
     <field name="model">product.template</field>
     <field name="inherit_id" ref="product.product_template_search_view"/>
     <field name="arch" type="xml">
-      <data>
-        <search>
-          <filter string="Ubica Rosario" name="location" domain="[('location_id','=',21)]" context="{'location': 'ROS/Stock'}"/>
-          <filter string="Ubica Santa Fe" name="location SFE" domain="[('location_id','=',27)]" context="{'location': 'SFE/Stock'}"/>
-          <filter string="Ubica Rafaela" name="location RAF" domain="[('location_id','=',33)]" context="{'location': 'RAF/Stock'}"/>
-          <filter string="Ubica Motores" name="location MOT" domain="[('location_id','=',39)]" context="{'location': 'ROS/Stock/Motores y Cables Subterraneo'}"/>
-          <filter string="Ubica Ilum" name="location ILU" domain="[('location_id','=',42)]" context="{'location': 'ROS/Stock/Iluminación/Deposito Iluminacion'}"/>
-          <filter string="Ubica Ilum padre" name="location ILU padre" domain="[('location_id','=',40)]" context="{'location': 'ROS/Stock/Iluminación'}"/>
-          <filter string="Ubica IND" name="location IND" domain="[('location_id','=',38)]" context="{'location': 'ROS/Stock/Industrial'}"/>
-          <filter string="No Publicado Web" name="website_published" domain="[('website_published','=',False)]"/>
-        </search>
-      </data>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_5373" model="ir.ui.view">
-    <field name="name">sacar el abc combinado para compartir con todos iboggio</field>
-    <field name="model">product.template</field>
-    <field name="inherit_id" ref="product_sales_abc.product_template_form_view"/>
-    <field name="arch" type="xml">
-      <data>
-        <field name="abc_sales_combined" position="replace"/>
-      </data>
+      <search>
+        <filter string="Ubica Rosario" name="location" domain="[('location_id','=',21)]" context="{'location': 'ROS/Stock'}"/>
+        <filter string="Ubica Santa Fe" name="location SFE" domain="[('location_id','=',27)]" context="{'location': 'SFE/Stock'}"/>
+        <filter string="Ubica Rafaela" name="location RAF" domain="[('location_id','=',33)]" context="{'location': 'RAF/Stock'}"/>
+        <filter string="Ubica Motores" name="location MOT" domain="[('location_id','=',39)]" context="{'location': 'ROS/Stock/Motores y Cables Subterraneo'}"/>
+        <filter string="Ubica Ilum" name="location ILU" domain="[('location_id','=',42)]" context="{'location': 'ROS/Stock/Iluminación/Deposito Iluminacion'}"/>
+        <filter string="Ubica Ilum padre" name="location ILU padre" domain="[('location_id','=',40)]" context="{'location': 'ROS/Stock/Iluminación'}"/>
+        <filter string="Ubica IND" name="location IND" domain="[('location_id','=',38)]" context="{'location': 'ROS/Stock/Industrial'}"/>
+        <filter string="No Publicado Web" name="website_published" domain="[('website_published','=',False)]"/>
+      </search>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5374" model="ir.ui.view">
@@ -159,6 +137,7 @@
     <field name="model">product.template</field>
     <field name="inherit_id" ref="product.product_template_form_view"/>
     <field name="arch" type="xml">
+      <field name="abc_sales_combined" position="replace"/>
       <page name="sales">
         <group name="clasificacion_abc" string="Clasificacion ABC" col="2">
           <field name="abc_sales_combined"/>
@@ -172,13 +151,11 @@
     <field eval="[(6, 0, [ref('purchase.group_purchase_manager')])]" name="groups_id"/>
     <field name="inherit_id" ref="product.product_template_form_view"/>
     <field name="arch" type="xml">
-      <data>
-        <!-- inherit of common product form view -->
-        <field name="description_sale" position="after">
-          <separator string="Description for Web" colspan="4"/>
-          <field name="website_description" nolabel="1" placeholder="Esta nota aparecera en la pagina web de clientes" colspan="4"/>
-        </field>
-      </data>
+      <!-- inherit of common product form view -->
+      <field name="description_sale" position="after">
+        <separator string="Description for Web" colspan="4"/>
+        <field name="website_description" nolabel="1" placeholder="Esta nota aparecera en la pagina web de clientes" colspan="4"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5682" model="ir.ui.view">
@@ -186,9 +163,7 @@
     <field name="model">product.template</field>
     <field name="inherit_id" ref="product_replenishment_cost.product_template_form_view"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="replenishment_cost_rule_id" position="replace"/>
-      </data>
+      <field name="replenishment_cost_rule_id" position="replace"/>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5683" model="ir.ui.view">
@@ -197,16 +172,14 @@
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_158'), ref('purchase.group_purchase_user')])]" name="groups_id"/>
     <field name="inherit_id" ref="product_replenishment_cost.product_template_form_view"/>
     <field name="arch" type="xml">
-      <data>
-        <div name="replenishment_base_cost" position="inside">
-          <label string=" / "/>
-          <field name="replenishment_base_cost_on_currency" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-        </div>
-        <field name="replenishment_cost" position="before">
-          <field name="replenishment_cost_rule_id"/>
-          <field name="x_replenishment_cost_moneda"/>
-        </field>
-      </data>
+      <div name="replenishment_base_cost" position="inside">
+        <label string=" / "/>
+        <field name="replenishment_base_cost_on_currency" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+      </div>
+      <field name="replenishment_cost" position="before">
+        <field name="replenishment_cost_rule_id"/>
+        <field name="x_replenishment_cost_moneda"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5803" model="ir.ui.view">
@@ -214,16 +187,14 @@
     <field name="model">product.template</field>
     <field name="inherit_id" ref="website_sale.product_template_form_view"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="website_style_ids" position="after">
-          <field name="x_website_catalog" widget="url"/>
-          <field name="x_documents"/>
-          <field name="x_google_product_category"/>
-          <field name="x_energy_efficiency_class"/>
-          <field name="x_power"/>
-          <field name="x_energiu"/>
-        </field>
-      </data>
+      <field name="website_style_ids" position="after">
+        <field name="x_website_catalog" widget="url"/>
+        <field name="x_documents"/>
+        <field name="x_google_product_category"/>
+        <field name="x_energy_efficiency_class"/>
+        <field name="x_power"/>
+        <field name="x_energiu"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_6059" model="ir.ui.view">
@@ -231,26 +202,24 @@
     <field name="model">product.template</field>
     <field name="inherit_id" ref="product_stock_by_location.view_template_stock_by_location_form"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="location_ids" position="after">
-          <group name="ubicaciones_boggio">
-            <field name="quantity_per_pack" readonly="1"/>
-            <field name="location_1" readonly="1"/>
-            <field name="location_2" readonly="1"/>
-            <field name="x_ubica_sfe" readonly="1"/>
-            <field name="x_ubica_sfe2" readonly="1"/>
-            <field name="x_ubica_raf" readonly="1"/>
-            <field name="x_ubica_raf2" readonly="1"/>
-            <div name="button_box">
-              <button type="object" name="action_open_quants" attrs="{'invisible':[('type', '!=', 'product')]}" class="oe_stat_button" icon="fa-building-o" modifiers="{'invisible': [['type', '!=', 'product']]}">
-                <field name="qty_available" widget="statinfo" string="Existencias a mano" modifiers="{'readonly': true}"/>
-              </button>
-              <button string="Trazabilidad" type="object" name="action_view_stock_move" class="oe_stat_button" icon="fa-arrows-v" context="{'search_default_future': 1,'search_default_picking_type': 1}"/>
-            </div>
-            <field name="type" invisible="1"/>
-          </group>
-        </field>
-      </data>
+      <field name="location_ids" position="after">
+        <group name="ubicaciones_boggio">
+          <field name="quantity_per_pack" readonly="1"/>
+          <field name="location_1" readonly="1"/>
+          <field name="location_2" readonly="1"/>
+          <field name="x_ubica_sfe" readonly="1"/>
+          <field name="x_ubica_sfe2" readonly="1"/>
+          <field name="x_ubica_raf" readonly="1"/>
+          <field name="x_ubica_raf2" readonly="1"/>
+          <div name="button_box">
+            <button type="object" name="action_open_quants" attrs="{'invisible':[('type', '!=', 'product')]}" class="oe_stat_button" icon="fa-building-o" modifiers="{'invisible': [['type', '!=', 'product']]}">
+              <field name="qty_available" widget="statinfo" string="Existencias a mano" modifiers="{'readonly': true}"/>
+            </button>
+            <button string="Trazabilidad" type="object" name="action_view_stock_move" class="oe_stat_button" icon="fa-arrows-v" context="{'search_default_future': 1,'search_default_picking_type': 1}"/>
+          </div>
+          <field name="type" invisible="1"/>
+        </group>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_6129" model="ir.ui.view">
@@ -258,14 +227,12 @@
     <field name="model">product.template</field>
     <field name="inherit_id" ref="product.product_template_tree_view"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="list_price" position="attributes">
-          <attribute name="groups">personalizations_boggio.res_groups_158</attribute>
-        </field>
-        <field name="taxed_lst_price" position="attributes">
-          <attribute name="groups">personalizations_boggio.res_groups_158</attribute>
-        </field>
-      </data>
+      <field name="list_price" position="attributes">
+        <attribute name="groups">personalizations_boggio.res_groups_158</attribute>
+      </field>
+      <field name="taxed_lst_price" position="attributes">
+        <attribute name="groups">personalizations_boggio.res_groups_158</attribute>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7642" model="ir.ui.view">
@@ -273,37 +240,35 @@
     <field name="model">product.template</field>
     <field name="inherit_id" ref="product.product_template_tree_view"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='categ_id']" position="replace"/>
-        <xpath expr="//field[@name='price']" position="replace"/>
-        <xpath expr="//field[@name='sequence']" position="after">
-          <field name="internal_code"/>
-        </xpath>
-        <xpath expr="//field[@name='default_code']" position="after">
-          <field name="supplier_code"/>
-        </xpath>
-        <xpath expr="//field[@name='standard_price']" position="attributes">
-          <attribute name="attrs">{}</attribute>
-          <attribute name="invisible">1</attribute>
-        </xpath>
-        <xpath expr="//tree[1]/field[@name='type']" position="attributes">
-          <attribute name="attrs">{}</attribute>
-          <attribute name="invisible">1</attribute>
-        </xpath>
-        <!--campos que se podrian sacar para mejorar performance de busqueda-->
-        <!-- este ya estaba invisible arriba, por lo cual se pueda sacar sin problemas-->
-        <!-- <xpath expr="//field[@name='standard_price']" position="replace"/> -->
-        <!-- campos de cantidades, son los que mas repercuten pero a priori muy necesarios -->
-        <!--requiere ademas sacarlos de la vista tree que se agrega aca https://www.ingenieriaboggio.com.ar/web?debug=1#id=3858&view_type=form&model=ir.ui.view&action=25&menu_id=4-->
-        <!--<xpath expr="//field[@name='virtual_available']" position="replace"/>-->
-        <!--<xpath expr="//field[@name='qty_available']" position="replace"/>-->
-        <!--esta invisibilizado para algunos grupos, se usa? se podria sacar? igual no repercute tantao-->
-        <!--<xpath expr="//field[@name='taxed_lst_price']" position="replace"/>-->
-        <!--este al ser un campo related afecta un poco, si se puede sacar mejor-->
-        <!--<xpath expr="//field[@name='supplier_code']" position="replace"/>-->
-        <!-- es raro, pero pareciera que este campo repercute en la performance, tiene uso? es el widget para re-ordenar productos -->
-        <!--<xpath expr="//field[@name='sequence']" position="replace"/>-->
-      </data>
+      <xpath expr="//field[@name='categ_id']" position="replace"/>
+      <xpath expr="//field[@name='price']" position="replace"/>
+      <xpath expr="//field[@name='sequence']" position="after">
+        <field name="internal_code"/>
+      </xpath>
+      <xpath expr="//field[@name='default_code']" position="after">
+        <field name="supplier_code"/>
+      </xpath>
+      <xpath expr="//field[@name='standard_price']" position="attributes">
+        <attribute name="attrs">{}</attribute>
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//tree[1]/field[@name='type']" position="attributes">
+        <attribute name="attrs">{}</attribute>
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <!--campos que se podrian sacar para mejorar performance de busqueda-->
+      <!-- este ya estaba invisible arriba, por lo cual se pueda sacar sin problemas-->
+      <!-- <xpath expr="//field[@name='standard_price']" position="replace"/> -->
+      <!-- campos de cantidades, son los que mas repercuten pero a priori muy necesarios -->
+      <!--requiere ademas sacarlos de la vista tree que se agrega aca https://www.ingenieriaboggio.com.ar/web?debug=1#id=3858&view_type=form&model=ir.ui.view&action=25&menu_id=4-->
+      <!--<xpath expr="//field[@name='virtual_available']" position="replace"/>-->
+      <!--<xpath expr="//field[@name='qty_available']" position="replace"/>-->
+      <!--esta invisibilizado para algunos grupos, se usa? se podria sacar? igual no repercute tantao-->
+      <!--<xpath expr="//field[@name='taxed_lst_price']" position="replace"/>-->
+      <!--este al ser un campo related afecta un poco, si se puede sacar mejor-->
+      <!--<xpath expr="//field[@name='supplier_code']" position="replace"/>-->
+      <!-- es raro, pero pareciera que este campo repercute en la performance, tiene uso? es el widget para re-ordenar productos -->
+      <!--<xpath expr="//field[@name='sequence']" position="replace"/>-->
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7645" model="ir.ui.view">
@@ -311,19 +276,17 @@
     <field name="model">product.template</field>
     <field name="inherit_id" ref="product.product_template_search_view"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='sellers_product_code']" position="after">
-          <field name="barcode"/>
-        </xpath>
-        <xpath expr="//field[@name='attribute_line_ids']" position="after">
-          <field name="website_style_ids"/>
-        </xpath>
-        <xpath expr="//field[@name='warehouse_id']" position="after">
-          <field name="main_seller_id"/>
-          <field name="supplier_code"/>
-          <field name="name"/>
-        </xpath>
-      </data>
+      <xpath expr="//field[@name='sellers_product_code']" position="after">
+        <field name="barcode"/>
+      </xpath>
+      <xpath expr="//field[@name='attribute_line_ids']" position="after">
+        <field name="website_style_ids"/>
+      </xpath>
+      <xpath expr="//field[@name='warehouse_id']" position="after">
+        <field name="main_seller_id"/>
+        <field name="supplier_code"/>
+        <field name="name"/>
+      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7671" model="ir.ui.view">
@@ -332,54 +295,52 @@
     <field name="priority" eval="199"/>
     <field name="inherit_id" ref="product.product_template_only_form_view"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='notes']/group[not(@name)][1]/group[3]" position="replace">
-          <field name="quote_description"/>
-        </xpath>
-        <!-- <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='purchase']/group[@name='costing']/group[@name='replenishment_cost']/div[@name='replenishment_base_cost']/label[2]" position="replace"/> -->
-        <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='purchase']/group[@name='costing']/group[@name='replenishment_cost']/div[@name='replenishment_base_cost']/field[@name='replenishment_base_cost_on_currency']" position="replace"/>
-        <xpath expr="//field[@name='standard_price']" position="attributes">
-          <attribute name="attrs">{"readonly": [["valuation","=","real_time"]]}</attribute>
-        </xpath>
-        <xpath expr="//field[@name='standard_price_ids']" position="attributes">
-          <attribute name="attrs">{}</attribute>
-          <attribute name="invisible">1</attribute>
-        </xpath>
-        <xpath expr="//field[@name='abc_sales_combined']" position="after">
-          <field name="website_sequence"/>
-          <field name="sequence"/>
-        </xpath>
-        <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='purchase']/group[@name='costing']/group[@name='replenishment_cost']/div[@name='replenishment_base_cost']/field[@name='replenishment_base_cost']" position="attributes">
-          <attribute name="attrs">{"invisible": [["replenishment_cost_type","=","supplier_price"]]}</attribute>
-        </xpath>
-        <xpath expr="//field[@name='seller_ids']" position="inside">
-          <tree string="Vendor Information">
-            <field name="sequence" widget="handle" modifiers="{}"/>
-            <field name="name" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true}"/>
-            <field name="product_id" invisible="context.get('product_template_invisible_variant', False)" on_change="1" can_create="true" can_write="true" studio_groups="[{&quot;id&quot;: 120, &quot;name&quot;: &quot;Manage Product Variants&quot;, &quot;display_name&quot;: &quot;Technical Settings / Manage Product Variants&quot;}]" modifiers="{&quot;column_invisible&quot;: false}"/>
-            <field name="product_tmpl_id" string="Product" invisible="context.get('visible_product_tmpl_id', True)" can_create="true" can_write="true" modifiers="{&quot;column_invisible&quot;: true}"/>
-            <field name="min_qty" modifiers="{&quot;required&quot;: true}"/>
-            <field name="delay" modifiers="{&quot;required&quot;: true}"/>
-            <field name="net_price" widget="monetary" options="{'currency_field': 'currency_id'}" modifiers="{}"/>
-            <field name="currency_id" invisible="1" on_change="1" can_create="true" can_write="true" modifiers="{&quot;column_invisible&quot;: true, &quot;required&quot;: true}"/>
-            <field name="date_start" modifiers="{}"/>
-            <field name="date_end" modifiers="{}"/>
-          </tree>
-        </xpath>
-        <xpath expr="//field[@name='location_1']" position="attributes">
-          <attribute name="attrs">{}</attribute>
-          <attribute name="force_save">True</attribute>
-          <attribute name="readonly">1</attribute>
-        </xpath>
-        <xpath expr="//field[@name='location_2']" position="attributes">
-          <attribute name="attrs">{}</attribute>
-          <attribute name="force_save">True</attribute>
-          <attribute name="readonly">1</attribute>
-        </xpath>
-        <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='inventory']/group[@name='inventory']/group[@name='putaway']/field[@name='product_putaway_ids']/tree[1]/field[@name='sequence']" position="attributes">
-          <attribute name="widget"/>
-        </xpath>
-      </data>
+      <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='notes']/group[not(@name)][1]/group[3]" position="replace">
+        <field name="quote_description"/>
+      </xpath>
+      <!-- <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='purchase']/group[@name='costing']/group[@name='replenishment_cost']/div[@name='replenishment_base_cost']/label[2]" position="replace"/> -->
+      <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='purchase']/group[@name='costing']/group[@name='replenishment_cost']/div[@name='replenishment_base_cost']/field[@name='replenishment_base_cost_on_currency']" position="replace"/>
+      <xpath expr="//field[@name='standard_price']" position="attributes">
+        <attribute name="attrs">{"readonly": [["valuation","=","real_time"]]}</attribute>
+      </xpath>
+      <xpath expr="//field[@name='standard_price_ids']" position="attributes">
+        <attribute name="attrs">{}</attribute>
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//field[@name='abc_sales_combined']" position="after">
+        <field name="website_sequence"/>
+        <field name="sequence"/>
+      </xpath>
+      <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='purchase']/group[@name='costing']/group[@name='replenishment_cost']/div[@name='replenishment_base_cost']/field[@name='replenishment_base_cost']" position="attributes">
+        <attribute name="attrs">{"invisible": [["replenishment_cost_type","=","supplier_price"]]}</attribute>
+      </xpath>
+      <xpath expr="//field[@name='seller_ids']" position="inside">
+        <tree string="Vendor Information">
+          <field name="sequence" widget="handle" modifiers="{}"/>
+          <field name="name" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true}"/>
+          <field name="product_id" invisible="context.get('product_template_invisible_variant', False)" on_change="1" can_create="true" can_write="true" studio_groups="[{&quot;id&quot;: 120, &quot;name&quot;: &quot;Manage Product Variants&quot;, &quot;display_name&quot;: &quot;Technical Settings / Manage Product Variants&quot;}]" modifiers="{&quot;column_invisible&quot;: false}"/>
+          <field name="product_tmpl_id" string="Product" invisible="context.get('visible_product_tmpl_id', True)" can_create="true" can_write="true" modifiers="{&quot;column_invisible&quot;: true}"/>
+          <field name="min_qty" modifiers="{&quot;required&quot;: true}"/>
+          <field name="delay" modifiers="{&quot;required&quot;: true}"/>
+          <field name="net_price" widget="monetary" options="{'currency_field': 'currency_id'}" modifiers="{}"/>
+          <field name="currency_id" invisible="1" on_change="1" can_create="true" can_write="true" modifiers="{&quot;column_invisible&quot;: true, &quot;required&quot;: true}"/>
+          <field name="date_start" modifiers="{}"/>
+          <field name="date_end" modifiers="{}"/>
+        </tree>
+      </xpath>
+      <xpath expr="//field[@name='location_1']" position="attributes">
+        <attribute name="attrs">{}</attribute>
+        <attribute name="force_save">True</attribute>
+        <attribute name="readonly">1</attribute>
+      </xpath>
+      <xpath expr="//field[@name='location_2']" position="attributes">
+        <attribute name="attrs">{}</attribute>
+        <attribute name="force_save">True</attribute>
+        <attribute name="readonly">1</attribute>
+      </xpath>
+      <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='inventory']/group[@name='inventory']/group[@name='putaway']/field[@name='product_putaway_ids']/tree[1]/field[@name='sequence']" position="attributes">
+        <attribute name="widget"/>
+      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7819" model="ir.ui.view">
@@ -387,12 +348,10 @@
     <field name="model">product.template</field>
     <field name="inherit_id" ref="product.product_template_search_view"/>
     <field name="arch" type="xml">
-      <data>
-        <filter name="with_planned_price" position="after">
-          <filter name="productos_150_dias" string="Productos &gt; 150 días sin consultar" domain="[('replenishment_cost_last_update', '&lt;=', (context_today()-relativedelta(days=120)).strftime('%Y-%m-%d')), (u'name', u'not ilike', u'(CONSULTAR)'), (u'sale_ok', u'=', 1)]"/>
-          <filter name="productos_sin_ubica" string="Productos sin ubicacion" domain="[('product_putaway_ids', '=', False)]"/>
-        </filter>
-      </data>
+      <filter name="with_planned_price" position="after">
+        <filter name="productos_150_dias" string="Productos &gt; 150 días sin consultar" domain="[('replenishment_cost_last_update', '&lt;=', (context_today()-relativedelta(days=120)).strftime('%Y-%m-%d')), (u'name', u'not ilike', u'(CONSULTAR)'), (u'sale_ok', u'=', 1)]"/>
+        <filter name="productos_sin_ubica" string="Productos sin ubicacion" domain="[('product_putaway_ids', '=', False)]"/>
+      </filter>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7895" model="ir.ui.view">

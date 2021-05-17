@@ -5,58 +5,37 @@
     <field name="model">purchase.suggest</field>
     <field name="inherit_id" ref="purchase_suggest.purchase_suggest_tree"/>
     <field name="arch" type="xml">
-      <data>
-        <button position="after">
-          <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1247)d" icon="fa-building-o" type="action"/>
-          <button type="action" name="%(personalizations_boggio.ir_act_server_1245)d" string="View Stock Detail" icon="fa-search-plus"/>
-        </button>
-        <field name="product_id" position="after">
-          <field name="x_product_code"/>
-          <field name="x_abc_sales_combined"/>
-          <field name="x_marca"/>
-        </field>
-        <field name="last_po_uom" position="replace"/>
-        <field name="last_po_date" position="replace"/>
-        <field name="last_po_qty" position="replace"/>
-        <field name="uom_id" position="attributes">
-          <attribute name="invisible">True</attribute>
-        </field>
-        <field name="warehouse_rotation" position="after">
-          <field name="orderpoint_id"/>
-          <field name="x_unidad_empaque"/>
-          <field name="x_dias_stock_location"/>
-          <field name="x_lead_days"/>
-        </field>
-        <field name="qty_available" position="before">
-          <field name="x_qty_available"/>
-        </field>
-      </data>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_4930" model="ir.ui.view">
-    <field name="name">Boggio personalization</field>
-    <field name="model">purchase.suggest</field>
-    <field name="inherit_id" ref="purchase_suggest.purchase_suggest_search"/>
-    <field name="arch" type="xml">
+      <button position="after">
+        <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1247)d" icon="fa-building-o" type="action"/>
+        <button type="action" name="%(personalizations_boggio.ir_act_server_1245)d" string="View Stock Detail" icon="fa-search-plus"/>
+      </button>
       <field name="product_id" position="after">
         <field name="x_product_code"/>
+        <field name="x_abc_sales_combined"/>
+        <field name="x_marca"/>
       </field>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_7738" model="ir.ui.view">
-    <field name="name">Odoo Studio: purchase_suggest.tree customization</field>
-    <field name="model">purchase.suggest</field>
-    <field name="inherit_id" ref="purchase_suggest.purchase_suggest_tree"/>
-    <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='uom_po_id']" position="attributes">
-          <attribute name="attrs">{}</attribute>
-          <attribute name="invisible">1</attribute>
-        </xpath>
-        <xpath expr="//field[@name='replenishment_cost']" position="attributes">
-          <attribute name="widget">monetary</attribute>
-        </xpath>
-      </data>
+      <field name="last_po_uom" position="replace"/>
+      <field name="last_po_date" position="replace"/>
+      <field name="last_po_qty" position="replace"/>
+      <field name="uom_id" position="attributes">
+        <attribute name="invisible">True</attribute>
+      </field>
+      <field name="warehouse_rotation" position="after">
+        <field name="orderpoint_id"/>
+        <field name="x_unidad_empaque"/>
+        <field name="x_dias_stock_location"/>
+        <field name="x_lead_days"/>
+      </field>
+      <field name="qty_available" position="before">
+        <field name="x_qty_available"/>
+      </field>
+      <xpath expr="//field[@name='uom_po_id']" position="attributes">
+        <attribute name="attrs">{}</attribute>
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//field[@name='replenishment_cost']" position="attributes">
+        <attribute name="widget">monetary</attribute>
+      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7860" model="ir.ui.view">
@@ -64,23 +43,15 @@
     <field name="model">purchase.suggest</field>
     <field name="inherit_id" ref="purchase_suggest.purchase_suggest_search"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='seller_id']" position="after">
-          <field name="x_product_brand_id"/>
-        </xpath>
-      </data>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_7964" model="ir.ui.view">
-    <field name="name">roturas de stock iboggio</field>
-    <field name="model">purchase.suggest</field>
-    <field name="inherit_id" ref="purchase_suggest.purchase_suggest_search"/>
-    <field name="arch" type="xml">
-      <data>
-        <filter name="negative_forecast" position="after">
-          <filter name="rotura_stock" string="Roturas de stock y pendientes" domain="[('virtual_available', '&lt;=', 0.0)]"/>
-        </filter>
-      </data>
+      <field name="product_id" position="after">
+        <field name="x_product_code"/>
+      </field>
+      <xpath expr="//field[@name='seller_id']" position="after">
+        <field name="x_product_brand_id"/>
+      </xpath>
+      <filter name="negative_forecast" position="after">
+        <filter name="rotura_stock" string="Roturas de stock y pendientes" domain="[('virtual_available', '&lt;=', 0.0)]"/>
+      </filter>
     </field>
   </record>
 </odoo>

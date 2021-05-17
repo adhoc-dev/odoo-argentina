@@ -6,22 +6,20 @@
     <field eval="[(6, 0, [ref('base.group_user')])]" name="groups_id"/>
     <field name="inherit_id" ref="sale.view_order_line_tree"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="order_id" position="after">
-          <field name="create_date"/>
-        </field>
-        <field name="name" position="after">
-          <field name="product_brand_id"/>
-          <field name="internal_code"/>
-          <field name="supplier_code"/>
-          <field name="create_uid"/>
-        </field>
-        <field name="salesman_id" position="replace"/>
-        <field name="product_uom" position="replace"/>
-        <field name="qty_delivered" position="after">
-          <field name="qty_returned" string="Cant Devuelta"/>
-        </field>
-      </data>
+      <field name="order_id" position="after">
+        <field name="create_date"/>
+      </field>
+      <field name="name" position="after">
+        <field name="product_brand_id"/>
+        <field name="internal_code"/>
+        <field name="supplier_code"/>
+        <field name="create_uid"/>
+      </field>
+      <field name="salesman_id" position="replace"/>
+      <field name="product_uom" position="replace"/>
+      <field name="qty_delivered" position="after">
+        <field name="qty_returned" string="Cant Devuelta"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_4902" model="ir.ui.view">
@@ -30,24 +28,22 @@
     <field eval="[(6, 0, [ref('base.group_user')])]" name="groups_id"/>
     <field name="inherit_id" ref="sale.view_sales_order_line_filter"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="order_id" position="after">
-          <filter string="Mis Comprobantes" domain="[('create_uid','=',uid)]" help="Pedidos de mi vendedor"/>
-          <separator/>
-          <filter string="Presupuestos" name="draft" domain="[('state','in',('draft','sent'))]" help="Sales Order that haven't yet been confirmed"/>
-          <filter string="Notas de venta" name="sales" domain="[('state','in',('sale','done'))]"/>
-          <separator/>
-          <filter string="A facturar" domain="[('invoice_status','=','to invoice')]"/>
-          <filter string="Facturado" domain="[('invoice_status','=','upselling')]"/>
-          <separator/>
-          <filter string="Ubica Rosario" name="location" domain="[('x_location_id','=',21)]" context="{'location': 'ROS/Stock'}"/>
-          <filter string="Ubica Santa Fe" name="location SFE" domain="[('x_location_id','=',27)]" context="{'location': 'SFE/Stock'}"/>
-          <filter string="Ubica Rafaela" name="location RAF" domain="[('x_location_id','=',33)]" context="{'location': 'RAF/Stock'}"/>
-          <filter string="Ubica Motores" name="location MOT" domain="[('x_location_id','=',39)]" context="{'location': 'ROS/Stock/Motores y Cables Subterraneo'}"/>
-          <filter string="Ubica Ilum" name="location ILU" domain="[('x_location_id','=',42)]" context="{'location': 'ROS/Stock/Iluminación/Deposito Iluminacion'}"/>
-          <filter string="Ubica IND" name="location IND" domain="[('x_location_id','=',38)]" context="{'location': 'ROS/Stock/Industrial'}"/>
-        </field>
-      </data>
+      <field name="order_id" position="after">
+        <filter string="Mis Comprobantes" domain="[('create_uid','=',uid)]" help="Pedidos de mi vendedor"/>
+        <separator/>
+        <filter string="Presupuestos" name="draft" domain="[('state','in',('draft','sent'))]" help="Sales Order that haven't yet been confirmed"/>
+        <filter string="Notas de venta" name="sales" domain="[('state','in',('sale','done'))]"/>
+        <separator/>
+        <filter string="A facturar" domain="[('invoice_status','=','to invoice')]"/>
+        <filter string="Facturado" domain="[('invoice_status','=','upselling')]"/>
+        <separator/>
+        <filter string="Ubica Rosario" name="location" domain="[('x_location_id','=',21)]" context="{'location': 'ROS/Stock'}"/>
+        <filter string="Ubica Santa Fe" name="location SFE" domain="[('x_location_id','=',27)]" context="{'location': 'SFE/Stock'}"/>
+        <filter string="Ubica Rafaela" name="location RAF" domain="[('x_location_id','=',33)]" context="{'location': 'RAF/Stock'}"/>
+        <filter string="Ubica Motores" name="location MOT" domain="[('x_location_id','=',39)]" context="{'location': 'ROS/Stock/Motores y Cables Subterraneo'}"/>
+        <filter string="Ubica Ilum" name="location ILU" domain="[('x_location_id','=',42)]" context="{'location': 'ROS/Stock/Iluminación/Deposito Iluminacion'}"/>
+        <filter string="Ubica IND" name="location IND" domain="[('x_location_id','=',38)]" context="{'location': 'ROS/Stock/Industrial'}"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_4926" model="ir.ui.view">
@@ -56,34 +52,32 @@
     <field eval="[(6, 0, [ref('base.group_user')])]" name="groups_id"/>
     <field name="inherit_id" ref="sale_ux.sale_order_line_usability_tree"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="order_id" position="after">
-          <field name="create_date"/>
-        </field>
-        <field name="name" position="after">
-          <field name="product_brand_id"/>
-          <field name="internal_code"/>
-          <field name="supplier_code"/>
-          <field name="create_uid"/>
-        </field>
-        <field name="salesman_id" position="replace"/>
-        <field name="product_uom" position="replace"/>
-        <field name="product_id" position="replace"/>
-        <field name="purchase_price" position="replace"/>
-        <field name="margin" position="replace"/>
-        <field name="qty_delivered" position="after">
-          <field name="qty_returned" string="Returned Quantity"/>
-          <field name="purchase_price" invisible="1"/>
-          <field name="margin" invisible="1"/>
-        </field>
-        <tree>
-          <field name="x_qty_available"/>
-          <field name="x_virtual_available"/>
-          <button string="Traceability" name="%(personalizations_boggio.ir_act_server_1300)d" icon="fa-arrows-v" type="action"/>
-          <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1257)d" icon="fa-building-o" type="action"/>
-          <button type="action" name="%(personalizations_boggio.ir_act_server_1689)d" string="View Stock Detail" icon="fa-search-plus"/>
-        </tree>
-      </data>
+      <field name="order_id" position="after">
+        <field name="create_date"/>
+      </field>
+      <field name="name" position="after">
+        <field name="product_brand_id"/>
+        <field name="internal_code"/>
+        <field name="supplier_code"/>
+        <field name="create_uid"/>
+      </field>
+      <field name="salesman_id" position="replace"/>
+      <field name="product_uom" position="replace"/>
+      <field name="product_id" position="replace"/>
+      <field name="purchase_price" position="replace"/>
+      <field name="margin" position="replace"/>
+      <field name="qty_delivered" position="after">
+        <field name="qty_returned" string="Returned Quantity"/>
+        <field name="purchase_price" invisible="1"/>
+        <field name="margin" invisible="1"/>
+      </field>
+      <tree>
+        <field name="x_qty_available"/>
+        <field name="x_virtual_available"/>
+        <button string="Traceability" name="%(personalizations_boggio.ir_act_server_1300)d" icon="fa-arrows-v" type="action"/>
+        <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1257)d" icon="fa-building-o" type="action"/>
+        <button type="action" name="%(personalizations_boggio.ir_act_server_1689)d" string="View Stock Detail" icon="fa-search-plus"/>
+      </tree>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5540" model="ir.ui.view">

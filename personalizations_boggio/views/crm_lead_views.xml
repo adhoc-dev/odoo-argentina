@@ -15,14 +15,12 @@
     <field name="model">crm.lead</field>
     <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
     <field name="arch" type="xml">
-      <data>
-        <filter name="assigned_to_me" position="before">
-          <filter string="Abiertos" name="abiertos" domain="[['stage_id', 'not ilike', 'cancel'], ['stage_id', 'not ilike', 'gana'], ['stage_id', 'not ilike', 'perdi']]"/>
-          <separator/>
-          <filter string="Ultimos 15 dias" name="last_days" domain="[['create_date', '&gt;=', (context_today() - datetime.timedelta(days=15)).strftime('%Y-%m-%d')]]"/>
-          <separator/>
-        </filter>
-      </data>
+      <filter name="assigned_to_me" position="before">
+        <filter string="Abiertos" name="abiertos" domain="[['stage_id', 'not ilike', 'cancel'], ['stage_id', 'not ilike', 'gana'], ['stage_id', 'not ilike', 'perdi']]"/>
+        <separator/>
+        <filter string="Ultimos 15 dias" name="last_days" domain="[['create_date', '&gt;=', (context_today() - datetime.timedelta(days=15)).strftime('%Y-%m-%d')]]"/>
+        <separator/>
+      </filter>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7859" model="ir.ui.view">
@@ -30,11 +28,9 @@
     <field name="model">crm.lead</field>
     <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='team_id']" position="after">
-          <field name="company_id"/>
-        </xpath>
-      </data>
+      <xpath expr="//field[@name='team_id']" position="after">
+        <field name="company_id"/>
+      </xpath>
     </field>
   </record>
 </odoo>

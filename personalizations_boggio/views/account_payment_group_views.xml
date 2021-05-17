@@ -1,15 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <record id="personalizations_boggio.ir_ui_view_4434" model="ir.ui.view">
-    <field name="name">Boggio Personalization Payment group form</field>
-    <field name="model">account.payment.group</field>
-    <field name="inherit_id" ref="account_payment_group.view_account_payment_group_form"/>
-    <field name="arch" type="xml">
-      <field name="payment_date" position="attributes">
-        <attribute name="attrs">{'readonly': [('partner_type', '=', 'customer')]}</attribute>
-      </field>
-    </field>
-  </record>
   <record id="personalizations_boggio.ir_ui_view_4435" model="ir.ui.view">
     <field name="name">Boggio Personalization Payment group tree</field>
     <field name="model">account.payment.group</field>
@@ -19,16 +9,9 @@
         <field name="create_uid"/>
         <field name="create_date"/>
       </field>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_5037" model="ir.ui.view">
-    <field name="name">usuario en recibos iboggio</field>
-    <field name="model">account.payment.group</field>
-    <field name="inherit_id" ref="account_payment_group.view_account_payment_group_form"/>
-    <field name="arch" type="xml">
-      <data>
-
-</data>
+      <xpath expr="//field[@name='payment_methods']" position="after">
+        <field name="x_control"/>
+      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5672" model="ir.ui.view">
@@ -36,36 +19,13 @@
     <field name="model">account.payment.group</field>
     <field name="inherit_id" ref="account_payment_group.view_account_payment_group_form"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="payment_date" position="replace"/>
-        <field name="communication" position="before">
-          <field name="payment_date" invisible="True"/>
-        </field>
-      </data>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_5864" model="ir.ui.view">
-    <field name="name">ver si opera con cheques iboggio</field>
-    <field name="model">account.payment.group</field>
-    <field name="inherit_id" ref="account_payment_group.view_account_payment_group_form"/>
-    <field name="arch" type="xml">
-      <data>
-        <field name="partner_id" position="after">
-          <field name="x_operate_with_checks"/>
-        </field>
-      </data>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_8018" model="ir.ui.view">
-    <field name="name">Odoo Studio: account.payment.group.tree customization</field>
-    <field name="model">account.payment.group</field>
-    <field name="inherit_id" ref="account_payment_group.view_account_payment_group_tree"/>
-    <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='payment_methods']" position="after">
-          <field name="x_control"/>
-        </xpath>
-      </data>
+      <field name="payment_date" position="replace"/>
+      <field name="communication" position="before">
+        <field name="payment_date" invisible="True"/>
+      </field>
+      <field name="partner_id" position="after">
+        <field name="x_operate_with_checks"/>
+      </field>
     </field>
   </record>
 </odoo>

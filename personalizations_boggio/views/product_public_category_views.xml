@@ -15,11 +15,9 @@
     <field name="model">product.public.category</field>
     <field name="inherit_id" ref="website_sale.product_public_category_form_view"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='sequence']" position="after">
           <field name="x_google_product_category"/>
         </xpath>
-      </data>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_8201" model="ir.ui.view">
@@ -27,11 +25,9 @@
     <field name="model">product.public.category</field>
     <field name="inherit_id" ref="website_sale.product_public_category_tree_view"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='display_name']" position="after">
           <field name="x_google_product_category"/>
         </xpath>
-      </data>
     </field>
   </record>
 </odoo>

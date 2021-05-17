@@ -44,7 +44,7 @@
     <field name="model">account.invoice</field>
     <field name="report_name">aeroo_report_ar_einvoice</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account.model_account_invoice"/>
+    <field name="binding_model_id" ref="account.model_account_move"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/aeroo_report_ar_einvoice.odt</field>
@@ -294,7 +294,7 @@
     <field name="model">account.invoice</field>
     <field name="report_name">aeroo_report_ar_einvoice_copy</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account.model_account_invoice"/>
+    <field name="binding_model_id" ref="account.model_account_move"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/aeroo_report_ar_einvoice_copy.odt</field>

@@ -5,7 +5,6 @@ from . import x_stock_picking_setstate
 from . import x_stock_breakout
 from . import res_partner
 from . import account_invoice
-from . import account_invoice_line
 from . import account_move_line
 from . import account_payment_group
 from . import mail_mass_mailing_contact

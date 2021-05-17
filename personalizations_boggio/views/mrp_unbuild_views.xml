@@ -5,12 +5,10 @@
     <field name="model">mrp.unbuild</field>
     <field name="inherit_id" ref="mrp.mrp_unbuild_form_view"/>
     <field name="arch" type="xml">
-      <data>
         <xpath expr="//field[@name='mo_id']" position="attributes">
           <attribute name="attrs">{"readonly": [["state","in",["done"]]]}</attribute>
           <attribute name="required">1</attribute>
         </xpath>
-      </data>
     </field>
   </record>
 </odoo>

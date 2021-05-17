@@ -5,23 +5,15 @@
     <field name="model">ir.default</field>
     <field name="inherit_id" ref="base.ir_default_form_view"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='company_id']" position="after">
           <field name="condition"/>
         </xpath>
-      </data>
-    </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_8103" model="ir.ui.view">
     <field name="name">Odoo Studio: ir.default tree view customization</field>
     <field name="model">ir.default</field>
     <field name="inherit_id" ref="base.ir_default_tree_view"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='json_value']" position="after">
           <field name="condition"/>
         </xpath>
-      </data>
-    </field>
   </record>
 </odoo>

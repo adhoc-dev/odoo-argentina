@@ -6,9 +6,7 @@
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_162')])]" name="groups_id"/>
     <field name="inherit_id" ref="stock.view_backorder_confirmation"/>
     <field name="arch" type="xml">
-      <data>
-        <button name="process_cancel_backorder" position="replace"/>
-      </data>
+      <button name="process_cancel_backorder" position="replace"/>
     </field>
   </record>
 </odoo>

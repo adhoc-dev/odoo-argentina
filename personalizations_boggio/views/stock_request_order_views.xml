@@ -5,18 +5,16 @@
     <field name="model">stock.request.order</field>
     <field name="inherit_id" ref="stock_request.stock_request_order_tree"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//tree[1]/field[@name='name']" position="before">
-          <field name="create_date"/>
-        </xpath>
-        <xpath expr="//tree[1]/field[@name='name']" position="after">
-          <field name="procurement_group_id"/>
-          <field name="x_rotacion_local"/>
-        </xpath>
-        <xpath expr="//field[@name='location_id']" position="after">
-          <field name="create_uid"/>
-        </xpath>
-      </data>
+      <xpath expr="//tree[1]/field[@name='name']" position="before">
+        <field name="create_date"/>
+      </xpath>
+      <xpath expr="//tree[1]/field[@name='name']" position="after">
+        <field name="procurement_group_id"/>
+        <field name="x_rotacion_local"/>
+      </xpath>
+      <xpath expr="//field[@name='location_id']" position="after">
+        <field name="create_uid"/>
+      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7735" model="ir.ui.view">
@@ -33,11 +31,9 @@
     <field name="model">stock.request.order</field>
     <field name="inherit_id" ref="personalizations_boggio.ir_ui_view_7735"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//search[1]/field[@name='name']" position="after">
-          <field name="procurement_group_id"/>
-        </xpath>
-      </data>
+      <xpath expr="//search[1]/field[@name='name']" position="after">
+        <field name="procurement_group_id"/>
+      </xpath>
     </field>
   </record>
 </odoo>

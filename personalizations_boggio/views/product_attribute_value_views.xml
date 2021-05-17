@@ -14,12 +14,10 @@
     <field name="model">product.attribute.value</field>
     <field name="inherit_id" ref="personalizations_boggio.ir_ui_view_7911"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//search[1]/field[@name='name']" position="after">
-          <field name="smart_search"/>
-          <field name="attribute_id"/>
-        </xpath>
-      </data>
+      <xpath expr="//search[1]/field[@name='name']" position="after">
+        <field name="smart_search"/>
+        <field name="attribute_id"/>
+      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7940" model="ir.ui.view">
@@ -27,11 +25,9 @@
     <field name="model">product.attribute.value</field>
     <field name="inherit_id" ref="product.variants_tree_view"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//tree[1]/field[@name='name']" position="after">
-          <field name="product_ids"/>
-        </xpath>
-      </data>
+      <xpath expr="//tree[1]/field[@name='name']" position="after">
+        <field name="product_ids"/>
+      </xpath>
     </field>
   </record>
 </odoo>

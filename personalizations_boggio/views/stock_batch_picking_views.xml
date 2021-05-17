@@ -5,11 +5,9 @@
     <field name="model">stock.batch.picking</field>
     <field name="inherit_id" ref="stock_batch_picking.stock_batch_picking_form"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="picker_id" position="attributes">
-          <attribute name="invisible">1</attribute>
-        </field>
-      </data>
+      <field name="picker_id" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5004" model="ir.ui.view">
@@ -17,14 +15,12 @@
     <field name="model">stock.batch.picking</field>
     <field name="inherit_id" ref="stock_batch_picking.stock_batch_picking_tree"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="picker_id" position="after">
-          <field name="create_uid"/>
-        </field>
-        <field name="picker_id" position="attributes">
-          <attribute name="invisible">1</attribute>
-        </field>
-      </data>
+      <field name="picker_id" position="after">
+        <field name="create_uid"/>
+      </field>
+      <field name="picker_id" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5005" model="ir.ui.view">
@@ -32,17 +28,15 @@
     <field name="model">stock.batch.picking</field>
     <field name="inherit_id" ref="stock_batch_picking.stock_batch_picking_search"/>
     <field name="arch" type="xml">
-      <data>
-        <filter name="picker_id" position="replace">
-          <filter name="create_uid" string="Creado por" context="{'group_by':'create_uid'}"/>
-        </filter>
-        <field name="picker_id" position="after">
-          <field name="create_uid"/>
-        </field>
-        <field name="picker_id" position="attributes">
-          <attribute name="invisible">1</attribute>
-        </field>
-      </data>
+      <filter name="picker_id" position="replace">
+        <filter name="create_uid" string="Creado por" context="{'group_by':'create_uid'}"/>
+      </filter>
+      <field name="picker_id" position="after">
+        <field name="create_uid"/>
+      </field>
+      <field name="picker_id" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5039" model="ir.ui.view">
@@ -59,16 +53,14 @@
     <field name="model">stock.batch.picking</field>
     <field name="inherit_id" ref="stock_batch_picking.stock_batch_picking_form"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="date" position="before">
-          <field name="x_fecha_remito"/>
-          <field name="x_fecha_ingreso"/>
-        </field>
-        <field name="date" position="replace"/>
-        <field name="x_fecha_ingreso" position="after">
-          <field name="date" string="Fecha de procesamiento"/>
-        </field>
-      </data>
+      <field name="date" position="before">
+        <field name="x_fecha_remito"/>
+        <field name="x_fecha_ingreso"/>
+      </field>
+      <field name="date" position="replace"/>
+      <field name="x_fecha_ingreso" position="after">
+        <field name="date" string="Fecha de procesamiento"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5550" model="ir.ui.view">
@@ -76,14 +68,12 @@
     <field name="model">stock.batch.picking</field>
     <field name="inherit_id" ref="stock_batch_picking.stock_batch_picking_form"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="x_fecha_remito" position="attributes">
-          <attribute name="required">1</attribute>
-        </field>
-        <field name="x_fecha_ingreso" position="attributes">
-          <attribute name="required">1</attribute>
-        </field>
-      </data>
+      <field name="x_fecha_remito" position="attributes">
+        <attribute name="required">1</attribute>
+      </field>
+      <field name="x_fecha_ingreso" position="attributes">
+        <attribute name="required">1</attribute>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7823" model="ir.ui.view">
@@ -91,11 +81,9 @@
     <field name="model">stock.batch.picking</field>
     <field name="inherit_id" ref="stock_batch_picking.stock_batch_picking_search"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//search[1]/field[@name='name']" position="after">
-          <field name="partner_id"/>
-        </xpath>
-      </data>
+      <xpath expr="//search[1]/field[@name='name']" position="after">
+        <field name="partner_id"/>
+      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7882" model="ir.ui.view">
@@ -103,11 +91,9 @@
     <field name="model">stock.batch.picking</field>
     <field name="inherit_id" ref="stock_batch_picking.stock_batch_picking_tree"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='picking_code']" position="after">
-          <field name="partner_id"/>
-        </xpath>
-      </data>
+      <xpath expr="//field[@name='picking_code']" position="after">
+        <field name="partner_id"/>
+      </xpath>
     </field>
   </record>
 </odoo>

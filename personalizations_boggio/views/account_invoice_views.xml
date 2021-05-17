@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
   <record id="personalizations_boggio.ir_ui_view_4437" model="ir.ui.view">
-    <field name="name">Boggio Personalization account.invoice.tree</field>
-    <field name="model">account.invoice</field>
+    <field name="name">Boggio Personalization account.move.tree</field>
+    <field name="model">account.move</field>
     <field name="inherit_id" ref="account.invoice_tree"/>
     <field name="arch" type="xml">
       <field name="partner_id" position="after">
@@ -14,8 +14,8 @@
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_4454" model="ir.ui.view">
-    <field name="name">Boggio Personalization invoice.form.inherit</field>
-    <field name="model">account.invoice</field>
+    <field name="name">Boggio Personalization move.form.inherit</field>
+    <field name="model">account.move</field>
     <field eval="[(6, 0, [ref('account_invoice_control.group_restrict_edit_invoice')])]" name="groups_id"/>
     <field name="inherit_id" ref="account_invoice_control.invoice_restrict_edit_form"/>
     <field name="arch" type="xml">
@@ -26,123 +26,84 @@
   </record>
   <record id="personalizations_boggio.ir_ui_view_4922" model="ir.ui.view">
     <field name="name">sacar boton de factura rectificada iboggio</field>
-    <field name="model">account.invoice</field>
+    <field name="model">account.move</field>
     <field name="inherit_id" ref="account.invoice_form"/>
     <field name="arch" type="xml">
-      <data>
-        <button name="%(account.action_account_invoice_refund)d" position="replace"/>
-      </data>
+      <button name="action_reverse" position="replace"/>
+      <field name="product_id" position="after">
+        <field name="x_supplier_code" attrs="{'invisible': [('type', 'not in', ('out_invoice', 'in_invoice'))]}"/>
+      </field>
+      <field name="user_id" position="after">
+        <field name="x_so_create_uid" readonly="1"/>
+      </field>
+      <field name="invoice_payment_term_id" position="after">
+        <field name="x_pricelist_id"/>
+      </field>
+       <xpath expr="//form[1]/header[1]/button[@name='action_post']" position="attributes">
+        <attribute name="groups">base.group_user</attribute>
+      </xpath>
+      <xpath expr="//field[@name='invoice_partner_bank_id']" position="attributes">
+        <attribute name="groups">account.group_account_user</attribute>
+      </xpath>
+      <xpath expr="//field[@name='invoice_line_ids']" position="inside">
+        <form string="Invoice Line">
+          <group>
+            <group>
+              <field name="partner_id" invisible="1" can_create="true" can_write="true" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+              <field name="invoice_type" invisible="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+              <field name="lot_ids" widget="many2many_tags" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}"/>
+              <field name="company_id" invisible="1" can_create="true" can_write="true" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+              <field name="product_id" context="{'partner_id': partner_id}" on_change="1" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="layout_category_id" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Technical Settings / Personalize sales order and invoice report&quot;, &quot;id&quot;: 216, &quot;name&quot;: &quot;Personalize sales order and invoice report&quot;}]" invisible="1" modifiers="{&quot;invisible&quot;: true}"/>
+              <label for="quantity"/>
+              <div>
+                <field name="quantity" class="oe_inline" modifiers="{&quot;required&quot;: true}"/>
+                <field name="uom_id" class="oe_inline" on_change="1" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Technical Settings / Manage Multiple Units of Measure&quot;, &quot;id&quot;: 22, &quot;name&quot;: &quot;Manage Multiple Units of Measure&quot;}]" modifiers="{}"/>
+              </div>
+              <field name="price_unit" modifiers="{&quot;required&quot;: true}"/>
+              <field name="discount" studio_groups="[{&quot;display_name&quot;: &quot;Technical Settings / Discount on lines&quot;, &quot;id&quot;: 36, &quot;name&quot;: &quot;Discount on lines&quot;}]" modifiers="{}"/>
+              <field name="currency_id" invisible="1" can_create="true" can_write="true" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
+            </group>
+            <group>
+              <field name="analytic_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Technical Settings / Analytic Accounting&quot;, &quot;id&quot;: 19, &quot;name&quot;: &quot;Analytic Accounting&quot;}]" modifiers="{}"/>
+              <field name="purchase_id" invisible="context.get('type') in ('out_invoice', 'out_refund')" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}"/>
+              <field domain="[('company_id', '=', company_id)]" name="account_id" on_change="1" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Accounting &amp; Finance / Accountant&quot;, &quot;id&quot;: 27, &quot;name&quot;: &quot;Accountant&quot;}]" modifiers="{&quot;required&quot;: true}"/>
+              <field name="invoice_line_tax_ids" context="{'type': invoice_type}" domain="[('type_tax_use','!=','none'),('company_id', '=', company_id)]" widget="many2many_tags" options="{'no_create': True}" can_create="true" can_write="true" modifiers="{}"/>
+              <field domain="[('company_id', '=', company_id)]" name="account_analytic_id" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Technical Settings / Analytic Accounting&quot;, &quot;id&quot;: 19, &quot;name&quot;: &quot;Analytic Accounting&quot;}]" modifiers="{}"/>
+              <field name="company_id" readonly="1" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Extra Rights / Multi Companies&quot;, &quot;id&quot;: 6, &quot;name&quot;: &quot;Multi Companies&quot;}]" modifiers="{&quot;readonly&quot;: true}"/>
+            </group>
+          </group>
+          <label for="name"/>
+          <field name="name" modifiers="{&quot;required&quot;: true}"/>
+        </form>
+      </xpath>
     </field>
   </record>
-  <record id="personalizations_boggio.ir_ui_view_5021" model="ir.ui.view">
-    <field name="name">Boggio personalizations (agregado de supplier code en facturas de proveedor)</field>
-    <field name="model">account.invoice</field>
-    <field name="inherit_id" ref="account.invoice_supplier_form"/>
-    <field name="arch" type="xml">
-      <data>
-        <field name="product_id" position="after">
-          <field name="x_supplier_code"/>
-        </field>
-      </data>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_5264" model="ir.ui.view">
-    <field name="name">agregar creador de pedido iboggio</field>
-    <field name="model">account.invoice</field>
-    <field name="inherit_id" ref="account.invoice_form"/>
-    <field name="arch" type="xml">
-      <data>
-        <field name="user_id" position="after">
-          <field name="x_so_create_uid" readonly="1"/>
-        </field>
-      </data>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_5609" model="ir.ui.view">
-    <field name="name">agregar lista de precio iboggio</field>
-    <field name="model">account.invoice</field>
-    <field name="inherit_id" ref="account.invoice_form"/>
-    <field name="arch" type="xml">
-      <data>
-        <field name="payment_term_id" position="after">
-          <field name="x_pricelist_id"/>
-        </field>
-      </data>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_7720" model="ir.ui.view">
+  <!-- <record id="personalizations_boggio.ir_ui_view_7720" model="ir.ui.view">
     <field name="name">Vista personalizada: agrega el grupo de empleados al boton validar</field>
-    <field name="model">account.invoice</field>
+    <field name="model">account.move</field>
     <field name="inherit_id" ref="l10n_ar_afipws_fe.view_invoice_form"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//form[1]/header[1]/button[@name='action_invoice_open']" position="attributes">
-          <attribute name="groups">base.group_user</attribute>
-        </xpath>
-        <xpath expr="//form[1]/header[1]/button[@name='action_invoice_open'][2]" position="attributes">
-          <attribute name="groups">base.group_user</attribute>
-        </xpath>
-        <xpath expr="//form[1]/header[1]/button[@name='action_invoice_open'][3]" position="attributes">
-          <attribute name="groups">base.group_user</attribute>
-        </xpath>
-      </data>
+      <xpath expr="//form[1]/header[1]/button[@name='action_post']" position="attributes">
+        <attribute name="groups">base.group_user</attribute>
+      </xpath>
+      <xpath expr="//form[1]/header[1]/button[@name='action_invoice_open'][2]" position="attributes">
+        <attribute name="groups">base.group_user</attribute>
+      </xpath>
+      <xpath expr="//form[1]/header[1]/button[@name='action_invoice_open'][3]" position="attributes">
+        <attribute name="groups">base.group_user</attribute>
+      </xpath>
     </field>
-  </record>
+  </record> -->
   <record id="personalizations_boggio.ir_ui_view_7746" model="ir.ui.view">
     <field name="name">boton de pago de facturas iboggio</field>
-    <field name="model">account.invoice</field>
+    <field name="model">account.move</field>
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_168')])]" name="groups_id"/>
     <field name="inherit_id" ref="account.invoice_form"/>
     <field name="arch" type="xml">
-      <data>
-        <button name="invoice_print" position="after">
-          <button name="action_account_invoice_payment_group" id="account_invoice_payment_btn" type="object" states="open" string="Registrar pago" class="oe_highlight" modifiers="{'invisible':[['state','not in',['open']]]}"/>
-        </button>
-      </data>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_7907" model="ir.ui.view">
-    <field name="name">Odoo Studio: account.invoice.form customization</field>
-    <field name="model">account.invoice</field>
-    <field name="inherit_id" ref="account.invoice_form"/>
-    <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='partner_bank_id']" position="attributes">
-          <attribute name="groups">account.group_account_user</attribute>
-        </xpath>
-        <xpath expr="//field[@name='invoice_line_ids']" position="inside">
-          <form string="Invoice Line">
-            <group>
-              <group>
-                <field name="partner_id" invisible="1" can_create="true" can_write="true" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
-                <field name="invoice_type" invisible="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
-                <field name="lot_ids" widget="many2many_tags" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}"/>
-                <field name="company_id" invisible="1" can_create="true" can_write="true" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
-                <field name="product_id" context="{'partner_id': partner_id}" on_change="1" can_create="true" can_write="true" modifiers="{}"/>
-                <field name="layout_category_id" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Technical Settings / Personalize sales order and invoice report&quot;, &quot;id&quot;: 216, &quot;name&quot;: &quot;Personalize sales order and invoice report&quot;}]" invisible="1" modifiers="{&quot;invisible&quot;: true}"/>
-                <label for="quantity"/>
-                <div>
-                  <field name="quantity" class="oe_inline" modifiers="{&quot;required&quot;: true}"/>
-                  <field name="uom_id" class="oe_inline" on_change="1" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Technical Settings / Manage Multiple Units of Measure&quot;, &quot;id&quot;: 22, &quot;name&quot;: &quot;Manage Multiple Units of Measure&quot;}]" modifiers="{}"/>
-                </div>
-                <field name="price_unit" modifiers="{&quot;required&quot;: true}"/>
-                <field name="discount" studio_groups="[{&quot;display_name&quot;: &quot;Technical Settings / Discount on lines&quot;, &quot;id&quot;: 36, &quot;name&quot;: &quot;Discount on lines&quot;}]" modifiers="{}"/>
-                <field name="currency_id" invisible="1" can_create="true" can_write="true" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
-              </group>
-              <group>
-                <field name="analytic_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Technical Settings / Analytic Accounting&quot;, &quot;id&quot;: 19, &quot;name&quot;: &quot;Analytic Accounting&quot;}]" modifiers="{}"/>
-                <field name="purchase_id" invisible="context.get('type') in ('out_invoice', 'out_refund')" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}"/>
-                <field domain="[('company_id', '=', company_id)]" name="account_id" on_change="1" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Accounting &amp; Finance / Accountant&quot;, &quot;id&quot;: 27, &quot;name&quot;: &quot;Accountant&quot;}]" modifiers="{&quot;required&quot;: true}"/>
-                <field name="invoice_line_tax_ids" context="{'type': invoice_type}" domain="[('type_tax_use','!=','none'),('company_id', '=', company_id)]" widget="many2many_tags" options="{'no_create': True}" can_create="true" can_write="true" modifiers="{}"/>
-                <field domain="[('company_id', '=', company_id)]" name="account_analytic_id" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Technical Settings / Analytic Accounting&quot;, &quot;id&quot;: 19, &quot;name&quot;: &quot;Analytic Accounting&quot;}]" modifiers="{}"/>
-                <field name="company_id" readonly="1" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Extra Rights / Multi Companies&quot;, &quot;id&quot;: 6, &quot;name&quot;: &quot;Multi Companies&quot;}]" modifiers="{&quot;readonly&quot;: true}"/>
-              </group>
-            </group>
-            <label for="name"/>
-            <field name="name" modifiers="{&quot;required&quot;: true}"/>
-          </form>
-        </xpath>
-      </data>
+      <button name="invoice_print" position="after">
+        <button name="action_account_invoice_payment_group" id="account_invoice_payment_btn" type="object" states="open" string="Registrar pago" class="oe_highlight" modifiers="{'invisible':[['state','not in',['open']]]}"/>
+      </button>
     </field>
   </record>
 </odoo>

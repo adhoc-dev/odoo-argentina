@@ -85,10 +85,10 @@ if (object.state=='draft'):
   <record id="personalizations_boggio.base_automation_26" model="base.automation">
     <field name="name">Pago antes de la entrega-accion server</field>
     <field name="sequence">1</field>
-    <field name="model_id" ref="account.model_account_invoice"/>
+    <field name="model_id" ref="account.model_account_move"/>
     <field name="state">email</field>
-    <field name="binding_model_id" ref="account.model_account_invoice"/>
-    <field name="crud_model_id" ref="account.model_account_invoice"/>
+    <field name="binding_model_id" ref="account.model_account_move"/>
+    <field name="crud_model_id" ref="account.model_account_move"/>
     <field name="filter_domain">[[u'sale_type_id.invoice_policy', u'=', u'prepaid'], [u'state', u'=', u'paid']]</field>
     <field name="filter_pre_domain">[['sale_type_id.invoice_policy', '=', 'prepaid'],['state', '=', 'open']]</field>
     <field name="on_change_fields">state</field>

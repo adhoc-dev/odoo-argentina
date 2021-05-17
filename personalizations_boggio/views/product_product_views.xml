@@ -1,23 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <record id="personalizations_boggio.ir_ui_view_3453" model="ir.ui.view">
-    <field name="name">product.product form</field>
-    <field name="model">product.product</field>
-    <field name="inherit_id" ref="product.product_normal_form_view"/>
-    <field name="arch" type="xml">
-      <xpath expr="//div[@name=&quot;standard_price_uom&quot;]" position="after">
-        <field name="replenishment_cost"/>
-      </xpath>
-    </field>
-  </record>
   <record id="personalizations_boggio.ir_ui_view_4456" model="ir.ui.view">
     <field name="name">sacar ajustes directo de stock iboggio 2</field>
     <field name="model">product.product</field>
     <field name="inherit_id" ref="stock.product_form_view_procurement_button"/>
     <field name="arch" type="xml">
-      <data>
-        <button name="%(stock.action_view_change_product_quantity)d" position="replace"/>
-      </data>
+      <button name="%(stock.action_view_change_product_quantity)d" position="replace"/>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_4457" model="ir.ui.view">
@@ -38,49 +26,47 @@
     <field name="model">product.product</field>
     <field name="inherit_id" ref="product.product_product_tree_view"/>
     <field name="arch" type="xml">
-      <data>
-        <!-- ordernar por secuencia de website -->
-        <tree position="attributes">
-          <attribute name="default_order">website_sequence desc</attribute>
-        </tree>
-        <!--replaces-->
-        <field name="immediately_usable_qty" position="replace"/>
-        <field name="lst_price" position="replace"/>
-        <field name="qty_available" position="replace"/>
-        <field name="virtual_available" position="replace"/>
-        <field name="default_code" position="replace"/>
-        <field name="product_brand_id" position="replace"/>
-        <field name="attribute_value_ids" position="replace"/>
-        <field name="price" position="replace"/>
-        <field name="taxed_lst_price" position="replace"/>
-        <field name="barcode" position="replace"/>
-        <field name="name" position="before">
-          <field name="internal_code"/>
-          <field name="quantity_per_pack" string="Empaque"/>
-          <field name="supplier_code"/>
-        </field>
-        <field name="uom_id" position="attributes">
-          <attribute name="invisible">1</attribute>
-        </field>
-        <field name="name" position="after">
-          <!--<field name="attribute_value_ids" widget="many2many_tags" groups="product.group_product_variant"/> -->
-          <field name="x_marca"/>
-          <field name="default_code"/>
-          <field name="immediately_usable_qty" string="Disponible"/>
-          <field name="currency_id" invisible="1"/>
-          <field name="price" string="Precio S/LISTA" widget="monetary"/>
-          <button string="Traceability" type="action" name="%(stock.act_product_stock_move_open)d" attrs="{'invisible':[('type', 'not in', ['product', 'consu'])]}" icon="fa-arrows-v" groups="stock.group_stock_user" context="{'search_default_future': 1,'search_default_picking_type': 1}"/>
-          <button string="On Hand" name="%(stock.product_open_quants)d" icon="fa-building-o" type="action" attrs="{'invisible':[('type', '!=', 'product')]}"/>
-          <field name="type" invisible="1"/>
-          <!--borrar si se saca lo anterior 8_agosto_2020
+      <!-- ordernar por secuencia de website -->
+      <tree position="attributes">
+        <attribute name="default_order">website_sequence desc</attribute>
+      </tree>
+      <!--replaces-->
+      <field name="immediately_usable_qty" position="replace"/>
+      <field name="lst_price" position="replace"/>
+      <field name="qty_available" position="replace"/>
+      <field name="virtual_available" position="replace"/>
+      <field name="default_code" position="replace"/>
+      <field name="product_brand_id" position="replace"/>
+      <field name="attribute_value_ids" position="replace"/>
+      <field name="price" position="replace"/>
+      <field name="taxed_lst_price" position="replace"/>
+      <field name="barcode" position="replace"/>
+      <field name="name" position="before">
+        <field name="internal_code"/>
+        <field name="quantity_per_pack" string="Empaque"/>
+        <field name="supplier_code"/>
+      </field>
+      <field name="uom_id" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </field>
+      <field name="name" position="after">
+        <!--<field name="attribute_value_ids" widget="many2many_tags" groups="product.group_product_variant"/> -->
+        <field name="x_marca"/>
+        <field name="default_code"/>
+        <field name="immediately_usable_qty" string="Disponible"/>
+        <field name="currency_id" invisible="1"/>
+        <field name="price" string="Precio S/LISTA" widget="monetary"/>
+        <button string="Traceability" type="action" name="%(stock.act_product_stock_move_open)d" attrs="{'invisible':[('type', 'not in', ['product', 'consu'])]}" icon="fa-arrows-v" groups="stock.group_stock_user" context="{'search_default_future': 1,'search_default_picking_type': 1}"/>
+        <button string="On Hand" name="%(stock.product_open_quants)d" icon="fa-building-o" type="action" attrs="{'invisible':[('type', '!=', 'product')]}"/>
+        <field name="type" invisible="1"/>
+        <!--borrar si se saca lo anterior 8_agosto_2020
       <field name="virtual_available" invisible="1"/> 
       -->
-        </field>
-        <tree position="attributes">
-          <attribute name="decoration-danger">immediately_usable_qty&lt;0</attribute>
-          <attribute name="decoration-info">immediately_usable_qty&gt;=0</attribute>
-        </tree>
-      </data>
+      </field>
+      <tree position="attributes">
+        <attribute name="decoration-danger">immediately_usable_qty&lt;0</attribute>
+        <attribute name="decoration-info">immediately_usable_qty&gt;=0</attribute>
+      </tree>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5906" model="ir.ui.view">
@@ -89,18 +75,16 @@
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_158')])]" name="groups_id"/>
     <field name="inherit_id" ref="product.product_product_tree_view"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="price" position="before">
-          <field name="replenishment_cost" string="Costo" widget="monetary"/>
-          <field name="x_replenishment_cost_moneda" string="Costo Moneda" widget="monetary"/>
-          <field name="lst_price" string="Precio BASE"/>
-        </field>
-        <field name="price" position="after">
-          <field name="sale_margin" string="Utilidad"/>
-          <field name="replenishment_cost_rule_id" string="Regla costo"/>
-          <field name="currency_id" invisible="1"/>
-        </field>
-      </data>
+      <field name="price" position="before">
+        <field name="replenishment_cost" string="Costo" widget="monetary"/>
+        <field name="x_replenishment_cost_moneda" string="Costo Moneda" widget="monetary"/>
+        <field name="lst_price" string="Precio BASE"/>
+      </field>
+      <field name="price" position="after">
+        <field name="sale_margin" string="Utilidad"/>
+        <field name="replenishment_cost_rule_id" string="Regla costo"/>
+        <field name="currency_id" invisible="1"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_6061" model="ir.ui.view">
@@ -108,11 +92,9 @@
     <field name="model">product.product</field>
     <field name="inherit_id" ref="sale.product_form_view_sale_order_button"/>
     <field name="arch" type="xml">
-      <data>
-        <button name="%(sale.action_product_sale_list)d" position="before">
-          <button type="action" name="%(personalizations_boggio.ir_act_server_1740)d" class="oe_stat_button" icon="fa-search-plus" string="Resumen Movimiento"/>
-        </button>
-      </data>
+      <button name="%(sale.action_product_sale_list)d" position="before">
+        <button type="action" name="%(personalizations_boggio.ir_act_server_1740)d" class="oe_stat_button" icon="fa-search-plus" string="Resumen Movimiento"/>
+      </button>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_6079" model="ir.ui.view">
@@ -121,11 +103,10 @@
     <field eval="[(6, 0, [ref('portal_sale_distributor.group_portal_distributor')])]" name="groups_id"/>
     <field name="inherit_id" ref="stock.view_stock_product_tree"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="qty_available" position="attributes"><attribute name="invisible">1</attribute>--&gt;
-   </field>
-        <button name="view_stock_detail" position="replace"/>
-      </data>
+      <field name="qty_available" position="attributes">
+        <attribute name="invisible">1</attribute>--&gt;
+      </field>
+      <button name="view_stock_detail" position="replace"/>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_6082" model="ir.ui.view">
@@ -134,11 +115,9 @@
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_202')])]" name="groups_id"/>
     <field name="inherit_id" ref="stock.view_stock_product_tree"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="type" position="after">
-          <button type="object" name="view_stock_detail" string="View Stock Detail" attrs="{'invisible':[('type', 'not in', ['product', 'consu'])]}" icon="fa-search-plus"/>
-        </field>
-      </data>
+      <field name="type" position="after">
+        <button type="object" name="view_stock_detail" string="View Stock Detail" attrs="{'invisible':[('type', 'not in', ['product', 'consu'])]}" icon="fa-search-plus"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7872" model="ir.ui.view">
@@ -146,30 +125,28 @@
     <field name="model">product.product</field>
     <field name="inherit_id" ref="product.product_search_form_view"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='product_attribute_template_id']" position="replace"/>
-        <!-- <xpath expr="//field[@name='main_seller_id']" position="replace"/> -->
-        <xpath expr="//field[@name='warehouse_id']" position="replace"/>
-        <xpath expr="//field[@name='pricelist_id']" position="replace"/>
-        <xpath expr="//field[@name='product_tmpl_id']" position="replace"/>
-        <xpath expr="//field[@name='seller_ids']" position="replace"/>
-        <xpath expr="//field[@name='product_brand_id']" position="attributes">
-          <attribute name="string">Marca</attribute>
-        </xpath>
-        <xpath expr="//field[@name='product_brand_id']" position="after">
-          <field name="main_seller_id" string="Proveedor principal"/>
-        </xpath>
-        <xpath expr="//filter[@name='groupby_brand']" position="attributes">
-          <attribute name="string">Marca</attribute>
-        </xpath>
-        <xpath expr="//filter[@name='consumable']" position="after">
-          <filter domain="[[&quot;website_style_ids&quot;,&quot;ilike&quot;,&quot;outlet&quot;]]" name="studio_filter_OhW1f" string="OUTLET (HASD)"/>
-          <filter domain="[[&quot;website_style_ids&quot;,&quot;ilike&quot;,&quot;oferta&quot;]]" name="studio_filter_FNQt8" string="OFERTA (HAS)"/>
-        </xpath>
-        <field name="categ_id" position="before">
-          <filter string="Busqueda vacia" name="empty_search" domain="[('id', '=', -1)]"/>
-        </field>
-      </data>
+      <xpath expr="//field[@name='product_attribute_template_id']" position="replace"/>
+      <!-- <xpath expr="//field[@name='main_seller_id']" position="replace"/> -->
+      <xpath expr="//field[@name='warehouse_id']" position="replace"/>
+      <xpath expr="//field[@name='pricelist_id']" position="replace"/>
+      <xpath expr="//field[@name='product_tmpl_id']" position="replace"/>
+      <xpath expr="//field[@name='seller_ids']" position="replace"/>
+      <xpath expr="//field[@name='product_brand_id']" position="attributes">
+        <attribute name="string">Marca</attribute>
+      </xpath>
+      <xpath expr="//field[@name='product_brand_id']" position="after">
+        <field name="main_seller_id" string="Proveedor principal"/>
+      </xpath>
+      <xpath expr="//filter[@name='groupby_brand']" position="attributes">
+        <attribute name="string">Marca</attribute>
+      </xpath>
+      <xpath expr="//filter[@name='consumable']" position="after">
+        <filter domain="[[&quot;website_style_ids&quot;,&quot;ilike&quot;,&quot;outlet&quot;]]" name="studio_filter_OhW1f" string="OUTLET (HASD)"/>
+        <filter domain="[[&quot;website_style_ids&quot;,&quot;ilike&quot;,&quot;oferta&quot;]]" name="studio_filter_FNQt8" string="OFERTA (HAS)"/>
+      </xpath>
+      <field name="categ_id" position="before">
+        <filter string="Busqueda vacia" name="empty_search" domain="[('id', '=', -1)]"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7922" model="ir.ui.view">
@@ -178,19 +155,17 @@
     <field eval="[(6, 0, [ref('portal_sale_distributor.group_portal_distributor')])]" name="groups_id"/>
     <field name="inherit_id" ref="personalizations_boggio.ir_ui_view_4621"/>
     <field name="arch" type="xml">
-      <data>
-        <!-- 6076 -->
-        <button name="%(stock.act_product_stock_move_open)d" position="replace"/>
-        <button name="%(stock.product_open_quants)d" position="replace"/>
-        <!-- 6077 -->
-        <tree position="attributes">
-          <attribute name="decoration-danger">immediately_usable_qty&lt;0</attribute>
-          <attribute name="decoration-info">immediately_usable_qty&gt;=0</attribute>
-        </tree>
-        <field name="immediately_usable_qty" position="attributes">
-          <attribute name="invisible">1</attribute>
-        </field>
-      </data>
+      <!-- 6076 -->
+      <button name="%(stock.act_product_stock_move_open)d" position="replace"/>
+      <button name="%(stock.product_open_quants)d" position="replace"/>
+      <!-- 6077 -->
+      <tree position="attributes">
+        <attribute name="decoration-danger">immediately_usable_qty&lt;0</attribute>
+        <attribute name="decoration-info">immediately_usable_qty&gt;=0</attribute>
+      </tree>
+      <field name="immediately_usable_qty" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7941" model="ir.ui.view">
@@ -198,29 +173,21 @@
     <field name="model">product.product</field>
     <field name="inherit_id" ref="product.product_normal_form_view"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="product_tmpl_id" position="replace"/>
-        <field name="product_brand_id" position="after">
-          <field name="product_tmpl_id" class="oe_inline" readonly="1" invisible="0" attrs="{'required': [('id', '!=', False)]}"/>
-        </field>
-      </data>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_7982" model="ir.ui.view">
-    <field name="name">Odoo Studio: product.product.form customization</field>
-    <field name="model">product.product</field>
-    <field name="inherit_id" ref="product.product_normal_form_view"/>
-    <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='standard_price_ids']" position="attributes">
-          <attribute name="attrs">{}</attribute>
-          <attribute name="invisible">1</attribute>
-        </xpath>
-        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='general_information']/group[1]/group[@name='group_standard_price']/field[@name='replenishment_cost']" position="attributes">
-          <attribute name="attrs">{}</attribute>
-          <attribute name="invisible">1</attribute>
-        </xpath>
-      </data>
+      <xpath expr="//div[@name=&quot;standard_price_uom&quot;]" position="after">
+        <field name="replenishment_cost"/>
+      </xpath>
+      <field name="product_tmpl_id" position="replace"/>
+      <field name="product_brand_id" position="after">
+        <field name="product_tmpl_id" class="oe_inline" readonly="1" invisible="0" attrs="{'required': [('id', '!=', False)]}"/>
+      </field>
+      <xpath expr="//field[@name='standard_price_ids']" position="attributes">
+        <attribute name="attrs">{}</attribute>
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='general_information']/group[1]/group[@name='group_standard_price']/field[@name='replenishment_cost']" position="attributes">
+        <attribute name="attrs">{}</attribute>
+        <attribute name="invisible">1</attribute>
+      </xpath>
     </field>
   </record>
 </odoo>

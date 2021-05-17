@@ -5,12 +5,10 @@
     <field name="model">stock.move.line</field>
     <field name="inherit_id" ref="stock_ux.view_move_line_tree"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="origin" position="after">
-          <field name="x_supplier_code"/>
-          <field name="x_internal_code"/>
-        </field>
-      </data>
+      <field name="origin" position="after">
+        <field name="x_supplier_code"/>
+        <field name="x_internal_code"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7660" model="ir.ui.view">
@@ -18,15 +16,13 @@
     <field name="model">stock.move.line</field>
     <field name="inherit_id" ref="stock.view_move_line_tree"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='reference']" position="after">
-          <field name="origin"/>
-        </xpath>
-        <xpath expr="//field[@name='product_uom_id']" position="after">
-          <field name="create_uid"/>
-          <field name="picking_create_user_id"/>
-        </xpath>
-      </data>
+      <xpath expr="//field[@name='reference']" position="after">
+        <field name="origin"/>
+      </xpath>
+      <xpath expr="//field[@name='product_uom_id']" position="after">
+        <field name="create_uid"/>
+        <field name="picking_create_user_id"/>
+      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7880" model="ir.ui.view">
@@ -34,16 +30,14 @@
     <field name="model">stock.move.line</field>
     <field name="inherit_id" ref="stock.stock_move_line_view_search"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//search[1]/field[@name='product_id']" position="replace"/>
-        <xpath expr="//field[@name='picking_id']" position="before">
-          <field name="product_id"/>
-          <field name="x_supplier_code"/>
-        </xpath>
-        <xpath expr="//field[@name='product_id'][not(ancestor::field)]" position="before">
-          <field name="product_barcode"/>
-        </xpath>
-      </data>
+      <xpath expr="//search[1]/field[@name='product_id']" position="replace"/>
+      <xpath expr="//field[@name='picking_id']" position="before">
+        <field name="product_id"/>
+        <field name="x_supplier_code"/>
+      </xpath>
+      <xpath expr="//field[@name='product_id'][not(ancestor::field)]" position="before">
+        <field name="product_barcode"/>
+      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_8150" model="ir.ui.view">

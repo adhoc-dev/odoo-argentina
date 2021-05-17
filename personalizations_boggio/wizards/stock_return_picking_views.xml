@@ -5,14 +5,12 @@
     <field name="model">stock.return.picking</field>
     <field name="inherit_id" ref="stock.view_stock_return_picking_form"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="reason" position="attributes">
-          <attribute name="required">1</attribute>
-        </field>
-        <field name="location_id" position="attributes">
-          <attribute name="readonly">1</attribute>
-        </field>
-      </data>
+      <field name="reason" position="attributes">
+        <attribute name="required">1</attribute>
+      </field>
+      <field name="location_id" position="attributes">
+        <attribute name="readonly">1</attribute>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7965" model="ir.ui.view">

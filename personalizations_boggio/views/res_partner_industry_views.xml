@@ -5,14 +5,12 @@
     <field name="model">res.partner.industry</field>
     <field name="inherit_id" ref="base.res_partner_industry_view_tree"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//tree[1]/field[@name='name']" position="before">
-          <field name="display_name"/>
-        </xpath>
-        <xpath expr="//field[@name='active']" position="after">
-          <field name="x_objetivos"/>
-        </xpath>
-      </data>
+      <xpath expr="//tree[1]/field[@name='name']" position="before">
+        <field name="display_name"/>
+      </xpath>
+      <xpath expr="//field[@name='active']" position="after">
+        <field name="x_objetivos"/>
+      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_8076" model="ir.ui.view">
@@ -20,11 +18,9 @@
     <field name="model">res.partner.industry</field>
     <field name="inherit_id" ref="base.res_partner_industry_view_form"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='active']" position="after">
-          <field name="x_objetivos"/>
-        </xpath>
-      </data>
+      <xpath expr="//field[@name='active']" position="after">
+        <field name="x_objetivos"/>
+      </xpath>
     </field>
   </record>
 </odoo>

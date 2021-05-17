@@ -32,11 +32,9 @@
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_164')])]" name="groups_id"/>
     <field name="inherit_id" ref="base.view_currency_form"/>
     <field name="arch" type="xml">
-      <data>
         <button name="%(base.act_view_currency_rates)d" position="replace"/>
         <button name="action_get_pyafipws_currency_rate" position="replace"/>
         <button name="action_get_pyafipws_currencies" position="replace"/>
-      </data>
     </field>
   </record>
 </odoo>

@@ -5,11 +5,9 @@
     <field name="model">ir.actions.server</field>
     <field name="inherit_id" ref="base.view_server_action_search"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='state']" position="after">
-          <field name="id"/>
-        </xpath>
-      </data>
+      <xpath expr="//field[@name='state']" position="after">
+        <field name="id"/>
+      </xpath>
     </field>
   </record>
 </odoo>

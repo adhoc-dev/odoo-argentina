@@ -16,14 +16,12 @@
     <field name="model">purchase.order.line</field>
     <field name="inherit_id" ref="purchase.purchase_order_line_search"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="order_id" position="after">
-          <field name="x_supplier_code"/>
-        </field>
-        <filter position="before">
-          <field name="x_location_id" widget="selection" context="{'location': self}"/>
-        </filter>
-      </data>
+      <field name="order_id" position="after">
+        <field name="x_supplier_code"/>
+      </field>
+      <filter position="before">
+        <field name="x_location_id" widget="selection" context="{'location': self}"/>
+      </filter>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5016" model="ir.ui.view">
@@ -31,13 +29,11 @@
     <field name="model">purchase.order.line</field>
     <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="order_id" position="after">
-          <field name="create_uid"/>
-          <field name="date_order"/>
-          <field name="x_product_brand_id"/>
-        </field>
-      </data>
+      <field name="order_id" position="after">
+        <field name="create_uid"/>
+        <field name="date_order"/>
+        <field name="x_product_brand_id"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5017" model="ir.ui.view">
@@ -45,11 +41,9 @@
     <field name="model">purchase.order.line</field>
     <field name="inherit_id" ref="purchase.purchase_order_line_search"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="partner_id" position="after">
-          <filter string="Mis Comprobantes" domain="[('create_uid','=',uid)]"/>
-        </field>
-      </data>
+      <field name="partner_id" position="after">
+        <filter string="Mis Comprobantes" domain="[('create_uid','=',uid)]"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5019" model="ir.ui.view">
@@ -57,11 +51,9 @@
     <field name="model">purchase.order.line</field>
     <field name="inherit_id" ref="purchase_ux.purchase_order_line_tree"/>
     <field name="arch" type="xml">
-      <data>
-        <field name="order_id" position="after">
-          <field name="x_supplier_code"/>
-        </field>
-      </data>
+      <field name="order_id" position="after">
+        <field name="x_supplier_code"/>
+      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5773" model="ir.ui.view">
@@ -80,11 +72,9 @@
     <field name="inherit_id" ref="purchase.purchase_order_line_search"/>
     <field name="priority" eval="199"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='x_supplier_code']" position="after">
-          <field name="x_product_brand_id"/>
-        </xpath>
-      </data>
+      <xpath expr="//field[@name='x_supplier_code']" position="after">
+        <field name="x_product_brand_id"/>
+      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_8031" model="ir.ui.view">
@@ -93,11 +83,9 @@
     <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
     <field name="priority" eval="199"/>
     <field name="arch" type="xml">
-      <data>
-        <xpath expr="//field[@name='create_uid']" position="after">
-          <field name="account_analytic_id"/>
-        </xpath>
-      </data>
+      <xpath expr="//field[@name='create_uid']" position="after">
+        <field name="account_analytic_id"/>
+      </xpath>
     </field>
   </record>
 </odoo>
