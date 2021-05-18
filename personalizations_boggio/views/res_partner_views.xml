@@ -138,7 +138,7 @@
       </field>
     </field>
   </record>
-  <record id="personalizations_boggio.ir_ui_view_5825" model="ir.ui.view">
+  <!-- <record id="personalizations_boggio.ir_ui_view_5825" model="ir.ui.view">
     <field name="name">sacar deuda de cliente y proveedor x lentitud iboggio</field>
     <field name="model">res.partner</field>
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_191')])]" name="groups_id"/>
@@ -147,7 +147,7 @@
         <page name="customer_debt" position="replace"/>
         <page name="supplier_debt" position="replace"/>
     </field>
-  </record>
+  </record> -->
   <record id="personalizations_boggio.ir_ui_view_5829" model="ir.ui.view">
     <field name="name">cambio de condicion de venta con nosis iboggio</field>
     <field name="model">res.partner</field>
@@ -160,7 +160,7 @@
         </field>
     </field>
   </record>
-  <record id="personalizations_boggio.ir_ui_view_7666" model="ir.ui.view">
+  <!-- <record id="personalizations_boggio.ir_ui_view_7666" model="ir.ui.view">
     <field name="name">cambiar lugar del boton de deuda iboggio</field>
     <field name="model">res.partner</field>
     <field name="priority" eval="99"/>
@@ -179,7 +179,7 @@
           </button>
         </button>
     </field>
-  </record>
+  </record> -->
   <record id="personalizations_boggio.ir_ui_view_7806" model="ir.ui.view">
     <field name="name">Odoo Studio: res.partner.form customization</field>
     <field name="model">res.partner</field>

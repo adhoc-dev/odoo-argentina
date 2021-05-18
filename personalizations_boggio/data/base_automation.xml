@@ -6,7 +6,7 @@
     <field name="model_id" ref="hr_holidays.model_hr_holidays"/>
     <field name="state">email</field>
     <field name="crud_model_id" ref="hr_holidays.model_hr_holidays"/>
-    <field name="filter_domain">[[u'state', u'in', [u'confirm', u'validate1']]]</field>
+    <field name="filter_domain">[['state', 'in', ['confirm', 'validate1']]]</field>
     <field name="trigger">on_create</field>
   </record>
   <record id="personalizations_boggio.base_automation_13" model="base.automation">
@@ -24,8 +24,8 @@
     <field name="model_id" ref="mrp.model_mrp_production"/>
     <field name="state">email</field>
     <field name="crud_model_id" ref="mrp.model_mrp_production"/>
-    <field name="filter_domain">[[u'state', u'=', u'done']]</field>
-    <field name="filter_pre_domain">[[u'state', u'!=', u'done']]</field>
+    <field name="filter_domain">[['state', '=', 'done']]</field>
+    <field name="filter_pre_domain">[['state', '!=', 'done']]</field>
     <field name="trigger">on_write</field>
   </record>
   <record id="personalizations_boggio.base_automation_18" model="base.automation">
@@ -40,7 +40,7 @@ object = record
 rec = env[object.res_model].browse(obj.res_id)
 # si el partner es un empleado (tiene usuario y no son portal), entonces dejamos seguir sin restricción
 # usuarios portal o sin usuario (potenialmente con usuarios portal), exigimos que sean del mismo commercial partner
-if env.user.id != 1 and object.res_model in ['account.invoice', 'sale.order'] and not object.partner_id.user_ids.filtered(lambda x: not x.share) and object.partner_id.commercial_partner_id != rec.partner_id.commercial_partner_id:
+if env.user.id != 1 and object.res_model in ['account.move', 'sale.order'] and not object.partner_id.user_ids.filtered(lambda x: not x.share) and object.partner_id.commercial_partner_id != rec.partner_id.commercial_partner_id:
     raise Warning('No puede agregar como seguidor a un usuario no empleado (%s) que no este vinculado a la empresa del documento (%s)' % (object.partner_id.name, rec.partner_id.commercial_partner_id.name))</field>
     <field name="trigger">on_create</field>
   </record>
@@ -89,7 +89,7 @@ if (object.state=='draft'):
     <field name="state">email</field>
     <field name="binding_model_id" ref="account.model_account_move"/>
     <field name="crud_model_id" ref="account.model_account_move"/>
-    <field name="filter_domain">[[u'sale_type_id.invoice_policy', u'=', u'prepaid'], [u'state', u'=', u'paid']]</field>
+    <field name="filter_domain">[['sale_type_id.invoice_policy', '=', 'prepaid'], ['state', '=', 'paid']]</field>
     <field name="filter_pre_domain">[['sale_type_id.invoice_policy', '=', 'prepaid'],['state', '=', 'open']]</field>
     <field name="on_change_fields">state</field>
     <field name="trigger">on_write</field>
@@ -146,7 +146,7 @@ if len(object.opportunity_id)==0:
     <field name="state">email</field>
     <field name="binding_model_id" ref="crm.model_crm_lead"/>
     <field name="crud_model_id" ref="crm.model_crm_lead"/>
-    <field name="filter_domain">[[u'stage_id', u'not ilike', u'perdi']]</field>
+    <field name="filter_domain">[['stage_id', 'not ilike', 'perdi']]</field>
     <field name="trg_date_id" ref="crm.field_crm_lead_activity_date_deadline"/>
     <field name="trg_date_range">7</field>
     <field name="trg_date_range_type">day</field>
@@ -158,7 +158,7 @@ if len(object.opportunity_id)==0:
     <field name="model_id" ref="crm.model_crm_lead"/>
     <field name="state">email</field>
     <field name="crud_model_id" ref="crm.model_crm_lead"/>
-    <field name="filter_domain">[[u'medium_id', u'ilike', u'web']]</field>
+    <field name="filter_domain">[['medium_id', 'ilike', 'web']]</field>
     <field name="trigger">on_create</field>
   </record>
   <record id="personalizations_boggio.base_automation_38" model="base.automation">
@@ -263,7 +263,7 @@ for rec in records:
   </record>
   <record id="personalizations_boggio.base_automation_47" model="base.automation">
     <field name="name">Sincronizar productos algolia</field>
-    <field name="model_id" ref="account.model_product_product"/>
+    <field name="model_id" ref="product.model_product_product"/>
     <field name="state">code</field>
     <field name="code"># Available variables:
 #  - env: Odoo Environment on which the action is triggered
@@ -282,7 +282,7 @@ env['ir.model'].search([('model', '=', 'product.product')]).sudo().algolia_index
   </record>
   <record id="personalizations_boggio.base_automation_48" model="base.automation">
     <field name="name">Sincronizar modificaciones product.product a algolia</field>
-    <field name="model_id" ref="account.model_product_product"/>
+    <field name="model_id" ref="product.model_product_product"/>
     <field name="state">code</field>
     <field name="code"># Available variables:
 #  - env: Odoo Environment on which the action is triggered

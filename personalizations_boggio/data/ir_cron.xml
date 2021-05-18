@@ -118,7 +118,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
 if day_of_week&gt;0 and day_of_week&lt;6 : 
 #solo funciona los dias de semana
   template = env['mail.template'].browse(146)
-  template.send_mail(env['account.invoice'].search([['user_id.id','=',47]], limit=1).id, force_send=True, raise_exception=False)
+  template.send_mail(env['account.move'].search([['user_id.id','=',47]], limit=1).id, force_send=True, raise_exception=False)
 
 
 
@@ -148,7 +148,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
  template = env['mail.template'].browse(146)
- template.send_mail(env['account.invoice'].search([['user_id.id','=',100]], limit=1).id, force_send=True, raise_exception=False)
+ template.send_mail(env['account.move'].search([['user_id.id','=',100]], limit=1).id, force_send=True, raise_exception=False)
 
 
 
@@ -178,7 +178,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
     <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 if day_of_week&gt;0 and day_of_week&lt;6 : 
  template = env['mail.template'].browse(146)
- template.send_mail(env['account.invoice'].search([['user_id.id','=',464]], limit=1).id, force_send=True, raise_exception=False)
+ template.send_mail(env['account.move'].search([['user_id.id','=',464]], limit=1).id, force_send=True, raise_exception=False)
 
 
 
@@ -209,7 +209,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
 if day_of_week&gt;0 and day_of_week&lt;6 : 
 #solo funciona los dias de semana
   template = env['mail.template'].browse(146)
-  template.send_mail(env['account.invoice'].search([['user_id.id','=',44]], limit=1).id, force_send=True, raise_exception=False)
+  template.send_mail(env['account.move'].search([['user_id.id','=',44]], limit=1).id, force_send=True, raise_exception=False)
 
 
 
@@ -533,7 +533,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   </record>
   <record id="personalizations_boggio.ir_cron_187" model="ir.cron">
     <field name="name">Actualizar googleMerchant</field>
-    <field name="model_id" ref="account.model_product_product"/>
+    <field name="model_id" ref="product.model_product_product"/>
     <field name="state">code</field>
     <field name="code">template = env['mail.template'].browse(148)
 template.send_mail(env['product.product'].search([], limit=1).id, force_send=True, raise_exception=False)

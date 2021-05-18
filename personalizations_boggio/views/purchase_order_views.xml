@@ -1,24 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <record id="personalizations_boggio.ir_ui_view_4884" model="ir.ui.view">
-    <field name="name">ver sucursal de destino en orden de compra iboggio</field>
-    <field name="model">purchase.order</field>
-    <field name="inherit_id" ref="purchase.purchase_order_tree"/>
-    <field name="arch" type="xml">
-      <field name="origin" position="replace"/>
-      <field name="date_planned" position="after">
-        <field name="picking_type_id"/>
-        <field name="create_uid"/>
-        <field name="x_monto_USD"/>
-        <field name="currency_id" invisible="1"/>
-      </field>
-    </field>
-  </record>
   <record id="personalizations_boggio.ir_ui_view_4897" model="ir.ui.view">
     <field name="name">agregar marca en compras iboggio</field>
     <field name="model">purchase.order</field>
     <field name="inherit_id" ref="purchase.purchase_order_form"/>
     <field name="arch" type="xml">
+      <field name="date_order" position="after">
+        <field name="x_carrier_id"/>
+      </field>
       <field name="date_order" position="attributes">
         <attribute name="readonly">1</attribute>
       </field>
@@ -73,16 +62,6 @@
       </xpath>
     </field>
   </record>
-  <record id="personalizations_boggio.ir_ui_view_5930" model="ir.ui.view">
-    <field name="name">transporte en ordenes de compra iboggio</field>
-    <field name="model">purchase.order</field>
-    <field name="inherit_id" ref="purchase.purchase_order_form"/>
-    <field name="arch" type="xml">
-      <field name="date_order" position="after">
-        <field name="x_carrier_id"/>
-      </field>
-    </field>
-  </record>
   <record id="personalizations_boggio.ir_ui_view_7721" model="ir.ui.view">
     <field name="name">filtro compras atrasadas (2meses)</field>
     <field name="model">purchase.order</field>
@@ -91,13 +70,6 @@
       <filter name="received" position="after">
         <filter name="OC_atrasadas" string="Controlar con proveedor" domain="[('date_order', '&lt;=', (context_today()-relativedelta(days=45)).strftime('%Y-%m-%d')), ('delivery_status','=', 'to receive')]"/>
       </filter>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_7785" model="ir.ui.view">
-    <field name="name">Odoo Studio: request.quotation.select customization</field>
-    <field name="model">purchase.order</field>
-    <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
-    <field name="arch" type="xml">
       <xpath expr="//field[@name='store_id']" position="after">
         <field name="partner_ref"/>
       </xpath>
@@ -140,6 +112,13 @@
     <field name="inherit_id" ref="purchase.purchase_order_tree"/>
     <field name="priority" eval="199"/>
     <field name="arch" type="xml">
+      <field name="origin" position="replace"/>
+      <field name="date_planned" position="after">
+        <field name="picking_type_id"/>
+        <field name="create_uid"/>
+        <field name="x_monto_USD"/>
+        <field name="currency_id" invisible="1"/>
+      </field>
       <xpath expr="//field[@name='picking_type_id']" position="after">
         <field name="partner_ref"/>
       </xpath>

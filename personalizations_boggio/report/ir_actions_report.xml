@@ -417,10 +417,10 @@
   </record>
   <record id="personalizations_boggio.ir_act_report_xml_1636" model="ir.actions.report">
     <field name="name">Etiqueta producto (multiples) (batch)</field>
-    <field name="model">stock.batch.picking</field>
+    <field name="model">stock.picking.batch</field>
     <field name="report_name">etiquetaProductos_multiples_batch</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="stock_batch_picking.model_stock_batch_picking"/>
+    <field name="binding_model_id" ref="stock_picking_batch.model_stock_picking_batch"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/etiquetaProductos_multiples_batch.odt</field>
@@ -479,10 +479,10 @@
   </record>
   <record id="personalizations_boggio.ir_act_report_xml_1792" model="ir.actions.report">
     <field name="name">Recepciones - Pendientes Batch2 (multiples)</field>
-    <field name="model">stock.batch.picking</field>
+    <field name="model">stock.picking.batch</field>
     <field name="report_name">aeroo_stock_batch_picking2</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="stock_batch_picking.model_stock_batch_picking"/>
+    <field name="binding_model_id" ref="stock_picking_batch.model_stock_picking_batch"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/aeroo_stock_batch_picking2.odt</field>

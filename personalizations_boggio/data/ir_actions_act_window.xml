@@ -467,7 +467,7 @@
   </record>
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2317">
     <field name="name">Atributos iboggio</field>
-    <field name="res_model">product.attribute.line</field>
+    <field name="res_model">product.template.attribute.line</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2334">
     <field name="name">Enviar mail (Accion a mejorar)</field>

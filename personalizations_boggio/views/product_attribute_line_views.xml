@@ -2,7 +2,7 @@
 <odoo>
   <record id="personalizations_boggio.ir_ui_view_7902" model="ir.ui.view">
     <field name="name">listado de productos atributos y valores iboggio</field>
-    <field name="model">product.attribute.line</field>
+    <field name="model">product.template.attribute.line</field>
     <field name="arch" type="xml">
       <tree string="Account Journal">
         <field name="create_date"/>
@@ -16,7 +16,7 @@
   </record>
   <record id="personalizations_boggio.ir_ui_view_7930" model="ir.ui.view">
     <field name="name">busqueda por producto Iboggio</field>
-    <field name="model">product.attribute.line</field>
+    <field name="model">product.template.attribute.line</field>
     <field name="arch" type="xml">
       <search string="atributos">
         <field name="product_tmpl_id"/>
