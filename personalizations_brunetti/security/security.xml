@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="show_partner_id_incoming" model="res.groups">
+        <field name="name">Mostrar recibir de</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+</odoo>
