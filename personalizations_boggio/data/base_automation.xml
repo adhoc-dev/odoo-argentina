@@ -56,32 +56,6 @@ if env.user.id != 1 and object.res_model in ['account.move', 'sale.order'] and n
     <field name="trg_date_range_type">minutes</field>
     <field name="trigger">on_time</field>
   </record>
-  <record id="personalizations_boggio.base_automation_23" model="base.automation">
-    <field name="name">Actualizar auxiliar de busquedas y monto_USD sale.order registro actual</field>
-    <field eval="False" name="sequence"/>
-    <field name="model_id" ref="delivery.model_sale_order"/>
-    <field name="state">code</field>
-    <field name="crud_model_id" ref="delivery.model_sale_order"/>
-    <field name="code">object = record
-
-if (object.state=='draft'):
-
-    object.write({'x_monto_USD':  object.amount_total*object.currency_id.inverse_rate/object.currency_id.browse(3).inverse_rate})
- 
-
-#.#   object.write({'x_auxiliar_busquedas': (object.partner_id.internal_code and object.partner_id.internal_code or '')+ (object.partner_id.internal_code != object.commercial_partner_id.internal_code and (" / " +  object.commercial_partner_id.internal_code) or '')+ " "+ (object.partner_id.ref and object.partner_id.ref or ''),
-
-# Available locals:['partner_id', '=',50660]
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the record on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}</field>
-    <field name="trigger">on_write</field>
-  </record>
   <record id="personalizations_boggio.base_automation_26" model="base.automation">
     <field name="name">Pago antes de la entrega-accion server</field>
     <field name="sequence">1</field>

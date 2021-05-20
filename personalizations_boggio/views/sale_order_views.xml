@@ -3,9 +3,12 @@
   <record id="personalizations_boggio.ir_ui_view_4424" model="ir.ui.view">
     <field name="name">Boggio Personalization sale.order.form</field>
     <field name="model">sale.order</field>
+    <field name="priority">199</field>
     <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
-      <!-- <separator string="Dates" position="replace"/> -->
+      <button name="add_products_to_quotation" position="attributes">
+        <attribute name="context">{'disable_location_filter': 1, 'search_default_empty_search': 1}</attribute>
+      </button>
       <field name="date_order" position="replace"/>
       <field name="validity_days" position="replace"/>
       <field name="validity_date" position="replace"/>
@@ -63,6 +66,33 @@
         <field name="discount" groups="sale.group_discount_per_so_line" force_save="1"/>
         <field name="product_uom"/>
       </xpath>
+      <button name="action_confirm" position="after">
+        <button type="action" name="%(personalizations_boggio.ir_act_server_2551)d" string="Info CC y DV"/>
+      </button>
+      <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='sequence']" position="attributes">
+        <attribute name="widget">integer</attribute>
+      </xpath>
+      <xpath expr="//field[@name='note']" position="attributes">
+        <attribute name="attrs">{"readonly": [["state","in",["done","cancel"]]]}</attribute>
+      </xpath>
+      <xpath expr="//field[@name='user_id']" position="attributes">
+        <attribute name="studio-view-group-ids">10</attribute>
+      </xpath>
+      <field name="payment_term_id" position="after">
+        <field name="x_info_cc"/>
+      </field>
+      <field name="date_order" position="attributes">
+          <attribute name="invisible">1</attribute>
+      </field>
+      <xpath expr="//field[@name='order_line']//tree" position="inside">
+        <field name="x_active" invisible="1"/>
+      </xpath>
+      <xpath expr="//field[@name='order_line']//form" position="inside">
+        <field name="x_active" invisible="1"/>
+      </xpath>
+      <tree decoration-info="(not display_type and invoice_status == 'to invoice')" position="attributes">
+        <attribute name="decoration-danger">(not display_type and x_active==False)</attribute>
+      </tree>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_4426" model="ir.ui.view">
@@ -96,12 +126,19 @@
   <record id="personalizations_boggio.ir_ui_view_4900" model="ir.ui.view">
     <field name="name">mis ventas iboggio</field>
     <field name="model">sale.order</field>
+    <field name="priority">199</field>
     <field eval="[(6, 0, [ref('base.group_user')])]" name="groups_id"/>
     <field name="inherit_id" ref="sale.view_sales_order_filter"/>
     <field name="arch" type="xml">
       <filter name="my_sale_orders_filter" position="after">
         <filter string="Mis Comprobantes" domain="[('create_uid','=',uid)]" name="my_sale_orders_filter2"/>
       </filter>
+      <search>
+        <field name="name" position="replace"/>
+        <field name="partner_id" position="before">
+          <field name="name"/>
+        </field>
+      </search>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5091" model="ir.ui.view">
@@ -173,16 +210,6 @@
       </xpath>
     </field>
   </record>
-  <record id="personalizations_boggio.ir_ui_view_5584" model="ir.ui.view">
-    <field name="name">fecha orden invisible</field>
-    <field name="model">sale.order</field>
-    <field name="inherit_id" ref="sale.view_order_form"/>
-    <field name="arch" type="xml">
-      <field name="date_order" position="attributes">
-        <attribute name="invisible">1</attribute>
-      </field>
-    </field>
-  </record>
   <record id="personalizations_boggio.ir_ui_view_5615" model="ir.ui.view">
     <field name="name">fecha de orden visible</field>
     <field name="model">sale.order</field>
@@ -192,36 +219,6 @@
       <field name="date_order" position="attributes">
         <attribute name="invisible">0</attribute>
       </field>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_5693" model="ir.ui.view">
-    <field name="name">Modificacion boggio alerta productos archivados</field>
-    <field name="model">sale.order</field>
-    <field name="inherit_id" ref="sale.view_order_form"/>
-    <field name="arch" type="xml">
-      <xpath expr="//field[@name='order_line']//tree" position="inside">
-        <field name="x_active" invisible="1"/>
-      </xpath>
-      <xpath expr="//field[@name='order_line']//form" position="inside">
-        <field name="x_active" invisible="1"/>
-      </xpath>
-      <tree decoration-info="(not display_type and invoice_status == 'to invoice')" position="attributes">
-        <attribute name="decoration-danger">(not display_type and x_active==False)</attribute>
-      </tree>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_5772" model="ir.ui.view">
-    <field name="name">filtro provisorio de busqueda de pedido</field>
-    <field name="model">sale.order</field>
-    <field eval="[(6, 0, [ref('base.group_user')])]" name="groups_id"/>
-    <field name="inherit_id" ref="sale.view_sales_order_filter"/>
-    <field name="arch" type="xml">
-      <search>
-        <field name="name" position="replace"/>
-        <field name="partner_id" position="before">
-          <field name="name"/>
-        </field>
-      </search>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5866" model="ir.ui.view">
@@ -238,8 +235,9 @@
   <record id="personalizations_boggio.ir_ui_view_5867" model="ir.ui.view">
     <field name="name">tipo de venta solo modificable en presupuestos iboggio</field>
     <field name="model">sale.order</field>
+    <field name="priority">199</field>
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_192')])]" name="groups_id"/>
-    <field name="inherit_id" ref="sale_order_type.sot_view_order_form"/>
+    <field name="inherit_id" ref="sale.sot_view_order_form"/>
     <field name="arch" type="xml">
       <field name="type_id" position="attributes">
         <attribute name="attrs">{'readonly':[('state','in',('sale','done','cancel'))]}</attribute>
@@ -249,8 +247,9 @@
   <record id="personalizations_boggio.ir_ui_view_5913" model="ir.ui.view">
     <field name="name">filtro de tipos de venta activos iboggio</field>
     <field name="model">sale.order</field>
+    <field name="priority">199</field>
     <field eval="[(6, 0, [ref('base.group_user')])]" name="groups_id"/>
-    <field name="inherit_id" ref="sale_order_type.sot_view_order_form"/>
+    <field name="inherit_id" ref="sale.sot_view_order_form"/>
     <field name="arch" type="xml">
       <field name="type_id" position="replace"/>
       <field name="currency_id" position="after">
@@ -291,33 +290,11 @@
       </field> -->
     </field>
   </record>
-  <record id="personalizations_boggio.ir_ui_view_7796" model="ir.ui.view">
-    <field name="name">Odoo Studio: sale.order.form customization</field>
-    <field name="model">sale.order</field>
-    <field name="inherit_id" ref="sale.view_order_form"/>
-    <field name="arch" type="xml">
-      <button name="action_confirm" position="after">
-        <button type="action" name="%(personalizations_boggio.ir_act_server_2551)d" string="Info CC y DV"/>
-      </button>
-      <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='sequence']" position="attributes">
-        <attribute name="widget">integer</attribute>
-      </xpath>
-      <xpath expr="//field[@name='note']" position="attributes">
-        <attribute name="attrs">{"readonly": [["state","in",["done","cancel"]]]}</attribute>
-      </xpath>
-      <xpath expr="//field[@name='user_id']" position="attributes">
-        <attribute name="studio-view-group-ids">10</attribute>
-      </xpath>
-      <field name="payment_term_id" position="after">
-        <field name="x_info_cc"/>
-      </field>
-    </field>
-  </record>
   <record id="personalizations_boggio.ir_ui_view_7798" model="ir.ui.view">
     <field name="name">poner impuesto invisible</field>
     <field name="model">sale.order</field>
     <field eval="[(6, 0, [ref('price_security.group_restrict_prices')])]" name="groups_id"/>
-    <field name="inherit_id" ref="price_security.view_price_security_order_form"/>
+    <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
       <!-- make tax invisible on tree -->
       <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id_readonly']" position="attributes">
@@ -345,6 +322,9 @@
     <field name="model">sale.order</field>
     <field name="inherit_id" ref="sale.sale_order_view_search_inherit_sale"/>
     <field name="arch" type="xml">
+      <field name="name" position="after">
+        <field name="id"/>
+      </field>
       <filter name="sales" position="after">
         <separator/>
         <filter name="Para entregar COVID-19" domain="[('x_studio_field_iNiHu','=',True)]"/>
@@ -356,47 +336,21 @@
     <field name="model">sale.order</field>
     <field name="inherit_id" ref="sale.view_order_tree"/>
     <field name="arch" type="xml">
+      <!-- ordernar por secuencia de website -->
+      <tree position="attributes">
+        <attribute name="default_order">date_order desc</attribute>
+      </tree>
       <field name="amount_total" position="before">
         <field name="amount_untaxed"/>
       </field>
     </field>
   </record>
-  <record id="personalizations_boggio.ir_ui_view_8085" model="ir.ui.view">
-    <field name="name">orden de la vista iboggio</field>
-    <field name="model">sale.order</field>
-    <field name="inherit_id" ref="sale.view_order_tree"/>
-    <field name="arch" type="xml">
-      <!-- ordernar por secuencia de website -->
-      <tree position="attributes">
-        <attribute name="default_order">date_order desc</attribute>
-      </tree>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_8130" model="ir.ui.view">
-    <field name="name">filtrar por id</field>
-    <field name="model">sale.order</field>
-    <field name="inherit_id" ref="sale.sale_order_view_search_inherit_sale"/>
-    <field name="arch" type="xml">
-      <field name="name" position="after">
-        <field name="id"/>
-      </field>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_8152" model="ir.ui.view">
-    <field name="name">personalizar add_products_to_quotation</field>
-    <field name="model">sale.order</field>
-    <field name="inherit_id" ref="sale_quotation_products.sale_order_form_view"/>
-    <field name="arch" type="xml">
-      <button name="add_products_to_quotation" position="attributes">
-        <attribute name="context">{'disable_location_filter': 1, 'search_default_empty_search': 1}</attribute>
-      </button>
-    </field>
-  </record>
   <record id="personalizations_boggio.ir_ui_view_8154" model="ir.ui.view">
     <field name="name">sacar descuentos de portal distribuidor iboggio</field>
     <field name="model">sale.order</field>
+    <field name="priority">199</field>
     <field eval="[(6, 0, [ref('portal_sale_distributor.group_portal_distributor')])]" name="groups_id"/>
-    <field name="inherit_id" ref="portal_sale_distributor.view_order_form"/>
+    <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
       <xpath expr="//field[@name='order_line']/tree//field[@name='discount1']" position="attributes">
         <attribute name="invisible">1</attribute>
@@ -415,6 +369,7 @@
   <record id="personalizations_boggio.ir_ui_view_8155" model="ir.ui.view">
     <field name="name">sacar precio portal distrbuidor iboggio</field>
     <field name="model">sale.order</field>
+    <field name="priority">199</field>
     <field eval="[(6, 0, [ref('portal_sale_distributor.group_portal_distributor')])]" name="groups_id"/>
     <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
@@ -429,6 +384,7 @@
   <record id="personalizations_boggio.ir_ui_view_8163" model="ir.ui.view">
     <field name="name">editar comercial</field>
     <field name="model">sale.order</field>
+    <field name="priority">199</field>
     <field eval="[(6, 0, [ref('sales_team.group_sale_manager')])]" name="groups_id"/>
     <field name="inherit_id" ref="personalizations_boggio.ir_ui_view_7796"/>
     <field name="arch" type="xml">

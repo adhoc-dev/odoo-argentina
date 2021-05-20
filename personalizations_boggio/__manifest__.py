@@ -5,6 +5,7 @@
     'author': 'ADHOC SA',
     'depends': [
         'account_analytic_default',
+        'base_currency_inverse_rate',
         'account_check',
         'account_invoice_control',
         'account_multicompany_ux',
