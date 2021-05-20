@@ -32,7 +32,7 @@ action = object.product_id.view_stock_detail()]]></field>
 #  - log : log(message), function to log debug information in logging table
 #  - Warning: Warning Exception to use with raise
 # To return an action, assign: action = {...}
-action = product.action_open_quants()
+action = record.product_id.action_open_quants()
 action_read = action.read()[0]
 action = action_read]]></field>
   </record>
@@ -52,7 +52,7 @@ action = action_read]]></field>
 #  - Warning: Warning Exception to use with raise
 # To return an action, assign: action = {...}
 
-action = product.action_open_quants()
+action = record.product_id.action_open_quants()
 action_read = action.read()[0]
 action = action_read]]></field>
   </record>
@@ -191,7 +191,7 @@ if active_model != 'stock.move':
 record = env[active_model].browse(active_id)
 
 
-action = product.action_open_quants()
+action = record.product_id.action_open_quants()
 action_read = action.read()[0]
 action = action_read
 
@@ -230,7 +230,7 @@ action = object.product_id.view_stock_detail()]]></field>
 #  - Warning: Warning Exception to use with raise
 # To return an action, assign: action = {...}
 
-action = product.action_open_quants()
+action = record.product_id.action_open_quants()
 action_read = action.read()[0]
 action = action_read]]></field>
   </record>
@@ -294,7 +294,7 @@ action = object.product_id.view_stock_detail()]]></field>
 #  - Warning: Warning Exception to use with raise
 # To return an action, assign: action = {...}
 
-action = product.action_open_quants()
+action = record.product_id.action_open_quants()
 action_read = action.read()[0]
 action = action_read]]></field>
   </record>
@@ -341,7 +341,7 @@ action = action_read]]></field>
 #  - Warning: Warning Exception to use with raise
 # To return an action, assign: action = {...}
 
-action = product.action_open_quants()
+action = record.product_id.action_open_quants()
 action_read = action.read()[0]
 action = action_read]]></field>
   </record>

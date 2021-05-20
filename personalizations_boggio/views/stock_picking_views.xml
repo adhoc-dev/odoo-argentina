@@ -119,10 +119,6 @@
         <field name="x_plazo_pago"/>
         <field name="x_studio_field_T8yfU"/>
       </xpath>
-      <!-- <xpath expr="//page/field[@name='move_line_ids_without_package']//tree//field[@name='product_id']" position="after">
-        <field name="x_product_brand_id"/>
-        <field name="x_supplier_code"/>
-      </xpath> -->
       <!-- <xpath expr="//page/field[@name='move_line_ids_without_package']//tree" position="after">
         <form string="Stock Moves" create="0" edit="0">
           <header>

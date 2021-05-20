@@ -50,19 +50,9 @@
         <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1257)d" icon="fa-building-o" type="action"/>
         <field name="price_reduce" string="Discounted Unit Price"/>
       </xpath>
-      <!-- <xpath expr="//field[@name='order_line']//tree//field[@name='virtual_available']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath> -->
       <xpath expr="//field[@name='order_line']//tree//field[@name='discount']" position="replace"/>
-      <!--  <xpath expr="//field[@name='order_line']//tree//field[@name='discount']" position="attributes"/> 
-                    <attribute name="invisible">1</attribute>
-                </xpath> -->
-      <!-- <xpath expr="//field[@name='order_line']//tree//field[@name='product_uom']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath> -->
       <xpath expr="//field[@name='order_line']//tree//field[@name='product_uom']" position="replace"/>
       <xpath expr="//field[@name='order_line']//tree//field[@name='price_subtotal']" position="after">
-        <!-- <field name="virtual_available" groups="sale_stock_availability.see_stock_value" attrs="{'invisible':[('state','!=','draft')]}"/> -->
         <field name="discount" groups="sale.group_discount_per_so_line" force_save="1"/>
         <field name="product_uom"/>
       </xpath>
