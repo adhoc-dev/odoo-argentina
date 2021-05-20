@@ -513,7 +513,7 @@
   </record>
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2426">
     <field name="name">Filas de factura</field>
-    <field name="res_model">account.invoice.line</field>
+    <field name="res_model">account.move.line</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2439">
     <field name="name">Enviar mail (Entrega de materiales)</field>

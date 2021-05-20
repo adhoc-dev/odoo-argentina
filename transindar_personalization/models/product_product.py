@@ -33,7 +33,7 @@ class ProductProduct(models.Model):
 
         return {
             'type': 'ir.actions.act_window',
-            'res_model': 'account.invoice.line.report',
+            'res_model': 'account.invoice.report',
             'view_mode': 'tree,graph',
             'view_type': 'form',
             'context': context,

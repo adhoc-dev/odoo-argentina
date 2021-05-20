@@ -3,13 +3,13 @@
   <record id="personalizations_boggio.ir_ui_view_4437" model="ir.ui.view">
     <field name="name">Boggio Personalization account.move.tree</field>
     <field name="model">account.move</field>
-    <field name="inherit_id" ref="account.invoice_tree"/>
+    <field name="inherit_id" ref="account.view_invoice_tree"/>
     <field name="arch" type="xml">
       <field name="partner_id" position="after">
         <field name="create_uid"/>
         <field name="create_date"/>
         <field name="x_so_create_uid"/>
-        <field name="origin"/>
+        <field name="invoice_origin"/>
       </field>
     </field>
   </record>
@@ -27,13 +27,13 @@
   <record id="personalizations_boggio.ir_ui_view_4922" model="ir.ui.view">
     <field name="name">sacar boton de factura rectificada iboggio</field>
     <field name="model">account.move</field>
-    <field name="inherit_id" ref="account.invoice_form"/>
+    <field name="inherit_id" ref="account.view_move_form"/>
     <field name="arch" type="xml">
       <button name="action_reverse" position="replace"/>
       <field name="product_id" position="after">
-        <field name="x_supplier_code" attrs="{'invisible': [('type', 'not in', ('out_invoice', 'in_invoice'))]}"/>
+        <field name="x_supplier_code" attrs="{'invisible': [('parent.type', 'not in', ('out_invoice', 'in_invoice'))]}"/>
       </field>
-      <field name="user_id" position="after">
+      <field name="invoice_user_id" position="after">
         <field name="x_so_create_uid" readonly="1"/>
       </field>
       <field name="invoice_payment_term_id" position="after">
@@ -45,12 +45,11 @@
       <xpath expr="//field[@name='invoice_partner_bank_id']" position="attributes">
         <attribute name="groups">account.group_account_user</attribute>
       </xpath>
-      <xpath expr="//field[@name='invoice_line_ids']" position="inside">
+      <!-- <xpath expr="//field[@name='invoice_line_ids']" position="inside">
         <form string="Invoice Line">
           <group>
             <group>
               <field name="partner_id" invisible="1" can_create="true" can_write="true" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
-              <field name="invoice_type" invisible="1" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
               <field name="lot_ids" widget="many2many_tags" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}"/>
               <field name="company_id" invisible="1" can_create="true" can_write="true" modifiers="{&quot;invisible&quot;: true, &quot;readonly&quot;: true}"/>
               <field name="product_id" context="{'partner_id': partner_id}" on_change="1" can_create="true" can_write="true" modifiers="{}"/>
@@ -68,7 +67,7 @@
               <field name="analytic_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Technical Settings / Analytic Accounting&quot;, &quot;id&quot;: 19, &quot;name&quot;: &quot;Analytic Accounting&quot;}]" modifiers="{}"/>
               <field name="purchase_id" invisible="context.get('type') in ('out_invoice', 'out_refund')" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}"/>
               <field domain="[('company_id', '=', company_id)]" name="account_id" on_change="1" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Accounting &amp; Finance / Accountant&quot;, &quot;id&quot;: 27, &quot;name&quot;: &quot;Accountant&quot;}]" modifiers="{&quot;required&quot;: true}"/>
-              <field name="invoice_line_tax_ids" context="{'type': invoice_type}" domain="[('type_tax_use','!=','none'),('company_id', '=', company_id)]" widget="many2many_tags" options="{'no_create': True}" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="tax_ids" context="{'type': parent.type}" domain="[('type_tax_use','!=','none'),('company_id', '=', company_id)]" widget="many2many_tags" options="{'no_create': True}" can_create="true" can_write="true" modifiers="{}"/>
               <field domain="[('company_id', '=', company_id)]" name="account_analytic_id" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Technical Settings / Analytic Accounting&quot;, &quot;id&quot;: 19, &quot;name&quot;: &quot;Analytic Accounting&quot;}]" modifiers="{}"/>
               <field name="company_id" readonly="1" can_create="true" can_write="true" studio_groups="[{&quot;display_name&quot;: &quot;Extra Rights / Multi Companies&quot;, &quot;id&quot;: 6, &quot;name&quot;: &quot;Multi Companies&quot;}]" modifiers="{&quot;readonly&quot;: true}"/>
             </group>
@@ -76,21 +75,21 @@
           <label for="name"/>
           <field name="name" modifiers="{&quot;required&quot;: true}"/>
         </form>
-      </xpath>
+      </xpath> -->
     </field>
   </record>
   <!-- <record id="personalizations_boggio.ir_ui_view_7720" model="ir.ui.view">
     <field name="name">Vista personalizada: agrega el grupo de empleados al boton validar</field>
     <field name="model">account.move</field>
-    <field name="inherit_id" ref="l10n_ar_afipws_fe.view_invoice_form"/>
+    <field name="inherit_id" ref="l10n_ar_afipws_fe.view_move_form"/>
     <field name="arch" type="xml">
       <xpath expr="//form[1]/header[1]/button[@name='action_post']" position="attributes">
         <attribute name="groups">base.group_user</attribute>
       </xpath>
-      <xpath expr="//form[1]/header[1]/button[@name='action_invoice_open'][2]" position="attributes">
+      <xpath expr="//form[1]/header[1]/button[@name='post'][2]" position="attributes">
         <attribute name="groups">base.group_user</attribute>
       </xpath>
-      <xpath expr="//form[1]/header[1]/button[@name='action_invoice_open'][3]" position="attributes">
+      <xpath expr="//form[1]/header[1]/button[@name='post'][3]" position="attributes">
         <attribute name="groups">base.group_user</attribute>
       </xpath>
     </field>
@@ -99,7 +98,7 @@
     <field name="name">boton de pago de facturas iboggio</field>
     <field name="model">account.move</field>
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_168')])]" name="groups_id"/>
-    <field name="inherit_id" ref="account.invoice_form"/>
+    <field name="inherit_id" ref="account.view_move_form"/>
     <field name="arch" type="xml">
       <button name="invoice_print" position="after">
         <button name="action_account_invoice_payment_group" id="account_invoice_payment_btn" type="object" states="open" string="Registrar pago" class="oe_highlight" modifiers="{'invisible':[['state','not in',['open']]]}"/>

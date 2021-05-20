@@ -10,7 +10,7 @@
         <field name="function"/>
         <field name="phone"/>
         <field name="mobile"/>
-        <field name="main_id_number"/>
+        <field name="vat"/>
       </field>
     </field>
   </record>
@@ -23,7 +23,7 @@
         <field name="function"/>
         <field name="phone"/>
         <field name="mobile"/>
-        <field name="main_id_number"/>
+        <field name="vat"/>
       </field>
     </field>
   </record>
