@@ -5,9 +5,6 @@
     <field name="model">sale.order</field>
     <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
-      <field name="requested_date" position="replace"/>
-      <field name="commitment_date" position="replace"/>
-      <field name="effective_date" position="replace"/>
       <!-- <separator string="Dates" position="replace"/> -->
       <field name="date_order" position="replace"/>
       <field name="validity_days" position="replace"/>
@@ -28,7 +25,7 @@
             <field name="commitment_date"/>
             <field name="effective_date"/>
             <field name="sale_preparetion_time"/>
-            <field name="requested_date" on_change="onchange_requested_date(requested_date, commitment_date)" string="Fecha de entrega requerida"/>
+            <field name="date_order" on_change="onchange_requested_date(date_order, commitment_date)" string="Fecha de entrega requerida"/>
             <div class="oe_title">
               <button name="update_requested_date" string="⇒ Update for preparetion time" type="object" class="oe_link"/>
             </div>
@@ -202,15 +199,15 @@
     <field name="model">sale.order</field>
     <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
-      <tree decoration-info="invoice_status=='to invoice'" position="attributes">
-        <attribute name="decoration-danger">x_active==False</attribute>
-      </tree>
-      <field name="sequence" position="after">
+      <xpath expr="//field[@name='order_line']//tree" position="inside">
         <field name="x_active" invisible="1"/>
-      </field>
+      </xpath>
       <xpath expr="//field[@name='order_line']//form" position="inside">
         <field name="x_active" invisible="1"/>
       </xpath>
+      <tree decoration-info="(not display_type and invoice_status == 'to invoice')" position="attributes">
+        <attribute name="decoration-danger">(not display_type and x_active==False)</attribute>
+      </tree>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5772" model="ir.ui.view">
@@ -299,7 +296,7 @@
     <field name="model">sale.order</field>
     <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
-      <button name="action_done" position="after">
+      <button name="action_confirm" position="after">
         <button type="action" name="%(personalizations_boggio.ir_act_server_2551)d" string="Info CC y DV"/>
       </button>
       <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='sequence']" position="attributes">
@@ -339,7 +336,7 @@
     <field name="arch" type="xml">
       <xpath expr="//calendar[1]" position="attributes">
         <attribute name="color">create_uid</attribute>
-        <attribute name="date_start">requested_date</attribute>
+        <attribute name="date_start">date_order</attribute>
       </xpath>
     </field>
   </record>

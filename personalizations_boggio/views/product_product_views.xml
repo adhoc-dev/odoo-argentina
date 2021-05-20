@@ -5,7 +5,7 @@
     <field name="model">product.product</field>
     <field name="inherit_id" ref="stock.product_form_view_procurement_button"/>
     <field name="arch" type="xml">
-      <button name="%(stock.action_view_change_product_quantity)d" position="replace"/>
+      <button name="action_update_quantity_on_hand" position="replace"/>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_4457" model="ir.ui.view">
@@ -31,13 +31,11 @@
         <attribute name="default_order">website_sequence desc</attribute>
       </tree>
       <!--replaces-->
-      <field name="immediately_usable_qty" position="replace"/>
       <field name="lst_price" position="replace"/>
       <field name="qty_available" position="replace"/>
       <field name="virtual_available" position="replace"/>
       <field name="default_code" position="replace"/>
       <field name="product_brand_id" position="replace"/>
-      <field name="attribute_value_ids" position="replace"/>
       <field name="price" position="replace"/>
       <field name="taxed_lst_price" position="replace"/>
       <field name="barcode" position="replace"/>
@@ -53,19 +51,19 @@
         <!--<field name="attribute_value_ids" widget="many2many_tags" groups="product.group_product_variant"/> -->
         <field name="x_marca"/>
         <field name="default_code"/>
-        <field name="immediately_usable_qty" string="Disponible"/>
+        <field name="free_qty" string="Disponible"/>
         <field name="currency_id" invisible="1"/>
         <field name="price" string="Precio S/LISTA" widget="monetary"/>
         <button string="Traceability" type="action" name="%(stock.act_product_stock_move_open)d" attrs="{'invisible':[('type', 'not in', ['product', 'consu'])]}" icon="fa-arrows-v" groups="stock.group_stock_user" context="{'search_default_future': 1,'search_default_picking_type': 1}"/>
-        <button string="On Hand" name="%(stock.product_open_quants)d" icon="fa-building-o" type="action" attrs="{'invisible':[('type', '!=', 'product')]}"/>
+        <button string="On Hand" name="action_open_quants" icon="fa-building-o" type="object" attrs="{'invisible':[('type', '!=', 'product')]}"/>
         <field name="type" invisible="1"/>
         <!--borrar si se saca lo anterior 8_agosto_2020
       <field name="virtual_available" invisible="1"/> 
       -->
       </field>
       <tree position="attributes">
-        <attribute name="decoration-danger">immediately_usable_qty&lt;0</attribute>
-        <attribute name="decoration-info">immediately_usable_qty&gt;=0</attribute>
+        <attribute name="decoration-danger">free_qty&lt;0</attribute>
+        <attribute name="decoration-info">free_qty&gt;=0</attribute>
       </tree>
     </field>
   </record>
@@ -92,7 +90,7 @@
     <field name="model">product.product</field>
     <field name="inherit_id" ref="sale.product_form_view_sale_order_button"/>
     <field name="arch" type="xml">
-      <button name="%(sale.action_product_sale_list)d" position="before">
+      <button name="action_view_sales" position="before">
         <button type="action" name="%(personalizations_boggio.ir_act_server_1740)d" class="oe_stat_button" icon="fa-search-plus" string="Resumen Movimiento"/>
       </button>
     </field>
@@ -157,15 +155,12 @@
     <field name="arch" type="xml">
       <!-- 6076 -->
       <button name="%(stock.act_product_stock_move_open)d" position="replace"/>
-      <button name="%(stock.product_open_quants)d" position="replace"/>
+      <button name="action_open_quants" position="replace"/>
       <!-- 6077 -->
       <tree position="attributes">
-        <attribute name="decoration-danger">immediately_usable_qty&lt;0</attribute>
-        <attribute name="decoration-info">immediately_usable_qty&gt;=0</attribute>
+        <attribute name="decoration-danger">free_qty&lt;0</attribute>
+        <attribute name="decoration-info">free_qty&gt;=0</attribute>
       </tree>
-      <field name="immediately_usable_qty" position="attributes">
-        <attribute name="invisible">1</attribute>
-      </field>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7941" model="ir.ui.view">

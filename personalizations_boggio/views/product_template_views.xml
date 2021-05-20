@@ -47,7 +47,7 @@
     <field name="model">product.template</field>
     <field name="inherit_id" ref="stock.product_template_form_view_procurement_button"/>
     <field name="arch" type="xml">
-      <button name="%(stock.action_view_change_product_quantity)d" position="replace"/>
+      <button name="action_update_quantity_on_hand" position="replace"/>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_4458" model="ir.ui.view">
@@ -173,7 +173,7 @@
     <field name="inherit_id" ref="product_replenishment_cost.product_template_form_view"/>
     <field name="arch" type="xml">
       <div name="replenishment_base_cost" position="inside">
-        <label string=" / "/>
+        <label for="replenishment_base_cost_on_currency" string=" / "/>
         <field name="replenishment_base_cost_on_currency" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id'}"/>
       </div>
       <field name="replenishment_cost" position="before">
@@ -274,7 +274,7 @@
   <record id="personalizations_boggio.ir_ui_view_7645" model="ir.ui.view">
     <field name="name">Odoo Studio: product.template.search customization</field>
     <field name="model">product.template</field>
-    <field name="inherit_id" ref="product.product_template_search_view"/>
+    <field name="inherit_id" ref="stock.product_template_search_form_view_stock"/>
     <field name="arch" type="xml">
       <xpath expr="//field[@name='sellers_product_code']" position="after">
         <field name="barcode"/>

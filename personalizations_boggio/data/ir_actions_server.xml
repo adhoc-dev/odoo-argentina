@@ -32,9 +32,8 @@ action = object.product_id.view_stock_detail()]]></field>
 #  - log : log(message), function to log debug information in logging table
 #  - Warning: Warning Exception to use with raise
 # To return an action, assign: action = {...}
-action = env.ref('stock.product_open_quants')
+action = product.action_open_quants()
 action_read = action.read()[0]
-action_read['domain'] = [('product_id', '=', object.product_id.id)]
 action = action_read]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1257" model="ir.actions.server">
@@ -53,9 +52,8 @@ action = action_read]]></field>
 #  - Warning: Warning Exception to use with raise
 # To return an action, assign: action = {...}
 
-action = env.ref('stock.product_open_quants')
+action = product.action_open_quants()
 action_read = action.read()[0]
-action_read['domain'] = [('product_id', '=', object.product_id.id)]
 action = action_read]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1300" model="ir.actions.server">
@@ -193,9 +191,8 @@ if active_model != 'stock.move':
 record = env[active_model].browse(active_id)
 
 
-action = env.ref('stock.product_open_quants')
+action = product.action_open_quants()
 action_read = action.read()[0]
-action_read['domain'] = [('product_id', '=', record.product_id.id)]
 action = action_read
 
 ]]></field>
@@ -233,9 +230,8 @@ action = object.product_id.view_stock_detail()]]></field>
 #  - Warning: Warning Exception to use with raise
 # To return an action, assign: action = {...}
 
-action = env.ref('stock.product_open_quants')
+action = product.action_open_quants()
 action_read = action.read()[0]
-action_read['domain'] = [('product_id', '=', object.product_id.id)]
 action = action_read]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1748" model="ir.actions.server">
@@ -298,9 +294,8 @@ action = object.product_id.view_stock_detail()]]></field>
 #  - Warning: Warning Exception to use with raise
 # To return an action, assign: action = {...}
 
-action = env.ref('stock.product_open_quants')
+action = product.action_open_quants()
 action_read = action.read()[0]
-action_read['domain'] = [('product_id', '=', object.product_id.id)]
 action = action_read]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1751" model="ir.actions.server">
@@ -346,9 +341,8 @@ action = action_read]]></field>
 #  - Warning: Warning Exception to use with raise
 # To return an action, assign: action = {...}
 
-action = env.ref('stock.product_open_quants')
+action = product.action_open_quants()
 action_read = action.read()[0]
-action_read['domain'] = [('product_id', '=', object.product_id.id)]
 action = action_read]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1776" model="ir.actions.server">

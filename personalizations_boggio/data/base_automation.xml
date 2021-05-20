@@ -3,9 +3,9 @@
   <record id="personalizations_boggio.base_automation_12" model="base.automation">
     <field name="name">Envio de email por vacaciones</field>
     <field eval="False" name="sequence"/>
-    <field name="model_id" ref="hr_holidays.model_hr_holidays"/>
+    <field name="model_id" ref="hr_holidays.model_hr_leave"/>
     <field name="state">email</field>
-    <field name="crud_model_id" ref="hr_holidays.model_hr_holidays"/>
+    <field name="crud_model_id" ref="hr_holidays.model_hr_leave"/>
     <field name="filter_domain">[['state', 'in', ['confirm', 'validate1']]]</field>
     <field name="trigger">on_create</field>
   </record>
@@ -51,7 +51,7 @@ if env.user.id != 1 and object.res_model in ['account.move', 'sale.order'] and n
     <field name="state">email</field>
     <field name="crud_model_id" ref="delivery.model_sale_order"/>
     <field name="filter_domain">[['create_uid', '=', 1], ['partner_id', '!=', 4], ['amount_total', '&gt;', 0]]</field>
-    <field name="trg_date_id" ref="sale.field_sale_order_create_date"/>
+    <field name="trg_date_id" ref="sale.field_sale_order__create_date"/>
     <field name="trg_date_range">5</field>
     <field name="trg_date_range_type">minutes</field>
     <field name="trigger">on_time</field>
@@ -134,7 +134,7 @@ if len(object.opportunity_id)==0:
 #  - Warning: Warning Exception to use with raise
 # To return an action, assign: action = {...}</field>
     <field name="filter_domain">["&amp;","&amp;","&amp;","&amp;",["opportunity_id","=",False],["state","in",["draft","sent"]],["tag_ids","not ilike","sin seguimiento"],["date_order","&gt;=","2021-01-01 11:41:47"],"|",["tag_ids","ilike","si o si"],["x_monto_USD","&gt;=",2000]]</field>
-    <field name="trg_date_id" ref="sale.field_sale_order_create_date"/>
+    <field name="trg_date_id" ref="sale.field_sale_order__create_date"/>
     <field name="trg_date_range">1</field>
     <field name="trg_date_range_type">day</field>
     <field name="trigger">on_time</field>
@@ -147,7 +147,7 @@ if len(object.opportunity_id)==0:
     <field name="binding_model_id" ref="crm.model_crm_lead"/>
     <field name="crud_model_id" ref="crm.model_crm_lead"/>
     <field name="filter_domain">[['stage_id', 'not ilike', 'perdi']]</field>
-    <field name="trg_date_id" ref="crm.field_crm_lead_activity_date_deadline"/>
+    <field name="trg_date_id" ref="crm.field_crm_lead__activity_date_deadline"/>
     <field name="trg_date_range">7</field>
     <field name="trg_date_range_type">day</field>
     <field name="trigger">on_time</field>
@@ -168,7 +168,7 @@ if len(object.opportunity_id)==0:
     <field name="state">email</field>
     <field name="crud_model_id" ref="stock.model_stock_picking"/>
     <field name="filter_domain">["&amp;","&amp;","&amp;",["state","=","done"],["date_done","&gt;","2021-02-02 11:44:45"],"|",["partner_id.x_no_recibe_remito","=",False],["partner_id.parent_id.x_no_recibe_remito","=",False],["picking_type_id","in",[7,22,21,12,17]]]</field>
-    <field name="trg_date_id" ref="stock.field_stock_picking_date_done"/>
+    <field name="trg_date_id" ref="stock.field_stock_picking__date_done"/>
     <field name="trg_date_range">4</field>
     <field name="trg_date_range_type">day</field>
     <field name="trigger">on_time</field>
@@ -180,7 +180,7 @@ if len(object.opportunity_id)==0:
     <field name="state">email</field>
     <field name="crud_model_id" ref="delivery.model_sale_order"/>
     <field name="filter_domain">["&amp;","&amp;","&amp;","&amp;","&amp;",["opportunity_id","=",False],["state","in",["draft","sent"]],["tag_ids","not ilike","sin seguimiento"],["date_order","&gt;=","2021-01-01 11:40:33"],["create_uid.id","in",[59,"52"]],"|",["tag_ids","ilike","si o si"],["x_monto_USD","&gt;=",500]]</field>
-    <field name="trg_date_id" ref="sale.field_sale_order_create_date"/>
+    <field name="trg_date_id" ref="sale.field_sale_order__create_date"/>
     <field name="trg_date_range">7</field>
     <field name="trg_date_range_type">day</field>
     <field name="trigger">on_time</field>
@@ -233,7 +233,7 @@ for rec in records:
     <field name="state">email</field>
     <field name="crud_model_id" ref="delivery.model_sale_order"/>
     <field name="filter_domain">[["team_id.id","=",9]]</field>
-    <field name="trg_date_id" ref="sale.field_sale_order_create_date"/>
+    <field name="trg_date_id" ref="sale.field_sale_order__create_date"/>
     <field name="trg_date_range">5</field>
     <field name="trg_date_range_type">minutes</field>
     <field name="trigger">on_time</field>

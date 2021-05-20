@@ -494,7 +494,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
    
 
   #datas = records
-  datas = env['res.partner'].sudo().with_context(force_company=1).search([['customer','=',True],['supplier','=',False],['active','=',True]]).filtered(lambda r1: r1.credit_overdue&gt;5000 and r1.debt_balance&gt;5000 and r1.message_ids[0].date&lt; time.strftime("%Y-%m-%d", time.gmtime(time.time( )-30*24*60*60 )) )
+  datas = env['res.partner'].sudo().with_context(force_company=1, res_partner_search_mode='customer').search([['active','=',True]]).filtered(lambda r1: r1.credit_overdue&gt;5000 and r1.debt_balance&gt;5000 and r1.message_ids[0].date&lt; time.strftime("%Y-%m-%d", time.gmtime(time.time( )-30*24*60*60 )) )
   datas = datas[0:50]
   count=0;
   for partner_id in datas:

@@ -13,6 +13,18 @@
         <field name="write_uid"/>
         <field name="picking_type_id"/>
       </field>
+      <field name="origin" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </field>
+      <field name="state" position="after">
+        <field name="x_user_id"/>
+      </field>
+      <field name="name" position="after">
+        <field name="origin"/>
+      </field>
+      <tree position="attributes">
+        <attribute name="default_order">create_date desc</attribute>
+      </tree>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_4896" model="ir.ui.view">

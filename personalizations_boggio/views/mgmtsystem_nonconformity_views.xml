@@ -99,7 +99,7 @@
     <field name="model">mgmtsystem.nonconformity</field>
     <field name="inherit_id" ref="mgmtsystem_nonconformity.view_mgmtsystem_nonconformity_form"/>
     <field name="arch" type="xml">
-      <xpath expr="//form[1]/sheet[1]/notebook[1]/page[not(@name)][2]" position="attributes">
+      <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='causes_analysis']" position="attributes">
         <attribute name="string">Análisis de causas</attribute>
       </xpath>
       <xpath expr="//field[@name='cause_ids']" position="attributes">

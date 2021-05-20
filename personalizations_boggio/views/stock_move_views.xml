@@ -67,7 +67,7 @@
         <xpath expr="//field[@name='origin']" position="after">
           <field name="group_id"/>
         </xpath>
-        <xpath expr="//field[@name='date']" position="attributes">
+        <xpath expr="//filter[@name='today']" position="attributes">
           <attribute name="string">Fecha de transferencia</attribute>
         </xpath>
     </field>

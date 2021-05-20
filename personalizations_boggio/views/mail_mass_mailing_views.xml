@@ -5,9 +5,9 @@
     <field name="model">mailing.contact</field>
     <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_tree"/>
     <field name="arch" type="xml">
-      <xpath expr="//tree[1]/field[@name='name']" position="after">
+      <field name="sent" position="after">
         <field name="sent_date"/>
-      </xpath>
+      </field>
     </field>
   </record>
 </odoo>

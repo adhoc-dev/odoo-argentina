@@ -18,7 +18,7 @@
       <field name="salesman_id" position="replace"/>
       <field name="product_uom" position="replace"/>
       <field name="qty_delivered" position="after">
-        <field name="qty_returned" string="Cant Devuelta"/>
+        <field name="quantity_returned" string="Cant Devuelta"/>
       </field>
     </field>
   </record>
@@ -29,13 +29,13 @@
     <field name="inherit_id" ref="sale.view_sales_order_line_filter"/>
     <field name="arch" type="xml">
       <field name="order_id" position="after">
-        <filter string="Mis Comprobantes" domain="[('create_uid','=',uid)]" help="Pedidos de mi vendedor"/>
+        <filter name="create_uid" string="Mis Comprobantes" domain="[('create_uid','=',uid)]" help="Pedidos de mi vendedor"/>
         <separator/>
         <filter string="Presupuestos" name="draft" domain="[('state','in',('draft','sent'))]" help="Sales Order that haven't yet been confirmed"/>
         <filter string="Notas de venta" name="sales" domain="[('state','in',('sale','done'))]"/>
         <separator/>
-        <filter string="A facturar" domain="[('invoice_status','=','to invoice')]"/>
-        <filter string="Facturado" domain="[('invoice_status','=','upselling')]"/>
+        <filter string="A facturar" name="invoice_status" domain="[('invoice_status','=','to invoice')]"/>
+        <filter string="Facturado" name="invoice_status" domain="[('invoice_status','=','upselling')]"/>
         <separator/>
         <filter string="Ubica Rosario" name="location" domain="[('x_location_id','=',21)]" context="{'location': 'ROS/Stock'}"/>
         <filter string="Ubica Santa Fe" name="location SFE" domain="[('x_location_id','=',27)]" context="{'location': 'SFE/Stock'}"/>
@@ -67,7 +67,7 @@
       <field name="purchase_price" position="replace"/>
       <field name="margin" position="replace"/>
       <field name="qty_delivered" position="after">
-        <field name="qty_returned" string="Returned Quantity"/>
+        <field name="quantity_returned" string="Returned Quantity"/>
         <field name="purchase_price" invisible="1"/>
         <field name="margin" invisible="1"/>
       </field>

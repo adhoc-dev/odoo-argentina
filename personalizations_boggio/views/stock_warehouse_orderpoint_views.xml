@@ -3,6 +3,7 @@
   <record id="personalizations_boggio.ir_ui_view_5118" model="ir.ui.view">
     <field name="name">ver rotacion en stock minimo iboggio</field>
     <field name="model">stock.warehouse.orderpoint</field>
+    <field name="priority" eval="199"/>
     <field name="inherit_id" ref="stock.view_warehouse_orderpoint_tree"/>
     <field name="arch" type="xml">
       <field name="product_min_qty" position="after">
@@ -15,6 +16,18 @@
         <field name="x_virtual_available"/>
         <field name="x_abc_sales_combined"/>
       </field>
+       <field name="product_id" position="after">
+        <field name="x_brand"/>
+        <field name="x_seller_id"/>
+        <field name="x_supplier_code"/>
+      </field>
+      <field name="location_id" position="replace"/>
+      <field name="product_uom" position="replace"/>
+       <xpath expr="//field[@name='lead_type']" position="after">
+        <field name="x_color_stock"/>
+        <field name="x_estrategia"/>
+        <button type="action" name="%(personalizations_boggio.ir_act_server_2414)d" string="View Stock Detail" icon="fa-search-plus"/>
+      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5277" model="ir.ui.view">
@@ -34,34 +47,6 @@
         <filter string="Ubica IND" name="location IND" domain="[('location_id','=',38)]" context="{'location': 'ROS/Stock/Industrial'}"/>
         <filter string="No Publicado Web" name="website_published" domain="[('website_published','=',False)]"/>
       </search>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_5372" model="ir.ui.view">
-    <field name="name">agregar proveedor y codigo de proveedor iboggio</field>
-    <field name="model">stock.warehouse.orderpoint</field>
-    <field name="inherit_id" ref="stock.view_warehouse_orderpoint_tree"/>
-    <field name="arch" type="xml">
-      <field name="product_id" position="after">
-        <field name="x_brand"/>
-        <field name="x_seller_id"/>
-        <field name="x_supplier_code"/>
-      </field>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_5471" model="ir.ui.view">
-    <field name="name">Quitar ubicacion y unidad de medida</field>
-    <field name="model">stock.warehouse.orderpoint</field>
-    <field name="inherit_id" ref="stock.view_warehouse_orderpoint_tree"/>
-    <field name="arch" type="xml">
-      <field name="location_id" position="replace"/>
-      <field name="product_uom" position="replace"/>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_7734" model="ir.ui.view">
-    <field name="name">Odoo Studio: stock.warehouse.orderpoint.search customization</field>
-    <field name="model">stock.warehouse.orderpoint</field>
-    <field name="inherit_id" ref="stock.warehouse_orderpoint_search"/>
-    <field name="arch" type="xml">
       <xpath expr="//search[1]/field[@name='name']" position="before">
         <field name="x_brand"/>
       </xpath>
@@ -87,13 +72,13 @@
         <field name="x_rotacion_warehouse"/>
         <button type="action" name="%(personalizations_boggio.ir_act_server_2414)d" string="View Stock Detail" icon="fa-search-plus"/>
       </xpath>
-      <xpath expr="//form[1]/sheet[1]/group[2]/group[2]/label[1]" position="before">
+      <!-- <xpath expr="//form[1]/sheet[1]/group[2]/group[2]/label[1]" position="before">
         <field name="x_origen_compra"/>
         <field name="x_frec_compra"/>
         <field name="x_stddev_lead_days"/>
         <field name="x_date_act"/>
-      </xpath>
-      <xpath expr="//form[1]/sheet[1]/group[2]" position="after">
+      </xpath> -->
+      <xpath expr="//form[1]/sheet[1]/group/group[1]" position="after">
         <notebook name="studio_notebook_re5dQ">
           <page name="studio_page_re5dQ" string="DDMRP">
             <group name="studio_group_re5dQ">
@@ -111,19 +96,6 @@
             </group>
           </page>
         </notebook>
-      </xpath>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_7842" model="ir.ui.view">
-    <field name="name">Odoo Studio: stock.warehouse.orderpoint.tree customization</field>
-    <field name="model">stock.warehouse.orderpoint</field>
-    <field name="inherit_id" ref="stock.view_warehouse_orderpoint_tree"/>
-    <field name="priority" eval="199"/>
-    <field name="arch" type="xml">
-      <xpath expr="//field[@name='lead_type']" position="after">
-        <field name="x_color_stock"/>
-        <field name="x_estrategia"/>
-        <button type="action" name="%(personalizations_boggio.ir_act_server_2414)d" string="View Stock Detail" icon="fa-search-plus"/>
       </xpath>
     </field>
   </record>
