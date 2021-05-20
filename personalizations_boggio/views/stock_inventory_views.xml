@@ -11,17 +11,12 @@
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_6063" model="ir.ui.view">
-    <field name="name">botones en inventario</field>
+    <field name="name">Documento origen</field>
     <field name="model">stock.inventory</field>
     <field name="inherit_id" ref="stock.view_inventory_form"/>
     <field name="arch" type="xml">
         <field name="accounting_date" position="after">
           <field name="x_origen"/>
-        </field>
-        <field name="product_uom_id" position="after">
-          <button string="Traceability" name="%(personalizations_boggio.ir_act_server_1751)d" icon="fa-arrows-v" type="action"/>
-          <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1750)d" icon="fa-building-o" type="action"/>
-          <button type="action" name="%(personalizations_boggio.ir_act_server_1749)d" class="oe_stat_button" icon="fa-search-plus" string="Resumen Movimiento"/>
         </field>
     </field>
   </record>
@@ -31,10 +26,22 @@
     <field eval="[(6, 0, [ref('sales_team.group_sale_manager')])]" name="groups_id"/>
     <field name="inherit_id" ref="stock.view_inventory_form"/>
     <field name="arch" type="xml">
-      <button name="action_done" position="replace"/>
+      <button name="action_validate" position="replace"/>
       <button name="action_cancel_draft" position="before">
-        <button name="action_done" states="confirm" string="Validar_Inventario" type="object" class="oe_highlight"/>
+        <button name="action_validate" states="confirm" string="Validar_Inventario" type="object" class="oe_highlight"/>
       </button>
+    </field>
+  </record>
+  <record id="personalizations_boggio.stock_inventory_line_tree2" model="ir.ui.view">
+    <field name="name">botones en inventario</field>
+    <field name="model">stock.inventory.line</field>
+    <field name="inherit_id" ref="stock.stock_inventory_line_tree2"/>
+    <field name="arch" type="xml">
+        <field name="product_uom_id" position="after">
+          <button string="Traceability" name="%(personalizations_boggio.ir_act_server_1751)d" icon="fa-arrows-v" type="action"/>
+          <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1750)d" icon="fa-building-o" type="action"/>
+          <button type="action" name="%(personalizations_boggio.ir_act_server_1749)d" class="oe_stat_button" icon="fa-search-plus" string="Resumen Movimiento"/>
+        </field>
     </field>
   </record>
 </odoo>

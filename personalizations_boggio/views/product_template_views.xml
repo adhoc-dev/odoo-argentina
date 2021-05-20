@@ -63,7 +63,7 @@
       </form>
     </field>
   </record>
-  <record id="personalizations_boggio.ir_ui_view_4510" model="ir.ui.view">
+  <!-- <record id="personalizations_boggio.ir_ui_view_4510" model="ir.ui.view">
     <field name="name">boton de analisis de ventas en productos visible iboggio </field>
     <field name="model">product.template</field>
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_144')])]" name="groups_id"/>
@@ -74,7 +74,7 @@
         <button class="oe_stat_button" string="Invoices Line Report" name="action_invoice_analysis" type="object" icon="fa-bar-chart-o"/>
       </xpath>
     </field>
-  </record>
+  </record> -->
   <record id="personalizations_boggio.ir_ui_view_4864" model="ir.ui.view">
     <field name="name">ver mas datos de productos para ABM JP iboggio</field>
     <field name="model">product.template</field>
@@ -295,18 +295,18 @@
     <field name="priority" eval="199"/>
     <field name="inherit_id" ref="product.product_template_only_form_view"/>
     <field name="arch" type="xml">
-      <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='notes']/group[not(@name)][1]/group[3]" position="replace">
+      <!-- <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='notes']/group[not(@name)][1]/group[3]" position="replace">
         <field name="quote_description"/>
-      </xpath>
+      </xpath> -->
       <!-- <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='purchase']/group[@name='costing']/group[@name='replenishment_cost']/div[@name='replenishment_base_cost']/label[2]" position="replace"/> -->
       <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='purchase']/group[@name='costing']/group[@name='replenishment_cost']/div[@name='replenishment_base_cost']/field[@name='replenishment_base_cost_on_currency']" position="replace"/>
       <xpath expr="//field[@name='standard_price']" position="attributes">
         <attribute name="attrs">{"readonly": [["valuation","=","real_time"]]}</attribute>
       </xpath>
-      <xpath expr="//field[@name='standard_price_ids']" position="attributes">
+      <!-- <xpath expr="//field[@name='standard_price_ids']" position="attributes">
         <attribute name="attrs">{}</attribute>
         <attribute name="invisible">1</attribute>
-      </xpath>
+      </xpath> -->
       <xpath expr="//field[@name='abc_sales_combined']" position="after">
         <field name="website_sequence"/>
         <field name="sequence"/>
@@ -338,9 +338,9 @@
         <attribute name="force_save">True</attribute>
         <attribute name="readonly">1</attribute>
       </xpath>
-      <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='inventory']/group[@name='inventory']/group[@name='putaway']/field[@name='product_putaway_ids']/tree[1]/field[@name='sequence']" position="attributes">
+      <!-- <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='inventory']/group[@name='inventory']/group[@name='putaway']/field[@name='product_putaway_ids']/tree[1]/field[@name='sequence']" position="attributes">
         <attribute name="widget"/>
-      </xpath>
+      </xpath> -->
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7819" model="ir.ui.view">

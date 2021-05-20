@@ -10,7 +10,6 @@
           <field name="description"/>
         </page>
       </xpath>
-    </data>
-  </field>
-</record>
+    </field>
+  </record>
 </odoo>

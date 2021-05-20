@@ -1,32 +1,31 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
   <record id="personalizations_boggio.ir_ui_view_7911" model="ir.ui.view">
-    <field name="name">Default search view for product.attribute.value</field>
-    <field name="model">product.attribute.value</field>
+    <field name="name">Default search view for product.template.attribute.value</field>
+    <field name="model">product.template.attribute.value</field>
     <field name="arch" type="xml">
-      <search string="product.attribute.value">
+      <search string="product.template.attribute.value">
         <field name="name" modifiers="{&quot;required&quot;: true}"/>
       </search>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7912" model="ir.ui.view">
-    <field name="name">Odoo Studio: Default search view for product.attribute.value customization</field>
-    <field name="model">product.attribute.value</field>
+    <field name="name">Odoo Studio: Default search view for product.template.attribute.value customization</field>
+    <field name="model">product.template.attribute.value</field>
     <field name="inherit_id" ref="personalizations_boggio.ir_ui_view_7911"/>
     <field name="arch" type="xml">
       <xpath expr="//search[1]/field[@name='name']" position="after">
-        <field name="smart_search"/>
         <field name="attribute_id"/>
       </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7940" model="ir.ui.view">
-    <field name="name">Odoo Studio: product.attribute.value.tree customization</field>
-    <field name="model">product.attribute.value</field>
-    <field name="inherit_id" ref="product.variants_tree_view"/>
+    <field name="name">Odoo Studio: product.template.attribute.value.tree customization</field>
+    <field name="model">product.template.attribute.value</field>
+    <field name="inherit_id" ref="product.product_template_attribute_value_view_tree"/>
     <field name="arch" type="xml">
       <xpath expr="//tree[1]/field[@name='name']" position="after">
-        <field name="product_ids"/>
+        <field name="ptav_product_variant_ids"/>
       </xpath>
     </field>
   </record>

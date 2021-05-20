@@ -24,10 +24,6 @@
     <field name="name">Marcas</field>
     <field name="res_model">product.brand</field>
   </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1164">
-    <field name="name">Estrategia de entrada</field>
-    <field name="res_model">product.putaway</field>
-  </record>
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_1218">
     <field name="name">Replenishment cost rule</field>
     <field name="res_model">product.replenishment_cost.rule</field>
@@ -442,14 +438,6 @@
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2284">
     <field name="name">Ubicacion iboggio</field>
     <field name="res_model">stock.location</field>
-  </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2285">
-    <field name="name">Estrategia de entrada iboggio</field>
-    <field name="res_model">product.putaway</field>
-  </record>
-  <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2291">
-    <field name="name">Putway lista2 iboggio</field>
-    <field name="res_model">stock.product.putaway.strategy</field>
   </record>
   <record model="ir.actions.act_window" id="personalizations_boggio.ir_act_window_2307">
     <field name="name">mis.report.instance.result.view.action.1</field>

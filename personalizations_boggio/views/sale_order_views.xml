@@ -276,7 +276,7 @@
       <button name="%(personalizations_boggio.ir_act_server_1257)d" position="replace"/>
       <xpath expr="//tree//field[@name='analytic_tag_ids']" position="replace"/>
       <xpath expr="//tree//field[@name='tax_id']" position="replace"/>
-      <xpath expr="//tree//field[@name='virtual_available']" position="replace"/>
+      <!-- <xpath expr="//tree//field[@name='virtual_available']" position="replace"/> -->
       <xpath expr="//tree//field[@name='price_subtotal']" position="after">
         <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1257)d" icon="fa-building-o" type="action"/>
         <button string="Traceability" name="%(personalizations_boggio.ir_act_server_1300)d" icon="fa-arrows-v" type="action"/>
@@ -286,9 +286,9 @@
         <field name="tax_id" widget="many2many_tags" options="{'no_create': True}" domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id)]" attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/>
         <field name="analytic_tag_ids" groups="analytic.group_analytic_accounting" widget="many2many_tags" options="{'color_field': 'color'}"/>
       </xpath>
-      <field name="additional_description" position="after">
+      <!-- <field name="additional_description" position="after">
         <field name="virtual_available" groups="sale_stock_availability.see_stock_value" attrs="{'column_invisible': [('parent.state', 'not in', ['draft', 'sent'])]}"/>
-      </field>
+      </field> -->
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7796" model="ir.ui.view">
