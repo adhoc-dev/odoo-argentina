@@ -10,11 +10,13 @@
    :target: https://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
-======================
+===========================
 Personalizations grupomicro
-======================
+===========================
 
-
+Se extiende la pantalla de login para agregar campos solicitados por el cliente
+Junto con la validación de CUIT/DNI
+Según el tipo de identificación elegido se selecciona una tarifa y se indica si el contacto es compañia o no
 
 Installation
 ============
