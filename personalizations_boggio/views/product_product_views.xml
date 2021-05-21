@@ -125,7 +125,6 @@
     <field name="arch" type="xml">
       <xpath expr="//field[@name='product_attribute_template_id']" position="replace"/>
       <!-- <xpath expr="//field[@name='main_seller_id']" position="replace"/> -->
-      <!-- <xpath expr="//field[@name='warehouse_id']" position="replace"/> -->
       <xpath expr="//field[@name='pricelist_id']" position="replace"/>
       <xpath expr="//field[@name='product_tmpl_id']" position="replace"/>
       <xpath expr="//field[@name='seller_ids']" position="replace"/>
@@ -166,6 +165,7 @@
   <record id="personalizations_boggio.ir_ui_view_7941" model="ir.ui.view">
     <field name="name">link a produc_template iboggio</field>
     <field name="model">product.product</field>
+    <field name="priority" eval="199"/>
     <field name="inherit_id" ref="product.product_normal_form_view"/>
     <field name="arch" type="xml">
       <xpath expr="//div[@name=&quot;standard_price_uom&quot;]" position="after">
@@ -175,10 +175,6 @@
       <field name="product_brand_id" position="after">
         <field name="product_tmpl_id" class="oe_inline" readonly="1" invisible="0" attrs="{'required': [('id', '!=', False)]}"/>
       </field>
-      <!-- <xpath expr="//field[@name='standard_price_ids']" position="attributes">
-        <attribute name="attrs">{}</attribute>
-        <attribute name="invisible">1</attribute>
-      </xpath> -->
       <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='general_information']/group[1]/group[@name='group_standard_price']/field[@name='replenishment_cost']" position="attributes">
         <attribute name="attrs">{}</attribute>
         <attribute name="invisible">1</attribute>

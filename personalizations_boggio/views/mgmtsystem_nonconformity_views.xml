@@ -3,6 +3,7 @@
   <record id="personalizations_boggio.ir_ui_view_5241" model="ir.ui.view">
     <field name="name">etiquetas en no conf. iboggio</field>
     <field name="model">mgmtsystem.nonconformity</field>
+    <field name="priority" eval="199"/>
     <field name="inherit_id" ref="mgmtsystem_nonconformity.view_mgmtsystem_nonconformity_form"/>
     <field name="arch" type="xml">
       <field name="origin_ids" position="before">
@@ -16,6 +17,17 @@
       <field name="reference" position="attributes">
         <attribute name="invisible">1</attribute>
       </field>
+      <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='causes_analysis']" position="attributes">
+        <attribute name="string">Análisis de causas</attribute>
+      </xpath>
+      <xpath expr="//field[@name='cause_ids']" position="attributes">
+        <attribute name="attrs">{"readonly": [["state","not in",["analysis"]]]}</attribute>
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//field[@name='action_ids']" position="attributes">
+        <attribute name="attrs">{"readonly": [["state","not in",["pending"]]]}</attribute>
+        <attribute name="invisible">1</attribute>
+      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5257" model="ir.ui.view">
@@ -46,6 +58,7 @@
   <record id="personalizations_boggio.ir_ui_view_5716" model="ir.ui.view">
     <field name="name">filtro por abiertos no conf. iboggio</field>
     <field name="model">mgmtsystem.nonconformity</field>
+    <field name="priority" eval="199"/>
     <field name="inherit_id" ref="mgmtsystem_nonconformity.view_mgmtsystem_nonconformity_filter"/>
     <field name="arch" type="xml">
       <filter name="current" position="after">
@@ -92,24 +105,6 @@
       <field name="stage_id" position="after">
         <field name="x_impacto"/>
       </field>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_7870" model="ir.ui.view">
-    <field name="name">Odoo Studio: mgmtsystem.nonconformity.form customization</field>
-    <field name="model">mgmtsystem.nonconformity</field>
-    <field name="inherit_id" ref="mgmtsystem_nonconformity.view_mgmtsystem_nonconformity_form"/>
-    <field name="arch" type="xml">
-      <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='causes_analysis']" position="attributes">
-        <attribute name="string">Análisis de causas</attribute>
-      </xpath>
-      <xpath expr="//field[@name='cause_ids']" position="attributes">
-        <attribute name="attrs">{"readonly": [["state","not in",["analysis"]]]}</attribute>
-        <attribute name="invisible">1</attribute>
-      </xpath>
-      <xpath expr="//field[@name='action_ids']" position="attributes">
-        <attribute name="attrs">{"readonly": [["state","not in",["pending"]]]}</attribute>
-        <attribute name="invisible">1</attribute>
-      </xpath>
     </field>
   </record>
 </odoo>
