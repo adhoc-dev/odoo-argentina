@@ -3,12 +3,12 @@
   <record model="ir.ui.view" id="personalizations_brunetti.ir_ui_view_2240">
     <field name="name">Copiar notas internas</field>
     <field name="model">purchase.order</field>
-    <field name="inherit_id" ref="purchase.purchase_order_form"/>
+    <field name="inherit_id" ref="purchase_ux.purchase_order_form"/>
+    <field name="priority" eval="99"/>
     <field type="xml" name="arch">
-      <xpath expr="//field[@name='internal_notes']" position="after">
-        <button name="%(personalizations_brunetti.ir_act_server_827)d" type="action" string="Copiar notas a envío" class="oe_stat_button">
-    </button>
-      </xpath>
+      <field name="internal_notes" position="after">
+        <button name="%(personalizations_brunetti.ir_act_server_827)d" type="action" string="Copiar notas a envío" class="oe_stat_button"/>
+      </field>
     </field>
   </record>
 </odoo>

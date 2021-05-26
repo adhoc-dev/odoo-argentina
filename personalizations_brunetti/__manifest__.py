@@ -5,6 +5,7 @@
     'author': 'ADHOC SA',
     'depends': [
         'account',
+        'base_automation',
         'account_payment_group',
         'base',
         'calendar',
