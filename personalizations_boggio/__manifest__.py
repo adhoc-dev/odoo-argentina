@@ -29,7 +29,6 @@
         'l10n_ar_ux',
         'l10n_ar_sale',
         'l10n_ar_stock',
-        'l10n_ar_website_sale',
         'account_journal_book_report',
         'mail_tracking_mass_mailing',
         'mgmtsystem_nonconformity',
