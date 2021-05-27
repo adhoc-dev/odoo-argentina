@@ -585,18 +585,6 @@
     <field name="in_format">oo-ods</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
   </record>
-  <record id="personalizations_boggio.ir_act_report_xml_2445" model="ir.actions.report">
-    <field name="name">Imprimir etiqueta bultos</field>
-    <field name="model">stock.picking</field>
-    <field name="report_name">etiqueta de bultos</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="stock.model_stock_picking"/>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/etiqueta de bultos.odt</field>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-  </record>
   <record id="personalizations_boggio.ir_act_report_xml_2450" model="ir.actions.report">
     <field name="name">codigoBarraEstados</field>
     <field name="model">stock.picking.state_detail</field>
