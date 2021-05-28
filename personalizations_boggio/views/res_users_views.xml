@@ -27,6 +27,23 @@
       </field>
     </field>
   </record>
+  <record id="personalizations_boggio.view_users_form" model="ir.ui.view">
+    <field name="name">Envios automaticos por usuarios</field>
+    <field name="model">res.users</field>
+    <field name="inherit_id" ref="base.view_users_form"/>
+    <field name="arch" type="xml">
+      <notebook>
+        <page string="Envios Automaticos">
+          <groups>
+            <label for="send_automatic_pending_email"/>
+            <field name="send_automatic_pending_email" widget="boolean_toggle"/>
+            <label for="send_automatic_debt_email"/>
+            <field name="send_automatic_debt_email" widget="boolean_toggle"/>
+          </groups>
+        </page>
+      </notebook>
+    </field>
+  </record>
   <record id="personalizations_boggio.ir_ui_view_5160" model="ir.ui.view">
     <field name="name">agregar funcion en contactos iboggio</field>
     <field name="model">res.users</field>

@@ -86,6 +86,7 @@
   <record id="personalizations_boggio.ir_ui_view_5371" model="ir.ui.view">
     <field name="name">agregado de datos del nosis</field>
     <field name="model">res.partner</field>
+    <field name="priority">199</field>
     <field eval="[(6, 0, [ref('account.group_account_invoice')])]" name="groups_id"/>
     <field name="inherit_id" ref="base.view_partner_form"/>
     <field name="arch" type="xml">
