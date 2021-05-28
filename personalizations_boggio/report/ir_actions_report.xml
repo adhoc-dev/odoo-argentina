@@ -26,19 +26,6 @@
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
     <!-- <field name="copies">2</field> -->
   </record>
-  <record id="action_aeroo_report_ar_purchase_order" model="ir.actions.report">
-    <field name="name">Orden de Compra Argentina de Aeroo</field>
-    <field name="model">purchase.order</field>
-    <field name="report_name">aeroo_report_ar_purchase_order</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="inter_company_rules.model_purchase_order"/>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_purchase_order.odt</field>
-    <field eval="True" name="process_sep"/>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-  </record>
   <record id="action_aeroo_report_ar_einvoice" model="ir.actions.report">
     <field name="name">Factura Electrónica Argentina de Aeroo EM (mismo reporte)</field>
     <field name="model">account.invoice</field>
@@ -61,19 +48,6 @@
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/aeroo_report_ar_voucher.odt</field>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-  </record>
-  <record id="action_aeroo_report_ar_payment" model="ir.actions.report">
-    <field name="name">Pagos y recibos Argentinos de Aeroo</field>
-    <field name="model">account.payment.group</field>
-    <field name="report_name">aeroo_report_ar_payment</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account_multicurrency_ux.model_account_payment_group"/>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_payment.odt</field>
-    <field eval="True" name="process_sep"/>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
   </record>
@@ -212,19 +186,6 @@
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
     <!-- <field name="copies">2</field> -->
-  </record>
-  <record id="personalizations_boggio.ir_act_report_xml_1346" model="ir.actions.report">
-    <field name="name">Pagos Argentinos de Aeroo (carlitos)</field>
-    <field name="model">account.payment.group</field>
-    <field name="report_name">aeroo_report_ar_payment_carlitos</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account_multicurrency_ux.model_account_payment_group"/>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_payment_carlitos.odt</field>
-    <field eval="True" name="process_sep"/>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
   </record>
   <record id="personalizations_boggio.ir_act_report_xml_1385" model="ir.actions.report">
     <field name="name">Remito Argentino de Aeroo (super express)</field>
