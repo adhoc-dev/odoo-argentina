@@ -16,7 +16,7 @@
     <field name="inherit_id" ref="stock.view_inventory_form"/>
     <field name="arch" type="xml">
         <field name="accounting_date" position="after">
-          <field name="x_origen"/>
+          <field name="x_origen" required="True"/>
         </field>
     </field>
   </record>
