@@ -11,12 +11,12 @@
       </field>
     </field>
   </record>
-  <record id="personalizations_boggio.ir_ui_view_5827" model="ir.ui.view">
+  <!-- <record id="personalizations_boggio.ir_ui_view_5827" model="ir.ui.view">
     <field name="name">sacar telefono</field>
     <field name="model">hr.employee</field>
     <field name="inherit_id" ref="hr.view_employee_form"/>
     <field name="arch" type="xml">
       <field name="work_phone" position="replace"/>
     </field>
-  </record>
+  </record> -->
 </odoo>
