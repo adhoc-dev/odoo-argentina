@@ -65,7 +65,7 @@
         'stock_voucher',
         'transindar_personalization',
         'website_crm_partner_assign',
-        'website_sale',
+        'website_doc',
         'website_sale_ux',
         'base_automation',
         'sale_quotation_builder',

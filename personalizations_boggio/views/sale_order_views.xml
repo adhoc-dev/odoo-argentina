@@ -53,7 +53,7 @@
       <xpath expr="//field[@name='order_line']//tree//field[@name='discount']" position="replace"/>
       <xpath expr="//field[@name='order_line']//tree//field[@name='product_uom']" position="replace"/>
       <xpath expr="//field[@name='order_line']//tree//field[@name='price_subtotal']" position="after">
-        <field name="discount" groups="sale.group_discount_per_so_line" force_save="1"/>
+        <field name="discount" groups="product.group_discount_per_so_line" force_save="1"/>
         <field name="product_uom"/>
       </xpath>
       <button name="action_confirm" position="after">
@@ -227,7 +227,7 @@
     <field name="model">sale.order</field>
     <field name="priority">199</field>
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_192')])]" name="groups_id"/>
-    <field name="inherit_id" ref="sale.sot_view_order_form"/>
+    <field name="inherit_id" ref="sale_order_type.sot_view_order_form"/>
     <field name="arch" type="xml">
       <field name="type_id" position="attributes">
         <attribute name="attrs">{'readonly':[('state','in',('sale','done','cancel'))]}</attribute>
@@ -239,7 +239,7 @@
     <field name="model">sale.order</field>
     <field name="priority">199</field>
     <field eval="[(6, 0, [ref('base.group_user')])]" name="groups_id"/>
-    <field name="inherit_id" ref="sale.sot_view_order_form"/>
+    <field name="inherit_id" ref="sale_order_type.sot_view_order_form"/>
     <field name="arch" type="xml">
       <field name="type_id" position="replace"/>
       <field name="currency_id" position="after">
@@ -250,6 +250,7 @@
   <record id="personalizations_boggio.ir_ui_view_6071" model="ir.ui.view">
     <field name="name">sacar boton stock y precios de portal distribuidor</field>
     <field name="model">sale.order</field>
+    <field name="priority">299</field>
     <field eval="[(6, 0, [ref('portal_sale_distributor.group_portal_distributor')])]" name="groups_id"/>
     <field name="inherit_id" ref="personalizations_boggio.ir_ui_view_4424"/>
     <field name="arch" type="xml">
@@ -259,6 +260,7 @@
   <record id="personalizations_boggio.ir_ui_view_7795" model="ir.ui.view">
     <field name="name">ordenar grilla de productos</field>
     <field name="model">sale.order</field>
+    <field name="priority">299</field>
     <field eval="[(6, 0, [ref('base.group_user')])]" name="groups_id"/>
     <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
@@ -376,7 +378,7 @@
     <field name="model">sale.order</field>
     <field name="priority">199</field>
     <field eval="[(6, 0, [ref('sales_team.group_sale_manager')])]" name="groups_id"/>
-    <field name="inherit_id" ref="personalizations_boggio.ir_ui_view_7796"/>
+    <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
       <field name="user_id" position="replace"/>
       <field name="tag_ids" position="before">
