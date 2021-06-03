@@ -31,7 +31,6 @@
         'mail',
         'mgmtsystem',
         'mrp',
-        'partner_identification',
         'payment',
         'product',
         'product_catalog_aeroo_report',
