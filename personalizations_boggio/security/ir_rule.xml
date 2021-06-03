@@ -5,7 +5,7 @@
     <field name="model_id" ref="helpdesk.model_helpdesk_team"/>
     <field name="domain_force"><![CDATA[['|',
                                             ('company_id', '=', False),
-                                            ('company_id', 'child_of', [user.company_id.id]),
+                                            ('company_id', 'in', company_ids),
                                         ]]]></field>
     <field eval="[(6, 0, [])]" name="groups"/>
     <field eval="True" name="perm_create"/>
