@@ -66,6 +66,7 @@
   <record id="personalizations_boggio.ir_ui_view_5285" model="ir.ui.view">
     <field name="name">no es proveedor iboggio</field>
     <field name="model">res.partner</field>
+    <field name="priority">199</field>
     <field name="inherit_id" ref="base.view_res_partner_filter"/>
     <field name="arch" type="xml">
         <filter name="supplier" position="after">
