@@ -126,7 +126,6 @@
       <xpath expr="//field[@name='product_attribute_template_id']" position="replace"/>
       <!-- <xpath expr="//field[@name='main_seller_id']" position="replace"/> -->
       <xpath expr="//field[@name='pricelist_id']" position="replace"/>
-      <xpath expr="//field[@name='product_tmpl_id']" position="replace"/>
       <xpath expr="//field[@name='seller_ids']" position="replace"/>
       <xpath expr="//field[@name='product_brand_id']" position="attributes">
         <attribute name="string">Marca</attribute>
