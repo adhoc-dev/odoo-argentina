@@ -571,7 +571,7 @@
   </record>
   <record id="personalizations_boggio.ir_act_report_xml_2499" model="ir.actions.report">
     <field name="name">Mis pendientes Automaticos</field>
-    <field name="model">sale.order</field>
+    <field name="model">res.users</field>
     <field name="report_name">sale_order_pendientes_automaticos</field>
     <field name="report_type">aeroo</field>
     <field eval="False" name="multi"/>

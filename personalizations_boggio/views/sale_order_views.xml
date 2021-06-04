@@ -6,6 +6,16 @@
     <field name="priority">199</field>
     <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
+      <div class="oe_button_box" name="button_box">
+        <button type="object" class="oe_stat_button" name="open_action_followup" icon="fa-list" attrs="{'invisible': [('total_overdue', '=', 0)]}">
+          <div class="o_field_widget o_stat_info">
+            <span class="o_stat_value">
+              <field name="total_overdue" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+            </span>
+            <span class="o_stat_text">Vencido</span>
+          </div>
+        </button>
+      </div>
       <button name="add_products_to_quotation" position="attributes">
         <attribute name="context">{'disable_location_filter': 1, 'search_default_empty_search': 1}</attribute>
       </button>
@@ -72,7 +82,7 @@
         <field name="x_info_cc"/>
       </field>
       <field name="date_order" position="attributes">
-          <attribute name="invisible">1</attribute>
+        <attribute name="invisible">1</attribute>
       </field>
       <xpath expr="//field[@name='order_line']//tree" position="inside">
         <field name="x_active" invisible="1"/>

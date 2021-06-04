@@ -647,9 +647,8 @@ else:
     <field name="code"><![CDATA[venta_pesos = record.amount_untaxed*record.currency_id.inverse_rate
 desc_volumen = 100.0-record.pricelist_id.x_ajuste_lista*((venta_pesos>15000 and venta_pesos<=70000)  and (1.0-0.97) *(venta_pesos-15000)/(15000-70000) +1.0  or ((venta_pesos>70000 and venta_pesos<=300000) and (0.97-0.95)*(venta_pesos-70000)/(70000-300000)+0.97 or (venta_pesos>300000 and 0.95 or 1.0)))
 desc_volumen1 = ' / DV: ' + str(round(desc_volumen,2))
+record.write({'x_info_cc': desc_volumen1 })
 
-x_info_cc =  record.team_id.id !=1 and (record.env['x_bi_sql_view.dias_deuda_cliente7'].search( [['x_partner_id', '=', record.commercial_partner_id.id]]) and ( str( record.env['x_bi_sql_view.dias_deuda_cliente7'].search( [['x_partner_id', '=', record.commercial_partner_id.id]]).x_diasdeuda_c)+' dias / d_venc: '+  str( record.env['x_bi_sql_view.dias_deuda_cliente7'].search( [['x_partner_id', '=', record.commercial_partner_id.id]]).x_deuda_venc) + "/ " + record.commercial_partner_id.abc_sales_amount+record.commercial_partner_id.x_abc_sales_freq) or "--") or "-portal-"
-record.write({'x_info_cc': x_info_cc +  desc_volumen1 })
 # Available variables:
 #  - env: Odoo Environment on which the action is triggered
 #  - model: Odoo Model of the record on which the action is triggered; is a void recordset
