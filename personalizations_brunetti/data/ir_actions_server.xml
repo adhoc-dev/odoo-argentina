@@ -4,15 +4,7 @@
     <field ref="crm.model_crm_lead" name="model_id"/>
     <field name="state">code</field>
     <field name="binding_type">action</field>
-   <field name="code"># Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
+   <field name="code">
 records.write({'stage_id': 6})
 </field>
   </record>
@@ -23,15 +15,8 @@ records.write({'stage_id': 6})
     <field name="state">code</field>
     <field name="binding_type">action</field>
     <field name="binding_view_types">list,form</field>
-    <field name="code"># Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
+    <field name="code">
+
 record.picking_ids.write({"note":records.internal_notes})</field>
   </record>
 </odoo>

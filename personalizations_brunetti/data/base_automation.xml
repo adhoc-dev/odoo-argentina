@@ -7,15 +7,7 @@
     <field name="state">code</field>
     <field name="binding_type">action</field>
     <field name="crud_model_id" ref="calendar.model_mail_message"/>
-    <field name="code"># Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
+    <field name="code">
 
 def clean_msg(mensaje):
     try:
@@ -140,15 +132,8 @@ for lead in leads:
     <field name="model_id" ref="mail.model_mail_compose_message"/>
     <field name="state">code</field>
     <field name="binding_type">action</field>
-    <field name="code"># Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
+    <field name="code">
+
 def get_product_attachments(product):
   """ Buscar attachments asociados
   a un producto dado
@@ -185,16 +170,7 @@ if mod == "sale.order":
     <field name="model_id" ref="delivery.model_sale_order"/>
     <field name="state">code</field>
     <field name="binding_type">action</field>
-    <field name="code"># Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
-
+    <field name="code">
 
 ids=record.opportunity_id.mapped('tag_ids').ids
 #raise Warning (x)
@@ -209,15 +185,7 @@ if record.opportunity_id:
     <field name="model_id" ref="account.model_account_move"/>
     <field name="state">code</field>
     <field name="binding_type">action</field>
-    <field name="code"># Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
+    <field name="code">
 
 ids=record.sale_order_ids.mapped('tag_ids').ids
 #raise Warning (x)
@@ -240,15 +208,7 @@ if record.sale_order_ids:
     <field name="model_id" ref="crm.model_crm_lead"/>
     <field name="state">code</field>
     <field name="binding_type">action</field>
-    <field name="code"># Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
+    <field name="code">
 for rec in records:
   today = datetime.datetime.today()
   if env.context['old_values'] and env.context['old_values'][rec.id].get('stage_id') and rec.stage_id:
