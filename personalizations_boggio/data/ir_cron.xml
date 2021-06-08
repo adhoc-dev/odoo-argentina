@@ -64,15 +64,6 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
 
 
 
-# Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 
 
 
@@ -93,15 +84,6 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
 
 
 
-# Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 
 
 
@@ -160,15 +142,6 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
 
 #  raise Warning('hola')
 
-# Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 
 
 
@@ -184,15 +157,6 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
     <field name="code">template = env['mail.template'].browse(148)
 template.send_mail(env['product.product'].search([], limit=1).id, force_send=True, raise_exception=False)
 
-# Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 
 
 
@@ -210,15 +174,6 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
 #solo funciona los dias de semana
   template = env['mail.template'].browse(150)
   template.send_mail(env['stock.picking'].search([['state_detail_id.id','=',12]], limit=1).id, force_send=True, raise_exception=False)
-# Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 
 
 
@@ -237,15 +192,6 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
   template = env['mail.template'].browse(151)
   for user in env['res.users'].search([('send_automatic_pending_email', '=', True)]):
     template.send_mail(user, force_send=True, raise_exception=False)
-# Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 
 </field>
     <field name="interval_number">1</field>

@@ -6,15 +6,6 @@
     <field name="state">code</field>
     <field name="crud_model_id" ref="purchase_suggest.model_purchase_suggest"/>
     <field name="code"><![CDATA[object = record
-# Available locals:
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the record on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 action = object.product_id.view_stock_detail()]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1247" model="ir.actions.server">
@@ -23,15 +14,6 @@ action = object.product_id.view_stock_detail()]]></field>
     <field name="state">code</field>
     <field name="crud_model_id" ref="purchase_suggest.model_purchase_suggest"/>
     <field name="code"><![CDATA[object = record
-# Available locals:
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the record on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 action = record.product_id.action_open_quants()
 action_read = action.read()[0]
 action = action_read]]></field>
@@ -89,15 +71,6 @@ action = action_read]]></field>
     <field name="state">code</field>
     <field name="crud_model_id" ref="sale.model_sale_order_line"/>
     <field name="code"><![CDATA[object = record
-# Available locals:
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the record on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 action = object.product_id.view_stock_detail()]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1739" model="ir.actions.server">
@@ -106,15 +79,6 @@ action = object.product_id.view_stock_detail()]]></field>
     <field name="state">code</field>
     <field name="crud_model_id" ref="account.model_product_template"/>
     <field name="code"><![CDATA[object = record
-# Available locals:
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the record on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 action = object.view_stock_detail()]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1740" model="ir.actions.server">
@@ -123,15 +87,6 @@ action = object.view_stock_detail()]]></field>
     <field name="state">code</field>
     <field name="crud_model_id" ref="product.model_product_product"/>
     <field name="code"><![CDATA[object = record
-# Available locals:
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the record on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 action = object.view_stock_detail()]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1741" model="ir.actions.server">
@@ -203,15 +158,6 @@ action = action_read
     <field name="state">code</field>
     <field name="crud_model_id" ref="stock.model_stock_move"/>
     <field name="code"><![CDATA[object = record
-# Available locals:
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the record on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 action = object.product_id.view_stock_detail()]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1747" model="ir.actions.server">
@@ -267,15 +213,6 @@ action = action_read]]></field>
     <field name="state">code</field>
     <field name="crud_model_id" ref="stock.model_stock_inventory_line"/>
     <field name="code"><![CDATA[object = record
-# Available locals:
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the record on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 action = object.product_id.view_stock_detail()]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1750" model="ir.actions.server">
@@ -378,15 +315,6 @@ action = action_read]]></field>
     <field name="state">code</field>
     <field name="crud_model_id" ref="product_replenishment_cost.model_purchase_order_line"/>
     <field name="code"><![CDATA[object = record
-# Available locals:
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the record on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 action = object.product_id.view_stock_detail()]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_2322" model="ir.actions.server">
@@ -492,15 +420,6 @@ if record.group_id:
     <field name="state">code</field>
     <field name="crud_model_id" ref="purchase_suggest.model_purchase_suggest"/>
     <field name="code"><![CDATA[object = record
-# Available locals:
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the record on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 action = object.product_id.view_stock_detail()]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_2449" model="ir.actions.server">
