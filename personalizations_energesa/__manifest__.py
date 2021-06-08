@@ -40,7 +40,6 @@
         'product_price_taxes_included',
         'product_replenishment_cost',
         'project',
-        'project_forecast',
         'project_ux',
         'purchase_ux',
         'purchase_stock_ux',
