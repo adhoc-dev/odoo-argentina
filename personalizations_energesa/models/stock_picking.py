@@ -12,7 +12,7 @@ class StockPicking(models.Model):
     @api.depends('move_lines','__last_update','state')
     def _compute_x_total_standard_price(self):
         for rec in self:
-          total = 0
-          for line in rec.move_lines:
-            total += line.quantity_done * line.x_standard_price
-        rec['x_total_standard_price'] = total
+            total = 0
+            for line in rec.move_lines:
+                total += line.quantity_done * line.x_standard_price
+            rec['x_total_standard_price'] = total

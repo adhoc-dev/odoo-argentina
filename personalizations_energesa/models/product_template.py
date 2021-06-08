@@ -9,8 +9,8 @@ class ProductTemplate(models.Model):
     @api.depends('pack_line_ids','pack_line_ids.x_subtotal')
     def _compute_x_pack_cost(self):
         for rec in self.filtered('pack_line_ids'):
-                total = 0
-                for prod in rec.pack_line_ids:
-                    if prod.x_subtotal:
-                        total += prod.x_subtotal
-                rec['x_pack_cost'] = total
+            total = 0
+            for prod in rec.pack_line_ids:
+                if prod.x_subtotal:
+                    total += prod.x_subtotal
+            rec['x_pack_cost'] = total

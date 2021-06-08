@@ -40,61 +40,61 @@ class SaleOrder(models.Model):
     @api.depends('tasks_ids.stage_id')
     def _compute_x_task_stage(self):
         for rec in self:
-          for ts in rec.tasks_ids:
-            if not ts.parent_id:
-              rec['x_task_stage'] = ts.stage_id
+            x_task_stage = False
+            for ts in rec.tasks_ids:
+                if not ts.parent_id:
+                    x_task_stage = ts.stage_id
+            rec['x_task_stage'] = x_task_stage
 
-    @api.depends('invoice_ids','invoice_status')
+    @api.depends('invoice_ids.amount_residual', 'invoice_status')
     def _compute_x_invoice_residual_amount(self):
         for rec in self.filtered('invoice_ids'):
-                total = 0
-                for inv in rec.invoice_ids:
-                    if inv.currency_id != rec.pricelist_id.currency_id:
-                        total += inv.currency_id.compute(inv.residual, rec.pricelist_id.currency_id)
-                    else:
-                        total += inv.residual
-                rec['x_invoice_residual_amount'] = total
+            total = 0
+            for inv in rec.invoice_ids:
+                if inv.currency_id != rec.pricelist_id.currency_id:
+                    total += inv.currency_id.compute(inv.amount_residual, rec.pricelist_id.currency_id)
+                else:
+                    total += inv.amount_residual
+            rec['x_invoice_residual_amount'] = total
 
-    @api.depends('invoice_ids','invoice_status')
+    @api.depends('invoice_ids', 'invoice_status')
     def _compute_x_invoice_total_amount(self):
         for rec in self.filtered('invoice_ids'):
-                total = 0
-                for inv in rec.invoice_ids:
-                    if inv.currency_id != rec.pricelist_id.currency_id:
-                        total += inv.currency_id.compute(inv.amount_total,
-                    rec.pricelist_id.currency_id)
-                    else:
-                        total += inv.amount_total
-                rec['x_invoice_total_amount'] = total
+            total = 0
+            for inv in rec.invoice_ids:
+                if inv.currency_id != rec.pricelist_id.currency_id:
+                    total += inv.currency_id.compute(inv.amount_total, rec.pricelist_id.currency_id)
+                else:
+                    total += inv.amount_total
+            rec['x_invoice_total_amount'] = total
 
-    @api.depends('invoice_ids','amount_total','invoice_status')
+    @api.depends('invoice_ids', 'amount_total', 'invoice_status')
     def _compute_x_sale_amount(self):
         for rec in self:
-                total = 0
-                if rec.invoice_ids:
-                    for inv in rec.invoice_ids:
-                        if inv.currency_id != rec.pricelist_id.currency_id:
-                            total += inv.currency_id.compute(inv.amount_total,
-                        rec.pricelist_id.currency_id)
-                        else:
-                            total += inv.amount_total
-                    x_sale_amount =  rec.amount_total - total
-                else:
-                    x_sale_amount = rec.amount_total
-                rec['x_sale_amount'] = x_sale_amount
+            total = 0
+            if rec.invoice_ids:
+                for inv in rec.invoice_ids:
+                    if inv.currency_id != rec.pricelist_id.currency_id:
+                        total += inv.currency_id.compute(inv.amount_total, rec.pricelist_id.currency_id)
+                    else:
+                        total += inv.amount_total
+                x_sale_amount = rec.amount_total - total
+            else:
+                x_sale_amount = rec.amount_total
+            rec['x_sale_amount'] = x_sale_amount
 
-    @api.depends('order_line','margin','state')
+    @api.depends('order_line', 'margin', 'state')
     def _compute_x_total_replenishment_cost(self):
         for rec in self:
-                total = 0
-                for line in rec.order_line:
-                    total += line.product_uom_qty * line.purchase_price
+            total = 0
+            for line in rec.order_line:
+                total += line.product_uom_qty * line.purchase_price
         rec['x_total_replenishment_cost'] = total
 
-    @api.depends('margin','amount_untaxed','state')
+    @api.depends('margin', 'amount_untaxed', 'state')
     def _compute_x_margin2(self):
         for rec in self:
-          if rec.amount_untaxed != 0:
-            rec['x_margin2'] = (rec.margin / rec.amount_untaxed) * 100
-          else:
-            rec['x_margin2'] = -100
+            if rec.amount_untaxed != 0:
+                rec['x_margin2'] = (rec.margin / rec.amount_untaxed) * 100
+            else:
+                rec['x_margin2'] = -100

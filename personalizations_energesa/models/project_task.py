@@ -29,4 +29,4 @@ class ProjectTask(models.Model):
     @api.depends('date_start','x_duration')
     def _compute_x_fecha_fin_calc(self):
         for record in self:
-          record[("x_fecha_fin_calc")] = record.date_start + datetime.timedelta(days = record.x_duration)
+            record[("x_fecha_fin_calc")] = record.date_start + datetime.timedelta(days=record.x_duration)

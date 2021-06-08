@@ -9,4 +9,4 @@ class StockMove(models.Model):
     @api.depends('__last_update')
     def _compute_x_standard_price(self):
         for rec in self:
-          rec['x_standard_price'] = rec.product_id.standard_price
+            rec['x_standard_price'] = rec.product_id.standard_price
