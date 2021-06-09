@@ -138,6 +138,8 @@ class AccountTax(models.Model):
             vals['communication'] = "%s - %s" % (
                 regimen.codigo_de_regimen, regimen.concepto_referencia)
             vals['period_withholding_amount'] = amount
+
+        print(" ------ vals %s" % vals)
         return vals
 
     def get_partner_alicuota_percepcion(self, partner, date):
