@@ -36,6 +36,8 @@ class HrEmployee(models.Model):
                                      copy=False)
     x_department_id = fields.Many2one(string="department_id", related="department_id",
                                       help="Solo se usa por el seguimiento", on_delete="set null", readonly=True)
+    parent_id = fields.Many2one(domain="[]")
+    coach_id = fields.Many2one(domain="[]")
     x_parent_id = fields.Many2one(string="parent_id", related="parent_id", help="Por seguimiento",
                                   on_delete="set null", readonly=True)
     x_coach_id = fields.Many2one(string="coach_id", related="coach_id", help="Por seguimiento",
