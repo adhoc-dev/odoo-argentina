@@ -24,55 +24,37 @@
        <xpath expr="//th[@name='th_description']" position="before">
             <th name="th_x_isbn"><span>ISBN</span></th>
         </xpath>
-
         <xpath expr="//td[@name='account_invoice_line_name']" position="before">
-            <td name="account_invoice_line_isbn"><span t-field="line.x_isbn" t-options="{'widget': 'text'}"/></td>
+            <td name="account_invoice_line_isbn"><span t-field="line.x_isbn" t-options="{'widget': 'text'}" style="font-size:13px;"/></td>
         </xpath>
-
         <xpath expr="//td[@name='account_invoice_line_name']" position="replace">
             <td name="account_invoice_line_name" style="font-size:13px;"><span t-field="line.name" t-options="{'widget': 'text'}"/></td>
+        </xpath>
+        <xpath expr="//span[@t-field='line.quantity']" position="replace">
+           <span t-field="line.quantity" style="font-size:13px;"/>
+        </xpath>
+         <xpath expr="//span[@t-field='line.price_unit']" position="replace">
+       <span class="text-nowrap" t-field="line.price_unit" style="font-size:13px;"/>
+        </xpath>
+         <xpath expr="//span[@t-field='line.price_total']" position="replace">
+       <span class="text-nowrap" t-field="line.price_total" groups="account.group_show_line_subtotals_tax_included" style="font-size:13px;"/>
+        </xpath>
+         <xpath expr="//span[@t-field='line.discount']" position="replace">
+        <span class="text-nowrap" t-field="line.discount" style="font-size:13px;"/>
         </xpath>
     </template>
 
     <template id="invoice_delete_total" inherit_id="account.report_invoice_document">
-       <xpath expr="//div[hasclass('clearfix')]" position="replace">
-            <div class="clearfix">
-            <div id="total" class="row">
-            <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
-                <table class="table table-sm" style="page-break-inside: avoid;">
-                    <tr class="border-black o_subtotal" style="">
-                        <td><strong>Subtotal</strong></td>
-                        <td class="text-right">
-                            <span t-field="o.amount_untaxed"/>
-                        </td>
-                    </tr>
-                    <t t-foreach="o.amount_by_group" t-as="amount_by_group">
-                     <tr style="">
-                    <t t-if="len(o.line_ids.filtered(lambda line: line.tax_line_id)) in [0, 1] and o.amount_untaxed == amount_by_group[2]">
-                               <td><span class="text-nowrap" t-esc="amount_by_group[0]"/></td>
-                                                <td class="text-right o_price_total">
-                                                    <span class="text-nowrap" t-esc="amount_by_group[3]"/>
-                                                </td>
-                                            </t>
-                                            <t t-else="">
-                                                <td>
-                                                    <span t-esc="amount_by_group[0]"/>
-                                                    <span class="text-nowrap"> on
-                                                        <t t-esc="amount_by_group[4]"/>
-                                                    </span>
-                                                </td>
-                                                <td class="text-right o_price_total">
-                                                    <span class="text-nowrap" t-esc="amount_by_group[3]"/>
-                                                </td>
-                                            </t>
-                                        </tr>
-                                    </t>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-        </xpath>
+       <xpath expr="//tr[hasclass('o_total')]" position="replace"/>
     </template>
 
-
+     <template id="payment_method_personalization" inherit_id="account.report_invoice_document">
+        <p name="comment" position="before">
+          <t t-foreach="o.payment_group_ids" t-as="p">
+          <p> Pago mediante <b><span t-field="p.payment_methods"/></b>  en recibo: <b><span t-field="p.name"/></b>
+           </p>
+           <br/>
+          </t>
+        </p>
+    </template>
     </odoo>
