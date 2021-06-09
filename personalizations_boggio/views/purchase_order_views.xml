@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
   <record id="personalizations_boggio.ir_ui_view_4897" model="ir.ui.view">
-    <field name="name">agregar marca en compras iboggio</field>
+    <field name="name">Odoo Studio: purchase.order.form customization</field>
     <field name="model">purchase.order</field>
     <field name="inherit_id" ref="purchase.purchase_order_form"/>
     <field name="arch" type="xml">
@@ -16,14 +16,41 @@
         <field name="x_supplier_code"/>
       </field>
       <field name="product_qty" position="after">
-        <field name="qty_received"/>
         <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1775)d" icon="fa-building-o" type="action"/>
         <button string="Traceability" name="%(personalizations_boggio.ir_act_server_1776)d" icon="fa-arrows-v" type="action"/>
         <button type="action" name="%(personalizations_boggio.ir_act_server_1778)d" string="View Stock Detail" icon="fa-search-plus"/>
       </field>
       <field name="price_subtotal" position="after">
-        <field name="date_planned"/>
+        <field name="date_planned" optional="hide"/>
       </field>
+      <xpath expr="//field[@name='order_line']/tree/field[@name='date_planned']" position="attributes">
+        <attribute name="optional">hide</attribute>
+      </xpath>
+      <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom']" position="attributes">
+        <attribute name="optional">hide</attribute>
+      </xpath>
+      <xpath expr="//field[@name='order_line']/tree/field[@name='qty_received']" position="attributes">
+        <attribute name="optional">show</attribute>
+      </xpath>
+      <xpath expr="//field[@name='order_line']/tree/field[@name='qty_invoiced']" position="attributes">
+        <attribute name="optional">show</attribute>
+      </xpath>
+      <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='company_id']" position="after">
+        <field name="x_rotacion" readonly="1" attrs="{}"/>
+        <field name="x_rotacion_local" readonly="1" attrs="{}"/>
+      </xpath>
+      <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='date_planned']" position="attributes">
+        <attribute name="attrs">{}</attribute>
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='account_analytic_id']" position="attributes">
+        <attribute name="attrs">{}</attribute>
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='analytic_tag_ids']" position="attributes">
+        <attribute name="attrs">{}</attribute>
+        <attribute name="invisible">1</attribute>
+      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_4929" model="ir.ui.view">
@@ -76,30 +103,6 @@
       <filter name="vendor"  position="before">
         <filter context="{'group_by': 'create_uid'}" name="create_uid" string="Responsible"/>
       </filter>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_7867" model="ir.ui.view">
-    <field name="name">Odoo Studio: purchase.order.form customization</field>
-    <field name="model">purchase.order</field>
-    <field name="priority" eval="199"/>
-    <field name="inherit_id" ref="purchase.purchase_order_form"/>
-    <field name="arch" type="xml">
-      <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='company_id']" position="after">
-        <field name="x_rotacion" readonly="1" attrs="{}"/>
-        <field name="x_rotacion_local" readonly="1" attrs="{}"/>
-      </xpath>
-      <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='date_planned']" position="attributes">
-        <attribute name="attrs">{}</attribute>
-        <attribute name="invisible">1</attribute>
-      </xpath>
-      <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='account_analytic_id']" position="attributes">
-        <attribute name="attrs">{}</attribute>
-        <attribute name="invisible">1</attribute>
-      </xpath>
-      <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='analytic_tag_ids']" position="attributes">
-        <attribute name="attrs">{}</attribute>
-        <attribute name="invisible">1</attribute>
-      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7945" model="ir.ui.view">

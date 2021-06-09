@@ -61,6 +61,12 @@
       <field name="virtual_available" invisible="1"/> 
       -->
       </field>
+      <field name="product_template_attribute_value_ids" position="attributes">
+        <attribute name="optional">hide</attribute>
+      </field>
+      <field name="standard_price" position="attributes">
+        <attribute name="optional">hide</attribute>
+      </field>
       <tree position="attributes">
         <attribute name="decoration-danger">free_qty&lt;0</attribute>
         <attribute name="decoration-info">free_qty&gt;=0</attribute>

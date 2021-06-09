@@ -49,28 +49,46 @@
         <attribute name="invisible">1</attribute>
       </xpath>
       <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="before">
-        <field name="additional_description"/>
+        <field name="additional_description" optional="hide"/>
+      </xpath>
+      <xpath expr="//field[@name='order_line']//tree//field[@name='number']" position="attributes">
+        <attribute name="optional">hide</attribute>
+      </xpath>
+      <xpath expr="//field[@name='order_line']//tree//field[@name='discount1']" position="attributes">
+        <attribute name="optional">show</attribute>
+      </xpath>
+      <xpath expr="//field[@name='order_line']//tree//field[@name='discount2']" position="attributes">
+        <attribute name="optional">hide</attribute>
+      </xpath>
+      <xpath expr="//field[@name='order_line']//tree//field[@name='discount3']" position="attributes">
+        <attribute name="optional">hide</attribute>
+      </xpath>
+      <xpath expr="//field[@name='order_line']//tree//field[@name='purchase_price']" position="attributes">
+        <attribute name="optional">hide</attribute>
+      </xpath>
+      <xpath expr="//field[@name='order_line']//tree//field[@name='analytic_tag_ids']" position="attributes">
+        <attribute name="optional">hide</attribute>
       </xpath>
       <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="after">
-        <field name="product_brand_id" string="Brand"/>
-        <field name="supplier_code" string="Supplier Code"/>
-        <field name="internal_code" string="Internal Code"/>
+        <field name="product_brand_id" string="Brand" optional="show"/>
+        <field name="supplier_code" string="Supplier Code" optional="show"/>
+        <field name="internal_code" string="Internal Code" optional="show"/>
       </xpath>
       <xpath expr="//field[@name='order_line']//tree//field[@name='price_subtotal']" position="before">
         <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1257)d" icon="fa-building-o" type="action"/>
-        <field name="price_reduce" string="Discounted Unit Price"/>
+        <field name="price_reduce" string="Discounted Unit Price" optional="hide"/>
       </xpath>
       <xpath expr="//field[@name='order_line']//tree//field[@name='discount']" position="replace"/>
       <xpath expr="//field[@name='order_line']//tree//field[@name='product_uom']" position="replace"/>
       <xpath expr="//field[@name='order_line']//tree//field[@name='price_subtotal']" position="after">
-        <field name="discount" groups="product.group_discount_per_so_line" force_save="1"/>
-        <field name="product_uom"/>
+        <field name="discount" groups="product.group_discount_per_so_line" force_save="1" optional="hide"/>
+        <field name="product_uom" optional="hide"/>
       </xpath>
       <button name="action_confirm" position="after">
         <button type="action" name="%(personalizations_boggio.ir_act_server_2551)d" string="Info CC y DV"/>
       </button>
       <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='sequence']" position="attributes">
-        <attribute name="widget">integer</attribute>
+        <attribute name="widget">handle</attribute>
       </xpath>
       <xpath expr="//field[@name='note']" position="attributes">
         <attribute name="attrs">{"readonly": [["state","in",["done","cancel"]]]}</attribute>
@@ -165,28 +183,21 @@
   <record id="personalizations_boggio.ir_ui_view_5096" model="ir.ui.view">
     <field name="name">sacar margen iboggio</field>
     <field name="model">sale.order</field>
-    <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line_form"/>
+    <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
       <xpath expr="//field[@name='order_line']/tree//field[@name='purchase_price']" position="attributes">
         <attribute name="invisible">True</attribute>
       </xpath>
     </field>
   </record>
-  <record id="personalizations_boggio.ir_ui_view_5101" model="ir.ui.view">
-    <field name="name">agregar margen de venta para admin iboggio</field>
-    <field name="model">sale.order</field>
-    <field eval="[(6, 0, [ref('sales_team.group_sale_manager')])]" name="groups_id"/>
-    <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line_form"/>
-    <field name="arch" type="xml">
-      <xpath expr="//field[@name='order_line']/tree//field[@name='purchase_price']" position="replace"/>
-    </field>
-  </record>
   <record id="personalizations_boggio.ir_ui_view_5108" model="ir.ui.view">
     <field name="name">agregar margen de venta para admin iboggio 2 iboggio</field>
     <field name="model">sale.order</field>
+    <field name="priority">205</field>
     <field eval="[(6, 0, [ref('sales_team.group_sale_manager')])]" name="groups_id"/>
-    <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line_form"/>
+    <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
+      <xpath expr="//field[@name='order_line']/tree//field[@name='purchase_price']" position="replace"/>
       <xpath expr="//field[@name='order_line']/tree//field[@name='price_subtotal']" position="after">
         <field name="purchase_price" invisible="False"/>
       </xpath>
@@ -285,7 +296,7 @@
         <!-- <field name="virtual_available" groups="sale_stock_availability.see_stock_value"/>  -->
         <field name="currency_id" invisible="1"/>
         <field name="tax_id" widget="many2many_tags" options="{'no_create': True}" domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id)]" attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/>
-        <field name="analytic_tag_ids" groups="analytic.group_analytic_accounting" widget="many2many_tags" options="{'color_field': 'color'}"/>
+        <field name="analytic_tag_ids" groups="analytic.group_analytic_accounting" widget="many2many_tags" options="{'color_field': 'color'}" optional="hide"/>
       </xpath>
       <!-- <field name="additional_description" position="after">
         <field name="virtual_available" groups="sale_stock_availability.see_stock_value" attrs="{'column_invisible': [('parent.state', 'not in', ['draft', 'sent'])]}"/>
