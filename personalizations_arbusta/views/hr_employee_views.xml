@@ -179,7 +179,7 @@
         <field name="user_id" position="before">
           <field name="comunidad_arbustera"/>
           <field name="registry_date" required='1'/>
-          <field name="x_studio_field_ny2Ip" required='1'/>
+          <field name="x_studio_field_ny2Ip"/>
           <field name="x_studio_field_RiU1z"/>
           <field name="x_studio_field_awy5r"/>
           <field name="x_studio_field_RFrXP"/>
