@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_product_image_form">
+        <field name="name">product.pricelist.item.form</field>
+        <field name="model">product.pricelist.item</field>
+        <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+        <field name="arch" type="xml">
+            <field name="applied_on" position="after">
+                <field name="brand_id" attrs="{'invisible':[('applied_on', 'not in', ('3_global', '2_product_category'))]}" options="{'no_create':1}"/>
+                <field name="manufacturer" attrs="{'invisible':[('applied_on', 'not in', ('3_global', '2_product_category'))]}" options="{'no_create':1}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
