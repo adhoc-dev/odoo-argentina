@@ -144,6 +144,7 @@
         'views/x_controles_remitos_diarios_views.xml',
         'views/x_stock_picking_setstate_views.xml',
         'views/x_stock_breakout_views.xml',
+        'views/sale_order_templates.xml',
         'data/ir_actions_act_window.xml',
         'data/ir_ui_menu.xml',
         'report/ir_actions_report.xml',

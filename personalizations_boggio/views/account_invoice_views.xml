@@ -64,9 +64,6 @@
       <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='discount']" position="attributes">
         <attribute name="optional">hide</attribute>
       </xpath>
-      <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='name']" position="attributes">
-        <attribute name="optional">hide</attribute>
-      </xpath>
       <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='product_uom_id']" position="attributes">
         <attribute name="optional">hide</attribute>
       </xpath>

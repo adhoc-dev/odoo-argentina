@@ -45,8 +45,11 @@
           </group>
         </group>
       </xpath>
+      <xpath expr="//field[@name='order_line']/tree//field[@name='purchase_price']" position="attributes">
+        <attribute name="invisible">True</attribute>
+      </xpath>
       <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="attributes">
-        <attribute name="invisible">1</attribute>
+        <attribute name="optional">show</attribute>
       </xpath>
       <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="before">
         <field name="additional_description" optional="hide"/>
@@ -178,16 +181,6 @@
       <field name="margin" position="attributes">
         <attribute name="invisible">True</attribute>
       </field>
-    </field>
-  </record>
-  <record id="personalizations_boggio.ir_ui_view_5096" model="ir.ui.view">
-    <field name="name">sacar margen iboggio</field>
-    <field name="model">sale.order</field>
-    <field name="inherit_id" ref="sale.view_order_form"/>
-    <field name="arch" type="xml">
-      <xpath expr="//field[@name='order_line']/tree//field[@name='purchase_price']" position="attributes">
-        <attribute name="invisible">True</attribute>
-      </xpath>
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5108" model="ir.ui.view">
