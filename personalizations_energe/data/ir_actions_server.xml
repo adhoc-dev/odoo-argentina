@@ -156,7 +156,7 @@ for lead in leads:
                     '<li><b>' + item + '</b>: ' + str(values[item]) + '</li>'
                     for item in values]) + '</ul>'
                 # raise Warning ("values %s" % print_vals)
-                lead.message_post(ready + '<br/>' + print_vals)
+                lead.message_post(body=ready + '<br/>' + print_vals)
 ]]></field>
   </record>
 </odoo>

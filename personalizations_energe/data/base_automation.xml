@@ -155,7 +155,7 @@ for lead in leads:
                     '&lt;li&gt;&lt;b&gt;' + item + '&lt;/b&gt;: ' + str(values[item]) + '&lt;/li&gt;'
                     for item in values]) + '&lt;/ul&gt;'
                 # raise Warning ("values %s" % print_vals)
-                lead.message_post(ready + '&lt;br/&gt;' + print_vals)
+                lead.message_post(body=ready + '&lt;br/&gt;' + print_vals)
 </field>
     <field name="filter_domain">["&amp;","&amp;",["model","=","crm.lead"],["subject","!=",False],["message_type","=","email"]]</field>
     <field name="trigger">on_create</field>
