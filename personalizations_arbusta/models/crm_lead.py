@@ -19,7 +19,8 @@ class CrmLead(models.Model):
                                                        ('Hunting', 'Hunting'),('Hunting Networking', 'Hunting Networking'),
                                                        ('Hunting Linkedin', 'Hunting Linkedin'),
                                                        ('Hunting Agencia SQR', 'Hunting Agencia SQR'),
-                                                       ('Hunting Evento', 'Hunting Evento')], copy=False)
+                                                       ('Hunting Evento', 'Hunting Evento'),
+                                                       ('Hunting web','Hunting web')], copy=False)
     x_studio_field_8wDdo = fields.Selection(string="Idioma requerido",
                                             selection=[('N/A', 'N/A'), ('Inglés oral', 'Inglés oral'),
                                                        ('Inglés escrito', 'Inglés escrito'),
