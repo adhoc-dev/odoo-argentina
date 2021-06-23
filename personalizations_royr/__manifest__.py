@@ -26,14 +26,12 @@
     'license': 'AGPL-3',
     'depends': [
         'calendar',
-        'portal',
         'report_aeroo',
         'account'
     ],
     'data': [
         'security/legal_group.xml',
         'security/ir.model.access.csv',
-        'security/portal_security.xml',
         'view/legal_menuitem.xml',
         'view/res_partner_view.xml',
         'view/prosecution_view.xml',
@@ -55,7 +53,6 @@
         'view/expertise_detail_view.xml',
         'view/expertise_detail_type_view.xml',
         'view/account_invoice_view.xml',
-        'view/portal_legal_view.xml',
         'data/prosecution_data.xml',
         'wizard/stock_case_wizard.xml',
         'report/legal_report.xml'
