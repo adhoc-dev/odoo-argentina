@@ -25,6 +25,7 @@ from . import purchase_order_line
 from . import res_partner_industry
 from . import sale_order
 from . import sale_order_line
+from . import sale_order_template
 from . import sale_order_type
 from . import stock_picking_batch
 from . import stock_inventory

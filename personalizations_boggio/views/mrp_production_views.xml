@@ -5,9 +5,6 @@
     <field name="model">mrp.production</field>
     <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
     <field name="arch" type="xml">
-      <field name="product_id" position="attributes">
-        <attribute name="domain">"[('bom_ids', '!=', False), ('bom_ids.active', '=', True)]"</attribute>
-      </field>
       <xpath expr="//button[@name='button_scrap']" position="replace"/>
       <xpath expr="//field[@name='location_src_id']" position="attributes">
         <attribute name="attrs">{}</attribute>

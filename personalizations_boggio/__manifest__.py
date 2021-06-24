@@ -129,6 +129,7 @@
         'views/sale_order_views.xml',
         'views/sale_order_line_views.xml',
         'views/sale_order_type_views.xml',
+        'views/sale_order_templates.xml',
         'wizards/stock_backorder_confirmation_views.xml',
         'views/stock_batch_picking_views.xml',
         'views/stock_book_views.xml',

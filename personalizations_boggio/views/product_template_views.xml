@@ -354,17 +354,4 @@
       </filter>
     </field>
   </record>
-  <record id="personalizations_boggio.ir_ui_view_7895" model="ir.ui.view">
-    <field name="name">Mover boton archivar</field>
-    <field name="model">product.template</field>
-    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_158')])]" name="groups_id"/>
-    <field name="inherit_id" ref="product.product_template_only_form_view"/>
-    <field name="arch" type="xml">
-      <button name="website_publish_button" position="before">
-        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
-          <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
-        </button>
-      </button>
-    </field>
-  </record>
 </odoo>

@@ -303,11 +303,11 @@
     <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
       <!-- make tax invisible on tree -->
-      <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id_readonly']" position="attributes">
+      <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id']" position="attributes">
         <attribute name="invisible">1</attribute>
       </xpath>
       <!-- add readonly tax on form -->
-      <xpath expr="//field[@name='order_line']/form//field[@name='tax_id_readonly']" position="attributes">
+      <xpath expr="//field[@name='order_line']/form//field[@name='tax_id']" position="attributes">
         <attribute name="invisible">1</attribute>
       </xpath>
     </field>
@@ -379,10 +379,10 @@
     <field eval="[(6, 0, [ref('portal_sale_distributor.group_portal_distributor')])]" name="groups_id"/>
     <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
-      <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit_readonly']" position="attributes">
+      <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="attributes">
         <attribute name="invisible">1</attribute>
       </xpath>
-      <xpath expr="//field[@name='order_line']/tree//field[@name='discount_readonly']" position="attributes">
+      <xpath expr="//field[@name='order_line']/tree//field[@name='discount']" position="attributes">
         <attribute name="invisible">1</attribute>
       </xpath>
     </field>
