@@ -8,8 +8,9 @@ class AccountAnalyticLine(models.Model):
     x_presupuestado = fields.Boolean(string="Presupuestado")
     name = fields.Char(required=False)
 
-    @api.onchange('unit_amount', 'product_id')
-    def complete_analytic_price(self):
+    @api.onchange('product_id', 'product_uom_id', 'unit_amount', 'currency_id')
+    def on_change_unit_amount(self):
+        super().on_change_unit_amount()
         for rec in self:
             if rec.product_id and rec.unit_amount:
                 rec.amount = rec.product_id.standard_price * rec.unit_amount
