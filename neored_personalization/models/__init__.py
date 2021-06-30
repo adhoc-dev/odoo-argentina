@@ -10,3 +10,5 @@ from . import stock_book
 from . import purchase_order_line
 from . import product_pricelist
 from . import product_pricelist_item
+from . import stock_move_line
+from . import stock_quant
