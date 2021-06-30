@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Neored Personalizations',
-    'version': '13.0.1.10.0',
+    'version': '13.0.1.11.0',
     'category': 'Accounting',
     'sequence': 14,
     'summary': '',
@@ -51,7 +51,8 @@
         'sale_product_configurator',
         'stock_voucher',
         'website_sale_stock',
-        'l10n_ar_stock'
+        'l10n_ar_stock',
+        'sale_stock_ux',
 
     ],
     'data': [
@@ -64,6 +65,7 @@
         'views/report_delivery_document.xml',
         'views/report_invoice_document.xml',
         'views/report_saleorder_document.xml',
+        'views/sale_order_views.xml',
         'security/ir.model.access.csv',
         'data/res_partner_categories_data.xml',
         'data/product_data.xml',
