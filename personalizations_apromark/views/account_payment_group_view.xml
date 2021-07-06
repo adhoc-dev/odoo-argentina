@@ -16,6 +16,9 @@
                 <field name="communication" position="after">
                     <field name="fecha_comprobante"/>
                     <field name="nro_comprobante"/>
+                    <!-- Ticket 40840 -->
+                    <field name="nro_cuota"/>
+                    <field name="mes"/>
                 </field>
             </field>
         </record>
@@ -30,6 +33,9 @@
                 <field name="partner_id" position="before">
                     <field name="fecha_comprobante"/>
                     <field name="nro_comprobante"/>
+                    <!-- Ticket 40840 -->
+                    <field name="nro_cuota" optional="show"/>
+                    <field name="mes" optional="show"/>
                 </field>
             </field>
         </record>
