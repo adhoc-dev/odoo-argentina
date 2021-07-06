@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <template id="custom_header" inherit_id="l10n_ar.custom_header">
+    <span t-att-style="'color: %s;' % o.company_id.primary_color" position="attributes">
+      <attribute name="t-att-style">'color: %s; font-size: 0.8em;' % o.company_id.primary_color</attribute>
+    </span>
+  </template>
+</odoo>

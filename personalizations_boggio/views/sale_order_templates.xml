@@ -4,7 +4,7 @@
     <span t-field="doc.partner_id" position="after">
       <strong t-if="doc.partner_id.commercial_partner_id != doc.partner_id">Conctato: </strong>
       <span t-if="doc.partner_id.commercial_partner_id != doc.partner_id" t-field="doc.partner_id.name"/>
-      <br/>
+      <br t-if="doc.partner_id.commercial_partner_id != doc.partner_id"/>
     </span>
     <span t-field="doc.partner_id.commercial_partner_id.name" position="before">
       <span t-if="doc.partner_id.commercial_partner_id.internal_code" t-esc="'[%s]' % (doc.partner_id.commercial_partner_id.internal_code)"/>
@@ -46,43 +46,51 @@
     </td>
 
     <p t-field="doc.note" position="before">
-      <div class="col-auto mw-100 mb-2">
-        <strong t-if="doc.commitment_date">Fecha de Entrega: </strong>
-        <p t-if="doc.commitment_date" t-field="doc.commitment_date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
-        <strong>Los precios e importes de los artículos están expresados en : </strong>
-        <span t-field="doc.currency_id"/>
-
-        <p t-if="doc.currency_id.id !=20" t-esc="' ('+ str(doc.currency_id.inverse_rate) + datetime.datetime.today().strftime(' al %d/%m/%Y') +')'"/>
-        <strong>Las garantias son de 1 año a menos que se indique otra duración en el producto.</strong>
-      </div>
-
+      <p t-if="doc.commitment_date">
+          <strong>Fecha de Entrega:</strong>
+          <span t-field="doc.commitment_date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
+      </p>
+      <p>
+        Los precios e importes de los artículos están expresados en <span t-field="doc.currency_id"/>
+        <span t-if="doc.currency_id.id !=20" t-esc="' ('+ str(doc.currency_id.inverse_rate) + datetime.datetime.today().strftime(' al %d/%m/%Y') +')'"/>.
+        <br/>Las garantias son de 1 año a menos que se indique otra duración en el producto.
+      </p>
     </p>
+
     <p id="fiscal_position_remark" position="after">
-      <p t-esc="'Ud. fue atendido por %s - %s - %s' % (doc.create_uid.name, doc.create_uid.email, doc.create_uid.function)"/>
-      <span t-field="doc.create_uid.image_128" style="height:20px !important;width:10px !important;" t-options='{"widget": "image"}'/>
+
+      <!-- html variable que configuran en la plantilla de presupuesto -->
+      <t t-raw="doc.sale_order_template_id.pdf_footer"/>
+
+      <div class="row">
+          <div class="col-3"/>
+          <div class="col-8 text-right" >
+            <span t-esc="'Ud. fue atendido por %s - %s - %s' % (doc.create_uid.name, doc.create_uid.email, doc.create_uid.function)"/>
+            </div>
+        <div class="col-1 text-left" >
+            <img t-if="doc.create_uid.image_256" t-att-src="image_data_uri(doc.create_uid.image_256)" style="max-height: 60px;" alt="Logo"/>
+          </div>
+      </div>
     </p>
 
-    <td name="td_subtotal" position="replace">
-      <td name="td_subtotal">
-        <span t-field="line.price_subtotal" t-options="{'widget': 'float', 'precision': currency_precision}" groups="account.group_show_line_subtotals_tax_excluded"/>
-        <span t-field="line.price_total" t-options="{'widget': 'float', 'precision': currency_precision}" groups="account.group_show_line_subtotals_tax_included"/>
-      </td>
-    </td>
+    <!-- al subtotal de las lineas le sacamos el simbolo de la moneda -->
+    <xpath expr="//span[@t-field='line.report_price_subtotal'][1]" position="attributes">
+      <attribute name="t-options">{'widget': 'float', 'precision': currency_precision}</attribute>
+    </xpath>
+    <xpath expr="//span[@t-field='line.report_price_subtotal'][2]" position="attributes">
+      <attribute name="t-options">{'widget': 'float', 'precision': currency_precision}</attribute>
+    </xpath>
 
-    <span t-field="line.product_id.image_1920" position="replace">
-      <a t-attf-href="https://ib.ingenieriaboggio.com.ar/shop">
+    <span t-field="line.product_id.image_256" position="replace">
+      <a target="_blank" t-att-href="'https://ib.ingenieriaboggio.com.ar/shop/product/%i' % (line.product_id.product_tmpl_id.id)">
       <t>$0</t></a>
     </span>
 
 
-    <td name="td_name" position="replace">
-      <td name="td_name">
-        <div class="row">
+    <span t-field="line.name" position="replace">
           <span t-esc="'%s %s (%s) %s' % (line.product_id.internal_code[1:] ,line.product_id.name, line.product_id.supplier_code or '', line.product_id.warranty!=12 and line.product_id.warranty or ' ')"/>
-          <a t-if="line.product_id.x_website_catalog" t-attf-href="line.product_id.x_website_catalog" class="fa fa-link" role="img" />
-          <a t-if="line.product_id.x_documents" t-attf-href="'https://www.ingenieriaboggio.com.ar' + line.product_id.x_documents.url_suffix" class="fa fa-book" role="img" />
-        </div>
-      </td>
-    </td>
+          <a t-if="line.product_id.x_website_catalog" target="_blank" t-attf-href="line.product_id.x_website_catalog" class="fa fa-link" role="img"/>
+          <a t-if="line.product_id.x_documents" target="_blank" t-attf-href="'https://www.ingenieriaboggio.com.ar' + line.product_id.x_documents.url_suffix" class="fa fa-book" role="img"/>
+      </span>
   </template>
 </odoo>
