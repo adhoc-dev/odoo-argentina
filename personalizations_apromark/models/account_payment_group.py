@@ -20,18 +20,12 @@ class AccountPaymentGroup(models.Model):
                     payment.nro_cuota = '1'
                     payment.mes = invoice.invoice_date.month
                 elif subscription:
-                    payment.nro_cuota = payment._get_invoice_position(subscription.id, invoice.id)
-                    if payment.nro_cuota == '13':
-                        payment.mes = "Certificación"
-                    else:
-                        payment.mes = invoice.invoice_date.month
+                    # Get the invoices related to the subscription
+                    invoices = self.env['account.move'].search(
+                        [('invoice_line_ids.subscription_id', '=', subscription.id)])
+                    # Set the position of the invoice in the subscription
+                    payment.nro_cuota = invoices.sorted(lambda i: (i.invoice_date, i.id)).ids.index(invoice.id) + 1
+                    payment.mes = "Certificación" if payment.nro_cuota == '13' else invoice.invoice_date.month
             else:
                 payment.nro_cuota = None
                 payment.mes = None
-
-    def _get_invoice_position(self, subscription_id, invoice_id):
-        ''' Returns the position of an invoice between the invoices related to a subscription sorted by invoice date '''
-        invoices = self.env['account.move'].search([('invoice_line_ids.subscription_id', '=', subscription_id)])
-        for i, invoice in enumerate(invoices.sorted(lambda i: (i.invoice_date, i.id))):
-            if invoice.id == invoice_id:
-                return i + 1
