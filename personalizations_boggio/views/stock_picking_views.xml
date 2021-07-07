@@ -45,9 +45,9 @@
       <field name="product_type" position="after">
         <field name="x_supplier_code"/>
         <field name="x_product_brand_id"/>
-        <button string="Traceability" name="%(personalizations_boggio.ir_act_server_1742)d" icon="fa-arrows-v" type="action"/>
-        <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1743)d" icon="fa-building-o" type="action"/>
-        <button type="action" name="%(personalizations_boggio.ir_act_server_1741)d" class="oe_stat_button" icon="fa-search-plus" string="Resumen Movimiento"/>
+        <button string="Traceability" name="%(personalizations_boggio.ir_act_server_1748)d" icon="fa-arrows-v" type="action"/>
+        <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1747)d" icon="fa-building-o" type="action"/>
+        <button type="action" name="%(personalizations_boggio.ir_act_server_1746)d" class="oe_stat_button" icon="fa-search-plus" string="Resumen Movimiento"/>
       </field>
       <xpath expr="//div[@name='button_box']" position="inside">
         <button name="%(personalizations_boggio.ir_act_server_2338)d" class="oe_stat_button" icon="fa-truck" string="Albaranes Relacionados" type="action" attrs="{'invisible': [('group_id', '=', False)]}"/>
@@ -85,13 +85,13 @@
     <field name="priority" eval="199"/>
     <field name="inherit_id" ref="stock.view_picking_form"/>
     <field name="arch" type="xml">
-        <field name="backorder_id" position="after">
-          <field name="x_user_id" domain="[('share', '=', False)]"/>
-          <field name="x_write_uid2"/>
-          <field name="x_razon_devolucion"/>
-        </field>
-        <button name="do_print_picking" position="replace"/>
-        <button name="action_toggle_is_locked" position="after">
+      <field name="backorder_id" position="after">
+        <field name="x_user_id" domain="[('share', '=', False)]"/>
+        <field name="x_write_uid2"/>
+        <field name="x_razon_devolucion"/>
+      </field>
+      <button name="do_print_picking" position="replace"/>
+      <button name="action_toggle_is_locked" position="after">
         <button type="action" name="%(personalizations_boggio.ir_act_server_2449)d" string="Flete Propio" context="{ 'state_detail_ib': 2, 'ismodel':'stockpicking'}" barcode_trigger="F2" attrs="{'invisible': [ ('state', 'not in', ['done'])]}"/>
         <button type="action" name="%(personalizations_boggio.ir_act_server_2452)d" string="en Boggio" context="{ 'state_detail_ib': 1, 'ismodel':'stockpicking'}" barcode_trigger="F1" attrs="{'invisible': [ ('state', 'not in', ['done'])]}"/>
         <button type="action" name="%(personalizations_boggio.ir_act_server_2453)d" string="Recibido X Cliente" context="{ 'state_detail_ib': 3, 'ismodel':'stockpicking'}" barcode_trigger="F3" attrs="{'invisible': [ ('state', 'not in', ['done'])]}"/>
@@ -119,65 +119,6 @@
         <field name="x_plazo_pago"/>
         <field name="x_studio_field_T8yfU"/>
       </xpath>
-      <!-- <xpath expr="//page/field[@name='move_line_ids_without_package']//tree" position="after">
-        <form string="Stock Moves" create="0" edit="0">
-          <header>
-            <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,assigned,done" modifiers="{&quot;readonly&quot;: true}"/>
-          </header>
-          <sheet name="studio_sheet_bef750">
-            <div class="oe_button_box" name="button_box">
-              <button name="action_get_account_moves" icon="fa-usd" class="oe_stat_button" string="Accounting Entries" type="object"/>
-              <field name="purchase_id" invisible="1" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true, &quot;invisible&quot;: true}"/>
-              <button name="action_view_linked_record" class="oe_stat_button" icon="fa-credit-card" string="Purchase Order" type="object" context="{'res_id': purchase_id, 'action_ref': 'purchase.purchase_form_action', 'form_view_ref': 'purchase.purchase_order_form'}" attrs="{'invisible': [('purchase_id', '=', False)]}" modifiers="{&quot;invisible&quot;: [[&quot;purchase_id&quot;, &quot;=&quot;, false]]}">
-              </button>
-              <field name="sale_id" invisible="1" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true, &quot;invisible&quot;: true}"/>
-              <button name="action_view_linked_record" class="oe_stat_button" icon="fa-book" string="Sale Order" type="object" context="{'res_id': sale_id, 'action_ref': 'sale.action_orders', 'form_view_ref': 'sale.view_order_form'}" attrs="{'invisible': [('sale_id', '=', False)]}" modifiers="{&quot;invisible&quot;: [[&quot;sale_id&quot;, &quot;=&quot;, false]]}">
-              </button>
-              <field name="request_order_id" invisible="1" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true, &quot;invisible&quot;: true}"/>
-              <button name="action_view_linked_record" class="oe_stat_button" icon="fa-cubes" string="Request Orders" type="object" context="{'res_id': request_order_id, 'action_ref': 'stock_request.stock_request_order_action', 'form_view_ref': 'stock_request.stock_request_order_form'}" attrs="{'invisible': [('request_order_id', '=', False)]}" modifiers="{&quot;invisible&quot;: [[&quot;request_order_id&quot;, &quot;=&quot;, false]]}">
-              </button>
-            </div>
-            <group name="studio_group_d5734d">
-              <group name="main_grp" colspan="2">
-                <group name="main_grp_col1">
-                  <field name="reference" modifiers="{&quot;readonly&quot;: true}"/>
-                  <field name="location_id" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true}"/>
-                  <field name="location_dest_id" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true}"/>
-                </group>
-                <group name="main_grp_col2">
-                  <field name="product_id" on_change="1" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]], &quot;required&quot;: true}"/>
-                  <label for="product_uom_qty"/>
-                  <div class="o_row" name="studio_div_4b5a1f">
-                    <field name="product_uom_qty" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]], &quot;required&quot;: true}"/>
-                    <field name="product_uom" options="{'no_open': True, 'no_create': True}" on_change="1" can_create="true" can_write="true" studio_groups="[{&quot;id&quot;: 22, &quot;display_name&quot;: &quot;Technical Settings / Manage Multiple Units of Measure&quot;, &quot;name&quot;: &quot;Manage Multiple Units of Measure&quot;}]" modifiers="{&quot;required&quot;: true}"/>
-                  </div>
-                  <field name="name" invisible="1" on_change="1" modifiers="{&quot;invisible&quot;: true, &quot;required&quot;: true}"/>
-                  <field name="invoice_line_ids" widget="many2many_tags" can_create="true" can_write="true" studio_groups="[{&quot;id&quot;: 26, &quot;display_name&quot;: &quot;Accounting &amp; Finance / Billing and Payments&quot;, &quot;name&quot;: &quot;Billing and Payments&quot;}]" modifiers="{&quot;readonly&quot;: true}"/>
-                  <field name="date_expected" invisible="1" on_change="1" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]], &quot;invisible&quot;: true, &quot;required&quot;: true}"/>
-                  <field name="date" attrs="{'invisible': [('state', '!=', 'done')]}" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;in&quot;, [&quot;done&quot;]]], &quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;done&quot;]], &quot;required&quot;: true}"/>
-                </group>
-              </group>
-              <group name="origin_grp" string="Origin">
-                <field name="picking_id" readonly="1" on_change="1" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}"/>
-                <field name="origin" modifiers="{}"/>
-                <field name="group_id" on_change="1" can_create="true" can_write="true" modifiers="{}"/>
-                <field name="procure_method" attrs="{'readonly': [('state', '!=', 'draft')]}" studio_groups="[{&quot;id&quot;: 44, &quot;display_name&quot;: &quot;Technical Settings / Manage Push and Pull inventory flows&quot;, &quot;name&quot;: &quot;Manage Push and Pull inventory flows&quot;}]" modifiers="{&quot;readonly&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;]], &quot;required&quot;: true}"/>
-                <field name="purchase_line_id" on_change="1" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}"/>
-              </group>
-              <group name="linked_group" string="Linked Moves" colspan="2" studio_groups="[{&quot;id&quot;: 8, &quot;display_name&quot;: &quot;Extra Rights / Technical Features&quot;, &quot;name&quot;: &quot;Technical Features&quot;}]" invisible="1" modifiers="{&quot;invisible&quot;: true}">
-                <field name="move_orig_ids" string="Origin Moves" readonly="1" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}">
-                </field>
-                <field name="move_dest_ids" string="Destination Moves" readonly="1" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}">
-                </field>
-              </group>
-              <newline/>
-              <group name="allocations" string="Stock Request Allocations">
-                <field name="allocation_ids" modifiers="{}"/>
-              </group>
-            </group>
-          </sheet>
-        </form>
-      </xpath> -->
       <xpath expr="//field[@name='printed']" position="after">
         <field name="x_rpa_link" widget="url"/>
       </xpath>
@@ -202,8 +143,8 @@
     <field name="inherit_id" ref="stock.view_picking_internal_search"/>
     <field name="arch" type="xml">
       <field name="product_id" position="after">
-          <field name="x_product_brand_id"/>
-        </field>
+        <field name="x_product_brand_id"/>
+      </field>
       <xpath expr="//field[@name='partner_id']" position="after">
         <field name="id"/>
       </xpath>

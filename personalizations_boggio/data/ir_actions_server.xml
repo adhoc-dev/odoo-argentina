@@ -15,8 +15,7 @@ action = object.product_id.view_stock_detail()]]></field>
     <field name="crud_model_id" ref="purchase_suggest.model_purchase_suggest"/>
     <field name="code"><![CDATA[object = record
 action = record.product_id.action_open_quants()
-action_read = action.read()[0]
-action = action_read]]></field>
+]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1257" model="ir.actions.server">
     <field name="name">Stock On Hand en sale order line</field>
@@ -35,8 +34,7 @@ action = action_read]]></field>
 # To return an action, assign: action = {...}
 
 action = record.product_id.action_open_quants()
-action_read = action.read()[0]
-action = action_read]]></field>
+]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1300" model="ir.actions.server">
     <field name="name">Stock Traceability en sale order line</field>
@@ -96,7 +94,7 @@ action = object.view_stock_detail()]]></field>
     <field name="crud_model_id" ref="stock.model_stock_move_line"/>
     <field name="code"><![CDATA[active_id = env.context.get('active_id')
 active_model = env.context.get('active_model')
-if active_model != 'stock.move':
+if active_model != 'stock.move.line':
   raise Warning('Active model erroneo')
 
 record = env[active_model].browse(active_id)
@@ -105,7 +103,7 @@ action = record.product_id.view_stock_detail()
 ]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1742" model="ir.actions.server">
-    <field name="name">Stock Traceability en stock picking</field>
+    <field name="name">Stock Traceability en stock move line</field>
     <field name="model_id" ref="stock.model_stock_move_line"/>
     <field name="state">code</field>
     <field name="crud_model_id" ref="stock.model_stock_move_line"/>
@@ -113,12 +111,12 @@ action = record.product_id.view_stock_detail()
 # object = record
 active_id = env.context.get('active_id')
 active_model = env.context.get('active_model')
-if active_model != 'stock.move':
+if active_model != 'stock.move.line':
   raise Warning('Active model erroneo')
 
 record = env[active_model].browse(active_id)
 
-action = env.ref('stock.act_product_stock_move_open')
+action = env.ref('stock.stock_move_line_action')
 action_read = action.read()[0]
 context = {
     'search_default_future': 1,
@@ -136,20 +134,13 @@ action = action_read
     <field name="state">code</field>
     <field name="crud_model_id" ref="stock.model_stock_move_line"/>
     <field name="code"><![CDATA[
-# context = dict(env.context)
-# object = record
 active_id = env.context.get('active_id')
 active_model = env.context.get('active_model')
-if active_model != 'stock.move':
+if active_model != 'stock.move.line':
   raise Warning('Active model erroneo')
 
 record = env[active_model].browse(active_id)
-
-
 action = record.product_id.action_open_quants()
-action_read = action.read()[0]
-action = action_read
-
 ]]></field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1746" model="ir.actions.server">
@@ -166,15 +157,6 @@ action = object.product_id.view_stock_detail()]]></field>
     <field name="state">code</field>
     <field name="crud_model_id" ref="stock.model_stock_move"/>
     <field name="code"><![CDATA[object = record
-# Available locals:
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the rhttp://erp.ingenieriaboggio.com.ar/web#notebook_page_358ecord on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 
 action = record.product_id.action_open_quants()
 action_read = action.read()[0]
@@ -187,15 +169,6 @@ action = action_read]]></field>
     <field name="crud_model_id" ref="stock.model_stock_move"/>
     <field name="code"><![CDATA[context = dict(env.context)
 object = record
-# Available locals:
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the rhttp://erp.ingenieriaboggio.com.ar/web#notebook_page_358ecord on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 
 action = env.ref('stock.act_product_stock_move_open')
 action_read = action.read()[0]
@@ -221,15 +194,6 @@ action = object.product_id.view_stock_detail()]]></field>
     <field name="state">code</field>
     <field name="crud_model_id" ref="stock.model_stock_inventory_line"/>
     <field name="code"><![CDATA[object = record
-# Available locals:
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the rhttp://erp.ingenieriaboggio.com.ar/web#notebook_page_358ecord on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 
 action = record.product_id.action_open_quants()
 action_read = action.read()[0]
@@ -242,16 +206,6 @@ action = action_read]]></field>
     <field name="crud_model_id" ref="stock.model_stock_inventory_line"/>
     <field name="code"><![CDATA[context = dict(env.context)
 object = record
-# Available locals:
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the rhttp://erp.ingenieriaboggio.com.ar/web#notebook_page_358ecord on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
-
 action = env.ref('stock.act_product_stock_move_open')
 action_read = action.read()[0]
 context = {
@@ -268,15 +222,6 @@ action = action_read]]></field>
     <field name="state">code</field>
     <field name="crud_model_id" ref="product_replenishment_cost.model_purchase_order_line"/>
     <field name="code"><![CDATA[object = record
-# Available locals:
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the rhttp://erp.ingenieriaboggio.com.ar/web#notebook_page_358ecord on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 
 action = record.product_id.action_open_quants()
 action_read = action.read()[0]
@@ -289,15 +234,6 @@ action = action_read]]></field>
     <field name="crud_model_id" ref="product_replenishment_cost.model_purchase_order_line"/>
     <field name="code"><![CDATA[context = dict(env.context)
 object = record
-# Available locals:
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the rhttp://erp.ingenieriaboggio.com.ar/web#notebook_page_358ecord on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
 
 action = env.ref('stock.act_product_stock_move_open')
 action_read = action.read()[0]

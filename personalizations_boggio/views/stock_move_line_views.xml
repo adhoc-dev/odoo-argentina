@@ -63,6 +63,9 @@
       <field name="product_id" position="after">
         <field name="x_product_brand_id"/>
         <field name="x_supplier_code"/>
+        <button string="Traceability" name="%(personalizations_boggio.ir_act_server_1742)d" icon="fa-arrows-v" type="action"/>
+        <button string="On Hand" name="%(personalizations_boggio.ir_act_server_1743)d" icon="fa-building-o" type="action"/>
+        <button type="action" name="%(personalizations_boggio.ir_act_server_1741)d" class="oe_stat_button" icon="fa-search-plus" string="Resumen Movimiento"/>
       </field>
     </field>
   </record>
