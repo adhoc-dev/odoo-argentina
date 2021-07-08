@@ -1,18 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <!-- <record id="action_aeroo_report_ar_sale_order" model="ir.actions.report">
-    <field name="name">Orden de Venta / presupuesto Argentina de Aeroo</field>
-    <field name="model">sale.order</field>
-    <field name="report_name">aeroo_report_ar_sale_order</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_type">action</field>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_sale_order.odt</field>
-    <field eval="True" name="process_sep"/>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-  </record> -->
   <record id="action_aeroo_report_ar_stock_picking" model="ir.actions.report">
     <field name="name">Remito Argentino de Aeroo Rafela</field>
     <field name="model">stock.picking</field>
