@@ -20,4 +20,18 @@ for stage in stages:
     <field name="interval_type">days</field>
     <field name="numbercall">-1</field>
   </record>
+
+  <record model="ir.cron" id="personalizations_brunetti.ir_cron_cancel_sale_orders_by_activity_type">
+  <field name="name">Cancelar OVs en cola</field>
+    <field name="model_id" ref="sale.model_sale_order"/>
+    <field name="state">code</field>
+    <field name="binding_type">action</field>
+    <field name="code">
+model.search([("state","=","sale")]).filtered(
+  lambda sale: env.ref('personalizations_brunetti.sale_order_to_cancel').id in sale.activity_ids.mapped('activity_type_id').ids).action_cancel()
+    </field>
+    <field name="interval_number">3</field>
+    <field name="interval_type">days</field>
+    <field name="numbercall">-1</field>
+  </record>
 </odoo>

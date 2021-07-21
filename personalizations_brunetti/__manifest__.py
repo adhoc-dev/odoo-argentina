@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_brunetti',
-    'version': '13.0.1.2.0',
+    'version': '13.0.1.3.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -18,6 +18,7 @@
         'purchase',
     ],
     'data': [
+        'data/mail_activity_type.xml',
         'security/security.xml',
         'data/ir_actions_server.xml',
         'data/base_automation.xml',
@@ -28,7 +29,7 @@
         'views/purchase_order_views.xml',
         'views/stock_picking_views.xml',
         'security/ir_rule.xml',
-        'data/ir_cron.xml',
+        'data/ir_cron.xml'
 
     ],
     'application': False,

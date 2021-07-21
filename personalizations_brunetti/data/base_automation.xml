@@ -219,4 +219,20 @@ for rec in records:
 </field>
     <field name="trigger">on_create_or_write</field>
   </record>
+
+  <record model="base.automation" id="personalizations_brunetti.base_automation_activity_on_sale_order">
+    <field name="name">Añadir actividad de OV a cancelar</field>
+    <field name="model_id" ref="sale.model_sale_order"/>
+    <field name="state">next_activity</field>
+    <field name="activity_type_id" ref="personalizations_brunetti.sale_order_to_cancel"/>
+    <field name="activity_date_deadline_range">7</field>
+    <field name="activity_date_deadline_range_type">days</field>
+    <field name="activity_user_type">generic</field>
+    <field name="activity_user_field_name">user_id</field>
+    <field name="binding_type">action</field>
+    <field name="filter_pre_domain">[["state","!=","sale"]]</field>
+    <field name="filter_domain">[["state","=","sale"]]</field>
+    <field name="trigger">on_write</field>
+    <field name="trigger_field_ids" eval="[(4,ref('sale.field_sale_order__state'))]"/>
+  </record>
 </odoo>
