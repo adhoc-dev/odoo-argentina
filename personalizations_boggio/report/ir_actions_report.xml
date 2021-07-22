@@ -119,7 +119,7 @@
     <field name="binding_type">action</field>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking0002.odt</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
     <!-- <field name="copies">2</field> -->
@@ -132,7 +132,7 @@
     <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking_reimpresion.odt</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
     <!-- <field name="copies">2</field> -->
@@ -169,7 +169,7 @@
     <field name="binding_type">action</field>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking_copy_copy.odt</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
     <!-- <field name="copies">2</field> -->
@@ -182,7 +182,7 @@
     <field name="binding_type">action</field>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking0020.odt</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
     <!-- <field name="copies">3</field> -->
@@ -220,7 +220,7 @@
     <field name="binding_type">action</field>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking0007.odt</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
     <!-- <field name="copies">2</field> -->
@@ -283,7 +283,7 @@
     <field name="binding_type">action</field>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking0008.odt</field>
+    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
     <!-- <field name="copies">2</field> -->
