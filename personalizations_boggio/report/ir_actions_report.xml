@@ -13,19 +13,6 @@
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
     <!-- <field name="copies">2</field> -->
   </record>
-  <record id="action_aeroo_report_ar_einvoice" model="ir.actions.report">
-    <field name="name">Factura Electrónica Argentina de Aeroo EM (mismo reporte)</field>
-    <field name="model">account.invoice</field>
-    <field name="report_name">aeroo_report_ar_einvoice</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account.model_account_move"/>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_einvoice.odt</field>
-    <field eval="True" name="process_sep"/>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-  </record>
   <record id="action_aeroo_report_ar_voucher" model="ir.actions.report">
     <field name="name">Orden de pago y recibo</field>
     <field name="model">account.voucher</field>
@@ -72,18 +59,6 @@
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/picking_list.odt</field>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-  </record>
-  <record id="personalizations_boggio.ir_act_report_xml_1256" model="ir.actions.report">
-    <field name="name">Factura Electrónica Argentina (0020) EM (mismo reporte)</field>
-    <field name="model">account.invoice</field>
-    <field name="report_name">aeroo_report_ar_einvoice_0020</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_type">action</field>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_einvoice_0020.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
   </record>
@@ -225,31 +200,6 @@
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
     <!-- <field name="copies">2</field> -->
   </record>
-  <record id="personalizations_boggio.ir_act_report_xml_1398" model="ir.actions.report">
-    <field name="name">Factura Electrónica Argentina (0021) EM (mismo reporte)</field>
-    <field name="model">account.invoice</field>
-    <field name="report_name">aeroo_report_ar_einvoice_0021</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_type">action</field>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_einvoice_0021.odt</field>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-  </record>
-  <record id="personalizations_boggio.ir_act_report_xml_1423" model="ir.actions.report">
-    <field name="name">Factura Electrónica Argentina de Aeroo (multiples pedidos) EM (mismo reporte)</field>
-    <field name="model">account.invoice</field>
-    <field name="report_name">aeroo_report_ar_einvoice_copy</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="account.model_account_move"/>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_einvoice_copy.odt</field>
-    <field eval="True" name="process_sep"/>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-  </record>
   <record id="personalizations_boggio.ir_act_report_xml_1458" model="ir.actions.report">
     <field name="name">Presupuesto Control</field>
     <field name="model">sale.order</field>
@@ -351,18 +301,6 @@
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
   </record>
-  <record id="personalizations_boggio.ir_act_report_xml_1627" model="ir.actions.report">
-    <field name="name">Factura Electrónica Argentina (0025) EM (mismo reporte)</field>
-    <field name="model">account.invoice</field>
-    <field name="report_name">aeroo_report_ar_einvoice_0025</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_type">action</field>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_einvoice_0025.odt</field>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-  </record>
   <record id="personalizations_boggio.ir_act_report_xml_1636" model="ir.actions.report">
     <field name="name">Etiqueta producto (multiples) (batch)</field>
     <field name="model">stock.picking.batch</field>
@@ -385,18 +323,6 @@
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/etiquetaProductos_multiples_presupuesto.odt</field>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-  </record>
-  <record id="personalizations_boggio.ir_act_report_xml_1686" model="ir.actions.report">
-    <field name="name">Factura Electrónica Argentina (0022)  EM (mismo reporte)</field>
-    <field name="model">account.invoice</field>
-    <field name="report_name">aeroo_report_ar_einvoice_0020_copy</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_type">action</field>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_einvoice_0020_copy.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
   </record>
@@ -473,17 +399,6 @@
     <field name="report_file">personalizations_boggio/report/stock.picking_devoluciones.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-  </record>
-  <record id="personalizations_boggio.ir_act_report_xml_2372" model="ir.actions.report">
-    <field name="name">informe de deuda de clientes general</field>
-    <field name="model">account.invoice</field>
-    <field name="report_name">deuda_clientes_general</field>
-    <field name="report_type">aeroo</field>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/deuda_clientes_general.ods</field>
-    <field name="in_format">oo-ods</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_ods"/>
   </record>
   <record id="personalizations_boggio.ir_act_report_xml_2400" model="ir.actions.report">
     <field name="name">Control Indice de Rotacion (xls)</field>

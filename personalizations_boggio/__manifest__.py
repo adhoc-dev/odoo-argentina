@@ -130,6 +130,7 @@
         'views/sale_order_views.xml',
         'views/sale_order_line_views.xml',
         'views/sale_order_type_views.xml',
+        'views/account_move_templates.xml',
         'views/sale_order_templates.xml',
         'views/custom_header_templates.xml',
         'wizards/stock_backorder_confirmation_views.xml',
