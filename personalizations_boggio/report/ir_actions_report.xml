@@ -59,7 +59,7 @@
     <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/picking_list_dep_7.odt</field>
+    <field name="report_file">personalizations_boggio/report/picking_list.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
   </record>
@@ -71,7 +71,7 @@
     <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/picking_list_dep22.odt</field>
+    <field name="report_file">personalizations_boggio/report/picking_list.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
   </record>
@@ -95,7 +95,7 @@
     <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/picking_list_RAF.odt</field>
+    <field name="report_file">personalizations_boggio/report/picking_list.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
   </record>
@@ -107,7 +107,7 @@
     <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/picking_list_SFE.odt</field>
+    <field name="report_file">personalizations_boggio/report/picking_list.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
   </record>
@@ -408,7 +408,7 @@
     <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/picking_list_dep1_copy.odt</field>
+    <field name="report_file">personalizations_boggio/report/picking_list.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
   </record>
