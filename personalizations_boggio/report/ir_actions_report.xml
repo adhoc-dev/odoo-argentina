@@ -400,18 +400,6 @@
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
   </record>
-  <record id="personalizations_boggio.ir_act_report_xml_2400" model="ir.actions.report">
-    <field name="name">Control Indice de Rotacion (xls)</field>
-    <field name="model">purchase.order</field>
-    <field name="report_name">compras_control_xls</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="inter_company_rules.model_purchase_order"/>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/compras_control_xls.ods</field>
-    <field name="in_format">oo-ods</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
-  </record>
   <record id="personalizations_boggio.ir_act_report_xml_2407" model="ir.actions.report">
     <field name="name">recepciones</field>
     <field name="model">stock.move</field>
@@ -421,18 +409,6 @@
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/recepcion_sm.ods</field>
-    <field name="in_format">oo-ods</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
-  </record>
-  <record id="personalizations_boggio.ir_act_report_xml_2420" model="ir.actions.report">
-    <field name="name">Control Indice de Rotacion (xls)</field>
-    <field name="model">stock.request.order</field>
-    <field name="report_name">control_IR</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="stock_request.model_stock_request_order"/>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/control_IR.ods</field>
     <field name="in_format">oo-ods</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
   </record>
