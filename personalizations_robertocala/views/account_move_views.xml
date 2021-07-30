@@ -1,21 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <record model="ir.ui.view" id="personalizations_robertocala.ir_ui_view_1696">
-    <field name="name">price_security.invoice.form.inherit (esta vista no tiene sentido, está mal hecha, queda?)</field>
-    <field name="model">account.move</field>
-    <field ref="price_security.invoice_form" name="inherit_id"/>
-    <field type="xml" name="arch">
-      <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='invoice_line_tax_ids']" position="attributes">
-        <xpath expr="//field[@name='sale_type_id']" position="attributes">
-          <attribute name="readonly">1</attribute>
-        </xpath>
-        <!-- add readonly quantity-->
-        <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='quantity']" position="attributes">
-          <attribute name="readonly">1</attribute>
-        </xpath>
-      </xpath>
-    </field>
-  </record>
+
   <record model="ir.ui.view" id="personalizations_robertocala.ir_ui_view_2742">
     <field name="name">Vista Personalizada</field>
     <field name="model">account.move</field>
