@@ -40,6 +40,7 @@
         'price_security',
         'product_attribute_template',
         'product_brand',
+        'purchase_discount',
         'product_catalog_aeroo_report_public_categ',
         'product_internal_code',
         'product_replenishment_cost',
