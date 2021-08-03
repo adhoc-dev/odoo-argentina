@@ -40,7 +40,6 @@
             <field name="model">legal.negotiation</field>
             <field name="arch" type="xml">
                 <tree>
-
                     <field name="concept_id"/>
                     <field name="amount"/>
                     <field name="observations"/>

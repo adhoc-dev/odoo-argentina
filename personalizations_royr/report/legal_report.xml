@@ -18,14 +18,11 @@
         <field name="name">Legal Agreement Report</field>
         <field name="model">legal.prosecution</field>
         <field name="binding_model_id" ref="model_legal_prosecution"/>
-        <field name="binding_type">report</field>
         <field name="report_name">legal_agreement_report</field>
         <field name="report_type">aeroo</field>
         <field name="in_format">oo-odt</field>
-        <field name="parser_loc">l10n_ar_aeroo_base/parser.py</field>
         <field name="report_file">legal/report/legal_report_agreement.odt</field>
         <field name="out_format" ref="report_aeroo.report_mimetypes_odt_odt"/>
-        <field name="parser_state">loc</field>
         <field name="tml_source">file</field>
     </record>
 
@@ -33,15 +30,11 @@
         <field name="name">Legal Waybill Report</field>
         <field name="model">legal.prosecution</field>
         <field name="binding_model_id" ref="model_legal_prosecution"/>
-        <field name="binding_type">report</field>
         <field name="report_name">legal_waybill_report</field>
         <field name="report_type">aeroo</field>
         <field name="in_format">oo-odt</field>
-        <!-- <field name="parser_loc">report_aeroo_sample/report/parser.py</field> -->
         <field name="report_file">legal/report/legal_waybill_report.odt</field>
         <field name="out_format" ref="report_aeroo.report_mimetypes_odt_odt"/>
-        <!-- <field name="parser_state">loc</field> -->
-        <field name="parser_state">default</field>
         <field name="tml_source">file</field>
     </record>
 
@@ -49,15 +42,11 @@
         <field name="name">Legal Prosecution Report</field>
         <field name="model">legal.prosecution</field>
         <field name="binding_model_id" ref="model_legal_prosecution"/>
-        <field name="binding_type">report</field>
         <field name="report_name">legal_prosecution_report</field>
         <field name="report_type">aeroo</field>
         <field name="in_format">oo-odt</field>
-        <!-- <field name="parser_loc">report_aeroo_sample/report/parser.py</field> -->
         <field name="report_file">legal/report/legal_report.odt</field>
         <field name="out_format" ref="report_aeroo.report_mimetypes_odt_odt"/>
-        <!-- <field name="parser_state">loc</field> -->
-        <field name="parser_state">default</field>
         <field name="tml_source">file</field>
     </record>
 
