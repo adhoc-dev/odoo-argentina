@@ -13,18 +13,6 @@
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
     <!-- <field name="copies">2</field> -->
   </record>
-  <record id="action_aeroo_report_ar_voucher" model="ir.actions.report">
-    <field name="name">Orden de pago y recibo</field>
-    <field name="model">account.voucher</field>
-    <field name="report_name">aeroo_report_ar_voucher</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_type">action</field>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_voucher.odt</field>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-  </record>
   <record id="personalizations_boggio.ir_act_report_xml_1217" model="ir.actions.report">
     <field name="name">Proforma</field>
     <field name="model">sale.order</field>
