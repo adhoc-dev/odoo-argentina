@@ -65,6 +65,7 @@
         'stock_picking_state',
         'stock_putaway_product_template',
         'sale_order_line_number',
+        'stock_available_immediately',
         'stock_request_ux',
         'stock_ux',
         'stock_voucher',

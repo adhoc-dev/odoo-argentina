@@ -191,16 +191,10 @@
   <record id="personalizations_boggio.ir_act_report_xml_1458" model="ir.actions.report">
     <field name="name">Presupuesto Control</field>
     <field name="model">sale.order</field>
-    <field name="report_name">aeroo_report_ar_so_control</field>
-    <field name="report_type">aeroo</field>
+    <field name="report_name">personalizations_boggio.boggio_sales_control</field>
+    <field name="report_type">qweb-pdf</field>
     <field name="binding_model_id" ref="delivery.model_sale_order"/>
     <field eval="[(6, 0, [ref('sales_team.group_sale_manager')])]" name="groups_id"/>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_so_control.odt</field>
-    <field eval="True" name="process_sep"/>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
   </record>
   <record id="personalizations_boggio.ir_act_report_xml_1485" model="ir.actions.report">
     <field name="name">pendientes y remit.o (Envio automatico Clientes)</field>
