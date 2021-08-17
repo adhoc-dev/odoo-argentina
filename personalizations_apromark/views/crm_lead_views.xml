@@ -50,6 +50,13 @@
                 <field name="tag_ids" position="after">
                     <field name="product_id"/>
                 </field>
+                <xpath expr="//field[@name='user_id']" position="replace"/>
+                <xpath expr="//field[@name='create_date']" position="before">
+                    <field name="user_id" optional="show"/>
+                </xpath>
+                <xpath expr="//field[@name='create_date']" position="after">
+                    <field name="date_closed" optional="show" widget="date"/>
+                </xpath>
             </field>
         </record>
         <record id="crm.crm_lead_action_pipeline_view_kanban" model="ir.actions.act_window.view">
