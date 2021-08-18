@@ -32,3 +32,10 @@ class ProductTemplate(models.Model):
     def _compute_x_replenishment_cost_moneda(self):
         for record in self:
              record['x_replenishment_cost_moneda'] = record.replenishment_base_cost_currency_id.inverse_rate >0 and record.replenishment_cost/record.replenishment_base_cost_currency_id.inverse_rate or 0
+
+    def get_data_products(self):
+        list_product = []
+        for line in self:
+            list_product.append((line, 1))
+        return list_product
+

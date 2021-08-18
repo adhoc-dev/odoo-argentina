@@ -24,3 +24,9 @@ class SaleOrder(models.Model):
             'res_model': 'res.partner',
             'res_id': self.partner_id.id,
         }
+
+    def get_data_products(self):
+        list_product=[]
+        for line in self.mapped('order_line'):
+            list_product.append((line.product_id, line.product_uom_qty))
+        return list_product
