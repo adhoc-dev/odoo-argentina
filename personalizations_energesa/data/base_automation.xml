@@ -123,39 +123,42 @@ def extract_pattern_facebook(mensaje):
     return values
 
 
-active_model = env.context.get('active_model', False)
-active_ids = env.context.get('active_ids', [])
+try:
+  active_model = env.context.get('active_model', False)
+  active_ids = env.context.get('active_ids', [])
 
-if active_model == 'mail.message':
-    messages = env[active_model].search([('id', 'in', active_ids)])
-    lead_ids = [rec.res_id for rec in messages]
-elif active_model == 'crm.lead':
-    lead_ids = active_ids
+  if active_model == 'mail.message':
+      messages = env[active_model].search([('id', 'in', active_ids)])
+      lead_ids = [rec.res_id for rec in messages]
+  elif active_model == 'crm.lead':
+      lead_ids = active_ids
 
-leads = env['crm.lead'].search([('id', 'in', lead_ids)])
-for lead in leads:
-    # Procesar datos de correo
-    ready = 'Los campos fueron actualizados desde el mensaje de correo'
-    msg_ready = [msg.body for msg in lead.message_ids if ready in str(msg.body)]
-    if not msg_ready:
-        # raise Warning("mensajes %s" % str([item.read([]) for item in lead.message_ids]))
-        for msg in lead.message_ids:
-            values = dict()
-            if msg.subject and msg.body.startswith("&lt;pre&gt;De:"):
-                values = extract_pattern_web(msg.body)
-            if msg.subject and msg.body.startswith("&lt;pre&gt;Nombre:"):
-                values = extract_pattern_facebook(msg.body)
-            if values:
-                state_name = values.pop('state_name', False)
-                lead.write(values)
-                state_id = values.pop('state_id', False)
-                if state_name:
-                    values.update({'state': state_name})
-                print_vals = '&lt;ul&gt;' + ''.join([
-                    '&lt;li&gt;&lt;b&gt;' + item + '&lt;/b&gt;: ' + str(values[item]) + '&lt;/li&gt;'
-                    for item in values]) + '&lt;/ul&gt;'
-                # raise Warning ("values %s" % print_vals)
-                lead.message_post(ready + '&lt;br/&gt;' + print_vals)
+  leads = env['crm.lead'].search([('id', 'in', lead_ids)])
+  for lead in leads:
+      # Procesar datos de correo
+      ready = 'Los campos fueron actualizados desde el mensaje de correo'
+      msg_ready = [msg.body for msg in lead.message_ids if ready in str(msg.body)]
+      if not msg_ready:
+          # raise Warning("mensajes %s" % str([item.read([]) for item in lead.message_ids]))
+          for msg in lead.message_ids:
+              values = dict()
+              if msg.subject and msg.body.startswith("&lt;pre&gt;De:"):
+                  values = extract_pattern_web(msg.body)
+              if msg.subject and msg.body.startswith("&lt;pre&gt;Nombre:"):
+                  values = extract_pattern_facebook(msg.body)
+              if values:
+                  state_name = values.pop('state_name', False)
+                  lead.write(values)
+                  state_id = values.pop('state_id', False)
+                  if state_name:
+                      values.update({'state': state_name})
+                  print_vals = '&lt;ul&gt;' + ''.join([
+                      '&lt;li&gt;&lt;b&gt;' + item + '&lt;/b&gt;: ' + str(values[item]) + '&lt;/li&gt;'
+                      for item in values]) + '&lt;/ul&gt;'
+                  # raise Warning ("values %s" % print_vals)
+                  lead.message_post(body=ready + '&lt;br/&gt;' + print_vals)
+except:
+  pass
 </field>
     <field name="filter_domain">["&amp;","&amp;",["model","=","crm.lead"],["subject","!=",False],["message_type","=","email"]]</field>
     <field name="trigger">on_create</field>
