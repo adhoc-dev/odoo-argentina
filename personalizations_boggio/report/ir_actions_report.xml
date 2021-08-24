@@ -258,18 +258,6 @@
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
   </record>
-  <record id="personalizations_boggio.ir_act_report_xml_1601" model="ir.actions.report">
-    <field name="name">Cuenta Corriente para Cliente</field>
-    <field name="model">sale.order</field>
-    <field name="report_name">cc_cliente_so</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="delivery.model_sale_order"/>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/cc_cliente_so.odt</field>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-  </record>
   <record id="personalizations_boggio.ir_act_report_xml_1607" model="ir.actions.report">
     <field name="name">Orden de Compra Argentina de Aeroo (Siemens)</field>
     <field name="model">purchase.order</field>
