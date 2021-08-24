@@ -27,7 +27,7 @@
     </td>
     <span t-field="line.product_uom_qty" position="before">
 
-      <span t-esc="line.product_id.with_context(warehouse=line.warehouse_id.id).immediately_usable_qty-line.product_uom_qty &gt;= 0 and ' ' or '(*)'" />
+      <span t-esc="line.product_id.with_context(warehouse=line.warehouse_id.id).free_qty-line.product_uom_qty &gt;= 0 and ' ' or '(*)'" />
 
 
     </span>
