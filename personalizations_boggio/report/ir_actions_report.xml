@@ -238,8 +238,18 @@
     <field name="model">sale.order</field>
     <field name="report_name">pendientes_entrega_clientes</field>
     <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="delivery.model_sale_order"/>
-    <field eval="False" name="multi"/>
+    <field name="binding_model_id" ref="sale.model_sale_order"/>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_boggio/report/pendientes_entrega_clientes.odt</field>
+    <field name="in_format">oo-odt</field>
+    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+  </record>
+  <record id="personalizations_boggio.ir_act_report_xml_1597" model="ir.actions.report">
+    <field name="name">Pendientes de entrega de clientes</field>
+    <field name="model">res.partner</field>
+    <field name="report_name">pendientes_entrega_clientes_res_partner</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="base.model_res_partner"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/pendientes_entrega_clientes.odt</field>
     <field name="in_format">oo-odt</field>
