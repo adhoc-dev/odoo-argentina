@@ -303,6 +303,9 @@
       <xpath expr="//field[@name='standard_price']" position="attributes">
         <attribute name="attrs">{"readonly": [["valuation","=","real_time"]]}</attribute>
       </xpath>
+      <button name="action_view_sales" position="before">
+        <xpath expr="//div[@name='button_box']//button[@name='action_view_related_putaway_rules']" position="move"/>
+      </button>
       <!-- <xpath expr="//field[@name='standard_price_ids']" position="attributes">
         <attribute name="attrs">{}</attribute>
         <attribute name="invisible">1</attribute>
