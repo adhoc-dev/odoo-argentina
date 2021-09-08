@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import api, models, fields
 
 
 class SaleOrderLine(models.Model):
@@ -15,3 +15,17 @@ class SaleOrderLine(models.Model):
 "In a context with a single Warehouse, this includes goods stored in the Stock Location of this Warehouse, or any of its children."
 "Otherwise, this includes goods stored in any Stock Location with 'internal' type.", readonly=True, copy=False)
     x_active = fields.Boolean(string="Active", related="product_id.active", help="If unchecked, it will allow you to hide the product without removing it.", track_visibility="onchange", readonly=True, copy=False)
+
+
+
+    @api.onchange('name')
+    def change_name(self):
+        line = self.new({'product_id': self.product_id.id})
+        line.product_id_change()
+        name = line.name
+        if self.name and name and self.name.find(name) == -1:
+            self.name = self._origin.name
+            return {'warning': {
+                    'title': '¡Cuidado!',
+                    'message': 'No puede cambiar la descripcion sino esta prestente este valor original: \n "%s"' % name,
+                    }}

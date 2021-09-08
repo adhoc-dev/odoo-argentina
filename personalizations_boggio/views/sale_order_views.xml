@@ -51,9 +51,6 @@
       <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="attributes">
         <attribute name="optional">show</attribute>
       </xpath>
-      <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="before">
-        <field name="additional_description" optional="hide"/>
-      </xpath>
       <xpath expr="//field[@name='order_line']//tree//field[@name='number']" position="attributes">
         <attribute name="optional">hide</attribute>
       </xpath>
@@ -291,9 +288,6 @@
         <field name="tax_id" widget="many2many_tags" options="{'no_create': True}" domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id)]" attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/>
         <field name="analytic_tag_ids" groups="analytic.group_analytic_accounting" widget="many2many_tags" options="{'color_field': 'color'}" optional="hide"/>
       </xpath>
-      <!-- <field name="additional_description" position="after">
-        <field name="virtual_available" groups="sale_stock_availability.see_stock_value" attrs="{'column_invisible': [('parent.state', 'not in', ['draft', 'sent'])]}"/>
-      </field> -->
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7798" model="ir.ui.view">
