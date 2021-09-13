@@ -1,6 +1,6 @@
 {
     'name': 'Personalizations Apromark',
-    'version': '13.0.1.12.0',
+    'version': '13.0.1.13.0',
     'sequence': 14,
     'summary': '',
     'author': 'ADHOC SA',
@@ -20,6 +20,7 @@
         'views/account_payment_group_view.xml',
         'views/templates.xml',
         'views/crm_lead_views.xml',
+        'data/base_automation.xml',
     ],
     'application': False,
     'installable': True,
