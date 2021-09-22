@@ -93,6 +93,7 @@
         'views/account_payment_views.xml',
         'views/account_payment_group_views.xml',
         'views/account_payment_term_views.xml',
+        'views/purchase_order_templates.xml',
         'wizards/account_statement_move_import_wizard_views.xml',
         'views/board_board_views.xml',
         'views/crm_lead_views.xml',

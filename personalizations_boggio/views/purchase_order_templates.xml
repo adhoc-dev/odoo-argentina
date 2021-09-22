@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <template id="boggio_purchase" inherit_id="purchase.report_purchaseorder_document">
+
+    <xpath expr="//th[@name='th_description']" position="before">
+      <th name="th_code_purchase_order_line" class="text-left">
+        <strong>Codigo</strong>
+      </th>
+    </xpath>
+    <xpath expr="//th[@name='th_price_unit']" position="after">
+      <th name="th_discount_purchase_order_line" class="text-left"></th>
+    </xpath>
+    <xpath expr="//td//span[@ t-field='line.price_unit']//.." position="after">
+      <td class="text-right">
+        <span t-if="line.discount" t-field="line.discount" />
+      </td>
+    </xpath>
+
+    <span t-field="line.price_unit" position="attributes">
+      <attribute name="t-if">o.state not in ['draft','sent']</attribute>
+    </span>
+    <span t-field="line.price_subtotal" position="attributes">
+      <attribute name="t-if">o.state not in ['draft','sent','to approve']</attribute>
+    </span>
+
+    <td id="product" position="before">
+      <td name="td_code_purchase_order_line">
+        <span t-field="line.product_id.supplier_code" />
+      </td>
+    </td>
+    <div id="total" position="before">
+      <div class="col-10" t-if="o.picking_type_id.id==6 and o.state not in ['draft','sent']" style="color: blue; font-size: 0.8em;">
+        Por favor, enviar a deposito Rosario
+        <br />
+        Velez Sarsfield 699, 2000 Rosario, Santa Fe - Tel: 0341- 4362600 / Fax: 4352478
+        <br />
+        boggio@ingenieiraboggio.com.ar
+        <br />
+        <h5>
+          <t t-esc="o.x_carrier_id.partner_id and (o.x_carrier_id.partner_id.name + ' - ' + (o.x_carrier_id.website_description and o.x_carrier_id.website_description or o.x_carrier_id.partner_id.street or '' ) + ' - ' + (o.x_carrier_id.partner_id.phone or '')) or o.partner_id.property_delivery_carrier_id and ( o.partner_id.property_delivery_carrier_id.name + ' - ' + (o.partner_id.property_delivery_carrier_id.website_description and o.partner_id.property_delivery_carrier_id.website_description or o.partner_id.property_delivery_carrier_id.partner_id.street or '') + ' - ' + o.partner_id.property_delivery_carrier_id.partner_id.phone or '') or 'TRANSPORTE EXPRESO EL IMPALA - Pergamino 3740 - 011 49189595'" />
+        </h5>
+      </div>
+      <div class="col-10" t-if="o.picking_type_id.id==11 and o.state not in ['draft','sent']" style="color: red; font-size: 0.8em;">
+        Por favor, enviar a deposito Santa Fe
+        <br />
+        Facundo Zuviria 5820, 3000 Santa Fe, Santa Fe - Tel: 0342- 4894454 / Fax: 4897308
+        <br />
+        santafe@ingenieiraboggio.com.ar
+        <br />
+        <h5>
+          <t t-esc="o.x_carrier_id.partner_id and o.x_carrier_id.partner_id.name + ' - ' + (o.x_carrier_id.partner_id.street and o.x_carrier_id.partner_id.street or '') + ' - ' + (o.x_carrier_id.partner_id.phone and o.x_carrier_id.partner_id.phone or '') or o.partner_id.x_metodo_envio_compras and o.partner_id.x_metodo_envio_compras.name + ' - ' + (o.partner_id.x_metodo_envio_compras.partner_id.street and o.partner_id.x_metodo_envio_compras.partner_id.street or '') + ' - ' + (o.partner_id.x_metodo_envio_compras.partner_id.phone and o.partner_id.x_metodo_envio_compras.partner_id.phone or '') or 'TRANSPORTE EXPRESO SANTA ROSA - Pergamino 3751 - 011 46007474'" />
+        </h5>
+      </div>
+      <div class="col-10" t-if="o.picking_type_id.id==16 and o.state not in ['draft','sent']" style="color: green; font-size: 0.8em;">
+        Por favor, enviar a deposito Rafaela
+        <br />
+        Remedios de Escalada 257, 2300 Rafaela, Santa Fe - Tel: 03492- 426966
+        <br />
+        rafaela@ingenieiraboggio.com.ar
+        <br />
+        <h5>
+          <t t-esc="o.x_carrier_id.partner_id and o.x_carrier_id.partner_id.name + ' - ' + (o.x_carrier_id.partner_id.street and o.x_carrier_id.partner_id.street or '') + ' - ' + (o.x_carrier_id.partner_id.phone and o.x_carrier_id.partner_id.phone or '') or o.partner_id.x_metodo_envio_rafaela and o.partner_id.x_metodo_envio_rafaela.name + ' - ' + (o.partner_id.x_metodo_envio_rafaela.partner_id.street and o.partner_id.x_metodo_envio_rafaela.partner_id.street or '') + ' - ' + (o.partner_id.x_metodo_envio_rafaela.partner_id.phone and o.partner_id.x_metodo_envio_rafaela.partner_id.phone or '') or 'TRANSPORTE EXPRESO SANTA ROSA - Pergamino 3751 - 011 46007474'" />
+        </h5>
+      </div>
+      • Si la mercaderia no es entregada en la sucursal anteriormente indicada, se cobrarán los gastos de fletes internos que corresponda
+      <br />
+      • Cambios de lista de precio, informarlos a listas@ingenieriaboggio.com.ar (preferentemente en formato excel).
+      <br />
+      • No se admiten informes de cambio de lista y/o descuento por WhatsApp. Las condiciones de la presente Orden de Compra (OC) se considerarán ACEPTADAS en un todo por el proveedor si en el término de 48 hs de recicida no se presentan objeciones. El correo electrónico se considerá un medio válido de envío. En los Remitos/Factura deberá figurar el N° de la presente OC.
+      <br />
+      • Enviar facturas a: factura.electronica@ingenieriaboggio.com.ar
+      <br />
+      • Pagos: chernandez@ingenieriaboggio.com.ar (0341 4362641)
+      <br />
+    </div>
+    <p t-field="o.notes" position="after">
+      <div t-if="o.partner_id.id!=38842 and len(o.order_line.search( [['partner_id', '=', o.partner_id.id],['state', '!=', 'cancel'],['delivery_status', '=', 'to receive'], ['order_id', '!=', o.id] ]))>0" style="font-size:12px;">
+        <strong>A continuación enviamos los pendientes de entrega para su control separado por sucursales según corresponda</strong>
+        <div id="pendientes_rosario" t-if="len(o.order_line.search( [['partner_id', '=', o.partner_id.id],['state', '!=', 'cancel'],['delivery_status', '=', 'to receive'],['order_id.picking_type_id.warehouse_id', '=', 2] ]))>0">
+          <div class="col-12">
+            <strong>
+              Pendientes de entrega para enviar a Rosario → para su control
+            </strong>
+            <table class="table table-sm" style="min-width: 590px; background-color: rgb(143,208,221); font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;">
+              <thead>
+                <tr>
+                  <th name="th_date">
+                    <strong>Fecha</strong>
+                  </th>
+                  <th name="th_doc">
+                    <strong>Documento</strong>
+                  </th>
+                  <th name="th_product" class="text-center">
+                    <strong>Producto</strong>
+                  </th>
+                  <th name="th_buyer" class="text-right">
+                    <strong>Comprador</strong>
+                  </th>
+                  <th name="th_qty_pending" class="text-right">
+                    <strong>Cant Pendiente</strong>
+                  </th>
+                  <th name="th_qty_remaining" class="text-right">
+                    <strong>Cant pedida</strong>
+                  </th>
+                  <th name="th_qty_recived" class="text-right">
+                    <strong>Cant Recibida</strong>
+                  </th>
+                  <th name="th_qty_returned" class="text-right">
+                    <strong>Cant devuelta</strong>
+                  </th>
+                </tr>
+              </thead>
+              <tbody style="color: #D8F0DA
+              background: transparent">
+                <t t-foreach="o.order_line.search( [['partner_id', '=', o.partner_id.id],['state', '!=', 'cancel'],['delivery_status', '=', 'to receive'],['order_id.picking_type_id.warehouse_id', '=', 2],['order_id.id', '!=', o.id] ])" t-as="line1">
+                  <tr>
+                    <td id="date">
+                      <span t-field="line1.create_date" />
+                    </td>
+                    <td name="td_doc">
+                      <span t-field="line1.order_id" />
+                    </td>
+                    <td class="text-center">
+                      <span t-esc="'%s %s %s %s' % (line1.x_product_brand_id and line1.x_product_brand_id.name or '', line1.product_id.supplier_code or '', line1.name or '', line1.product_id.default_code or '')" />
+                    </td>
+                    <td class="text-right">
+                      <span t-esc="line1.create_uid.name" />
+                    </td>
+                    <td class="text-right">
+                      <span t-esc="line1.product_qty-line1.qty_received" />
+                    </td>
+                    <td class="text-right">
+                      <span t-esc="line1.product_qty" />
+                    </td>
+                    <td class="text-right">
+                      <span t-esc="line1.qty_received" />
+                    </td>
+                    <td class="text-right">
+                      <span t-esc="line1.qty_returned" />
+                    </td>
+                  </tr>
+                </t>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div id="pendientes_santafe" t-if="len(o.order_line.search( [['partner_id', '=', o.partner_id.id],['state', '!=', 'cancel'],['delivery_status', '=', 'to receive'],['order_id.picking_type_id.warehouse_id', '=', 3] ]))>0" style="color: red; font-size: 0.8em;">
+          <div class="col-12">
+            <strong>
+              Pendientes de entrega para enviar a Santa Fe → para su control
+            </strong>
+            <table class="table table-sm"  style="min-width: 590px; background-color: rgb(165,42,42); font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;"> 
+              <thead>
+                <tr>
+                  <th name="th_date">
+                    <strong>Fecha</strong>
+                  </th>
+                  <th name="th_doc">
+                    <strong>Documento</strong>
+                  </th>
+                  <th name="th_product" class="text-center">
+                    <strong>Producto</strong>
+                  </th>
+                  <th name="th_buyer" class="text-right">
+                    <strong>Comprador</strong>
+                  </th>
+                  <th name="th_qty_pending" class="text-right">
+                    <strong>Cant Pendiente</strong>
+                  </th>
+                  <th name="th_qty_remaining" class="text-right">
+                    <strong>Cant pedida</strong>
+                  </th>
+                  <th name="th_qty_recived" class="text-right">
+                    <strong>Cant Recibida</strong>
+                  </th>
+                  <th name="th_qty_returned" class="text-right">
+                    <strong>Cant devuelta</strong>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <t t-foreach=" o.order_line.search( [['partner_id', '=', o.partner_id.id],['state', '!=', 'cancel'],['delivery_status', '=', 'to receive'],['order_id.picking_type_id.warehouse_id', '=', 3],['order_id.id', '!=', o.id] ])" t-as="line1">
+                  <tr>
+                    <td id="date">
+                      <span t-field="line1.create_date" />
+                    </td>
+                    <td name="td_doc">
+                      <span t-field="line1.order_id" />
+                    </td>
+                    <td class="text-center">
+                      <span t-esc="'%s %s %s %s' % (line1.x_product_brand_id and line1.x_product_brand_id.name or '', line1.product_id.supplier_code or '', line1.name or '', line1.product_id.default_code or '')" />
+                    </td>
+                    <td class="text-right">
+                      <span t-esc="line1.create_uid.name" />
+                    </td>
+                    <td class="text-right">
+                      <span t-esc="line1.product_qty-line1.qty_received" />
+                    </td>
+                    <td class="text-right">
+                      <span t-esc="line1.product_qty" />
+                    </td>
+                    <td class="text-right">
+                      <span t-esc="line1.qty_received" />
+                    </td>
+                    <td class="text-right">
+                      <span t-esc="line1.qty_returned" />
+                    </td>
+                  </tr>
+                </t>
+              </tbody>
+            </table>
+          </div>
+          <div id="pendientes_rafaela" t-if="len(o.order_line.search( [['partner_id', '=', o.partner_id.id],['state', '!=', 'cancel'],['delivery_status', '=', 'to receive'],['order_id.picking_type_id.warehouse_id', '=', 4] ]))>0">
+            <div class="col-12">
+              <strong>
+                Pendientes de entrega para enviar a Rafalea → para su control
+              </strong>
+              <table class="table table-sm" style="min-width: 590px; background-color: rgb(144,238,144); font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                <thead>
+                  <tr>
+                    <th name="th_date">
+                      <strong>Fecha</strong>
+                    </th>
+                    <th name="th_doc">
+                      <strong>Documento</strong>
+                    </th>
+                    <th name="th_product" class="text-center">
+                      <strong>Producto</strong>
+                    </th>
+                    <th name="th_buyer" class="text-right">
+                      <strong>Comprador</strong>
+                    </th>
+                    <th name="th_qty_pending" class="text-right">
+                      <strong>Cant Pendiente</strong>
+                    </th>
+                    <th name="th_qty_remaining" class="text-right">
+                      <strong>Cant pedida</strong>
+                    </th>
+                    <th name="th_qty_recived" class="text-right">
+                      <strong>Cant Recibida</strong>
+                    </th>
+                    <th name="th_qty_returned" class="text-right">
+                      <strong>Cant devuelta</strong>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <t t-foreach=" o.order_line.search( [['partner_id', '=', o.partner_id.id],['state', '!=', 'cancel'],['delivery_status', '=', 'to receive'],['order_id.picking_type_id.warehouse_id', '=', 4],['order_id.id', '!=', o.id] ])" t-as="line1">
+                    <tr>
+                      <td id="date">
+                        <span t-field="line1.create_date" />
+                      </td>
+                      <td name="td_doc">
+                        <span t-if="o.id==line1.order_id.id">Presente ODC</span>
+                        <span t-if="o.id!=line1.order_id.id" t-field="line1.order_id" />
+                      </td>
+                      <td class="text-center">
+                        <span t-esc="'%s %s %s %s' % (line1.x_product_brand_id and line1.x_product_brand_id.name or '', line1.product_id.supplier_code or '', line1.name or '', line1.product_id.default_code or '')" />
+                      </td>
+                      <td class="text-right">
+                        <span t-esc="line1.create_uid.name" />
+                      </td>
+                      <td class="text-right">
+                        <span t-esc="line1.product_qty-line1.qty_received" />
+                      </td>
+                      <td class="text-right">
+                        <span t-esc="line1.product_qty" />
+                      </td>
+                      <td class="text-right">
+                        <span t-esc="line1.qty_received" />
+                      </td>
+                      <td class="text-right">
+                        <span t-esc="line1.qty_returned" />
+                      </td>
+                    </tr>
+                  </t>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </p>
+  </template>
+</odoo>
