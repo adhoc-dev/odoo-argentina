@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_brunetti',
-    'version': '13.0.1.4.0',
+    'version': '13.0.1.5.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [

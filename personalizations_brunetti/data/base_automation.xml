@@ -231,7 +231,7 @@ for rec in records:
     <field name="activity_user_field_name">user_id</field>
     <field name="binding_type">action</field>
     <field name="filter_pre_domain">[["state","!=","sale"]]</field>
-    <field name="filter_domain">["&",["state","=","sale"],["user_id.name","not ilike","Mercado Libre"]]</field>
+    <field name="filter_domain">["&amp;",["state","=","sale"],["user_id.name","not ilike","Mercado Libre"]]</field>
     <field name="trigger">on_write</field>
     <field name="trigger_field_ids" eval="[(4,ref('sale.field_sale_order__state'))]"/>
   </record>
