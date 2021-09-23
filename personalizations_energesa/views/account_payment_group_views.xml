@@ -1,20 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <record model="ir.ui.view" id="personalizations_energesa.odoo_studio_account__2e0bc920-17fb-42fa-83cb-72b425df982d">
-    <field name="name">Odoo Studio: account.payment.group.tree customization</field>
-    <field name="model">account.payment.group</field>
-    <field ref="account_payment_group.view_account_payment_group_tree" name="inherit_id"/>
-    <field type="xml" name="arch">
-      <data>
-        <xpath expr="//field[@name='payments_amount']" position="attributes">
-          <attribute name="attrs">{}</attribute>
-        </xpath>
-        <xpath expr="//field[@name='payments_amount']" position="after">
-          <field name="unmatched_amount"/>
-        </xpath>
-      </data>
-    </field>
-  </record>
+
   <record model="ir.ui.view" id="personalizations_energesa.default_kanban_view__fdb469ed-8aee-49ec-be95-522fae4c7321">
     <field name="name">Default kanban view for account.payment.group</field>
     <field name="model">account.payment.group</field>

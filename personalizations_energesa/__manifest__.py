@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_energesa',
-    'version': '13.0.1.2.0',
+    'version': '13.0.1.3.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
