@@ -27,7 +27,7 @@ for stage in stages:
     <field name="state">code</field>
     <field name="binding_type">action</field>
     <field name="code">
-model.search([("state","=","sale")]).filtered(
+model.search([("state","=","sale"),("invoice_ids","=",False)]).filtered(
   lambda sale: env.ref('personalizations_brunetti.sale_order_to_cancel').id in sale.activity_ids.mapped('activity_type_id').ids).action_cancel()
     </field>
     <field name="interval_number">3</field>
