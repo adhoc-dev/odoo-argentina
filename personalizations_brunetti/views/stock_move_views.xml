@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Stock move: make it invisible in some cases. Ticket 43503-->
+    <record id="view_stock_move_tree" model="ir.ui.view">
+        <field name="name">Vista Personalizada lista de movimientos</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock_ux.view_move_tree" />
+        <field name="arch" type="xml">
+            <field name="picking_partner_id" position="replace">
+                <field name="picking_code" invisible="1"/>
+                <field name="picking_partner_id" invisible="1"/>
+            </field>
+        </field>
+    </record>
+    <!-- Stock move: make it invisible in some cases. Ticket 43503-->
+    <record id="view_stock_move_tree_show_partner_id_incoming" model="ir.ui.view">
+        <field name="name">Vista Personalizada lista de movimientos</field>
+        <field name="model">stock.move</field>
+        <field name="groups_id" eval="[(4, ref('show_partner_id_incoming'))]"/>
+        <field name="inherit_id" ref="view_stock_move_tree"/>
+        <field name="arch" type="xml">
+            <field name="picking_partner_id" position="attributes">
+                <attribute name="invisible">0</attribute>
+                <attribute name="attrs">{'invisible': [('picking_code', '=', 'incoming')]}</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
