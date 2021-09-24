@@ -13,8 +13,8 @@ class ShopifyController(http.Controller):
             'location': kwargs['location'],
             'taxes_included': True,
         }
-        products = request.env['product.product'].sudo().with_context(context).search([('x_studio_field_5G9jj', '!=', False)])
-        product_fields = ["x_studio_field_5G9jj", "qty_available", "price"]
+        products = request.env['product.product'].sudo().with_context(context).search([('barcode', '!=', False)])
+        product_fields = ["barcode", "qty_available", "price"]
         res = products.read(product_fields)
         _logger.info('Shopify: updating %s products', len(res))
         return res
