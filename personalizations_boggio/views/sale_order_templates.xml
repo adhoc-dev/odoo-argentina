@@ -92,7 +92,7 @@
 
 
     <span t-field="line.name" position="replace">
-      <span t-esc="'%s %s (%s) %s' % (line.product_id.internal_code[1:] ,line.product_id.name, line.product_id.supplier_code or '', line.product_id.warranty!=12 and line.product_id.warranty or ' ')" />
+      <span t-esc="'%s %s (%s) %s' % (line.product_id.internal_code[1:] ,line.name.replace('[' + line.product_id.internal_code +']', ''), line.product_id.supplier_code or '', line.product_id.warranty!=12 and line.product_id.warranty or ' ')" />
       <a t-if="line.product_id.x_website_catalog" target="_blank" t-attf-href="line.product_id.x_website_catalog" class="fa fa-link" role="img" />
       <a t-if="line.product_id.x_documents" target="_blank" t-attf-href="'https://www.ingenieriaboggio.com.ar' + line.product_id.x_documents.url_suffix" class="fa fa-book" role="img" />
     </span>
