@@ -71,7 +71,7 @@
         'product_dimension',
         'sale_cancel_reason',
         'account_invoice_fiscal_position_update',
-        'website_sale_product_description',
+        'website_sale_prod_description',
         'location_security',
         'account_journal_security',
         'base_name_search_improved',

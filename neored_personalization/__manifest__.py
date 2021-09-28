@@ -38,7 +38,7 @@
         # tmb necesarios por las automation rules que agregamos al final
         'product_planned_price',
         'website_sale',
-        'website_sale_product_description',
+        'website_sale_prod_description',
         'product_dimension',
         'product_attribute_template',
         'product_brand',
