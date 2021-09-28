@@ -17,7 +17,8 @@
     <field name="name">Boggio Personalization move.form.inherit</field>
     <field name="model">account.move</field>
     <field eval="[(6, 0, [ref('account_invoice_control.group_restrict_edit_invoice')])]" name="groups_id"/>
-    <field name="inherit_id" ref="account_invoice_control.invoice_restrict_edit_form"/>
+    <field name="inherit_id" ref="account.view_move_form"/>
+    <field name="priority">199</field>
     <field name="arch" type="xml">
       <field name="sale_type_id" position="attributes">
         <attribute name="attrs">{'readonly':[('type','=','out_invoice'),('sale_order_ids','!=',[])]}</attribute>
