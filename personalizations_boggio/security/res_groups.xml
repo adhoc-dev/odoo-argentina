@@ -83,4 +83,11 @@
   <record id="personalizations_boggio.res_groups_262" model="res.groups">
     <field name="name">modificacion de monedas</field>
   </record>
+  <record id="personalizations_boggio.stock_validar_inventario" model="res.groups">
+    <field name="name">Validar Inventario</field>
+  </record>
+  <!-- hacemos que el grupo manager de stock herede del grupo inventario boggio -->
+  <record id="stock.group_stock_manager" model="res.groups">
+    <field name="implied_ids" eval="[(4, ref('personalizations_boggio.stock_validar_inventario'))]"/>
+</record>
 </odoo>
