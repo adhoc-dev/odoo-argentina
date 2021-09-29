@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_supplier_invoicing_company" priority="20" inherit_id="purchase.report_purchaseorder_document">
+        <!-- custom header and footer -->
+            <t t-set="o" position="after">
+                <t t-set="custom_header" t-value="'l10n_ar.custom_header'"/>
+                <t t-set="report_date" t-value="o.date_order"/>
+                <t t-set="report_number" t-value="o.name"/>
+                <t t-set="pre_printed_report" t-value="False"/>
+                <t t-set="document_letter" t-value="'X'"/>
+                <t t-set="document_legend" t-value="''"/>
+                <t>
+                    <t t-set="report_name" t-if="o.state not in ['draft','sent']">Purchase Order</t>
+                    <t t-set="report_name" t-if="o.state in ['draft','sent']">Request Quotation</t>
+                </t>
+                <t t-set="header_address" t-value="o.invoicing_company_id.partner_id or o.company_id.partner_id"/>
+                <t t-set="custom_footer">
+                    <div class="row">
+                        <div name="footer_left_column" class="col-8 text-center">
+                        </div>
+                        <div name="footer_right_column" class="col-4 text-right">
+                            <div name="pager" t-if="report_type == 'pdf'">
+                                Page: <span class="page"/> / <span class="topage"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+    </template>
+</odoo>

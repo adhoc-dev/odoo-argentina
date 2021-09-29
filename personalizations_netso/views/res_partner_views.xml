@@ -1,0 +1,12 @@
+<odoo>
+  <record model="ir.ui.view" id="partner_supplier_invoicing_company_44089">
+    <field name="name">res.partner.form.view</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+      <group name="purchase" position="inside">
+        <field name="supplier_invoicing_company_id"/>
+      </group>
+    </field>
+  </record>
+</odoo>
