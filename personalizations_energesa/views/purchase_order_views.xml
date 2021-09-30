@@ -7,8 +7,14 @@
     <field type="xml" name="arch">
       <data>
         <xpath expr="//field[@name='payment_term_id']" position="replace"/>
-        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='analytic_tag_ids']" position="replace"/>
-        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='account_analytic_id']" position="replace"/>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='analytic_tag_ids']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='account_analytic_id']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="invisible">1</attribute>
+        </xpath>
         <xpath expr="//field[@name='partner_id']" position="attributes">
           <attribute name="attrs">{"required": ["|",["state","=","purchase"],["state","=","done"]], "readonly": [["state","in",["cancel","purchase","done"]]]}</attribute>
         </xpath>
