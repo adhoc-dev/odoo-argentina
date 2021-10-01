@@ -74,8 +74,8 @@ class HrEmployee(models.Model):
     x_studio_field_Ev7Dp = fields.Selection(string="Tribu",
                                             selection=[('Data Services', 'Data Services'),
                                                        ('Development', 'Development'),
-                                                       ('Costumer Experience',
-                                                        'Costumer Experience'),                                                       ('Machine Learning Training', 'Machine Learning Training'),
+                                                       ('Customer Experience',
+                                                        'Customer Experience'),                                                       ('Machine Learning Training', 'Machine Learning Training'),
                                                        ('QA & Software Testing', 'QA & Software Testing'),
                                                        ('Staff', 'Staff')], copy=False)
     x_studio_field_2MSWR = fields.Selection(string="Chapter",
