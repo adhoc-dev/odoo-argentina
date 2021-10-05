@@ -15,6 +15,7 @@
         'sale_exception_credit_limit',
         'l10n_ar',
         'product_management_group',
+        'product_template_tags',
     ],
     'data': [
         'security/personalizations_sba_security.xml',

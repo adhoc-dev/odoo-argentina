@@ -14,7 +14,13 @@ class ShopifyController(http.Controller):
             'taxes_included': True,
         }
         products = request.env['product.product'].sudo().with_context(context).search([('barcode', '!=', False)])
-        product_fields = ["barcode", "qty_available", "price"]
-        res = products.read(product_fields)
+        res = []
+        for product in products:
+            res.append({
+                'barcode': product.barcode,
+                'qty_available': product.qty_available,
+                'price': product.price,
+                'tag': product.tag_ids[0].name if product.tag_ids else '',
+            })
         _logger.info('Shopify: updating %s products', len(res))
         return res
