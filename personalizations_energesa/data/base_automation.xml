@@ -180,6 +180,7 @@ if env.user.id != 1:
 </field>
     <field eval="False" name="active"/>
     <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(4,ref('personalizations_energesa.field_project_task__date_start')),(4,ref('sale_timesheet.field_project_task__sale_line_id')),(4,ref('sale_timesheet.field_project_task__sale_order_id'))]"/>
   </record>
   <record model="base.automation" id="personalizations_energesa.base_automation_6">
     <field name="name">Personalización: Actualizar Fechas en Documentos Relacionados al Modificar Proyecto</field>
@@ -193,7 +194,7 @@ for task in records:
   if task.sale_line_id and task.sale_line_id and task.sale_line_id.order_id.procurement_group_id:
     # Get the p.group and find all the related stock pickings
     procurement_group = task.sale_line_id.order_id.procurement_group_id
-    stock_pickings = env['stock.picking'].search([('group_id', '=', procurement_group.id)])
+    stock_pickings = env['stock.picking'].search([('group_id', '=', procurement_group.id),('state','!=','cancel'),('state','!=','done')])
     for sp in stock_pickings:
       # Update each related stock.picking
       sp.write({'scheduled_date': new_date})
@@ -342,6 +343,7 @@ if sp.group_id and sp.group_id.sale_id:
     <field name="on_change_fields">move_lines</field>
     <field name="trg_date_range_type">day</field>
     <field name="trigger">on_change</field>
+    <field name="trigger_field_ids" eval="[(4,ref('stock.field_stock_picking__group_id')),(4,ref('sale_stock.field_stock_picking__sale_id'))]"/>
   </record>
   <record model="base.automation" id="personalizations_energesa.base_automation_17">
     <field name="name">Pers - stock.picking - create &amp; write - Obtener Fecha Desde Tarea</field>
@@ -398,7 +400,7 @@ registers = env['product.supplierinfo'].search([('product_tmpl_id','=',record.pr
 if registers:
   maxi = max(reg.write_date for reg in registers)
 
-  d1 = datetime.datetime.strptime(maxi, fmt) 
+  d1 = maxi 
   diff = (d2-d1).seconds
 
   if diff &gt; 1:
