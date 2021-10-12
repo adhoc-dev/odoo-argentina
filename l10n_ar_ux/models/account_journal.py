@@ -32,8 +32,31 @@ class AccountJournal(models.Model):
         sequences """
         self.ensure_one()
 
-        if self.company_id.country_id == self.env.ref('base.ar') and self.l10n_latam_use_documents and self.type == 'purchase':
-            # TODO KZ improve, create purchase manually using document types
-            return False
+        if self.use_specific_document_types():
+            sequences = self.l10n_ar_sequence_ids
+            sequences.unlink()
+            for document in self.l10n_ar_document_type_ids:
+                sequences |= self.env['ir.sequence'].create(document._get_document_sequence_vals(self))
+            return sequences
 
         return super()._l10n_ar_create_document_sequences()
+
+    @api.constrains('l10n_ar_afip_pos_number')
+    def _check_afip_pos_number(self):
+        to_review = self.filtered(lambda x: x.l10n_ar_is_pos)
+        super(AccountJournal, to_review)._check_afip_pos_number()
+
+    def use_specific_document_types(self):
+        self.ensure_one()
+        return self.l10n_latam_use_documents and (
+            (self.type == 'sale' and not self.l10n_ar_is_pos) or
+            (self.type == 'purchase' and self.l10n_ar_is_pos))
+
+    def write(self, values):
+        """ include the l10n_ar_document_type_ids changes as trigger to re compute the sequences """
+        res = super().write(values)
+        to_check = set(['l10n_ar_document_type_ids'])
+        if to_check.intersection(set(values.keys())):
+            for rec in self:
+                rec._l10n_ar_create_document_sequences()
+        return res

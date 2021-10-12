@@ -127,9 +127,9 @@ class AccountMove(models.Model):
     def _get_l10n_latam_documents_domain(self):
         self.ensure_one()
         domain = super()._get_l10n_latam_documents_domain()
-        if not self.l10n_ar_is_pos:
+        if self.journal_id.use_specific_document_types():
             domain = [
-                # TODO review with jjs if we need this or not
+                # TODO review with jjs if we want this or not
                 # ('internal_type', 'in', ['credit_note'] if self.type in ['out_refund', 'in_refund'] else ['invoice', 'debit_note']),
                 ('id', 'in', self.journal_id.l10n_ar_document_type_ids.ids)]
         return domain
