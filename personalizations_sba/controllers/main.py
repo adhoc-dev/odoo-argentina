@@ -20,7 +20,7 @@ class ShopifyController(http.Controller):
                 'barcode': product.barcode,
                 'qty_available': product.qty_available,
                 'price': product.price,
-                'tag': product.tag_ids[0].name if product.tag_ids else '',
+                'tag': ', '.join(product.tag_ids.mapped('name')),
             })
         _logger.info('Shopify: updating %s products', len(res))
         return res
