@@ -17,14 +17,14 @@ class AccountPaymentGroup(models.Model):
             subscription = invoice.invoice_line_ids.subscription_id
             if len(invoice) == 1 and (order or subscription):
                 if order:
-                    payment.nro_cuota = '1'
+                    payment.nro_cuota = subscription.cuota_inicial
                     payment.mes = invoice.invoice_date.month
                 elif subscription:
                     # Get the invoices related to the subscription
                     invoices = self.env['account.move'].search(
                         [('invoice_line_ids.subscription_id', '=', subscription.id)])
                     # Set the position of the invoice in the subscription
-                    payment.nro_cuota = invoices.sorted(lambda i: (i.invoice_date, i.id)).ids.index(invoice.id) + 1
+                    payment.nro_cuota = invoices.sorted(lambda i: (i.invoice_date, i.id)).ids.index(invoice.id) + subscription.cuota_inicial
                     payment.mes = "Certificación" if payment.nro_cuota == '13' else invoice.invoice_date.month
             else:
                 payment.nro_cuota = None

@@ -1,6 +1,6 @@
 {
     'name': 'Personalizations Apromark',
-    'version': '13.0.1.13.0',
+    'version': '13.0.1.14.0',
     'sequence': 14,
     'summary': '',
     'author': 'ADHOC SA',
@@ -13,6 +13,7 @@
         'sale',
         'website_sale',
         'account_analytic_default',
+        'sale_subscription',
     ],
     'data': [
         'security/ir.model.access.csv',
@@ -20,6 +21,7 @@
         'views/account_payment_group_view.xml',
         'views/templates.xml',
         'views/crm_lead_views.xml',
+        'views/sale_subscription.xml',
         'data/base_automation.xml',
     ],
     'application': False,
