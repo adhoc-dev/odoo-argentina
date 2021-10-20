@@ -27,10 +27,14 @@ for stage in stages:
     <field name="state">code</field>
     <field name="binding_type">action</field>
     <field name="code">
-model.search([("state","=","sale"),("invoice_ids","=",False)]).filtered(
-  lambda sale: env.ref('personalizations_brunetti.sale_order_to_cancel').id in sale.activity_ids.mapped('activity_type_id').ids).action_cancel()
+activities = model.search([("res_model","=","sale.order"),("activity_type_id","=", env.ref('personalizations_brunetti.sale_order_to_cancel').id)])
+for act in activities.filtered(lambda a : a.state== "overdue"):
+    sale = env['sale.order'].browse(act.res_id)
+    if sale.state == 'sale' and not sale.invoice_ids:
+        sale.action_cancel()
+        act.unlink()
     </field>
-    <field name="interval_number">3</field>
+    <field name="interval_number">1</field>
     <field name="interval_type">days</field>
     <field name="numbercall">-1</field>
   </record>
