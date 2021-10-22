@@ -12,7 +12,7 @@
         'views/purchase_order_views.xml',
         'views/purchase_report_templates.xml'
     ],
-    'installable': True,
+    'installable': False,
     'application': False,
     'auto-install': False,
     'license': 'OPL-1',

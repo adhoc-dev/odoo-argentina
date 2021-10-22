@@ -27,7 +27,7 @@
         'data/ir_ui_menu.xml',
         'security/ir.model.access.csv',
     ],
-    'installable': True,
+    'installable': False,
     'application': False,
     'auto-install': False,
     'license': 'OPL-1',

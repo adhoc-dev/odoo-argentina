@@ -25,6 +25,6 @@
         'data/base_automation.xml',
     ],
     'application': False,
-    'installable': True,
+    'installable': False,
     'auto-install': False,
 }

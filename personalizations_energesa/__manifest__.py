@@ -109,7 +109,7 @@
         'security/ir_rule.xml',
     ],
     'application': False,
-    'installable': True,
+    'installable': False,
     'auto-install': False,
     'license': 'OPL-1',
 }

@@ -35,4 +35,5 @@
     ],
     'application': False,
     'license': 'OPL-1',
+    'installable': False,
 }

@@ -21,7 +21,7 @@
         'report/ir_actions_report.xml',
         'security/ir_rule.xml',
     ],
-    'installable': True,
+    'installable': False,
     'application': False,
     'license': 'OPL-1',
 }

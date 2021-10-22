@@ -157,7 +157,7 @@
         'data/ir_ui_menu.xml',
         'report/ir_actions_report.xml',
     ],
-    'installable': True,
+    'installable': False,
     'auto-install': False,
     'application': False,
     'license': 'OPL-1',

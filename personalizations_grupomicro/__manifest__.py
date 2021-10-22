@@ -12,7 +12,7 @@
         'views/auth_signup_login_templates.xml',
         'data/ir_parameter_data.xml',
     ],
-    'installable': True,
+    'installable': False,
     'application': False,
     'license': 'OPL-1',
 }

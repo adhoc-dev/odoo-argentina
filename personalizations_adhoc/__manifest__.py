@@ -8,7 +8,7 @@
     ],
     'data': [
     ],
-    'installable': True,
+    'installable': False,
     'application': False,
     'license': 'OPL-1',
 }
