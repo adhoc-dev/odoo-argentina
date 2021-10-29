@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalizations_texterfeed.ir_ui_view_account_move_form_extension" model="ir.ui.view">
+    <field name="name">x_account_move_form_extension</field>
+    <field name="model">account.move</field>
+    <field ref="account.view_move_form" name="inherit_id"/>
+    <field type="xml" name="arch">
+        <button name="action_post" position="attributes">
+          <attribute name="groups">account.group_account_invoice,purchase.group_purchase_manager</attribute>
+        </button>
+    </field>
+  </record>
+</odoo>

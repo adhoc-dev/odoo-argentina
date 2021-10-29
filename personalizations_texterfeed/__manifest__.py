@@ -1,0 +1,25 @@
+{
+    'name': 'Personalizations Texter feed',
+    'version': '13.0.1.0.0',
+    'category': 'Personalizations',
+    'author': 'ADHOC SA',
+    'depends': [
+        'account',
+        'account_payment_group',
+        'account_reports',
+        'l10n_ar_ux',
+        'base',
+        'sale',
+        'purchase',
+    ],
+    'data': [
+        'data/ir_ui_menu.xml',
+        'security/ir_rule.xml',
+        'security/ir.model.access.csv',
+        'views/account_move_form_extension.xml',
+    ],
+    'installable': True,
+    'application': False,
+    'auto-install': False,
+    'license': 'OPL-1',
+}
