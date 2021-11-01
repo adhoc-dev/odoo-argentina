@@ -4,6 +4,7 @@
     <field name="name">Odoo Studio: product.template.product.form customization</field>
     <field name="model">product.template</field>
     <field ref="product.product_template_only_form_view" name="inherit_id"/>
+    <field name="priority">100</field>
     <field name="arch" type="xml">
         <xpath expr="//field[@name='barcode']" position="attributes">
           <attribute name="attrs">{}</attribute>

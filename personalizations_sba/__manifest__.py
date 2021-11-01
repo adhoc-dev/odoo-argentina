@@ -16,6 +16,9 @@
         'l10n_ar',
         'product_management_group',
         'product_template_tags',
+        'purchase_ux',
+        'product_ux',
+        'delivery',
     ],
     'data': [
         'security/personalizations_sba_security.xml',
