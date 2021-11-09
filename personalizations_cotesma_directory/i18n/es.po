@@ -17,72 +17,72 @@ msgstr ""
 "Language: es\n"
 "X-Generator: Poedit 2.3.1\n"
 
-#. module: directory
+#. module: personalizations_cotesma_directory
 #: model_terms:ir.ui.view,arch_db:directory.telephone_id_ir_ui_view
 #: model_terms:website.page,arch_db:directory.telephone_id
 msgid "<strong>Note:</strong> Write for search by Name, telephone or street."
 msgstr "<strong>Nota:</strong> Escribe para buscar por nombre, numero de teléfono o calle."
 
-#. module: directory
+#. module: personalizations_cotesma_directory
 #: model:ir.model.fields,help:directory.field_directory_telephone__active
 msgid "Activate or deactivate record"
 msgstr "Activar o desactivar registro"
 
-#. module: directory
+#. module: personalizations_cotesma_directory
 #: model:ir.model.fields,field_description:directory.field_directory_telephone__active
 #: model:ir.model.fields,field_description:directory.field_directory_telephonetrans__active
 msgid "Active"
 msgstr "Activo"
 
-#. module: directory
+#. module: personalizations_cotesma_directory
 #: model_terms:ir.ui.view,arch_db:directory.directory_telephone_view_form
 msgid "Active or inactive"
 msgstr "Activar o desactivar registro"
 
-#. module: directory
+#. module: personalizations_cotesma_directory
 #: model_terms:ir.ui.view,arch_db:directory.directory_telephone_view_form
 msgid "Active record"
 msgstr "Registro activo"
 
-#. module: directory
+#. module: personalizations_cotesma_directory
 #: model_terms:ir.ui.view,arch_db:directory.directory_telephone_view_form
 msgid "Contact Phone"
 msgstr "Teléfono de contacto"
 
-#. module: directory
+#. module: personalizations_cotesma_directory
 #: model_terms:ir.ui.view,arch_db:directory.directory_telephone_view_form
 msgid "Contact name"
 msgstr "Nombre del contacto"
 
-#. module: directory
+#. module: personalizations_cotesma_directory
 #: model:ir.model.fields,field_description:directory.field_directory_telephone__create_uid
 #: model:ir.model.fields,field_description:directory.field_directory_telephonetrans__create_uid
 msgid "Created by"
 msgstr "Creado por"
 
-#. module: directory
+#. module: personalizations_cotesma_directory
 #: model:ir.model.fields,field_description:directory.field_directory_telephone__create_date
 #: model:ir.model.fields,field_description:directory.field_directory_telephonetrans__create_date
 msgid "Created on"
 msgstr "Creado el"
 
-#. module: directory
+#. module: personalizations_cotesma_directory
 #: model:ir.ui.menu,name:directory.directory_telephone_menu_root
 #: model_terms:ir.ui.view,arch_db:directory.directory_telephone_view_form
 msgid "Directory"
 msgstr "Guia"
 
-#. module: directory
+#. module: personalizations_cotesma_directory
 #: model_terms:ir.ui.view,arch_db:directory.directory_telephone_view_tree
 msgid "Directory List"
 msgstr "Guia"
 
-#. module: directory
+#. module: personalizations_cotesma_directory
 #: model:ir.model,name:directory.model_directory_telephone
 msgid "Directory Telephone"
 msgstr "Guía telefónica"
 
-#. module: directory
+#. module: personalizations_cotesma_directory
 #: model:ir.model,name:directory.model_directory_telephonetrans
 msgid "Directory Telephone Transsiel"
 msgstr ""

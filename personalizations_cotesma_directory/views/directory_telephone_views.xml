@@ -34,7 +34,7 @@
       <field name="res_model">directory.telephone</field>
       <field name="view_mode">tree,form</field>
     </record>
-    <menuitem name="Directory" id="directory_telephone_menu_root" web_icon="directory,static/description/icono_guia_cotesma.png"/>
+    <menuitem name="Directory" id="directory_telephone_menu_root" web_icon="personalizations_cotesma_directory,static/description/icono_guia_cotesma.png"/>
     <menuitem name="Telephone" id="directory_telephone" parent="directory_telephone_menu_root"/>
     <menuitem name="List" id="directory_telephone_list" parent="directory_telephone"
         action="directory_telephone_action_window"/>

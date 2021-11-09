@@ -1,10 +1,10 @@
 # Copyright 2019 Vauxoo
 # License AGPL-3 or later (http://www.gnu.org/licenses/agpl).
 {
-    'name': "directory",
+    'name': "personalizations_cotesma_directory",
     'summary': """
         Odoo module to telephone directory Cotesma webpage""",
-    'author': "Vauxoo",
+    'author': "Vauxoo, Adhoc SA",
     'website': "http://www.cotesma.coop",
     'category': 'Directory Telephone',
     'license': 'AGPL-3',
