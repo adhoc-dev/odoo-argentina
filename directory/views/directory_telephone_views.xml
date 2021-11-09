@@ -1,0 +1,42 @@
+<odoo noupdate='1'>
+
+    <record id="directory_telephone_view_form" model="ir.ui.view" >
+      <field name="name">Directory Telephone</field>
+      <field name="model">directory.telephone</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Directory">
+            <group col="4" colspan="2">
+                <field name="name" string="Contact name" placeholder="Contact name" />
+                <field name="phone" string="Contact Phone"/>
+                <field name="street" string="Street Contact"/>
+                <field name="active" string="Active or inactive" placeholder="Active record"/>
+            </group>
+        </form>
+      </field>
+    </record>
+
+    <record id="directory_telephone_view_tree" model="ir.ui.view" >
+      <field name="name">Directory Telephone</field>
+      <field name="model">directory.telephone</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree string="Directory List">
+          <field name="name"/>
+          <field name="phone"/>
+          <field name="street"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="directory_telephone_action_window" model="ir.actions.act_window">
+      <field name="name">Directory telephone</field>
+      <field name="res_model">directory.telephone</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Directory" id="directory_telephone_menu_root" web_icon="directory,static/description/icono_guia_cotesma.png"/>
+    <menuitem name="Telephone" id="directory_telephone" parent="directory_telephone_menu_root"/>
+    <menuitem name="List" id="directory_telephone_list" parent="directory_telephone"
+        action="directory_telephone_action_window"/>
+
+</odoo>
