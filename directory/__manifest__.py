@@ -8,7 +8,7 @@
     'website': "http://www.cotesma.coop",
     'category': 'Directory Telephone',
     'license': 'AGPL-3',
-    'version': '12.0.1.0.0',
+    'version': "13.0.1.0.0",
     'depends': ['website'],
     'data': [
         'security/directory_access_rules.xml',
