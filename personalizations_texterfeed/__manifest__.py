@@ -18,7 +18,7 @@
         'security/ir.model.access.csv',
         'views/account_move_form_extension.xml',
     ],
-    'installable': True,
+    'installable': False,
     'application': False,
     'auto-install': False,
     'license': 'OPL-1',
