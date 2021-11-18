@@ -1,6 +1,6 @@
 {
     'name': 'Personalizations Apromark',
-    'version': '13.0.1.14.0',
+    'version': '13.0.1.15.0',
     'sequence': 14,
     'summary': '',
     'author': 'ADHOC SA',

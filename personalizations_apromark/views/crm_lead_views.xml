@@ -25,6 +25,9 @@
                 <field name="phone" position="replace">
                     <field name="mobile" optional="show" class="o_force_ltr"/>
                 </field>
+                <field name="contact_name" position="attributes">
+                    <attribute name="string">Alumno</attribute>
+                </field>
                 <field name="tag_ids" position="attributes">
                     <attribute name="optional">show</attribute>
                 </field>
