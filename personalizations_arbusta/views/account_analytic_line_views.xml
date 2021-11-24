@@ -11,6 +11,7 @@
         </xpath>
         <xpath expr="//field[@name='task_id']" position="after">
           <field name="x_studio_field_yC90r" widget="integer" string="TCs. Avisos. Registros"/>
+          <field name="percentage" class="pull-right text-center" widget="selection"/>
         </xpath>
       </data>
     </field>
@@ -77,6 +78,21 @@
         </xpath>
         <xpath expr="//field[@name='product_id']" position="attributes">
           <attribute name="groups">hr.group_hr_user</attribute>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_arbusta.hr_timesheet_search" model="ir.ui.view">
+    <field name="name">hr.timesheet.search</field>
+    <field name="model">account.analytic.line</field>
+    <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_search"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='employee_id']" position="after">
+          <field name="percentage" string="Porcentaje para horas extras"/>
+        </xpath>
+        <xpath expr="//filter[@name='groupby_date']" position="after">
+            <filter string="Porcentaje" name="groupby_percentage" domain="[]" context="{'group_by': 'percentage'}" help="Timesheet by Percentaje"/>
         </xpath>
       </data>
     </field>

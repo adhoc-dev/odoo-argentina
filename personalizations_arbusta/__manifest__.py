@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'personalizations_arbusta',
-    'version': '13.0.1.24.0',
+    'version': '13.0.1.25.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -58,6 +58,7 @@
         'views/hr_employee_skill_views.xml',
         'data/ir_actions_act_window.xml',
         'data/ir_ui_menu.xml',
+        'data/base_automation.xml',
     ],
     'application': False,
     'license': 'OPL-1',

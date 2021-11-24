@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    <record model="base.automation" id="personalizations_arbusta.check_work_hours_excess">
+        <field name="name">Chequear exceso en horas de trabajo</field>
+        <field name="model_id" ref="account.model_account_analytic_line"/>
+        <field name="state">code</field>
+        <field name="website_published">False</field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="trigger_field_ids" eval="[(4,ref('analytic.field_account_analytic_line__unit_amount'))]"/>
+        <field name="code">
+for rec in records:
+    horas_trabajadas = sum(model.search(['&amp;',('employee_id','=',rec.employee_id.id),('date','=',datetime.date.today())]).mapped('unit_amount'))
+if horas_trabajadas > 12:
+  raise Warning("No pueden registrarse mas de 12 hs diarias")
+        </field>
+    </record>
+</odoo>
