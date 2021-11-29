@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Neored Personalizations',
-    'version': '13.0.1.11.0',
+    'version': '13.0.1.12.0',
     'category': 'Accounting',
     'sequence': 14,
     'summary': '',
@@ -66,6 +66,7 @@
         'views/report_invoice_document.xml',
         'views/report_saleorder_document.xml',
         'views/sale_order_views.xml',
+        'views/sale_order_extension.xml',
         'security/ir.model.access.csv',
         'data/res_partner_categories_data.xml',
         'data/product_data.xml',
