@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <field name="picking_partner_id" position="replace">
                 <field name="picking_code" invisible="1"/>
-                <field name="picking_partner_id" invisible="1"/>
+                <field name="picking_partner_id" attrs="{'invisible': [('picking_code', '=', 'incoming')]}"/>
             </field>
         </field>
     </record>
@@ -20,8 +20,7 @@
         <field name="inherit_id" ref="view_stock_move_tree"/>
         <field name="arch" type="xml">
             <field name="picking_partner_id" position="attributes">
-                <attribute name="invisible">0</attribute>
-                <attribute name="attrs">{'invisible': [('picking_code', '=', 'incoming')]}</attribute>
+                <attribute name="attrs">{}</attribute>
             </field>
         </field>
     </record>
