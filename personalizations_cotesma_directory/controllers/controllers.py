@@ -29,6 +29,6 @@ class TelephoneDirectory(http.Controller):
             url_args=post
         )
 
-        return http.request.render('directory.telephone_page_template',
+        return http.request.render('personalizations_cotesma_directory.telephone_page_template',
                                    {'telephones': model_ids or [],
                                     'pager': pager})
