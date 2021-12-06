@@ -8,6 +8,9 @@
       <field name="reason" position="attributes">
         <attribute name="required">1</attribute>
       </field>
+      <field name="reason" position="after">
+        <field name="x_razon_devolucion" required="1"/>
+      </field>
       <field name="location_id" position="attributes">
         <attribute name="readonly">1</attribute>
         <attribute name="force_save">1</attribute>
