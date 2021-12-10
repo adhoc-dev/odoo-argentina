@@ -15,6 +15,7 @@
     'data': [
         'views/res_users_views.xml',
         'views/stock_request_order_views.xml',
+        'views/purchase_requisition_views.xml',
         'wizards/purchase_suggest_view.xml',
     ],
     'demo': [
