@@ -10,7 +10,8 @@
         'stock_request_ux',
         'purchase_requisition',
         'purchase_suggest',
-        ],
+        'product_template_tags',
+    ],
     'data': [
         'views/res_users_views.xml',
         'views/stock_request_order_views.xml',
