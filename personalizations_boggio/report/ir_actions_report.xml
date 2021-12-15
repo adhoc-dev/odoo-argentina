@@ -87,19 +87,6 @@
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
     <!-- <field name="copies">2</field> -->
   </record>
-  <record id="personalizations_boggio.ir_act_report_xml_1290" model="ir.actions.report">
-    <field name="name">Remito - Reimpresion PDF</field>
-    <field name="model">stock.picking</field>
-    <field name="report_name">aeroo_report_ar_picking_reimpresion</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="stock.model_stock_picking"/>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking.odt</field>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-    <!-- <field name="copies">2</field> -->
-  </record>
   <record id="personalizations_boggio.ir_act_report_xml_1308" model="ir.actions.report">
     <field name="name">Inventario (con precio)</field>
     <field name="model">stock.inventory</field>
@@ -120,7 +107,7 @@
     <field name="binding_model_id" ref="stock.model_stock_picking"/>
     <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/picking_list_dep22_test.odt</field>
+    <field name="report_file">personalizations_boggio/report/picking_list.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
   </record>
@@ -135,20 +122,18 @@
     <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-    <!-- <field name="copies">2</field> -->
   </record>
   <record id="personalizations_boggio.ir_act_report_xml_1385" model="ir.actions.report">
-    <field name="name">Remito Argentino de Aeroo (super express)</field>
+    <field name="name">Remito No Imprime (re-impresión o super express)</field>
     <field name="model">stock.picking</field>
     <field name="report_name">aeroo_report_ar_picking0020</field>
     <field name="report_type">aeroo</field>
     <field name="binding_type">action</field>
-    <field eval="False" name="multi"/>
     <field name="tml_source">file</field>
     <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-    <!-- <field name="copies">3</field> -->
+    <field name="copies">2</field>
   </record>
   <record id="personalizations_boggio.ir_act_report_xml_1386" model="ir.actions.report">
     <field name="name">OC festo online</field>
@@ -186,7 +171,7 @@
     <field name="report_file">personalizations_boggio/report/aeroo_report_ar_picking.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-    <!-- <field name="copies">2</field> -->
+    <field name="copies">2</field>
   </record>
   <record id="personalizations_boggio.ir_act_report_xml_1458" model="ir.actions.report">
     <field name="name">Presupuesto Control</field>
@@ -367,18 +352,6 @@
     <field name="in_format">oo-ods</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
   </record>
-  <record id="action_aeroo_report_ar_stock_remito" model="ir.actions.report">
-    <field name="name">Remito pre-impreso</field>
-    <field name="model">stock.picking</field>
-    <field name="report_name">aeroo_report_ar_remito</field>
-    <field name="report_type">aeroo</field>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/aeroo_report_ar_remito.odt</field>
-    <field eval="True" name="process_sep"/>
-    <field name="in_format">oo-odt</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-  </record>
   <record id="personalizations_boggio.ir_act_report_xml_2231" model="ir.actions.report">
     <field name="name">Solicitud de devolucion</field>
     <field name="model">stock.picking</field>
@@ -391,18 +364,6 @@
     <field name="report_file">personalizations_boggio/report/stock.picking_devoluciones.odt</field>
     <field name="in_format">oo-odt</field>
     <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-  </record>
-  <record id="personalizations_boggio.ir_act_report_xml_2407" model="ir.actions.report">
-    <field name="name">recepciones</field>
-    <field name="model">stock.move</field>
-    <field name="report_name">recepcion_sm</field>
-    <field name="report_type">aeroo</field>
-    <field name="binding_model_id" ref="stock.model_stock_move"/>
-    <field eval="False" name="multi"/>
-    <field name="tml_source">file</field>
-    <field name="report_file">personalizations_boggio/report/recepcion_sm.ods</field>
-    <field name="in_format">oo-ods</field>
-    <field name="out_format" ref="report_aeroo.report_mimetypes_xls_odt"/>
   </record>
   <record id="personalizations_boggio.ir_act_report_xml_2440" model="ir.actions.report">
     <field name="name">Outlet</field>

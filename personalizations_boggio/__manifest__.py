@@ -13,7 +13,6 @@
         'account_payment_group',
         'account_statement_move_import',
         'account_ux',
-        'account_invoice_line_number',
         'analytic',
         'base_report_to_print_node',
         'board',

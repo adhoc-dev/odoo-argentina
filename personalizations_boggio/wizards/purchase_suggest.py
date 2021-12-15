@@ -13,6 +13,7 @@ class PurchaseSuggest(models.TransientModel):
     x_marca = fields.Char(string="Marcas", related="product_id.product_tmpl_id.product_brand_id.name", readonly=True, copy=False)
     x_dias_stock_location = fields.Float(string="Dias Stock Ubica", compute="_compute_x_dias_stock_location", help="Stock Virtual / rotacion de la ubicacion", readonly=True, copy=False)
     x_unidad_empaque = fields.Char(string="U.E.", related="product_id.quantity_per_pack", readonly=True, copy=False)
+    product_name = fields.Char(string="Producto", related="product_id.display_name")
 
     @api.depends('warehouse_rotation')
     def _compute_x_dias_stock_location(self):

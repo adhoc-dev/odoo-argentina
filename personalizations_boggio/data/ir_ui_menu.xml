@@ -37,12 +37,6 @@
     <field name="sequence">10</field>
     <field name="action" ref="personalizations_boggio.ir_act_window_1144"/>
   </record>
-  <!-- <record id="personalizations_boggio.ir_ui_menu_893" model="ir.ui.menu">
-    <field name="name">Estrategia de entrada</field>
-    <field name="parent_id" ref="stock.menu_warehouse_config"/>
-    <field name="sequence">10</field>
-    <field name="action" ref="personalizations_boggio.ir_act_window_1164"/>
-  </record> -->
   <record id="personalizations_boggio.ir_ui_menu_941" model="ir.ui.menu">
     <field name="name">Replenishment cost rule</field>
     <field name="parent_id" ref="product_replenishment_cost.menu_product_replenshiment_cost_rule"/>
@@ -81,7 +75,7 @@
     <field eval="False" name="parent_id"/>
     <field name="sequence">20</field>
     <field name="action" ref="base.action_currency_form"/>
-    <field eval="[(6, 0, [ref('base.group_user'), ref('base.group_multi_currency')])]" name="groups_id"/>
+    <field eval="[(6, 0, [ref('base.group_user')])]" name="groups_id"/>
   </record>
   <record id="personalizations_boggio.ir_ui_menu_981" model="ir.ui.menu">
     <field name="name">Objetivo de proveedores</field>
@@ -339,5 +333,9 @@
     <field name="parent_id" ref="mis_builder.mis_report_conf_menu"/>
     <field name="sequence">10</field>
     <field name="action" ref="personalizations_boggio.ir_act_window_2531"/>
+  </record>
+
+  <record model="ir.ui.menu" id="sale.menu_sale_invoicing">
+    <field name="active" eval="True"/>
   </record>
 </odoo>

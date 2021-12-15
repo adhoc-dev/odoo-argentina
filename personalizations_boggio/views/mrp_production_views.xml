@@ -9,6 +9,9 @@
       <xpath expr="//field[@name='location_src_id']" position="attributes">
         <attribute name="attrs">{}</attribute>
       </xpath>
+      <button name="post_inventory" position="attributes">
+        <attribute name="groups"></attribute>
+      </button>
       <!-- mark_as_done_invisible -->
        <xpath expr="//button[@name='button_mark_done']" position="replace"/>
     </field>

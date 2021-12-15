@@ -148,19 +148,18 @@ action = record.product_id.action_open_quants()
     <field name="model_id" ref="stock.model_stock_move"/>
     <field name="state">code</field>
     <field name="crud_model_id" ref="stock.model_stock_move"/>
-    <field name="code"><![CDATA[object = record
-action = object.product_id.view_stock_detail()]]></field>
+    <field name="code">
+action = record.product_id.view_stock_detail()
+</field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1747" model="ir.actions.server">
     <field name="name">Stock On Hand en stock move</field>
     <field name="model_id" ref="stock.model_stock_move"/>
     <field name="state">code</field>
     <field name="crud_model_id" ref="stock.model_stock_move"/>
-    <field name="code"><![CDATA[object = record
-
+    <field name="code">
 action = record.product_id.action_open_quants()
-action_read = action.read()[0]
-action = action_read]]></field>
+</field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1748" model="ir.actions.server">
     <field name="name">Stock Traceability en stock move</field>
@@ -193,11 +192,9 @@ action = object.product_id.view_stock_detail()]]></field>
     <field name="model_id" ref="stock.model_stock_inventory_line"/>
     <field name="state">code</field>
     <field name="crud_model_id" ref="stock.model_stock_inventory_line"/>
-    <field name="code"><![CDATA[object = record
-
+    <field name="code">
 action = record.product_id.action_open_quants()
-action_read = action.read()[0]
-action = action_read]]></field>
+</field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1751" model="ir.actions.server">
     <field name="name">Stock Traceability en stock inventory line</field>
@@ -221,11 +218,9 @@ action = action_read]]></field>
     <field name="model_id" ref="product_replenishment_cost.model_purchase_order_line"/>
     <field name="state">code</field>
     <field name="crud_model_id" ref="product_replenishment_cost.model_purchase_order_line"/>
-    <field name="code"><![CDATA[object = record
-
+    <field name="code">
 action = record.product_id.action_open_quants()
-action_read = action.read()[0]
-action = action_read]]></field>
+</field>
   </record>
   <record id="personalizations_boggio.ir_act_server_1776" model="ir.actions.server">
     <field name="name">Stock Traceability en purchase order line</field>
@@ -395,106 +390,7 @@ else:
 
 ]]></field>
   </record>
-  <record id="personalizations_boggio.ir_act_server_2452" model="ir.actions.server">
-    <field name="name">Estado de remitos (reenvio1)</field>
-    <field name="model_id" ref="stock.model_stock_picking"/>
-    <field name="state">code</field>
-    <field name="code"><![CDATA[action = env['ir.actions.server'].browse(2449).run()
-
-# Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
-
-
-
-]]></field>
-  </record>
-  <record id="personalizations_boggio.ir_act_server_2453" model="ir.actions.server">
-    <field name="name">Estado de remitos (reenvio2)</field>
-    <field name="model_id" ref="stock.model_stock_picking"/>
-    <field name="state">code</field>
-    <field name="code"><![CDATA[action = env['ir.actions.server'].browse(2449).run()
-
-# Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
-
-
-
-]]></field>
-  </record>
-  <record id="personalizations_boggio.ir_act_server_2454" model="ir.actions.server">
-    <field name="name">Estado de remitos (reenvio3)</field>
-    <field name="model_id" ref="stock.model_stock_picking"/>
-    <field name="state">code</field>
-    <field name="code"><![CDATA[action = env['ir.actions.server'].browse(2449).run()
-
-# Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
-
-
-
-]]></field>
-  </record>
-  <record id="personalizations_boggio.ir_act_server_2455" model="ir.actions.server">
-    <field name="name">Estado de remitos (reenvio4)</field>
-    <field name="model_id" ref="stock.model_stock_picking"/>
-    <field name="state">code</field>
-    <field name="code"><![CDATA[action = env['ir.actions.server'].browse(2449).run()
-
-# Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
-
-
-
-]]></field>
-  </record>
-  <record id="personalizations_boggio.ir_act_server_2478" model="ir.actions.server">
-    <field name="name">Estado de remitos (reenvio5)</field>
-    <field name="model_id" ref="stock.model_stock_picking"/>
-    <field name="state">code</field>
-    <field name="code"><![CDATA[action = env['ir.actions.server'].browse(2449).run()
-
-# Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
-
-
-
-]]></field>
-  </record>
+  
   <record id="personalizations_boggio.ir_act_server_2551" model="ir.actions.server">
     <field name="name">Calcula Info CC y DV</field>
     <field name="model_id" ref="delivery.model_sale_order"/>

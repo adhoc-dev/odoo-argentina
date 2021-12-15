@@ -45,7 +45,9 @@
     </template>
 
     <template id="invoice_delete_total" inherit_id="account.report_invoice_document">
-       <xpath expr="//tr[hasclass('o_total')]" position="replace"/>
+        <xpath expr="//tr[hasclass('o_total')]" position="attributes">
+            <attribute name="invisible">True</attribute>
+        </xpath>
     </template>
 
      <template id="payment_method_personalization" inherit_id="account.report_invoice_document">

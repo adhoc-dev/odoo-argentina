@@ -27,6 +27,7 @@
           <field name="x_chatbot_trained"/>
           <field name="x_simplificado"/>
         </xpath>
+        <field name="line_ids" position="replace"/>
     </field>
   </record>
 </odoo>

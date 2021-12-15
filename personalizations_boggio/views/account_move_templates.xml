@@ -1,31 +1,46 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
+
   <template id="boggio_invoice" inherit_id="l10n_ar.report_invoice_document">
+
+    <xpath expr="//span[@t-field='o.l10n_latam_amount_untaxed']//..//..//td//strong" position="replace">
+      <span>Subtotal </span>
+    </xpath>
+    <xpath expr="//span[@t-field='o.amount_total']//..//..//td//strong" position="replace">
+      <span>Total </span>
+    </xpath>
+    <span t-field="o.l10n_latam_amount_untaxed" position="replace">
+      <strong>
+        <t>$0</t>
+      </strong>
+    </span>
+    <span t-field="o.amount_total" position="replace">
+      <strong>
+        <t>$0</t>
+      </strong>
+    </span>
+    <xpath expr="//span[@t-field='o.partner_id.commercial_partner_id.name']//../strong" position="replace">
+      <span>Cliente: </span>
+    </xpath>
+    <span t-field="o.partner_id.commercial_partner_id.name" position="replace">
+      <strong>
+        <t>$0</t>
+      </strong>
+    </span>
     <span t-field="o.partner_id" position="after">
-      <strong t-if="o.partner_id.commercial_partner_id != o.partner_id">Conctato: </strong>
-      <span t-if="o.partner_id.commercial_partner_id != o.partner_id" t-field="o.partner_id.name" />
+      <span t-if="o.partner_id.commercial_partner_id != o.partner_id">Conctato: </span>
+      <strong t-if="o.partner_id.commercial_partner_id != o.partner_id" t-field="o.partner_id.name" />
       <br t-if="o.partner_id.commercial_partner_id != o.partner_id" />
     </span>
     <span t-field="o.partner_id.commercial_partner_id.name" position="before">
-      <span t-if="o.partner_id.commercial_partner_id.internal_code" t-esc="'[%s]' % (o.partner_id.commercial_partner_id.internal_code)" />
+      <strong t-if="o.partner_id.commercial_partner_id.internal_code" t-esc="'[%s]' % (o.partner_id.commercial_partner_id.internal_code)" />
     </span>
     <t t-if="o.partner_id.vat and o.partner_id.l10n_latam_identification_type_id and o.partner_id.l10n_latam_identification_type_id.l10n_ar_afip_code != '99'" position="after">
-      <span t-esc="o.sale_order_ids.mapped( lambda x:   '%s ' %(x.partner_shipping_id.id!=x.partner_invoice_id.id and 'Direccion Entrega: ' + (o.partner_shipping_id.name and o.partner_shipping_id.name or '.') or '') )" />
+      <strong t-esc="o.sale_order_ids.mapped( lambda x:   '%s ' %(x.partner_shipping_id.id!=x.partner_invoice_id.id and 'Direccion Entrega: ' + (o.partner_shipping_id.name and o.partner_shipping_id.name or '.') or '') )" />
     </t>
-
-
-    <xpath expr="//th[@name='th_description']" position="before">
-      <th name="th_number_order_line_order_line" class="text-left">N°</th>
-    </xpath>
-    <xpath expr="//td[@name='account_invoice_line_name']" position="before">
-      <td name="td_number_order_line">
-        <span t-field="line.number" t-options="{'widget': 'integer'}" />
-      </td>
-    </xpath>
-
     <span t-field="line.name" position="replace">
       <a t-if="line.product_id.x_documents" target="_blank" t-attf-href="'https://www.ingenieriaboggio.com.ar' + line.product_id.x_documents.url_suffix" class="fa fa-book" role="img" />
-      <span t-esc="'[%s] %s (%s) %s %s' % (line.product_id.default_code[1:] ,line.product_id.name, line.product_id.supplier_code or '', line.tax_ids.amount==10.5 and 'IVA 10.5%' or '', line.product_id.internal_code and ' ' or line.name)" />
+      <span t-esc="'[%s] %s (%s) %s %s' % (line.product_id.default_code and line.product_id.default_code[1:] or line.product_id.product_tmpl_id.default_code and line.product_id.product_tmpl_id.default_code[1:] or '' ,line.product_id.name, line.product_id.supplier_code or '', line.tax_ids.amount==10.5 and 'IVA 10.5%' or '', line.product_id.internal_code and ' ' or line.name)" />
       <a t-if="line.product_id.x_website_catalog" target="_blank" t-attf-href="line.product_id.x_website_catalog" class="fa fa-link" role="img" />
 
     </span>
@@ -40,16 +55,17 @@
 
     <span t-field="line.l10n_latam_price_unit" position="replace">
 
-      <span t-esc="line.l10n_latam_price_unit and line.l10n_latam_price_unit * (1-line.discount1/100.0) or 0.0" />
+      <span t-options='{"widget": "float", "precision": 2}' t-esc="line.l10n_latam_price_unit and line.l10n_latam_price_unit * (1-line.discount1/100.0) or 0.0" />
 
 
     </span>
 
     <td t-if="display_discount" position="replace">
       <td t-if="display_discount" class="text-right">
-        <span t-esc="' %s %s' % (line.discount2, line.discount3)" />
+        <span t-esc="' %s %s' % (line.discount2 or '', line.discount3 or '')" />
       </td>
     </td>
+    <t name="payment_term" position="replace" />
 
     <p name="comment" position="before">
       <p>
@@ -64,13 +80,13 @@
         CONTACTAR A ADMINISTRACION
       </p>
       <p t-if="o.invoice_payment_term_id.sequence &lt;= -10">
-        DE NO ABONAR DENTRO DE LOS 3 DIAS HÁBILES,SE CANCELARÁ LA PRESENTE
+      DE NO ABONAR DENTRO DE LOS 3 DIAS HÁBILES,SE CANCELARÁ LA PRESENTE
 
 
-      </p>
+    </p>
     </p>
     <p name="comment" position="after">
-      <table class="table table-sm o_main_table" name="open_table">
+      <table class="table table-sm o_main_table" name="open_table" t-if="(o.partner_id.commercial_partner_id.x_detalle_deuda_facturas in (2,3) or o.invoice_payment_term_id.sequence &lt;= 10) and o.partner_id.id not in (84779,51340,54396,50407)" style="font-size: 0.6em;">
         <thead>
           <tr>
             <th>
@@ -114,40 +130,218 @@
               </strong>
             </td>
             <td class="text-right">
-              <strong>
-                <span class="text-nowrap" t-raw="sum(o.env['account.move.line'].search([('partner_id', '=', o.partner_id.commercial_partner_id.id), ('account_id.internal_type', '=', 'receivable' ), ('reconciled', '=', False), ('account_id.deprecated', '=', False), ('move_id.state', '=', 'posted'), ('company_id', '=', o.company_id.id)]).mapped('amount_residual'))" t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
-              </strong>
+              <span class="text-nowrap" t-raw="sum(o.env['account.move.line'].search([('partner_id', '=', o.partner_id.commercial_partner_id.id), ('account_id.internal_type', '=', 'receivable' ), ('reconciled', '=', False), ('account_id.deprecated', '=', False), ('move_id.state', '=', 'posted'), ('company_id', '=', o.company_id.id)]).mapped('amount_residual'))" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}' />
             </td>
           </tr>
         </tfoot>
       </table>
     </p>
     <div id="qrcode" position="before">
-      <p>
-        <strong class="text-left">SON:</strong>
-        <span t-esc="o.currency_id.amount_to_text(o.amount_total) + '(%s)' % o.currency_id.name or o.company_id.currency_id.name" />
-      </p>
-      <p t-if="o.l10n_ar_currency_rate != 1">
-        La presente factura está emitida en moneda extranjera. Su importe será pagadero en la moneda indicada o en pesos según cotización libre vendedor del Banco de la Nación Argentina del día inmediato anterior al del efectivo pago .
-         A fines impositivos el tipo de cambio es:
-        <span t-esc=" '(%s)' % (o.internal_notes and o.internal_notes.startswith('*-+') and o.internal_notes[3:] or o.l10n_ar_currency_rate)" />
-      </p>
-      <p t-if="o.l10n_ar_currency_rate == 1">
-        La presente factura se emite en pesos con un monto equivalente en U$S de:
-        <span t-esc=" '%s' % str(o.amount_total/o.currency_id.browse(3).with_context(date=o.invoice_date).inverse_rate)" />
-        El pago deberá realizarse en pesos al tipo de cambio vendedor BNA al cierre del día anterior al pago. 
-        Tipo de cambio a la fecha:
-        <span t-esc="o.currency_id.browse(3).with_context(date=o.date_invoice).inverse_rate" />
-        Al momento del pago por diferencia de tipo de cambio mayor al 2%, se emitirá una Nota de Débito y/o Crédito
-      </p>
+      <div style="font-size: 0.8em;">
+        <p>
+          <span class="text-left">SON:</span>
+          <span t-esc="o.currency_id.amount_to_text(o.amount_total) + '(%s)' % o.currency_id.name or o.company_id.currency_id.name" />
+        </p>
+        <p t-if="o.l10n_ar_currency_rate != 1">
+          La presente factura está emitida en moneda extranjera. Su importe será pagadero en la moneda indicada o en pesos según cotización libre vendedor del Banco de la Nación Argentina del día inmediato anterior al del efectivo pago .
+       A fines impositivos el tipo de cambio es:
+          <span t-esc=" '(%s)' % (o.internal_notes and o.internal_notes.startswith('*-+') and o.internal_notes[3:] or o.l10n_ar_currency_rate)" />
+        </p>
+        <p t-if="o.l10n_ar_currency_rate == 1">
+          La presente factura se emite en pesos con un monto equivalente en U$S de:
+          <span t-options='{"widget": "float", "precision": 2}' t-esc="o.amount_total/o.currency_id.browse(3).with_context(date=o.invoice_date).inverse_rate" />
+          El pago deberá realizarse en pesos al tipo de cambio vendedor BNA al cierre del día anterior al pago. 
+      Tipo de cambio a la fecha:
+          <span t-options='{"widget": "float", "precision": 2}' t-esc="o.currency_id.browse(3).with_context(date=o.invoice_date).inverse_rate" />
+          Al momento del pago por diferencia de tipo de cambio mayor al 2%, se emitirá una Nota de Débito y/o Crédito
+        </p>
+      </div>
       <!-- <span t-esc="o.env['website.doc.toc'].search([['id','in',o.invoice_line_ids.mapped(lambda z: z.product_id.x_documents.id) ]]).mapped(lambda line: ('(*)'+tools.html2plaintext(line.content)) )"/> -->
       <p t-if="o.company_id.id == 4">
-        <a target="_blank" t-att-href="'https://ib.ingenieriaboggio.com.ar/page/politica-de-devoluciones'">Ver Politica de devoluciones /</a>
-
-        <a target="_blank" t-att-href="'https://www.ingenieriaboggio.com.ar/page/cbu'">Ver datos bancarios CBU's</a>
-        <a target="_blank" t-att-href="'https://docs.google.com/forms/d/e/1FAIpQLScCnS_ZjvLb2N27M733reEUpqnP9ZwkE1QqPgC9cwrqkpR5Ww/viewform?usp=pp_url?entry.336986699=' + (o.partner_id.commercial_partner_id.name or '' ) + '?entry.1878424618=' + (o.l10n_latam_document_number or '')">¿Como lo hemos atendido?</a>
+        <div class="row">
+          <a target="_blank" t-att-href="'https://ib.ingenieriaboggio.com.ar/page/politica-de-devoluciones'">Ver Politica de devoluciones /</a>
+          <a target="_blank" t-att-href="'https://www.ingenieriaboggio.com.ar/page/cbu'"> Ver datos bancarios CBU's </a>
+          <br/>
+          <a target="_blank" t-att-href="'https://docs.google.com/forms/d/e/1FAIpQLScCnS_ZjvLb2N27M733reEUpqnP9ZwkE1QqPgC9cwrqkpR5Ww/viewform?usp=pp_url?entry.336986699=' + (o.partner_id.commercial_partner_id.name or '' ) + '?entry.1878424618=' + (o.l10n_latam_document_number or '')">¿Como fue atendido?</a>
+        </div>
       </p>
-      <strong class="text-left" style="font-size:13px;">Ante cualquier diferendo las partes aceptan la jurisdicción de los Tribunales Ordinarios de Rosario renunciando a cualquier otro fuero o jurisdicción inclusive el federal. La falta de pago de la presente factura dentro de los plazos convenidos, producirá la mora y devengará intereses automáticos del 2,5% mensual.</strong>
+      Observaciones:
+      <br />
+      <span class="text-left" style="font-size:13px;">Ante cualquier diferendo las partes aceptan la jurisdicción de los Tribunales Ordinarios de Rosario renunciando a cualquier otro fuero o jurisdicción inclusive el federal. La falta de pago de la presente factura dentro de los plazos convenidos, producirá la mora y devengará intereses automáticos del 2,5% mensual.</span>
+    </div>
+    <div name="pager" position="before">
+      <span class="text-right" style="font-size:13px;" t-esc="'Ud. fue atendido por: %s' % o.create_uid.name" />
+    </div>
+  </template>
+
+  <template id="boggio_invoice_with_payments" inherit_id="l10n_ar.report_invoice_document_with_payments">
+
+    <xpath expr="//span[@t-field='o.amount_total']//..//..//td//strong" position="replace">
+      <span>Total </span>
+    </xpath>
+    <xpath expr="//span[@t-field='o.l10n_latam_amount_untaxed']//..//..//td//strong" position="replace">
+      <span>Subtotal </span>
+    </xpath>
+    <span t-field="o.l10n_latam_amount_untaxed" position="replace">
+      <strong>
+        <t>$0</t>
+      </strong>
+    </span>
+    <span t-field="o.amount_total" position="replace">
+      <strong>
+        <t>$0</t>
+      </strong>
+    </span>
+    <xpath expr="//span[@t-field='o.partner_id.commercial_partner_id.name']//../strong" position="replace">
+      <span>Cliente: </span>
+    </xpath>
+    <span t-field="o.partner_id.commercial_partner_id.name" position="replace">
+      <strong>
+        <t>$0</t>
+      </strong>
+    </span>
+    <span t-field="o.partner_id" position="after">
+      <span t-if="o.partner_id.commercial_partner_id != o.partner_id">Conctato: </span>
+      <strong t-if="o.partner_id.commercial_partner_id != o.partner_id" t-field="o.partner_id.name" />
+      <br t-if="o.partner_id.commercial_partner_id != o.partner_id" />
+    </span>
+    <span t-field="o.partner_id.commercial_partner_id.name" position="before">
+      <strong t-if="o.partner_id.commercial_partner_id.internal_code" t-esc="'[%s]' % (o.partner_id.commercial_partner_id.internal_code)" />
+    </span>
+    <t t-if="o.partner_id.vat and o.partner_id.l10n_latam_identification_type_id and o.partner_id.l10n_latam_identification_type_id.l10n_ar_afip_code != '99'" position="after">
+      <strong t-esc="o.sale_order_ids.mapped( lambda x:   '%s ' %(x.partner_shipping_id.id!=x.partner_invoice_id.id and 'Direccion Entrega: ' + (o.partner_shipping_id.name and o.partner_shipping_id.name or '.') or '') )" />
+    </t>
+
+    <span t-field="line.name" position="replace">
+      <a t-if="line.product_id.x_documents" target="_blank" t-attf-href="'https://www.ingenieriaboggio.com.ar' + line.product_id.x_documents.url_suffix" class="fa fa-book" role="img" />
+      <span t-esc="'[%s] %s (%s) %s %s' % (line.product_id.default_code and line.product_id.default_code[1:] or line.product_id.product_tmpl_id.default_code and line.product_id.product_tmpl_id.default_code[1:] or '' ,line.product_id.name, line.product_id.supplier_code or '', line.tax_ids.amount==10.5 and 'IVA 10.5%' or '', line.product_id.internal_code and ' ' or line.name)" />
+      <a t-if="line.product_id.x_website_catalog" target="_blank" t-attf-href="line.product_id.x_website_catalog" class="fa fa-link" role="img" />
+
+    </span>
+    <xpath expr="//th[@name='th_quantity']" position="before">
+      <th name="th_brand_order_line_order_line" class="text-left">Marca</th>
+    </xpath>
+    <xpath expr="//td//span[@t-field='line.quantity']//.." position="before">
+      <td name="td_brand_order_line">
+        <span t-esc="line.product_id.product_brand_id.name" />
+      </td>
+    </xpath>
+
+    <span t-field="line.l10n_latam_price_unit" position="replace">
+
+      <span t-options='{"widget": "float", "precision": 2}' t-esc="line.l10n_latam_price_unit and line.l10n_latam_price_unit * (1-line.discount1/100.0) or 0.0" />
+
+
+    </span>
+
+    <td t-if="display_discount" position="replace">
+      <td t-if="display_discount" class="text-right">
+        <span t-esc="' %s %s' % (line.discount2 or '', line.discount3 or '')" />
+      </td>
+    </td>
+    <t name="payment_term" position="replace" />
+
+    <p name="comment" position="before">
+      <p>
+        Para realizar transferencias puede bajar los datos de CBU
+        <a t-if="o.company_id.id==4" t-attf-href="https://www.ingenieriaboggio.com.ar/page/cbu" class="fa fa-link" target="_blank" />
+        <a t-if="o.company_id.id!=4" t-attf-href="http://www.transindar.com.ar/cbu" class="fa fa-link" target="_blank" />
+
+      </p>
+      <p t-if="o.invoice_payment_term_id.sequence &lt;= 10">
+        DE NO ABONAR DENTRO DE LOS 3 DIAS HÁBILES,SE CANCELARÁ LA PRESENTE SI QUIERE ABONAR POR QR MERCADO PAGO,
+        <br />
+        CONTACTAR A ADMINISTRACION
+      </p>
+      <p t-if="o.invoice_payment_term_id.sequence &lt;= -10">
+        DE NO ABONAR DENTRO DE LOS 3 DIAS HÁBILES,SE CANCELARÁ LA PRESENTE
+
+
+      </p>
+    </p>
+    <p name="comment" position="after">
+      <table class="table table-sm o_main_table" name="open_table" t-if="(o.partner_id.commercial_partner_id.x_detalle_deuda_facturas in (2,3) or o.invoice_payment_term_id.sequence &lt;= 10) and o.partner_id.id not in (84779,51340,54396,50407)" style="font-size: 0.6em;">
+        <thead>
+          <tr>
+            <th>
+              <span>Comprobantes Pendientes al</span>
+              <span t-raw="datetime.datetime.today()" t-options='{"widget": "date"}' />
+            </th>
+            <th class="text-center">
+              <span>Fecha Venc.</span>
+            </th>
+            <th class="text-right">
+              <span>Importe Original</span>
+            </th>
+            <th class="text-right">
+              <span>Saldo</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <t t-foreach="o.env['account.move.line'].search([('partner_id', '=', o.partner_id.commercial_partner_id.id), ('account_id.internal_type', '=', 'receivable'), ('reconciled', '=', False), ('account_id.deprecated', '=', False), ('move_id.state', '=', 'posted'), ('company_id', '=', o.company_id.id)])" t-as="line">
+            <tr>
+              <td>
+                <span t-field='line.move_id.display_name' />
+              </td>
+              <td class="text-center">
+                <span class="text-nowrap" t-field="line.date_maturity" />
+              </td>
+              <td class="text-right o_price_total">
+                <span class="text-nowrap" t-field="line.balance" />
+              </td>
+              <td class="text-right o_price_total">
+                <span class="text-nowrap" t-field="line.amount_residual" />
+              </td>
+            </tr>
+          </t>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">
+              <strong>
+                <span>Total Pendiente</span>
+              </strong>
+            </td>
+            <td class="text-right">
+              <span class="text-nowrap" t-raw="sum(o.env['account.move.line'].search([('partner_id', '=', o.partner_id.commercial_partner_id.id), ('account_id.internal_type', '=', 'receivable' ), ('reconciled', '=', False), ('account_id.deprecated', '=', False), ('move_id.state', '=', 'posted'), ('company_id', '=', o.company_id.id)]).mapped('amount_residual'))" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}' />
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </p>
+    <div id="qrcode" position="before">
+      <div style="font-size: 0.8em;">
+        <p>
+          <span class="text-left">SON:</span>
+          <span t-esc="o.currency_id.amount_to_text(o.amount_total) + '(%s)' % o.currency_id.name or o.company_id.currency_id.name" />
+        </p>
+        <p t-if="o.l10n_ar_currency_rate != 1">
+          La presente factura está emitida en moneda extranjera. Su importe será pagadero en la moneda indicada o en pesos según cotización libre vendedor del Banco de la Nación Argentina del día inmediato anterior al del efectivo pago .
+         A fines impositivos el tipo de cambio es:
+          <span t-esc=" '(%s)' % (o.internal_notes and o.internal_notes.startswith('*-+') and o.internal_notes[3:] or o.l10n_ar_currency_rate)" />
+        </p>
+        <p t-if="o.l10n_ar_currency_rate == 1">
+          La presente factura se emite en pesos con un monto equivalente en U$S de:
+          <span t-options='{"widget": "float", "precision": 2}' t-esc="o.amount_total/o.currency_id.browse(3).with_context(date=o.invoice_date).inverse_rate" />
+          El pago deberá realizarse en pesos al tipo de cambio vendedor BNA al cierre del día anterior al pago. 
+        Tipo de cambio a la fecha:
+          <span t-options='{"widget": "float", "precision": 2}' t-esc="o.currency_id.browse(3).with_context(date=o.invoice_date).inverse_rate" />
+          Al momento del pago por diferencia de tipo de cambio mayor al 2%, se emitirá una Nota de Débito y/o Crédito
+        </p>
+      </div>
+      <!-- <span t-esc="o.env['website.doc.toc'].search([['id','in',o.invoice_line_ids.mapped(lambda z: z.product_id.x_documents.id) ]]).mapped(lambda line: ('(*)'+tools.html2plaintext(line.content)) )"/> -->
+      <p t-if="o.company_id.id == 4">
+        <div class="row">
+          <a target="_blank" t-att-href="'https://ib.ingenieriaboggio.com.ar/page/politica-de-devoluciones'">Ver Politica de devoluciones /</a>
+          <a target="_blank" t-att-href="'https://www.ingenieriaboggio.com.ar/page/cbu'"> Ver datos bancarios CBU's </a>
+          <br/>
+          <a target="_blank" t-att-href="'https://docs.google.com/forms/d/e/1FAIpQLScCnS_ZjvLb2N27M733reEUpqnP9ZwkE1QqPgC9cwrqkpR5Ww/viewform?usp=pp_url?entry.336986699=' + (o.partner_id.commercial_partner_id.name or '' ) + '?entry.1878424618=' + (o.l10n_latam_document_number or '')">¿Como fue atendido?</a>
+        </div>
+      </p>
+      Observaciones:
+      <br />
+      <span class="text-left" style="font-size:13px;">Ante cualquier diferendo las partes aceptan la jurisdicción de los Tribunales Ordinarios de Rosario renunciando a cualquier otro fuero o jurisdicción inclusive el federal. La falta de pago de la presente factura dentro de los plazos convenidos, producirá la mora y devengará intereses automáticos del 2,5% mensual.</span>
     </div>
     <div name="pager" position="before">
       <span class="text-right" style="font-size:13px;" t-esc="'Ud. fue atendido por: %s' % o.create_uid.name" />

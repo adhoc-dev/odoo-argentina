@@ -24,7 +24,6 @@
     <field name="arch" type="xml">
         <field name="user_id" position="replace"/>
         <field name="ref" position="replace"/>
-        <field name="active" position="replace"/>
         <field name="require_purchase_order_number" position="replace"/>
         <field name="abc_sales_amount" position="replace"/>
         <field name="x_operate_with_checks" position="replace"/>
@@ -74,16 +73,6 @@
         </filter>
     </field>
   </record>
-  <record id="personalizations_boggio.ir_ui_view_5308" model="ir.ui.view">
-    <field name="name">comercial obligatorio iboggio</field>
-    <field name="model">res.partner</field>
-    <field name="inherit_id" ref="base.view_partner_form"/>
-    <field name="arch" type="xml">
-      <field name="user_id" position="attributes">
-        <attribute name="required">1</attribute>
-      </field>
-    </field>
-  </record>
   <record id="personalizations_boggio.ir_ui_view_5371" model="ir.ui.view">
     <field name="name">agregado de datos del nosis</field>
     <field name="model">res.partner</field>
@@ -97,14 +86,23 @@
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_5586" model="ir.ui.view">
-    <field name="name">Aviso de recibo automatico de remitos iboggio</field>
+    <field name="name">Modificaciones en vistas contacto</field>
     <field name="model">res.partner</field>
     <field name="inherit_id" ref="base.view_partner_form"/>
     <field name="arch" type="xml">
+        <!-- Aviso de recibo automatico de remitos -->
         <field name="lang" position="after">
           <field name="x_no_recibe_remito"/>
           <field name="x_deuda_email"/>
           <field name="x_detalle_deuda_facturas"/>
+        </field>
+         <!-- comercial obligatorio iboggio -->
+        <field name="user_id" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+        <!-- ocultar portales de comerciales -->
+        <field name="user_id" position="attributes">
+          <attribute name="domain">[('share','=',False)]</attribute>
         </field>
     </field>
   </record>
@@ -131,26 +129,6 @@
         </field>
     </field>
   </record>
-  <record id="personalizations_boggio.ir_ui_view_5760" model="ir.ui.view">
-    <field name="name">ocultar portales de comerciales</field>
-    <field name="model">res.partner</field>
-    <field name="inherit_id" ref="base.view_partner_form"/>
-    <field name="arch" type="xml">
-      <field name="user_id" position="attributes">
-        <attribute name="domain">[('share','=',False)]</attribute>
-      </field>
-    </field>
-  </record>
-  <!-- <record id="personalizations_boggio.ir_ui_view_5825" model="ir.ui.view">
-    <field name="name">sacar deuda de cliente y proveedor x lentitud iboggio</field>
-    <field name="model">res.partner</field>
-    <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_191')])]" name="groups_id"/>
-    <field name="inherit_id" ref="account_debt_management.view_partner_inherit_debt_form"/>
-    <field name="arch" type="xml">
-        <page name="customer_debt" position="replace"/>
-        <page name="supplier_debt" position="replace"/>
-    </field>
-  </record> -->
   <record id="personalizations_boggio.ir_ui_view_5829" model="ir.ui.view">
     <field name="name">cambio de condicion de venta con nosis iboggio</field>
     <field name="model">res.partner</field>
@@ -212,7 +190,8 @@
     <field name="inherit_id" ref="account_followup.res_partner_view_form"/>
     <field name="arch" type="xml">
       <button name="open_action_followup" position="replace">
-        <button type="object" class="oe_stat_button" name="open_action_followup" groups="account.group_account_user" icon="fa-list">
+        <field name="total_overdue" invisible="1"/>
+        <button type="object" class="oe_stat_button" name="open_action_followup" groups="account.group_account_user" icon="fa-list"  attrs="{'invisible': [('total_overdue', '=', 0)]}">
           <div class="o_field_widget o_stat_info">
             <span class="o_stat_value">
               <field name="total_due" widget="monetary" options="{'currency_field': 'currency_id'}"/>

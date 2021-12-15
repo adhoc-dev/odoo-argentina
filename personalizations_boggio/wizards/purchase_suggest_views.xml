@@ -10,31 +10,51 @@
         <button type="action" name="%(personalizations_boggio.ir_act_server_1245)d" string="View Stock Detail" icon="fa-search-plus"/>
       </button>
       <field name="product_id" position="after">
-        <field name="x_product_code"/>
-        <field name="x_abc_sales_combined"/>
-        <field name="x_marca"/>
+        <field name="x_product_code" optional="show"/>
+        <field name="x_abc_sales_combined" optional="show"/>
+        <field name="x_marca" optional="hide"/>
+      </field>
+      <field name="product_id" position="replace">
+        <field name="product_name" widget="text"/>
       </field>
       <field name="last_po_uom" position="replace"/>
       <field name="last_po_date" position="replace"/>
       <field name="last_po_qty" position="replace"/>
+      <field name="seller_id" position="attributes">
+        <attribute name="optional">hide</attribute>
+      </field>
       <field name="uom_id" position="attributes">
         <attribute name="invisible">True</attribute>
       </field>
+      <field name="order_amount" position="attributes">
+        <attribute name="optional">show</attribute>
+      </field>
+      <field name="draft_po_qty" position="attributes">
+        <attribute name="optional">hide</attribute>
+      </field>
+      <field name="warehouse_rotation" position="attributes">
+        <attribute name="optional">show</attribute>
+      </field>
+      <field name="rotation" position="attributes">
+        <attribute name="optional">show</attribute>
+      </field>
       <field name="warehouse_rotation" position="after">
-        <field name="orderpoint_id"/>
-        <field name="x_unidad_empaque"/>
-        <field name="x_dias_stock_location"/>
-        <field name="x_lead_days"/>
+        <field name="orderpoint_id" optional="show"/>
+        <field name="x_unidad_empaque" optional="hide"/>
+        <field name="x_dias_stock_location" optional="hide"/>
+        <field name="x_lead_days" optional="hide"/>
       </field>
       <field name="qty_available" position="before">
-        <field name="x_qty_available"/>
+        <field name="x_qty_available" optional="show"/>
       </field>
       <xpath expr="//field[@name='uom_po_id']" position="attributes">
         <attribute name="attrs">{}</attribute>
         <attribute name="invisible">1</attribute>
+        <attribute name="optional">show</attribute>
       </xpath>
       <xpath expr="//field[@name='replenishment_cost']" position="attributes">
         <attribute name="widget">monetary</attribute>
+        <attribute name="optional">show</attribute>
       </xpath>
     </field>
   </record>

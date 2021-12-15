@@ -33,8 +33,6 @@
     <field name="inherit_id" ref="base.view_currency_form"/>
     <field name="arch" type="xml">
         <button name="%(base.act_view_currency_rates)d" position="replace"/>
-        <button name="action_get_pyafipws_currency_rate" position="replace"/>
-        <button name="action_get_pyafipws_currencies" position="replace"/>
     </field>
   </record>
 </odoo>

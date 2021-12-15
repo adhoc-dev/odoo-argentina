@@ -99,7 +99,6 @@
         <field name="currency_id" invisible="1"/>
         <field name="taxed_lst_price" invisible="1"/>
         <field name="uom_id" invisible="1"/>
-        <field name="internal_code"/>
       </field>
     </field>
   </record>
@@ -121,13 +120,13 @@
     <field name="inherit_id" ref="product.product_template_search_view"/>
     <field name="arch" type="xml">
       <search>
-        <filter string="Ubica Rosario" name="location" domain="[('location_id','=',21)]" context="{'location': 'ROS/Stock'}"/>
-        <filter string="Ubica Santa Fe" name="location SFE" domain="[('location_id','=',27)]" context="{'location': 'SFE/Stock'}"/>
-        <filter string="Ubica Rafaela" name="location RAF" domain="[('location_id','=',33)]" context="{'location': 'RAF/Stock'}"/>
-        <filter string="Ubica Motores" name="location MOT" domain="[('location_id','=',39)]" context="{'location': 'ROS/Stock/Motores y Cables Subterraneo'}"/>
-        <filter string="Ubica Ilum" name="location ILU" domain="[('location_id','=',42)]" context="{'location': 'ROS/Stock/Iluminación/Deposito Iluminacion'}"/>
-        <filter string="Ubica Ilum padre" name="location ILU padre" domain="[('location_id','=',40)]" context="{'location': 'ROS/Stock/Iluminación'}"/>
-        <filter string="Ubica IND" name="location IND" domain="[('location_id','=',38)]" context="{'location': 'ROS/Stock/Industrial'}"/>
+        <filter string="Ubica Rosario" name="location" context="{'location': 21}"/>
+        <filter string="Ubica Santa Fe" name="location SFE" context="{'location': 27}"/>
+        <filter string="Ubica Rafaela" name="location RAF" context="{'location': 33}"/>
+        <filter string="Ubica Motores" name="location MOT" context="{'location': 39}"/>
+        <filter string="Ubica Ilum" name="location ILU" context="{'location': 42}"/>
+        <filter string="Ubica Ilum padre" name="location ILU padre" context="{'location': 40}"/>
+        <filter string="Ubica IND" name="location IND" context="{'location': 38}"/>
         <filter string="No Publicado Web" name="website_published" domain="[('website_published','=',False)]"/>
       </search>
     </field>
@@ -178,9 +177,9 @@
         <label for="replenishment_base_cost_on_currency" string=" / "/>
         <field name="replenishment_base_cost_on_currency" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id'}"/>
       </div>
-      <field name="replenishment_cost" position="before">
+      <field name="replenishment_cost_rule_id" position="after">
         <field name="replenishment_cost_rule_id"/>
-        <field name="x_replenishment_cost_moneda"/>
+        <field name="x_replenishment_cost_moneda" widget="monetary" options="{'currency_field': 'replenishment_base_cost_currency_id'}"/>
       </field>
     </field>
   </record>
@@ -242,6 +241,12 @@
     <field name="model">product.template</field>
     <field name="inherit_id" ref="product.product_template_tree_view"/>
     <field name="arch" type="xml">
+      <tree position="attributes">
+        <attribute name="default_order">website_sequence asc</attribute>
+      </tree>
+      <field name="name" position="attributes">
+        <attribute name="widget">text</attribute>
+      </field>
       <xpath expr="//field[@name='categ_id']" position="replace"/>
       <xpath expr="//field[@name='price']" position="replace"/>
       <xpath expr="//field[@name='sequence']" position="after">
@@ -258,6 +263,9 @@
         <attribute name="attrs">{}</attribute>
         <attribute name="invisible">1</attribute>
       </xpath>
+      <tree position="attributes">
+        <attribute name="decoration-info"></attribute>
+      </tree>
       <!--campos que se podrian sacar para mejorar performance de busqueda-->
       <!-- este ya estaba invisible arriba, por lo cual se pueda sacar sin problemas-->
       <!-- <xpath expr="//field[@name='standard_price']" position="replace"/> -->
@@ -278,14 +286,14 @@
     <field name="model">product.template</field>
     <field name="inherit_id" ref="stock.product_template_search_form_view_stock"/>
     <field name="arch" type="xml">
-      <xpath expr="//field[@name='sellers_product_code']" position="after">
+      <xpath expr="//field[@name='name']" position="after">
         <field name="barcode"/>
       </xpath>
       <xpath expr="//field[@name='attribute_line_ids']" position="after">
         <field name="website_style_ids"/>
       </xpath>
       <xpath expr="//field[@name='warehouse_id']" position="after">
-        <field name="main_seller_id"/>
+        <field name="main_seller_id" string="Proveedor principal" domain="[('supplier_rank', '>', 0)]"/>
         <field name="supplier_code"/>
         <field name="name"/>
       </xpath>
@@ -359,4 +367,11 @@
       </filter>
     </field>
   </record>
+
+
+  <!-- Hacemos que la vista que herdamos sea vista hereada no primary para este caso -->
+  <record id="stock.product_template_search_form_view_stock" model="ir.ui.view">
+    <field name="mode">extension</field>
+  </record>
+
 </odoo>

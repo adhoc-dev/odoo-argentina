@@ -1,57 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <record id="personalizations_boggio.ir_cron_127" model="ir.cron">
-    <field name="name">Actualizar HistRota automata</field>
-    <field name="model_id" ref="base.model_ir_actions_server"/>
-    <field name="state">code</field>
-    <field name="code">model._run_actions([2207])</field>
-    <field name="interval_number">1</field>
-    <field name="interval_type">days</field>
-    <field name="numbercall">-1</field>
-  </record>
-  <record id="personalizations_boggio.ir_cron_158" model="ir.cron">
-    <field name="name">Calcular costos de kits</field>
-    <field name="model_id" ref="account.model_product_template"/>
-    <field name="state">code</field>
-    <field name="binding_model_id" ref="account.model_product_template"/>
-    <field name="code">company_id = 4
-route_id = env['stock.warehouse']._get_manufacture_route_id()
-if not records:
-    records = env['product.template'].search([('bom_ids','!=', False), ('route_ids','in', [route_id])])
-else:
-    records = records.filtered(lambda p: p.bom_ids and any([x.id == route_id for x in p.route_ids]))
-
-for product in records.with_context(force_company=company_id).mapped('product_variant_ids'):
-    bom = env['mrp.bom']._bom_find(product=product)
-    if bom:
-        price = product._calc_price(bom)
-        if abs(product.standard_price - price) &lt;= 0.01:
-            continue
-        wizard = env['stock.change.standard.price'].with_context(active_model='product.product' ,active_id=product.id, default_new_price=price,force_company=company_id).create({})
-        wizard.change_price()
-        product.write({
-            'replenishment_base_cost':product.standard_price,
-            'replenishment_base_cost_currency_id':product.company_id.currency_id.id,
-        })</field>
-    <field name="interval_number">1</field>
-    <field name="interval_type">days</field>
-    <field name="numbercall">-1</field>
-  </record>
   <record id="personalizations_boggio.ir_cron_166" model="ir.cron">
     <field name="name">Envio automatico de pendiente a sucursales</field>
     <field name="model_id" ref="stock.model_stock_move"/>
     <field name="state">code</field>
     <field name="binding_model_id" ref="stock.model_stock_move"/>
-    <field name="code">day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
+    <field name="code">
+day_of_week= int(time.strftime("%w", time.gmtime(time.time( ))))
 
-vector_rechazo = env['stock.move'].search([['partner_id', 'in', [46655,52762] ], ['picking_type_id', 'in',[10,28,29] ], ['create_date', '&lt;=', time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime(time.time( )-1*24*60*60))],['state', '=', 'assigned']]).filtered(lambda r: r.product_id.with_context(warehouse=r.picking_id.picking_type_id.warehouse_id.id).qty_available&gt;0)
+vector_rechazo = env['stock.move'].search([['partner_id', 'in', [46655,52762] ], ['picking_type_id', 'in',[10,28,29] ], ['create_date', '&lt;=', datetime.date.today() - datetime.timedelta(days=1)],['state', '=', 'assigned']]).filtered(lambda r: r.product_id.with_context(warehouse=r.picking_id.picking_type_id.warehouse_id.id).qty_available&gt;0)
 
 
 retraso_num = len(vector_rechazo)
 
-retraso =     sum(vector_rechazo.mapped(lambda rr:(time.mktime(time.gmtime())-time.mktime(time.strptime(rr.create_date,"%Y-%m-%d %H:%M:%S")))/(24*60*60)-0.125))/retraso_num
+retraso =     sum(vector_rechazo.mapped(lambda rr:(time.mktime(time.gmtime())-time.mktime(rr.create_date.timetuple()))/(24*60*60)-0.125))/retraso_num
 
-retraso_std  =sum(vector_rechazo.mapped(lambda rr:abs((time.mktime(time.gmtime())-time.mktime(time.strptime(rr.create_date,"%Y-%m-%d %H:%M:%S")))/(24*60*60)-0.125- retraso) ) )/retraso_num
+retraso_std  =sum(vector_rechazo.mapped(lambda rr:abs((time.mktime(time.gmtime())-time.mktime(rr.create_date.timetuple()))/(24*60*60)-0.125- retraso) ) )/retraso_num
    
 #raise Warning(retraso)   
 object = env['x_histrota'].search([], limit=1,order='x_fecha desc')    
@@ -191,7 +155,7 @@ if day_of_week&gt;0 and day_of_week&lt;6 :
 #solo funciona los dias de semana
   template = env['mail.template'].browse(151)
   for user in env['res.users'].search([('send_automatic_pending_email', '=', True)]):
-    template.send_mail(user, force_send=True, raise_exception=False)
+    template.send_mail(user.id, force_send=True, raise_exception=False)
 
 </field>
     <field name="interval_number">1</field>

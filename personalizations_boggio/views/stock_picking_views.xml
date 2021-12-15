@@ -23,7 +23,8 @@
         <field name="origin"/>
       </field>
       <tree position="attributes">
-        <attribute name="default_order">create_date desc</attribute>
+        <attribute name="default_order">date desc</attribute>
+        <attribute name="multi_edit">0</attribute>
       </tree>
     </field>
   </record>
@@ -93,10 +94,10 @@
       <button name="do_print_picking" position="replace"/>
       <button name="action_toggle_is_locked" position="after">
         <button type="action" name="%(personalizations_boggio.ir_act_server_2449)d" string="Flete Propio" context="{ 'state_detail_ib': 2, 'ismodel':'stockpicking'}" barcode_trigger="F2" attrs="{'invisible': [ ('state', 'not in', ['done'])]}"/>
-        <button type="action" name="%(personalizations_boggio.ir_act_server_2452)d" string="en Boggio" context="{ 'state_detail_ib': 1, 'ismodel':'stockpicking'}" barcode_trigger="F1" attrs="{'invisible': [ ('state', 'not in', ['done'])]}"/>
-        <button type="action" name="%(personalizations_boggio.ir_act_server_2453)d" string="Recibido X Cliente" context="{ 'state_detail_ib': 3, 'ismodel':'stockpicking'}" barcode_trigger="F3" attrs="{'invisible': [ ('state', 'not in', ['done'])]}"/>
-        <button type="action" name="%(personalizations_boggio.ir_act_server_2454)d" string="Flete Terceros" context="{ 'state_detail_ib': 10, 'ismodel':'stockpicking'}" barcode_trigger="F10" attrs="{'invisible': [ ('state', 'not in', ['done'])]}"/>
-        <button type="action" name="%(personalizations_boggio.ir_act_server_2455)d" string="Martin" context="{ 'state_detail_ib': 11, 'ismodel':'stockpicking'}" barcode_trigger="F11" attrs="{'invisible': [ ('state', 'not in', ['done'])]}"/>
+        <button type="action" name="%(personalizations_boggio.ir_act_server_2449)d" string="en Boggio" context="{ 'state_detail_ib': 1, 'ismodel':'stockpicking'}" barcode_trigger="F1" attrs="{'invisible': [ ('state', 'not in', ['done'])]}"/>
+        <button type="action" name="%(personalizations_boggio.ir_act_server_2449)d" string="Recibido X Cliente" context="{ 'state_detail_ib': 3, 'ismodel':'stockpicking'}" barcode_trigger="F3" attrs="{'invisible': [ ('state', 'not in', ['done'])]}"/>
+        <button type="action" name="%(personalizations_boggio.ir_act_server_2449)d" string="Flete Terceros" context="{ 'state_detail_ib': 10, 'ismodel':'stockpicking'}" barcode_trigger="F10" attrs="{'invisible': [ ('state', 'not in', ['done'])]}"/>
+        <button type="action" name="%(personalizations_boggio.ir_act_server_2449)d" string="Martin" context="{ 'state_detail_ib': 11, 'ismodel':'stockpicking'}" barcode_trigger="F11" attrs="{'invisible': [ ('state', 'not in', ['done'])]}"/>
       </button>
       <!-- <button name="action_view_invoice" position="replace"> -->
       <!-- <field name="state" position="before">

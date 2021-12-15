@@ -1,11 +1,11 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     x_monto_USD = fields.Float(string="Monto Presupuesto en USD", help="Se graba el monto del presupuesto en dolares IVA incluido", compute='_compute_x_monto_USD', readonly=True, store=True, copy=False)
-    x_info_cc = fields.Char(string="Info CC", readonly=True, copy=False)
+    x_info_cc = fields.Char(string="Info DV", readonly=True, copy=False)
     total_overdue = fields.Monetary(related="partner_id.total_overdue")
 
     @api.depends('state', 'currency_id','amount_total')

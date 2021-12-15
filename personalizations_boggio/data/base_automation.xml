@@ -15,7 +15,7 @@
     <field name="model_id" ref="mgmtsystem_nonconformity.model_mgmtsystem_nonconformity"/>
     <field name="state">email</field>
     <field name="crud_model_id" ref="mgmtsystem_nonconformity.model_mgmtsystem_nonconformity"/>
-    <field name="filter_domain">[]	</field>
+    <field name="filter_domain">[["origin_ids","!=",8]]</field>
     <field name="trigger">on_create</field>
   </record>
   <record id="personalizations_boggio.base_automation_15" model="base.automation">
@@ -40,7 +40,7 @@ object = record
 rec = env[object.res_model].browse(obj.res_id)
 # si el partner es un empleado (tiene usuario y no son portal), entonces dejamos seguir sin restricción
 # usuarios portal o sin usuario (potenialmente con usuarios portal), exigimos que sean del mismo commercial partner
-if env.user.id != 1 and object.res_model in ['account.move', 'sale.order'] and not object.partner_id.user_ids.filtered(lambda x: not x.share) and object.partner_id.commercial_partner_id != rec.partner_id.commercial_partner_id:
+if env.user.id not in [1, 2] and object.res_model in ['account.move', 'sale.order'] and not object.partner_id.with_context(active_test=False).user_ids.filtered(lambda x: not x.share) and object.partner_id.commercial_partner_id != rec.partner_id.commercial_partner_id:
     raise Warning('No puede agregar como seguidor a un usuario no empleado (%s) que no este vinculado a la empresa del documento (%s)' % (object.partner_id.name, rec.partner_id.commercial_partner_id.name))</field>
     <field name="trigger">on_create</field>
   </record>
@@ -55,18 +55,6 @@ if env.user.id != 1 and object.res_model in ['account.move', 'sale.order'] and n
     <field name="trg_date_range">5</field>
     <field name="trg_date_range_type">minutes</field>
     <field name="trigger">on_time</field>
-  </record>
-  <record id="personalizations_boggio.base_automation_26" model="base.automation">
-    <field name="name">Pago antes de la entrega-accion server</field>
-    <field name="sequence">1</field>
-    <field name="model_id" ref="account.model_account_move"/>
-    <field name="state">email</field>
-    <field name="binding_model_id" ref="account.model_account_move"/>
-    <field name="crud_model_id" ref="account.model_account_move"/>
-    <field name="filter_domain">[['sale_type_id.invoice_policy', '=', 'prepaid'], ['state', '=', 'paid']]</field>
-    <field name="filter_pre_domain">[['sale_type_id.invoice_policy', '=', 'prepaid'],['state', '=', 'open']]</field>
-    <field name="on_change_fields">state</field>
-    <field name="trigger">on_write</field>
   </record>
   <record id="personalizations_boggio.base_automation_27" model="base.automation">
     <field name="name">Crear CRM automaticamente</field>
@@ -110,40 +98,6 @@ if len(object.opportunity_id)==0:
     <field name="filter_domain">["&amp;","&amp;","&amp;","&amp;",["opportunity_id","=",False],["state","in",["draft","sent"]],["tag_ids","not ilike","sin seguimiento"],["date_order","&gt;=","2021-01-01 11:41:47"],"|",["tag_ids","ilike","si o si"],["x_monto_USD","&gt;=",2000]]</field>
     <field name="trg_date_id" ref="sale.field_sale_order__create_date"/>
     <field name="trg_date_range">1</field>
-    <field name="trg_date_range_type">day</field>
-    <field name="trigger">on_time</field>
-  </record>
-  <record id="personalizations_boggio.base_automation_30" model="base.automation">
-    <field name="name">Recordatorio de iniciativas por vencer por email CRM</field>
-    <field eval="False" name="sequence"/>
-    <field name="model_id" ref="crm.model_crm_lead"/>
-    <field name="state">email</field>
-    <field name="binding_model_id" ref="crm.model_crm_lead"/>
-    <field name="crud_model_id" ref="crm.model_crm_lead"/>
-    <field name="filter_domain">[['stage_id', 'not ilike', 'perdi']]</field>
-    <field name="trg_date_id" ref="crm.field_crm_lead__activity_date_deadline"/>
-    <field name="trg_date_range">7</field>
-    <field name="trg_date_range_type">day</field>
-    <field name="trigger">on_time</field>
-  </record>
-  <record id="personalizations_boggio.base_automation_32" model="base.automation">
-    <field name="name">CRM contacto web </field>
-    <field eval="False" name="sequence"/>
-    <field name="model_id" ref="crm.model_crm_lead"/>
-    <field name="state">email</field>
-    <field name="crud_model_id" ref="crm.model_crm_lead"/>
-    <field name="filter_domain">[['medium_id', 'ilike', 'web']]</field>
-    <field name="trigger">on_create</field>
-  </record>
-  <record id="personalizations_boggio.base_automation_38" model="base.automation">
-    <field name="name">Envio automatico de remitos y pendientes (4 dias despues)</field>
-    <field name="sequence">1</field>
-    <field name="model_id" ref="stock.model_stock_picking"/>
-    <field name="state">email</field>
-    <field name="crud_model_id" ref="stock.model_stock_picking"/>
-    <field name="filter_domain">["&amp;","&amp;","&amp;",["state","=","done"],["date_done","&gt;","2021-02-02 11:44:45"],"|",["partner_id.x_no_recibe_remito","=",False],["partner_id.parent_id.x_no_recibe_remito","=",False],["picking_type_id","in",[7,22,21,12,17]]]</field>
-    <field name="trg_date_id" ref="stock.field_stock_picking__date_done"/>
-    <field name="trg_date_range">4</field>
     <field name="trg_date_range_type">day</field>
     <field name="trigger">on_time</field>
   </record>
@@ -299,12 +253,5 @@ if set(fields_to_check) &amp; set(old_values.get(record.id, {})):
 
 </field>
     <field name="trigger">on_write</field>
-  </record>
-  <record id="personalizations_boggio.base_automation_50" model="base.automation">
-    <field name="name">Envio automatico de correo CRM energiu</field>
-    <field name="model_id" ref="crm.model_crm_lead"/>
-    <field name="state">email</field>
-    <field name="filter_domain">[["team_id.id","=",8]]</field>
-    <field name="trigger">on_create</field>
   </record>
 </odoo>

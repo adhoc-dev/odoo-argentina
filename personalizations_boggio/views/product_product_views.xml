@@ -28,8 +28,11 @@
     <field name="arch" type="xml">
       <!-- ordernar por secuencia de website -->
       <tree position="attributes">
-        <attribute name="default_order">website_sequence desc</attribute>
+        <attribute name="default_order">website_sequence asc</attribute>
       </tree>
+      <field name="name" position="attributes">
+        <attribute name="widget">text</attribute>
+      </field>
       <!--replaces-->
       <field name="lst_price" position="replace"/>
       <field name="qty_available" position="replace"/>
@@ -68,8 +71,8 @@
         <attribute name="optional">hide</attribute>
       </field>
       <tree position="attributes">
-        <attribute name="decoration-danger">free_qty&lt;0</attribute>
-        <attribute name="decoration-info">free_qty&gt;=0</attribute>
+        <attribute name="decoration-danger">type == 'product' and free_qty&lt;=0</attribute>
+        <attribute name="decoration-info"></attribute>
       </tree>
     </field>
   </record>
@@ -127,17 +130,14 @@
   <record id="personalizations_boggio.ir_ui_view_7872" model="ir.ui.view">
     <field name="name">Odoo Studio: product.product.search customization</field>
     <field name="model">product.product</field>
+    <field name="priority" eval="199"/>
     <field name="inherit_id" ref="product.product_search_form_view"/>
     <field name="arch" type="xml">
       <xpath expr="//field[@name='product_attribute_template_id']" position="replace"/>
-      <!-- <xpath expr="//field[@name='main_seller_id']" position="replace"/> -->
       <xpath expr="//field[@name='pricelist_id']" position="replace"/>
       <xpath expr="//field[@name='seller_ids']" position="replace"/>
       <xpath expr="//field[@name='product_brand_id']" position="attributes">
         <attribute name="string">Marca</attribute>
-      </xpath>
-      <xpath expr="//field[@name='product_brand_id']" position="after">
-        <field name="main_seller_id" string="Proveedor principal"/>
       </xpath>
       <xpath expr="//filter[@name='groupby_brand']" position="attributes">
         <attribute name="string">Marca</attribute>
@@ -162,8 +162,8 @@
       <button name="action_open_quants" position="replace"/>
       <!-- 6077 -->
       <tree position="attributes">
-        <attribute name="decoration-danger">free_qty&lt;0</attribute>
-        <attribute name="decoration-info">free_qty&gt;=0</attribute>
+        <attribute name="decoration-danger">type == 'product' and free_qty&lt;=0</attribute>
+        <attribute name="decoration-info"></attribute>
       </tree>
     </field>
   </record>

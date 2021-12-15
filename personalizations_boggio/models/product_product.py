@@ -11,3 +11,9 @@ class ProductProduct(models.Model):
     x_marca = fields.Char(string="Marcas", related="product_tmpl_id.product_brand_id.name", help="Marca (.name)", readonly=True, copy=False)
     x_google_product_category = fields.Integer(string="google_product_category", help="Campo para Google Merchant")
     x_power = fields.Float(string="Potencia en W", help="Potencia en W para reportes")
+
+    def get_data_products(self):
+        list_product = []
+        for line in self:
+            list_product.append((line, 1))
+        return list_product

@@ -136,7 +136,14 @@
                       <span t-esc="line1.qty_received" />
                     </td>
                     <td class="text-right">
-                      <span t-esc="line1.qty_returned" />
+                      <t t-if="line1.qty_returned > 0">
+                        <strong style="background-color: rgb(220, 20, 60);">
+                          <span t-esc="line1.qty_returned" />
+                        </strong>
+                      </t>
+                      <t t-else="">
+                        <span t-esc="line1.qty_returned" />
+                      </t>
                     </td>
                   </tr>
                 </t>
@@ -149,7 +156,7 @@
             <strong>
               Pendientes de entrega para enviar a Santa Fe → para su control
             </strong>
-            <table class="table table-sm"  style="min-width: 590px; background-color: rgb(165,42,42); font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;"> 
+            <table class="table table-sm" style="min-width: 590px; background-color: rgb(217, 76, 76); font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;">
               <thead>
                 <tr>
                   <th name="th_date">
@@ -203,7 +210,14 @@
                       <span t-esc="line1.qty_received" />
                     </td>
                     <td class="text-right">
-                      <span t-esc="line1.qty_returned" />
+                      <t t-if="line1.qty_returned > 0">
+                        <strong style="background-color: rgb(220, 20, 60);">
+                          <span t-esc="line1.qty_returned" />
+                        </strong>
+                      </t>
+                      <t t-else="">
+                        <span t-esc="line1.qty_returned" />
+                      </t>
                     </td>
                   </tr>
                 </t>
@@ -270,7 +284,14 @@
                         <span t-esc="line1.qty_received" />
                       </td>
                       <td class="text-right">
-                        <span t-esc="line1.qty_returned" />
+                        <t t-if="line1.qty_returned > 0">
+                          <strong style="background-color: rgb(220, 20, 60);">
+                            <span t-esc="line1.qty_returned" />
+                          </strong>
+                        </t>
+                        <t t-else="">
+                          <span t-esc="line1.qty_returned" />
+                        </t>
                       </td>
                     </tr>
                   </t>

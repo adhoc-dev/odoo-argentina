@@ -64,11 +64,9 @@
       <field name="salesman_id" position="replace"/>
       <field name="product_uom" position="replace"/>
       <field name="product_id" position="replace"/>
-      <field name="purchase_price" position="replace"/>
       <field name="margin" position="replace"/>
       <field name="qty_delivered" position="after">
         <field name="quantity_returned" string="Returned Quantity"/>
-        <field name="purchase_price" invisible="1"/>
         <field name="margin" invisible="1"/>
       </field>
       <tree>

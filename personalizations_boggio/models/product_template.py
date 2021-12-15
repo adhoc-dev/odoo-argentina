@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class ProductTemplate(models.Model):
@@ -38,4 +38,12 @@ class ProductTemplate(models.Model):
         for line in self:
             list_product.append((line, 1))
         return list_product
+
+
+    @api.depends(
+        'replenishment_cost_rule_id',
+        'replenishment_cost_rule_id.item_ids',
+    )
+    def _compute_replenishment_cost_last_update(self):
+        super()._compute_replenishment_cost_last_update()
 

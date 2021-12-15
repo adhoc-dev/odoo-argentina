@@ -4,6 +4,7 @@
     <field name="name">Boggio Personalization sale.order.form</field>
     <field name="model">sale.order</field>
     <field name="priority">199</field>
+    <field eval="[(6, 0, [ref('base.group_user')])]" name="groups_id"/>
     <field name="inherit_id" ref="sale.view_order_form"/>
     <field name="arch" type="xml">
       <div class="oe_button_box" name="button_box">
@@ -45,9 +46,6 @@
           </group>
         </group>
       </xpath>
-      <xpath expr="//field[@name='order_line']/tree//field[@name='purchase_price']" position="attributes">
-        <attribute name="invisible">True</attribute>
-      </xpath>
       <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="attributes">
         <attribute name="optional">show</attribute>
       </xpath>
@@ -85,7 +83,7 @@
         <field name="product_uom" optional="hide"/>
       </xpath>
       <button name="action_confirm" position="after">
-        <button type="action" name="%(personalizations_boggio.ir_act_server_2551)d" string="Info CC y DV"/>
+        <button type="action" name="%(personalizations_boggio.ir_act_server_2551)d" string="INFO DV"/>
       </button>
       <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='sequence']" position="attributes">
         <attribute name="widget">handle</attribute>
@@ -258,7 +256,7 @@
       </field>
     </field>
   </record>
-  <record id="personalizations_boggio.ir_ui_view_6071" model="ir.ui.view">
+  <!-- <record id="personalizations_boggio.ir_ui_view_6071" model="ir.ui.view">
     <field name="name">sacar boton stock y precios de portal distribuidor</field>
     <field name="model">sale.order</field>
     <field name="priority">299</field>
@@ -267,7 +265,7 @@
     <field name="arch" type="xml">
       <button name="%(personalizations_boggio.ir_act_server_1257)d" position="replace"/>
     </field>
-  </record>
+  </record> -->
   <record id="personalizations_boggio.ir_ui_view_7795" model="ir.ui.view">
     <field name="name">ordenar grilla de productos</field>
     <field name="model">sale.order</field>
@@ -291,7 +289,7 @@
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_7798" model="ir.ui.view">
-    <field name="name">poner impuesto invisible</field>
+    <field name="name">poner campos invisible</field>
     <field name="model">sale.order</field>
     <field eval="[(6, 0, [ref('price_security.group_restrict_prices')])]" name="groups_id"/>
     <field name="inherit_id" ref="sale.view_order_form"/>
@@ -303,6 +301,29 @@
       <!-- add readonly tax on form -->
       <xpath expr="//field[@name='order_line']/form//field[@name='tax_id']" position="attributes">
         <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//field[@name='order_line']/form//field[@name='purchase_price']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//field[@name='order_line']//tree//field[@name='purchase_price']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="view_order_form_readonly" model="ir.ui.view">
+    <field name="name">poner campos readonly</field>
+    <field name="model">sale.order</field>
+    <field eval="[(6, 0, [ref('price_security.group_only_view')])]" name="groups_id"/>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='order_line']/form//field[@name='purchase_price']" position="attributes">
+        <attribute name="invisible">0</attribute>
+        <attribute name="readonly">1</attribute>
+      </xpath>
+      <xpath expr="//field[@name='order_line']//tree//field[@name='purchase_price']" position="attributes">
+        <attribute name="invisible">0</attribute>
+        <attribute name="readonly">1</attribute>
       </xpath>
     </field>
   </record>
@@ -338,7 +359,7 @@
     <field name="arch" type="xml">
       <!-- ordernar por secuencia de website -->
       <tree position="attributes">
-        <attribute name="default_order">date_order desc</attribute>
+        <attribute name="default_order">create_date desc</attribute>
       </tree>
       <field name="amount_total" position="before">
         <field name="amount_untaxed"/>
