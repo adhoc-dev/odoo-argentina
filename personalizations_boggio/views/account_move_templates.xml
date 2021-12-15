@@ -167,7 +167,7 @@
       </p>
       Observaciones:
       <br />
-      <span class="text-left" style="font-size:13px;">Ante cualquier diferendo las partes aceptan la jurisdicción de los Tribunales Ordinarios de Rosario renunciando a cualquier otro fuero o jurisdicción inclusive el federal. La falta de pago de la presente factura dentro de los plazos convenidos, producirá la mora y devengará intereses automáticos del 2,5% mensual.</span>
+      <span class="text-left" style="font-size:13px;">Ante cualquier diferendo las partes aceptan la jurisdicción de los Tribunales Ordinarios de Rosario renunciando a cualquier otro fuero o jurisdicción inclusive el federal. La falta de pago de la presente factura dentro de los plazos convenidos, producirá la mora y devengará intereses automáticos del 4,5% mensual.</span>
     </div>
     <div name="pager" position="before">
       <span class="text-right" style="font-size:13px;" t-esc="'Ud. fue atendido por: %s' % o.create_uid.name" />
@@ -341,7 +341,7 @@
       </p>
       Observaciones:
       <br />
-      <span class="text-left" style="font-size:13px;">Ante cualquier diferendo las partes aceptan la jurisdicción de los Tribunales Ordinarios de Rosario renunciando a cualquier otro fuero o jurisdicción inclusive el federal. La falta de pago de la presente factura dentro de los plazos convenidos, producirá la mora y devengará intereses automáticos del 2,5% mensual.</span>
+      <span class="text-left" style="font-size:13px;">Ante cualquier diferendo las partes aceptan la jurisdicción de los Tribunales Ordinarios de Rosario renunciando a cualquier otro fuero o jurisdicción inclusive el federal. La falta de pago de la presente factura dentro de los plazos convenidos, producirá la mora y devengará intereses automáticos del 4,5% mensual.</span>
     </div>
     <div name="pager" position="before">
       <span class="text-right" style="font-size:13px;" t-esc="'Ud. fue atendido por: %s' % o.create_uid.name" />
