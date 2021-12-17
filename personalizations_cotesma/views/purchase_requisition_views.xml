@@ -1,52 +1,44 @@
 <odoo>
-  <!-- Form -->
-  <record id="view_purchase_requisition_form" model="ir.ui.view">
-    <field name="name">purchase.requisition.form</field>
-    <field name="model">purchase.requisition</field>
-    <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form" />
-    <field name="arch" type="xml">
-        <button name="%(purchase_requisition.action_purchase_requisition_to_so)d" position="replace">
-            <button name="purchase_requisition_to_multiple_so" type="object"
-                    string="New Quotation"
-                    attrs="{'invisible': [('state', '!=', 'open')]}"/>
-        </button>
-        <button name="%(purchase_requisition.action_purchase_requisition_to_so)d" position="replace">
-            <button name="purchase_requisition_to_multiple_so" type="object"
-                    string="New Quotation" class="btn-primary"
-                    attrs="{'invisible': [('state', 'not in', ('in_progress', 'ongoing'))]}"/>
-        </button>
-        <field name="type_id" position="after">
-            <field name="vendor_ids" context="{'res_partner_search_mode': 'supplier'}" attrs="{'required': [('is_quantity_copy', '=', 'none')], 'readonly': [('state','!=','draft')]}" widget="many2many_tags"/>
-        </field>
-        <field name="vendor_id" position="attributes">
-            <attribute name="invisible">0</attribute>
-            <attribute name="attrs">{}</attribute>
-        </field>
-    </field>
-  </record>
-
-  <record id="view_purchase_requisition_kanban" model="ir.ui.view">
-    <field name="name">purchase.requisition.kanban</field>
-    <field name="model">purchase.requisition</field>
-    <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_kanban" />
-    <field name="arch" type="xml">
-        <field name="vendor_id" position="replace">
-            <field name="vendor_ids"/>
-        </field>
-    </field>
-  </record>
-
-  <record model="ir.actions.server" id="action_send_multiple_rfq_mail">
-        <field name="name">Send Email</field>
-        <field name="model_id" ref="purchase.model_purchase_order"/>
-        <field name="binding_model_id" ref="purchase.model_purchase_order"/>
-        <field name="binding_type">action</field>
-        <field name="state">code</field>
-        <field name="code">
-template_id = env.ref('purchase.email_template_edi_purchase')
-for rec in records:
-    template_id.send_mail(rec.id)
+    <!-- Form -->
+    <record id="view_purchase_requisition_form" model="ir.ui.view">
+        <field name="name">purchase.requisition.form</field>
+        <field name="model">purchase.requisition</field>
+        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form" />
+        <field name="arch" type="xml">
+            <field name="type_id" position="after">
+                <field name="vendor_ids" context="{'res_partner_search_mode': 'supplier'}" attrs="{'invisible':[('is_quantity_copy', '=', 'none')], 'readonly': [('state','!=','draft')]}" widget="many2many_tags"/>
+            </field>
+            <field name="vendor_id" position="attributes">
+                <attribute name="attrs">{'invisible':[('is_quantity_copy', '!=', 'none')], 'required': [('is_quantity_copy', '=', 'none')], 'readonly': [('state', 'in', ['ongoing','done'])]}</attribute>
+            </field>
         </field>
     </record>
+
+    <!-- Kanban -->
+    <record id="view_purchase_requisition_kanban" model="ir.ui.view">
+        <field name="name">purchase.requisition.kanban</field>
+        <field name="model">purchase.requisition</field>
+        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_kanban" />
+        <field name="arch" type="xml">
+            <field name="vendor_id" position="replace">
+                <field name="vendor_ids"/>
+            </field>
+        </field>
+    </record>
+
+    <act_window name="Send Mail (Purchase Order: Send RFQ)"
+        id="action_send_multiple_rfq_mail"
+        res_model="mail.compose.message"
+        binding_model="purchase.order"
+        binding_views="list"
+        view_mode="form"
+        target="new"
+        context="{
+            'default_composition_mode': 'mass_mail',
+            'default_use_template': True,
+            'default_template_id': ref('purchase.email_template_edi_purchase'),
+            'mark_rfq_sent': True,
+        }"
+    />
 
 </odoo>
