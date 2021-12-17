@@ -6,6 +6,7 @@ class StockRequest(models.Model):
     _inherit = 'stock.request.order'
 
     user_tag_allow_ids = fields.Many2many('product.template.tag', compute="_compute_tag_allow_ids")
+    warehouse_code = fields.Char(related='warehouse_id.code')
 
     
     @api.depends('warehouse_id')
