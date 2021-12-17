@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="account_move_line_report_aeroo" model="ir.actions.report">
+    <field name="name">	Reporte analisis contable con etiquetas analiticas</field>
+    <field name="model">account.move.line</field>
+    <field name="report_name">account_move_line_report</field>
+    <field name="report_type">aeroo</field>
+    <field name="binding_model_id" ref="account.model_account_move_line" />
+    <field name="binding_type">report</field>
+    <field name="tml_source">file</field>
+    <field name="report_file">personalizations_arbusta/report/account_move_line_analytic_aeroo_report.ods</field>
+    <field name="in_format">oo-ods</field>
+    <field ref="report_aeroo.report_mimetypes_xls_odt" name="out_format"/>
+  </record>
+</odoo>
