@@ -31,7 +31,7 @@
   <record id="personalizations_boggio.ir_ui_view_7966" model="ir.ui.view">
     <field name="name">Readonly_torefund_account</field>
     <field name="model">stock.return.picking</field>
-    <field eval="[(6, 0, [ref('account.group_account_manager')])]" name="groups_id"/>
+    <field eval="[(4, ref('account.group_account_manager'))]" name="groups_id"/>
     <field name="inherit_id" ref="personalizations_boggio.ir_ui_view_7965"/>
     <field name="arch" type="xml">
       <field name="to_refund" position="attributes">
