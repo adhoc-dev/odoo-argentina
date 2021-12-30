@@ -7,6 +7,7 @@
         <field name="website_published">False</field>
         <field name="trigger">on_create_or_write</field>
         <field name="trigger_field_ids" eval="[(4,ref('analytic.field_account_analytic_line__unit_amount'))]"/>
+        <field name="filter_domain">[["employee_id","!=",False]]</field>
         <field name="code">
 for rec in records:
     horas_trabajadas = sum(model.search(['&amp;',('employee_id','=',rec.employee_id.id),('date','=',datetime.date.today())]).mapped('unit_amount'))
