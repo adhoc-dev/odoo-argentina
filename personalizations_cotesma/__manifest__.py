@@ -11,8 +11,12 @@
         'purchase_requisition',
         'purchase_suggest',
         'product_template_tags',
+        'project_ux',
     ],
     'data': [
+        'security/cotesma_security.xml',
+        'security/ir.model.access.csv',
+        'views/purchase_order_views.xml',
         'views/res_users_views.xml',
         'views/stock_request_order_views.xml',
         'views/purchase_requisition_views.xml',

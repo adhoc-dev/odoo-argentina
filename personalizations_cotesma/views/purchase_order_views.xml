@@ -1,0 +1,6 @@
+<odoo>
+    <!-- le agregramos el permiso al menu de Compras para el usurio solo lectura -->
+    <record id="purchase.menu_purchase_root" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('group_purchase_user_only_read'))]"/>
+    </record>
+</odoo>
