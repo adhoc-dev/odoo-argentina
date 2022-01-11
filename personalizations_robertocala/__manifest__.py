@@ -37,7 +37,7 @@
         'security/ir.model.access.csv',
         'security/ir_rule.xml',
     ],
-    'installable': True,
+    'installable': False,
     'application': False,
     'auto-install': False,
     'license': 'OPL-1',

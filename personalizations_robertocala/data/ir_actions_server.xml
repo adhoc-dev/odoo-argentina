@@ -19,21 +19,22 @@ def move_invoice(invoice, company_id):
     Moves the invoice to another company
     """
     invoice = invoice.with_context(force_company=company_id)
+    
 
     # Al escribir la compania limpiamos tmb las posicioens fiscales por constraint de que no puede haber compania y posicion de otra cia. Luego total el onchange termina asignando la compania que corresponda
     invoice.write({'fiscal_position_id': False})
 
     # Ugly hack para recalcular available_jorunal_document_type y journal_document_type_id y evitar constrain
-    if invoice.journal_document_type_id:
-        invoice.write({'journal_document_type_id': False, 'journal_id': invoice.with_context(
-            company_id=company_id, type=invoice.type)._default_journal().id, })
+    if invoice.journal_id:
+        invoice.write({'journal_id': invoice.with_context(
+            force_company=company_id, default_type=invoice.type)._get_default_journal().id, })
 
     # Property fields to maintain
     property_fields = {'invoice_payment_term_id': invoice.invoice_payment_term_id.id}
     invoice._onchange_partner_id()
-    invoice._onchange_company()
+    invoice._onchange_journal()
     invoice.write(property_fields)
-
+    invoice._onchange_invoice_line_ids()
     return invoice
 
 
@@ -56,8 +57,9 @@ def generate_child_invoice(invoice):
         # si es iva 0 devolver es 0
         return percentage
 
-    new_lines = []
-    for line in invoice.invoice_line_ids:
+    new_lines = env['account.move.line']
+    
+    for line in invoice.invoice_line_ids.with_context(check_move_validity=False):
         # get aux_perc limited by product config
         line_aux_perc = get_aux_perc(line)
         if not line_aux_perc:
@@ -69,21 +71,30 @@ def generate_child_invoice(invoice):
         if not new_quantity:
             continue
         new_line = line.copy({'quantity': new_quantity})
+        new_line.write({'sale_line_ids': [(6, 0, line.sale_line_ids.ids)]
+        })
+        new_lines += new_line
         line.write({'quantity': line.quantity - new_quantity,
                     # 'uom_id': line.product_id.uom_id.id,
-                    'tax_ids': [(6, 0, [Iva_0_cala_ID])]})
-        new_line.write({'sale_line_ids': [(6, 0, line.sale_line_ids.ids)]})
-        new_lines.append(new_line.id)
+                    'tax_ids': [(6, 0, [Iva_0_cala_ID])],
+                    })
+        line._onchange_price_subtotal()
+        line._onchange_balance()
+        line._onchange_mark_recompute_taxes()
+        
         if abs(line.quantity) < 0.0001:
             line.unlink()
-
+    
     # Solo generamos en Aux si alguna linea podia moverse
     if new_lines:
-        new_invoice = invoice.copy({'invoice_line_ids': [(6, 0, new_lines)]})
+        
+        new_invoice = invoice.with_context(check_move_validity=False).copy()
+        new_invoice.invoice_line_ids.unlink()
+        new_lines.with_context(check_move_validity=False).write({'move_id': new_invoice.id})
+        new_invoice._onchange_invoice_line_ids()
         new_invoice = move_invoice(new_invoice, Roberto_Cala_ID)
     else:
-        new_invoice = invoice.browse()
-
+        new_invoice = invoice
     # Si no queda nada en la factura original, se elimina
     if not invoice.invoice_line_ids:
         invoice.unlink()
