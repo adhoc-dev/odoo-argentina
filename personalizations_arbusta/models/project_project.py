@@ -26,7 +26,8 @@ class ProjectProject(models.Model):
                                                        ('Círculo Capital Humano', 'Círculo Capital Humano'),
                                                        ('Círculo Delivery', 'Círculo Delivery'),
                                                        ('Círculo Finanzas', 'Círculo Finanzas'),
-                                                       ('Círculo Grow', 'Círculo Grow')], copy=False)
+                                                       ('Círculo Grow', 'Círculo Grow'),
+                                                       ('DevJump', 'DevJump')], copy=False)
     x_studio_field_QI5H4 = fields.Selection(string="Industria",
                                             selection=[('Aeronáutica', 'Aeronáutica'),
                                                        ('Agrobusiness', 'Agrobusiness'), ('Banca', 'Banca'),

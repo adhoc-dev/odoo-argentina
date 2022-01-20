@@ -77,7 +77,8 @@ class HrEmployee(models.Model):
                                                        ('Customer Experience',
                                                         'Customer Experience'),                                                       ('Machine Learning Training', 'Machine Learning Training'),
                                                        ('QA & Software Testing', 'QA & Software Testing'),
-                                                       ('Staff', 'Staff')], copy=False)
+                                                       ('Staff', 'Staff'),
+                                                       ('DevJump', 'DevJump')], copy=False)
     x_studio_field_2MSWR = fields.Selection(string="Chapter",
                                             selection=[('Automatización', 'Automatización'),
                                                        ('Comunicaciones', 'Comunicaciones'),
