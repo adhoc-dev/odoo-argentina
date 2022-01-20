@@ -7,10 +7,14 @@
         <field name="arch" type="xml">
             <field name="type_id" position="after">
                 <field name="vendor_ids" context="{'res_partner_search_mode': 'supplier'}" attrs="{'invisible':[('is_quantity_copy', '=', 'none')], 'readonly': [('state','!=','draft')]}" widget="many2many_tags"/>
+                <field name="purchase_ids" invisible="1"/>
             </field>
             <field name="vendor_id" position="attributes">
                 <attribute name="attrs">{'invisible':[('is_quantity_copy', '!=', 'none')], 'required': [('is_quantity_copy', '=', 'none')], 'readonly': [('state', 'in', ['ongoing','done'])]}</attribute>
             </field>
+            <div name="button_box">
+                <button name="view_purchase_order_lines"  string="Lineas de Compra" type="object" icon="fa-list-alt" attrs="{'invisible': [('purchase_ids', '=', [])]}"/>
+            </div>
         </field>
     </record>
 

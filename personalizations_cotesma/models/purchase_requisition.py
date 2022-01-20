@@ -34,3 +34,10 @@ class PurchaseRequisition(models.Model):
             'view_mode': 'tree,form',
             'domain': [('id', 'in', po_ids)],
         }
+
+    def view_purchase_order_lines(self):
+        self.ensure_one()
+        action = self.env.ref('purchase_ux.action_purchase_line_tree').read()[0]
+        action['domain'] = [('order_id', '=', self.purchase_ids.ids)]
+        action['context'] = {'search_default_groupby_product': 1}
+        return action
