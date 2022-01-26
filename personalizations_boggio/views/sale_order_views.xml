@@ -82,9 +82,6 @@
         <field name="discount" groups="product.group_discount_per_so_line" force_save="1" optional="hide"/>
         <field name="product_uom" optional="hide"/>
       </xpath>
-      <button name="action_confirm" position="after">
-        <button type="action" name="%(personalizations_boggio.ir_act_server_2551)d" string="INFO DV"/>
-      </button>
       <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='sequence']" position="attributes">
         <attribute name="widget">handle</attribute>
       </xpath>

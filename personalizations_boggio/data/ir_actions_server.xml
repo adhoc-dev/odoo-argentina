@@ -248,49 +248,6 @@ action = action_read]]></field>
     <field name="code"><![CDATA[object = record
 action = object.product_id.view_stock_detail()]]></field>
   </record>
-  <record id="personalizations_boggio.ir_act_server_2322" model="ir.actions.server">
-    <field name="name">Confirmar y enviar email compras</field>
-    <field name="model_id" ref="inter_company_rules.model_purchase_order"/>
-    <field name="state">code</field>
-    <field name="crud_model_id" ref="delivery.model_sale_order"/>
-    <field name="code"><![CDATA[context = dict(env.context)
-object = record
-
-if (object.x_rotacion>0):
-
-  model.browse(env.context.get('active_ids')).button_confirm()
-  if(object.state=='purchase'):
-    if (object.partner_id.id==80581):
-      #SIemens
-      env['mail.template'].browse(66).send_mail(object.id, force_send=True, raise_exception=False)
-    else:
-      #Resto de los proveedores
-      env['mail.template'].browse(15).send_mail(object.id, force_send=True, raise_exception=False)
-     
-    activity = env['mail.activity'].create({
-       'date_deadline': time.strftime("%Y-%m-%d", time.gmtime(time.time( )+4*24*60*60)),
-       'user_id': uid, 
-       'res_id': record.id,
-       'res_model_id':397,
-       'activity_type_id':4
-       })
-  else:
-    raise Warning('Es necesario confirmar la orden de compra')  
-else:
-  raise Warning('Es necesario revisar ROTACION')
-  #'user_id': record.create_uid.id,
-
-    #raise Warning('prueba')
-# Available locals:['partner_id', '=',50660]
-#  - time, datetime, dateutil: Python libraries
-#  - env: Odoo Environement
-#  - model: Model of the record on which the action is triggered
-#  - object: Record on which the action is triggered if there is one, otherwise None
-#  - workflow: Workflow engine
-#  - log : log(message), function to log debug information in logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}]]></field>
-  </record>
   <record id="personalizations_boggio.ir_act_server_2328" model="ir.actions.server">
     <field name="name">Resetear ABC productos a D3 (ex C2)</field>
     <field name="model_id" ref="account.model_product_template"/>
@@ -391,27 +348,4 @@ else:
 ]]></field>
   </record>
   
-  <record id="personalizations_boggio.ir_act_server_2551" model="ir.actions.server">
-    <field name="name">Calcula Info CC y DV</field>
-    <field name="model_id" ref="delivery.model_sale_order"/>
-    <field name="state">code</field>
-    <field name="code"><![CDATA[venta_pesos = record.amount_untaxed*record.currency_id.inverse_rate
-desc_volumen = 100.0-record.pricelist_id.x_ajuste_lista*((venta_pesos>15000 and venta_pesos<=70000)  and (1.0-0.97) *(venta_pesos-15000)/(15000-70000) +1.0  or ((venta_pesos>70000 and venta_pesos<=300000) and (0.97-0.95)*(venta_pesos-70000)/(70000-300000)+0.97 or (venta_pesos>300000 and 0.95 or 1.0)))
-desc_volumen1 = ' / DV: ' + str(round(desc_volumen,2))
-record.write({'x_info_cc': desc_volumen1 })
-
-# Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
-
-
-
-]]></field>
-  </record>
 </odoo>
