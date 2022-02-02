@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'personalizations_royr',
-    'version': '13.0.1.0.0',
+    'version': '13.0.1.1.0',
     'category': 'base.module_category_knowledge_management',
     'author': 'ADHOC SA',
     'website': 'www.adhoc.com.ar',
