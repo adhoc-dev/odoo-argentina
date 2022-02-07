@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_journal_entries">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="lang" t-value="o.company_id.partner_id.lang"/>
+                    <t t-call="web.external_layout">
+                        <t t-set="o" t-value="o.with_context(lang=lang)" />
+                        <div class="page">
+                            <h2>
+                                <span t-if="o.type == 'entry' and o.state == 'draft'">Asiento Contable Borrador</span>
+                                <span t-if="o.name != '/'" t-field="o.name"/>
+                            </h2>
+                            <div id="informations" class="row mt32 mb32">
+                                <div class="col-auto mw-100 mb-2" t-if="o.ref" name="reference">
+                                    <strong>Referencia:</strong>
+                                    <p class="m-0" t-field="o.ref"/>
+                                </div>
+                                <div class="col-auto mw-100 mb-2" t-if="o.date" name="date">
+                                    <strong>Fecha:</strong>
+                                    <p class="m-0" t-field="o.date"/>
+                                </div>
+                                <div class="col-auto mw-100 mb-2" t-if="o.journal_id" name="journal_id">
+                                    <strong>Diario:</strong>
+                                    <p class="m-0" t-field="o.journal_id"/>
+                                </div>
+                                <div class="col-auto mw-100 mb-2" t-if="o.company_id" name="company_id">
+                                    <strong>Compañía:</strong>
+                                    <p class="m-0" t-field="o.company_id"/>
+                                </div>
+                            </div>
+
+                            <table class="table table-sm o_main_table" name="invoice_line_table">
+                                <thead>
+                                    <tr>
+                                        <th name="th_label"><span>Descripción</span></th>
+                                        <th name="th_account"><span>Cuentas</span></th>
+                                        <th name="th_partner"><span>Empresa</span></th>
+                                        <th name="th_due_date" class="text-center"><span>Fecha Vencimiento</span></th>
+                                        <th name="th_taxes" class="text-center"><span>Impuestos</span></th>
+                                        <th name="th_debit" class="text-right"><span>Débito</span></th>
+                                        <th name="th_credit" class="text-right"><span>Crédito</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice_tbody">
+                                    <t t-set="total_debit" t-value="0"/>
+                                    <t t-set="total_credit" t-value="0"/>
+                                    <t t-set="lines" t-value="o.line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/>
+
+                                    <t t-foreach="lines" t-as="line">
+
+                                        <t t-set="total_debit" t-value="total_debit + line.debit"/>
+                                        <t t-set="total_credit" t-value="total_credit + line.credit"/>
+
+                                        <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
+                                            <td>
+                                                <span t-field="line.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="line.account_id"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="line.partner_id"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-field="line.date_maturity"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-field="line.tax_ids"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.debit"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.credit"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="text-right">
+                                            <span t-esc="total_debit" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="total_credit" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

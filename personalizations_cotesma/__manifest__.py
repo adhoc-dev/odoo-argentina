@@ -21,6 +21,8 @@
         'views/res_users_views.xml',
         'views/stock_request_order_views.xml',
         'views/purchase_requisition_views.xml',
+        'views/account_report.xml',
+        'views/report_journal_entries.xml',
         'wizards/purchase_suggest_view.xml',
     ],
     'demo': [
