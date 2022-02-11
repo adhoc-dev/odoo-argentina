@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="ir_ui_menu_ventas_contabilidad" model="ir.ui.menu">
+    <field name="name">Contabilidad</field>
+    <field ref="sale.sale_menu_root" name="parent_id"/>
+    <field name="sequence">10</field>
+    <field eval="[(4, ref('sales_team.group_sale_salesman'))]" name="groups_id"/>
+  </record>
+  <record id="ir_ui_menu_ventas_contabilidad_facturas" model="ir.ui.menu">
+    <field name="name">Mis facturas</field>
+    <field ref="personalizations_syemed.ir_ui_menu_ventas_contabilidad" name="parent_id"/>
+    <field name="sequence">11</field>
+    <field ref="account.action_move_out_invoice_type" name="action"/>
+  </record>
+  <record id="ir_ui_menu_ventas_contabilidad_facturas_rectificativas" model="ir.ui.menu">
+    <field name="name">Mis facturas rectificativas</field>
+    <field ref="personalizations_syemed.ir_ui_menu_ventas_contabilidad" name="parent_id"/>
+    <field name="sequence">12</field>
+    <field ref="account.action_move_out_refund_type" name="action"/>
+  </record>
+  <record id="ir_ui_menu_ventas_contabilidad_analisis_facturas" model="ir.ui.menu">
+    <field name="name">Mis análisis de líneas de factura</field>
+    <field ref="personalizations_syemed.ir_ui_menu_ventas_contabilidad" name="parent_id"/>
+    <field name="sequence">14</field>
+    <field ref="l10n_ar_ux.action_account_invoice_line_report_all" name="action"/>
+  </record>
+</odoo>

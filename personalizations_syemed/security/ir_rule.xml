@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="ir_rule_all_invoices_reports" model="ir.rule">
+    <field name="name">todos los analisis de facturas</field>
+    <field ref="account.model_account_invoice_report" name="model_id"/>
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field eval="[(4, ref('sales_team.group_sale_salesman_all_leads'))]" name="groups"/>
+  </record>
+  <record id="ir_rule_restrict_channels" model="ir.rule">
+    <field name="name">Canales en facturas</field>
+    <field ref="account.model_account_move" name="model_id"/>
+    <field name="domain_force">[('team_id.member_ids','=',user.id)]</field>
+    <field eval="[(4, ref('sales_team_security.group_sale_team_manager'))]" name="groups"/>
+  </record>
+  <record id="ir_rule_restrict_channels_invoices_reports" model="ir.rule">
+    <field name="name">Canales en analisis de facturas</field>
+    <field ref="account.model_account_invoice_report" name="model_id"/>
+    <field name="domain_force">[('team_id.member_ids','=',user.id)]</field>
+    <field eval="[(4, ref('sales_team_security.group_sale_team_manager'))]" name="groups"/>
+  </record>
+  <record id="ir_rule_account_move_lines" model="ir.rule">
+    <field name="name">Todos los apuntes contables</field>
+    <field ref="account.model_account_move_line" name="model_id"/>
+    <field name="domain_force">[('move_id.type', 'in', ('out_invoice', 'out_refund'))]</field>
+    <field eval="[(4, ref('sales_team_security.group_sale_team_manager'))]" name="groups"/>
+  </record>
+</odoo>
