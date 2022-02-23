@@ -31,6 +31,7 @@ class PurchaseSuggestPrCreate(models.TransientModel):
             'requisition_id': new_pr.id,
             'product_uom_id': uom.id,
             'product_qty': 1.0,
+            'name': product.name,
         }
         return vals
 
