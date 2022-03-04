@@ -76,7 +76,7 @@
         'data/demo/legal.responsibility.csv',
         'data/demo/legal.evidence.type.csv'
     ],
-    'installable': True,
+    'installable': False,
     'auto_install': False,
     'application': True,
 }
