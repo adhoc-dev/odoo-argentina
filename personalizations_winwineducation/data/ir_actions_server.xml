@@ -213,7 +213,7 @@ for rec in records:
     #Creo la encuesta
     survey_user_input = env['survey.user_input'].create({
       'survey_id': survey_id.id,
-      'type': 'link',
+      'input_type': 'link',
       'state': 'new',
       'partner_id': rec.id,
       'email': rec.email})
@@ -224,8 +224,8 @@ for rec in records:
     'model': 'res.partner',
     'res_id': rec.id,
     'subject': 'Actualización de los datos del alumno: %s' % (rec.name),
-    'body': env.ref('survey.email_template_survey', raise_if_not_found=False).body_html.replace("__URL__", url),
-    'body_html':env.ref('survey.email_template_survey', raise_if_not_found=False).body_html.replace("__URL__", url),
+    'body': env.ref('survey.mail_template_user_input_invite', raise_if_not_found=False).body_html.replace("__URL__", url),
+    'body_html':env.ref('survey.mail_template_user_input_invite', raise_if_not_found=False).body_html.replace("__URL__", url),
     'parent_id': None,
     'recipient_ids': [(6,0,rec.parent_id.child_ids.filtered(lambda x: x.partner_type == 'parent').ids)],
     'email_from': rec.company_id.email,
@@ -261,7 +261,7 @@ for rec in records:
     #Creo la encuesta
     survey_user_input = env['survey.user_input'].create({
       'survey_id': survey_id.id,
-      'type': 'link',
+      'input_type': 'link',
       'state': 'new',
       'partner_id': rec.id,
       'email': rec.email})
@@ -304,7 +304,7 @@ for rec in records:
     #Creo la encuesta
   survey_user_input = env['survey.user_input'].create({
     'survey_id': survey_id.id,
-    'type': 'link',
+    'input_type': 'link',
     'state': 'new',
     'partner_id': rec.id,
     'email': rec.email})
@@ -316,8 +316,8 @@ for rec in records:
     'model': 'res.partner',
     'res_id': rec.id,
     'subject': 'Colegio %s - Seguimiento del alumno %s' % (rec.company_id.name, rec.name),
-    'body': env.ref('survey.email_template_survey', raise_if_not_found=False).body_html.replace("__URL__", url).replace("_email_", get_email(rec)).replace("_nombre_colegio_", rec.company_id.name).replace("_fecha_", fecha),
-    'body_html': env.ref('survey.email_template_survey', raise_if_not_found=False).body_html.replace("__URL__", url).replace("_email_", get_email(rec)).replace("_nombre_colegio_", rec.company_id.name).replace("_fecha_", fecha),
+    'body': env.ref('survey.mail_template_user_input_invite', raise_if_not_found=False).body_html.replace("__URL__", url).replace("_email_", get_email(rec)).replace("_nombre_colegio_", rec.company_id.name).replace("_fecha_", fecha),
+    'body_html': env.ref('survey.mail_template_user_input_invite', raise_if_not_found=False).body_html.replace("__URL__", url).replace("_email_", get_email(rec)).replace("_nombre_colegio_", rec.company_id.name).replace("_fecha_", fecha),
     'parent_id': None,
     'recipient_ids': [(6,0,rec.parent_id.child_ids.filtered(lambda x: x.partner_type == 'parent').ids)],
     'email_from': rec.company_id.email,
@@ -358,7 +358,7 @@ for rec in records:
     #Creo la encuesta
   survey_user_input = env['survey.user_input'].create({
     'survey_id': survey_id,
-    'type': 'link',
+    'input_type': 'link',
     'state': 'new',
     'email': rec.email_from})
   #De la encuesta obtengo el url y el token
