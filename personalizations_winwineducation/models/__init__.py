@@ -20,3 +20,4 @@ from . import survey_user_input
 from . import academic_group
 from . import academic_level
 from . import academic_section
+from . import account_payment_group

@@ -364,26 +364,16 @@ for rec in records:
     <field name="state">code</field>
     <field name="binding_type">action</field>
     <field name="code">
-
 for rec in records.filtered('payment_transaction_id'):
-
-  old_state = env.context.get('old_values').get(record.id).get('state')
-  # si no es cambio de estado seguimos
-  if rec.state == old_state:
-    continue
-
-  if rec.state == 'cancelled' and rec.payment_transaction_id.state in ['pending', 'done']:
-    raise Warning('No puede cancelar el pago porque la transacción a través de tu cuota está siendo procesada o ya ha sido procesada')
-  elif rec.state == 'draft' and old_state == 'cancelled':
-    # quedamos en desvincular transaccion si se re abre, para que se genere una nueva con lo que corresponde
-    # rec.payment_transaction_id.write({'state': 'draft'})
-    rec.write({'payment_transaction_id': False})
-  elif rec.state == 'cancelled' and rec.payment_transaction_id.state == 'draft':
-    # solo cambiamos si la transaccion esta en borrador, porque si esta, por ejemplo en error, queremos que quede en error
-    rec.payment_transaction_id._set_transaction_cancel()
-
-
-
+    old_state = env.context.get('old_values').get(record.id).get('state')
+    # si no es cambio de estado seguimos
+    if rec.state == old_state:
+      continue
+    if rec.state in ['cancelled', 'draft'] and rec.payment_transaction_id.state in ['pending', 'done']:
+      raise Warning('No puede cancelar el pago porque la transacción a través de tu cuota está siendo procesada o ya ha sido procesada')
+    elif rec.state == 'cancelled' and rec.payment_transaction_id.state == 'draft':
+      # solo cambiamos si la transaccion esta en borrador, porque si esta, por ejemplo en error, queremos que quede en error
+      rec.payment_transaction_id.write({'state': 'cancel'})
 </field>
     <field name="trigger">on_write</field>
   </record>
