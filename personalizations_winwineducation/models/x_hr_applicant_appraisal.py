@@ -16,19 +16,21 @@ class XHrApplicantAppraisal(models.Model):
 
     @api.depends('x_hr_applicant_id')
     def _compute_x_applicant_stage_id(self):
+        hr_recl_stage_obj = self.env['hr.recruitment.stage']
         for record in self:
-          record.x_applicant_stage_id = False
+          x_applicant_stage_id = False
           if isinstance(record.id, int):
             if record.x_hr_applicant_id.x_appraisal_ids.ids.index(record.id) == 0:
-               record.x_applicant_stage_id = 2
+              x_applicant_stage_id = 2
             elif record.x_hr_applicant_id.x_appraisal_ids.ids.index(record.id) == 1:
-              record.x_applicant_stage_id = 3
+              x_applicant_stage_id = 3
             elif record.x_hr_applicant_id.x_appraisal_ids.ids.index(record.id) == 2:
-              record.x_applicant_stage_id = 6
+              x_applicant_stage_id = 6
             elif record.x_hr_applicant_id.x_appraisal_ids.ids.index(record.id) == 3:
-              record.x_applicant_stage_id = 12
+              x_applicant_stage_id = 12
             elif record.x_hr_applicant_id.x_appraisal_ids.ids.index(record.id) == 4:
-              record.x_applicant_stage_id = 13
+              x_applicant_stage_id = 13
+          record.x_applicant_stage_id = hr_recl_stage_obj.browse(x_applicant_stage_id)
 
 
     @api.depends('x_applicant_stage_id')
