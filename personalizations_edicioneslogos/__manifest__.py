@@ -1,6 +1,6 @@
 {
     'name': 'Personalizations Edicioneslogos',
-    'version': '13.0.1.2.0',
+    'version': '13.0.1.3.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -20,6 +20,7 @@
         'views/x_project_views.xml',
         'views/product_product_view.xml',
         'views/product_template_view.xml',
+        'views/res_user_views.xml',
         'data/ir_actions_act_window.xml',
         'reports/ir_actions_report.xml',
         'reports/account_invoice_report_view.xml',
