@@ -3,6 +3,7 @@
   <record id="personalizations_winwineducation.odoo_studio_hr_emplo_e71e96b1-f732-4b2c-b891-f54e6d5b6223" model="ir.ui.view">
     <field name="name">Odoo Studio: hr.employee.form customization</field>
     <field name="model">hr.employee</field>
+    <field name="priority">110</field>
     <field ref="hr.view_employee_form" name="inherit_id"/>
     <field type="xml" name="arch">
       <data>
