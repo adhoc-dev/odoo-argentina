@@ -10,7 +10,7 @@ _logger = logging.getLogger(__name__)
 class ShopifyController(http.Controller):
 
     @http.route(['/shopify/update'], type='json', methods=['GET'], auth='public')
-    def test_shopify(self, **kwargs):
+    def update_shopify(self, **kwargs):
         context = {
             'pricelist': kwargs['pricelist'],
             'location': kwargs['location'],
@@ -24,6 +24,10 @@ class ShopifyController(http.Controller):
                 'qty_available': product.qty_available,
                 'price': product.price,
                 'tag': ', '.join(product.tag_ids.mapped('name')),
+                'length': product.product_length,
+                'height': product.product_height,
+                'width': product.product_width,
+                'weight': product.weight,
             })
         _logger.info('Shopify: updating %s products', len(res))
         return res
