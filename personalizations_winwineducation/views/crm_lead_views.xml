@@ -100,30 +100,30 @@
           </page>
           <page string="Datos de la Madre">
             <group>
-              <field name="x_mother_last_name"/>
-              <field name="x_mother_first_name"/>
-              <field name="x_mother_country_id" context="{'default_id': 10}"/>
-              <field name="x_studio_n_documento_madre"/>
-              <field name="x_mother_profession"/>
-              <field name="x_mother_act_condition"/>
-              <field name="x_mother_birthdate"/>
-              <field name="x_mother_phone"/>
-              <field name="x_mother_nosis"/>
-              <field name="x_mother_approve"/>
+              <field name="x_mother_last_name" string="Apellido"/>
+              <field name="x_mother_first_name" string="Nombre"/>
+              <field name="x_mother_country_id" context="{'default_id': 10}" string="Nacionalidad"/>
+              <field name="x_studio_n_documento_madre" string="N° Documento"/>
+              <field name="x_mother_profession" string="Profesión/Ocupación"/>
+              <field name="x_mother_act_condition" string="Condición de la Actividad"/>
+              <field name="x_mother_birthdate" string="Fecha de Nacimiento"/>
+              <field name="x_mother_phone" string="Teléfono"/>
+              <field name="x_mother_nosis" string="Nosis"/>
+              <field name="x_mother_approve" string="Aprueba excepción"/>
             </group>
           </page>
           <page string="Datos del Padre">
             <group context="{'default_x_father_country_id':10}">
-              <field name="x_father_last_name"/>
-              <field name="x_father_first_name"/>
-              <field name="x_father_country_id"/>
-              <field name="x_studio_n_documento_padre"/>
-              <field name="x_father_profession"/>
-              <field name="x_father_act_condition"/>
-              <field name="x_father_birthdate"/>
-              <field name="x_father_phone"/>
-              <field name="x_father_nosis"/>
-              <field name="x_father_approve"/>
+              <field name="x_father_last_name" string="Apellido"/>
+              <field name="x_father_first_name" string="Nombre"/>
+              <field name="x_father_country_id" context="{'default_id': 10}" string="Nacionalidad"/>
+              <field name="x_studio_n_documento_padre" string="N° Documento"/>
+              <field name="x_father_profession" string="Profesión/Ocupación"/>
+              <field name="x_father_act_condition" string="Condición de la Actividad"/>
+              <field name="x_father_birthdate" string="Fecha de Nacimiento"/>
+              <field name="x_father_phone" string="Teléfono"/>
+              <field name="x_father_nosis" string="Nosis"/>
+              <field name="x_father_approve" string="Aprueba excepción"/>
             </group>
           </page>
         </page>
