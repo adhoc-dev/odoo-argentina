@@ -159,6 +159,7 @@
           <field name="level_study" required='1'/>
           <field name="x_studio_field_t2GcX" required='1'/>
           <field name="x_studio_field_HT2p1"/>
+          <field name="level_reached"/>
         </xpath>
         <xpath expr="//page[@name='hr_settings']" position="attributes">
           <attribute name="groups">hr.group_hr_manager</attribute>
@@ -185,8 +186,8 @@
           <field name="x_studio_field_RFrXP"/>
           <field name="x_studio_field_1jaDd"/>
         </field>
-        <field name="certificate" position="replace">
-          <field name="level_reached"/>
+        <field name="certificate" position="attributes">
+          <attribute name="invisible">1</attribute>
         </field>
         <field name="study_school" position="attributes">
           <attribute name="string">Institución</attribute>
