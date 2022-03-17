@@ -53,6 +53,7 @@
         'security/ir.model.access.csv',
         'security/ir_rule.xml',
     ],
+    'installable': False,
     'application': False,
     'license': 'OPL-1',
 }
