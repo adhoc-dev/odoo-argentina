@@ -12,8 +12,8 @@ class SurveySurvey(models.Model):
 
     x_shared_survey_internally = fields.Boolean(string='Compartir respuestas de la encuesta internamente', help="Tildando esta opción, los usuarios con permisos de planificación básicos van a poder ver todas las respuestas de esta encuesta")
 
-
     def _create_answer(self, user=False, partner=False, email=False, test_entry=False, check_attempts=True, **additional_vals):
-        res = super()._create_answer(user=user, partner=partner, email=email, test_entry=test_entry, check_attempts=check_attempts, **additional_vals)
-        res.write({'company_id': self.env.company.id})
-        return res
+        answers = super()._create_answer(user=user, partner=partner, email=email, test_entry=test_entry, check_attempts=check_attempts, **additional_vals)
+        for answer in answers.filtered(lambda x: not x.company_id):
+            answer.company_id = partner.company_id.id or self.env.company.id
+        return answers
