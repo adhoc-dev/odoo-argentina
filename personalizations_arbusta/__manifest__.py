@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'personalizations_arbusta',
-    'version': '13.0.1.28.0',
+    'version': '13.0.1.29.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -61,6 +61,7 @@
         'data/ir_actions_act_window.xml',
         'data/ir_ui_menu.xml',
         'data/base_automation.xml',
+        'data/mail_template.xml',
         'report/ir_actions_report.xml',
     ],
     'application': False,

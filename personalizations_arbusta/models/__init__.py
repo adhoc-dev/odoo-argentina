@@ -14,8 +14,8 @@ from . import hr_employee_skill
 from . import maintenance_equipment
 from . import project_project
 from . import project_task
+from . import purchase_request
 from . import res_partner
 from . import res_users
 from . import sale_subscription
 from . import sale_order
-from . import purchase_request
