@@ -58,9 +58,23 @@ class CrmLead(models.Model):
     x_mother_approve = fields.Selection(string="Aprueba excepción Madre", selection=[('si', 'Si'),('no','No')])
     x_father_approve = fields.Selection(string="Aprueba excepción Padre", selection=[('si', 'Si'),('no','No')])
 
-
     @api.depends('message_ids.tracking_value_ids')
     def _compute_x_history_stages(self):
         for rec in self.filtered(lambda x: any(x.sudo().message_ids.mapped('tracking_value_ids').filtered(lambda x: x.field == 'stage_id'))):
             msj =" > ".join(rec.sudo().message_ids.mapped('tracking_value_ids').filtered(lambda x: x.field == 'stage_id').sorted(key=lambda p: p.create_date).mapped('new_value_char'))
             rec['x_history_stages'] = msj
+
+    def action_start_survey(self):
+        """ Extendemos este metodo para que si una encuesta tiene compañía y hay un sitio web en esa compañía con un
+        dominio, entonces se use dicho dominio en al URL de la encuesta  mandando el campo "website_domain" al metodo
+        _compute_survey_url
+        Ademas cambiamos a target new para que abra en nueva ventana """
+        self.ensure_one()
+        # si tengo compañía y existe sitio web para la compañía y ese sitio web tiene una URL, usamos esa url para el link
+        website = self.company_id and self.env['website'].search(
+            [('company_id', '=', self.company_id.id), ('domain', '!=', False)], limit=1)
+        if website:
+            self = self.with_context(website_domain=website.get_base_url())
+        res = super().action_start_survey()
+        res['target'] = 'new'
+        return res

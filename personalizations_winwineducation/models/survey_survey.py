@@ -17,3 +17,14 @@ class SurveySurvey(models.Model):
         for answer in answers.filtered(lambda x: not x.company_id):
             answer.company_id = partner.company_id.id or self.env.company.id
         return answers
+
+    def _compute_survey_url(self):
+        """ Modificamos este metodo para permitir recibir por contexto una website_domain que tipicamente sera la url
+        de un determinado sitio web.
+        Por ahora esta solo implementado en crm.lead en el metodo de action_start_survey """
+        super()._compute_survey_url()
+        if self._context.get('website_domain'):
+            base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
+            website_domain = self._context.get('website_domain')
+            for survey in self:
+                survey.public_url = survey.public_url.replace(base_url, website_domain)
