@@ -203,23 +203,18 @@ for rec in records:
     <field name="binding_type">action</field>
     <field name="code"><![CDATA[
 for rec in records:
-  survey_id = env['survey.survey'].browse(17)
+  survey = env['survey.survey'].browse(17)
   if rec.partner_type != 'student':
     raise Warning('Esta encuesta es solo para los alumnos!')
-  
+
   #Busco si el alumno no tenía una encuesta ya sin completar, si tiene le vuelvo a mandar esa 
-  survey_user_input = env['survey.user_input'].search([('partner_id', '=', rec.id), ('survey_id', '=', survey_id.id), ('state', '!=', 'done')])
+  survey_user_input = env['survey.user_input'].search([('partner_id', '=', rec.id), ('survey_id', '=', survey.id), ('state', '!=', 'done')], limit=1)
+
   if not survey_user_input:
     #Creo la encuesta
-    survey_user_input = env['survey.user_input'].create({
-      'survey_id': survey_id.id,
-      'input_type': 'link',
-      'state': 'new',
-      'partner_id': rec.id,
-      'email': rec.email})
+    survey_user_input = survey.with_context(default_input_type="link")._create_answer(partner=rec)
 
-  #De la encuesta obtengo el url y el token
-  url = '%s/survey/start/%s/%s' % (rec.get_base_url(), survey_id.id, survey_user_input.token)
+  url = survey_user_input._get_survey_url()
   values = {
     'model': 'res.partner',
     'res_id': rec.id,
@@ -249,25 +244,19 @@ def get_email(alumno):
   return "secretaria." + nivel + "@colegio" + alumno.company_id.name.lower() + ".edu.ar"
 
 for rec in records:
-  survey_id = env['survey.survey'].browse(23) if rec.company_id.state_id.name == 'Santa Fe' else env['survey.survey'].browse(22)
+  survey = env['survey.survey'].browse(23) if rec.company_id.state_id.name == 'Santa Fe' else env['survey.survey'].browse(22)
   if rec.partner_type != 'student':
-    raise Warning('Esta encuesta es solo para los alumnos!')  
+    raise Warning('Esta encuesta es solo para los alumnos!')
   if not rec.curso_actual:
     raise Warning('El alumno no está incluido en ningún curso!')
-  
-  #Busco si el alumno no tenía una encuesta ya sin completar, si tiene le vuelvo a mandar esa 
-  survey_user_input = env['survey.user_input'].search([('partner_id', '=', rec.id), ('survey_id', '=', survey_id.id), ('state', '!=', 'done')])
-  if not survey_user_input:
-    #Creo la encuesta
-    survey_user_input = env['survey.user_input'].create({
-      'survey_id': survey_id.id,
-      'input_type': 'link',
-      'state': 'new',
-      'partner_id': rec.id,
-      'email': rec.email})
 
-  #De la encuesta obtengo el url y el token
-  url = '%s/survey/start/%s/%s' % (rec.get_base_url(), survey_id.id, survey_user_input.token)
+  # Busco si el alumno no tenía una encuesta ya sin completar, si tiene le vuelvo a mandar esa
+  survey_user_input = env['survey.user_input'].search([('partner_id', '=', rec.id), ('survey_id', '=', survey.id), ('state', '!=', 'done')], limit=1)
+  if not survey_user_input:
+    # Creo la encuesta
+    survey_user_input = survey.with_context(default_input_type="link")._create_answer(partner=rec)
+
+  url = survey_user_input._get_survey_url()
   fecha = (datetime.date.today() + dateutil.relativedelta.relativedelta(days=10)).strftime("%d/%m/%Y")
   values = {
     'model': 'res.partner',
@@ -295,22 +284,17 @@ def get_email(alumno):
   return "secretaria." + nivel + "@colegio" + alumno.company_id.name.lower() + ".edu.ar"
 
 for rec in records:
-  survey_id = env['survey.survey'].browse(21)
+  survey = env['survey.survey'].browse(21)
   if rec.partner_type != 'student':
-    raise Warning('Esta encuesta es solo para los alumnos!')  
+    raise Warning('Esta encuesta es solo para los alumnos!')
   if not rec.curso_actual:
     raise Warning('El alumno no está incluido en ningún curso!')
-  
-    #Creo la encuesta
-  survey_user_input = env['survey.user_input'].create({
-    'survey_id': survey_id.id,
-    'input_type': 'link',
-    'state': 'new',
-    'partner_id': rec.id,
-    'email': rec.email})
 
-  #De la encuesta obtengo el url y el token
-  url = '%s/survey/start/%s/%s' % (rec.get_base_url(), survey_id.id, survey_user_input.token)
+    #Creo la encuesta
+  survey_user_input = survey.with_context(default_input_type="link")._create_answer(partner=rec)
+
+
+  url = survey_user_input._get_survey_url()
   fecha = (datetime.date.today() + dateutil.relativedelta.relativedelta(days=10)).strftime("%d/%m/%Y")
   values = {
     'model': 'res.partner',
@@ -351,18 +335,13 @@ company_survey_map = {
     1: 33
 }
 for rec in records:
-  url = env['website'].search([('company_id','=',rec.company_id.id)]).domain if rec.company_id else env['ir.config_parameter'].sudo().get_param('web.base.url')
   survey_id=company_survey_map.get(rec.company_id.id)
   if not survey_id:
     raise Warning('Debe asignarle una compañia a la oportunidad para enviar esta encuesta')
-    #Creo la encuesta
-  survey_user_input = env['survey.user_input'].create({
-    'survey_id': survey_id,
-    'input_type': 'link',
-    'state': 'new',
-    'email': rec.email_from})
-  #De la encuesta obtengo el url y el token
-  url = '%s/survey/start/%s/%s' % (url, survey_id, survey_user_input.token)
+  # Creo la respuesta con la compañia correspondiente
+  survey_user_input = env['survey.survey'].browse(survey_id).with_context(default_input_type="link")._create_answer(email=rec.email_from, company_id=rec.company_id.id)
+
+  url = survey_user_input._get_survey_url()
   fecha = (datetime.date.today() + dateutil.relativedelta.relativedelta(days=10)).strftime("%d/%m/%Y")
   values = {
     'model': 'crm.lead',

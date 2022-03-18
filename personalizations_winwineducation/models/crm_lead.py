@@ -68,7 +68,15 @@ class CrmLead(models.Model):
         """ Extendemos este metodo para que si una encuesta tiene compañía y hay un sitio web en esa compañía con un
         dominio, entonces se use dicho dominio en al URL de la encuesta  mandando el campo "website_domain" al metodo
         _compute_survey_url
-        Ademas cambiamos a target new para que abra en nueva ventana """
+        Ademas cambiamos a target new para que abra en nueva ventana
+
+        TODO: en realidad tal vez este metodo podria directamente llamar a "survey_user_input._get_survey_url()" y
+        estandarizamos la forma de obtener links de encuestas. El tema es que el metodo este en realidad devuelve una
+        accion pero la accion es facil de hacer tambien. Si hacemos este cambio podriamos borrar tambien
+        "_compute_survey_url".
+        Este metodo como esta implementado seria util si se usa para generar link a encuesta sin tener una user input,
+        pero si ya tenemos user input en realidad el link se lo podemos pedir a la user input
+        """
         self.ensure_one()
         # si tengo compañía y existe sitio web para la compañía y ese sitio web tiene una URL, usamos esa url para el link
         website = self.company_id and self.env['website'].search(
