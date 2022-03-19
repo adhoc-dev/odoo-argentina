@@ -18,6 +18,9 @@
           ['&amp;',('location_id.complete_name', 'like', warehouse_code),("usage", "in", ["internal", "transit"])]
         </attribute>
       </field>
+      <field name="stock_request_ids" position="before">
+        <button name="add_products_to_stock_request" type="object" string="Search Products" states="draft,sent"/>
+      </field>
     </field>
   </record>
   <record id="stock_request.menu_stock_request" model="ir.ui.menu">

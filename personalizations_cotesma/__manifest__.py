@@ -13,6 +13,10 @@
         'purchase_suggest',
         'product_template_tags',
         'project_ux',
+        'purchase_request',
+        'product_stock_by_location',
+        'purchase_tier_validation',
+        'project_stage',
     ],
     'data': [
         'security/cotesma_security.xml',
@@ -23,6 +27,7 @@
         'views/purchase_requisition_views.xml',
         'views/account_report.xml',
         'views/report_journal_entries.xml',
+        'views/product_views.xml',
         'wizards/purchase_suggest_view.xml',
         'views/stock_menu_views.xml',
     ],
