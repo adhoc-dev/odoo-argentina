@@ -4,7 +4,7 @@ from odoo import models, fields
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
-    job_id = fields.Many2one(tracking=100)
+    job_id = fields.Many2one(tracking=True)
 
     x_studio_field_HkwZE = fields.Selection(string="Oficina", selection=[('Buenos Aires', 'BUE'), ('Medellín', 'MED'),
                                                                          ('Montevideo', 'MON'), ('Rosario', 'ROS')],
@@ -18,7 +18,7 @@ class HrEmployee(models.Model):
     x_studio_field_fZbCK = fields.Selection(string="Seniority",
                                             selection=[('N/A', 'N/A'),('Pre junior', 'Pre junior'), ('Junior', 'Junior'),
                                                        ('Semi Senior', 'Semi Senior'), ('Senior', 'Senior'),
-                                                       ('Trainee', 'Trainee')], tracking=100, copy=False)
+                                                       ('Trainee', 'Trainee')], tracking=True, copy=False)
     employee_id_maintenance_equip_count = fields.Integer(string="Asignado al empleado count",
                                                                 compute="_compute_employee_maintenance_equip_count",
                                                                 readonly=True, copy=False)
@@ -35,9 +35,9 @@ class HrEmployee(models.Model):
                                      selection=[('Incompleto', 'Incompleto'),('En curso', 'En curso'), ('Graduado', 'Graduado')],
                                      copy=False)
     x_department_id = fields.Many2one(string="department_id", related="department_id",
-                                      help="Solo se usa por el seguimiento", on_delete="set null", readonly=True)
-    parent_id = fields.Many2one(domain="[]")
-    coach_id = fields.Many2one(domain="[]")
+                                      help="Solo se usa por el seguimiento", on_delete="set null", readonly=True, tracking=True)
+    parent_id = fields.Many2one(domain="[]", tracking=True)
+    coach_id = fields.Many2one(domain="[]", tracking=True)
     x_parent_id = fields.Many2one(string="parent_id", related="parent_id", help="Por seguimiento",
                                   on_delete="set null", readonly=True)
     x_coach_id = fields.Many2one(string="coach_id", related="coach_id", help="Por seguimiento",
@@ -78,15 +78,15 @@ class HrEmployee(models.Model):
                                                         'Customer Experience'),                                                       ('Machine Learning Training', 'Machine Learning Training'),
                                                        ('QA & Software Testing', 'QA & Software Testing'),
                                                        ('Staff', 'Staff'),
-                                                       ('DevJump', 'DevJump')], copy=False)
+                                                       ('DevJump', 'DevJump')], copy=False, tracking=True)
     x_studio_field_2MSWR = fields.Selection(string="Chapter",
                                             selection=[('Automatización', 'Automatización'),
                                                        ('Comunicaciones', 'Comunicaciones'),
                                                        ('Mejora Contínua', 'Mejora Contínua'),
                                                        ('Técnico', 'Técnico')], copy=False, tracking=100)
     x_studio_field_SHzlD = fields.Boolean(string="Homeoffice", copy=False)
-    x_studio_field_CsHEC = fields.Boolean(string="Disponibilidad FT", tracking=100, copy=False)
-    x_studio_field_q5sPJ = fields.Boolean(string="Validación FT", tracking=100, copy=False)
+    x_studio_field_CsHEC = fields.Boolean(string="Disponibilidad FT", tracking=True, copy=False)
+    x_studio_field_q5sPJ = fields.Boolean(string="Validación FT", tracking=True, copy=False)
     x_studio_field_ny2Ip = fields.Date(string="Fecha Baja", copy=False)
     x_studio_field_RiU1z = fields.Selection(string="Tipo de desvinculación",
                                             selection=[('No pasó período de prueba','No pasó período de prueba'), ('Finalización de contrato','Finalización de contrato'),('Despido', 'Despido'), ('Renuncia', 'Renuncia'),

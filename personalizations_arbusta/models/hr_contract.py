@@ -17,4 +17,4 @@ class HrContract(models.Model):
                                                        ('TPJ', 'Trabajo Protegido Joven (TPJ)')],
                                             copy=False)
     x_studio_field_VJN0Z = fields.Char(string="Responsable", related="employee_id.parent_id.name",
-                                       readonly=True, tracking=100, copy=False, store=True)
+                                       readonly=True, tracking=True, copy=False, store=True)
