@@ -195,40 +195,6 @@ for rec in records:
 
 ]]></field>
   </record>
-  <record id="personalizations_winwineducation.ir_act_server_1007_383ade14" model="ir.actions.server">
-    <field name="name">Alumno - Actualizar Datos</field>
-    <field ref="base.model_res_partner" name="model_id"/>
-    <field name="state">code</field>
-    <field ref="base.model_res_partner" name="binding_model_id"/>
-    <field name="binding_type">action</field>
-    <field name="code"><![CDATA[
-for rec in records:
-  survey = env['survey.survey'].browse(17)
-  if rec.partner_type != 'student':
-    raise Warning('Esta encuesta es solo para los alumnos!')
-
-  #Busco si el alumno no tenía una encuesta ya sin completar, si tiene le vuelvo a mandar esa 
-  survey_user_input = env['survey.user_input'].search([('partner_id', '=', rec.id), ('survey_id', '=', survey.id), ('state', '!=', 'done')], limit=1)
-
-  if not survey_user_input:
-    #Creo la encuesta
-    survey_user_input = survey.with_context(default_input_type="link")._create_answer(partner=rec)
-
-  url = survey_user_input._get_survey_url()
-  values = {
-    'model': 'res.partner',
-    'res_id': rec.id,
-    'subject': 'Actualización de los datos del alumno: %s' % (rec.name),
-    'body': env.ref('survey.mail_template_user_input_invite', raise_if_not_found=False).body_html.replace("__URL__", url),
-    'body_html':env.ref('survey.mail_template_user_input_invite', raise_if_not_found=False).body_html.replace("__URL__", url),
-    'parent_id': None,
-    'recipient_ids': [(6,0,rec.parent_id.child_ids.filtered(lambda x: x.partner_type == 'parent').ids)],
-    'email_from': rec.company_id.email,
-    'auto_delete': False,
-  }
-  env['mail.mail'].create(values).send()
-]]></field>
-  </record>
   <record id="personalizations_winwineducation.alumno_solicitud_datos_personales" model="ir.actions.server">
     <field name="name">Alumno - Solicitud Datos Personales</field>
     <field ref="base.model_res_partner" name="model_id"/>
