@@ -22,8 +22,6 @@
         'event',
         'helpdesk',
         'hr',
-        'hr_holidays',
-        'hr_timesheet',
         'im_livechat',
         'inter_company_rules',
         'l10n_ar_ux',
