@@ -4,17 +4,6 @@ from odoo import models, fields
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    # for compatibility with odumbo till we migrate everything to v13
-    # TODO remove on v14 (or before)
-    l10n_ar_afip_responsibility_type_id = fields.Many2one(
-        default=lambda self: self.env.ref('l10n_ar.res_IVARI', raise_if_not_found=False))
-    main_id_number = fields.Char(related='vat', readonly=False, string='Identification Number (for Odumbo)',)
-    main_id_category_id = fields.Many2one(
-        related='l10n_latam_identification_type_id', readonly=False,
-        string='Identification Type (for Odumbo)',)
-    afip_responsability_type_id = fields.Many2one(
-        related='l10n_ar_afip_responsibility_type_id', readonly=False, string='AFIP Responsibility Type (for Odumbo)')
-
     def address_get(self, adr_pref=None):
         """ We modify this return for the case the contact has the label for claims when
         the method is called from account follow up send email"""
