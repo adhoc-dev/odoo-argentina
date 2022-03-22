@@ -362,13 +362,10 @@ for rec in records:
     <field name="name">Automatizaciones para Tu Cuota</field>
     <field ref="account.model_account_payment" name="model_id"/>
     <field name="state">code</field>
+    <field name="trigger_field_ids" eval="[(4,ref('account.field_account_payment__state'))]"/>
     <field name="binding_type">action</field>
     <field name="code">
 for rec in records.filtered('payment_transaction_id'):
-    old_state = env.context.get('old_values').get(record.id).get('state')
-    # si no es cambio de estado seguimos
-    if rec.state == old_state:
-      continue
     if rec.state in ['cancelled', 'draft'] and rec.payment_transaction_id.state in ['pending', 'done']:
       raise Warning('No puede cancelar el pago porque la transacción a través de tu cuota está siendo procesada o ya ha sido procesada')
     elif rec.state == 'cancelled' and rec.payment_transaction_id.state == 'draft':
