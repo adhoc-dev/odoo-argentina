@@ -23,14 +23,14 @@ for stage in stages:
 
   <record model="ir.cron" id="personalizations_brunetti.ir_cron_cancel_sale_orders_by_activity_type">
   <field name="name">Cancelar OVs en cola</field>
-    <field name="model_id" ref="sale.model_sale_order"/>
+    <field name="model_id" ref="mail.model_mail_activity"/>
     <field name="state">code</field>
     <field name="binding_type">action</field>
     <field name="code">
 activities = model.search([("res_model","=","sale.order"),("activity_type_id","=", env.ref('personalizations_brunetti.sale_order_to_cancel').id)])
-for act in activities.filtered(lambda a : a.state== "overdue"):
+for act in activities.filtered(lambda a: a.state == "overdue"):
     sale = env['sale.order'].browse(act.res_id)
-    if sale.state == 'sale' and not sale.invoice_ids:
+    if sale.state == 'sale' and not sale.invoice_ids and sale.delivery_status != 'delivered':
         sale.action_cancel()
         act.unlink()
     </field>
