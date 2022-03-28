@@ -5,7 +5,6 @@
         <field name="name">Usuarios Solo Lectura</field>
         <field name="category_id" ref="base.module_category_operations_purchase"/>
     </record>
-    
     <record id="purchase.group_purchase_user" model="res.groups">
         <field name="implied_ids" eval="[(4, ref('group_purchase_user_only_read'))]"/>
     </record>
@@ -18,5 +17,28 @@
     <record id="project.group_project_manager" model="res.groups">
         <field name="category_id" ref="base.module_category_operations_project"/>
         <field name="implied_ids" eval="[(3, ref('project.group_project_user')), (4, ref('group_project_user_advanced'))]"/>
+    </record>
+    <record id="group_purchase_request_member" model="res.groups">
+        <field name="name">Purchase Request Member</field>
+        <field name="implied_ids" eval="[(4, ref('purchase_request.group_purchase_request_user'))]" />
+        <field name="category_id" ref="purchase_request.module_category_purchase_request" />
+    </record>
+    <!-- Cambiamos el grupo herado para que sea al grupo creado arriba -->
+    <record id="purchase_request.group_purchase_request_manager" model="res.groups">
+        <field name="implied_ids" eval="[(6,0, [ref('group_purchase_request_member')])]" />
+    </record>
+
+    <record id="purchase_request_followers_rule_members" model="ir.rule">
+        <field name="name">Follow Purchase Request Members</field>
+        <field name="model_id" ref="purchase_request.model_purchase_request" />
+        <field name="groups" eval="[(6,0, [ref('group_purchase_request_member')])]" />
+        <field name="perm_read" eval="True" />
+    </record>
+
+    <record id="purchase_request_line_followers_rule_members" model="ir.rule">
+        <field name="name">Follow Purchase Request Line Members</field>
+        <field name="model_id" ref="purchase_request.model_purchase_request_line" />
+        <field name="groups" eval="[(6,0, [ref('group_purchase_request_member')])]" />
+        <field name="perm_read" eval="True" />
     </record>
 </odoo>
