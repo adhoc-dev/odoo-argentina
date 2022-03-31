@@ -1,0 +1,5 @@
+<odoo>
+ <record id="picking_aproval" model="res.groups">
+    <field name="name">Permitir enviar mercaderia en ventas prepagas aún no pagadas</field>
+  </record>
+</odoo>
