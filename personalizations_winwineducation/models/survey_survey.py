@@ -15,7 +15,7 @@ class SurveySurvey(models.Model):
     def _create_answer(self, user=False, partner=False, email=False, test_entry=False, check_attempts=True, **additional_vals):
         answers = super()._create_answer(user=user, partner=partner, email=email, test_entry=test_entry, check_attempts=check_attempts, **additional_vals)
         for answer in answers.filtered(lambda x: not x.company_id):
-            answer.company_id = partner.company_id.id or self.env.company.id
+            answer.company_id = partner.company_id.id if partner and partner.company_id else self.env.company.id
         return answers
 
     def _compute_survey_url(self):
