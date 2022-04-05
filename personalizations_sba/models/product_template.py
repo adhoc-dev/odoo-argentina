@@ -12,3 +12,4 @@ class ProductTemplate(models.Model):
     x_studio_field_NlwHP = fields.Many2one(string="Familia", comodel_name="x_product_familia", on_delete="set null", copy=False)
     x_studio_field_Bn7Ka = fields.Many2one(string="Presupuesto", comodel_name="x_product_categoria", on_delete="set null", copy=False)
     x_studio_field_8WqdD = fields.Many2one(string="Subcategoria", comodel_name="x_product_subcategoria", on_delete="set null", copy=False)
+    ml_description = fields.Char(string="Descripción MercadoLibre", size=60)
