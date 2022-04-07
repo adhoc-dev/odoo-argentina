@@ -1,6 +1,6 @@
 {
     'name': 'Personalizations Apromark',
-    'version': '13.0.1.16.0',
+    'version': '13.0.1.17.0',
     'sequence': 14,
     'summary': '',
     'author': 'ADHOC SA',
@@ -14,6 +14,8 @@
         'website_sale',
         'account_analytic_default',
         'sale_subscription',
+        'account_payment_group',
+        'l10n_ar',
     ],
     'data': [
         'security/ir.model.access.csv',
