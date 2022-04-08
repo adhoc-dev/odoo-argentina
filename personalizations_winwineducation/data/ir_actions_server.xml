@@ -394,7 +394,8 @@ if without or duplicated:
     <field name="binding_type">action</field>
     <field name="code"><![CDATA[
 
-records.filtered(lambda x: x.state in ['draft','confirmed']).post()
+for rec in records.filtered(lambda x: x.state in ['draft','confirmed']):
+  rec.post()
 
 # intento para que funcione desde active learning
 # for rec in records:
