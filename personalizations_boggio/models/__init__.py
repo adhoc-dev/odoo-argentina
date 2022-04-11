@@ -7,7 +7,6 @@ from . import res_partner
 from . import account_invoice
 from . import account_move_line
 from . import account_payment_group
-from . import mail_mass_mailing_contact
 from . import mgmtsystem_nonconformity
 from . import mis_report_instance
 from . import product_attribute

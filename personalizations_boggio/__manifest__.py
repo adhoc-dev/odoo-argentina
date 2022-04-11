@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_boggio',
-    'version': '13.0.1.5.0',
+    'version': '13.0.1.6.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -28,7 +28,6 @@
         'l10n_ar_sale',
         'l10n_ar_stock',
         'account_journal_book_report',
-        'mail_tracking_mass_mailing',
         'mgmtsystem_nonconformity',
         'mis_builder',
         'mrp',
@@ -99,7 +98,6 @@
         'views/ir_actions_server_views.xml',
         'views/ir_default_views.xml',
         'views/sale_order_template_views.xml',
-        # 'views/mail_mass_mailing_views.xml',
         'views/mgmtsystem_nonconformity_views.xml',
         'views/mis_report_instance_views.xml',
         'wizards/mrp_product_produce_views.xml',
