@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Neored Personalizations',
-    'version': '13.0.1.12.0',
+    'version': '13.0.1.13.0',
     'category': 'Accounting',
     'sequence': 14,
     'summary': '',

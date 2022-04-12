@@ -74,7 +74,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
         <field name="state">code</field>
         <field name="code">
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
-  fields_to_check = ['name', 'uom_type', 'factor_inv', 'rounding', 'l10n_ar_afip_code', 'arba_code', 'active', 'category_id']
+  fields_to_check = ['name', 'uom_type', 'factor_inv', 'rounding', 'l10n_ar_afip_code', 'arba_code', 'active', 'category_id', 'arba_code']
   if set(fields_to_check) &amp; set(env.context['old_values'][record.id].keys()):
     data_recs = env['ir.model.data'].sudo().search([('module', '=', '__odumbo__'), ('res_id', 'in', records.ids), ('model', '=', record._name)])
     if data_recs:
@@ -177,7 +177,7 @@ if record and not env.context.get('odumbo_sync') and env.context.get('old_values
         <field name="code">
 if record and not env.context.get('odumbo_sync') and env.context.get('old_values'):
   fields_to_check = [
-    'name', 'warranty', 'type', 'description', 'description_sale', 'description_purchase', 'neored_image_url',
+    'name', 'warranty', 'type', 'description', 'description_sale', 'description_purchase', 'neored_image_url', 'arba_code',
     'manufacturer_pname', 'manufacturer_pref', 'manufacturer_purl',
     'inventory_availability',
     'available_threshold', 'custom_message',
