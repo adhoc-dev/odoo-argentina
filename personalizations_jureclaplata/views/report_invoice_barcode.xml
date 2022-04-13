@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_barcode" inherit_id="account.report_invoice_document">
+
+        <t t-set="o" position="after">
+            <t t-set="nro_bapro" t-value="str(o.company_id.nro_entidad_bapro).rjust(9, '0')"/>
+            <t t-set="reference" t-value="''.join(i for i in o.name if i.isdigit()).rjust(9, '0')[-9:]"/>
+            <t t-set="student_code" t-value="str(o.student_id.student_code).rjust(5, '0')"/>
+            <t t-set="first_due_date" t-value="o.invoice_date + datetime.timedelta(days=o.company_id.first_due_date_days)"/>
+            <t t-set="yy_first_due" t-value="first_due_date.strftime('%y')"/>
+            <t t-set="ddd_first_due" t-value="'%03d' % first_due_date.timetuple().tm_yday"/>
+            <t t-set="amount_total" t-value="str(int(o.amount_total * 100)).rjust(7, '0')"/>
+            <t t-set="second_due_date" t-value="o.invoice_date + datetime.timedelta(days=o.company_id.second_due_date_days)"/>
+            <t t-set="yy_second_due" t-value="second_due_date.strftime('%y')"/>
+            <t t-set="ddd_second_due" t-value="'%03d' % second_due_date.timetuple().tm_yday"/>
+            <t t-set="surcharge_amount" t-value="str(int(o.amount_total * (1 + o.company_id.surcharge / 100.0) * 100)).rjust(7, '0')"/>
+            <t t-set="close_code" t-value="'01'"/>
+
+            <t t-set="barcode_payment" t-value="
+                nro_bapro + reference + student_code + yy_first_due + ddd_first_due + amount_total +
+                yy_second_due + ddd_second_due + surcharge_amount + close_code
+            "/>
+        </t>
+
+        <p name="payment_term" position="after">
+            <div class="row">
+                <div name="footer_left_column" class="col-12 text-center">
+                    <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;humanreadable=1' % ('I2of5', barcode_payment)" alt="Barcode"/>
+                </div>
+            </div>
+        </p>
+
+    </template>
+
+    <template id="report_invoice_document" inherit_id="l10n_ar.report_invoice_document">
+        <xpath expr="//t[@t-if='o.invoice_date_due']" position="replace">
+            <div class="row">
+                <strong class="col-9">Primer Vencimiento <span t-raw="first_due_date" t-options='{"widget": "date"}'/>:</strong>
+                <span t-field="o.amount_total" class="col-3 text-right"/>
+            </div>
+            <div class="row">
+                <strong class="col-9">Segundo Vencimiento <span t-raw="second_due_date" t-options='{"widget": "date"}'/>:</strong>
+                <span t-raw="o.amount_total * (1 + o.company_id.surcharge / 100.00)" class="col-3 text-right" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="report_invoice_document_with_payments" inherit_id="l10n_ar.report_invoice_document_with_payments">
+        <xpath expr="//t[@t-if='o.invoice_date_due']" position="replace">
+            <div class="row">
+                <strong class="col-9">Primer Vencimiento <span t-raw="first_due_date" t-options='{"widget": "date"}'/>:</strong>
+                <span t-field="o.amount_total" class="col-3 text-right"/>
+            </div>
+            <div class="row">
+                <strong class="col-9">Segundo Vencimiento <span t-raw="second_due_date" t-options='{"widget": "date"}'/>:</strong>
+                <span t-raw="o.amount_total * (1 + o.company_id.surcharge / 100.00)" class="col-3 text-right" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>
