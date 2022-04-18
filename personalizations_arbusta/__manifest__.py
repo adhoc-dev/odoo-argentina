@@ -51,6 +51,7 @@
         'views/project_project_views.xml',
         'views/project_stage_views.xml',
         'views/project_task_views.xml',
+        'views/purchase_order_views.xml',
         'views/res_partner_views.xml',
         'views/res_users_views.xml',
         'views/sale_subscription_views.xml',
