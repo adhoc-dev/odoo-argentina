@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="hr_salary_category_0" model="hr.salary_category">
+        <field name="name">0</field>
+        <field name="amount">100</field>
+        <field name="currency_id" ref="base.ARS"/>
+    </record>
+    <record id="hr_salary_category_1" model="hr.salary_category">
+        <field name="name">1</field>
+        <field name="amount">110</field>
+        <field name="currency_id" ref="base.ARS"/>
+    </record>
+    <record id="hr_salary_category_2" model="hr.salary_category">
+        <field name="name">2</field>
+        <field name="amount">120</field>
+        <field name="currency_id" ref="base.ARS"/>
+    </record>
+    <record id="hr_salary_category_3" model="hr.salary_category">
+        <field name="name">3</field>
+        <field name="amount">130</field>
+        <field name="currency_id" ref="base.ARS"/>
+    </record>
+    <record id="hr_salary_category_4" model="hr.salary_category">
+        <field name="name">4</field>
+        <field name="amount">140</field>
+        <field name="currency_id" ref="base.ARS"/>
+    </record>
+    <record id="hr_salary_category_5" model="hr.salary_category">
+        <field name="name">5</field>
+        <field name="amount">150</field>
+        <field name="currency_id" ref="base.ARS"/>
+    </record>
+    <record id="hr_salary_category_6" model="hr.salary_category">
+        <field name="name">6</field>
+        <field name="amount">160</field>
+        <field name="currency_id" ref="base.ARS"/>
+    </record>
+    <record id="hr_salary_category_7" model="hr.salary_category">
+        <field name="name">7</field>
+        <field name="amount">170</field>
+        <field name="currency_id" ref="base.ARS"/>
+    </record>
+    <record id="hr_salary_category_8" model="hr.salary_category">
+        <field name="name">8</field>
+        <field name="amount">180</field>
+        <field name="currency_id" ref="base.ARS"/>
+    </record>
+    <record id="hr_salary_category_9" model="hr.salary_category">
+        <field name="name">9</field>
+        <field name="amount">190</field>
+        <field name="currency_id" ref="base.ARS"/>
+    </record>
+</odoo>

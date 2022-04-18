@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="hr_seniority_pre_junior" model="hr.seniority">
+        <field name="name">Pre Junior</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="hr_seniority_junior" model="hr.seniority">
+        <field name="name">Junior</field>
+        <field name="sequence">20</field>
+    </record>
+    <record id="hr_seniority_pre_semi_senior" model="hr.seniority">
+        <field name="name">Pre Semi-Senior</field>
+        <field name="sequence">30</field>
+    </record>
+    <record id="hr_seniority_semi_senior" model="hr.seniority">
+        <field name="name">Semi-Senior</field>
+        <field name="sequence">40</field>
+    </record>
+    <record id="hr_seniority_pre_senior" model="hr.seniority">
+        <field name="name">Pre Senior</field>
+        <field name="sequence">50</field>
+    </record>
+    <record id="hr_seniority_senior" model="hr.seniority">
+        <field name="name">Senior</field>
+        <field name="sequence">60</field>
+    </record>
+</odoo>

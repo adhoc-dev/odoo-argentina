@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_job_view_form" model="ir.ui.view">
+        <field name="name">hr.job.view.form</field>
+        <field name="model">hr.job</field>
+        <field name="inherit_id" ref="hr.view_hr_job_form"/>
+        <field name="arch" type="xml">
+            <group position="after">
+                <label for="seniority_ids"/>
+                <field name="seniority_ids">
+                    <tree editable="bottom">
+                        <field name="seniority_id" options="{'no_create': True}" width="0.2"/>
+                        <field name="salary_category_id" options="{'no_create': True}" width="0.2"/>
+                        <field name="description"/>
+                    </tree>
+                </field>
+            </group>
+        </field>
+    </record>
+</odoo>
