@@ -38,6 +38,7 @@ class ResPartner(models.Model):
     comment = fields.Html()
     tipo_de_mora = fields.Many2one(string='Causa de Mora', comodel_name='x_account_overdue_type', on_delete="set null")
     x_my_parent_ids = fields.Many2many(comodel_name='res.partner', string='Ids de padres', compute="_compute_parent_ids", readonly= True)
+    x_fecha_ultimo_contacto = fields.Date(string="Fecha ultimo contacto", copy=False)
 
     def _compute_anchored_pages(self):
         self.anchored_survey_page_ids = self.anchored_survey_page_ids.search([('show_anchor_partner', '=', True)])
