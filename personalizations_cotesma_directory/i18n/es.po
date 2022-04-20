@@ -1,192 +1,214 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* directory
-#
+# 	* personalizations_cotesma_directory
+# 
+# Translators:
+# Juan José Scarafía <scarafia.juanjose@gmail.com>, 2022
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0+e\n"
+"Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-20 16:29+0000\n"
-"PO-Revision-Date: 2020-07-23 10:33-0300\n"
-"Last-Translator: <>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2022-04-20 11:55+0000\n"
+"PO-Revision-Date: 2022-04-19 15:08+0000\n"
+"Last-Translator: Juan José Scarafía <scarafia.juanjose@gmail.com>, 2022\n"
+"Language-Team: Spanish (https://www.transifex.com/adhoc/teams/133229/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
+"Content-Transfer-Encoding: \n"
 "Language: es\n"
-"X-Generator: Poedit 2.3.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: personalizations_cotesma_directory
-#: model_terms:ir.ui.view,arch_db:directory.telephone_id_ir_ui_view
-#: model_terms:website.page,arch_db:directory.telephone_id
+#: model_terms:ir.ui.view,arch_db:personalizations_cotesma_directory.telephone_page_template
+#: model_terms:website.page,arch_db:personalizations_cotesma_directory.telephone_id
 msgid "<strong>Note:</strong> Write for search by Name, telephone or street."
-msgstr "<strong>Nota:</strong> Escribe para buscar por nombre, numero de teléfono o calle."
+msgstr ""
 
 #. module: personalizations_cotesma_directory
-#: model:ir.model.fields,help:directory.field_directory_telephone__active
+#: model:ir.model.fields,help:personalizations_cotesma_directory.field_directory_telephone__active
 msgid "Activate or deactivate record"
-msgstr "Activar o desactivar registro"
+msgstr ""
 
 #. module: personalizations_cotesma_directory
-#: model:ir.model.fields,field_description:directory.field_directory_telephone__active
-#: model:ir.model.fields,field_description:directory.field_directory_telephonetrans__active
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephone__active
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephonetrans__active
 msgid "Active"
 msgstr "Activo"
 
 #. module: personalizations_cotesma_directory
-#: model_terms:ir.ui.view,arch_db:directory.directory_telephone_view_form
+#: model_terms:ir.ui.view,arch_db:personalizations_cotesma_directory.directory_telephone_view_form
 msgid "Active or inactive"
-msgstr "Activar o desactivar registro"
+msgstr ""
 
 #. module: personalizations_cotesma_directory
-#: model_terms:ir.ui.view,arch_db:directory.directory_telephone_view_form
+#: model_terms:ir.ui.view,arch_db:personalizations_cotesma_directory.directory_telephone_view_form
 msgid "Active record"
-msgstr "Registro activo"
+msgstr ""
 
 #. module: personalizations_cotesma_directory
-#: model_terms:ir.ui.view,arch_db:directory.directory_telephone_view_form
+#: model_terms:ir.ui.view,arch_db:personalizations_cotesma_directory.directory_telephone_view_form
 msgid "Contact Phone"
-msgstr "Teléfono de contacto"
+msgstr ""
 
 #. module: personalizations_cotesma_directory
-#: model_terms:ir.ui.view,arch_db:directory.directory_telephone_view_form
+#: model_terms:ir.ui.view,arch_db:personalizations_cotesma_directory.directory_telephone_view_form
 msgid "Contact name"
-msgstr "Nombre del contacto"
+msgstr ""
 
 #. module: personalizations_cotesma_directory
-#: model:ir.model.fields,field_description:directory.field_directory_telephone__create_uid
-#: model:ir.model.fields,field_description:directory.field_directory_telephonetrans__create_uid
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephone__create_uid
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephonetrans__create_uid
 msgid "Created by"
 msgstr "Creado por"
 
 #. module: personalizations_cotesma_directory
-#: model:ir.model.fields,field_description:directory.field_directory_telephone__create_date
-#: model:ir.model.fields,field_description:directory.field_directory_telephonetrans__create_date
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephone__create_date
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephonetrans__create_date
 msgid "Created on"
-msgstr "Creado el"
+msgstr "Creado en"
 
 #. module: personalizations_cotesma_directory
-#: model:ir.ui.menu,name:directory.directory_telephone_menu_root
-#: model_terms:ir.ui.view,arch_db:directory.directory_telephone_view_form
+#: model:ir.ui.menu,name:personalizations_cotesma_directory.directory_telephone_menu_root
+#: model_terms:ir.ui.view,arch_db:personalizations_cotesma_directory.directory_telephone_view_form
 msgid "Directory"
-msgstr "Guia"
+msgstr ""
 
 #. module: personalizations_cotesma_directory
-#: model_terms:ir.ui.view,arch_db:directory.directory_telephone_view_tree
+#: model_terms:ir.ui.view,arch_db:personalizations_cotesma_directory.directory_telephone_view_tree
 msgid "Directory List"
-msgstr "Guia"
+msgstr ""
 
 #. module: personalizations_cotesma_directory
-#: model:ir.model,name:directory.model_directory_telephone
+#: model:ir.model,name:personalizations_cotesma_directory.model_directory_telephone
 msgid "Directory Telephone"
-msgstr "Guía telefónica"
+msgstr ""
 
 #. module: personalizations_cotesma_directory
-#: model:ir.model,name:directory.model_directory_telephonetrans
+#: model:ir.model,name:personalizations_cotesma_directory.model_directory_telephonetrans
 msgid "Directory Telephone Transsiel"
 msgstr ""
 
-#. module: directory
-#: model:ir.actions.act_window,name:directory.directory_telephone_action_window
+#. module: personalizations_cotesma_directory
+#: model:ir.actions.act_window,name:personalizations_cotesma_directory.directory_telephone_action_window
 msgid "Directory telephone"
-msgstr "Guía telefónica"
-
-#. module: directory
-#: model:ir.model.fields,field_description:directory.field_directory_telephone__display_name
-#: model:ir.model.fields,field_description:directory.field_directory_telephonetrans__display_name
-msgid "Display Name"
-msgstr "Nombre mostrado"
-
-#. module: directory
-#: model_terms:ir.ui.view,arch_db:directory.telephone_id_ir_ui_view
-#: model_terms:website.page,arch_db:directory.telephone_id
-msgid "Enter name to search"
-msgstr "Ingrese el nombre que desea buscar"
-
-#. module: directory
-#: model:ir.model.fields,field_description:directory.field_directory_telephone__id
-#: model:ir.model.fields,field_description:directory.field_directory_telephonetrans__id
-msgid "ID"
 msgstr ""
 
-#. module: directory
-#: model:ir.model.fields,field_description:directory.field_directory_telephone____last_update
-#: model:ir.model.fields,field_description:directory.field_directory_telephonetrans____last_update
+#. module: personalizations_cotesma_directory
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephone__display_name
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephonetrans__display_name
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#. module: personalizations_cotesma_directory
+#: model_terms:ir.ui.view,arch_db:personalizations_cotesma_directory.telephone_page_template
+#: model_terms:website.page,arch_db:personalizations_cotesma_directory.telephone_id
+msgid "Enter name to search"
+msgstr ""
+
+#. module: personalizations_cotesma_directory
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephone__id
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephonetrans__id
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: personalizations_cotesma_directory
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephone____last_update
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephonetrans____last_update
 msgid "Last Modified on"
 msgstr "Última modificación en"
 
-#. module: directory
-#: model:ir.model.fields,field_description:directory.field_directory_telephone__write_uid
-#: model:ir.model.fields,field_description:directory.field_directory_telephonetrans__write_uid
+#. module: personalizations_cotesma_directory
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephone__write_uid
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephonetrans__write_uid
 msgid "Last Updated by"
-msgstr "Última actualización por"
+msgstr "Última modificación por"
 
-#. module: directory
-#: model:ir.model.fields,field_description:directory.field_directory_telephone__write_date
-#: model:ir.model.fields,field_description:directory.field_directory_telephonetrans__write_date
+#. module: personalizations_cotesma_directory
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephone__write_date
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephonetrans__write_date
 msgid "Last Updated on"
-msgstr "Última actualización el"
+msgstr "Última actualización en"
 
-#. module: directory
-#: model:ir.ui.menu,name:directory.directory_telephone_list
+#. module: personalizations_cotesma_directory
+#: model:ir.ui.menu,name:personalizations_cotesma_directory.directory_telephone_list
 msgid "List"
-msgstr "Lista"
+msgstr ""
 
-#. module: directory
-#: model:ir.model.fields,field_description:directory.field_directory_telephone__name
-#: model:ir.model.fields,field_description:directory.field_directory_telephonetrans__name
-#: model_terms:ir.ui.view,arch_db:directory.telephone_id_ir_ui_view
-#: model_terms:website.page,arch_db:directory.telephone_id
+#. module: personalizations_cotesma_directory
+#: model:res.groups,name:personalizations_cotesma_directory.group_directory_manager
+msgid "Manager"
+msgstr ""
+
+#. module: personalizations_cotesma_directory
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephone__name
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephonetrans__name
+#: model_terms:ir.ui.view,arch_db:personalizations_cotesma_directory.telephone_page_template
+#: model_terms:website.page,arch_db:personalizations_cotesma_directory.telephone_id
 msgid "Name"
 msgstr "Nombre"
 
-#. module: directory
-#: model:ir.model.fields,field_description:directory.field_directory_telephone__phone
-#: model:ir.model.fields,field_description:directory.field_directory_telephonetrans__phone
+#. module: personalizations_cotesma_directory
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephone__phone
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephonetrans__phone
 msgid "Phone"
-msgstr "Teléfono"
+msgstr ""
 
-#. module: directory
-#: model_terms:ir.ui.view,arch_db:directory.telephone_id_ir_ui_view
-#: model_terms:website.page,arch_db:directory.telephone_id
+#. module: personalizations_cotesma_directory
+#: model_terms:ir.ui.view,arch_db:personalizations_cotesma_directory.telephone_page_template
+#: model_terms:website.page,arch_db:personalizations_cotesma_directory.telephone_id
 msgid "Search"
-msgstr "Buscar"
+msgstr ""
 
-#. module: directory
-#: model:ir.model.fields,field_description:directory.field_directory_telephone__street
-#: model:ir.model.fields,field_description:directory.field_directory_telephonetrans__street
-#: model_terms:ir.ui.view,arch_db:directory.telephone_id_ir_ui_view
-#: model_terms:website.page,arch_db:directory.telephone_id
+#. module: personalizations_cotesma_directory
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephone__street
+#: model:ir.model.fields,field_description:personalizations_cotesma_directory.field_directory_telephonetrans__street
+#: model_terms:ir.ui.view,arch_db:personalizations_cotesma_directory.telephone_page_template
+#: model_terms:website.page,arch_db:personalizations_cotesma_directory.telephone_id
 msgid "Street"
-msgstr "Dirección"
+msgstr ""
 
-#. module: directory
-#: model_terms:ir.ui.view,arch_db:directory.directory_telephone_view_form
+#. module: personalizations_cotesma_directory
+#: model_terms:ir.ui.view,arch_db:personalizations_cotesma_directory.directory_telephone_view_form
 msgid "Street Contact"
-msgstr "Dirección de contacto"
+msgstr ""
 
-#. module: directory
-#: model:ir.ui.menu,name:directory.directory_telephone
-#: model_terms:ir.ui.view,arch_db:directory.telephone_id_ir_ui_view
-#: model_terms:website.page,arch_db:directory.telephone_id
+#. module: personalizations_cotesma_directory
+#: model:ir.ui.menu,name:personalizations_cotesma_directory.directory_telephone
+#: model_terms:ir.ui.view,arch_db:personalizations_cotesma_directory.telephone_page_template
+#: model_terms:website.page,arch_db:personalizations_cotesma_directory.telephone_id
 msgid "Telephone"
-msgstr "Teléfono"
+msgstr ""
 
-#. module: directory
-#: model_terms:ir.ui.view,arch_db:directory.telephone_id_ir_ui_view
-#: model_terms:website.page,arch_db:directory.telephone_id
+#. module: personalizations_cotesma_directory
+#: model_terms:ir.ui.view,arch_db:personalizations_cotesma_directory.telephone_page_template
+#: model_terms:website.page,arch_db:personalizations_cotesma_directory.telephone_id
 msgid "Telephone Directory"
-msgstr "Directorio Telefónico"
+msgstr ""
 
-#. module: directory
-#: model_terms:ir.ui.view,arch_db:directory.telephone_id_ir_ui_view
-#: model_terms:website.page,arch_db:directory.telephone_id
+#. module: personalizations_cotesma_directory
+#: model:res.groups,comment:personalizations_cotesma_directory.group_directory_user
+msgid "The user will be able to read."
+msgstr ""
+
+#. module: personalizations_cotesma_directory
+#: model:res.groups,comment:personalizations_cotesma_directory.group_directory_manager
+msgid "The user will have access to the directory telephone configuration."
+msgstr ""
+
+#. module: personalizations_cotesma_directory
+#: model_terms:ir.ui.view,arch_db:personalizations_cotesma_directory.telephone_page_template
+#: model_terms:website.page,arch_db:personalizations_cotesma_directory.telephone_id
 msgid "close"
-msgstr "cerrar"
+msgstr ""
 
-#. module: directory
-#: model_terms:ir.ui.view,arch_db:directory.telephone_id_ir_ui_view
-#: model_terms:website.page,arch_db:directory.telephone_id
+#. module: personalizations_cotesma_directory
+#: model_terms:ir.ui.view,arch_db:personalizations_cotesma_directory.telephone_page_template
+#: model_terms:website.page,arch_db:personalizations_cotesma_directory.telephone_id
 msgid "ml-2"
+msgstr ""
+
+#. module: personalizations_cotesma_directory
+#: model:res.groups,name:personalizations_cotesma_directory.group_directory_user
+msgid "public user"
 msgstr ""
