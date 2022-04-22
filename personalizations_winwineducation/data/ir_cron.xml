@@ -153,7 +153,7 @@ for invoice in env['account.move'].search([('state', '=', 'posted'), ('invoice_p
     <field name="state">code</field>
     <field name="binding_type">action</field>
     <field name="code">
-domain = [('account_id.internal_type', '=', 'receivable'), ('full_reconcile_id', '=', False), ('amount_residual','!=', 0)]
+domain = [('account_id.internal_type', '=', 'receivable'), ('full_reconcile_id', '=', False), ('amount_residual','>', 0)]
 all_partner_ids = []
 to_date = datetime.date.today()
 # first_date_of_year = to_date.replace(day=1, month=1)
