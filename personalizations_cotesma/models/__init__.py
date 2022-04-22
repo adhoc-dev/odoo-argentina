@@ -8,4 +8,8 @@ from . import mail_compose_message
 from . import purchase_request
 from . import stock_location
 from . import product_product
+<<<<<<< HEAD
 >>>>>>> 131d749... temp
+=======
+from . import stock_move
+>>>>>>> 0c4c5da... temp

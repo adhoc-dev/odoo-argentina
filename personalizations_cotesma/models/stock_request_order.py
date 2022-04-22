@@ -8,6 +8,8 @@ class StockRequest(models.Model):
 
     user_tag_allow_ids = fields.Many2many('product.template.tag', compute="_compute_tag_allow_ids")
     warehouse_code = fields.Char(related='warehouse_id.code')
+    observations = fields.Text(string='Observaciones')
+
 
     
     @api.depends('warehouse_id')
