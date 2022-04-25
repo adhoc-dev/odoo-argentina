@@ -27,4 +27,21 @@
       </data>
     </field>
   </record>
+
+  <record id="personalizations_arbusta.required_fields" model="ir.ui.view">
+    <field name="name">personalizations.arbusta.required.fields</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="." position="inside">
+        <field name="supplier_rank" invisible="1"/>
+      </xpath>
+      <field name="vat" position="attributes">
+        <attribute name="attrs">{'required': [('supplier_rank', '&gt;', 0)]}</attribute>
+      </field>
+      <field name="category_id" position="attributes">
+        <attribute name="attrs">{'required': [('supplier_rank', '&gt;', 0)]}</attribute>
+      </field>
+    </field>
+  </record>
 </odoo>
