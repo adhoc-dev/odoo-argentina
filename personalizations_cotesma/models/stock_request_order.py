@@ -24,8 +24,6 @@ class StockRequest(models.Model):
                 raise UserError('Estos productos: "%s" no tienen permisos para generar Pedido de existencias.' % ' - '.join(product_without_access.mapped('name')))
         return super()._create_from_product_multiselect(products)
 
-<<<<<<< HEAD
-=======
     def action_confirm(self):
         res = super().action_confirm()
         for rec in self.filtered("location_id.partner_id"):
@@ -71,4 +69,3 @@ class StockRequest(models.Model):
             'warehouse_id': self.warehouse_id.id,
         }
         self.env['stock.request'].create(vals)
->>>>>>> 131d749... temp
