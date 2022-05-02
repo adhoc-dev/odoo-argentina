@@ -88,4 +88,15 @@
       </data>
     </field>
   </record>
+
+  <record id="view_employee_personalization_form" model="ir.ui.view">
+    <field name="name">hr.employee.form.personalization</field>
+      <field name="model">hr.employee</field>
+      <field ref="hr.view_employee_form" name="inherit_id"/>
+      <field name="arch" type="xml">
+        <field name="departure_reason" position="after">
+          <field name="departure_date"/>
+        </field>
+    </field>
+  </record>
 </odoo>

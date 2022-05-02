@@ -6,6 +6,7 @@ from . import x_res_partner_emergency_contact
 from . import crm_lead
 from . import crm_team
 from . import hr_applicant
+from . import hr_departure_wizard
 from . import hr_employee
 from . import hr_job
 from . import maintenance_request

@@ -1,6 +1,10 @@
 {
     'name': 'personalizations_winwineducation',
+<<<<<<< HEAD
     'version': '13.0.1.3.0',
+=======
+    'version': '13.0.1.5.0',
+>>>>>>> c088e50... temp
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -31,6 +35,7 @@
         'views/crm_lead_views.xml',
         'views/crm_team_views.xml',
         'views/hr_applicant_views.xml',
+        'views/hr_departure_wizard_views.xml',
         'views/hr_employee_views.xml',
         'views/hr_job_views.xml',
         'views/maintenance_request_views.xml',

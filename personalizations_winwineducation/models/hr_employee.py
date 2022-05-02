@@ -27,3 +27,4 @@ class HrEmployee(models.Model):
     x_studio_carrera_finalizada_1 = fields.Selection(string="Carrera finalizada", selection=[["Sí","Sí"],["No","No"]], copy=False)
     x_studio_field_EjHsb = fields.Selection(string="Estado", selection=[["activo","Activo"],["licencia","Licencia"],["baja","Baja"],["Suplente","Suplente"]], copy=False)
     x_studio_asignaturas = fields.Many2many(string="Asignaturas", comodel_name="academic.subject", relation="x_academic_subject_hr_employee_rel", column1="hr_employee_id", column2="academic_subject_id", copy=False)
+    departure_date = fields.Date(string="Fecha de salida")
