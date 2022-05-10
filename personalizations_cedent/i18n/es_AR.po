@@ -1,0 +1,65 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* personalizations_cedent
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-09 18:40+0000\n"
+"PO-Revision-Date: 2022-05-09 18:40+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: personalizations_cedent
+#: model:ir.model.fields,field_description:personalizations_cedent.field_sale_coupon_program__stock_available
+msgid "Available Stock on Promotion"
+msgstr "Stock Disponible en Promoción"
+
+#. module: personalizations_cedent
+#: model:ir.model.fields,field_description:personalizations_cedent.field_sale_coupon_program__max_stock_quantity
+msgid "Max Quantity"
+msgstr "Cantidad Máxima"
+
+#. module: personalizations_cedent
+#: model:ir.model,name:personalizations_cedent.model_sale_coupon_program
+msgid "Sales Coupon Program"
+msgstr "Programa de cupones de ventas"
+
+#. module: personalizations_cedent
+#: model:ir.model,name:personalizations_cedent.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: personalizations_cedent
+#: model:ir.model.fields,field_description:personalizations_cedent.field_sale_coupon_program__show_max_stock
+msgid "Show Max Stock"
+msgstr ""
+
+#. module: personalizations_cedent
+#: model:ir.model.fields,help:personalizations_cedent.field_sale_coupon_program__max_stock_quantity
+msgid "if 0 = no limit"
+msgstr "Si es 0 no hay límite de stock"
+
+#. module: personalizations_cedent
+#: model_terms:ir.ui.view,arch_db:personalizations_cedent.sale_coupon_max_stock
+msgid "Max quantity in promotion"
+msgstr "Stock máximo en promoción"
+
+#. module: personalizations_cedent
+#: model_terms:ir.ui.view,arch_db:personalizations_cedent.sale_coupon_max_stock
+msgid "Remaining quantity in promotion"
+msgstr "Stock restante en promoción"
+
+#. module: personalizations_cedent
+#: code:addons/personalizations_cedent/models/sale_coupon_program.py:0
+#, python-format
+msgid ""
+"There is not enough stock for the product %s only %s left in promotion. "
+"Please select up to that quantity."
+msgstr "No hay suficiente stock para el producto %s, soloq quedan %s en promoción. "
+"Por favor elija hasta dicha cantidad."
