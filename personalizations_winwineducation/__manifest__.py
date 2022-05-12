@@ -1,10 +1,6 @@
 {
     'name': 'personalizations_winwineducation',
-<<<<<<< HEAD
-    'version': '13.0.1.3.0',
-=======
     'version': '13.0.1.5.0',
->>>>>>> c088e50... temp
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
