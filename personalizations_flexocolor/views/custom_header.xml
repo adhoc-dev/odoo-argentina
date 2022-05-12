@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="custom_header" model="ir.ui.view">
+    <field name="name">Header custom para ficha tecnica</field>
+    <field ref="web.internal_layout" name="inherit_id"/>
+    <field name="priority">99</field>
+    <field name="arch" type="xml">
+        <xpath expr="//div[hasclass('offset-2')]" position="replace">
+        <t t-if="not custom_title">
+            <div class="col-2 offset-2 text-center">
+                <span t-esc="company.name"/>
+            </div>
+        </t>
+        <t t-else="else">
+            <div class="col-4 text-right">
+                <span t-esc="custom_title"/>
+            </div>
+        </t>
+        </xpath>
+    </field>
+  </record>
+</odoo>

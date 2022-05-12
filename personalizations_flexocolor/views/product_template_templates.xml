@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+ <template id="ficha_tecnica_template">
+        <t t-name="personalizations_flexocolor.ficha_tecnica_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+            <t t-call="personalizations_flexocolor.ficha_tecnica_view"/>
+            </t>
+        </t>
+        </t>
+    </template>
+
+<template id="ficha_tecnica_view">
+ <t t-name="personalizations_flexocolor.ficha_tecnica_view">
+ <t class="header" t-call="web.internal_layout">
+ <t t-set="custom_title" t-value="'FICHA TECNICA'"/>
+  <div class="container">
+ <div name="section0" class="row">
+        <div class="col-12">                
+            <span style="font-family:lato hairline;">Cliente: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_client_display"/>
+            <br />
+            <span style="font-family:lato hairline;">Artículo: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.display_name"/>
+            </div>
+ </div>
+ </div>
+
+  <div class="container">
+ <div name="section1" class="row">
+        <div class="col-6">
+            <span style="font-family:lato hairline;">Nº Orden de compra: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_orden_de_compra"/>
+            <br />
+            <span style="font-family:lato hairline;">Cód. de barras: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_barcode"/>
+            <br />
+            <span style="font-family:lato hairline;">Fecha de entrega: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_date_of_delivery"/>
+            <br />
+        </div>
+        <div class="col-6">
+            <span style="font-family:lato hairline;">Cont. neto: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_quantity"/>
+            <span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_unity"/>
+            <br />
+            <span style="font-family:lato hairline;">Cantidad: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_cantidad"/>
+            <br />
+            <span style="font-family:lato hairline;">Fecha última partida: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_last_date"/>
+
+        </div>
+ </div>
+ </div>
+ 
+ <hr style="border-top: 1px solid black"/>
+ 
+  <div class="container">
+ <div name="section1" class="row">
+        <div class="col-5">                
+            <span style="font-family:lato hairline;">Tipo de envase: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_envase_id.name"/>
+            <br />
+            <span style="font-family:lato hairline;">Máquina: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_machine_id"/>
+            <br /> 
+            <span style="font-family:lato hairline;">Cilindro: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_cylinder_id"/>
+            <br />
+            <div t-if="o.x_machine_id.name in ['Flexo 6/600', '	Flexo 6/1000']"><span style="font-family:lato hairline;">Cilindro: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_cylinder_id.name"/></div>
+            <span style="font-family:lato hairline;">Distancia de taco: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_distancia_tacos"/><span style="font-family:lato black;" class="font-weight-bold"> mm</span>
+            <br /> 
+            <span style="font-family:lato hairline;">Cantidad de imágenes: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_cantidad_imagenes"/>
+            
+            </div>
+        <div class="col-5">
+       <span style="font-family:lato hairline;">Ancho de banda: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_ancho_banda"/><span style="font-family:lato black;" class="font-weight-bold"> mm</span>
+            <br />
+            <span style="font-family:lato hairline;">Cantidad de bandas: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_cantidad_bandas"/>
+            <br />
+            <span style="font-family:lato hairline;">Ancho de lámina: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_ancho_lamina"/><span style="font-family:lato black;" class="font-weight-bold"> mm</span>
+            <br />
+            <span style="font-family:lato hairline;">Bobinado N°: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_coil"/>
+            <br />
+            <span style="font-family:lato hairline;">Ubicación del taco: </span><span t-if="o.x_ubicacion_taco != 'Otros'" class="font-weight-bold" t-field="o.x_ubicacion_taco"/><span t-if="o.x_ubicacion_taco == 'Otros'" class="font-weight-bold" t-field="o.x_ubicacion_taco_otros"/>
+        </div>
+        <div class="col-1">
+            <img t-if="o.x_coil.img" t-att-src="image_data_uri(o.x_coil.img)" style="max-height: 150px; max-width: 150px;" alt="img"/>
+        </div>
+ </div>
+ </div>
+ 
+<hr style="border-top: 1px solid black"/>
+
+   <table class="w-100">
+    <thead> 
+         <tr>
+            <td><span style="font-family:lato hairline;">Material a imprimir A:</span></td>
+            <td class="text-left"><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_material_imprimir_a.name"/></td>
+            <td class="font-weight-bold" t-field="o.x_ancho_a"/>
+        </tr>
+         <tr>
+            <td><span style="font-family:lato hairline;">Material a laminar B:</span></td>
+            <td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_material_laminar_b.name"/></td>
+            <td class="font-weight-bold" t-field="o.x_ancho_b"/>
+        </tr>
+        <tr>
+            <td><span style="font-family:lato hairline;">Material a laminar C:</span></td>
+            <td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_material_laminar_c.name"/></td>
+            <td class="font-weight-bold" t-field="o.x_ancho_c"/>
+        </tr>
+    </thead>
+</table>           
+<div class="container" style="margin-top:-4px;">
+ <div name="section1" class="row">
+        <div class="col-4">                
+            <span style="font-family:lato hairline;">Mts. por kg.: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_mts_kg"/>
+            </div>
+        <div class="col-4">
+            <div>                
+            <span style="font-family:lato hairline;">Kg. por 1000 mts: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_kg_1000"/>
+            </div>
+        </div>
+        <div class="col-4">
+             <div>                
+            <span style="font-family:lato hairline;">mts. a imprimir: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_mts_imprimir"/>
+            </div>
+        </div>
+ </div>
+ </div>
+                 <hr style="border-top: 1px solid black"/>
+                    <table cellspacing="0" cellpadding="0"  class="table table-condensed">
+                        <tr>
+                            <th width="5%"><span class="font-weight-normal" style="font-family:lato hairline;">1</span> </th>
+                            <th width="5%"><span class="font-weight-normal" style="font-family:lato hairline;">Tinta:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_tinta1.name"/></td>
+                            <th width="5%"><span class="font-weight-normal" style="font-family:lato hairline;">Anilox:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_anilox1"/></td>
+                            <th width="5%"><span class="font-weight-normal" style="font-family:lato hairline;">Pantone:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_pantone1"/></td>
+                        </tr>
+                         <tr>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">2</span></th>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Tinta:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_tinta2.name"/></td>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Anilox:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_anilox2"/></td>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Pantone:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_pantone2"/></td>
+                        </tr>
+                         <tr>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">3</span></th>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Tinta:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_tinta3.name"/></td>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Anilox:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_anilox3"/></td>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Pantone:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_pantone3"/></td>
+                        </tr>
+                        <tr>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">4</span></th>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Tinta:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_tinta4.name"/></td>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Anilox:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_anilox4"/></td>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Pantone:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_pantone4"/></td>
+                        </tr>
+                        <tr>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">5</span></th>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Tinta:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_tinta5.name"/></td>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Anilox:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_anilox5"/></td>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Pantone:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_pantone5"/></td>
+                        </tr>
+                        <tr>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">6</span></th>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Tinta:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_tinta6.name"/></td>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Anilox:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_anilox6"/></td>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Pantone:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_pantone6"/></td>
+                        </tr>
+                        <tr>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">7</span></th>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Tinta:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_tinta7.name"/></td>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Anilox:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_anilox7"/></td>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Pantone:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_pantone7"/></td>
+                        </tr>
+                        <tr>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">8</span></th>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Tinta:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_tinta8.name"/></td>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Anilox:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_anilox8"/></td>
+                            <th><span class="font-weight-normal" style="font-family:lato hairline;">Pantone:</span></th><td><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_pantone8"/></td>
+                        </tr>
+            </table>
+
+                 <hr style="border-top: 1px solid black"/>
+                 
+                 
+                 <div class="container">
+                 <div name="section1" class="row">
+                        <div class="col-6">                
+                            <span style="font-family:lato hairline;">Diám. bobina: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_diametro_bobina"/><span style="font-family:lato black;" class="font-weight-bold"> mm</span>
+                            <br />
+                            <span style="font-family:lato hairline;">Peso bobina: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_maximo_bobina"/><span style="font-family:lato black;" class="font-weight-bold"> kg</span>
+                            <br />
+                            </div>
+                        <div class="col-6">
+                            <span style="font-family:lato hairline;">Tara: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_tara"/><span style="font-family:lato black;" class="font-weight-bold"> g</span>
+                            <br />
+                            <span style="font-family:lato hairline;">Tipo de empalme: </span><span style="font-family:lato black;" class="font-weight-bold" t-field="o.x_empalme"/>
+                            <br />
+                        </div>
+                 </div>
+                 </div>
+ 
+                
+                <hr style="border-top: 1px solid black"/>
+                
+                <div class="container">
+               <div name="section1" class="row">
+                      <div class="col-12">                
+                          <span style="font-family:lato hairline;">Observaciones: </span><span class="font-weight-bold" style="font-family:lato black, font-size : 16px;" t-field="o.x_observations"/><![CDATA[
+                            &nbsp;
+                            ]]>
+                          </div>
+                      </div>
+               </div>
+               
+
+
+
+</t>
+</t>
+</template>
+
+</odoo>

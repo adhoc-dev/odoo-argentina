@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="personalization_ficha_tecnica" model="ir.ui.view">
+    <field name="name">Personalización Ficha Tecnica</field>
+    <field name="model">product.template</field>
+    <field ref="product.product_template_only_form_view" name="inherit_id"/>
+    <field name="priority">99</field>
+    <field name="arch" type="xml">
+            <page name="invoicing" position="after">
+                    <page string="Ficha técnica" name="data_sheet">
+                      <group name="section1" string="Sección 1">
+                        <field name="x_client" domain="[('customer_rank','&gt;', 0)]"/>
+                        <field name="display_name" string="Artículo"/>
+                        <field name="x_last_date"/>
+                        <field name="x_quantity"/>
+                        <field name="x_unity" string="" placeholder="Unidad"/>
+                        <field name="x_barcode"/>
+                        <button name="action_ov_compute" id="action_ov_compute_btn" type="object" string="Traer datos venta" class="oe_highlight"/>
+                        <field name="x_orden_de_compra"/>
+                        <field name="x_date_of_delivery"/>
+                        <field name="x_cantidad"/>
+                      </group>
+                      <group name="section2" string="Sección 2">
+                        <field name="x_envase_id"/>
+                        <field name="x_machine_id"/>
+                        <field name="x_cylinder_ids" invisible="1"/>
+                        <field name="x_cylinder_id" domain="[('id','in', x_cylinder_ids)]"/>
+                        <field name="x_distancia_tacos"/>
+                        <field name="x_cantidad_imagenes"/>
+                        <field name="x_ancho_banda"/>
+                        <field name="x_cantidad_bandas"/>
+                        <field name="x_ancho_lamina"/>
+                        <field name="x_coil"/>
+                        <field name="x_ubicacion_taco" />
+                        <field name="x_ubicacion_taco_otros" attrs="{'invisible':[('x_ubicacion_taco', '!=','Otros')]}"/>
+                      </group>
+                      <group name="section3" string="Sección 3">
+                          <field name="x_material_imprimir_a" domain="[('categ_id.name','=', 'Laminas')]"/>
+                          <field name="x_ancho_a" widget="many2many_tags"/>
+                          <field name="x_material_laminar_b" domain="[('categ_id.name','=', 'Laminas')]"/>
+                          <field name="x_ancho_b" widget="many2many_tags"/>
+                          <field name="x_material_laminar_c" />
+                          <field name="x_ancho_c" widget="many2many_tags"/>
+                          <field name="x_mts_kg"/>
+                          <field name="x_kg_1000"/>
+                          <field name="x_mts_imprimir"/>
+                      </group>
+                      <group name="section4" string="Sección 4">
+                          <group name="tinta1" string="1">
+                              <field name="x_tinta1" domain="[('categ_id.name','=', 'Tintas')]" />
+                              <field name="x_pantone1" />
+                              <field name="x_anilox1" />
+                          </group>
+                          <group name="tinta2" string="2">
+                              <field name="x_tinta2" domain="[('categ_id.name','=', 'Tintas')]" />
+                              <field name="x_pantone2" />
+                              <field name="x_anilox2" />
+                          </group>
+                          <group name="tinta3" string="3">
+                              <field name="x_tinta3" domain="[('categ_id.name','=', 'Tintas')]" />
+                              <field name="x_pantone3" />
+                              <field name="x_anilox3" />
+                          </group>
+                          <group name="tinta4" string="4">
+                              <field name="x_tinta4" domain="[('categ_id.name','=', 'Tintas')]" />
+                              <field name="x_pantone4" />
+                              <field name="x_anilox4" />
+                          </group>
+                          <group name="tinta5" string="5">
+                              <field name="x_tinta5" domain="[('categ_id.name','=', 'Tintas')]" />
+                              <field name="x_pantone5" />
+                              <field name="x_anilox5" />
+                          </group>
+                          <group name="tinta6" string="6">
+                              <field name="x_tinta6" domain="[('categ_id.name','=', 'Tintas')]" />
+                              <field name="x_pantone6" />
+                              <field name="x_anilox6" />
+                          </group>
+                          <group name="tinta7" string="7">
+                              <field name="x_tinta7" domain="[('categ_id.name','=', 'Tintas')]" />
+                              <field name="x_pantone7" />
+                              <field name="x_anilox7" />
+                          </group>
+                          <group name="tinta8" string="8">
+                              <field name="x_tinta8" domain="[('categ_id.name','=', 'Tintas')]" />
+                              <field name="x_pantone8" />
+                              <field name="x_anilox8" />
+                          </group>
+                      </group>
+
+                      <group name="section5" string="Sección 5">
+                          <field name="x_diametro_bobina"/>
+                          <field name="x_tara"/>
+                          <field name="x_maximo_bobina"/>
+                          <field name="x_minimo_bobina"/>
+                          <field name="x_empalme"/>
+                          <field name="x_observations"/>
+                      </group>
+                    </page>
+            </page>
+    </field>
+  </record>
+
+  <record id="print_ficha_tecnica" model="ir.ui.view">
+    <field name="name">Agregar imprimir ficha técnica</field>
+    <field name="model">product.template</field>
+    <field ref="product.product_template_only_form_view" name="inherit_id"/>
+    <field name="priority">99</field>
+    <field name="arch" type="xml">
+<xpath expr="//button[@name='action_update_quantity_on_hand']" position="after">
+    <button name="action_print_ficha" id="print_ficha_btn" type="object" string="Imprimir ficha técnica" class="oe_highlight"/>
+        </xpath> 
+    </field>   
+  </record>
+
+</odoo>
+
+
+
+
+
+
+
+
