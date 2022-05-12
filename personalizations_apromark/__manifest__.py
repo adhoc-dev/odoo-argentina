@@ -14,8 +14,6 @@
         'website_sale',
         'account_analytic_default',
         'sale_subscription',
-        'account_payment_group',
-        'l10n_ar',
     ],
     'data': [
         'security/ir.model.access.csv',
