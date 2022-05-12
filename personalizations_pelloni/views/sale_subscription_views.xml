@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sale_subscription_view_search" model="ir.ui.view">
+        <field name="name">sale.subscription.search</field>
+        <field name="model">sale.subscription</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_view_search"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="main_direct_debit_mandate_id"/>
+            </field>
+            <group>
+                <filter string="Main Direct Debit Mandate" name="groupby_main_direct_debit_mandate_id" domain="[]" context="{'group_by': 'main_direct_debit_mandate_id'}"/>
+            </group>
+        </field>
+    </record>
+
+    <record id="sale_subscription_view_list" model="ir.ui.view">
+        <field name="name">sale.subscription.list</field>
+        <field name="model">sale.subscription</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_view_list"/>
+        <field name="arch" type="xml">
+            <field name="recurring_total" position="after">
+                <field name="recurring_amount_total" string="Total con impuestos"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="sale_subscription_view_form" model="ir.ui.view">
+        <field name="name">sale.subscription.form</field>
+        <field name="model">sale.subscription</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+        <field name="arch" type="xml">
+            <field name="recurring_total" position="after">
+                <field name="recurring_amount_total" string="Total con impuestos"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
