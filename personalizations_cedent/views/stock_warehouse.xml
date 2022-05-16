@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_stock_warehouse_orderpoint_form" model="ir.ui.view">
+        <field name="name">stock.warehouse.orderpoint.form</field>
+        <field name="model">stock.warehouse.orderpoint</field>
+        <field name="inherit_id" ref="stock_ux.view_warehouse_orderpoint_form"/>
+        <field name="arch" type="xml">
+            <field name="warehouse_rotation_stdev" position="after">
+                <field name="minimum_factor"/>
+                <field name="maximum_factor"/>
+                <label for="product_qty_min_suggested"/>
+                <div class="o_row">
+                    <field name="product_qty_min_suggested"/>
+                    <field name="product_uom_name"/>
+                </div>
+                <label for="product_qty_max_suggested"/>
+                <div class="o_row">
+                    <field name="product_qty_max_suggested"/>
+                    <field name="product_uom_name"/>
+                </div>
+            </field>
+        </field>
+    </record>
+</odoo>
