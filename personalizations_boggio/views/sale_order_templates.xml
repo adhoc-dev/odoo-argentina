@@ -144,7 +144,7 @@
     </xpath>
 
     <span t-field="line.product_id.image_256" position="replace">
-      <a target="_blank" t-att-href="'https://ib.ingenieriaboggio.com.ar/shop/product/%i' % (line.product_id.product_tmpl_id.id)">
+      <a target="_blank" t-att-href="'https://www.ingenieriaboggio.com.ar/shop/product/%i' % (line.product_id.product_tmpl_id.id)">
         <t>$0</t>
       </a>
     </span>

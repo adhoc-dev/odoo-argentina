@@ -159,7 +159,7 @@
       <!-- <span t-esc="o.env['website.doc.toc'].search([['id','in',o.invoice_line_ids.mapped(lambda z: z.product_id.x_documents.id) ]]).mapped(lambda line: ('(*)'+tools.html2plaintext(line.content)) )"/> -->
       <p t-if="o.company_id.id == 4">
         <div class="row">
-          <a target="_blank" t-att-href="'https://ib.ingenieriaboggio.com.ar/page/politica-de-devoluciones'">Ver Politica de devoluciones /</a>
+          <a target="_blank" t-att-href="'https://www.ingenieriaboggio.com.ar/page/politica-de-devoluciones'">Ver Politica de devoluciones /</a>
           <a target="_blank" t-att-href="'https://www.ingenieriaboggio.com.ar/page/cbu'"> Ver datos bancarios CBU's </a>
           <br/>
           <a target="_blank" t-att-href="'https://docs.google.com/forms/d/e/1FAIpQLScCnS_ZjvLb2N27M733reEUpqnP9ZwkE1QqPgC9cwrqkpR5Ww/viewform?usp=pp_url?entry.336986699=' + (o.partner_id.commercial_partner_id.name or '' ) + '?entry.1878424618=' + (o.l10n_latam_document_number or '')">¿Como fue atendido?</a>
@@ -333,7 +333,7 @@
       <!-- <span t-esc="o.env['website.doc.toc'].search([['id','in',o.invoice_line_ids.mapped(lambda z: z.product_id.x_documents.id) ]]).mapped(lambda line: ('(*)'+tools.html2plaintext(line.content)) )"/> -->
       <p t-if="o.company_id.id == 4">
         <div class="row">
-          <a target="_blank" t-att-href="'https://ib.ingenieriaboggio.com.ar/page/politica-de-devoluciones'">Ver Politica de devoluciones /</a>
+          <a target="_blank" t-att-href="'https://www.ingenieriaboggio.com.ar/page/politica-de-devoluciones'">Ver Politica de devoluciones /</a>
           <a target="_blank" t-att-href="'https://www.ingenieriaboggio.com.ar/page/cbu'"> Ver datos bancarios CBU's </a>
           <br/>
           <a target="_blank" t-att-href="'https://docs.google.com/forms/d/e/1FAIpQLScCnS_ZjvLb2N27M733reEUpqnP9ZwkE1QqPgC9cwrqkpR5Ww/viewform?usp=pp_url?entry.336986699=' + (o.partner_id.commercial_partner_id.name or '' ) + '?entry.1878424618=' + (o.l10n_latam_document_number or '')">¿Como fue atendido?</a>
