@@ -8,10 +8,9 @@
     <field name="code"><![CDATA[object = record
 # CONFIG
 Distribuidora_ID = 1
-Roberto_Cala_ID = 3
+German_Cala_ID = 4
 Iva_0_cala_ID = 5
-#Iva_21_cala_ID = 1
-#Iva_10_5_cala_ID = 7
+Iva_0_german_cala_ID = 103
 
 
 def move_invoice(invoice, company_id):
@@ -19,23 +18,40 @@ def move_invoice(invoice, company_id):
     Moves the invoice to another company
     """
     invoice = invoice.with_context(force_company=company_id)
-    
 
     # Al escribir la compania limpiamos tmb las posicioens fiscales por constraint de que no puede haber compania y posicion de otra cia. Luego total el onchange termina asignando la compania que corresponda
     invoice.write({'fiscal_position_id': False})
-
+    journal = invoice.sudo().with_context(default_company_id=company_id, force_company = company_id, default_type=invoice.type)._get_default_journal().id
     # Ugly hack para recalcular available_jorunal_document_type y journal_document_type_id y evitar constrain
     if invoice.journal_id:
-        invoice.write({'journal_id': invoice.with_context(
-            force_company=company_id, default_type=invoice.type)._get_default_journal().id, })
-
+      invoice = invoice.sudo()
+      invoice.write({'company_id': company_id, 'fiscal_position_id': False, 'journal_id': journal})
+    if invoice.l10n_latam_document_type_id:
+        invoice.write({ 
+            'l10n_latam_document_type_id': False,
+            'journal_id': journal,
+            'company_id': company_id,
+            'fiscal_position_id': False
+        })
     # Property fields to maintain
     property_fields = {'invoice_payment_term_id': invoice.invoice_payment_term_id.id}
     invoice._onchange_partner_id()
-    invoice._onchange_journal()
     invoice.write(property_fields)
+    for line in invoice.invoice_line_ids.with_context(check_move_validity=False):
+        taxes = line._get_computed_taxes()
+        if taxes and line.move_id.fiscal_position_id:
+            taxes = line.move_id.fiscal_position_id.map_tax(taxes, partner=line.partner_id)
+        line.write({
+          'account_id' : line._get_computed_account().id,
+          'tax_ids' :  [(6,0, taxes.ids)],
+          
+        })
+        line._onchange_price_subtotal()
+        line._onchange_balance()
+        line._onchange_mark_recompute_taxes()
     invoice._onchange_invoice_line_ids()
     return invoice
+
 
 
 def generate_child_invoice(invoice):
@@ -92,7 +108,7 @@ def generate_child_invoice(invoice):
         new_invoice.invoice_line_ids.unlink()
         new_lines.with_context(check_move_validity=False).write({'move_id': new_invoice.id})
         new_invoice._onchange_invoice_line_ids()
-        new_invoice = move_invoice(new_invoice, Roberto_Cala_ID)
+        new_invoice = move_invoice(new_invoice, German_Cala_ID)
     else:
         new_invoice = invoice
     # Si no queda nada en la factura original, se elimina
