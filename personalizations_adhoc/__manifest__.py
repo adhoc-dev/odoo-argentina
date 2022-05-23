@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_adhoc',
-    'version': '13.0.1.1.0',
+    'version': "15.0.1.0.0",
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -16,7 +16,7 @@
         'data/hr_seniority_data.xml',
         'security/ir.model.access.csv',
     ],
-    'installable': False,
+    'installable': True,
     'application': False,
     'license': 'OPL-1',
 }
