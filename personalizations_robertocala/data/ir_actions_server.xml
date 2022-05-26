@@ -133,23 +133,21 @@ def main():
 action = main()]]></field>
   </record>
   <record model="ir.actions.server" id="personalizations_robertocala.ir_act_server_1273">
-    <field name="name">Uptade prices (de producto a ail)</field>
+    <field name="name">Update prices (de producto a ail)</field>
     <field ref="account.model_account_move" name="model_id"/>
     <field name="state">code</field>
     <field name="code"><![CDATA[
 
-for line in record.invoice_line_ids:
+for line in record.invoice_line_ids.with_context(check_move_validity=False):
     price_unit = line.product_id.standard_price
     if (
         price_unit and
             record.currency_id != line.product_id.currency_id):
-        price_unit = line.product_id.currency_id.compute(
-            price_unit, record.currency_id)
+        price_unit = line.product_id.currency_id._convert(price_unit, record.currency_id, line.move_id.company_id, line.move_id.invoice_date or datetime.datetime.now())
     if (
-            price_unit and line.uom_id and
-            line.product_id.uom_id != line.uom_id):
-        price_unit = line.product_id.uom_id._compute_price(price_unit,
-            to_unit=line.uom_id)
+            price_unit and line.product_uom_id and
+            line.product_id.uom_id != line.product_uom_id):
+        price_unit = line.product_id.uom_id._compute_price(price_unit, line.product_uom_id)
     line.write({'price_unit': price_unit})
     line._onchange_price_subtotal()
     # recomputamos impuestos

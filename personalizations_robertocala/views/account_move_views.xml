@@ -12,7 +12,7 @@
         <button name="%(personalizations_robertocala.ir_act_server_1025)d" type="action" string="Generar Facturas" attrs="{'invisible': ['|','|',('company_id', '=', 3), ('state', '!=', 'draft'), ('type', 'not in', ('out_invoice', 'out_refund'))]}" class="oe_highlight"/>
       </button>
       <field name="invoice_line_ids" position="before">
-        <button name="%(personalizations_robertocala.ir_act_server_1273)d" string="Update Prices" type="action" attrs="{'invisible':['|',('state','not in',['draft','sent']),('type', 'not in', ('in_invoice', 'in_refund'))]}"/>
+        <button name="%(personalizations_robertocala.ir_act_server_1273)d" string="Update Prices" type="action" attrs="{'invisible':['|',('state','!=', 'draft'),('type', 'not in', ('in_invoice', 'in_refund'))]}"/>
       </field>
       <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']" position="attributes">
         <attribute name="attrs">{'invisible':[('parent.type', 'in', ('in_invoice', 'in_refund'))]}</attribute>
