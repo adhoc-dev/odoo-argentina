@@ -6,6 +6,7 @@
     <field name="state">code</field>
     <field ref="account.model_account_move" name="crud_model_id"/>
     <field name="code"><![CDATA[object = record
+object = record
 # CONFIG
 Distribuidora_ID = 1
 German_Cala_ID = 4
@@ -24,8 +25,8 @@ def move_invoice(invoice, company_id):
     journal = invoice.sudo().with_context(default_company_id=company_id, force_company = company_id, default_type=invoice.type)._get_default_journal().id
     # Ugly hack para recalcular available_jorunal_document_type y journal_document_type_id y evitar constrain
     if invoice.journal_id:
-      invoice = invoice.sudo()
-      invoice.write({'company_id': company_id, 'fiscal_position_id': False, 'journal_id': journal})
+        invoice = invoice.sudo()
+        invoice.write({'company_id': company_id, 'fiscal_position_id': False, 'journal_id': journal})
     if invoice.l10n_latam_document_type_id:
         invoice.write({ 
             'l10n_latam_document_type_id': False,
@@ -42,9 +43,8 @@ def move_invoice(invoice, company_id):
         if taxes and line.move_id.fiscal_position_id:
             taxes = line.move_id.fiscal_position_id.map_tax(taxes, partner=line.partner_id)
         line.write({
-          'account_id' : line._get_computed_account().id,
-          'tax_ids' :  [(6,0, taxes.ids)],
-          
+            'account_id' : line._get_computed_account().id,
+            'tax_ids' :  [(6,0, taxes.ids)],
         })
         line._onchange_price_subtotal()
         line._onchange_balance()
@@ -87,6 +87,9 @@ def generate_child_invoice(invoice):
         if not new_quantity:
             continue
         new_line = line.copy({'quantity': new_quantity})
+        # hacemos esto por que al duplicar la linea se duplica el precio unitario
+        if new_line.price_unit != line.price_unit:
+            new_line.write({'price_unit' : line.price_unit})
         new_line.write({'sale_line_ids': [(6, 0, line.sale_line_ids.ids)]
         })
         new_lines += new_line
@@ -126,8 +129,7 @@ def main():
     action_read = actions.read()[0]
     action_read['domain'] = [('id', 'in', invoices.ids)]
     return action_read
-
-
+        
 action = main()]]></field>
   </record>
   <record model="ir.actions.server" id="personalizations_robertocala.ir_act_server_1273">
