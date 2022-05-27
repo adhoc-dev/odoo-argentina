@@ -12,7 +12,7 @@
     'data': [
         'report/bom_structure_xlsx.xml',
     ],
-    'installable': True,
+    'installable': False,
     'auto_install': False,
     'application': False,
 }
