@@ -7,9 +7,11 @@
     'depends': [
         'base',
         'crm',
+        'l10n_ar_ux',
     ],
     'data': [
         'views/crm_lead_views.xml',
+        'views/report_invoice.xml',
     ],
     'installable': True,
     'auto_install': False,
