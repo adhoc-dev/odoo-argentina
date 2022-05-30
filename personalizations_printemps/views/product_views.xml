@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="product_template_personalizations_form_view" model="ir.ui.view">
+        <field name="name">product.template.personalizations.form.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Historial de precios" groups="account.group_account_manager">
+                    <field name="price_history" widget="one2many" attrs="{'readonly': [('price_history','!=', False)]}" force_save='True'/>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

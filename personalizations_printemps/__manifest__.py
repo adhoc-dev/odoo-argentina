@@ -1,15 +1,20 @@
 {
     'name': 'Personalizations Printemps',
-    'version': '13.0.1.0.0',
+    'version': '13.0.1.1.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
         'account',
+        'product',
+        'stock_account',
     ],
     'data': [
-        'views/res_partner_view.xml'
+        'security/ir.model.access.csv',
+        'views/price_history_views.xml',
+        'views/product_views.xml',
+        'views/res_partner_view.xml',
     ],
-    'installable': True,
+    'installable': False,
     'application': False,
     'auto-install': False,
     'license': 'OPL-1',
