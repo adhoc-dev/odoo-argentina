@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_boggio',
-    'version': '13.0.1.15.0',
+    'version': '13.0.1.16.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
