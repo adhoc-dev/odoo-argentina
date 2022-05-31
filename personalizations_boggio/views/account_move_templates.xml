@@ -39,9 +39,9 @@
       <strong t-esc="o.sale_order_ids.mapped( lambda x:   '%s ' %(x.partner_shipping_id.id!=x.partner_invoice_id.id and 'Direccion Entrega: ' + (o.partner_shipping_id.name and o.partner_shipping_id.name or '.') or '') )" />
     </t>
     <span t-field="line.name" position="replace">
-      <a t-if="line.product_id.x_documents" target="_blank" t-attf-href="'https://www.ingenieriaboggio.com.ar' + line.product_id.x_documents.url_suffix" class="fa fa-book" role="img" />
+      <a t-if="line.product_id.x_documents" target="_blank" t-attf-href="{{line.product_id.x_documents.url_suffix}}" class="fa fa-book" role="img" />
       <span t-esc="'[%s] %s (%s) %s %s' % (line.product_id.default_code and line.product_id.default_code[1:] or line.product_id.product_tmpl_id.default_code and line.product_id.product_tmpl_id.default_code[1:] or '' ,line.product_id.name, line.product_id.supplier_code or '', line.tax_ids.amount==10.5 and 'IVA 10.5%' or '', line.product_id.internal_code and ' ' or line.name)" />
-      <a t-if="line.product_id.x_website_catalog" target="_blank" t-attf-href="line.product_id.x_website_catalog" class="fa fa-link" role="img" />
+      <a t-if="line.product_id.x_website_catalog" target="_blank" t-attf-href="{{line.product_id.x_website_catalog}}" class="fa fa-link" role="img" />
 
     </span>
     <xpath expr="//th[@name='th_quantity']" position="before">
@@ -213,9 +213,9 @@
     </t>
 
     <span t-field="line.name" position="replace">
-      <a t-if="line.product_id.x_documents" target="_blank" t-attf-href="'https://www.ingenieriaboggio.com.ar' + line.product_id.x_documents.url_suffix" class="fa fa-book" role="img" />
+      <a t-if="line.product_id.x_documents" target="_blank" t-attf-href="{{line.product_id.x_documents.url_suffix}}" class="fa fa-book" role="img" />
       <span t-esc="'[%s] %s (%s) %s %s' % (line.product_id.default_code and line.product_id.default_code[1:] or line.product_id.product_tmpl_id.default_code and line.product_id.product_tmpl_id.default_code[1:] or '' ,line.product_id.name, line.product_id.supplier_code or '', line.tax_ids.amount==10.5 and 'IVA 10.5%' or '', line.product_id.internal_code and ' ' or line.name)" />
-      <a t-if="line.product_id.x_website_catalog" target="_blank" t-attf-href="line.product_id.x_website_catalog" class="fa fa-link" role="img" />
+      <a t-if="line.product_id.x_website_catalog" target="_blank" t-attf-href="{{line.product_id.x_website_catalog}}" class="fa fa-link" role="img" />
 
     </span>
     <xpath expr="//th[@name='th_quantity']" position="before">
