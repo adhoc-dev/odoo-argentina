@@ -24,7 +24,7 @@
           <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', '|', ('x_state_invoice','!=','vencida_sin_nd'),('type', 'not in', ['out_invoice', 'out_refund','out_receipt'])]}">
         Tiene una factura vencida y sin ND generada para generarla haga click<bold><button name="create_debt_invoice" string="⇒ Generar ND" class="oe_link oe_inline" type="object"/></bold>
 </div>
-          <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', '|',('x_invoice_nd_id','=', False), ('state','!=','open'), ('type', 'not in', ['out_invoice', 'out_refund','out_receipt'])]}">
+          <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', '|',('x_invoice_nd_id','=', False), ('state','!=','posted'), ('type', 'not in', ['out_invoice', 'out_refund','out_receipt'])]}">
         Tiene una <bold><field name="x_invoice_nd_id" string="ND"/></bold> asociada por intereses
   </div>
         </header>
@@ -52,7 +52,9 @@
     <field ref="account.view_account_invoice_filter" name="inherit_id"/>
     <field name="arch" type="xml">
       <filter name="paid" position="after">
-        <filter name="x_state_invoice" string="Vencida sin notas de debito emitidas" domain="[('x_state_invoice', '=', 'vencida_sin_nd')]"/>
+        <filter name="Vencida sin notas de debito emitidas" domain="[('x_state_invoice', '=', 'vencida_sin_nd')]"/>
+        <filter name="Vencida" domain="[('x_state_invoice', '=', 'vencida')]"/>
+        <filter name="No vencida" domain="[('x_state_invoice', '=', 'no_vencida')]"/>
       </filter>
     </field>
   </record>

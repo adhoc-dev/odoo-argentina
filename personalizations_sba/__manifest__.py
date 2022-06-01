@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_sba',
-    'version': '13.0.1.7.0',
+    'version': '13.0.1.8.0',
     'category': 'Personalizations',
     'license': 'OPL-1',
     'author': 'ADHOC SA',
@@ -19,6 +19,7 @@
         'purchase_ux',
         'product_ux',
         'delivery',
+        'account_debit_note',
     ],
     'data': [
         'security/personalizations_sba_security.xml',
