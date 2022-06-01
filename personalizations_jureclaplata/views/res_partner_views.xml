@@ -11,6 +11,7 @@
             </field>
             <field name="dni" position="after">
                 <field name="student_code" attrs="{'invisible': [('partner_type','!=','student')]}"/>
+                <field name="red_link_id_deuda" attrs="{'invisible': [('partner_type','!=','student')]}"/>
             </field>
         </field>
     </record>

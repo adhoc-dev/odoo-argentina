@@ -13,3 +13,14 @@ class ResCompany(models.Model):
     first_due_date_days = fields.Integer(string="Días a vencimiento 1")
     second_due_date_days = fields.Integer(string="Días a vencimiento 2")
     surcharge = fields.Float(string="Recargo [%]")
+
+    red_link_code = fields.Char('Codigo de Ente Red Link', size=3)
+    red_link_volumen = fields.Integer('Volumen (Dia)', default=1, help='Campo Tecnico: Numero Volumen usado de Red Link (por dia)')
+
+    def action_cron_restart_red_link_volumen_count(self):
+        """ resetea el volumen de manera diaria """
+        self.search([('red_link_code', '!=', False)]).red_link_volumen = 1
+
+    def action_cron_restart_red_link_id_deuda(self):
+        """ resetea los id de duda de estudiantes a 0 """
+        self.env['res.partner'].search([('partner_type', '=', 'student'), ('red_link_id_deuda', '!=', 0)]).red_link_id_deuda = 0

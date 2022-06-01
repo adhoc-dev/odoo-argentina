@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="action_get_files_red_link" model="ir.actions.server">
+        <field name="name">Generar archivos red link</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="state">code</field>
+        <field name="code">action = model.get_files_red_link()</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,27 @@
+<odoo>
+
+    <record id="ir_cron_restart_voluemn_red_link" model="ir.cron">
+        <field name="name">Red Link: Reiniciar Volumen (diario)</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="state">code</field>
+        <field name="code">model.action_cron_restart_red_link_volumen_count()</field>
+        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 01:00:00')"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+    </record>
+
+    <record id="ir_cron_restart_id_deuda_red_link" model="ir.cron">
+        <field name="name">Red Link: Reiniciar ID Deuda estudiante (mensual)</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="state">code</field>
+        <field name="code">model.action_cron_restart_red_link_id_deuda()</field>
+        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-01 01:00:00')"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">months</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+    </record>
+
+</odoo>

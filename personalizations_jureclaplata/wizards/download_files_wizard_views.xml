@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="p13n_download_files_wizard" model="ir.ui.view">
+        <field name="name">p13n_download_files_wizard</field>
+        <field name="model">p13n_download_files_wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Download Files">
+                <field name="line_ids">
+                    <tree>
+                        <field name="txt_filename" invisible="0"/>
+                    </tree>
+                    <form>
+                        <center>
+                            <i class="fa fa-5x fa-download" style="padding: 0.25em;" aria-hidden="true"></i>
+                            <field name="txt_filename" invisible="1"/>
+                            <h1><field name="txt_binary" filename="txt_filename" readonly="1"/></h1>
+                        </center>
+                    </form>
+                </field>
+                <field name="student_ids" groups="base.group_no_one">
+                    <tree>
+                        <field name="name"/>
+                        <field name="student_code"/>
+                        <field name="red_link_id_deuda"/>
+                    </tree>
+                </field>
+                <footer>
+                    <button string="Fue informado en RED LINK" name="action_update_volumen" type="object" class="oe_highlight" confirm="Esto consumirá el número de volumen informado del día y también el id de duda de cada estudiante. Continuar solo si ha subido estos archivos a RED LINK. Desea continuar?"/>
+                    <button string="Cancelar" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>
