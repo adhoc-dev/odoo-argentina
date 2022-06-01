@@ -28,6 +28,68 @@
                     <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;humanreadable=1' % ('I2of5', barcode_payment)" alt="Barcode"/>
                 </div>
             </div>
+
+            <br></br>
+            <div role="separator" class="dropdown-divider"></div>
+            <br></br>
+
+            <!-- Deuda del Alumno -->
+            <t t-set="debt" t-value="env['account.move'].search([
+                    ('student_id.student_code', '=', o.student_id.student_code), ('id', '!=', o.id), ('type', '=', 'out_invoice'), ('state', '=', 'posted'), ('invoice_payment_state' , '=', 'not_paid')
+                ])
+            "/>
+
+            <span>Detalle de facturas adeudadas:</span>
+            <t t-if="debt">
+                <table class="table table-sm o_main_table">
+                    <thead>
+                        <tr>
+                            <th><span>Fecha de Factura</span></th>
+                            <th><span>Referencia</span></th>
+                            <th class="text-right"><span>Importe</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="debt" t-as="invoice">
+                            <td><span t-field="invoice.invoice_date"/></td>
+                            <td>
+                                <span t-field="invoice.name"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-raw="invoice.amount_total * (1 + o.company_id.surcharge / 100.00)" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
+                    <table class="table table-sm" style="page-break-inside: avoid;">
+                        <tr class="border-black o_total">
+                            <td><strong>Total</strong></td>
+                            <td class="text-right">
+                                <t t-set="debt_total" t-value="sum(debt.mapped('amount_total')) * (1 + o.company_id.surcharge / 100.0)"/>
+                                <span class="text-nowrap" t-raw="debt_total" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <t t-set="debt_amount" t-value="str(int(debt_total * 100)).rjust(7, '0')"/>
+                <t t-set="reference" t-value="o.invoice_date.strftime('%d%m%Y').rjust(9, '9')"/>
+
+                <t t-set="debt_barcode_payment" t-value="
+                    nro_bapro + reference + student_code + yy_first_due + ddd_first_due + debt_amount +
+                    yy_second_due + ddd_second_due + debt_amount + close_code
+                "/>
+                <div class="row">
+                    <t t-if="debt">
+                        <div name="footer_left_column" class="col-12 text-center">
+                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;humanreadable=1' % ('I2of5', debt_barcode_payment)" alt="Barcode"/>
+                        </div>
+                    </t>
+                </div>
+            </t>
+            <t t-else=""><span>No registra deuda pendiente</span></t>
+
         </p>
 
     </template>
