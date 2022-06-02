@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="product_catalog_report_extension" model="ir.ui.view">
+        <field name="name">product.catalog.report.extension.form.view</field>
+        <field name="model">product.product_catalog_report</field>
+        <field name="inherit_id" ref="product_catalog_aeroo_report.view_product_catalog_report_form" />
+        <field name="arch" type="xml">
+            <field name="products_order" position="after">
+                <field name="mode"/>
+                <field name="tax"/>
+            </field>
+            <field name="products_order" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="categories_order" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <button name="generate_report" position="attributes">
+                <attribute name="name">%(action_report_catalog)d</attribute>
+                <attribute name="type">action</attribute>
+            </button>
+            <field name="pricelist_ids" position="after">
+                <field name="note_catalog"/>
+            </field>
+        </field>
+    </record>
+</odoo>

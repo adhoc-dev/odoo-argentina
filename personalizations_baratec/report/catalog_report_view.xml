@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <report
+        string="Catalog Products"
+        id="action_report_catalog"
+        model="product.product_catalog_report"
+        report_type="qweb-pdf"
+        name="personalizations_baratec.report_catalog"
+        file="personalizations_baratec.report_catalog"
+        print_report_name="'Lista de Precios - %s' % (object.name)"
+    />
+    </data>
+</odoo>

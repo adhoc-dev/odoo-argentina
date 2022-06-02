@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_catalog_extension" model="ir.ui.view">
+        <field name="name">view.product.catalog.extension</field>
+        <field name="model">product_catalog</field>
+        <field name="inherit_id" ref="product_catalog_aeroo_report.view_product_catalog"/>
+        <field name="arch" type="xml">
+            <field name="taxes_included" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="use_planned_price" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>

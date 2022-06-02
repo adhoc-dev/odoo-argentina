@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="report_catalog_product">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+            <t t-set="o" t-value="o.with_context(lang=env.user.lang)" />
+                <div class="oe_structure">
+                    <h2><strong>Lista de Precios</strong></h2>
+                    <strong>Fecha de la lista de precios: </strong><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/><br />
+                    <t t-if="o.taxes_included" class="text-right"> (<span>Esta lista incluye impuestos</span>) </t><br />
+                    <t t-if="o.taxes_included==False" class="text-right"> (<span>Esta lista no incluye impuestos</span>) </t><br />
+                </div>
+                <h2></h2>
+                <div class="page">
+                    <table t-att-class="o.mode=='2' and 'table table-info table-striped' or 'table table-striped'">
+                        <thead>
+                            <tr>
+                                <th name="th_img" class="text-left">Img.</th>
+                                <th name="th_cod" class="text-left">Cod.</th>
+                                <th name="th_descrip" class="text-left">Descripcion</th>
+                                <th name="th_tax" t-if="o.tax" class="text-left">Alicuota IVA</th>
+                                <t t-foreach="o.pricelist_ids" t-as="pricelist">
+                                <th name="th_discount" t-if="pricelist.discount_policy == 'without_discount'" class="text-left">Descuento</th>
+                                <th name="th_pricelist" class="text-left" t-field="pricelist.name"/>
+                                </t>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-set="categories" t-value="o.category_ids"/>
+                            <t t-foreach="categories" t-as="category">
+                                <tr>
+                                    <td colspan="100%" style="background-color: black;">
+                                        <t t-set="cat_name" t-value="o.get_category_name(category.display_name)"/>
+                                        <strong style="color: white;" t-esc="cat_name"/>
+                                    </td>
+                                </tr>
+                                <t t-set="lines" t-value="o.get_products(category)"/>
+                                <t t-foreach="lines" t-as="line">
+                                    <tr>
+                                        <td>
+                                            <img
+                                            t-attf-src="data:image/*;base64,{{line.image_128}}"
+                                            t-att-alt="line.name" width="52" height="52"
+                                            />
+                                        </td>
+                                        <td>
+                                            <span t-field="line.default_code"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.name"/> <t t-if="o.print_product_uom"> (<span t-field="line.uom_name"/>) </t>
+                                        </td>
+                                        <td t-if="o.tax">
+                                            <t t-foreach="line.taxes_id" t-as="tax">
+                                                <span t-field="tax.description"/>
+                                            </t>
+                                        </td>
+                                        <t t-foreach="o.pricelist_ids" t-as="pricelist">
+                                        <t t-set="price" t-value="o.get_price(line, pricelist)"/>
+                                        <td t-if="pricelist.discount_policy == 'without_discount'">
+                                            <t t-set="discount" t-value="o.get_discount(line, price)"/>
+                                                <span t-esc="discount"/>%
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f'%(price)"/> <span t-field="line.currency_id.name"/>
+                                        </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                            </t>
+                        </tbody>
+                    </table>
+                <div t-if="o.note_catalog">
+                    <h3>Aclaraciones:</h3>
+                    <span t-field="o.note_catalog"/>
+                </div>
+                </div>
+                <t t-set="custom_footer">
+                    <div class="row">
+                        <div name="footer_left_column" class="col-8 text-center">
+                        </div>
+                        <div name="footer_right_column" class="col-4 text-right">
+                            <div name="pager" t-if="report_type == 'pdf'">
+                                Page: <span class="page"/> / <span class="topage"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+         </t>
+    </template>
+
+    <template id="report_catalog">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="personalizations_baratec.report_catalog_product"/>
+        </t>
+    </template>
+
+</odoo>
