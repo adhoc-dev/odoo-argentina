@@ -6,7 +6,7 @@ class SaleSubscription(models.Model):
 
     student_id = fields.Many2one('res.partner', string='Alumno', domain="[('parent_id', '=', partner_id), ('partner_type', '=', 'student')]")
     curso_actual = fields.Many2one(comodel_name='academic.group', string='Curso Actual',
-                                   compute="_compute_curso_actual")
+                                   compute="_compute_curso_actual", store=True)
 
     @api.depends('student_id')
     def _compute_curso_actual(self):
