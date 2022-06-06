@@ -71,7 +71,8 @@
       <p>
         Para realizar transferencias puede bajar los datos de CBU
         <a t-if="o.company_id.id==4" t-attf-href="https://www.ingenieriaboggio.com.ar/page/cbu" class="fa fa-link" target="_blank" />
-        <a t-if="o.company_id.id!=4" t-attf-href="http://www.transindar.com.ar/cbu" class="fa fa-link" target="_blank" />
+        <a t-if="o.company_id.id==1" t-attf-href="http://www.transindar.com.ar/cbu" class="fa fa-link" target="_blank" />
+        <a t-if="o.company_id.id==5" t-attf-href="https://energiu.com/cbu/" class="fa fa-link" target="_blank" />
 
       </p>
       <p t-if="o.invoice_payment_term_id.sequence &lt;= 10">
@@ -245,7 +246,8 @@
       <p>
         Para realizar transferencias puede bajar los datos de CBU
         <a t-if="o.company_id.id==4" t-attf-href="https://www.ingenieriaboggio.com.ar/page/cbu" class="fa fa-link" target="_blank" />
-        <a t-if="o.company_id.id!=4" t-attf-href="http://www.transindar.com.ar/cbu" class="fa fa-link" target="_blank" />
+        <a t-if="o.company_id.id==1" t-attf-href="http://www.transindar.com.ar/cbu" class="fa fa-link" target="_blank" />
+        <a t-if="o.company_id.id==5" t-attf-href="https://energiu.com/cbu/" class="fa fa-link" target="_blank" />
 
       </p>
       <p t-if="o.invoice_payment_term_id.sequence &lt;= 10">
