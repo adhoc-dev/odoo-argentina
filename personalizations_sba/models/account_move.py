@@ -111,3 +111,8 @@ class AccountMove(models.Model):
         action_read['views'] = [(res and res.id or False, 'form')]
         action_read['res_id'] = invoice.id
         return action_read
+
+    def action_post(self):
+      if ((self.type == 'out_refund' or self.type == 'in_refund') and not self.env.user.has_group('personalizations_sba.group_validate_credit_note')):
+          raise UserError("No tiene permiso para validar notas de crédito")
+      return super().action_post()
