@@ -5,18 +5,16 @@
 
         <!-- Show ORIGINAL al the top of the invoice -->
         <t t-set="report_name" position="attributes">
-            <attribute name="t-value">
-                ("(ORIGINAL) " + o.l10n_latam_document_type_id.report_name) if "out_" in o.type and o.l10n_latam_document_type_id.report_name else ""
-            </attribute>
+            <attribute name="t-value"> ("(ORIGINAL) " if "out_" in o.type else "")  + o.l10n_latam_document_type_id.report_name</attribute>
         </t>
 
+        <!-- Remove Fecha de Vencimiento from invoice report -->
         <div id="informations" position="after">
             <div t-if="0" id="p13n_hide">
             </div>
         </div>
         <div id="p13n_hide" position="inside">
 
-            <!-- Remove Fecha de Vencimiento from invoice report -->
             <t t-if="o.invoice_date_due" position="move"/>
 
             <!-- Remove legend added to report when using secondary currency -->
