@@ -218,9 +218,19 @@
         </xpath>
         <!-- Fin Ticket 34968 -->
         <page name='public' position="attributes">
-          <attribute name="groups">hr.group_hr_user</attribute>
+          <attribute name="groups">personalizations_arbusta.group_user_low_permission</attribute>
         </page>
       </data>
+    </field>
+  </record>
+  <record id="personalizations_hide_chat_button" model="ir.ui.view">
+    <field name="name">Hide chat button</field>
+    <field name="model">hr.employee</field>
+    <field name="inherit_id" ref="hr.view_employee_form"/>
+    <field name="arch" type="xml">
+      <button class="btn btn-primary o_employee_chat_btn" position="attributes">
+        <attribute name="groups">hr.group_hr_user</attribute>
+      </button>
     </field>
   </record>
 </odoo>
