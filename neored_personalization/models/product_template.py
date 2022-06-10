@@ -96,3 +96,33 @@ class ProductTemplate(models.Model):
             return True
         else:
             return super()._check_uom()
+
+    def action_external_stock_wizard(self):
+        self.ensure_one()
+        rec = self.env['external.stock.wizard'].with_context(product_id=self.id).create({})
+        return {
+            'name': _('External Stock'),
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'res_model': 'external.stock.wizard',
+            'view_type': 'form',
+            'res_id': rec.id,
+            'target': 'new',
+        }
+
+
+class ProductProduct(models.Model):
+    _inherit = 'product.product'
+
+    def action_external_stock_wizard(self):
+        self.ensure_one()
+        rec = self.env['external.stock.wizard'].with_context(product_id=self.product_tmpl_id.id).create({})
+        return {
+            'name': _('External Stock'),
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'res_model': 'external.stock.wizard',
+            'view_type': 'form',
+            'res_id': rec.id,
+            'target': 'new',
+        }

@@ -12,3 +12,4 @@ from . import product_pricelist
 from . import product_pricelist_item
 from . import stock_move_line
 from . import stock_quant
+from . import sale_order

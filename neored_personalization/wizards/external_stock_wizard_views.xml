@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="external_stock_wizard_view_form" model="ir.ui.view">
+        <field name="name">external.stock.wizard.form</field>
+        <field name="model">external.stock.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Stock by Locations">
+                <field name="line_ids">
+                    <tree string="Locations" default_order="location_name asc" >
+                        <field name="location_name"/>
+                        <field name="on_hand"/>
+                        <field name="reserved"/>
+                        <field name="available"/>
+                        <field name="lot_count"/>
+                    </tree>
+                </field>
+                <footer/>
+            </form>
+        </field>
+    </record>
+
+    <record id="external_stock_wizard_line_view_form" model="ir.ui.view">
+        <field name="name">external.stock.wizard.line.form</field>
+        <field name="model">external.stock.wizard.line</field>
+        <field name="arch" type="xml">
+            <form string="Stock by Lots">
+                <field name="location_name"/>
+                <field name="lot_lines_ids">
+                    <tree string="Lots">
+                        <field name="lot_name"/>
+                        <field name="on_hand" sum="Total on Hand"/>
+                        <field name="reserved" sum="Total Reserved"/>
+                        <field name="available" sum="Total Available"/>
+                    </tree>
+                </field>
+                <footer/>
+            </form>
+        </field>
+    </record>
+</odoo>

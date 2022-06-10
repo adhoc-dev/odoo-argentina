@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Neored Personalizations',
-    'version': '13.0.1.13.0',
+    'version': '13.0.1.14.0',
     'category': 'Accounting',
     'sequence': 14,
     'summary': '',
@@ -56,6 +56,7 @@
 
     ],
     'data': [
+        'wizards/external_stock_wizard_views.xml',
         'views/product_template_views.xml',
         'views/product_image_views.xml',
         'views/product_supplierinfo_views.xml',
@@ -75,6 +76,7 @@
         'data/ir_cron_data.xml',
         'data/ir_actions_data.xml',
         'data/res_users_data.xml',
+        'data/ir_config_parameter.xml',
     ],
     'demo': [
     ],

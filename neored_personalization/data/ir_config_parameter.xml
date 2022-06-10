@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="neored_personalization.stock_token_client" model="ir.config_parameter">
+        <field name="key">neored_personalization.stock_token_client</field>
+        <field name="value">foH2c-HNSUE-tk544-PjoHu</field>
+    </record>
+</odoo>
