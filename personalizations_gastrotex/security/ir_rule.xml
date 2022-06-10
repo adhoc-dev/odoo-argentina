@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.rule" id="restrict_partner_creation_rule">
+        <field name="name">Restringir creación de contactos</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="domain_force">[(0, "=", 1)]</field>
+        <field name="groups" eval="[(6, 0, [ref('personalizations_gastrotex.restrict_partner_creation_group')])]"/>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+</odoo>

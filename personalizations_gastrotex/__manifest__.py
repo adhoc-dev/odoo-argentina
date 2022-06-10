@@ -12,6 +12,8 @@
     'data': [
         'views/crm_lead_views.xml',
         'views/report_invoice.xml',
+        'security/res_groups.xml',
+        'security/ir_rule.xml',
     ],
     'installable': True,
     'auto_install': False,

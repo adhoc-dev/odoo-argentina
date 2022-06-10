@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="personalizations_gastrotex.restrict_partner_creation_group" model="res.groups">
+        <field name="name">Restringir creación de contactos</field>
+        <field name="category_id" ref="base.module_category_usability"/>
+    </record>}
+</odoo>
