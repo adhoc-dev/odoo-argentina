@@ -4,7 +4,7 @@ from odoo import models, fields
 class CrmLead(models.Model):
     _inherit = 'crm.lead'
 
-    x_studio_field_1IT3n = fields.Selection(string="Tipo de servicio",
+    x_studio_field_1IT3n = fields.Selection(string="TrubuX",
                                             selection=[('Data Services', 'Data Services'),
                                                        ('Development', 'Development'),
                                                        ('Customer Experience',
@@ -53,3 +53,4 @@ class CrmLead(models.Model):
                                                     ('Recursos Humanos', 'Recursos Humanos'), ('Salud', 'Salud'),
                                                     ('Seguros', 'Seguros'), ('Tecnología', 'Tecnología'),
                                                     ('N/A', 'N/A')], copy=False)
+    tribu = fields.Many2one("account.analytic.group", string="Tribu")

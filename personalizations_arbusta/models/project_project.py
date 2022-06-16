@@ -15,7 +15,7 @@ class ProjectProject(models.Model):
     x_studio_field_D7BUq = fields.Many2one(string="Service Owner", comodel_name="hr.employee",
                                            on_delete="set null", copy=False)
     x_studio_field_b1glF = fields.Integer(string="Horas teóricas", copy=False)
-    x_studio_field_8MFbu = fields.Selection(string="Tribu",
+    x_studio_field_8MFbu = fields.Selection(string="TribuX",
                                             selection=[('Data Services', 'Data Services'),
                                                        ('Development', 'Development'),
                                                        ('Customer Experience',
@@ -60,3 +60,4 @@ class ProjectProject(models.Model):
                                             column2="hr_skill_id", on_delete="cascade", copy=False)
     link_analisis = fields.Char(string='Link Análisis')
     description = fields.Html()
+    tribu = fields.Many2one(string="Tribu", related="analytic_account_id", readonly=True)

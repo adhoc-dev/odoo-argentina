@@ -71,7 +71,7 @@ class HrEmployee(models.Model):
                                                              compute="_compute_employee_account_analytic_line_count",
                                                              copy=False)
     x_studio_field_r67Xd = fields.Char(string="Movi N°", tracking=100, copy=False)
-    x_studio_field_Ev7Dp = fields.Selection(string="Tribu",
+    x_studio_field_Ev7Dp = fields.Selection(string="TribuX",
                                             selection=[('Data Services', 'Data Services'),
                                                        ('Development', 'Development'),
                                                        ('Customer Experience',
@@ -114,6 +114,7 @@ class HrEmployee(models.Model):
                                               ('Universitaria','Universitaria'),('Posgrado/Master','Posgrado/Master')])
     registry_date = fields.Date(string='Alta', tracking=100, copy=False)
     comunidad_arbustera = fields.Boolean(string='Comunidad Arbustera')
+    tribu = fields.Many2one("account.analytic.group", string="Tribu")
 
     def _compute_employee_maintenance_equip_count(self):
         results = self.env['maintenance.equipment'].read_group([('employee_id', 'in', self.ids)],

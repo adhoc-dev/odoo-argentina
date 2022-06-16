@@ -42,7 +42,7 @@
         </xpath>
         <xpath expr="//field[@name='priority']" position="after">
           <field name="x_studio_field_4OBuE" string="Oficina OPS" help="Si es requisito que el servicio se preste en determinada oficina, seleccionar. De lo contrario pueden asignarse recursos de cualquier oficina" widget="selection" attrs="{'required': ['|',['stage_id','=',3],['stage_id','=',6]]}"/>
-          <field name="x_studio_field_1IT3n" string="Tribu" attrs="{'required': [('type','=','opportunity')]}"/>
+          <field name="x_studio_field_1IT3n" string="TribuX" attrs="{'required': [('type','=','opportunity')]}"/>
         </xpath>
         <xpath expr="//field[@name='tag_ids']" position="attributes">
           <attribute name="help">Ver archivo Listado Servicios y Subservicios 2019</attribute>
@@ -106,6 +106,30 @@
         </filter>
 
 
+    </field>
+  </record>
+  <record id="personalizations_arbusta_crm_lead_tree" model="ir.ui.view">
+    <field name="name">Personalización por módulo: crm_lead_tree</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="stage_id" position="before">
+          <field name="tribu"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_arbusta_crm_lead_form" model="ir.ui.view">
+    <field name="name">Personalización por módulo: crm_lead_form</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="tag_ids" position="before">
+          <field name="tribu"/>
+        </field>
+      </data>
     </field>
   </record>
 </odoo>

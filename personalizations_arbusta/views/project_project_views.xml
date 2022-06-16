@@ -32,7 +32,7 @@
           <field name="x_studio_field_E3Ha4" string="Archivo Kick Off"/>
         </xpath>
         <xpath expr="//field[@name='analytic_account_id']" position="before">
-          <field name="x_studio_field_8MFbu" string="Tribu" attrs="{}" widget="selection"/>
+          <field name="x_studio_field_8MFbu" string="TribuX" attrs="{}" widget="selection"/>
           <field name="x_studio_field_PkoH6" widget="many2many_tags" string="Subservicio" help="Uno o más subservicios según archivo "/>
         </xpath>
         <xpath expr="//field[@name='analytic_account_id']" position="after">
@@ -95,6 +95,30 @@
     <field name="model">project.project</field>
     <field name="arch" type="xml">
       <pivot string="Project"/>
+    </field>
+  </record>
+    <record id="personalizations_arbusta_project_tree" model="ir.ui.view">
+    <field name="name">Personalización por módulo: project_tree</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.view_project"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="partner_id" position="after">
+          <field name="tribu"/>
+        </field>
+      </data>
+    </field>
+  </record>
+  <record id="personalizations_arbusta_project_form" model="ir.ui.view">
+    <field name="name">Personalización por módulo: project_form</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.edit_project"/>
+    <field name="arch" type="xml">
+      <data>
+        <field name="analytic_account_id" position="before">
+          <field name="tribu"/>
+        </field>
+      </data>
     </field>
   </record>
 </odoo>
