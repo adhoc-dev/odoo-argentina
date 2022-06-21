@@ -113,6 +113,8 @@
                     <strong class="col-9">Segundo Vencimiento <span t-raw="second_due_date" t-options='{"widget": "date"}'/>:</strong>
                     <span t-raw="o.amount_total * (1 + o.company_id.surcharge / 100.00)" class="col-3 text-right" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
                 </div>
+                <strong>Tarifa:</strong>
+                <span t-if="len(o.invoice_line_ids.mapped('subscription_id')) == 1" t-raw="o.invoice_line_ids.mapped('subscription_id').pricelist_id.name"/>
             </t>
         </t>
     </template>
@@ -137,6 +139,8 @@
                     <strong class="col-9">Segundo Vencimiento <span t-raw="second_due_date" t-options='{"widget": "date"}'/>:</strong>
                     <span t-raw="o.amount_total * (1 + o.company_id.surcharge / 100.00)" class="col-3 text-right" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
                 </div>
+                <strong>Tarifa:</strong>
+                <span t-if="len(o.invoice_line_ids.mapped('subscription_id')) == 1" t-raw="o.invoice_line_ids.mapped('subscription_id').pricelist_id.name"/>
             </t>
         </t>
     </template>
