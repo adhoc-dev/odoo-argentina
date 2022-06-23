@@ -34,8 +34,9 @@ for rec in records.mapped('order_line').filtered(lambda x: x.delivery_status == 
     <field ref="purchase.model_purchase_order" name="model_id"/>
     <field name="state">code</field>
     <field name="code">
-records = env[model._name].search([('state', 'in', ['purchase', 'done'])])
-for rec in records.mapped('order_line').filtered(lambda x: x.delivery_status == 'to receive'):
+if not records:
+  records = env[model._name].search([('state', 'in', ['purchase', 'done'])])
+for rec in records.mapped('order_line').filtered(lambda x: x.delivery_status == 'to receive' and x.invoice_status == 'no'):
   if rec.order_id.x_keep_remaining or not rec.order_id.picking_ids.filtered(lambda x: x.state == 'done'):
     continue
   try:
