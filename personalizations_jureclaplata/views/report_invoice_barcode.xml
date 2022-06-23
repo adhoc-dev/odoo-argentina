@@ -9,13 +9,31 @@
             <t t-set="first_due_date" t-value="o.invoice_date + datetime.timedelta(days=o.company_id.first_due_date_days)"/>
             <t t-set="yy_first_due" t-value="first_due_date.strftime('%y')"/>
             <t t-set="ddd_first_due" t-value="'%03d' % first_due_date.timetuple().tm_yday"/>
-            <t t-set="amount_total" t-value="str(int(o.amount_total * 100)).rjust(7, '0')"/>
             <t t-set="second_due_date" t-value="o.invoice_date + datetime.timedelta(days=o.company_id.second_due_date_days)"/>
             <t t-set="yy_second_due" t-value="second_due_date.strftime('%y')"/>
             <t t-set="ddd_second_due" t-value="'%03d' % second_due_date.timetuple().tm_yday"/>
-            <t t-set="surcharge_amount" t-value="str(int(o.amount_total * (1 + o.company_id.surcharge / 100.0) * 100)).rjust(7, '0')"/>
             <t t-set="close_code" t-value="'01'"/>
 
+            <!-- Deuda del Alumno -->
+            <t t-set="debt" t-value="env['account.move'].search([
+                    ('student_id.student_code', '=', o.student_id.student_code), ('type', '=', 'out_invoice'), ('state', '=', 'posted'), ('invoice_payment_state' , '=', 'not_paid')
+                ], order='date desc')
+            "/>
+
+            <t t-set="debt_amount" t-value="0.00"/>
+            <t t-foreach="debt" t-as="invoice">
+                <t t-if="datetime.date.today() &gt; invoice.invoice_date + datetime.timedelta(days=o.company_id.second_due_date_days)">
+                    <t t-set="debt_amount" t-value="debt_amount + (invoice.amount_total * (1 + o.company_id.surcharge / 100.0))"/>
+                </t>
+                <t t-else="">
+                    <t t-set="debt_amount" t-value="debt_amount + invoice.amount_total"/>
+                </t>
+            </t>
+
+            <t t-set="amount_total" t-value="str(int(debt_amount * 100)).rjust(7, '0')"/>
+            <t t-set="surcharge_amount" t-value="str(int(sum(debt.mapped('amount_total')) * (1 + o.company_id.surcharge / 100.0) * 100)).rjust(7, '0')"/>
+
+            <!-- Codigo de barras -->
             <t t-set="barcode_payment" t-value="
                 nro_bapro + reference + student_code + yy_first_due + ddd_first_due + amount_total +
                 yy_second_due + ddd_second_due + surcharge_amount + close_code
@@ -32,13 +50,7 @@
 
                 <br/><div role="separator" class="dropdown-divider"></div><br/>
 
-                <!-- Deuda del Alumno -->
-                <t t-set="debt" t-value="env['account.move'].search([
-                        ('student_id.student_code', '=', o.student_id.student_code), ('id', '!=', o.id), ('type', '=', 'out_invoice'), ('state', '=', 'posted'), ('invoice_payment_state' , '=', 'not_paid')
-                    ])
-                "/>
-
-                <span>Detalle de facturas adeudadas:</span>
+                <span>Saldo pendiente:</span>
                 <t t-if="debt">
                     <table class="table table-sm o_main_table">
                         <thead>
@@ -55,7 +67,12 @@
                                     <span t-field="invoice.name"/>
                                 </td>
                                 <td class="text-right">
-                                    <span t-raw="invoice.amount_total * (1 + o.company_id.surcharge / 100.00)" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                    <t t-if="datetime.date.today() &gt; invoice.invoice_date + datetime.timedelta(days=o.company_id.second_due_date_days)">
+                                        <span t-raw="invoice.amount_total * (1 + o.company_id.surcharge / 100.00)" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-raw="invoice.amount_total" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                    </t>
                                 </td>
                             </tr>
                         </tbody>
@@ -65,29 +82,13 @@
                             <tr class="border-black o_total">
                                 <td><strong>Total</strong></td>
                                 <td class="text-right">
-                                    <t t-set="debt_total" t-value="sum(debt.mapped('amount_total')) * (1 + o.company_id.surcharge / 100.0)"/>
-                                    <span class="text-nowrap" t-raw="debt_total" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                    <span class="text-nowrap" t-raw="debt_amount" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
                                 </td>
                             </tr>
                         </table>
                     </div>
-
-                    <t t-set="debt_amount" t-value="str(int(debt_total * 100)).rjust(7, '0')"/>
-                    <t t-set="reference" t-value="o.invoice_date.strftime('%d%m%Y').rjust(9, '9')"/>
-
-                    <t t-set="debt_barcode_payment" t-value="
-                        nro_bapro + reference + student_code + yy_first_due + ddd_first_due + debt_amount +
-                        yy_second_due + ddd_second_due + debt_amount + close_code
-                    "/>
-                    <div class="row">
-                        <t t-if="debt">
-                            <div name="footer_left_column" class="col-12 text-center">
-                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;humanreadable=1' % ('I2of5', debt_barcode_payment)" alt="Barcode"/>
-                            </div>
-                        </t>
-                    </div>
                 </t>
-                <t t-else=""><span>No registra deuda pendiente</span></t>
+                <t t-else=""><span>No registra.</span></t>
             </t>
         </p>
 
