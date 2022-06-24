@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="paperformat_etiqueta_personalizada" model="report.paperformat">
+        <field name="name">Formato etiqueta personalizada</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">150</field>
+        <field name="page_width">100</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">80</field>
+        <field name="margin_bottom">3</field>
+        <field name="margin_left">2.5</field>
+        <field name="margin_right">2.5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">80</field>
+        <field name="dpi">80</field>
+    </record>
+    <report
+        string="Etiqueta personalizada"
+        id="action_report_etiqueta_expresos_paquetes"
+        model="stock.quant.package"
+        report_type="qweb-pdf"
+        name="personalizations_primicia.etiqueta_expresos_paquetes"
+        file="personalizations_primicia.etiqueta_expresos_paquetes"
+        paperformat="personalizations_primicia.paperformat_etiqueta_personalizada"/>
+</odoo>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="etiqueta_expresos_paquetes_view">
+        <t t-call="web.basic_layout">
+        <t t-set="pickings" t-value="o.get_picking()"/>
+        <t t-foreach="pickings" t-as="picking">
+            <div class="header">
+                <div class="container">
+                    <div class="row mb-1 pt-1">
+                        <div class="col-12">
+                            <img t-attf-src="/personalizations_primicia/static/src/logo.png" t-attf-style="width:210px" class="rounded mx-auto d-block"/>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-sm mb-0" style="line-height:1.25; font-size: 9px;">
+                    <tbody>
+                        <tr>
+                            <td width="50%" align="center" style="border-top: 2px solid black !important; border-left: 2px solid black !important; border-right: 0.5px solid black;">
+                                <strong><span t-field="picking.name" style= "font-size: 15px"/></strong>
+                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', picking.name, 600, 100)" style="width:270px;height:45px;" alt="Barcode"/>
+                            </td>
+                            <td align="center" style="border-top: 2px solid black !important; border-right: 0.5px solid black;">
+                                <strong><span t-field="picking.weight" style= "font-size: 15px"/></strong>
+                                <br/>
+                                <strong>KG</strong>
+                            </td>
+                            <td align="center" style="border-top: 2px solid black !important; border-right: 2px solid black !important;">
+                                <strong><span t-field="picking.number_of_packages" style= "font-size: 15px"/></strong>
+                                <br/>
+                                <strong>BULTOS</strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-sm mb-2" style="line-height:1.25; font-size: 9px; border: 2px solid black !important;">
+                    <tbody>
+                        <tr>
+                            <td style="border-top: 2px solid black !important;">
+                                <strong>CLIENTE </strong>
+                                <br/>
+                                <span t-field="picking.partner_id.commercial_partner_id.name"/>
+                            </td>
+                            <td colspan="2" style="border-top: 2px solid black !important; border-right: 2px solid black !important;">
+                                <strong>SUCURSAL </strong>
+                                <br/>
+                                <span t-field="picking.partner_id.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="50%" style="border-top: 2px solid black !important; border-right: 0.5px solid black;">
+                                <strong>DIRECCIÓN</strong>
+                                <br/>
+                                <span t-field="picking.partner_id.commercial_partner_id.street"/>
+                                <br/>
+                                <span t-field="picking.partner_id.commercial_partner_id.street2"/>
+                                <br/>
+                                <span t-field="picking.partner_id.commercial_partner_id.city"/>
+                                <br/>
+                                <span t-field="picking.partner_id.commercial_partner_id.state_id"/>
+                                <br/>
+                                <span t-field="picking.partner_id.commercial_partner_id.zip"/>
+                                <br/>
+                                <span t-field="picking.partner_id.commercial_partner_id.country_id"/>
+                            </td>
+                            <td colspan="2" width="50%" style="border-top: 2px solid black !important; border-right: 2px solid black !important;">
+                                <strong>DIRECCIÓN DE ENTREGA </strong>
+                                <br/>
+                                <span t-field="picking.partner_id.street"/>
+                                <br/>
+                                <span t-field="picking.partner_id.street2"/>
+                                <br/>
+                                <span t-field="picking.partner_id.city"/>
+                                <br/>
+                                <span t-field="picking.partner_id.state_id"/>
+                                <br/>
+                                <span t-field="picking.partner_id.zip"/>
+                                <br/>
+                                <span t-field="picking.partner_id.country_id"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Etiqueta paquetes -->
+                <div class="container">
+                    <div class="row mb-1 mt-1" style="line-height:0.5;">
+                        <div class="col-5">
+                            <h1 t-field="o.name" class="mt-2 float-left" style= "font-size: 20px !important;"/>
+                        </div>
+                        <div class="col-7">
+                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 600, 100)" alt="Barcode" style="width:240px;height:40px"/>
+                        </div>
+                    </div>
+                </div>
+                <hr class="m-1" style="border-top: 2px solid black" />
+            </div>
+            <div class="page">
+                <table class="table table-sm" style="border-bottom: 0px solid white !important;font-size: 9px !important;"> <!-- Productos en Paquete -->
+                    <t t-set="has_serial_number" t-value="o.quant_ids.mapped('lot_id')"/>
+                    <thead>
+                        <tr>
+                            <th style="border-top: 1px solid white !important;">Producto</th>
+                            <th name="th_quantity" class="text-right" style="border-top: 1px solid white !important;">Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="o.quant_ids" t-as="l">
+                            <td>
+                                <span t-field="l.product_id"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="l.quantity"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="footer" style="font-size: 8px !important; text-align:center;">
+                <strong>BANKERS S.A.</strong> • CERRITO 3315 (1606) • CARAPACHAY • BUENOS AIRES
+            </div>
+        </t>
+        </t>
+    </template>
+
+    <template id="etiqueta_expresos_paquetes">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="personalizations_primicia.etiqueta_expresos_paquetes_view"/>
+            </t>
+        </t>
+    </template>
+</odoo>
