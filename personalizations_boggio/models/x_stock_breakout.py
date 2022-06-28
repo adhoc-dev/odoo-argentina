@@ -5,6 +5,7 @@ class XStockBreakout(models.Model):
     _name = 'x_stock_breakout'
     _description = 'Roturas de Stock'
     _inherit = ['mail.thread']
+    _rec_name = 'x_name'
 
     x_name = fields.Char(string="Name", copy=False)
     x_stock = fields.Float(string="Stock en la empresa")
