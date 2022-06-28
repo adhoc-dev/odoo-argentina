@@ -5,6 +5,7 @@ class XSeguimientos(models.Model):
     _name = 'x_seguimientos'
     _description = 'Seguimientos'
     _inherit = ['mail.thread', 'mail.activity.mixin']
+    _rec_name = 'x_name'
 
     x_name = fields.Char(string="Name", copy=False)
     x_studio_field_TTmDr = fields.Many2one(string="Colaborador/a", comodel_name="hr.employee", on_delete="set null",
