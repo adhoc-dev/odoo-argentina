@@ -22,7 +22,7 @@
 
             <t t-set="debt_amount" t-value="0.00"/>
             <t t-foreach="debt" t-as="invoice">
-                <t t-if="datetime.date.today() &gt; invoice.invoice_date + datetime.timedelta(days=o.company_id.second_due_date_days)">
+                <t t-if="datetime.date.today() &gt; invoice.invoice_date + datetime.timedelta(days=o.company_id.first_due_date_days)">
                     <t t-set="debt_amount" t-value="debt_amount + (invoice.amount_total * (1 + o.company_id.surcharge / 100.0))"/>
                 </t>
                 <t t-else="">
@@ -42,16 +42,8 @@
 
         <p name="payment_term" position="after">
             <t t-if="o.type == 'out_invoice'">
-                <div class="row">
-                    <div name="footer_left_column" class="col-12 text-center">
-                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;humanreadable=1' % ('I2of5', barcode_payment)" alt="Barcode"/>
-                    </div>
-                </div>
-
-                <br/><div role="separator" class="dropdown-divider"></div><br/>
-
                 <span>Saldo pendiente:</span>
-                <t t-if="debt">
+                <t t-if="debt and len(debt) &gt; 1">
                     <table class="table table-sm o_main_table">
                         <thead>
                             <tr>
@@ -67,7 +59,7 @@
                                     <span t-field="invoice.name"/>
                                 </td>
                                 <td class="text-right">
-                                    <t t-if="datetime.date.today() &gt; invoice.invoice_date + datetime.timedelta(days=o.company_id.second_due_date_days)">
+                                    <t t-if="datetime.date.today() &gt; invoice.invoice_date + datetime.timedelta(days=o.company_id.first_due_date_days)">
                                         <span t-raw="invoice.amount_total * (1 + o.company_id.surcharge / 100.00)" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
                                     </t>
                                     <t t-else="">
@@ -89,17 +81,34 @@
                     </div>
                 </t>
                 <t t-else=""><span>No registra.</span></t>
+
+                <br/><div role="separator" class="dropdown-divider"></div><br/>
+
+                <div class="row">
+                    <div name="footer_left_column" class="col-12 text-center">
+                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;humanreadable=1' % ('I2of5', barcode_payment)" alt="Barcode"/>
+                    </div>
+                </div>
             </t>
         </p>
 
     </template>
 
     <template id="report_invoice_document" inherit_id="l10n_ar.report_invoice_document">
-        <!-- reescribiomos report_name solo en el caso de facturas de clietne -->
+        <!-- reescribiomos report_name solo en el caso de facturas de cliente -->
         <t t-set="report_name" position="after">
             <t t-set="report_name" t-if="o.type == 'out_invoice'" t-value="'Boleta de Pago'"/>
             <t t-set="report_name" t-if="o.type == 'out_refund'" t-value="'Credito Boleta de Pago'"/>
         </t>
+
+        <xpath expr="//div[@id='informations']/div/strong" position="replace">
+            <strong>Contacto: </strong>
+        </xpath>
+        <xpath expr="//div[@id='informations']/div/br" position="replace"/>
+        <xpath expr="//div[@id='informations']/div/strong[2]" position="replace"/>
+        <xpath expr="//span[@t-field='o.partner_id.l10n_ar_afip_responsibility_type_id']" position="replace"/>
+
+        <t t-if="o.invoice_origin" position="replace"/>
 
         <t t-if='o.invoice_date_due' position="attributes">
             <attribute name="t-if">o.invoice_date_due and o.type != 'out_invoice'</attribute>
@@ -121,11 +130,20 @@
     </template>
 
     <template id="report_invoice_document_with_payments" inherit_id="l10n_ar.report_invoice_document_with_payments">
-        <!-- reescribiomos report_name solo en el caso de facturas de clietne -->
+        <!-- reescribiomos report_name solo en el caso de facturas de cliente -->
         <t t-set="report_name" position="after">
             <t t-set="report_name" t-if="o.type == 'out_invoice'" t-value="'Boleta de Pago'"/>
             <t t-set="report_name" t-if="o.type == 'out_refund'" t-value="'Credito Boleta de Pago'"/>
         </t>
+
+        <xpath expr="//div[@id='informations']/div/strong" position="replace">
+            <strong>Contacto: </strong>
+        </xpath>
+        <xpath expr="//div[@id='informations']/div/br" position="replace"/>
+        <xpath expr="//div[@id='informations']/div/strong[2]" position="replace"/>
+        <xpath expr="//span[@t-field='o.partner_id.l10n_ar_afip_responsibility_type_id']" position="replace"/>
+
+        <t t-if="o.invoice_origin" position="replace"/>
 
         <t t-if='o.invoice_date_due' position="attributes">
             <attribute name="t-if">o.invoice_date_due and o.type != 'out_invoice'</attribute>
