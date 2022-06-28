@@ -4,6 +4,7 @@ from odoo import models, fields
 class XPartnerProject(models.Model):
     _name = 'x_partner_project'
     _description = 'Proyectos por compañía'
+    _rec_name = 'x_name'
 
     x_name = fields.Char(string="Name", copy=False)
     x_campaign_id = fields.Many2one(string="Campaña", comodel_name="utm.campaign", on_delete="set null")
