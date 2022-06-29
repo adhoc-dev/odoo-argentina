@@ -58,6 +58,9 @@
             </group>
           </page>
         </xpath>
+        <field name="analytic_account_id" position="before">
+          <field name="tribu"/>
+        </field>
       </data>
     </field>
   </record>
@@ -78,6 +81,9 @@
           <field name="date_start"/>
           <field name="date"/>
         </xpath>
+        <field name="partner_id" position="after">
+          <field name="tribu"/>
+        </field>
       </data>
     </field>
   </record>
@@ -95,30 +101,6 @@
     <field name="model">project.project</field>
     <field name="arch" type="xml">
       <pivot string="Project"/>
-    </field>
-  </record>
-    <record id="personalizations_arbusta_project_tree" model="ir.ui.view">
-    <field name="name">Personalización por módulo: project_tree</field>
-    <field name="model">project.project</field>
-    <field name="inherit_id" ref="project.view_project"/>
-    <field name="arch" type="xml">
-      <data>
-        <field name="partner_id" position="after">
-          <field name="tribu"/>
-        </field>
-      </data>
-    </field>
-  </record>
-  <record id="personalizations_arbusta_project_form" model="ir.ui.view">
-    <field name="name">Personalización por módulo: project_form</field>
-    <field name="model">project.project</field>
-    <field name="inherit_id" ref="project.edit_project"/>
-    <field name="arch" type="xml">
-      <data>
-        <field name="analytic_account_id" position="before">
-          <field name="tribu"/>
-        </field>
-      </data>
     </field>
   </record>
 </odoo>

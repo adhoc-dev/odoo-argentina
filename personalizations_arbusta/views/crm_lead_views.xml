@@ -64,6 +64,9 @@
           <attribute name="attrs">{'required': ['|',['stage_id','=',3],['stage_id','=',6]]}</attribute>
         </field>
         <field name="name"/>
+        <field name="tag_ids" position="before">
+          <field name="tribu"/>
+        </field>
       </data>
     </field>
   </record>
@@ -88,6 +91,9 @@
         <field name="planned_revenue" position="after">
           <field name="x_project_currency"/>
         </field>
+        <field name="stage_id" position="before">
+          <field name="tribu"/>
+        </field>
       </data>
     </field>
   </record>
@@ -104,32 +110,6 @@
         <filter name="country" position="after">
           <filter string="Project Currency" name="Project Currency" domain="[]"  context="{'group_by': 'x_project_currency'}"/>
         </filter>
-
-
-    </field>
-  </record>
-  <record id="personalizations_arbusta_crm_lead_tree" model="ir.ui.view">
-    <field name="name">Personalización por módulo: crm_lead_tree</field>
-    <field name="model">crm.lead</field>
-    <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
-    <field name="arch" type="xml">
-      <data>
-        <field name="stage_id" position="before">
-          <field name="tribu"/>
-        </field>
-      </data>
-    </field>
-  </record>
-  <record id="personalizations_arbusta_crm_lead_form" model="ir.ui.view">
-    <field name="name">Personalización por módulo: crm_lead_form</field>
-    <field name="model">crm.lead</field>
-    <field name="inherit_id" ref="crm.crm_lead_view_form"/>
-    <field name="arch" type="xml">
-      <data>
-        <field name="tag_ids" position="before">
-          <field name="tribu"/>
-        </field>
-      </data>
     </field>
   </record>
 </odoo>

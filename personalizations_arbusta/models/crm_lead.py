@@ -4,7 +4,8 @@ from odoo import models, fields
 class CrmLead(models.Model):
     _inherit = 'crm.lead'
 
-    x_studio_field_1IT3n = fields.Selection(string="TrubuX",
+
+    x_studio_field_1IT3n = fields.Selection(string="TribuX",
                                             selection=[('Data Services', 'Data Services'),
                                                        ('Development', 'Development'),
                                                        ('Customer Experience',
