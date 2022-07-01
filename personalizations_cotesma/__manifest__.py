@@ -7,6 +7,7 @@
     'license': 'AGPL-3',
     'depends': [
         'base',
+        'l10n_ar_account_withholding',
         'stock_request_ux',
         'purchase_requisition',
         'purchase_request_to_requisition',
@@ -17,10 +18,12 @@
         'product_stock_by_location',
         'purchase_tier_validation',
         'project_stage',
+        'saas_client_account',
     ],
     'data': [
         'security/cotesma_security.xml',
         'security/ir.model.access.csv',
+        'views/account_journal_dashboard_view.xml',
         'views/purchase_order_views.xml',
         'views/res_users_views.xml',
         'views/stock_request_order_views.xml',
