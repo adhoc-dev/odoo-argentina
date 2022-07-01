@@ -1,4 +1,3 @@
-from . import hr_timesheet
 from . import hr_contract
 from . import hr_salary_category
 from . import hr_seniority
