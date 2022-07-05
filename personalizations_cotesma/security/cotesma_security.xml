@@ -41,4 +41,15 @@
         <field name="groups" eval="[(6,0, [ref('group_purchase_request_member')])]" />
         <field name="perm_read" eval="True" />
     </record>
+
+    <record id="fleet_group_new_manager" model="res.groups">
+        <field name="name">Full Administrador</field>
+        <field name="implied_ids" eval="[(4, ref('fleet.fleet_group_manager'))]"/>
+        <field name="category_id" ref="base.module_category_human_resources_fleet"/>
+    </record>
+
+    <record model="ir.ui.menu" id="fleet.fleet_configuration">
+        <field name="groups_id" eval="[(6,0,[ref('fleet_group_new_manager')])]"/>
+    </record>
+
 </odoo>

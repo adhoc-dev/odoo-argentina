@@ -1,12 +1,13 @@
 # License AGPL-3 or later (http://www.gnu.org/licenses/agpl).
 {
     'name': "personalizations_cotesma",
-    'version': "13.0.1.14.0",
+    'version': "13.0.1.15.0",
     'author': "Adhoc SA",
     'category': 'Personalizations',
     'license': 'AGPL-3',
     'depends': [
         'base',
+        'fleet',
         'l10n_ar_account_withholding',
         'stock_request_ux',
         'purchase_requisition',
