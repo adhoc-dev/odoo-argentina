@@ -22,3 +22,4 @@ from . import academic_group
 from . import academic_level
 from . import academic_section
 from . import account_payment_group
+from . import account_move
