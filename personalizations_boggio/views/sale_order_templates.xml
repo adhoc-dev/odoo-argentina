@@ -274,7 +274,7 @@
     </table>
     <span t-esc="line.report_price_unit * (1-line.discount1/100.0)" position="after">
       <br />
-      <span t-options='{"widget": "float", "precision": 2}' t-esc="line.purchase_price and ((line.report_price_unit * (1-line.discount1/100.0) * (1-line.discount2/100.0)*(1-line.discount3/100.0)/line.purchase_price)-1)*100 or 0.0" /><span>%</span>
+      <span t-options='{"widget": "float", "precision": 2}' t-esc="line.purchase_price and ((line.price_unit * (1-line.discount1/100.0) * (1-line.discount2/100.0)*(1-line.discount3/100.0)/line.purchase_price)-1)*100 or 0.0" /><span>%</span>
     </span>
     <span t-esc="'%s %s (%s) %s' % (line.product_id.internal_code[1:] ,line.name.replace('[' + line.product_id.internal_code +']', ''), line.product_id.supplier_code or '', line.product_id.warranty!=12 and line.product_id.warranty or ' ')" position="attributes">
       <attribute name="t-esc">'%s (%s) %s %s %s %s (%s)  %s / UT: %s' % (line.product_id.name, line.product_id.supplier_code and line.product_id.supplier_code or '', line.name and line.name.startswith('--') and line.name[3:] or '',line.product_id.seller_ids[0].name.x_lista_proveedor, line.product_id.seller_ids[0].name.x_desc_pago_prov,line.product_id.replenishment_cost_rule_id.name, line.product_id.replenishment_cost_last_update, line.product_id.replenishment_cost_rule_id.item_ids.mapped('percentage_amount'),line.product_id.sale_margin)</attribute>
