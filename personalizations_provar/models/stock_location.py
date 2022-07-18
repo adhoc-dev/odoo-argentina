@@ -27,6 +27,9 @@ class Location(models.Model):
         Lista de ubicaciones de la base de datos remota. Sincronizamos stock de las ubicaciones listadas e hijas de las mismas.
         """)
     last_sync = fields.Datetime('Last Sync Date')
+    is_public = fields.Boolean(
+        string="Publicar stock en la red",
+        help="Permitir que las distintas bases de la red vean el stock de esta ubicación.")
 
     def _get_odoo_client(self):
         self.ensure_one()

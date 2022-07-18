@@ -17,7 +17,7 @@ class StockController(http.Controller):
         if not product_id:
             return {'error': "No se encontró el producto con código %s en Catálogo Neored" % default_code}
         quants = request.env['stock.quant'].sudo().read_group(
-            domain=[('product_id', '=', product_id)],
+            domain=[('product_id', '=', product_id), ('location_id.is_public', '=', True)],
             fields=['location_id', 'quantity', 'reserved_quantity'],
             groupby=['location_id', 'lot_name'],
             lazy=False,
