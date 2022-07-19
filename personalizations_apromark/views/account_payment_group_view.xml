@@ -19,6 +19,7 @@
                     <!-- Ticket 40840 -->
                     <field name="nro_cuota"/>
                     <field name="mes"/>
+                    <field name="collector_id"/>
                 </field>
             </field>
         </record>
@@ -30,12 +31,16 @@
             <field name="priority">20</field>
             <field name="arch" type="xml">
                 <!-- Ticket 37394 -->
+                <field name="payments_amount" sum="Total"/>
                 <field name="partner_id" position="before">
                     <field name="fecha_comprobante"/>
                     <field name="nro_comprobante"/>
                     <!-- Ticket 40840 -->
                     <field name="nro_cuota" optional="show"/>
                     <field name="mes" optional="show"/>
+                </field>
+                <field name="payment_methods" position="after">
+                    <field name="collector_id"/>
                 </field>
             </field>
         </record>
@@ -48,6 +53,8 @@
                 <field name="payment_methods" position="after">
                     <field name="fecha_comprobante"/>
                     <field name="nro_comprobante"/>
+                    <field name="collector_id"/>
+                    <group expand="0" string="Group By..."><filter string="Cobrado por" name="group_by_collector" domain="[]" context="{'group_by':'collector_id'}"/></group>
                 </field>
             </field>
         </record>

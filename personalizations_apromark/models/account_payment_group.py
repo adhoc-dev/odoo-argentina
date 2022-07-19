@@ -9,6 +9,8 @@ class AccountPaymentGroup(models.Model):
     nro_comprobante = fields.Char(string='Nro de Comprobante')
     nro_cuota = fields.Char(string='Nro de Cuota', compute='_compute_payment_group_vals')
     mes = fields.Char(string='Mes', compute='_compute_payment_group_vals')
+    collector_id = fields.Many2one('res.users',string='Cobrado por', copy=False,default=lambda self: self.env.user)
+    payments_amount = fields.Monetary(store=True)
 
     def _compute_payment_group_vals(self):
         for payment in self:
