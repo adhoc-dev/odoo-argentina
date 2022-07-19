@@ -34,6 +34,7 @@
         'views/product_views.xml',
         'wizards/purchase_suggest_view.xml',
         'views/stock_menu_views.xml',
+        'views/stock_location_views.xml',
     ],
     'demo': [
     ],

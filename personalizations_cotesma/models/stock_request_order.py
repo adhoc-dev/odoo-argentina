@@ -11,7 +11,6 @@ class StockRequest(models.Model):
     observations = fields.Text(string='Observaciones')
 
 
-    
     @api.depends('warehouse_id')
     @api.depends_context('uid')
     def _compute_tag_allow_ids(self):
