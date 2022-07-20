@@ -29,8 +29,7 @@ class Orderpoint(models.Model):
         _logger.info('Running update max and min from suggested cron')
         orderpoints = self.env['stock.warehouse.orderpoint'].search([])
         if orderpoints:
-            return orderpoints._update_from_suggested()
-        return
+            orderpoints._update_from_suggested()
 
     def _update_from_suggested(self):
         for orderpoint in self:
@@ -38,4 +37,3 @@ class Orderpoint(models.Model):
                 'product_min_qty': orderpoint.product_qty_min_suggested,
                 'product_max_qty': orderpoint.product_qty_max_suggested,
             })
-        return

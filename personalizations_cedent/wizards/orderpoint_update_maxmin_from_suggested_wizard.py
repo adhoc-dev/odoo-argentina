@@ -11,7 +11,5 @@ class OrderpointUpdateMaxMinFromSuggestedWizard(models.TransientModel):
         active_ids = self._context.get('active_ids')
         active_model = self._context.get('active_model')
         if active_model != 'stock.warehouse.orderpoint':
-            raise UserError(_(
-                'Esta acción debe ser llamada desde las reglas de abastecimiento'))
-        return self.env[active_model].browse(
-            active_ids)._update_from_suggested()
+            raise UserError(_('Esta acción debe ser llamada desde las reglas de abastecimiento'))
+        return self.env[active_model].browse(active_ids)._update_from_suggested()
