@@ -9,6 +9,9 @@
         <!-- el campo name nativamente en odoo no se usa para nada y se setea igual al code (refencia de la suscripcion), nosotros lo queremos aprovechar para poder llevar el alumno a las facturas-->
         <field name="partner_id" position="after">
           <field name="name" string="Alumno"/>
+          <field name="partner_phone" optional="show"/>
+          <field name="partner_email" optional="show"/>
+          <field name="partner_semaforo" optional="show"/>
         </field>
         <field name="payment_token_id" position="attributes">
           <attribute name="attrs"/>
@@ -43,6 +46,29 @@
         <field name="x_renewal_lead_id" readonly="1"/>
         <field name="x_renewal_state"/>
       </field>
+    </field>
+  </record>
+  <record id="personalizations_winwineducation.sale_subscription_view_list" model="ir.ui.view">
+    <field name="name">sale_subscription_view_list</field>
+    <field name="model">sale.subscription</field>
+    <field name="inherit_id" ref="sale_subscription.sale_subscription_view_list"/>
+    <field type="xml" name="arch">
+      <field name="partner_id" position="after">
+        <field name="name" optional="show"/>
+        <field name="partner_phone" optional="show"/>
+        <field name="partner_email" optional="show"/>
+        <field name="partner_semaforo" optional="show"/>
+      </field>
+    </field>
+  </record>
+  <record id="personalizations_winwineducation.sale_subscription_view_kanban" model="ir.ui.view">
+    <field name="name">sale_subscription_view_kanban</field>
+    <field name="model">sale.subscription</field>
+    <field name="inherit_id" ref="sale_subscription.sale_subscription_view_kanban"/>
+    <field type="xml" name="arch">
+      <xpath expr="//field[@name='partner_id']/../.." position="after">
+        <field name="name"/>
+      </xpath>
     </field>
   </record>
 </odoo>

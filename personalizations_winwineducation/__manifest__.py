@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_winwineducation',
-    'version': '13.0.1.6.0',
+    'version': '13.0.1.7.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -49,12 +49,15 @@
         'data/ir_actions_server.xml',
         'data/ir_ui_menu.xml',
         'data/base_automation.xml',
+        'data/mail_template.xml',
         'views/academic_group_views.xml',
         'views/academic_menuitem.xml',
         'security/ir.model.access.csv',
         'security/ir_rule.xml',
+        'wizards/invoice_from_subscription_wizard_views.xml',
     ],
     'installable': False,
+    'auto-install': False,
     'application': False,
     'license': 'OPL-1',
 }

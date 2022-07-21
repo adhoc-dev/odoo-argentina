@@ -579,4 +579,13 @@ else:
   raise Warning("La compañia actual no tiene seteado un plan de estudio o niveles dentro del mismo! \nRecordar que este reporte solo sirve estando dentro de cada colegio")
 ]]></field>
   </record>
+  <record model="ir.actions.server" id="action_send_payment_link">
+      <field name="name">Enviar link de pago</field>
+      <field name="model_id" ref="account.model_account_move"/>
+      <field name="binding_model_id" ref="account.model_account_move"/>
+      <field name="state">code</field>
+      <field name="code">
+records.validate_and_send()
+      </field>
+  </record>
 </odoo>
