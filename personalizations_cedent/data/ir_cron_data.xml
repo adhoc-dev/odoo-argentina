@@ -1,0 +1,20 @@
+<odoo noupdate="1">
+    <record id="ir_cron_update_max_min_from_suggested" model="ir.cron">
+        <field name="name">Actualizar maximo y minimo desde sugerido</field>
+        <field name="model_id" ref="model_stock_warehouse_orderpoint"/>
+        <field name="code">
+# IMPORTANTE:
+# Este cron actualiza los maximos y minimos en las reglas de abastecimiento, desde
+# los sugeridos calculados por la rotacion y los factores maximos y minimos.
+model.cron_update_from_suggested()
+        </field>
+        <field name="interval_type">months</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="state">code</field>
+        <field name="numbercall" eval="-1"/>
+        <field name="priority" eval="10"/>
+        <field name="doall" eval="False"/>
+        <field name="active" eval="True"/>
+        <field name="interval_number" eval="1"/>
+    </record>
+</odoo>
