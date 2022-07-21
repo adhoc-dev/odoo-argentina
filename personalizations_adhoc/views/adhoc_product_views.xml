@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_adhoc_product_tree" model="ir.ui.view">
+        <field name="name">adhoc_product.products.tree</field>
+        <field name="model">adhoc.product</field>
+        <!-- <field name="inherit_id" ref="hr.view_hr_job_form"/> -->
+        <field name="arch" type="xml">
+            <tree string="Productos">
+                <field name="parent_id"/>
+                <field name="product_name"/>
+                <field name="product_manager_id"/>
+                <field name="product_owner_id"/>
+                <field name="technical_team_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- <record id="view_adhoc_product_helpdesk_ticket_form" model="ir.ui.view">
+        <field name="name">adhoc_product.helpdesk.ticket.form</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+        <field name="arch" type="xml">
+            <field name="tag_ids" position="after">
+                <field name="product_full_name" widget="many2many_tags"/>
+            </field>
+        </field>
+    </record> -->
+
+    <record id="adhoc_product_action" model="ir.actions.act_window">
+        <field name="name">Productos</field>
+        <field name="res_model">adhoc.product</field>
+    </record>
+</odoo>

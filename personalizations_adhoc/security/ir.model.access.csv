@@ -5,3 +5,4 @@ access_hr_job_seniority,access_hr_job_seniority,model_hr_job_seniority,base.grou
 access_hr_salary_category_all,access_hr_salary_category,model_hr_salary_category,hr.group_hr_user,1,1,1,1,
 access_hr_seniority_all,access_hr_seniority,model_hr_seniority,hr.group_hr_user,1,1,1,1,
 access_hr_job_seniority_all,access_hr_job_seniority,model_hr_job_seniority,hr.group_hr_user,1,1,1,1,
+access_adhoc_product_all,access_adhoc_product,model_adhoc_product,base.group_user,1,1,1,1,

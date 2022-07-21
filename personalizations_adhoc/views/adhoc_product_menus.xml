@@ -1,0 +1,5 @@
+<odoo>
+    <menuitem id="adhoc_product_menu" name="Producto"/>
+    <menuitem id="producto_menu" name="Productos" parent="adhoc_product_menu"/>
+    <menuitem id="productos_menu" action="adhoc_product_action" parent="producto_menu"/>
+</odoo>
