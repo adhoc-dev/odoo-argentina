@@ -23,9 +23,10 @@ class DownloadFilesWizard(models.TransientModel):
     )
 
     student_ids = fields.Many2many('res.partner', string='Estudiantes', readonly=True)
+    company_id = fields.Many2one('res.company', readonly=True)
 
     @api.model
-    def action_get_files(self, files_values, students):
+    def action_get_files(self, files_values, students, company):
         # transformamos a binary y agregamos formato para campos o2m
 
         wizard = self.env['p13n_download_files_wizard'].create({
@@ -35,6 +36,7 @@ class DownloadFilesWizard(models.TransientModel):
                     x['txt_content'].encode('ascii')),
             }) for x in files_values if x['txt_content']],
             'student_ids': [(6, 0, students.ids)],
+            'company_id': company.id,
         })
 
         return {
@@ -47,7 +49,7 @@ class DownloadFilesWizard(models.TransientModel):
         }
 
     def action_update_volumen(self):
-        company = self.env.company
+        company = self.company_id
         company.red_link_volumen += 1
         if company.red_link_volumen > 9:
             raise UserError(_('Solo puede informar hasta 9 volumenes por dia'))

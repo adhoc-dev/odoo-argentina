@@ -43,7 +43,7 @@ class AccountMove(models.Model):
             {'txt_filename': filename3, 'txt_content': content3},
         ]
 
-        return self.env['p13n_download_files_wizard'].action_get_files(values, invoices.mapped('student_id'))
+        return self.env['p13n_download_files_wizard'].action_get_files(values, invoices.mapped('student_id'), invoices.mapped('company_id'))
 
     def _month_mapping(self, month):
         return month if month < 10 else {10: 'A', 11: 'B', 12: 'C'}.get(month)

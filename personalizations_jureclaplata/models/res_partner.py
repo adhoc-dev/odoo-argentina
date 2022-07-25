@@ -9,7 +9,7 @@ class ResPartner(models.Model):
 
     student_code = fields.Char('Student Code', copy=False, size=5)
     red_link_id_deuda = fields.Integer(
-        'ID Deuda a Informar (Red Link)', default=0, company_dependent=True,
+        'ID Deuda a Informar (Red Link)', default=1, company_dependent=True,
         help='Campo Tecnico: Numero Volumen usado de Red Link (por dia)')
 
     _sql_constraints = [

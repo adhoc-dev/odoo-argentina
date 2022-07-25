@@ -22,5 +22,5 @@ class ResCompany(models.Model):
         self.search([('red_link_code', '!=', False)]).red_link_volumen = 1
 
     def action_cron_restart_red_link_id_deuda(self):
-        """ resetea los id de duda de estudiantes a 0 """
-        self.env['res.partner'].search([('partner_type', '=', 'student'), ('red_link_id_deuda', '!=', 0)]).red_link_id_deuda = 0
+        """ resetea los id de duda de estudiantes a 1 """
+        self.env['res.partner'].search([('partner_type', '=', 'student'), ('red_link_id_deuda', '!=', 1)]).red_link_id_deuda = 1
