@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_project_advanced_user" model="res.groups">
+        <field name="name">Usuario Avanzado</field>
+        <field name="implied_ids" eval="[(4, ref('project.group_project_user'))]"/>
+        <field name="category_id" ref="base.module_category_operations_project"/>
+    </record>
+
+    <record id="project.group_project_manager" model="res.groups">
+        <field name="category_id" ref="base.module_category_operations_project"/>
+        <field name="implied_ids" eval="[(4, ref('group_project_advanced_user'))]"/>
+    </record>
+</odoo>
