@@ -101,11 +101,9 @@
             <t t-set="report_name" t-if="o.type == 'out_refund'" t-value="'Credito Boleta de Pago'"/>
         </t>
 
-        <xpath expr="//div[@id='informations']/div/strong" position="replace">
-            <strong>Contacto: </strong>
-        </xpath>
+        <xpath expr="//div[@id='informations']/div/strong" position="replace"/>
         <xpath expr="//div[@id='informations']/div/br" position="replace"/>
-        <xpath expr="//div[@id='informations']/div/strong[2]" position="replace"/>
+        <xpath expr="//div[@id='informations']/div/strong" position="replace"/>
         <xpath expr="//span[@t-field='o.partner_id.l10n_ar_afip_responsibility_type_id']" position="replace"/>
 
         <t t-if="o.invoice_origin" position="replace"/>
@@ -123,9 +121,12 @@
                     <strong class="col-9">Segundo Vencimiento <span t-raw="second_due_date" t-options='{"widget": "date"}'/>:</strong>
                     <span t-raw="o.amount_total * (1 + o.company_id.surcharge / 100.00)" class="col-3 text-right" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
                 </div>
-                <strong>Tarifa:</strong>
+                <strong>Arancel:</strong>
                 <span t-if="len(o.invoice_line_ids.mapped('subscription_id')) == 1" t-raw="o.invoice_line_ids.mapped('subscription_id').pricelist_id.name"/>
             </t>
+        </t>
+        <t t-if="o.ref" position="replace">
+            <br/><t t-if="o.ref" t-raw="o.ref"/>
         </t>
     </template>
 
@@ -136,11 +137,9 @@
             <t t-set="report_name" t-if="o.type == 'out_refund'" t-value="'Credito Boleta de Pago'"/>
         </t>
 
-        <xpath expr="//div[@id='informations']/div/strong" position="replace">
-            <strong>Contacto: </strong>
-        </xpath>
+        <xpath expr="//div[@id='informations']/div/strong" position="replace"/>
         <xpath expr="//div[@id='informations']/div/br" position="replace"/>
-        <xpath expr="//div[@id='informations']/div/strong[2]" position="replace"/>
+        <xpath expr="//div[@id='informations']/div/strong" position="replace"/>
         <xpath expr="//span[@t-field='o.partner_id.l10n_ar_afip_responsibility_type_id']" position="replace"/>
 
         <t t-if="o.invoice_origin" position="replace"/>
@@ -158,10 +157,21 @@
                     <strong class="col-9">Segundo Vencimiento <span t-raw="second_due_date" t-options='{"widget": "date"}'/>:</strong>
                     <span t-raw="o.amount_total * (1 + o.company_id.surcharge / 100.00)" class="col-3 text-right" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
                 </div>
-                <strong>Tarifa:</strong>
+                <strong>Arancel:</strong>
                 <span t-if="len(o.invoice_line_ids.mapped('subscription_id')) == 1" t-raw="o.invoice_line_ids.mapped('subscription_id').pricelist_id.name"/>
             </t>
         </t>
+        <t t-if="o.ref" position="replace">
+            <br/><t t-if="o.ref" t-raw="o.ref"/>
+        </t>
     </template>
 
+    <template id="personalization_header_report" inherit_id="l10n_ar.custom_header">
+        <t t-if="not pre_printed_report" position="replace">
+            <t t-raw="o.company_id.header_left"/>
+        </t>
+        <xpath expr="//t[@t-if='not pre_printed_report'][last()]" position="replace">
+            <t t-raw="o.company_id.header_right"/>
+        </xpath>
+    </template>
 </odoo>

@@ -7,14 +7,10 @@ class ResPartner(models.Model):
     curso_actual = fields.Many2one(comodel_name='academic.group', string='Curso Actual',
                                    compute="_compute_curso_actual", store=True)
 
-<<<<<<< HEAD
-    student_code = fields.Char('Student Code', copy=False)
-=======
     student_code = fields.Char('Student Code', copy=False, size=5)
     red_link_id_deuda = fields.Integer(
         'ID Deuda a Informar (Red Link)', default=0, company_dependent=True,
         help='Campo Tecnico: Numero Volumen usado de Red Link (por dia)')
->>>>>>> 1c3a710... temp
 
     _sql_constraints = {
         ('student_code_uniq', 'unique(student_code)',

@@ -26,6 +26,14 @@
                         </div>
                     </group>
                 </page>
+                <page string="Header - Reportes">
+                    <group>
+                        <field name="header_left" widget="html"/>
+                    </group>
+                    <group>
+                        <field name="header_right" widget="html"/>
+                    </group>
+                </page>
             </xpath>
         </field>
     </record>

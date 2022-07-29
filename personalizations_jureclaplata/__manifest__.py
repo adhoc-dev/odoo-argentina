@@ -1,7 +1,7 @@
 # License AGPL-3 or later (http://www.gnu.org/licenses/agpl).
 {
     'name': "personalizations_jureclaplata",
-    'version': "13.0.4.5.0",
+    'version': "15.0.4.7.0",
     'author': "Adhoc SA",
     'category': 'Personalizations',
     'license': 'AGPL-3',
