@@ -1,12 +1,13 @@
 {
     'name': 'personalizations_adhoc',
-    'version': "15.0.1.1.0",
+    'version': "15.0.1.2.0",
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
         'hr_timesheet',
         'hr_contract',
         'helpdesk',
+        'project',
     ],
     'data': [
         'views/hr_contract_views.xml',
@@ -16,15 +17,12 @@
         'views/hr_salary_category_views.xml',
         'views/hr_seniority_views.xml',
         'views/helpdesk_ticket_views.xml',
+        'views/project_task_views.xml',
         'data/hr_salary_category_data.xml',
         'data/hr_seniority_data.xml',
         'security/ir.model.access.csv',
     ],
-    'demo': [
-        'demo/adhoc_product_demo.xml',
-        'demo/hr_department_demo.xml',
-        'demo/hr_employee_demo.xml',
-    ],
+
     'installable': True,
     'application': False,
     'license': 'OPL-1',

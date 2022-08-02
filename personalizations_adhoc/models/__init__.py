@@ -7,3 +7,4 @@ from . import hr_department
 from . import hr_employee
 from . import adhoc_product
 from . import helpdesk_ticket
+from . import project_task

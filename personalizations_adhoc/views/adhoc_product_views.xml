@@ -3,11 +3,9 @@
     <record id="view_adhoc_product_tree" model="ir.ui.view">
         <field name="name">adhoc_product.products.tree</field>
         <field name="model">adhoc.product</field>
-        <!-- <field name="inherit_id" ref="hr.view_hr_job_form"/> -->
         <field name="arch" type="xml">
-            <tree string="Productos">
-                <field name="parent_id"/>
-                <field name="product_name"/>
+            <tree>
+                <field name="complete_name"/>
                 <field name="product_manager_id"/>
                 <field name="product_owner_id"/>
                 <field name="technical_team_id"/>
@@ -15,19 +13,54 @@
         </field>
     </record>
 
-    <!-- <record id="view_adhoc_product_helpdesk_ticket_form" model="ir.ui.view">
-        <field name="name">adhoc_product.helpdesk.ticket.form</field>
-        <field name="model">helpdesk.ticket</field>
-        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+    <record id="view_adhoc_product_filter" model="ir.ui.view">
+        <field name="name">adhoc_product.products.filter</field>
+        <field name="model">adhoc.product</field>
         <field name="arch" type="xml">
-            <field name="tag_ids" position="after">
-                <field name="product_full_name" widget="many2many_tags"/>
-            </field>
+            <search>
+                <field name="name"/>
+                <field name="parent_id"/>
+                <field name="product_owner_id"/>
+                <field name="product_manager_id"/>
+                <field name="technical_team_id"/>
+                <field name="product_expert_ids"/>
+                <filter string="Child Products" name="child_products" domain="[('parent_id', '!=', False)]"/>
+                <filter name="group_po" string="PO" domain="[]" context="{'group_by': 'product_owner_id'}"/>
+                <filter name="group_pm" string="PM" domain="[]" context="{'group_by': 'product_manager_id'}"/>
+                <filter name="group_pe" string="PE" domain="[]" context="{'group_by': 'product_expert_ids'}"/>
+                <filter name="group_technical_team" string="Equipo Técnico" domain="[]" context="{'group_by': 'technical_team_id'}"/>
+            </search>
         </field>
-    </record> -->
+    </record>
+
+    <record id="view_adhoc_product_form" model="ir.ui.view">
+        <field name="name">adhoc_product.products.form</field>
+        <field name="model">adhoc.product</field>
+        <field name="arch" type="xml">
+            <form string="Productos">
+                <sheet>
+                    <group>
+                        <field name="name" placeholder="Name"/>
+                        <field name="parent_id" />
+                    </group>
+                    <group>
+                        <group>
+                            <field name="product_owner_id" />
+                            <field name="product_manager_id" />
+                        </group>
+                        <group>
+                            <field name="technical_team_id" />
+                            <field name="product_expert_ids" widget="many2many_tags" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
     <record id="adhoc_product_action" model="ir.actions.act_window">
         <field name="name">Productos</field>
         <field name="res_model">adhoc.product</field>
+        <field name="context">{'search_default_child_products': True}</field>
     </record>
 </odoo>

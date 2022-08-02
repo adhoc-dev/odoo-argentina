@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="helpdesk_ticket_view_form" model="ir.ui.view">
-        <field name="name">adhoc_product.helpdesk.ticket.form</field>
-        <field name="model">helpdesk.ticket</field>
-        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+    <record id="project_task_view_form" model="ir.ui.view">
+        <field name="name">adhoc_product.project.task.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
             <field name="tag_ids" position="after">
                 <field name="adhoc_product_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" domain="[('parent_id', '!=', False)]"/>
@@ -12,10 +12,10 @@
         </field>
     </record>
 
-    <record id="helpdesk_ticket_view_tree" model="ir.ui.view">
-        <field name="name">adhoc_product.helpdesk.ticket.tree</field>
-        <field name="model">helpdesk.ticket</field>
-        <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_tree"/>
+    <record id="project_task_view_tree" model="ir.ui.view">
+        <field name="name">adhoc_product.project.task.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
         <field name="arch" type="xml">
             <field name="tag_ids" position="after">
                 <field name="adhoc_product_ids" widget="many2many_tags" options="{'color_field': 'color'}" optional="hide"/>
@@ -23,15 +23,15 @@
         </field>
     </record>
 
-    <record id="helpdesk_ticket_view_search" model="ir.ui.view">
-        <field name="name">adhoc_product.helpdesk.ticket.search</field>
-        <field name="model">helpdesk.ticket</field>
-        <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_search"/>
+    <record id="project_task_view_search" model="ir.ui.view">
+        <field name="name">adhoc_product.project.task.search</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form"/>
         <field name="arch" type="xml">
             <field name="tag_ids" position="after">
                 <field name="adhoc_product_ids" widget="many2many_tags" options="{'color_field': 'color'}" optional="hide"/>
             </field>
-            <filter name="state" position="after">
+            <filter name="project" position="after">
                 <filter string="Productos Adhoc" name="group_by_adhoc_product" context="{'group_by': 'adhoc_product_ids'}"/>
             </filter>
         </field>
