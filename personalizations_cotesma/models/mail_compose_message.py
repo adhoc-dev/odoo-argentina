@@ -11,5 +11,5 @@ class MailComposeMessage(models.TransientModel):
     def send_mail(self, **kwargs):
         res = super(MailComposeMessage, self.sudo()).send_mail(**kwargs)
         if self.env.context.get('mark_rfq_sent'):
-            self.env['purchase.order'].search(self.env.context['active_domain']).write({'state': 'sent'})
+            self.env['purchase.order'].search([('id', 'in', self._context.get('active_ids'))]).write({'state': 'sent'})
         return res
