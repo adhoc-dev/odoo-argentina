@@ -12,10 +12,10 @@ class ResPartner(models.Model):
         'ID Deuda a Informar (Red Link)', default=0, company_dependent=True,
         help='Campo Tecnico: Numero Volumen usado de Red Link (por dia)')
 
-    _sql_constraints = {
-        ('student_code_uniq', 'unique(student_code)',
-            'Student Code must be unique!')
-    }
+    _sql_constraints = [
+        ('student_code_uniq', 'unique(student_code, company_id)',
+            'Student Code must be unique per company!')
+    ]
 
     @api.model
     def create(self, vals):

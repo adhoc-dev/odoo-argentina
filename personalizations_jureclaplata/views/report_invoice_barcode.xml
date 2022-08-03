@@ -125,8 +125,10 @@
                 <span t-if="len(o.invoice_line_ids.mapped('subscription_id')) == 1" t-raw="o.invoice_line_ids.mapped('subscription_id').pricelist_id.name"/>
             </t>
         </t>
+
         <t t-if="o.ref" position="replace">
-            <br/><t t-if="o.ref" t-raw="o.ref"/>
+            <br/><strong>Alumno/Curso:</strong>
+            <t t-if="o.ref" t-raw="o.ref"/>
         </t>
     </template>
 
@@ -161,8 +163,10 @@
                 <span t-if="len(o.invoice_line_ids.mapped('subscription_id')) == 1" t-raw="o.invoice_line_ids.mapped('subscription_id').pricelist_id.name"/>
             </t>
         </t>
+
         <t t-if="o.ref" position="replace">
-            <br/><t t-if="o.ref" t-raw="o.ref"/>
+            <br/><strong>Alumno/Curso:</strong>
+            <t t-if="o.ref" t-raw="o.ref"/>
         </t>
     </template>
 
