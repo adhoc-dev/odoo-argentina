@@ -24,3 +24,23 @@ class AccountMove(models.Model):
                 'personalizations_winwineducation.payment_link').id
             move.message_post_with_template(template_id)
         return {'type': 'ir.actions.act_window_close'}
+
+    def get_base_url(self):
+        self.ensure_one()
+        if self._context.get('website_domain'):
+            return self._context.get('website_domain')
+        else:
+            return super().get_base_url()
+
+
+class PaymentLinkWizard(models.TransientModel):
+    _inherit = 'payment.link.wizard'
+
+    def _generate_link(self):
+        # Hacemos esto para agregar una clave de contexto y en el metodo get_base_url tomar el dominio de la compañia (ya que cada colegio tiene su dominio)
+        # y así evitar que todas tenga como url en el link de pago https:www.activelearning.com.ar/
+        website = self.company_id and self.env['website'].search(
+            [('company_id', '=', self.company_id.id), ('domain', '!=', False)], limit=1)
+        if website:
+            self = self.with_context(website_domain=website.get_base_url())
+        super(PaymentLinkWizard, self)._generate_link()
