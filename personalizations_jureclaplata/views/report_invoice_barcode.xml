@@ -84,8 +84,8 @@
 
                 <br/><div role="separator" class="dropdown-divider"></div><br/>
 
-                <div class="row">
-                    <div name="footer_left_column" class="col-12 text-center">
+                <div class="row" style="page-break-inside: avoid;page-break-before: auto;page-break-after:avoid;">
+                    <div class="col-12 text-center">
                         <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;humanreadable=1' % ('I2of5', barcode_payment)" alt="Barcode"/>
                     </div>
                 </div>
