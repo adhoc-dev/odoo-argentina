@@ -19,8 +19,13 @@ class Orderpoint(models.Model):
         for rec in self:
             rotation = rec.product_id.get_product_rotation()
             if float_compare(rotation, 0.25, precision_digits=2) >= 0:
-                rec.product_qty_min_suggested = int(rotation * rec.minimum_factor)
-                rec.product_qty_max_suggested = int(rotation * rec.maximum_factor)
+                min_suggested = rotation * rec.minimum_factor
+                max_suggested = rotation * rec.maximum_factor
+                # si el mínimo sugerido está entre 0.25 y 1 queremos que sea 1. (pedido de personalización)
+                if min_suggested > 0.25 and min_suggested <= 1.0:
+                    min_suggested = 1.0
+                rec.product_qty_min_suggested = int(min_suggested)
+                rec.product_qty_max_suggested = int(max_suggested)
             else:
                 rec.product_qty_min_suggested = rec.product_qty_max_suggested = 0
 
