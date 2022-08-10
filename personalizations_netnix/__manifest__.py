@@ -6,6 +6,7 @@
     'depends': [
         'helpdesk',
         'project',
+        'mail',
     ],
     'data': [
         'security/netnix_security.xml',
