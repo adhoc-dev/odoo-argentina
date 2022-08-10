@@ -30,4 +30,16 @@
   <record id="hr_appraisal.hr_appraisal_rule_base_user" model="ir.rule">
     <field name="groups" eval="[(3, ref('base.group_user')), (4, ref('hr_appraisal.group_hr_appraisal_user'))]"/>
   </record>
+  <record id="academic.group_portal_teacher" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('portal_holidays.portal_holidays'))]"/>
+  </record>
+  <record id="mass_mailing.mass_mailing_menu_root" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
+  </record>
+  <record id="survey.menu_survey_form" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
+  </record>
+  <record id="survey.survey_menu_user_inputs" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
+  </record>
 </odoo>
