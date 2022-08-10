@@ -184,7 +184,7 @@ class AccountMove(models.Model):
                 content += fecha_segundo_venc.strftime('%y%m%d')
 
                 # Campo 7: Importe Segundo Vencimiento (10 + 2, N. Completar con 0 a la izq)
-                importe_segundo_vencimiento = debt_total * (1 + second_due_surcharge / 100.0)
+                importe_segundo_vencimiento = round((debt_total * (1 + second_due_surcharge / 100.0)),2)
                 total_segundo_venc += importe_segundo_vencimiento
                 content += ('%.2f' % (importe_segundo_vencimiento)).replace('.', '').zfill(12)
 
