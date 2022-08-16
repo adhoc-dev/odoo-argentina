@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="helpdesk_ticket_view_form" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.view.form</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+        <field name="arch" type="xml">
+            <field name="sla_deadline" position="attributes">
+                <attribute name="attrs">{'readonly': [('use_sla', '=', True)]}</attribute>
+                <attribute name="readonly">0</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>

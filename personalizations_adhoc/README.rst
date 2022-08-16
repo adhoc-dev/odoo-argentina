@@ -16,10 +16,11 @@ Personalizations adhoc
 
 Cambios hecho por personalización:
 
-En lineas analíticas:
+#. Permitir editar deadline en tickets de equipos sin sla
+#. En lineas analíticas:
 
-- Se sobreescribe la restricción que chequea la tarea del proyecto en el parte de horas de un ticket.
-- Ahora compara el partner de la tarea con el partner del proyecto. Si no son iguales se lanza la restricción
+   - Se sobreescribe la restricción que chequea la tarea del proyecto en el parte de horas de un ticket.
+   - Ahora compara el partner de la tarea con el partner del proyecto. Si no son iguales se lanza la restricción
 
 Installation
 ============
