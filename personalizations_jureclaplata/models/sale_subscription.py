@@ -1,4 +1,5 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 
 
 class SaleSubscription(models.Model):
@@ -15,4 +16,10 @@ class SaleSubscription(models.Model):
                 rec.curso_actual = False
             else:
                 rec.curso_actual = rec.student_id.curso_actual
+
+    @api.constrains('student_id')
+    def _check_student(self):
+        for rec in self:
+            if rec.student_id and (not rec.student_id.partner_type or rec.student_id.partner_type != 'student'):
+                raise UserError('Se está intentando asignar a un estudiante un contacto de otro tipo')
 
