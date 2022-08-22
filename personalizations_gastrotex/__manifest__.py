@@ -1,17 +1,20 @@
 {
     'name': 'Personalizations Gastrotex',
-    'version': '13.0.1.4.0',
+    'version': '13.0.1.5.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'license': 'AGPL-3',
     'depends': [
         'base',
         'crm',
+        'sale',
         'l10n_ar_ux',
+        'account_invoice_partial',
     ],
     'data': [
         'views/crm_lead_views.xml',
         'views/report_invoice.xml',
+        'views/account_move_views.xml',
         'security/res_groups.xml',
         'security/ir_rule.xml',
     ],
