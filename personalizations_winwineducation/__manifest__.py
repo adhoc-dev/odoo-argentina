@@ -11,6 +11,7 @@
         'base',
         'crm_survey',
         'hr',
+        'hr_appraisal',
         'hr_recruitment_survey',
         'mail',
         'maintenance',
