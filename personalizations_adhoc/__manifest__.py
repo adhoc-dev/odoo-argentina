@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_adhoc',
-    'version': "15.0.1.2.0",
+    'version': "15.0.1.3.0",
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -8,6 +8,7 @@
         'hr_contract',
         'helpdesk',
         'project',
+        'sale_timesheet',
     ],
     'data': [
         'views/hr_contract_views.xml',
@@ -18,6 +19,7 @@
         'views/hr_seniority_views.xml',
         'views/helpdesk_ticket_views.xml',
         'views/project_task_views.xml',
+        'views/portal_my_timesheets.xml',
         'data/hr_salary_category_data.xml',
         'data/hr_seniority_data.xml',
         'security/ir.model.access.csv',

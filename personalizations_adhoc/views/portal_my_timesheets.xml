@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- En esta vista eliminamos el siguiente elemento para sacar el texto que aparece antes del nombre de elemento del pedido de ventas, para mostrar correctamente la información del consumo de las horas -->
+    <data>
+        <template id="portal_my_timesheets_adhoc" inherit_id="sale_timesheet.portal_my_timesheets_inherit">
+            <xpath expr="//t[@t-if='sol']/em" position="replace">
+            </xpath>
+        </template>
+    </data>
+</odoo>
