@@ -4,15 +4,7 @@
     <field name="name">Cancelar Remanente Auto (SO)</field>
     <field ref="delivery.model_sale_order" name="model_id"/>
     <field name="state">code</field>
-    <field name="code"># Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered; is a void recordset
-#  - record: record on which the action is triggered; may be void
-#  - records: recordset of all records on which the action is triggered in multi-mode; may be void
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - log: log(message, level='info'): logging function to record debug information in ir.logging table
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
+    <field name="code">
 records = env[model._name].search([('state', 'in', ['sale', 'done'])])
 for rec in records.mapped('order_line').filtered(lambda x: x.delivery_status == 'to deliver'):
   if rec.order_id.x_keep_remaining or not rec.order_id.picking_ids.filtered(lambda x: x.state == 'done'):
