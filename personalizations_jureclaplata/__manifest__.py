@@ -12,6 +12,7 @@
         'base',
         'contacts',
         'sale_subscription',
+        'l10n_ar_account_direct_debit',
     ],
     'data': [
         'data/base_automation.xml',
