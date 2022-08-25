@@ -5,3 +5,4 @@ from . import purchase_requisition_line
 from . import mail_compose_message
 from . import product_product
 from . import stock_move
+from . import fleet_vehicle_cost
