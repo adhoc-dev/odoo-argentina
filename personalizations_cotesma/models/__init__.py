@@ -8,3 +8,4 @@ from . import stock_move
 from . import fleet_vehicle_cost
 from . import purchase_request
 from . import stock_location
+from . import account_move

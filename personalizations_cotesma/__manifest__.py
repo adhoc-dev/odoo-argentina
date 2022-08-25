@@ -10,6 +10,7 @@
         'fleet',
         'l10n_ar_account_withholding',
         'stock_request_ux',
+        'purchase_ux',
         'purchase_requisition',
         'purchase_request_to_requisition',
         'purchase_suggest',
