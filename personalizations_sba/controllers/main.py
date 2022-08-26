@@ -77,7 +77,7 @@ class OdooAPI(http.Controller):
         from_date = args.get('from_date')
         if from_date:
             from_date = fields.Datetime.from_string(from_date)
-            domain += ['|', ('create_date', '>=', from_date), ('write_date', '>=', from_date)]
+            domain += [('create_date', '>=', from_date)]
         read_fields = [
             'name', 'vat', 'l10n_ar_afip_responsibility_type_id', 'l10n_latam_identification_type_id',
             'mobile', 'phone', 'email',
