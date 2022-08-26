@@ -9,6 +9,7 @@
                 <field name="product_manager_id"/>
                 <field name="product_owner_id"/>
                 <field name="technical_team_id"/>
+                <field name="product_expert_ids" optional="hide"/>
             </tree>
         </field>
     </record>
@@ -28,7 +29,10 @@
                 <filter name="group_po" string="PO" domain="[]" context="{'group_by': 'product_owner_id'}"/>
                 <filter name="group_pm" string="PM" domain="[]" context="{'group_by': 'product_manager_id'}"/>
                 <filter name="group_pe" string="PE" domain="[]" context="{'group_by': 'product_expert_ids'}"/>
+                <separator/>
                 <filter name="group_technical_team" string="Equipo Técnico" domain="[]" context="{'group_by': 'technical_team_id'}"/>
+                <separator/>
+                <filter name="group_pp" string="Producto Padre" domain="[]" context="{'group_by': 'parent_id'}"/>
             </search>
         </field>
     </record>

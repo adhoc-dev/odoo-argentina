@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_adhoc',
-    'version': "15.0.1.3.0",
+    'version': "15.0.1.4.0",
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [

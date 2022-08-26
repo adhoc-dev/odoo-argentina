@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
         <field name="arch" type="xml">
             <field name="tag_ids" position="after">
-                <field name="adhoc_product_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" domain="[('parent_id', '!=', False)]"/>
+                <field name="adhoc_product_id"  widget="badge" options="{'no_create_edit': True}" domain="[('parent_id', '!=', False)]"/>
             </field>
         </field>
     </record>
@@ -18,7 +18,7 @@
         <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_tree"/>
         <field name="arch" type="xml">
             <field name="tag_ids" position="after">
-                <field name="adhoc_product_ids" widget="many2many_tags" options="{'color_field': 'color'}" optional="hide"/>
+                <field name="adhoc_product_id"  widget="badge" optional="hide"/>
             </field>
         </field>
     </record>
@@ -29,10 +29,10 @@
         <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_search"/>
         <field name="arch" type="xml">
             <field name="tag_ids" position="after">
-                <field name="adhoc_product_ids" widget="many2many_tags" options="{'color_field': 'color'}" optional="hide"/>
+                <field name="adhoc_product_id"  widget="badge" optional="hide"/>
             </field>
             <filter name="state" position="after">
-                <filter string="Productos Adhoc" name="group_by_adhoc_product" context="{'group_by': 'adhoc_product_ids'}"/>
+                <filter string="Productos Adhoc" name="group_by_adhoc_product" context="{'group_by': 'adhoc_product_id'}"/>
             </filter>
         </field>
     </record>
