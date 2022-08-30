@@ -1,16 +1,25 @@
 <?xml version="1.0"?>
 <odoo>
 
-    <record id="sale_coupon_max_stock" model="ir.ui.view">
-        <field name="name">sale_coupon_max_stock</field>
-        <field name="model">sale.coupon.program</field>
-        <field name="inherit_id" ref="sale_coupon.sale_coupon_program_view_promo_program_form" />
+    <record id="coupon_program_view_promo_program_form" model="ir.ui.view">
+        <field name="name">coupon.promotion.program.form</field>
+        <field name="model">coupon.program</field>
+        <field name="inherit_id" ref="coupon.coupon_program_view_promo_program_form" />
         <field name="arch" type="xml">
             <field name="rule_date_to" position="after">
+                <field name="show_max_stock" invisible="1"/>
                 <field name="max_stock_quantity" attrs="{'invisible': [('show_max_stock', '=', False)]}" string="Stock máximo en promoción"/>
-                <field name="show_max_stock" invisible="1" />
             </field>
+        </field>
+    </record>
+
+    <record id="sale_coupon_program_view_coupon_program_form" model="ir.ui.view">
+        <field name="name">coupon.program.form</field>
+        <field name="model">coupon.program</field>
+        <field name="inherit_id" ref="sale_coupon.sale_coupon_program_view_coupon_program_form"/>
+        <field name="arch" type="xml">
             <xpath expr="//field[@name='order_count']/.." position="after">
+                <field name="show_max_stock" invisible="1"/>
                 <button class="oe_stat_button"  icon="fa-archive" name="stock_available" attrs="{'invisible': [('show_max_stock', '=', False)]}">
                     <field name="stock_available" string="Stock restante en promoción" widget="statinfo"/>
                 </button>
