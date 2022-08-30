@@ -12,4 +12,14 @@
             </field>
         </field>
     </record>
+
+    <record id="survey_correct_answer_correction" model="ir.ui.view">
+        <field name="name">Vista Corrección respuesta correcta</field>
+        <field name="inherit_id" ref="survey.simple_choice"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@t-as='label']/label" position="attributes">
+                <attribute name="t-att-class">' bg-success ' if quizz_correction and label.is_correct else None</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>
