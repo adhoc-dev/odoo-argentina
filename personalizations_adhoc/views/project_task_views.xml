@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
             <field name="tag_ids" position="after">
-                <field name="adhoc_product_id"  widget="badge" options="{'no_create_edit': True}" domain="[('parent_id', '!=', False)]"/>
+                <field name="adhoc_product_id" options="{'no_create_edit': True}" domain="[('parent_id', '!=', False)]"/>
             </field>
         </field>
     </record>
@@ -29,10 +29,10 @@
         <field name="inherit_id" ref="project.view_task_search_form"/>
         <field name="arch" type="xml">
             <field name="tag_ids" position="after">
-                <field name="adhoc_product_id"  widget="badge" optional="hide"/>
+                <field name="adhoc_product_id"/>
             </field>
             <filter name="project" position="after">
-                <filter string="Productos Adhoc" name="group_by_adhoc_product" context="{'group_by': 'adhoc_product_id'}"/>
+                <filter string="Producto Adhoc" name="group_by_adhoc_product" context="{'group_by': 'adhoc_product_id'}"/>
             </filter>
         </field>
     </record>
