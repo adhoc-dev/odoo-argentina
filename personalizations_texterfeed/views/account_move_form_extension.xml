@@ -5,9 +5,12 @@
     <field name="model">account.move</field>
     <field ref="account.view_move_form" name="inherit_id"/>
     <field type="xml" name="arch">
-        <button name="action_post" position="attributes">
+        <xpath expr="//button[@name='action_post'][1]" position="attributes">
           <attribute name="groups">account.group_account_invoice,purchase.group_purchase_manager</attribute>
-        </button>
+        </xpath>
+        <xpath expr="//button[@name='action_post'][2]" position="attributes">
+          <attribute name="groups">account.group_account_invoice,purchase.group_purchase_manager</attribute>
+        </xpath>
     </field>
   </record>
 </odoo>
