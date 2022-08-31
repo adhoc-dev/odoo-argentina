@@ -42,7 +42,7 @@
         </xpath>
         <xpath expr="//field[@name='priority']" position="after">
           <field name="x_studio_field_4OBuE" string="Oficina OPS" help="Si es requisito que el servicio se preste en determinada oficina, seleccionar. De lo contrario pueden asignarse recursos de cualquier oficina" widget="selection" attrs="{'required': ['|',['stage_id','=',3],['stage_id','=',6]]}"/>
-          <field name="x_studio_field_1IT3n" string="TribuX" attrs="{'required': [('type','=','opportunity')]}"/>
+          <field name="x_studio_field_1IT3n" string="TribuX" invisible="1"/>
         </xpath>
         <xpath expr="//field[@name='tag_ids']" position="attributes">
           <attribute name="help">Ver archivo Listado Servicios y Subservicios 2019</attribute>

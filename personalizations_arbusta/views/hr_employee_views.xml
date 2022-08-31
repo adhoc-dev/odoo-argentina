@@ -10,7 +10,7 @@
           <attribute name="invisible">1</attribute>
         </field>
         <xpath expr="//tree[1]/field[@name='name']" position="after">
-          <field name="x_studio_field_Ev7Dp"/>
+          <field name="x_studio_field_Ev7Dp" invisible="1"/>
         </xpath>
         <xpath expr="//field[@name='work_phone']" position="attributes">
           <attribute name="attrs">{}</attribute>
@@ -144,7 +144,7 @@
           <attribute name="groups">base.group_user</attribute>
         </xpath>
         <xpath expr="//field[@name='department_id']" position="before">
-          <field name="x_studio_field_Ev7Dp" required='1' groups="base.group_user"/>
+          <field name="x_studio_field_Ev7Dp" invisible='1' groups="base.group_user"/>
         </xpath>
         <xpath expr="//field[@name='department_id']" position="after">
           <field name="x_studio_field_2MSWR"/>
