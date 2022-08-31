@@ -5,7 +5,7 @@
 
         <!-- Show ORIGINAL al the top of the invoice -->
         <t t-set="report_name" position="attributes">
-            <attribute name="t-value"> ("(ORIGINAL) " if "out_" in o.type else "")  + o.l10n_latam_document_type_id.report_name</attribute>
+            <attribute name="t-value"> ("(ORIGINAL) " if "out_" in o.move_type else "")  + o.l10n_latam_document_type_id.report_name</attribute>
         </t>
 
         <!-- Remove Fecha de Vencimiento from invoice report -->

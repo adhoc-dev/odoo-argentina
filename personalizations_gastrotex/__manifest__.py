@@ -1,6 +1,6 @@
 {
     'name': 'Personalizations Gastrotex',
-    'version': '13.0.1.5.0',
+    'version': "15.0.1.0.0",
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'license': 'AGPL-3',
