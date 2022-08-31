@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_sale_order_extension">
+        <field name="name">sale.order.extension.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+             <xpath expr="//tree[1]/field[@name='product_uom']" position="before">
+                <button type="object" name="view_stock_detail" string="View Stock Detail" icon="fa-search-plus" groups="base.group_user"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
