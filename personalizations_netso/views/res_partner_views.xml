@@ -7,6 +7,14 @@
       <group name="purchase" position="inside">
         <field name="supplier_invoicing_company_id"/>
       </group>
+      <field name="category_id" position="after">
+        <label for="average_due_days"/>
+        <div>
+          <field name="average_due_days"/>
+          <button string="Calcular" name="action_compute_average_due_days" type="object" class="oe_inline"/>
+          <button string="(Detalle)" name="action_compute_average_due_days" type="object" class="oe_inline" context="{'show_average_info': True}"/>
+        </div>
+      </field>
     </field>
   </record>
 </odoo>
