@@ -8,6 +8,7 @@
     ],
     'data': [
         'wizards/account_multiple_credit_notes_views.xml',
+        'security/ir.model.access.csv',
     ],
     'application': False,
     'license': 'OPL-1',
