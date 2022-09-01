@@ -32,6 +32,21 @@ class AccountMove(models.Model):
         else:
             return super().get_base_url()
 
+    def _notify_get_groups(self, msg_vals=None):
+        """ Remove button on email templates for portal customers to access to account moves. """
+        groups = super(AccountMove, self)._notify_get_groups(msg_vals=msg_vals)
+        self.ensure_one()
+        for group_name, _group_method, group_data in groups:
+            if group_name == 'portal_customer':
+                group_data['has_button_access'] = False
+
+        return groups
+
+    def get_access_action(self, access_uid=None):
+        """ Devolvemos {} para evitar enviar botón de link a la factura.
+        """
+        return {}
+
 
 class PaymentLinkWizard(models.TransientModel):
     _inherit = 'payment.link.wizard'
