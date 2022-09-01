@@ -1,7 +1,7 @@
 <odoo>
     <template id="x_new_fields" inherit_id="website_sale.address" name="Apromark Fields" customize_show="True" active="True">
         <div t-attf-class="form-group #{error.get('street2') and 'o_has_error' or ''} col-lg-12 div_street2" position="replace"/>
-        <div t-attf-class="form-group #{error.get('company_name') and 'o_has_error' or ''} col-lg-6" position="replace"/>
+        <div t-attf-class="form-group #{error.get('company_name') and 'o_has_error' or ''} col-lg-6 mb-0" position="replace"/>
         <div id="div_phone" position="replace">
             <div id="div_phone" t-attf-class="form-group #{error.get('mobile') and 'o_has_error' or ''} col-lg-6">
                 <label class="col-form-label" for="mobile">Móvil</label>

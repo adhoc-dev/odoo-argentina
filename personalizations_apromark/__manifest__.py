@@ -1,6 +1,6 @@
 {
     'name': 'Personalizations Apromark',
-    'version': '13.0.1.18.0',
+    'version': "15.0.1.0.0",
     'sequence': 14,
     'summary': '',
     'author': 'ADHOC SA',
@@ -12,7 +12,7 @@
         'crm',
         'sale',
         'website_sale',
-        'account_analytic_default',
+        'l10n_ar',
         'sale_subscription',
         'account_payment_group',
     ],
@@ -26,6 +26,6 @@
         'data/base_automation.xml',
     ],
     'application': False,
-    'installable': False,
+    'installable': True,
     'auto-install': False,
 }
