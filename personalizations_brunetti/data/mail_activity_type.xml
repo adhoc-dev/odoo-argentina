@@ -2,7 +2,7 @@
     <record model="mail.activity.type" id="personalizations_brunetti.sale_order_to_cancel">
         <field name="name">OV a cancelar</field>
         <field name="category">default</field>
-        <field name="res_model_id" ref="sale.model_sale_order"/>
+        <field name="res_model">sale.order</field>
         <field name="delay_count">0</field>
         <field name="delay_unit">days</field>
         <field name="delay_from">previous_activity</field>

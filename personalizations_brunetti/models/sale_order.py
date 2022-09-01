@@ -13,7 +13,7 @@ class SaleOrder(models.Model):
             # agregamos facturas vinculadas por campo origin
             other_invoices = self.env['account.move'].search(
                 [('invoice_origin', 'like', rec.name),
-                 ('type', 'in', ('out_invoice', 'out_refund'))])
+                 ('move_type', 'in', ('out_invoice', 'out_refund'))])
 
             if other_invoices:
                 total_invoices = rec.invoice_ids | other_invoices

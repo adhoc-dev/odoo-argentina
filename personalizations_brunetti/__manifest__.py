@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_brunetti',
-    'version': '13.0.1.9.0',
+    'version': "15.0.1.0.0",
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -12,10 +12,11 @@
         'crm',
         'delivery',
         'helpdesk',
-        'inter_company_rules',
+        'account_inter_company_rules',
         'mass_editing',
         'product',
-        'purchase',
+        'purchase_ux',
+        'stock_ux',
     ],
     'data': [
         'data/mail_activity_type.xml',
@@ -35,5 +36,5 @@
     ],
     'application': False,
     'license': 'OPL-1',
-    'installable': False,
+    'installable': True,
 }
