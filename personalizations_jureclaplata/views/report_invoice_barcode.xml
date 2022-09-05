@@ -24,15 +24,15 @@
             <t t-set="debt_amount" t-value="0.00"/>
             <t t-foreach="debt" t-as="invoice">
                 <t t-if="datetime.date.today() &gt; invoice.invoice_date + datetime.timedelta(days=o.company_id.first_due_date_days)">
-                    <t t-set="debt_amount" t-value="debt_amount + (invoice.amount_total * (1 + o.company_id.surcharge / 100.0))"/>
+                    <t t-set="debt_amount" t-value="debt_amount + (invoice.amount_residual * (1 + o.company_id.surcharge / 100.0))"/>
                 </t>
                 <t t-else="">
-                    <t t-set="debt_amount" t-value="debt_amount + invoice.amount_total"/>
+                    <t t-set="debt_amount" t-value="debt_amount + invoice.amount_residual"/>
                 </t>
             </t>
 
             <t t-set="amount_total" t-value="str(int(debt_amount * 100)).rjust(7, '0')"/>
-            <t t-set="surcharge_amount" t-value="str(int(sum(debt.mapped('amount_total')) * (1 + o.company_id.surcharge / 100.0) * 100)).rjust(7, '0')"/>
+            <t t-set="surcharge_amount" t-value="str(int(sum(debt.mapped('amount_residual')) * (1 + o.company_id.surcharge / 100.0) * 100)).rjust(7, '0')"/>
 
             <!-- Codigo de barras -->
             <t t-set="barcode_payment" t-value="
@@ -61,10 +61,10 @@
                                 </td>
                                 <td class="text-right">
                                     <t t-if="datetime.date.today() &gt; invoice.invoice_date + datetime.timedelta(days=o.company_id.first_due_date_days)">
-                                        <span t-raw="invoice.amount_total * (1 + o.company_id.surcharge / 100.00)" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                        <span t-raw="invoice.amount_residual * (1 + o.company_id.surcharge / 100.00)" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
                                     </t>
                                     <t t-else="">
-                                        <span t-raw="invoice.amount_total" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                        <span t-raw="invoice.amount_residual" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
                                     </t>
                                 </td>
                             </tr>
@@ -107,7 +107,9 @@
         <xpath expr="//div[@id='informations']/div/strong" position="replace"/>
         <xpath expr="//span[@t-field='o.partner_id.l10n_ar_afip_responsibility_type_id']" position="replace"/>
 
-        <t t-if="o.invoice_origin" position="replace"/>
+        <t t-if="o.invoice_origin" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </t>
 
         <t t-if='o.invoice_date_due' position="attributes">
             <attribute name="t-if">o.invoice_date_due and o.type != 'out_invoice'</attribute>
@@ -145,7 +147,9 @@
         <xpath expr="//div[@id='informations']/div/strong" position="replace"/>
         <xpath expr="//span[@t-field='o.partner_id.l10n_ar_afip_responsibility_type_id']" position="replace"/>
 
-        <t t-if="o.invoice_origin" position="replace"/>
+        <t t-if="o.invoice_origin" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </t>
 
         <t t-if='o.invoice_date_due' position="attributes">
             <attribute name="t-if">o.invoice_date_due and o.type != 'out_invoice'</attribute>
