@@ -13,7 +13,8 @@ class MailActivity(models.Model):
         return res
 
     def unlink(self):
-        msj = "Se ha eliminado la actividad del tipo %s con asunto %s" % (self.activity_type_id.name, self.summary)
-        self.env[self.res_model].browse(self.res_id).message_post(body=msj)
+        if self:
+            msj = "Se ha eliminado la actividad del tipo %s con asunto %s" % (self.activity_type_id.name, self.summary)
+            self.env[self.res_model].browse(self.res_id).message_post(body=msj)
         result = super().unlink()
         return result
