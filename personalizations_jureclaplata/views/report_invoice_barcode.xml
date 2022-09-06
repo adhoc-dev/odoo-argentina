@@ -16,6 +16,7 @@
 
             <!-- Deuda del Alumno -->
             <t t-set="debt" t-value="env['account.move'].search([
+                    ('company_id', '=', o.company_id.id),
                     ('student_id.student_code', '=', o.student_id.student_code), ('type', '=', 'out_invoice'), ('state', '=', 'posted'), ('invoice_payment_state' , '=', 'not_paid')
                 ], order='date desc')
             "/>
