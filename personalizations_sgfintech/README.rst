@@ -6,9 +6,9 @@
 
 .. |icon| image:: https://raw.githubusercontent.com/ingadhoc/maintainer-tools/master/resources/adhoc-icon.png
 
-=======================
+===========================
 Personalizations SG Fintech
-=======================
+===========================
 
 Cambios hecho por personalización:
 
