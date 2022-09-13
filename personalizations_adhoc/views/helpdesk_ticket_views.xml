@@ -4,10 +4,24 @@
     <record id="helpdesk_ticket_view_form" model="ir.ui.view">
         <field name="name">adhoc_product.helpdesk.ticket.form</field>
         <field name="model">helpdesk.ticket</field>
-        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+        <field name="inherit_id" ref="helpdesk_timesheet.helpdesk_ticket_view_form_inherit_helpdesk_timesheet"/>
         <field name="arch" type="xml">
+            <button name="assign_ticket_to_self" position="after">
+                <button name="create_linked_task" type="object" string="Crear tarea" attrs="{'invisible': [('task_id', '!=', False)]}"/>
+            </button>
             <field name="tag_ids" position="after">
                 <field name="adhoc_product_id" options="{'no_create_edit': True}" domain="[('parent_id', '!=', False)]"/>
+                <label for="task_id"/>
+                <div>
+                    <field name="task_id" domain="[('project_id', '=', project_id)]" context="{
+                            'default_name': name,
+                            'default_project_id': project_id,
+                            'default_partner_id': partner_id,
+                            'default_adhoc_product_id': adhoc_product_id,
+                            'default_task_description': ticket_description,
+                            'default_description': description,
+                        }"/>
+                </div>
             </field>
         </field>
     </record>

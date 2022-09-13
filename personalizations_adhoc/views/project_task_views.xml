@@ -6,9 +6,35 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
-            <field name="tag_ids" position="after">
+            <field name="parent_id" position="after">
                 <field name="adhoc_product_id" options="{'no_create_edit': True}" domain="[('parent_id', '!=', False)]"/>
             </field>
+            <page name="sub_tasks_page" position="after">
+                <page string="Tickets">
+                    <field name="ticket_ids" context="{
+                        'default_name': name,
+                        'default_project_id': project_id,
+                        'default_partner_id': partner_id,
+                        'default_adhoc_product_id': adhoc_product_id,
+                        'default_ticket_description': task_description,
+                        'default_description': description,
+                    }">
+                        <tree editable="bottom" delete="false">
+                            <field name="id"/>
+                            <field name="name"/>
+                            <field name="user_id"/>
+                            <field name="team_id"/>
+                            <field name="adhoc_product_id"/>
+                            <!-- <field name="main_database_id"/> -->
+                            <field name="stage_id"/>
+                            <field name="project_id" invisible="1"/>
+                            <field name="description" invisible="1"/>
+                            <field name="ticket_description" invisible="1"/>
+                            <button name="get_formview_action" type="object" help="Open Ticket" icon="fa-pencil-square-o" />
+                        </tree>
+                    </field>
+                </page>
+            </page>
         </field>
     </record>
 
