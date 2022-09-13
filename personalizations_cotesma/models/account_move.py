@@ -6,7 +6,7 @@ class AccountMove(models.Model):
 
     def action_post(self):
         if self.is_purchase_document():
-            self.with_context(only_type_product=True).update_prices_with_supplier_cost()
+            self.sudo().with_context(only_type_product=True).update_prices_with_supplier_cost()
         return super().action_post()
 
     def get_product_lines_to_update(self):
