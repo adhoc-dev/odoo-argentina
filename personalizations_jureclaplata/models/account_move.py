@@ -16,7 +16,28 @@ class AccountMove(models.Model):
             ('type', '=', 'out_invoice'), ('state', '=', 'posted'),
             ('invoice_payment_state', '=', 'not_paid')
         ])
-        return sum(debt_total.mapped('amount_total'))
+        return debt_total
+
+    def get_debt_first_due(self, debt_total):
+        """ calcula la deuda total, si la factura ya vencio toma el importe total del segundo vencimiento, si la factura
+        no ha vencida toma el valor de la factura """
+        self.ensure_one()
+        res = 0.0
+        today = fields.Date.context_today(self)
+        for invoice in debt_total:
+            first_due_date_days = invoice.company_id.first_due_date_days
+            first_due_date_days = fields.Date.add(invoice.invoice_date, days=first_due_date_days)
+            if today > first_due_date_days:
+                res += invoice.amount_residual * (1 + invoice.company_id.surcharge / 100.00)
+            else:
+                res += invoice.amount_residual
+        return res
+
+    def get_debt_second_due(self, debt_total):
+        """ devuelve directamente la suma del monto audado de toma todas las facturas que no han sido pagadas"""
+        self.ensure_one()
+        second_due_surcharge = self.company_id.surcharge
+        return round((sum(debt_total.mapped('amount_residual')) * (1 + second_due_surcharge / 100.0)), 2)
 
     def get_files_red_link(self):
         """ Este método recibe una lista de varios account move y devuelve el wizard que permite pre visualizar los archivos a descargar """
@@ -115,7 +136,6 @@ class AccountMove(models.Model):
         codigo_ente = self[0].company_id.red_link_code
         first_due_date_days = self[0].company_id.first_due_date_days
         second_due_date_days = self[0].company_id.second_due_date_days
-        second_due_surcharge = self[0].company_id.surcharge
         fecha_ultimo_venc = self[0].invoice_date
 
         # ----------------------------------------------------------------------
@@ -176,15 +196,16 @@ class AccountMove(models.Model):
 
                 # Campo 5: Importe Primer Vencimiento (10 + 2, N. Completar con 0 a la izq)
                 debt_total = inv.get_student_debt_total()
-                content += ('%.2f' % (debt_total)).replace('.', '').zfill(12)
-                total_primer_venc += debt_total
+                importe_primer_vencimiento = inv.get_debt_first_due(debt_total)
+                content += ('%.2f' % (importe_primer_vencimiento)).replace('.', '').zfill(12)
+                total_primer_venc += importe_primer_vencimiento
 
                 # Campo 6: Fecha Segundo Vencimiento (6, N)
                 fecha_segundo_venc = fields.Date.add(inv.invoice_date, days=second_due_date_days)
                 content += fecha_segundo_venc.strftime('%y%m%d')
 
                 # Campo 7: Importe Segundo Vencimiento (10 + 2, N. Completar con 0 a la izq)
-                importe_segundo_vencimiento = round((debt_total * (1 + second_due_surcharge / 100.0)),2)
+                importe_segundo_vencimiento = inv.get_debt_second_due(debt_total)
                 total_segundo_venc += importe_segundo_vencimiento
                 content += ('%.2f' % (importe_segundo_vencimiento)).replace('.', '').zfill(12)
 
