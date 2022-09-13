@@ -5,7 +5,7 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-         <notebook>
+            <notebook>
                 <page string="Campos Personalizados">
                     <group>
                         <field name="cant_madres"/>
@@ -18,7 +18,7 @@
                         <field name="prov_vacunas"/>
                     </group>
                 </page>
-        </notebook>
+            </notebook>
         </field>
     </record>
     <record id="res_partner_search_inherit_personalizations" model="ir.ui.view">
