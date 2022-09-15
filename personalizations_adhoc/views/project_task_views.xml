@@ -12,6 +12,7 @@
             <page name="sub_tasks_page" position="after">
                 <page string="Tickets">
                     <field name="ticket_ids" context="{
+                        'default_dont_send_stage_email': True,
                         'default_name': name,
                         'default_project_id': project_id,
                         'default_partner_id': partner_id,
@@ -30,6 +31,7 @@
                             <field name="project_id" invisible="1"/>
                             <field name="description" invisible="1"/>
                             <field name="ticket_description" invisible="1"/>
+                            <field name="dont_send_stage_email" invisible="1"/>
                             <button name="get_formview_action" type="object" help="Open Ticket" icon="fa-pencil-square-o" />
                         </tree>
                     </field>

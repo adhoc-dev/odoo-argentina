@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="helpdesk_timesheet.helpdesk_ticket_view_form_inherit_helpdesk_timesheet"/>
         <field name="arch" type="xml">
             <button name="assign_ticket_to_self" position="after">
-                <button name="create_linked_task" type="object" string="Crear tarea" attrs="{'invisible': [('task_id', '!=', False)]}"/>
+                <button name="create_linked_task" type="object" string="Crear tarea" context="{'default_dont_send_stage_email': True}" attrs="{'invisible': [('task_id', '!=', False)]}"/>
             </button>
             <field name="tag_ids" position="after">
                 <field name="adhoc_product_id" options="{'no_create_edit': True}" domain="[('parent_id', '!=', False)]"/>
