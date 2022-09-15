@@ -7,10 +7,10 @@
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
             <field name="parent_id" position="after">
-                <field name="adhoc_product_id" options="{'no_create_edit': True}" domain="[('parent_id', '!=', False)]"/>
+                <field name="adhoc_product_id" attrs="{'required': [('use_databases', '=', True)]}" options="{'no_create_edit': True}" domain="[('parent_id', '!=', False)]"/>
             </field>
             <page name="sub_tasks_page" position="after">
-                <page string="Tickets">
+                <page string="Tickets" attrs="{'invisible': [('use_databases', '=', False)]}">
                     <field name="ticket_ids" context="{
                         'default_dont_send_stage_email': True,
                         'default_name': name,
@@ -25,7 +25,7 @@
                             <field name="name"/>
                             <field name="user_id"/>
                             <field name="team_id"/>
-                            <field name="adhoc_product_id"/>
+                            <field name="adhoc_product_id" required="True"/>
                             <!-- <field name="main_database_id"/> -->
                             <field name="stage_id"/>
                             <field name="project_id" invisible="1"/>
