@@ -8,3 +8,4 @@ from . import res_company
 from . import res_config_settings
 from . import account_batch_payment
 from . import res_company_interest
+from . import account_journal

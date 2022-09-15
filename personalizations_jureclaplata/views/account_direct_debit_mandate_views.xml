@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="account_direct_debit_mandate_form">
+        <field name="name">account.direct_debit.mandate.form</field>
+        <field name="model">account.direct_debit.mandate</field>
+        <field name="inherit_id" ref="l10n_ar_account_direct_debit.account_direct_debit_mandate_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='credit_card_number']" position="attributes">
+                <attribute name="attrs">
+                    {'invisible': [('direct_debit_format', 'not in', ['visa_credito', 'master_credito', 'visa_debito', 'pago_mis_cuentas'])]}
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

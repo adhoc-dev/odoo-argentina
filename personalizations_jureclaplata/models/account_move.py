@@ -117,7 +117,7 @@ class AccountMove(models.Model):
         # 2. todas las facturas deberían pertenecer a la misma compañia
         companies = self.mapped('company_id')
         if len(companies) > 1:
-            raise UserError(_('Solo puede generar archivos con facturas de una compañia por ves, tiene seleccionado registros de %s') % companies.mapped('name'))
+            raise UserError(_('Solo puede generar archivos con facturas de una compañia por vez, tiene seleccionado registros de %s') % companies.mapped('name'))
 
         # 3. Si el codigo ente esta vacio no se va a poder continuar
         codigo_ente = self[0].company_id.red_link_code
