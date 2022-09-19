@@ -320,14 +320,24 @@ records_ib = env[active_model].browse(active_ids)
 
 ismodel  = env.context.get('ismodel')
 flete_id = env.context.get('state_detail_ib')
+ubicacion_id = records_ib.x_ubicacion
 #raise Warning(flete_id)
 
 if ismodel=='setstate':
   #raise Warning(flete_id)
   records_ib.write({  'x_state': flete_id })
-  for remito in records_ib.x_voucher_ids:
-     remito.picking_id.write({  'state_detail_id': flete_id })
+  if ubicacion_id:
+    if flete_id:
+      for remito in records_ib.x_voucher_ids:
+         remito.picking_id.write({  'state_detail_id': flete_id, 'x_ubicacion': ubicacion_id.id })
+    else:
+      for remito in records_ib.x_voucher_ids:
+        remito.picking_id.write({ 'x_ubicacion': ubicacion_id.id })
+  else:
   
+    for remito in records_ib.x_voucher_ids:
+       remito.picking_id.write({  'state_detail_id': flete_id })
+    
 else:  
   # modelo de stock.picking
   records_ib.write({  'state_detail_id': flete_id })

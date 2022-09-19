@@ -16,6 +16,7 @@
         <group modifiers="{}">
           <field name="x_voucher_ids" widget="many2many_tags" can_create="false" can_write="true" modifiers="{}"/>
           <field name="x_state"/>
+          <field name="x_ubicacion" domain="[('location_id.id','=',2387)]" />
         </group>
         <field name="x_barcode_scanned" widget="picking_barcode_handler" on_change="1" modifiers="{}"/>
       </form>
