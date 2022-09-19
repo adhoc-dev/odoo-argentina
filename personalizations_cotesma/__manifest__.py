@@ -1,7 +1,7 @@
 # License AGPL-3 or later (http://www.gnu.org/licenses/agpl).
 {
     'name': "personalizations_cotesma",
-    'version': "13.0.1.18.0",
+    'version': "13.0.1.19.0",
     'author': "Adhoc SA",
     'category': 'Personalizations',
     'license': 'AGPL-3',
@@ -37,6 +37,7 @@
         'views/stock_menu_views.xml',
         'views/stock_location_views.xml',
         'views/report_template.xml',
+        'views/account_move_view.xml'
     ],
     'demo': [
     ],
