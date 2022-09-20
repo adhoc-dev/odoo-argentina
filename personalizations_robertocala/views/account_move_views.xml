@@ -15,16 +15,16 @@
         <button name="%(personalizations_robertocala.ir_act_server_1273)d" string="Update Prices" type="action" attrs="{'invisible':['|',('state','!=', 'draft'),('type', 'not in', ('in_invoice', 'in_refund'))]}"/>
       </field>
       <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']" position="attributes">
-        <attribute name="attrs">{'invisible':[('parent.type', 'in', ('in_invoice', 'in_refund'))]}</attribute>
+        <attribute name="attrs">{'invisible':[('parent.move_type', 'in', ('in_invoice', 'in_refund'))]}</attribute>
       </xpath>
       <!-- <xpath expr="/field[@name='invoice_line_ids']/tree/field[@name='analytic_account_id']" position="attributes">
-        <attribute name="attrs">{'invisible':[('parent.type', 'in', ('in_invoice', 'in_refund'))]}</attribute>
+        <attribute name="attrs">{'invisible':[('parent.move_type', 'in', ('in_invoice', 'in_refund'))]}</attribute>
       </xpath>
       <xpath expr="/field[@name='invoice_line_ids']/tree/field[@name='analytic_tag_ids']" position="attributes">
-        <attribute name="attrs">{'invisible':[('parent.type', 'in', ('in_invoice', 'in_refund'))]}</attribute>
+        <attribute name="attrs">{'invisible':[('parent.move_type', 'in', ('in_invoice', 'in_refund'))]}</attribute>
       </xpath> -->
       <field name="quantity" position="after">
-        <field name="x_replenishment_base_cost_on_currency" attrs="{'invisible':[('parent.type', 'not in', ('in_invoice', 'in_refund'))]}"/>
+        <field name="x_replenishment_base_cost_on_currency" attrs="{'invisible':[('parent.move_type', 'not in', ('in_invoice', 'in_refund'))]}"/>
       </field>
     </field>
   </record>
