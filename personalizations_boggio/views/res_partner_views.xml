@@ -22,21 +22,32 @@
     <field eval="[(6, 0, [ref('personalizations_boggio.res_groups_112')])]" name="groups_id"/>
     <field name="inherit_id" ref="base.view_partner_form"/>
     <field name="arch" type="xml">
-        <field name="user_id" position="replace"/>
+
+        <field name="user_id" position="attributes">
+            <attribute name="readonly">True</attribute>
+        </field>
+
+        <field name="x_operate_with_checks" position="attributes">
+            <attribute name="readonly">True</attribute>
+        </field>
+
+        <field name="credit_limit" position="attributes">
+            <attribute name="readonly">True</attribute>
+        </field>
+
+        <field name="require_purchase_order_number" position="attributes">
+            <attribute name="readonly">True</attribute>
+        </field>
+
         <field name="ref" position="replace"/>
-        <field name="require_purchase_order_number" position="replace"/>
         <field name="abc_sales_amount" position="replace"/>
-        <field name="x_operate_with_checks" position="replace"/>
-        <field name="company_id" position="before">
-          <field name="user_id" readonly="True"/>
+        <group name="sale" position="inside">
           <field name="ref" readonly="True"/>
           <field name="active" readonly="True"/>
-          <field name="require_purchase_order_number" readonly="True"/>
-          <field name="x_operate_with_checks" readonly="1"/>
           <field name="abc_sales_amount" readonly="True"/>
           <field name="x_abc_sales_freq" readonly="True"/>
-          <field name="credit_limit" readonly="1"/>
-        </field>
+        </group>
+
     </field>
   </record>
   <record id="personalizations_boggio.ir_ui_view_4468" model="ir.ui.view">
