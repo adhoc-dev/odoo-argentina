@@ -17,27 +17,29 @@
             <!-- Deuda del Alumno -->
             <t t-set="debt" t-value="env['account.move'].search([
                     ('company_id', '=', o.company_id.id),
-                    ('student_id.student_code', '=', o.student_id.student_code), ('type', '=', 'out_invoice'), ('state', '=', 'posted'), ('invoice_payment_state' , '=', 'not_paid')
+                    ('student_id.student_code', '=', o.student_id.student_code),
+                    ('type', '=', 'out_invoice'), ('state', '=', 'posted'),
+                    ('invoice_payment_state' , '=', 'not_paid'),
                 ], order='date desc')
             "/>
 
-            <t t-set="debt_amount" t-value="0.00"/>
-            <t t-foreach="debt" t-as="invoice">
-                <t t-if="datetime.date.today() &gt; invoice.invoice_date + datetime.timedelta(days=o.company_id.first_due_date_days)">
-                    <t t-set="debt_amount" t-value="debt_amount + (invoice.amount_residual * (1 + o.company_id.surcharge / 100.0))"/>
-                </t>
-                <t t-else="">
-                    <t t-set="debt_amount" t-value="debt_amount + invoice.amount_residual"/>
-                </t>
+            <t t-set="amount_total" t-value="sum(debt.mapped('amount_residual'))"/>
+            <t t-set="str_amount_total" t-value="str(int(amount_total * 100)).rjust(7, '0')"/>
+
+            <!-- Si la factura es de este mes, entonces necesitamos agregar el monto a 2do vencimiento ya que aun no se ha generado nota de debito para el corriente mes-->
+            <t t-if="o.invoice_date.month &lt; datetime.date.today().month ">
+                <t t-set="surcharge_amount" t-value="0.0"/>
+            </t>
+            <t t-else="">
+                <t t-set="surcharge_amount" t-value="o.amount_residual * (o.company_id.surcharge / 100.0)"/>
             </t>
 
-            <t t-set="amount_total" t-value="str(int(debt_amount * 100)).rjust(7, '0')"/>
-            <t t-set="surcharge_amount" t-value="str(int(sum(debt.mapped('amount_residual')) * (1 + o.company_id.surcharge / 100.0) * 100)).rjust(7, '0')"/>
+            <t t-set="str_debit_total" t-value="str(int((amount_total + surcharge_amount) * 100)).rjust(7, '0')"/>
 
             <!-- Codigo de barras -->
             <t t-set="barcode_payment" t-value="
-                nro_bapro + reference + student_code + yy_first_due + ddd_first_due + amount_total +
-                yy_second_due + ddd_second_due + surcharge_amount + close_code
+                nro_bapro + reference + student_code + yy_first_due + ddd_first_due + str_amount_total +
+                yy_second_due + ddd_second_due + str_debit_total + close_code
             "/>
         </t>
 
@@ -58,14 +60,10 @@
                                 <td><span t-field="invoice.invoice_date"/></td>
                                 <td>
                                     <span t-field="invoice.name"/>
+                                    <span t-if="invoice.invoice_origin == 'Interests Invoice'"> / Intereses</span>
                                 </td>
                                 <td class="text-right">
-                                    <t t-if="datetime.date.today() &gt; invoice.invoice_date + datetime.timedelta(days=o.company_id.first_due_date_days)">
-                                        <span t-raw="invoice.amount_residual * (1 + o.company_id.surcharge / 100.00)" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
-                                    </t>
-                                    <t t-else="">
-                                        <span t-raw="invoice.amount_residual" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
-                                    </t>
+                                    <span t-raw="invoice.amount_residual" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
                                 </td>
                             </tr>
                         </tbody>
@@ -75,7 +73,7 @@
                             <tr class="border-black o_total">
                                 <td><strong>Total</strong></td>
                                 <td class="text-right">
-                                    <span class="text-nowrap" t-raw="debt_amount" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                    <span class="text-nowrap" t-raw="amount_total" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
                                 </td>
                             </tr>
                         </table>
