@@ -15,12 +15,15 @@
         <field name="header_spacing">80</field>
         <field name="dpi">80</field>
     </record>
-    <report
-        string="Etiqueta personalizada"
-        id="action_report_etiqueta_expresos_paquetes"
-        model="stock.quant.package"
-        report_type="qweb-pdf"
-        name="personalizations_primicia.etiqueta_expresos_paquetes"
-        file="personalizations_primicia.etiqueta_expresos_paquetes"
-        paperformat="personalizations_primicia.paperformat_etiqueta_personalizada"/>
+
+    <record id="action_report_etiqueta_expresos_paquetes" model="ir.actions.report">
+        <field name="name">Etiqueta personalizada</field>
+        <field name="model">stock.quant.package</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personalizations_primicia.etiqueta_expresos_paquetes</field>
+        <field name="report_file">personalizations_primicia.etiqueta_expresos_paquetes</field>
+        <field name="paperformat_id" ref="personalizations_primicia.paperformat_etiqueta_personalizada"/>
+        <field name="binding_model_id" ref="model_stock_quant_package"/>
+        <field name="binding_type">report</field>
+    </record>
 </odoo>

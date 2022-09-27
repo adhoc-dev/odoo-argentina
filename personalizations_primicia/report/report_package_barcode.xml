@@ -25,7 +25,7 @@
                                 <strong>KG</strong>
                             </td>
                             <td align="center" style="border-top: 2px solid black !important; border-right: 2px solid black !important;">
-                                <strong><span t-field="picking.number_of_packages" style= "font-size: 15px"/></strong>
+                                <strong><span t-field="picking.package_ids" style= "font-size: 15px"/></strong>
                                 <br/>
                                 <strong>BULTOS</strong>
                             </td>
