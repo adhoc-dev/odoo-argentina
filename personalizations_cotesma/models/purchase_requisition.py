@@ -6,6 +6,7 @@ class PurchaseRequisition(models.Model):
     _inherit = "purchase.requisition"
 
     vendor_ids = fields.Many2many('res.partner', string="Vendors", domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]")
+    priority = fields.Selection([('0', 'Normal'),('1', 'Urgente')], string="Prioridad")
 
     def action_in_progress(self):
         self.ensure_one()
