@@ -19,25 +19,22 @@ class AccountMove(models.Model):
         return debt_total
 
     def get_debt_first_due(self, debt_total):
-        """ calcula la deuda total, si la factura ya vencio toma el importe total del segundo vencimiento, si la factura
-        no ha vencida toma el valor de la factura """
+        """ calcula la deuda total, en este caso seria lo que queda pendiente por pagar de todas las facturas antes
+        del primer vencimiento. Las deudas que vienen de meses anteriores vienen includias por las facturas de intereses
+        (notas de debito auto generadas mes a mes) """
         self.ensure_one()
-        res = 0.0
-        today = fields.Date.context_today(self)
-        for invoice in debt_total:
-            first_due_date_days = invoice.company_id.first_due_date_days
-            first_due_date_days = fields.Date.add(invoice.invoice_date, days=first_due_date_days)
-            if today > first_due_date_days:
-                res += invoice.amount_residual * (1 + invoice.company_id.surcharge / 100.00)
-            else:
-                res += invoice.amount_residual
-        return res
+        return round((sum(debt_total.mapped('amount_residual'))), 2)
+
 
     def get_debt_second_due(self, debt_total):
-        """ devuelve directamente la suma del monto audado de toma todas las facturas que no han sido pagadas"""
+        """ devuelve directamente la suma del monto audado de todas las facturas que no han sido pagadas, solo suma
+        el recargo a aquellas facturas cuyo mes sea el actual o futuros (alli las nd aun no existen)"""
         self.ensure_one()
-        second_due_surcharge = self.company_id.surcharge
-        return round((sum(debt_total.mapped('amount_residual')) * (1 + second_due_surcharge / 100.0)), 2)
+        debt_first_due = self.get_debt_first_due(debt_total)
+        subcharge = 0.0
+        for invoice in debt_total.filtered(lambda x: x.invoice_date.month >= fields.Date.context_today(self).month):
+            subcharge += invoice.amount_residual * (invoice.company_id.surcharge / 100.0)
+        return round(debt_first_due + subcharge, 2)
 
     def get_files_red_link(self):
         """ Este método recibe una lista de varios account move y devuelve el wizard que permite pre visualizar los archivos a descargar """
