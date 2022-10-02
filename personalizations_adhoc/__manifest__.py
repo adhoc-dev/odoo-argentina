@@ -11,11 +11,13 @@
         'sale_timesheet',
         'helpdesk_timesheet',
         'helpdesk_solutions_project',
+        'saas_provider_adhoc',
     ],
     'data': [
         'views/hr_contract_views.xml',
         'views/adhoc_product_views.xml',
         'views/adhoc_product_menus.xml',
+        'views/adhoc_module_views.xml',
         'views/hr_job_views.xml',
         'views/hr_salary_category_views.xml',
         'views/hr_seniority_views.xml',
