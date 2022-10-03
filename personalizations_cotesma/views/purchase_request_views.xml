@@ -7,6 +7,9 @@
             <field name="group_id" position="after">
                 <field name="priority" widget="priority"/>
             </field>
+            <xpath expr="//field[@name='line_ids']//form//field[@name='date_required']" position="before">
+                <field name="tag_id" required="1"/>
+            </xpath>
         </field>
     </record>
     <record id="purchase_request_tree_personalizations" model="ir.ui.view">
