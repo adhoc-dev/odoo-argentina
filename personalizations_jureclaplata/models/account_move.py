@@ -32,8 +32,7 @@ class AccountMove(models.Model):
         del primer vencimiento. Las deudas que vienen de meses anteriores vienen includias por las facturas de intereses
         (notas de debito auto generadas mes a mes) """
         self.ensure_one()
-        return round((sum(debt_total.mapped('amount_residual'))), 2)
-
+        return sum(debt_total.mapped('amount_residual'))
 
     def get_debt_second_due(self, debt_total):
         """ devuelve directamente la suma del monto audado de todas las facturas que no han sido pagadas, solo suma
@@ -43,7 +42,7 @@ class AccountMove(models.Model):
         subcharge = 0.0
         for invoice in debt_total.filtered(lambda x: x.invoice_date.month >= fields.Date.context_today(self).month):
             subcharge += invoice.amount_residual * (invoice.company_id.surcharge / 100.0)
-        return round(debt_first_due + subcharge, 2)
+        return debt_first_due + subcharge
 
     def get_files_red_link(self):
         """ Este método recibe una lista de varios account move y devuelve el wizard que permite pre visualizar los archivos a descargar """
@@ -203,6 +202,7 @@ class AccountMove(models.Model):
                 # Campo 5: Importe Primer Vencimiento (10 + 2, N. Completar con 0 a la izq)
                 debt_total = inv.get_student_debt_total()
                 importe_primer_vencimiento = inv.get_debt_first_due(debt_total)
+                importe_primer_vencimiento = round(importe_primer_vencimiento, 2)
                 content += ('%.2f' % (importe_primer_vencimiento)).replace('.', '').zfill(12)
                 total_primer_venc += importe_primer_vencimiento
 
@@ -212,6 +212,7 @@ class AccountMove(models.Model):
 
                 # Campo 7: Importe Segundo Vencimiento (10 + 2, N. Completar con 0 a la izq)
                 importe_segundo_vencimiento = inv.get_debt_second_due(debt_total)
+                importe_segundo_vencimiento = round(importe_segundo_vencimiento, 2)
                 total_segundo_venc += importe_segundo_vencimiento
                 content += ('%.2f' % (importe_segundo_vencimiento)).replace('.', '').zfill(12)
 
