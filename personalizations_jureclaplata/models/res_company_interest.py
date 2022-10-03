@@ -14,3 +14,8 @@ class ResCompanyInterest(models.Model):
 
     def create_invoices(self, to_date, groupby='student_id'):
         return super().create_invoices(to_date, groupby=groupby)
+
+    def _get_move_line_domains(self, to_date):
+        res = super()._get_move_line_domains(to_date)
+        res += [('journal_id.type', '=', 'sale'), ('move_id.state', '=', 'posted')]
+        return res
