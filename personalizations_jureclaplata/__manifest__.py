@@ -1,7 +1,7 @@
 # License AGPL-3 or later (http://www.gnu.org/licenses/agpl).
 {
     'name': "personalizations_jureclaplata",
-    'version': "13.0.4.14.0",
+    'version': "13.0.4.15.0",
     'author': "Adhoc SA",
     'category': 'Personalizations',
     'license': 'AGPL-3',
@@ -27,6 +27,7 @@
         'views/sale_subscription_views.xml',
         'views/res_config_settings_views.xml',
         'wizards/download_files_wizard_views.xml',
+        'wizards/account_payment_group_invoice_wizard_view.xml',
     ],
     'installable': False,
     'auto_install': False,
