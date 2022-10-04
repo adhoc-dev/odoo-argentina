@@ -28,6 +28,8 @@
         </t>
         <xpath expr="//span[@t-field='o.partner_id.l10n_ar_afip_responsibility_type_id']//../strong[2]" position="replace"/>
         <span t-field="o.partner_id.l10n_ar_afip_responsibility_type_id" position="replace"/>
+        <xpath expr="//table[@name='matching_table']//th[2]//span" position="replace"/>
+        <xpath expr="//table[@name='matching_table']//span[@t-field='line.date_maturity']" position="replace"/>
         <xpath expr="//table[3]" position="after">
             <div style="position:absolute;top:850px;right:100px; page-break-inside: avoid;">
                 Recibí conforme,
