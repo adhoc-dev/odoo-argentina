@@ -1,6 +1,6 @@
 {
     'name': 'Personalizations Cosacov',
-    'version': '13.0.1.0.0',
+    'version': '13.0.1.1.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -9,6 +9,7 @@
     ],
     'data': [
         'views/res_state_views.xml',
+        'views/res_partner_views.xml',
     ],
     'installable': True,
     'application': False,
