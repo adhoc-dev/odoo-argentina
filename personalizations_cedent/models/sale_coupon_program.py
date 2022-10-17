@@ -33,6 +33,8 @@ class CouponProgram(models.Model):
     def _check_available_stock(self, order):
         domain = safe_eval(self.rule_products_domain)
         product_ids = self.env['product.product'].search(domain).ids
+        if len(product_ids) > 1:
+            return True
         product_qty = sum([line.product_uom_qty for line in order.order_line.filtered(lambda line: line.product_id.id in product_ids)])
         return product_qty <= self.stock_available and self.max_stock_quantity != 0
 
