@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<odoo>
+    <template id="sale_hide_discount" inherit_id="sale.report_saleorder_document">
+       <xpath expr="//t[@t-set='display_discount']" position="attributes">
+            <attribute name="t-value">not doc.x_discount_hide and any([l.discount for l in doc.order_line])</attribute>
+        </xpath>
+        <xpath expr="//td[@name='td_priceunit']" position="attributes">
+            <attribute name="t-if">not doc.x_discount_hide</attribute>
+        </xpath>
+        <xpath expr="//td[@name='td_priceunit']" position="after">
+            <td class="text-right" t-if="doc.x_discount_hide"
+            t-esc="line.price_total / line.product_uom_qty"
+            t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
+        </xpath>
+    </template>
+
+    <template id="sale_hide_discount_optionals" inherit_id="sale_management.report_saleorder_document_inherit_sale_management">
+       <xpath expr="//t[@t-set='has_option_discount']" position="attributes">
+            <attribute name="t-value">not doc.x_discount_hide and any(doc.sale_order_option_ids.filtered(lambda o: o.discount != 0.0))</attribute>
+        </xpath>
+
+        <xpath expr="//td[@name='td_option_price_unit']" position="attributes">
+            <attribute name="t-if">not doc.x_discount_hide</attribute>
+        </xpath>
+
+        <xpath expr="//td[@name='td_option_price_unit']" position="after">
+            <td name="td_option_price_unit_discount_hiden" t-if="doc.x_discount_hide">
+                <strong class="text-right">
+                    <div>
+                        <t t-esc="float('%.2f' % ((1-option.discount / 100.0) * option.price_unit))" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
+                    </div>
+                </strong>
+            </td>
+        </xpath>
+    </template>
+
+</odoo>
