@@ -106,7 +106,7 @@ class AccountMove(models.Model):
         invoice = create_invoice()
         self.x_invoice_nd_id = invoice
         actions = self.env.ref('account.action_move_out_invoice_type')
-        action_read = actions.read()[0]
+        action_read = actions.sudo().read()[0]
         res = self.env.ref('account.view_move_form', False)
         action_read['views'] = [(res and res.id or False, 'form')]
         action_read['res_id'] = invoice.id

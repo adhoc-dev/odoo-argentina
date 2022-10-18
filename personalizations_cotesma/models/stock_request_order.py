@@ -45,7 +45,7 @@ class StockRequest(models.Model):
                 stock_request_products=True,
                 company_id=self.company_id.id,
             ))
-            action_read = action.read()[0]
+            action_read = action.sudo().read()[0]
             action_read.update(dict(
                 context=context,
                 name=_('Stock Request Products'),

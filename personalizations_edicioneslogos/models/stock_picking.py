@@ -65,6 +65,6 @@ class StockPicking(models.Model):
         wiz = self.env['account.invoice.prices_update.wizard'].with_context(active_id=invoices).create({'pricelist_id': self.x_pricelist_id.id})
         wiz.update_prices()
         actions = self.env.ref('account.action_move_out_refund_type')
-        action_read = actions.read()[0]
+        action_read = actions.sudo().read()[0]
         action_read['domain'] = [('id', 'in', invoices)]
         return action_read
