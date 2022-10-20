@@ -6,7 +6,7 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
-            <field name="parent_id" position="after">
+            <field name="adhoc_module_id" position="after">
                 <field name="adhoc_product_id" attrs="{'required': [('use_databases', '=', True)]}" options="{'no_create_edit': True}" domain="[('parent_id', '!=', False)]"/>
             </field>
             <page name="sub_tasks_page" position="after">
@@ -56,7 +56,7 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_search_form"/>
         <field name="arch" type="xml">
-            <field name="tag_ids" position="after">
+            <field name="user_ids" position="after">
                 <field name="adhoc_product_id"/>
             </field>
             <filter name="project" position="after">

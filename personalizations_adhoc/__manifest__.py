@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_adhoc',
-    'version': "15.0.1.7.0",
+    'version': "15.0.1.8.0",
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -20,6 +20,7 @@
         'views/adhoc_product_views.xml',
         'views/adhoc_product_menus.xml',
         'views/adhoc_module_views.xml',
+        'views/adhoc_module_module_views.xml',
         'views/hr_job_views.xml',
         'views/hr_salary_category_views.xml',
         'views/hr_seniority_views.xml',

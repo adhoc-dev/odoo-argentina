@@ -19,7 +19,7 @@
             <field name="model">adhoc.module</field>
             <field name="inherit_id" ref="saas_provider_adhoc.view_adhoc_module_search"/>
             <field name="arch" type="xml">
-                <field name="name">
+                <field name="version_ids" position="after">
                     <field name="adhoc_product_id"/>
                 </field>
                 <group>
@@ -35,7 +35,7 @@
             <field name="model">adhoc.module</field>
             <field name="inherit_id" ref="saas_provider_adhoc.view_adhoc_module_tree"/>
             <field name="arch" type="xml">
-                <field name="name">
+                <field name="name" position="after">
                     <field name="adhoc_product_id" optional="show"/>
                 </field>
             </field>
