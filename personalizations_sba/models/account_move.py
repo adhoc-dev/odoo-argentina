@@ -105,8 +105,7 @@ class AccountMove(models.Model):
         PRODUCT_ID = int(self.env['ir.config_parameter'].sudo().get_param('product.nd_mora'))
         invoice = create_invoice()
         self.x_invoice_nd_id = invoice
-        actions = self.env.ref('account.action_move_out_invoice_type')
-        action_read = actions.sudo().read()[0]
+        action_read = self.env["ir.actions.actions"]._for_xml_id('account.action_move_out_invoice_type')
         res = self.env.ref('account.view_move_form', False)
         action_read['views'] = [(res and res.id or False, 'form')]
         action_read['res_id'] = invoice.id

@@ -60,7 +60,7 @@ class InvoiceFromSubscriptionWizard(models.TransientModel):
             invoice._onchange_invoice_line_ids()
             invoices.append(invoice.id)
 
-        action = self.env.ref('account.action_move_out_invoice_type').sudo().read()[0]
+        action = self.env["ir.actions.actions"]._for_xml_id('account.action_move_out_invoice_type')
         if len(invoices) > 1:
             action['domain'] = [('id', 'in', invoices)]
         elif len(invoices) == 1:

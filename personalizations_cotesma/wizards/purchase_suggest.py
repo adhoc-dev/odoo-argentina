@@ -123,6 +123,6 @@ class PurchaseSuggestPrCreate(models.TransientModel):
             pr = self._create_update_purchase_requisition(
                 company, pr_lines, location)
             pr_ids.append(pr.id)
-        action = self.env.ref('purchase_requisition.action_purchase_requisition').sudo().read()[0]
+        action = self.env["ir.actions.actions"]._for_xml_id('purchase_requisition.action_purchase_requisition')
         action['domain'] = [('id', 'in', pr_ids)]
         return action
