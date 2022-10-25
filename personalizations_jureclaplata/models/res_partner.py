@@ -1,3 +1,4 @@
+from datetime import date
 from odoo import models, fields, api
 
 
@@ -26,4 +27,9 @@ class ResPartner(models.Model):
     @api.depends('student_group_ids')
     def _compute_curso_actual(self):
         for rec in self.filtered('student_group_ids'):
-            rec.curso_actual = rec.student_group_ids.sorted('year', reverse=True)[0]
+            cursos = rec.student_group_ids.sorted(key=lambda r: r.year, reverse=True)
+            cursos_filtrados = cursos.filtered(lambda r: r.year <= date.today().year)
+            if cursos_filtrados:
+                rec.curso_actual = cursos_filtrados[0]
+            else:
+                rec.curso_actual = cursos[0]

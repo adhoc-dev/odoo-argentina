@@ -24,4 +24,16 @@
         <field name="doall" eval="False"/>
     </record>
 
+    <record id="update_curso_actual" model="ir.cron">
+        <field name="name">Actualizar curso actual</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="state">code</field>
+        <field name="code">model._compute_curso_actual</field>
+        <field name="nextcall" eval="(DateTime.now() + relativedelta(years=1)).strftime('%Y-01-01 04:00:00')"/>
+        <field name="interval_number">12</field>
+        <field name="interval_type">months</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+    </record>
+
 </odoo>

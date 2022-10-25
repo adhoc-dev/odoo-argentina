@@ -9,7 +9,7 @@ class SaleSubscription(models.Model):
     curso_actual = fields.Many2one(comodel_name='academic.group', string='Curso Actual',
                                    compute="_compute_curso_actual", store=True)
 
-    @api.depends('student_id')
+    @api.depends('student_id', 'student_id.curso_actual')
     def _compute_curso_actual(self):
         for rec in self:
             if (not rec.student_id):
