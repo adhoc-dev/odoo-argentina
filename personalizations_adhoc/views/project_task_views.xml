@@ -6,9 +6,9 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
-            <field name="adhoc_module_id" position="after">
+            <div name="adhoc_module_id" position="after">
                 <field name="adhoc_product_id" attrs="{'required': [('use_databases', '=', True)]}" options="{'no_create_edit': True}" domain="[('parent_id', '!=', False)]"/>
-            </field>
+            </div>
             <page name="sub_tasks_page" position="after">
                 <page string="Tickets" attrs="{'invisible': [('use_databases', '=', False)]}">
                     <field name="ticket_ids" context="{
