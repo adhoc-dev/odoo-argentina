@@ -16,6 +16,7 @@ class ResPartner(models.Model):
         show_average_info = self.env.context.get('show_average_info')
         msg = "Facturas:\n"
 
+        received_third_check = self.env.ref("account_check.account_payment_method_received_third_check")
         init_date = self.env['ir.config_parameter'].sudo().get_param('p13n_netso.average_due_init_date', '2022-09-21')
         from_date = fields.Date.to_date(init_date)
         for partner in self:
@@ -26,7 +27,8 @@ class ResPartner(models.Model):
                 payment_days = []
                 for payment_group in inv.payment_group_ids:
                     for payment in payment_group.payment_ids:
-                        payment_days.append((payment.payment_date - inv.invoice_date_due).days)
+                        payment_date = payment.payment_date if payment.payment_method_id != received_third_check else payment.check_payment_date
+                        payment_days.append((payment_date - inv.invoice_date_due).days)
 
                 payment_days = sorted(payment_days)
                 # Si la factura esta vencida y nohay pagos
