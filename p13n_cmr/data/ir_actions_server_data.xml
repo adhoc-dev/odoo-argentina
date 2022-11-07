@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="action_account_payment_group_bco_municipal_transferencias" model="ir.actions.server">
+        <field name="name">Transaferencias inmediatas Banco Municipal</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="account_payment_group.model_account_payment_group"/>
+        <field name="binding_model_id" ref="account_payment_group.model_account_payment_group"/>
+        <field name="binding_view_types">list</field>
+        <field name="code">
+            action = model._generate_export_file()
+        </field>
+    </record>
+
+</odoo>

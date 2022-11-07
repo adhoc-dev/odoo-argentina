@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo noupdate="1">
+    <record id="limite_diario_transferencias_bco_municipal" model="ir.config_parameter">
+        <field name="key">p13n_cmr.limite_diario_transferencias_bco_municipal</field>
+        <field name="value"></field>
+    </record>
+</odoo>
+
