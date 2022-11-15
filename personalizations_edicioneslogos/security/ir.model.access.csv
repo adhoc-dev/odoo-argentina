@@ -1,7 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-personalizations_edicioneslogos.ir_model_access_1337,sale.order,sale.model_sale_order,base.group_portal,1,0,0,0
-personalizations_edicioneslogos.ir_model_access_1338,sale.order.line,sale.model_sale_order_line,base.group_portal,1,0,0,0
-personalizations_edicioneslogos.ir_model_access_1583,x_project empleado,personalizations_edicioneslogos.model_x_project,,0,1,0,0
-personalizations_edicioneslogos.ir_model_access_1584,x_partner_project manager,personalizations_edicioneslogos.model_x_partner_project,base.group_partner_manager,1,1,1,1
-personalizations_edicioneslogos.ir_model_access_1585,x_partner manager,personalizations_edicioneslogos.model_x_project,base.group_partner_manager,1,1,1,1
-personalizations_edicioneslogos.ir_model_access_1586,x_partner_project empleado,personalizations_edicioneslogos.model_x_partner_project,base.group_user,1,0,0,0

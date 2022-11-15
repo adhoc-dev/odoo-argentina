@@ -1,7 +1,0 @@
-<?xml version="1.0" ?>
-<odoo>
-    <record id="personalizations_provar.stock_token_server" model="ir.config_parameter">
-        <field name="key">personalizations_provar.stock_token_server</field>
-        <field name="value">foH2c-HNSUE-tk544-PjoHu</field>
-    </record>
-</odoo>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <menuitem name="Reportes" id="menu_reportes" sequence="50" parent="academic.menu_academic" groups="academic.group_user" />
-    <!-- This Menu Item must have a parent and an action -->
-    <menuitem id="alumnos_perdidos_menu_act" name="Alumnos Perdidos" parent="menu_reportes" action="alumnos_perdidos_action" sequence="10"/>
-    <menuitem id="alumnos_egresados_menu_act" name="Alumnos Egresados" parent="menu_reportes" action="alumnos_egresados_action" sequence="20"/>
-</odoo>

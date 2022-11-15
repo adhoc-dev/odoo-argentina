@@ -1,8 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-personalizations_flexocolor.product_template_containers_user,user product_template_containers,model_product_template_containers,base.group_user,1,1,1,1
-personalizations_flexocolor.product_template_machines_user,user product_template_machines,model_product_template_machines,base.group_user,1,1,1,1
-personalizations_flexocolor.product_template_coil_user,user product_template_coil,model_product_template_coil,base.group_user,1,1,1,1
-personalizations_flexocolor.product_template_cylinder_user,user product_template_cylinder,model_product_template_cylinder,base.group_user,1,1,1,1
-
-
-

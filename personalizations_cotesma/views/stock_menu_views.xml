@@ -1,6 +1,0 @@
-<odoo>
-    <!-- le agregramos el permiso al menu de informes para el usurio basico de inventario -->
-    <record id="stock.menu_warehouse_report" model="ir.ui.menu">
-        <field name="groups_id" eval="[(6,0,[ref('stock.group_stock_user')])]"/>
-    </record>
-</odoo>
