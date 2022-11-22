@@ -16,5 +16,6 @@ class HelpdeskTicket(models.Model):
                 'adhoc_product_id': rec.adhoc_product_id.id,
                 'task_description': rec.description,
                 'description': rec.ticket_description,
+                'user_ids': [(4, rec.project_id.user_id.id, 0)] if rec.project_id.user_id else False,
                 'ticket_ids': [(4, rec.id, 0)]
             })
