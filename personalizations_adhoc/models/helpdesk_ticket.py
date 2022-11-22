@@ -14,7 +14,7 @@ class HelpdeskTicket(models.Model):
                 'project_id': rec.project_id.id,
                 'partner_id': rec.partner_id.id,
                 'adhoc_product_id': rec.adhoc_product_id.id,
-                'task_description': rec.ticket_description,
-                'description': rec.description,
+                'task_description': rec.description,
+                'description': rec.ticket_description,
                 'ticket_ids': [(4, rec.id, 0)]
             })
