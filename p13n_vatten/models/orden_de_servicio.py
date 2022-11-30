@@ -338,7 +338,7 @@ class ServiceOrder(models.Model):
         interlocutores =  self.env['res.partner'].search(
                 ['&',('type', '=', 'contact'),'|',('parent_id.id','=',self.partner_service_id.id),('parent_id.id','=',self.partner_service_id.parent_id.id)]
             ).mapped('id')
-        if self.interlocutor.id:
+        if self.interlocutor.id and self.interlocutor.id in interlocutores:
             interlocutores.remove(self.interlocutor.id)
         res = {'domain' : {'con_copia_a': [('id', 'in', interlocutores)]}}
         return res
