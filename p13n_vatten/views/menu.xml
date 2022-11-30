@@ -5,7 +5,7 @@
         id="laboratorio_menu"
         name="Laboratorio"
         sequence="10"
-        web_icon="laboratory,static/description/icon.png"/>
+        web_icon="p13n_vatten,static/description/icon.png"/>
 
     <menuitem
         id="orden_de_servicio_menu"

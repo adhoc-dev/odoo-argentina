@@ -83,8 +83,8 @@
         <field name="res_model">res.partner</field>
         <field name="view_mode">tree,form</field>
         <field name="view_ids" eval="[(5, 0, 0),
-            (0, 0, {'view_mode': 'tree', 'view_id': ref('laboratory.tree_view_muestra')}),
-            (0, 0, {'view_mode': 'form', 'view_id': ref('laboratory.form_view_muestra')})]"
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('p13n_vatten.tree_view_muestra')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('p13n_vatten.form_view_muestra')})]"
         />
         <field name="domain">[('type','=','service')]</field>
     </record>

@@ -85,7 +85,7 @@ class ServiceOrder(models.Model):
     date_validated = fields.Date('Fecha Validada', tracking=True,
                                  copy=False, readonly=True, help="Esta es la fecha de visita realizada.")
     operator = fields.Many2one("res.users", string="Responsable Técnico", required=True, tracking=True, domain=lambda self: [("groups_id", "=", self.env.ref(
-        "laboratory.labo_group_user").id)], readonly=True, states={'draft': [('readonly', False)]})
+        "p13n_vatten.labo_group_user").id)], readonly=True, states={'draft': [('readonly', False)]})
     interlocutor = fields.Many2one("res.partner", string="Interlocutor", required=True,
                                    tracking=True, readonly=True, states={'draft': [('readonly', False)]})
     con_copia_a = fields.Many2one("res.partner", string="Copia a",
@@ -343,15 +343,17 @@ class ServiceOrder(models.Model):
         res = {'domain' : {'con_copia_a': [('id', 'in', interlocutores)]}}
         return res
 
-    @api.onchange('operator')
-    def _onchange_operator(self):
-        print('>>>>>>>>>>>>>> ??????? ')
+    #jok falta digital_signature por falta dependencia
+    # @api.onchange('operator')
+    # def _onchange_operator(self):
+    #     print('>>>>>>>>>>>>>> ??????? ')
         
-        if not self.firma_operador:
-            temp = self.env['res.users'].search([('id', '=', self.operator.id)]).digital_signature
-            if temp:
-                self.firma_operador = temp
-        
+    #     if not self.firma_operador:
+    #         temp = self.env['res.users'].search([('id', '=', self.operator.id)]).digital_signature
+    #         if temp:
+    #             self.firma_operador = temp
+
+# Ya estaba comentado TODO: sacar       
 #        print('>>> operator id: ', self.operator.id)
 #        print('&&&: ', self.env['res.users'].search([('id', '=', self.operator.id)]).digital_signature)
 #        print('>>> val firma: ', self.firma_operador)

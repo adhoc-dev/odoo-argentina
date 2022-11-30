@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-labo_service_order,labo.service.order,model_service_order,laboratory.labo_group_user,1,1,1,1
-labo_chemical_parameter,laboratorio.chemical.parameter,model_chemical_parameter,laboratory.labo_group_user,1,1,1,1
-labo_determinaciones,laboratorio.determinaciones,model_determinaciones,laboratory.labo_group_user,1,1,1,1
-labo_muestras,laboratorio.muestras,model_muestras,laboratory.labo_group_user,1,1,1,1
-labo_parametros,laboratorio.parametros,model_parametros,laboratory.labo_group_user,1,1,1,1
+labo_service_order,labo.service.order,model_service_order,p13n_vatten.labo_group_user,1,1,1,1
+labo_chemical_parameter,laboratorio.chemical.parameter,model_chemical_parameter,p13n_vatten.labo_group_user,1,1,1,1
+labo_determinaciones,laboratorio.determinaciones,model_determinaciones,p13n_vatten.labo_group_user,1,1,1,1
+labo_muestras,laboratorio.muestras,model_muestras,p13n_vatten.labo_group_user,1,1,1,1
+labo_parametros,laboratorio.parametros,model_parametros,p13n_vatten.labo_group_user,1,1,1,1

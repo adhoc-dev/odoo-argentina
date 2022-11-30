@@ -1,6 +1,6 @@
 {
     'name': 'Laboratorio',
-    'version': '12.0.1.0.0',
+    'version': '15.0.1.0.0',
     'summary': 'Genera protocolos de control analítico de aguas',
     'category': 'Uncategorized',
     'author': 'RMF',
@@ -10,12 +10,12 @@
     'depends': [
         'base',
         'contacts',
-        'inputmask_widget',
+        # 'inputmask_widget',
         'mail',
         'web',
-        'web_responsive',
+        # 'web_responsive',
         'web_widget_x2many_2d_matrix',
-        'web_digital_sign',
+        # 'web_digital_sign',
     ],
     'data': [
         'security/security.xml',

@@ -2,11 +2,11 @@
 <odoo>
 
     <!-- Include custom styles and fonts -->
-    <template id="report_assets_common_custom_fonts" name="Custom QWeb fonts" inherit_id="web.report_assets_common">
+    <!-- <template id="report_assets_common_custom_fonts" name="Custom QWeb fonts" inherit_id="web.report_assets_common">
         <xpath expr="." position="inside">
             <link href="/laboratory/static/src/scss/laboratory_report.scss" rel="stylesheet" type="text/scss" />
         </xpath>
-    </template>
+    </template> -->
 
     <template id="report_protocol">
 

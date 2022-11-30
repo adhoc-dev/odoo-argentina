@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
 
-    <template id="assets_backend" name="custom assets" inherit_id="web.assets_backend"> 
+    <!-- <template id="assets_backend" name="custom assets" inherit_id="web.assets_backend"> 
         <xpath expr="." position="inside">
             <link rel="stylesheet" href="/laboratory/static/src/scss/styles.scss"/>
         </xpath>
-    </template>
+    </template> -->
 
     <!-- Tree View -->
     <record id="service_order_tree_view" model="ir.ui.view">
