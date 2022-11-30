@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- Tree View -->
+    <record id="chemical_parameter_tree_view" model="ir.ui.view">
+        <field name="name">chemical.parameter.tree.view</field>
+        <field name="model">chemical.parameter</field>
+        <field name="arch" type="xml">
+            <tree string="Parámetros químicos" editable="top">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="unit"/>
+                <field name="description"/>
+                <field name="sample_type"/>
+                <field name="method"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="chemical_parameter_search_view" model="ir.ui.view">
+        <field name="name">chemical.parameter.search.view</field>
+        <field name="model">chemical.parameter</field>
+        <field name="arch" type="xml">
+            <search string="Parámetro Químico">
+                <field name="name" />
+                <field name="description"/>
+                <separator/>
+                <group expand="1" string="Group By">
+                    <filter string="Tipo de muestra" name="sample_type" context="{'group_by':'sample_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="parametros_quimicos_action" model="ir.actions.act_window">
+		<field name="name">Parámetros químicos</field>
+		<field name="res_model">chemical.parameter</field>
+		<field name="view_mode">tree,form</field>
+		<field name="domain">[]</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">Creá tu primer parámetro químico</p>
+		</field>
+	</record>
+
+</odoo>
