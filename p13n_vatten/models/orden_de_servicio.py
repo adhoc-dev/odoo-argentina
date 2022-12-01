@@ -69,7 +69,7 @@ class ServiceOrder(models.Model):
     name = fields.Char(string='Orden', copy=False, readonly=True,
                        required=True, default=lambda self: _('New'))
 #    partner_id = fields.Many2one('res.partner', string='Cliente', readonly=True, required=False, change_default=True, index=True, tracking=True, track_sequence=1)
-    partner_service_id = fields.Many2one('res.partner', string='Lugar de Servicio', required=True, tracking=True, readonly=True, states={
+    partner_service_id = fields.Many2one('res.partner',  string='Lugar de Servicio', required=True, tracking=True, readonly=True, states={
                                          'draft': [('readonly', False)]}, help="Dirección donde se prestará el servicio.")
     partner_name = fields.Char(related='partner_service_id.name')
     parent_id = fields.Many2one('res.partner', string='Cliente', related='partner_service_id.parent_id')
@@ -172,7 +172,7 @@ class ServiceOrder(models.Model):
         return super(ServiceOrder, self).unlink()
 
     def print_service_order(self):
-        return self.env.ref('laboratory.action_report_service_order').report_action(self)
+        return self.env.ref('p13n_vatten.action_report_service_order').report_action(self)
 
 
 #    def email_service_order(self):

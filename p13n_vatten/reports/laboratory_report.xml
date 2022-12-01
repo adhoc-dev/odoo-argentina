@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- Include custom styles and fonts -->
-    <!-- <template id="report_assets_common_custom_fonts" name="Custom QWeb fonts" inherit_id="web.report_assets_common">
+    <!-- jok: en 15 cambio el uso del web.report_assets_common ver con awe -->
+    <!-- Include custom styles and fonts
+    <template id="report_assets_common_custom_fonts" name="Custom QWeb fonts" inherit_id="web.report_assets_common">
         <xpath expr="." position="inside">
-            <link href="/laboratory/static/src/scss/laboratory_report.scss" rel="stylesheet" type="text/scss" />
+            <link href="/p13n_vatten/static/src/scss/laboratory_report.scss" rel="stylesheet" type="text/scss" />
         </xpath>
     </template> -->
 
@@ -284,8 +285,8 @@
         <field name="name">Orden de Servicio</field>
         <field name="model">service.order</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">laboratory.report_protocol</field>
-        <field name="report_file">laboratory.report_protocol</field>
+        <field name="report_name">p13n_vatten.report_protocol</field>
+        <field name="report_file">p13n_vatten.report_protocol</field>
         <field name="print_report_name">(object.name or 'Borrador')</field>
         <field name="paperformat_id" ref="generic_A4_paperformat"/>
         <field name="binding_model_id" ref="model_service_order"/>

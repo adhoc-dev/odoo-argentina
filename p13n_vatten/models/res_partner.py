@@ -9,6 +9,7 @@ class ResPartner(models.Model):
 
     type = fields.Selection(selection_add=[('payment', 'Dirección de pago'), ('service', 'Dirección de servicio')])
     muestra_ids = fields.One2many(comodel_name='muestras', inverse_name='partner_service_id', string="Puntos de Muestreo")
+    muestra_ids2 = fields.One2many(comodel_name='service.order', inverse_name='partner_service_id', string="Puntos de Muestreo")
 
     has_service_contact_child = fields.Boolean(compute='_compute_has_service_contact_child',help='Technical field for use in views', store=True)
 

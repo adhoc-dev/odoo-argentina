@@ -79,7 +79,10 @@
                     <group>
                         <group>
                             <!-- <field name="partner_service_id" domain="[('customer_rank', '>', '0'),('type', '=', 'service')]" options="{&quot;always_reload&quot;:True,'no_open':True,'no_create_edit':True,'no_create':True}"/> -->
+                            
                             <field name="partner_service_id" domain="[('type', '=', 'service')]" options="{&quot;always_reload&quot;:True,'no_open':True,'no_create_edit':True,'no_create':True}"/>
+                            <!-- Para probarlo sin service porque no se definir una entidad como service -->
+                            <!-- <field name="partner_service_id"  options="{&quot;always_reload&quot;:True,'no_open':True,'no_create_edit':True,'no_create':True}"/> -->
                             <field name="direccion" string="" />
                             <field name="interlocutor" string="Interlocutor" options="{'no_create_edit':True, 'no_open':True}" />
                             <field name="mail_interlocutor" string="Mail" />
