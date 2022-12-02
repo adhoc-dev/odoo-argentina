@@ -71,6 +71,7 @@ class ServiceOrder(models.Model):
 #    partner_id = fields.Many2one('res.partner', string='Cliente', readonly=True, required=False, change_default=True, index=True, tracking=True, track_sequence=1)
     partner_service_id = fields.Many2one('res.partner',  string='Lugar de Servicio', required=True, tracking=True, readonly=True, states={
                                          'draft': [('readonly', False)]}, help="Dirección donde se prestará el servicio.")
+    commercial_partner_id = fields.Many2one(related='partner_service_id.commercial_partner_id')
     partner_name = fields.Char(related='partner_service_id.name')
     parent_id = fields.Many2one('res.partner', string='Cliente', related='partner_service_id.parent_id')
     direccion = fields.Char(compute='_compute_address')
@@ -91,7 +92,7 @@ class ServiceOrder(models.Model):
     con_copia_a = fields.Many2one("res.partner", string="Copia a",
                                    tracking=True, readonly=True, states={'draft': [('readonly', False)]})
     mail_interlocutor = fields.Char(string="Mail", required=True, tracking=True, readonly=True, states={'draft': [('readonly', False)]}, default='')
-    mail_con_copia_a = fields.Char(string="Copia a")
+    mail_con_copia_a = fields.Char(string="Mail Copia a")
     state = fields.Selection([('draft', 'Borrador'), ('done', 'Validada'), ('sent', 'Enviada'), (
         'cancel', 'Cancelada')], required=True, tracking=True, default='draft', string='Estado')
     company_id = fields.Many2one(
@@ -301,7 +302,6 @@ class ServiceOrder(models.Model):
 
         if(not self.partner_service_id):
             return {}
-        print('>>> onchange partner_service_id <<<')
 
         # borra los registros que haya
         self.update({'determinacion_ids':[(2,individual.id) for individual in self.determinacion_ids]})
@@ -323,25 +323,10 @@ class ServiceOrder(models.Model):
                     }))
         self.update({'determinacion_ids': r })
 
-        # set domain for interlocutor
-        self.interlocutor = []
-        self.con_copia_a = []
-        interlocutores =  self.env['res.partner'].search(
-                ['&',('type', '=', 'contact'),'|',('parent_id.id','=',self.partner_service_id.id),('parent_id.id','=',self.partner_service_id.parent_id.id)]
-            ).mapped('id')
-        res = {'domain' : {'interlocutor': [('id', 'in', interlocutores)],'con_copia_a': [('id', 'in', interlocutores)]}}
-        return res
 
     @api.onchange('interlocutor')
     def _onchange_interlocutor(self):
         self.mail_interlocutor = self.interlocutor.email
-        interlocutores =  self.env['res.partner'].search(
-                ['&',('type', '=', 'contact'),'|',('parent_id.id','=',self.partner_service_id.id),('parent_id.id','=',self.partner_service_id.parent_id.id)]
-            ).mapped('id')
-        if self.interlocutor.id and self.interlocutor.id in interlocutores:
-            interlocutores.remove(self.interlocutor.id)
-        res = {'domain' : {'con_copia_a': [('id', 'in', interlocutores)]}}
-        return res
 
     #jok falta digital_signature por falta dependencia
     # @api.onchange('operator')
@@ -369,14 +354,14 @@ class ServiceOrder(models.Model):
 
         if(not self.partner_service_id):
             return {}
-        print('>>> onchange order_type <<<')
 
         if self.order_type == 'control_de_aguas':
-            self.mediciones4 = None 
-        elif self.order_type == 'informe_tecnico':
-            # borra los registros que haya
-#            self.update({'determinacion_ids':[(2,individual.id) for individual in self.determinacion_ids]})
-            print('>>>>>>>>>>> borra registros')
+            self.mediciones4 = None
+# comentado ya que esto tenia print y borrando el print no tiene uso el if
+# TODO ver si borramos
+#         elif self.order_type == 'informe_tecnico':
+#             # borra los registros que haya
+# #            self.update({'determinacion_ids':[(2,individual.id) for individual in self.determinacion_ids]})
 
     def get_muestras(self, count):
         muestras = self.determinacion_ids.mapped('muestra_name')

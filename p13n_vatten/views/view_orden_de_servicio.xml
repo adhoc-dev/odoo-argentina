@@ -60,6 +60,7 @@
         <field name="model">service.order</field>
         <field name="arch" type="xml">
             <form string="Orden de Servicio">
+                <field name="commercial_partner_id" invisible="1"/>
                 <!-- Buttons and Status -->
                 <header>
                     <field name="user_id" invisible="1"/>
@@ -79,14 +80,16 @@
                     <group>
                         <group>
                             <!-- <field name="partner_service_id" domain="[('customer_rank', '>', '0'),('type', '=', 'service')]" options="{&quot;always_reload&quot;:True,'no_open':True,'no_create_edit':True,'no_create':True}"/> -->
-                            
-                            <field name="partner_service_id" domain="[('type', '=', 'service')]" options="{&quot;always_reload&quot;:True,'no_open':True,'no_create_edit':True,'no_create':True}"/>
+
+                            <field name="partner_service_id" domain="[('type', '=', 'service')]" options="{'no_open':True, 'no_create_edit':True, 'no_create':True}"/>
                             <!-- Para probarlo sin service porque no se definir una entidad como service -->
                             <!-- <field name="partner_service_id"  options="{&quot;always_reload&quot;:True,'no_open':True,'no_create_edit':True,'no_create':True}"/> -->
                             <field name="direccion" string="" />
-                            <field name="interlocutor" string="Interlocutor" options="{'no_create_edit':True, 'no_open':True}" />
+                            <field name="interlocutor" string="Interlocutor" options="{'no_create_edit':True, 'no_open':True}"
+                                domain="[('type', '=', 'contact'), ('commercial_partner_id', '=', commercial_partner_id)]"/>
                             <field name="mail_interlocutor" string="Mail" />
-                            <field name="con_copia_a" string="Copia a" options="{'no_create_edit':True, 'no_open':True}" />
+                            <field name="con_copia_a" string="Copia a" options="{'no_create_edit':True, 'no_open':True}"
+                                domain="[('type', '=', 'contact'), ('commercial_partner_id', '=', commercial_partner_id), ('id', '!=', interlocutor)]"/>
                             <field name="reference" string="Referencia" />
                         </group>
                         <group>

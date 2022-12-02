@@ -8,14 +8,8 @@
     'website': '',
     'license': 'AGPL-3',
     'depends': [
-        'base',
-        'contacts',
-        # 'inputmask_widget',
         'mail',
-        'web',
-        # 'web_responsive',
         'web_widget_x2many_2d_matrix',
-        # 'web_digital_sign',
     ],
     'data': [
         'security/security.xml',
