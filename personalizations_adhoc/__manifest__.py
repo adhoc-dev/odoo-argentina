@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_adhoc',
-    'version': "15.0.1.10.0",
+    'version': "15.0.1.11.0",
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -8,6 +8,7 @@
         'hr_contract',
         'helpdesk',
         'project',
+        'project_enterprise',
         'project_ux',
         'helpdesk_ux',
         'sale_timesheet',

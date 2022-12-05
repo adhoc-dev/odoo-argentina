@@ -6,6 +6,12 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
+            <field name="planned_date_begin" position="attributes">
+                <attribute name="widget">datetime</attribute>
+            </field>
+            <field name="planned_date_end" position="attributes">
+                <attribute name="widget">datetime</attribute>
+            </field>
             <div name="adhoc_module_id" position="after">
                 <field name="adhoc_product_id" attrs="{'required': [('use_databases', '=', True)]}" options="{'no_create_edit': True}" domain="[('parent_id', '!=', False)]"/>
             </div>
