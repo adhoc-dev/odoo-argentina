@@ -2,63 +2,10 @@
 from odoo import models, fields, api, _
 from datetime import datetime
 from odoo import exceptions
-import re
 
 import logging
 _logger = logging.getLogger(__name__)
 
-class Parametros(models.Model):
-    _description = 'Parametros'
-    _name = 'parametros'
-    _order = "sequence,id"
-
-    sequence = fields.Integer(string='Secuencia')
-    muestra_id = fields.Many2one(comodel_name='muestras', ondelete='cascade')
-    name = fields.Many2one(comodel_name='chemical.parameter', string='Parámetro', required=True)
-    unit = fields.Char(string='Unidad', readonly=False, store=True, related="name.unit")
-    min_value = fields.Char(string='Mínimo')
-    max_value = fields.Char(string='Máximo')
-    in_report = fields.Boolean(string='Se reporta', default=True)
-    in_chart = fields.Boolean(string='Se grafica')
-
-class Muestras(models.Model):
-    _description = 'Muestras X'
-    _name = 'muestras'
-    _order = "sequence,id"
-
-    sequence = fields.Integer(string='Secuencia')
-    sample_type = fields.Selection(string='Tipo de Muestra', selection=[('Agua', 'Agua'),('Efluente', 'Efluente')], default='Agua')
-    name = fields.Char(string='Punto de Muestreo', required='false', help='Asigne un nombre al punto de muestreo.')
-    partner_service_id = fields.Many2one(comodel_name='res.partner', string='Dirección de Servicio', required="true", ondelete='cascade', help="Dirección donde se prestará el servicio.")
-    parametro_ids = fields.One2many(comodel_name='parametros', inverse_name='muestra_id', string="Parámetros", copy=True)
-
-    @api.model
-    def default_get(self, fields):
-        res = super(Muestras, self).default_get(fields)
-
-        recs = self.env['chemical.parameter'].search([('sample_type', '=', 'Agua')], limit=11)
-
-        r=[]
-        for rec in recs:
-            r.append((0, 0, {'name': rec.id, 'unit': rec.unit, 'in_report': True}))
-        res["parametro_ids"] = r
-
-        return res
-    
-class Determinaciones(models.Model):
-    _description = 'Determinaciones'
-    _name = 'determinaciones'
-
-    order_id = fields.Many2one(comodel_name='service.order', ondelete='cascade')
-    muestra_name = fields.Char(string='Muestra')
-    parametro_name = fields.Char(string='Parámetro')
-    unit_name = fields.Char(string='Unidad')
-    parametro_display = fields.Char(string='Parámetro+Unidad')
-    valor = fields.Char(string='Valor', default=None)
-    min_value = fields.Char(string='Mínimo')
-    max_value = fields.Char(string='Máximo')
-    in_report = fields.Boolean(string='Se reporta')
-    in_chart = fields.Boolean(string='Se grafica')
 
 class ServiceOrder(models.Model):
     _name = 'service.order'
@@ -178,7 +125,7 @@ class ServiceOrder(models.Model):
 
 #    def email_service_order(self):
 #        if self.state not in ['done']:
-#            raise exceptions.UserError('No se puede enviar una orden no validada!') 
+#            raise exceptions.UserError('No se puede enviar una orden no validada!')
 #        template = self.env.ref('laboratory.mail_template_report')
 #        return self.env['mail.template'].browse(template.id).send_mail(self.id, force_send=True)
 
@@ -332,13 +279,13 @@ class ServiceOrder(models.Model):
     # @api.onchange('operator')
     # def _onchange_operator(self):
     #     print('>>>>>>>>>>>>>> ??????? ')
-        
+
     #     if not self.firma_operador:
     #         temp = self.env['res.users'].search([('id', '=', self.operator.id)]).digital_signature
     #         if temp:
     #             self.firma_operador = temp
 
-# Ya estaba comentado TODO: sacar       
+# Ya estaba comentado TODO: sacar
 #        print('>>> operator id: ', self.operator.id)
 #        print('&&&: ', self.env['res.users'].search([('id', '=', self.operator.id)]).digital_signature)
 #        print('>>> val firma: ', self.firma_operador)
@@ -419,18 +366,3 @@ class ServiceOrder(models.Model):
             res += ')'
         return(res or '-')
 
-class LaboratoryReport(models.AbstractModel):
-    _name = 'report.laboratory.reporte_protocolo'
-    _description = 'Imprime informe de orden de servicio'
-
-    @api.model
-    def _get_report_values(self, docids, data=None):
-        reporte = self.env['ir.actions.report']._get_report_from_name('laboratory.reporte_protocolo')
-        docs = self.env[reporte.model].browse(docids)
-
-        docargs = {
-            'doc_ids': docids,
-            'doc_model': reporte.model,
-            'docs': docs,
-        }
-        return docargs
