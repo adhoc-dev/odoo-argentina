@@ -24,7 +24,14 @@
         'views/view_orden_de_servicio.xml',
         'views/menu.xml',
     ],
+    #TODO ver si es solo letras, porque si es solo eso... es horrible
+    # 'assets': {
+    #     'web.assets_backend': [
+    #         'p13n_vatten/static/src/scss/laboratory_report.scss',
+    #     ]
+    # },
     'installable': True,
     'auto_install': False,
     'application': True,
 }
+

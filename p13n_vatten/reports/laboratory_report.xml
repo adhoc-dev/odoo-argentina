@@ -2,8 +2,8 @@
 <odoo>
 
     <!-- jok: en 15 cambio el uso del web.report_assets_common ver con awe -->
-    <!-- Include custom styles and fonts
-    <template id="report_assets_common_custom_fonts" name="Custom QWeb fonts" inherit_id="web.report_assets_common">
+    <!-- Include custom styles and fonts -->
+    <!-- <template id="report_assets_common_custom_fonts" name="Custom QWeb fonts" inherit_id="web.report_assets_common">
         <xpath expr="." position="inside">
             <link href="/p13n_vatten/static/src/scss/laboratory_report.scss" rel="stylesheet" type="text/scss" />
         </xpath>
@@ -75,32 +75,32 @@
                         <!-- CLIENTE, DIRECCION E INTERLOCUTORES -->
                     <div style="font-size:16px;padding:2px 0px 0px 2px;margin-bottom:5px;border: 1px solid #DEE1E6;">
                         <div class="row">
-                            <div class="col-2" style="padding:2px 2px 2px 5px;">Cliente:</div>
+                            <div class="col-2" style="padding:2px 2px 2px 15px;">Cliente:</div>
                             <div class="col-6" style="font-weight:bold;padding:2px 2px 2px 5px;"><span t-esc="o.partner_service_id.name"></span></div>
                             <div class="col-2" style="padding:2px 2px 2px 5px;">Fecha muestreo:</div>
                             <div class="col-2" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="o.date_sampling"></t></div>
                         </div>
                         <div class="row">
-                            <div class="col-2" style="padding:2px 2px 2px 5px;">Interlocutor:</div>
+                            <div class="col-2" style="padding:2px 2px 2px 15px;">Interlocutor:</div>
                             <div class="col-6" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="o.interlocutor.name"></t></div>
                             <div class="col-2" style="padding:2px 2px 2px 5px;">Responsable:</div>
                             <div class="col-2" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="o.operator.name"></t></div>
                         </div>
                         <div class="row">
-                            <div class="col-2" style="padding:2px 2px 2px 5px;">Copia a:</div>
+                            <div class="col-2" style="padding:2px 2px 2px 15px;">Copia a:</div>
                             <div class="col-6" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="o.con_copia_a.name"></t></div>
                             <div class="col-2" style="padding:2px 2px 2px 5px;">Referencia:</div>
                             <div class="col-2" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="o.reference"></t></div>
                         </div>
                         <div class="row">
-                            <div class="col-2" style="padding:2px 2px 2px 5px;">Dirección:</div>
+                            <div class="col-2" style="padding:2px 2px 2px 15px;">Dirección:</div>
                             <div class="col-10" style="padding:2px 2px 2px 5px;"><t t-esc="o.direccion"></t></div>
                         </div>
                     </div>
 
                     <t t-if="o.order_type == 'control_de_aguas'">
                         <!-- TABLA CONTROL ANALITICO DE AGUAS -->
-                        <table class="table table-sm o_main_table mb-0" style="font-size: 12px;">
+                        <table class="table table-sm o_main_table mb-0" style="font-size: 10px;">
                             <caption class="p-1 text-center" style="caption-side:top; color:black; background-color:#BEBEBE; border: 1px solid #BEBEBE;">CONTROL ANALITICO DE AGUAS</caption>
                             <thead>
                                 <tr style="background-color: #DEE1E6;">

@@ -134,11 +134,11 @@ class ServiceOrder(models.Model):
 
         ir_model_data = self.env['ir.model.data']
         try:
-            template_id = ir_model_data.get_object_reference('laboratory', 'mail_template_report')[1]
+            template_id = ir_model_data._xmlid_lookup("%s.%s" % ('laboratory', 'mail_template_report'))[2]
         except ValueError:
             template_id = False
         try:
-            compose_form_id = ir_model_data.get_object_reference('mail', 'email_compose_message_wizard_form')[1]
+            compose_form_id = ir_model_data._xmlid_lookup("%s.%s" % ('mail', 'email_compose_message_wizard_form'))[2]
         except ValueError:
             compose_form_id = False
 

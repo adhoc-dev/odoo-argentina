@@ -6,35 +6,37 @@
         <record id="mail_template_report" model="mail.template">
             <field name="name">Protocolo: Enviar por correo electrónico</field>
             <field name="model_id" ref="p13n_vatten.model_service_order"/>
-            <field name="email_from">${user.name user.email}</field>
+            <field name="email_from">"{{user.name}}" &lt;{{user.email}}&gt;</field>
             <!-- <field name="email_from">${object.company_id.user_id.email_formatted |safe}</field> -->
-            <field name="partner_to">${object.interlocutor.id}</field>
-            <field name="subject">${object.company_id.name} - Protocolo: ${object.name or 'n/a'}</field>
+            <field name="partner_to">{{object.interlocutor.id}}</field>
+            <field name="email_cc">{{object.con_copia_a.id}}</field>
+            <field name="subject">{{object.company_id.name}} - Protocolo: {{object.name or 'n/a'}}</field>
             <field name="body_html" type="html">
 <div style="font-family: Open Sans; margin: 0px; padding: 0px;">
     <p style="font-family: 'Helvetica'; margin: 0px; padding: 0px; font-size: 14px;">
-        Estimado/a: ${object.interlocutor.name}
-% if object.partner_service_id.parent_id:
-(${object.partner_service_id.parent_id.name})
-% endif
-        <br /><br />
-        Se adjunta el
-        % if object.name:
-            Protocolo <strong>${object.name}</strong>
-        % endif
-        del muestreo realizado en ${object.partner_service_id.name}
-        % if object.date_sampling:
-            el <strong>${format_tz(object.date_sampling, tz='ART', format='%d-%m-%Y')}</strong>
-        % endif
-
-        <br /><br />
+        Estimado/a: <t t-out="object.interlocutor.name"></t>
+        <t t-foreach="object.partner_service_id.parent_id" t-as="parent" data-oe-t-inline="true">
+        <t t-out="parent.name"></t></t>
+        <br/><br/>
+        Se adjunta el Protocolo 
+        <span style="font-weight: bold;">
+            <t t-out="object.name"/>
+        </span>
+        del muestreo realizado en 
+        <span style="font-weight: bold;">
+            <t t-out="object.partner_service_id.name"/>
+        </span>
+        <t t-if="object.date_sampling">
+            el <span style="font-weight: bold;"><t  t-out="object.date_sampling"/></span>
+        </t>
+        <br/><br/>
         Por favor no dude en contactarnos ante cualquier duda.
     </p>
 </div>
             </field>
             <field name="report_template" ref="p13n_vatten.action_report_service_order"/>
-            <field name="report_name">${(object.name or 'Borrador')}</field>
-            <field name="lang">${object.partner_service_id.lang}</field>
+            <field name="report_name">{{(object.name or 'Borrador')}}</field>
+            <field name="lang">{{object.partner_service_id.lang}}</field>
             <!-- <field name="user_signature" eval="True"/> -->
             <field name="auto_delete" eval="False"/>
         </record>
