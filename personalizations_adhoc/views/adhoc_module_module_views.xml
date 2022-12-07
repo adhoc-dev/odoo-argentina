@@ -10,6 +10,9 @@
                 <field name="module_id" position="after">
                     <field name="adhoc_product_id"/>
                 </field>
+                <field name="adhoc_category_id" position="replace">
+                    <field name="product_category_id"/>
+                </field>
             </field>
         </record>
 
@@ -22,6 +25,19 @@
                 <field name="name" position="after">
                     <field name="adhoc_product_id"/>
                 </field>
+
+                <field name="adhoc_category_id" position="replace">
+                    <field name="product_category_id"/>
+                </field>
+                <filter name="group_by_adhoc_category_id" position="replace">
+                    <filter name="group_by_product_category_id" string="Adhoc Category" domain="[]" context="{'group_by': 'product_category_id'}"/>
+                </filter>
+
+                <filter name="with_open_tasks" position="after">
+                    <separator/>
+                    <filter name="un_categorized" string="Un-Categorized" domain="[('adhoc_product_id', '=', False)]"/>
+                </filter>
+
                 <group>
                     <filter string="Adhoc Product" name="groupby_adhoc_product_id" context="{'group_by': 'adhoc_product_id'}"/>
                 </group>
@@ -37,6 +53,9 @@
             <field name="arch" type="xml">
                 <field name="name" position="after">
                     <field name="adhoc_product_id" optional="show"/>
+                </field>
+                <field name="adhoc_category_id" position="replace">
+                    <field name="product_category_id" optional="hide"/>
                 </field>
             </field>
         </record>

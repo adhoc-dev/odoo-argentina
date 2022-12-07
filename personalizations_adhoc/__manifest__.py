@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_adhoc',
-    'version': "15.0.1.9.0",
+    'version': "15.0.1.10.0",
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -30,8 +30,11 @@
         'data/hr_salary_category_data.xml',
         'data/hr_seniority_data.xml',
         'security/ir.model.access.csv',
+        'demo/adhoc_product_demo.xml',
+        'demo/adhoc.module.module.csv',
     ],
-
+    'demo': [
+    ],
     'installable': True,
     'application': False,
     'license': 'OPL-1',

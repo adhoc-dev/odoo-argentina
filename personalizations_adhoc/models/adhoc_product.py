@@ -18,6 +18,15 @@ class AdhocProduct(models.Model):
     product_expert_ids = fields.Many2many('hr.employee', relation="adhoc_product_expert_rel")
     technical_team_id = fields.Many2one('hr.department', string='Equipo Técnico')
     color = fields.Integer(string='Color')
+    product_category_id = fields.Many2one('adhoc.product', compute='_compute_product_category', recursive=True, store=True)
+
+    @api.depends('parent_id.product_category_id')
+    def _compute_product_category(self):
+        for rec in self:
+            if rec.parent_id:
+                rec.product_category_id = rec.parent_id.product_category_id
+            else:
+                rec.product_category_id = rec
 
     @api.depends('name', 'parent_id.complete_name')
     def _compute_complete_name(self):

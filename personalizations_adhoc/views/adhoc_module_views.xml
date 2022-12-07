@@ -9,6 +9,7 @@
             <field name="arch" type="xml">
                 <group name="col2">
                     <field name="adhoc_product_id"/>
+                    <field name="product_category_id"/>
                 </group>
             </field>
         </record>
@@ -21,9 +22,11 @@
             <field name="arch" type="xml">
                 <field name="version_ids" position="after">
                     <field name="adhoc_product_id"/>
+                    <field name="product_category_id"/>
                 </field>
                 <group>
                     <filter string="Adhoc Product" name="groupby_adhoc_product_id" context="{'group_by': 'adhoc_product_id'}"/>
+                    <filter name="group_by_product_category_id" domain="[]" context="{'group_by': 'product_category_id'}"/>
                 </group>
             </field>
         </record>
@@ -37,6 +40,7 @@
             <field name="arch" type="xml">
                 <field name="name" position="after">
                     <field name="adhoc_product_id" optional="show"/>
+                    <field name="product_category_id" optional="hide"/>
                 </field>
             </field>
         </record>
