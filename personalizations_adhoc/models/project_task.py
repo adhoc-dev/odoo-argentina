@@ -11,7 +11,7 @@ class ProjectTask(models.Model):
         domain=[('parent_id', '!=', False)])
     ticket_ids = fields.One2many('helpdesk.ticket', 'task_id')
     planned_date_end = fields.Datetime(compute="_compute_planned_date_end", store=True, readonly=False)
-    sistemas_planned_hours = fields.Float("Estimated development hours", help='Time planned for the entire code development')
+    sistemas_planned_hours = fields.Float("Planned Development Hours", help='Time planned for the entire code development')
     planned_hours = fields.Float(compute='_compute_planned_hours', store=True, readonly=False)
 
     def name_get(self):
@@ -28,7 +28,7 @@ class ProjectTask(models.Model):
     @api.onchange('planned_hours', 'planned_date_begin')
     def _compute_planned_date_end(self):
         for rec in self:
-            weeks = round(self.planned_hours / 5) + 1
+            weeks = round(self.sistemas_planned_hours / 5) + 1
             if rec.planned_date_begin:
                 rec.planned_date_end = rec.planned_date_begin + timedelta(weeks=weeks)
             else:

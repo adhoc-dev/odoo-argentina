@@ -51,6 +51,9 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_tree2"/>
         <field name="arch" type="xml">
+            <field name="planned_hours" position="before">
+                <field name="sistemas_planned_hours" optional="show"/>
+            </field>
             <field name="tag_ids" position="after">
                 <field name="adhoc_product_id"  widget="badge" optional="hide"/>
             </field>
@@ -68,6 +71,17 @@
             <filter name="project" position="after">
                 <filter string="Producto Adhoc" name="group_by_adhoc_product" context="{'group_by': 'adhoc_product_id'}"/>
             </filter>
+        </field>
+    </record>
+
+    <record id="project_task_view_form_sistemas_planned_hours" model="ir.ui.view">
+        <field name="name">adhoc_product.project.task.form.sistemas.planned.hours</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
+        <field name="arch" type="xml">
+            <field name="planned_hours" position="after">
+                <field name="sistemas_planned_hours"  widget="timesheet_uom_no_toggle"/>
+            </field>
         </field>
     </record>
 
