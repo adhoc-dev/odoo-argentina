@@ -5,7 +5,7 @@ class HelpdeskTicket(models.Model):
     _inherit = 'helpdesk.ticket'
 
     # TODO tal vez mover esto de los vinculos a productos tambien a saas_provider_adhoc?
-    adhoc_product_id = fields.Many2one('adhoc.product')
+    adhoc_product_id = fields.Many2one('adhoc.product', domain=[('parent_id', '!=', False)])
     task_id = fields.Many2one(comodel_name='project.task')
 
     def create_linked_task(self):
