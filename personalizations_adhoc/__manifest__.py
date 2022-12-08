@@ -17,10 +17,6 @@
     ],
     'data': [
         'views/hr_contract_views.xml',
-        'views/adhoc_product_views.xml',
-        'views/adhoc_product_menus.xml',
-        'views/adhoc_module_views.xml',
-        'views/adhoc_module_module_views.xml',
         'views/hr_job_views.xml',
         'views/hr_salary_category_views.xml',
         'views/hr_seniority_views.xml',
@@ -30,8 +26,6 @@
         'data/hr_salary_category_data.xml',
         'data/hr_seniority_data.xml',
         'security/ir.model.access.csv',
-        'demo/adhoc_product_demo.xml',
-        'demo/adhoc.module.module.csv',
     ],
     'demo': [
     ],

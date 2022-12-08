@@ -4,6 +4,7 @@ from odoo import models, fields
 class HelpdeskTicket(models.Model):
     _inherit = 'helpdesk.ticket'
 
+    # TODO tal vez mover esto de los vinculos a productos tambien a saas_provider_adhoc?
     adhoc_product_id = fields.Many2one('adhoc.product')
     task_id = fields.Many2one(comodel_name='project.task')
 
