@@ -53,20 +53,21 @@ class AccountPaymentGroup(models.Model):
 
         for pay in payments:
             # cbu débito
+            if not pay.company_id.cbu_company:
+                raise UserError(f'La compañía no tiene cbu ingresado')
             cbu_company = pay.validate_cbu(pay.company_id.cbu_company)
-            content_txt += self.validate_cbu(cbu_company)
+            content_txt += cbu_company
             content_csv += cbu_company + ','
 
             # cbu crédito
-            if not pay.partner_id.bank_ids:
-                raise UserError(f'El partner {pay.partner_id.name} no tiene cuenta bancaria registrada, por lo tanto no se puede incluir el pago correspondiente en el archivo de transferencias masivas')
-            cbu_partner = pay.partner_id.bank_ids[-1].acc_number
+            cbu_partner = pay.partner_id.bank_ids.filtered(lambda x: x.acc_type == 'cbu')[0].acc_number
+            if not cbu_partner:
+                raise UserError(f'El partner {pay.partner_id.name} no tiene cbu registrado, por lo tanto no se puede incluir el pago correspondiente en el archivo de transferencias masivas')
             if cbu_company == cbu_partner:
                 # el cbu del emisor es el mismo que el cbu del receptor
                 raise UserError(f'El partner no puede tener el mismo cbu que la compañía')
-            cbu = self.validate_cbu(cbu_partner)
-            content_txt += cbu
-            content_csv += cbu + ','
+            content_txt += cbu_partner
+            content_csv += cbu_partner + ','
 
             # alias cbu débito + alias cbu crédito
             content_txt += ' '*44
