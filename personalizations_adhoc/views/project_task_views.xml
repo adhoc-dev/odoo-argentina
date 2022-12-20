@@ -17,8 +17,8 @@
                         'default_project_id': project_id,
                         'default_partner_id': partner_id,
                         'default_adhoc_product_id': adhoc_product_id,
-                        'default_ticket_description': task_description,
-                        'default_description': description,
+                        'default_ticket_description': description,
+                        'default_description': task_description,
                     }">
                         <tree editable="bottom" delete="false">
                             <field name="id"/>
