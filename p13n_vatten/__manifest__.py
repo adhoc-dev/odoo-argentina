@@ -10,6 +10,8 @@
     'depends': [
         'mail',
         'web_widget_x2many_2d_matrix',
+        'industry_fsm',
+        'mail_mobile'
     ],
     'data': [
         'security/security.xml',
@@ -18,11 +20,15 @@
         'data/data_chemical_parameters.xml',
         'data/laboratory_order_sequence.xml',
         'data/laboratory_mail_template.xml',
+        'data/laboratory_mail_template_fsm.xml',
+        'data/fsm_report_data.xml',
         'views/res_partner.xml',
         'views/view_chemical_parameters.xml',
         'views/view_muestras_medidas.xml',
         'views/view_orden_de_servicio.xml',
         'views/menu.xml',
+        'views/project_views.xml',
+        'views/project_task.xml',
     ],
     #TODO ver si es solo letras, porque si es solo eso... es horrible
     # 'assets': {
