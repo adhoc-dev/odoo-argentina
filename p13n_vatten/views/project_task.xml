@@ -6,6 +6,15 @@
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="model">project.task</field>
         <field name="arch" type="xml">
+            <field name="user_ids" position="attributes">
+                <attribute name="required">True</attribute>
+            </field>
+            <field name="partner_id" position="attributes">
+                <attribute name="domain">[('parent_id', '!=', False)]</attribute>
+            </field>
+            <field name="parent_id" position="before">
+                <field name="order_type"/>
+            </field>
             <field name="partner_phone" position="before">
                 <field name="partner_email"/>
             </field>
@@ -15,7 +24,7 @@
             <xpath expr="//notebook" position="before">
                 <notebook name="ASD">
                         <page string="Determinaciones">
-                            <group name="aguas" help='Medición de muestras de aguas' autofocus="autofocus" >
+                            <group name="aguas" help='Medición de muestras de aguas' autofocus="autofocus" attrs="{'invisible':[('order_type','!=','control_de_aguas')]}" >
                                 <field name="determinacion_ids" widget="x2many_2d_matrix" field_y_axis="muestra_name" field_x_axis="parametro_display" field_value="valor" nolabel="1">
                                     <tree>
                                         <field name="muestra_name"/>
@@ -32,11 +41,18 @@
                             </group>
                         </page>
                         <page string="Notas para el operador">
-                            <field name="instrucciones" help='Instrucciones adicionales para el operador'/>
+                            <field name="instrucciones" help='Instrucciones adicionales para el operador' widget="html"/>
                         </page>
                         <page string="Adjuntos">
                              <field name="adjuntos" string="Adjuntos" widget="many2many_binary" help='Documentos, fotos, etc...'/>
                         </page>
+                </notebook>
+                <notebook>
+                    <page string="Recomendaciones al cliente">
+                        <field class="recomendacion" name="recomendaciones" help='Recomendaciones para el cliente' widget="html"/>
+                    </page>
+                    <page string="Imágenes">
+                    </page>
                 </notebook>
             </xpath>
         </field>
