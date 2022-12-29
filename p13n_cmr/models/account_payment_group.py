@@ -50,6 +50,7 @@ class AccountPaymentGroup(models.Model):
         content_txt = ''
         content_csv = ''
         total_payment_amount = 0
+        banco_municipal = self.env['account.journal'].browse(13).name
 
         for pay in payments:
             # cbu débito
@@ -60,9 +61,9 @@ class AccountPaymentGroup(models.Model):
             content_csv += cbu_company + ','
 
             # cbu crédito
-            cbu_partner = pay.partner_id.bank_ids.filtered(lambda x: x.acc_type == 'cbu')[0].acc_number
-            if not cbu_partner:
+            if not pay.partner_id.bank_ids.filtered(lambda x: x.acc_type == 'cbu'):
                 raise UserError(f'El partner {pay.partner_id.name} no tiene cbu registrado, por lo tanto no se puede incluir el pago correspondiente en el archivo de transferencias masivas')
+            cbu_partner = pay.partner_id.bank_ids.filtered(lambda x: x.acc_type == 'cbu')[-1].acc_number
             if cbu_company == cbu_partner:
                 # el cbu del emisor es el mismo que el cbu del receptor
                 raise UserError(f'El partner no puede tener el mismo cbu que la compañía')
@@ -73,9 +74,15 @@ class AccountPaymentGroup(models.Model):
             content_txt += ' '*44
 
             # importe
-            payment_amount = round(pay.to_pay_amount,2)
+            to_transfer_amount = 0
+            municipal_payment_lines = pay.payment_ids.filtered(lambda x: x.journal_id.id == 13)
+            if not municipal_payment_lines:
+                raise UserError(f'No existe línea de pago perteneciente al banco "{banco_municipal}", (diario con id 13) para la orden de pago {pay.name} con id {pay.id}')
+            for line in municipal_payment_lines:
+                to_transfer_amount += line.amount
+            payment_amount = round(to_transfer_amount,2)
             total_payment_amount += payment_amount
-            content_txt += ('%013.2f' % pay.to_pay_amount).replace('.','')
+            content_txt += ('%013.2f' % to_transfer_amount).replace('.','')
             content_csv += str(payment_amount) + ','
 
             # concepto
@@ -100,7 +107,7 @@ class AccountPaymentGroup(models.Model):
 
         # pie del archivo
         # cantidad de registros
-        content_txt += '%05d' % len(payments)
+        content_txt += '%05d' % (len(payments) + 1)
 
         # total importes
         content_txt += ('%018.2f' % total_payment_amount).replace('.','')
