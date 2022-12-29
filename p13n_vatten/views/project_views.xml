@@ -9,13 +9,4 @@
         sequence="10"/>
         <!-- groups="laboratorio.laboratorio_group_user" -->
 
-    <menuitem
-        id="muestras_medir_menu"
-        name="Puntos de Muestreo"
-        action="action_muestras"
-
-        parent="industry_fsm.fsm_menu_settings"
-        sequence="20"/>
-        <!-- groups="laboratorio.laboratorio_group_user" -->
-
 </odoo>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_worksheet_control_analitico_agua">
+        <div class="row mb-3" style="page-break-inside: avoid"><div t-att-class="('col-5' if report_type == 'pdf' else 'col-lg-5 col-12') + ' font-weight-bold'">Serial Number</div><div modifiers="{}" t-att-class="'col-7' if report_type == 'pdf' else 'col-lg-7 col-12'" t-field="worksheet.comments"/></div>
+
+    </template>
+
+</odoo>

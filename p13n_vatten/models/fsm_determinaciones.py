@@ -9,7 +9,7 @@ class Determinaciones(models.Model):
     _description = 'Determinaciones'
     _name = 'fsm_determinaciones'
 
-    order_id = fields.Many2one(comodel_name='project.task', ondelete='cascade')
+    order_id = fields.Many2one(comodel_name='worksheet_control_analitico_agua', ondelete='cascade')
     muestra_name = fields.Char(string='Muestra')
     parametro_name = fields.Char(string='Parámetro')
     unit_name = fields.Char(string='Unidad')

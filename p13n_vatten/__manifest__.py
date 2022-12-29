@@ -10,18 +10,21 @@
     'depends': [
         'mail',
         'web_widget_x2many_2d_matrix',
-        'industry_fsm',
-        'mail_mobile'
+        'industry_fsm_report',
+        'mail_mobile',
+        'contacts',  # si bien no es necesaria la  agregamos porque sin esta no hay acceso a res.partner
     ],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
         'reports/laboratory_report.xml',
+        'reports/worksheet_control_analitico_agua_report.xml',
+        'views/worksheet_control_analitico_agua_views.xml',
         'data/data_chemical_parameters.xml',
         'data/laboratory_order_sequence.xml',
         'data/laboratory_mail_template.xml',
         'data/laboratory_mail_template_fsm.xml',
-        'data/fsm_report_data.xml',
+        'data/worksheet_template_data.xml',
         'views/res_partner.xml',
         'views/view_chemical_parameters.xml',
         'views/view_muestras_medidas.xml',

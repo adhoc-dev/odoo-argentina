@@ -1,41 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
 
-    <!-- Tree View res.partner -->
-    <record id="tree_view_muestra" model="ir.ui.view">
-        <field name="name">Lista de Muestras</field>
-        <field name="model">res.partner</field>
-        <field name="arch" type="xml">
-            <tree create='false'>
-                <field name="parent_id" />
-                <field name="name" string="Lugar de Servicio" />
-                <field name="muestra_ids" />
-            </tree>
-        </field>
-    </record>
-
-    <!-- Form View res.partner -->
-    <record id="form_view_muestra" model="ir.ui.view">
-        <field name="name">Formulario de Muestras</field>
-        <field name="model">res.partner</field>
-        <field name="arch" type="xml">
-            <form create="false">
-                <sheet>
-                    <group>
-                        <field name="name" readonly='1' string="Lugar de Servicio" />
-                        <field name="muestra_ids">
-                            <tree>
-                                <field name="sequence" widget="handle"/>
-                                <field name="name" />
-                                <field name="parametro_ids" />
-                            </tree>
-                        </field>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
-
     <!-- Form View muestras -->
     <record id="form_view_muestras" model="ir.ui.view">
         <field name="name">Formulario de Muestras</field>
@@ -76,17 +41,6 @@
                 </group>
             </form>
         </field>
-    </record>
-
-    <record id="action_muestras" model="ir.actions.act_window">
-        <field name="name">Puntos de Muestreo</field>
-        <field name="res_model">res.partner</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_ids" eval="[(5, 0, 0),
-            (0, 0, {'view_mode': 'tree', 'view_id': ref('p13n_vatten.tree_view_muestra')}),
-            (0, 0, {'view_mode': 'form', 'view_id': ref('p13n_vatten.form_view_muestra')})]"
-        />
-        <field name="domain">[('type','=','service')]</field>
     </record>
 
 </odoo>
