@@ -6,15 +6,21 @@
         <field name="arch" type="xml">
             <form create="false">
                 <sheet>
+                    <!-- TODO ver -->
                     <h1 invisible="context.get('studio') or context.get('default_x_project_task_id')">
                         <field name="x_project_task_id"/>
+                    </h1>
+                    <h1>
+                        <field name="name"/>
                     </h1>
                     <!-- <group>
                         <field name="comments"/>
                     </group> -->
+
+                    <field name="order_type"  widget="radio"/>
                     <notebook>
                         <page string="Determinaciones">
-                            <group name="aguas" help='Medición de muestras de aguas' autofocus="autofocus">
+                            <group name="aguas" help='Medición de muestras de aguas' autofocus="autofocus" attrs="{'invisible':[('order_type','!=','control_de_aguas')]}">
                                 <field name="determinacion_ids" widget="x2many_2d_matrix" field_y_axis="muestra_name" field_x_axis="parametro_display" field_value="valor" nolabel="1">
                                     <tree>
                                         <field name="muestra_name"/>
@@ -30,9 +36,35 @@
                                 </field>
                             </group>
                         </page>
-                        <!-- <page string="Notas para el operador">
+                        <page string="Notas para el operador">
                             <field name="instrucciones" help='Instrucciones adicionales para el operador' widget="html"/>
-                        </page> -->
+                        </page>
+                        <page string="Adjuntos">
+                            <field name="adjuntos" help='Instrucciones adicionales para el operador' widget="many2many_binary"/>
+                        </page>
+                    </notebook>
+                    <notebook>
+                        <page string="Recomendaciones al cliente">
+                            <field class="recomendacion" name="recomendaciones" help='Recomendaciones para el cliente'/>
+                        </page>
+                        <page string="Imágenes">
+                            <field name="imagen1" widget="image" help='Documentos, fotos, etc...'/>
+                            <field name="imagen2" widget="image" help='Documentos, fotos, etc...'/>
+                            <field name="imagen3" widget="image" help='Documentos, fotos, etc...'/>
+                            <field name="imagen4" widget="image" help='Documentos, fotos, etc...'/>
+                        </page>
+                    </notebook>
+                    <notebook>
+                        <page string="Aceptación">
+                            <group>
+                                <group>
+                                    <field name="firma_cliente" widget="signature" readonly="0"/>
+                                </group>
+                                <group>
+                                    <field name="firma_operador" widget="signature" readonly="0"/>
+                                </group>
+                            </group>
+                        </page>
                     </notebook>
                 </sheet>
             </form>
@@ -40,7 +72,7 @@
     </record>
 
     <record id="worksheet_control_analitico_agua_act_window" model="ir.actions.act_window">
-		<field name="name">Worksshet Control Analítico de Agua</field>
+		<field name="name">Worksheet Control Analítico de Agua</field>
 		<field name="res_model">worksheet_control_analitico_agua</field>
 		<field name="view_mode">tree,form</field>
 		<field name="context">{'edit': False, 'create': False, 'delete': False, 'duplicate': False}</field>

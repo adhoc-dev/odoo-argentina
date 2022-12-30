@@ -5,13 +5,31 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-class Determinaciones(models.Model):
+class ControlAnalitico(models.Model):
     _description = 'worksheet_control_analitico_agua'
     _name = 'worksheet_control_analitico_agua'
 
     comments = fields.Text()
     x_project_task_id = fields.Many2one('project.task', required=True,)
-    name = fields.Char()
+    name = fields.Char(compute="_compute_worksheet_name")
+    adjuntos = fields.Many2many('ir.attachment', string="Adjuntos", readonly=False)
+    order_type = fields.Selection(selection=[('control_de_aguas', 'Control Analítico de Aguas'), (
+                                'informe_tecnico', 'Informe Técnico')],
+                                default='control_de_aguas',
+                                required=True,
+                                string='Tipo de Orden',
+                                help='Ingrese el tipo de control a realizar')
+    recomendaciones = fields.Html(string='Recomendaciones', tracking=True,
+                                  readonly=False)
+    instrucciones = fields.Html(string='Instrucciones', readonly=False)
+    imagen1 = fields.Binary(string="Imágen1")
+    imagen2 = fields.Binary(string="Imágen2")
+    imagen3 = fields.Binary(string="Imágen3")
+    imagen4 = fields.Binary(string="Imágen4")
+
+    firma_cliente = fields.Binary(string="Firma y aclaración del Cliente", readonly=False)
+    firma_operador = fields.Binary(string="Firma y aclaración del Responsable Técnico", readonly=False)
+
     # TODO agrega tracking? necesario?
     determinacion_ids = fields.One2many(
         comodel_name='fsm_determinaciones', inverse_name='order_id',
@@ -38,6 +56,11 @@ class Determinaciones(models.Model):
                 if AlcOH < 0:
                     AlcOH = 0
                 alcalinidades[key]['AlcOH'].valor = str(AlcOH)
+
+    @api.depends('x_project_task_id.name')
+    def _compute_worksheet_name(self):
+        for rec in self:
+            rec.name = rec.x_project_task_id.name
 
     @api.depends('x_project_task_id.partner_id')
     def _compute_determinaciones(self):
