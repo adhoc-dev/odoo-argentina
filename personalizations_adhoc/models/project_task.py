@@ -38,3 +38,12 @@ class ProjectTask(models.Model):
     def _compute_planned_hours(self):
         for rec in self:
             rec.planned_hours = rec.sistemas_planned_hours * 1.5
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        # Make customers follower. We need to do this since the customers are no followers of the projects.
+        tasks = super().create(vals_list)
+        for task in tasks:
+            if task.partner_id and task.project_id.privacy_visibility == 'portal':
+                task.message_subscribe(partner_ids=task.partner_id.ids)
+        return tasks
