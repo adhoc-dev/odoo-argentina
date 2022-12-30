@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class HelpdeskTicket(models.Model):
@@ -26,3 +26,16 @@ class HelpdeskTicket(models.Model):
             ])
             for att in attachments:
                 att.copy({'res_model': new_task._name, 'res_id': new_task.id})
+
+    @api.model_create_multi
+    def create(self, list_value):
+        tickets = super().create(list_value)
+        if len(tickets) == 1 and list_value[0]['task_id']:
+            new_ticket = tickets[:1]
+            attachments = self.env['ir.attachment'].search([
+                ('res_model', '=', 'project.task'),
+                ('res_id', '=', list_value[0]['task_id']),
+            ])
+            for att in attachments:
+                att.copy({'res_model': new_ticket._name, 'res_id': new_ticket.id})
+        return tickets
