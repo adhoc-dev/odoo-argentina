@@ -10,7 +10,7 @@ class HelpdeskTicket(models.Model):
 
     def create_linked_task(self):
         for rec in self:
-            rec.task_id.create({
+            new_task = rec.task_id.create({
                 'name': rec.name,
                 'project_id': rec.project_id.id,
                 'partner_id': rec.partner_id.id,
@@ -20,3 +20,9 @@ class HelpdeskTicket(models.Model):
                 'user_ids': [(4, rec.project_id.user_id.id, 0)] if rec.project_id.user_id else False,
                 'ticket_ids': [(4, rec.id, 0)]
             })
+            attachments = self.env['ir.attachment'].search([
+                ('res_model', '=', 'helpdesk.ticket'),
+                ('res_id', '=', rec.id),
+            ])
+            for att in attachments:
+                att.copy({'res_model': new_task._name, 'res_id': new_task.id})
