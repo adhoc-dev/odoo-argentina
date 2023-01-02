@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api
+from odoo import models, fields, api, exceptions
+import re
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -85,3 +86,49 @@ class ControlAnalitico(models.Model):
                         'in_chart': parametro.in_chart,
                         }))
             self.update({'determinacion_ids': r })
+
+    def button_validar(self):
+
+        # if self.state in ['done','sent','cancel']:
+        #     raise exceptions.UserError('La orden no se puede validar!')
+        if self.order_type == 'control_de_aguas':
+            if not len(self.determinacion_ids):
+                raise exceptions.UserError('No hay tabla de mediciones!')
+
+            muestras = {}
+            total = 0
+            for det in self.determinacion_ids:
+                if det.muestra_name not in muestras.keys():
+                    muestras[det.muestra_name] = {}
+                if det.valor:
+                    muestras[det.muestra_name][det.parametro_name] = 1
+                else:
+                    muestras[det.muestra_name][det.parametro_name] = 0
+            for key in muestras:
+                total += sum(muestras[key].values())
+                if len(muestras[key].keys()) != sum(muestras[key].values()) and sum(muestras[key].values()) != 0:
+                    raise exceptions.UserError('Falta completrar algun(os) valor(es) de medición!')
+
+            if total == 0:
+                raise exceptions.UserError('Falta completrar algun(os) valor(es) de medición!')
+
+        # elif self.order_type == 'informe_tecnico':
+        #     if self.mediciones4 == '<p><br></p>' or self.mediciones4.isspace():
+        #         raise exceptions.UserError('No hay observaciones en el informe técnico!')
+
+        if self.check_blank(self.recomendaciones):
+            raise exceptions.UserError('No hay anotaciones en las recomendaciones al cliente!')
+
+
+        # self.date_validated = fields.Date.context_today(self)
+        # self.filtered(lambda s: s.state == 'draft').write({'state': 'done'})
+
+    def check_blank(self, html_text):
+        reg_str = "<p>(.*?)</p>"
+        res = re.findall(reg_str, html_text)
+        for element in res:
+            if element != '<br>':
+                for c in element:
+                    if c not in [' ', '\xa0']:
+                        return False
+        return True

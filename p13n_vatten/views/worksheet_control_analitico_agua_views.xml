@@ -6,6 +6,10 @@
         <field name="arch" type="xml">
             <form create="false">
                 <sheet>
+                    <header>
+                        <button string="Validar" name="button_validar" type="object" class="oe_highlight" confirm=''/>
+                    </header>
+
                     <!-- TODO ver -->
                     <h1 invisible="context.get('studio') or context.get('default_x_project_task_id')">
                         <field name="x_project_task_id"/>
