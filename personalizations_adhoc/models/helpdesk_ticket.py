@@ -30,7 +30,7 @@ class HelpdeskTicket(models.Model):
     @api.model_create_multi
     def create(self, list_value):
         tickets = super().create(list_value)
-        if len(tickets) == 1 and list_value[0]['task_id']:
+        if len(tickets) == 1 and list_value and list_value[0].get('task_id'):
             new_ticket = tickets[:1]
             attachments = self.env['ir.attachment'].search([
                 ('res_model', '=', 'project.task'),
