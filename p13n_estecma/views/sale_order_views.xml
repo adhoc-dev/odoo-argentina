@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_order_form_salesperson_assignment" model="ir.ui.view">
+        <field name="name">sale.order.form.salesperson.assignment</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="p13n_estecma.view_order_form"/>
+        <field name="groups_id" eval="[(4,ref('p13n_estecma.salesperson_assignment'))]"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="attributes">
+                <attribute name="readonly">0</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
