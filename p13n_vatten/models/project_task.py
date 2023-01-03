@@ -7,6 +7,11 @@ class ProjectTask(models.Model):
     partner_email = fields.Char(related='partner_id.email', string="Email", readonly=True)
 
     instrucciones = fields.Html(string='Instrucciones', readonly=False)
+
+    fecha_validacion = fields.Date('Fecha Validada', tracking=True,
+                                 copy=False, readonly=True, help="Esta es la fecha de visita realizada.")
+
+
     # adjuntos = fields.Many2many('ir.attachment', string="Adjuntos", readonly=False)
 
     # order_type = fields.Selection(selection=[('control_de_aguas', 'Control Analítico de Aguas'),

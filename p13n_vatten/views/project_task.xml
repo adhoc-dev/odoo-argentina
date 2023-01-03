@@ -9,6 +9,10 @@
             <field name="user_ids" position="attributes">
                 <attribute name="required">True</attribute>
             </field>
+            <!-- TODO cambiar domain y default -->
+            <field name="worksheet_template_id" position="attributes">
+                <attribute name="domain">[('name', '=', 'Control Analítico de Aguas')]</attribute>
+            </field>
             <field name="partner_id" position="attributes">
                 <attribute name="domain">[('parent_id.type', '=', 'service')]</attribute>
                 <!-- <attribute name="domain">[('parent_id', '!=', False)]</attribute> -->
@@ -16,6 +20,9 @@
             <!-- <field name="parent_id" position="before">
                 <field name="order_type"/>
             </field> -->
+            <field name="user_ids" position="after">
+                <field name="fecha_validacion"/>
+            </field>
             <field name="partner_phone" position="before">
                 <field name="partner_email"/>
             </field>
@@ -39,6 +46,39 @@
         </field>
 
 
+    </record>
+
+
+    <!-- <record model="ir.ui.view" id="view_date_end_form">
+        <field name="name">project.task.date_end</field>
+        <field name="inherit_id" ref="project_enterprise.project_task_view_form"/>
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+            <div class="w-100" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </div>
+            <label for="planned_date_begin" position="after">
+                <div class="w-100_2">
+                    <div class="o_row_2">
+                        <field name="planned_date_end"/>
+                    </div>
+                </div>
+            </label>
+        </field>
+    </record> -->
+
+    <record model="ir.ui.view" id="view_worksheet_completed">
+        <field name="name">project.task.view_worksheet_completed</field>
+        <field name="inherit_id" ref="industry_fsm_report.view_task_form2_inherit"/>
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_fsm_worksheet'][hasclass('oe_stat_button')]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', '|', '|', '|', ('partner_id', '=', False), ('allow_worksheets', '=', False), ('worksheet_template_id', '=', False), ('worksheet_count', '!=', 0), ('fecha_validacion', '!=', False)]}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_fsm_worksheet'][hasclass('text-success')]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', '|', '|', ('allow_worksheets', '=', False), ('worksheet_template_id', '=', False), ('worksheet_count', '=', 0), ('fecha_validacion', '=', False)]}</attribute>
+            </xpath>
+        </field>
     </record>
 
 </odoo>

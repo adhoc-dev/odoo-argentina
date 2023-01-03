@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, exceptions
+from datetime import datetime
 import re
 import logging
 
@@ -35,6 +36,11 @@ class ControlAnalitico(models.Model):
     determinacion_ids = fields.One2many(
         comodel_name='fsm_determinaciones', inverse_name='order_id',
         compute='_compute_determinaciones', store=True, readonly=False)
+
+    # fecha_validacion = fields.Date('Fecha Validada', tracking=True,
+    #                              copy=False, readonly=True, help="Esta es la fecha de visita realizada.")
+
+    fecha_validacion = fields.Date(related="x_project_task_id.fecha_validacion")
 
     @api.onchange('determinacion_ids')
     def _onchange_determinacion_ids(self):
@@ -91,6 +97,9 @@ class ControlAnalitico(models.Model):
 
         # if self.state in ['done','sent','cancel']:
         #     raise exceptions.UserError('La orden no se puede validar!')
+        if self.fecha_validacion:
+            raise exceptions.UserError('La orden no se puede volver a validar!')
+
         if self.order_type == 'control_de_aguas':
             if not len(self.determinacion_ids):
                 raise exceptions.UserError('No hay tabla de mediciones!')
@@ -120,7 +129,7 @@ class ControlAnalitico(models.Model):
             raise exceptions.UserError('No hay anotaciones en las recomendaciones al cliente!')
 
 
-        # self.date_validated = fields.Date.context_today(self)
+        self.x_project_task_id.fecha_validacion = fields.Date.context_today(self)
         # self.filtered(lambda s: s.state == 'draft').write({'state': 'done'})
 
     def check_blank(self, html_text):

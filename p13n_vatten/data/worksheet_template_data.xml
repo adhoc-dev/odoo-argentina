@@ -9,12 +9,4 @@
         <field name="report_view_id" ref="report_worksheet_control_analitico_agua"/>
     </record>
 
-    <record id="fsm_worksheet_informe_tecnico" model="worksheet.template" context="{'worksheet_no_generation': True}">
-        <field name="name">Informe Técnico</field>
-        <field name="res_model">project.task</field>
-        <field name="color">2</field>
-        <!-- <field name="model_id" ref="p13n_vatten.model_project_task_worksheet_template_control_analitico_agua">2</field> -->
-        <!-- <field name="action_id">2</field> -->
-    </record>
-
 </odoo>
