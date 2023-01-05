@@ -40,6 +40,7 @@
                             <field name="adhoc_product_id" required="True"/>
                             <!-- <field name="main_database_id"/> -->
                             <field name="stage_id"/>
+                            <field name="partner_id" invisible="1"/>
                             <field name="project_id" invisible="1"/>
                             <field name="description" invisible="1"/>
                             <field name="ticket_description" invisible="1"/>
