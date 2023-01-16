@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="report_protocol">
+
+        <!-- Set company for multicompany case -->
+        <t t-if="not o and doc">
+            <t t-set="o" t-value="doc" />
+        </t>
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id" />
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company" />
+        </t>
+
+        <!-- For each document to print -->
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.html_container">
+
+                <!-- Beginning of HEADER -->
+                <div class="header">
+                    <div class="row">
+                        <!-- <div class="row" style="border: 1px solid #DEE1E6;"> -->
+                        <!-- Company's LOGO -->
+                        <div class="col-5" style="padding: 10px;">
+                            <img style="height: 60px" t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo" />
+                        </div>
+                        <!-- Documents's LETTER -->
+                        <div class="col-2 m-0 p-0" style="text-align: center;">
+                            <div style="display: none;">
+                                <div style="display: inline-block; width: 80px; height: 80px; background-color: #d8d8d8;">
+                                    <strong style="font-family: Roboto; font-size: 54px;">A</strong>
+                                </div>
+                                <div style="font-size: 14px;">Cod. 01</div>
+                            </div>
+                        </div>
+                        <!-- Blank space -->
+                        <div class="col-1"></div>
+                        <!-- Documents's NUMBER and DATE -->
+                        <div class="col-4" style="padding-top: 10px;">
+                            <!-- <strong style="font-size: 22px;">Nota de Crédito</strong> -->
+                            <div style="font-weight:bold;font-size: 18px;">
+                                Protocolo:
+                                <strong>
+                                    <t t-esc="o.name" />
+                                </strong>
+                            </div>
+                            <!-- <div style="font-size: 18px;">Fecha Emisión:  <strong><t t-esc="o.date_executed"/></strong></div> -->
+                            <div style="font-weight:bold;font-size: 18px;">
+                                Fecha Validación:
+                                <strong>
+                                    <t t-esc="o.fecha_validacion" t-options='{"widget": "date"}' />
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of HEADER -->
+
+                <!-- Beginning of ARTICLE -->
+                <!-- <t t-if="o.state=='draft'"><t t-set="modo_reporte">article watermark</t></t>
+                <t t-if="not o.state=='draft'"><t t-set="modo_reporte">article</t></t> -->
+                <t t-set="modo_reporte">article</t>
+
+                <!-- <div t-attf-class="{{ modo_reporte }}" > -->
+                <div class="article" >
+                        <!-- CLIENTE, DIRECCION E INTERLOCUTORES -->
+                    <div style="font-size:16px;padding:2px 0px 0px 2px;margin-bottom:5px;border: 1px solid #DEE1E6;">
+                        <div class="row">
+                            <div class="col-2" style="padding:2px 2px 2px 15px;">Cliente:</div>
+                            <div class="col-6" style="font-weight:bold;padding:2px 2px 2px 5px;"><span t-esc="o.partner_id.name"></span></div>
+                            <div class="col-2" style="padding:2px 2px 2px 5px;">Fecha muestreo:</div>
+                            <div class="col-2" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="o.date_sampling"></t></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2" style="padding:2px 2px 2px 15px;">Interlocutor:</div>
+                            <div class="col-6" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="o.partner_id.name"></t></div>
+                            <div class="col-2" style="padding:2px 2px 2px 5px;">Responsable:</div>
+                            <div class="col-2" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="o.user_ids.name"></t></div>
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col-2" style="padding:2px 2px 2px 15px;">Copia a:</div>
+                            <div class="col-6" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="o.con_copia_a.name"></t></div>
+                            <div class="col-2" style="padding:2px 2px 2px 5px;">Referencia:</div>
+                            <div class="col-2" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="o.reference"></t></div>
+                        </div> -->
+                        <div class="row">
+                            <div class="col-2" style="padding:2px 2px 2px 15px;">Dirección:</div>
+                            <div class="col-10" style="padding:2px 2px 2px 5px;"><t t-esc="o.partner_id.street"></t></div>
+                        </div>
+                    </div>
+
+                    <t t-if="o.worksheet_id.order_type == 'control_de_aguas'">
+                        <!-- TABLA CONTROL ANALITICO DE AGUAS -->
+                        <table class="table table-sm o_main_table mb-0" style="font-size: 10px;">
+                            <caption class="p-1 text-center" style="caption-side:top; color:black; background-color:#BEBEBE; border: 1px solid #BEBEBE;">CONTROL ANALITICO DE AGUAS</caption>
+                            <thead>
+                                <tr style="background-color: #DEE1E6;">
+                                    <th class="text-center pt-1 pb-0 px-0" style="font-weight: 300; border: 1px solid #DEE1E6;width:4%">ID</th>
+                                    <th class="text-center pt-1 pb-0 px-0" style="font-weight: 300; width:14%">Muestra</th>
+                                    <t t-foreach="o.worksheet_id.get_parametros(11)" t-as="parametro">
+                                        <th class="text-center pt-1 pb-0 px-0" style="font-weight: 300; width:7.45%">
+                                            <t t-esc="parametro" />
+                                        </th>
+                                    </t>
+                                </tr>
+                                <tr style="background-color: #DEE1E6;">
+                                    <td></td>
+                                    <td></td>
+                                    <t t-foreach="o.worksheet_id.get_parametros(11)" t-as="parametro">
+                                        <th class="text-center pt-0 pb-1 px-0" style="font-weight: 300; width:7.45%">
+                                            <t t-esc="o.worksheet_id.get_unidad(parametro)" />
+                                        </th>
+                                    </t>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="l" t-value="0"></t>
+                                <t t-foreach="o.worksheet_id.get_muestras(10)" t-as="muestra">
+                                    <tr>
+                                        <t t-set="l" t-value="l+1"></t>
+                                        <td class="text-center pt-0 pb-0 px-0" style="font-size: 14px; border: 1px solid #DEE1E6;">
+                                            <span t-esc="l" />
+                                        </td>
+                                        <td class="text-center pt-0 pb-0 px-0" style="font-size: 14px; border: 1px solid #DEE1E6;">
+                                            <span t-esc="muestra" />
+                                        </td>
+                                        <t t-foreach="o.worksheet_id.get_parametros(11)" t-as="parametro">
+                                            <td class="text-center pt-0 pb-0 px-0" style="font-size: 14px;">
+                                                <span t-esc="o.worksheet_id.get_valor(muestra,parametro)" />
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <!-- TABLA VALORES DE REFERENCIA -->
+                        <table class="table table-sm o_main_table mb-0" style="font-size: 12px;">
+                            <caption class="p-1 text-center" style="caption-side:top; color:black; background-color:#BEBEBE; border: 1px solid #BEBEBE;">VALORES DE REFERENCIA</caption>
+                            <thead></thead>
+                            <tbody>
+                                <t t-set="l" t-value="0"></t>
+                                <t t-foreach="o.worksheet_id.get_muestras(10)" t-as="muestra">
+                                    <tr>
+                                        <t t-set="l" t-value="l+1"></t>
+                                        <td class="text-center pt-0 pb-0 px-0" style="border: 1px solid #DEE1E6; width: 4%">
+                                            <span t-esc="l" />
+                                        </td>
+                                        <td class="text-center pt-0 pb-0 px-0" style="border: 1px solid #DEE1E6; width: 14%">
+                                            <span t-esc="muestra" />
+                                        </td>
+                                        <t t-foreach="o.worksheet_id.get_parametros(11)" t-as="parametro">
+                                            <td class="text-center pt-0 pb-0 px-0" style="font-size:10px;color:#505050; width:7.45%">
+                                                <span t-esc="o.worksheet_id.get_limites(muestra,parametro)" />
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+
+                    <t t-if="o.worksheet_id.order_type == 'informe_tecnico'">
+                    <!-- CAMPO INFORME TECNICO -->
+                        <div class="p-1 text-center" style="font-size: 12px; color:black; background-color:#BEBEBE; border: 1px solid #BEBEBE;">OBSERVACIONES</div>
+                        <div t-field="o.worksheet_id.observaciones_inf_tec" class="recomendacion" style="padding-left: 25px; padding-top: 10px; min-height: 250px; border: 1px solid #BEBEBE;" />
+                    </t>
+    
+                    <!-- CAMPO OBSERVACIONES -->
+                    <div class="p-1 text-center" style="font-size: 12px; color:black; background-color:#BEBEBE; border: 1px solid #BEBEBE;">RECOMENDACIONES</div>
+                    <div t-field="o.worksheet_id.recomendaciones" class="recomendacion" style="padding-left: 25px; padding-top: 10px; min-height: 250px; border: 1px solid #BEBEBE;" />
+
+                    <!-- Sección de firmas #TODO-->
+                    <!-- <div class="row" style="padding-top: 20px;">
+                        <div class="col-6" style="text-align: center;">
+                            <div style="display: inline-block; height: 90px; width: 400px; border: 1px solid #DEE1E6;">
+                                <div style="font-size: 14px;">Firma y aclaración del Responsable Técnico:</div>
+                                <img t-if="o.worksheet_id.firma_operador" t-att-src="image_data_uri(o.firma_operador)" style="max-height: 90px; max-width: 400px;" />
+                            </div>
+                        </div>
+                        <div class="col-6" style="text-align: center;">
+                            <div style="display: inline-block; height: 90px; width: 400px; border: 1px solid #DEE1E6;">
+                                <div style="font-size: 14px;">Firma y aclaración del Cliente:</div>
+                                <img t-if="o.worksheet_id.firma_cliente" t-att-src="image_data_uri(o.firma_cliente)" style="max-height: 90px; max-width: 400px;" />
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- End of ARTICLE -->
+
+                <!-- Beginning of FOOTER -->
+                <div class="footer" style="margin-bottom: 0px !important;">
+                    <div class="row" style="padding-top: 5px; border-top: 2px solid #7e7a9d;">
+                        <div class="col-10 text-center">
+                            <ul class="list-inline mt8" style="margin: 0; font-size: 16px;">
+                                <li t-if="company.street" class="list-inline-item" style="margin:0;">
+                                    <span t-esc="company.street.replace(' ','\N{NO-BREAK SPACE}')" />
+                                </li>
+                                <li t-if="company.city" class="list-inline-item" style="margin:0;">
+                                    <span>&#8226;</span>
+                                    <span t-field="company.city" />
+                                </li>
+                                <li t-if="company.zip" class="list-inline-item" style="margin:0;">
+                                    <span> (</span>
+                                    <span t-esc="company.zip" />
+                                    <span>)</span>
+                                </li>
+                                <li t-if="company.state_id" class="list-inline-item" style="margin:0;">
+                                    <span>&#8226;</span>
+                                    <span t-esc="company.state_id.name.replace(' ','\N{NO-BREAK SPACE}')" />
+                                </li>
+                                <li t-if="company.country_id" class="list-inline-item" style="margin:0;">
+                                    <span>&#8226;</span>
+                                    <span t-esc="company.country_id.name" />
+                                </li>
+                            </ul>
+                            <ul class="list-inline" style="margin: 0; font-size: 16px;">
+                                <li t-if="company.phone" class="list-inline-item">
+                                    <i class="fa fa-phone" role="img" aria-label="Phone" title="Phone" />
+                                    <span t-esc="company.phone.replace(' ','\N{NO-BREAK SPACE}')" />
+                                </li>
+                                <li t-if="company.email" class="list-inline-item">
+                                    <span>
+                                        <i class="fa fa-envelope-o" role="img" aria-label="Email" title="Email" />
+                                    </span>
+                                    <span t-field="company.email" />
+                                </li>
+                                <li t-if="company.website" class="list-inline-item">
+                                    <span>
+                                        <i class="fa fa-globe" role="img" aria-label="Website" title="Website" />
+                                    </span>
+                                    <span t-esc="company.website.replace('http://','').replace('https://','')" />
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-2 text-right;">
+                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('Code128', 'o.name', 200, 30)" style="padding-left: 5px;" />
+                            <!-- 'Codabar', 'Code11', 'Code128', 'EAN13', 'EAN8', 'Extended39', 'Extended93', 'FIM', 'I2of5', 'MSI', 'POSTNET', 'QR', 'Standard39', 'Standard93', 'UPCA', 'USPS_4State' -->
+                            -->
+                        </div>
+                    </div>
+                    <!-- End of FOOTER -->
+                </div>
+
+            </t>
+        </t>
+
+    </template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <data>
+        <record id="fsm_vatten_report" model="ir.actions.report">
+            <field name="name">Worksheet Report (PDF)</field>
+            <field name="model">project.task</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">p13n_vatten.report_protocol</field>
+            <field name="report_file">p13n_vatten.report_protocol</field>
+            <field name="print_report_name">'Worksheet %s - %s' % (object.name, object.partner_id.name)</field>
+            <field name="binding_model_id" ref="model_project_task"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

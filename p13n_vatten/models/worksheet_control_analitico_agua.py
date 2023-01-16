@@ -23,6 +23,8 @@ class ControlAnalitico(models.Model):
                                 help='Ingrese el tipo de control a realizar')
     recomendaciones = fields.Html(string='Recomendaciones', tracking=True,
                                   readonly=False)
+    observaciones_inf_tec = fields.Html(string='Recomendaciones', tracking=True,
+                                  readonly=False)
     instrucciones = fields.Html(string='Instrucciones', readonly=False)
     imagen1 = fields.Binary(string="Imágen1")
     imagen2 = fields.Binary(string="Imágen2")
@@ -41,6 +43,7 @@ class ControlAnalitico(models.Model):
     #                              copy=False, readonly=True, help="Esta es la fecha de visita realizada.")
 
     fecha_validacion = fields.Date(related="x_project_task_id.fecha_validacion")
+    date_sampling = fields.Date(related="x_project_task_id.date_sampling")
 
     @api.onchange('determinacion_ids')
     def _onchange_determinacion_ids(self):
@@ -121,9 +124,9 @@ class ControlAnalitico(models.Model):
             if total == 0:
                 raise exceptions.UserError('Falta completrar algun(os) valor(es) de medición!')
 
-        # elif self.order_type == 'informe_tecnico':
-        #     if self.mediciones4 == '<p><br></p>' or self.mediciones4.isspace():
-        #         raise exceptions.UserError('No hay observaciones en el informe técnico!')
+        elif self.order_type == 'informe_tecnico':
+            if self.check_blank(self.observaciones_inf_tec):
+                raise exceptions.UserError('No hay observaciones en el informe técnico!')
 
         if self.check_blank(self.recomendaciones):
             raise exceptions.UserError('No hay anotaciones en las recomendaciones al cliente!')
@@ -141,3 +144,59 @@ class ControlAnalitico(models.Model):
                     if c not in [' ', '\xa0']:
                         return False
         return True
+
+    def get_parametros(self, count):
+        parametros = self.determinacion_ids.mapped('parametro_name')
+        lookup = set()
+        parametros = [x for x in parametros if x not in lookup and lookup.add(x) is None]
+        lparametros = len(parametros)
+        res = []
+        for i in range(count):
+            if i < lparametros:
+                res.append(parametros[i])
+            else:
+                res.append('-')
+        return(res)
+
+    def get_unidad(self, parametro=''):
+        if not parametro or parametro == '' or parametro == '-':
+            return('-')
+        return(self.determinacion_ids.filtered(lambda r: r.parametro_name == parametro)[0].unit_name)
+
+    def get_valor(self, muestra='', parametro=''):
+        if not muestra or muestra == '' or muestra == '-' or not parametro or parametro == '' or parametro == '-':
+            return('-')
+        return(self.determinacion_ids.filtered(lambda r: r.muestra_name == muestra and r.parametro_name == parametro).valor or '-')
+
+    def get_limites(self, muestra='', parametro=''):
+        if not muestra or muestra == '' or muestra == '-' or not parametro or parametro == '' or parametro == '-':
+            return('-')
+        minimo = (self.determinacion_ids.filtered(lambda r: r.muestra_name == muestra and r.parametro_name == parametro).min_value)
+        maximo = (self.determinacion_ids.filtered(lambda r: r.muestra_name == muestra and r.parametro_name == parametro).max_value)
+#        print('minimo', minimo)
+#        print('maximo', maximo)
+        res = ''
+        if minimo or maximo:
+            res += '('
+        if minimo:
+            res += '>' + str(minimo)
+        if minimo and maximo:
+            res += ' '
+        if maximo:
+            res += '<' + str(maximo)
+        if minimo or maximo:
+            res += ')'
+        return(res or '-')
+
+    def get_muestras(self, count):
+        muestras = self.determinacion_ids.mapped('muestra_name')
+        lookup = set()
+        muestras = [x for x in muestras if x not in lookup and lookup.add(x) is None]
+        lmuestras = len(muestras)
+        res = []
+        for i in range(count):
+            if i < lmuestras:
+                res.append(muestras[i])
+            else:
+                res.append('-')
+        return(res)

@@ -39,6 +39,9 @@
                                     </tree>
                                 </field>
                             </group>
+                            <group name="inspeccion" help="Inspección técnica en instalación de cliente" attrs="{'invisible':[('order_type','!=','informe_tecnico')]}">
+                                <field name="observaciones_inf_tec" class="oe_horizontal_separator oe_clear" nolabel="1"/>
+                            </group>
                         </page>
                         <page string="Notas para el operador">
                             <field name="instrucciones" help='Instrucciones adicionales para el operador' widget="html"/>
