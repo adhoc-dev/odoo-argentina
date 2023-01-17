@@ -21,11 +21,11 @@
                         <field name="comments"/>
                     </group> -->
 
-                    <field name="order_type"  widget="radio"/>
+                    <field name="order_type" widget="radio" attrs="{'readonly': [('fecha_validacion', '!=', False)]}"/>
                     <notebook>
                         <page string="Determinaciones">
                             <group name="aguas" help='Medición de muestras de aguas' autofocus="autofocus" attrs="{'invisible':[('order_type','!=','control_de_aguas')]}">
-                                <field name="determinacion_ids" widget="x2many_2d_matrix" field_y_axis="muestra_name" field_x_axis="parametro_display" field_value="valor" nolabel="1">
+                                <field name="determinacion_ids" widget="x2many_2d_matrix" field_y_axis="muestra_name" field_x_axis="parametro_display" field_value="valor" nolabel="1" attrs="{'readonly': [('fecha_validacion', '!=', False)]}">
                                     <tree>
                                         <field name="muestra_name"/>
                                         <field name="parametro_display"/>
@@ -40,25 +40,25 @@
                                 </field>
                             </group>
                             <group name="inspeccion" help="Inspección técnica en instalación de cliente" attrs="{'invisible':[('order_type','!=','informe_tecnico')]}">
-                                <field name="observaciones_inf_tec" class="oe_horizontal_separator oe_clear" nolabel="1"/>
+                                <field name="observaciones_inf_tec" class="oe_horizontal_separator oe_clear" nolabel="1" attrs="{'readonly': [('fecha_validacion', '!=', False)]}"/>
                             </group>
                         </page>
                         <page string="Notas para el operador">
-                            <field name="instrucciones" help='Instrucciones adicionales para el operador' widget="html"/>
+                            <field name="instrucciones" help='Instrucciones adicionales para el operador' widget="html" attrs="{'readonly': [('fecha_validacion', '!=', False)]}"/>
                         </page>
                         <page string="Adjuntos">
-                            <field name="adjuntos" help='Instrucciones adicionales para el operador' widget="many2many_binary"/>
+                            <field name="adjuntos" help='Instrucciones adicionales para el operador' widget="many2many_binary" attrs="{'readonly': [('fecha_validacion', '!=', False)]}"/>
                         </page>
                     </notebook>
                     <notebook>
                         <page string="Recomendaciones al cliente">
-                            <field class="recomendacion" name="recomendaciones" help='Recomendaciones para el cliente'/>
+                            <field class="recomendacion" name="recomendaciones" help='Recomendaciones para el cliente' attrs="{'readonly': [('fecha_validacion', '!=', False)]}"/>
                         </page>
                         <page string="Imágenes">
-                            <field name="imagen1" widget="image" help='Documentos, fotos, etc...'/>
-                            <field name="imagen2" widget="image" help='Documentos, fotos, etc...'/>
-                            <field name="imagen3" widget="image" help='Documentos, fotos, etc...'/>
-                            <field name="imagen4" widget="image" help='Documentos, fotos, etc...'/>
+                            <field name="imagen1" widget="image" help='Documentos, fotos, etc...' attrs="{'readonly': [('fecha_validacion', '!=', False)]}"/>
+                            <field name="imagen2" widget="image" help='Documentos, fotos, etc...' attrs="{'readonly': [('fecha_validacion', '!=', False)]}"/>
+                            <field name="imagen3" widget="image" help='Documentos, fotos, etc...' attrs="{'readonly': [('fecha_validacion', '!=', False)]}"/>
+                            <field name="imagen4" widget="image" help='Documentos, fotos, etc...' attrs="{'readonly': [('fecha_validacion', '!=', False)]}"/>
                         </page>
                     </notebook>
                     <notebook>

@@ -22,7 +22,7 @@
                         <span style="font-weight: bold;">
                             <t t-out="object.partner_id.parent_id.name"/>
                         </span>
-                        <t t-if="object.planned_date_end">
+                        <t t-if="object.date_sampling">
                             el <span style="font-weight: bold;"><t  t-out="object.date_sampling"/></span>
                         </t>
                         <br/><br/>

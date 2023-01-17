@@ -1,9 +1,12 @@
 from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 
 
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
+    name = fields.Char(string='Orden', copy=False, readonly=True,
+                       required=True, default=lambda self: _('New'))
     partner_email = fields.Char(related='partner_id.email', string="Email", readonly=True)
 
     instrucciones = fields.Html(string='Instrucciones', readonly=False)
@@ -14,7 +17,6 @@ class ProjectTask(models.Model):
     worksheet_id = fields.One2many(
         'worksheet_control_analitico_agua', 'x_project_task_id', string='Worksheet ID', readonly=True,
         help="Invoices paid using this mandate.")
-
 
 
     # adjuntos = fields.Many2many('ir.attachment', string="Adjuntos", readonly=False)
@@ -46,3 +48,16 @@ class ProjectTask(models.Model):
             res['context']['default_template_id'] = template_id
 
         return res
+
+    def action_fsm_validate(self):
+        res = super().action_fsm_validate()
+        if not self.fecha_validacion:
+            raise UserError(_("No se puede marcar como hecho sin antes validar."))
+        return res
+
+    @api.model
+    def create(self, vals):
+        if vals.get('name', _('New')) == _('New'):
+            vals['name'] = self.env['ir.sequence'].next_by_code('service.order') or _('New')
+        result = super(ProjectTask, self).create(vals)
+        return result

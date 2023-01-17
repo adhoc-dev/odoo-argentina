@@ -250,25 +250,6 @@
     </template>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <data>
         <record id="fsm_vatten_report" model="ir.actions.report">
             <field name="name">Worksheet Report (PDF)</field>

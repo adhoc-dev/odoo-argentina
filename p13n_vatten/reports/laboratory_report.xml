@@ -9,7 +9,7 @@
         </xpath>
     </template> -->
 
-    <template id="report_protocol">
+    <template id="report_protocolo_lab">
 
         <!-- Set company for multicompany case -->
         <t t-if="not o and doc">
@@ -285,8 +285,8 @@
         <field name="name">Orden de Servicio</field>
         <field name="model">service.order</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">p13n_vatten.report_protocol</field>
-        <field name="report_file">p13n_vatten.report_protocol</field>
+        <field name="report_name">p13n_vatten.report_protocolo_lab</field>
+        <field name="report_file">p13n_vatten.report_protocolo_lab</field>
         <field name="print_report_name">(object.name or 'Borrador')</field>
         <field name="paperformat_id" ref="generic_A4_paperformat"/>
         <field name="binding_model_id" ref="model_service_order"/>

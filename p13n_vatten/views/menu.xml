@@ -32,5 +32,10 @@
         parent="configuracion_menu"
         sequence="10"/>
         <!-- groups="laboratorio.laboratorio_group_user" -->
+    
+    <menuitem id="industry_fsm.fsm_menu_root"
+        name="Laboratorio_fsm"
+        sequence="80"
+        web_icon="p13n_vatten,static/description/icon.png"/>
 
 </odoo>
