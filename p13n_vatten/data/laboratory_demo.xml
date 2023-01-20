@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_partner_cliente_1" model="res.partner">
+        <field name="name">Cliente 1</field>
+        <field name="is_company">1</field>
+        <field name="street">Domicilio Cliente 1</field>
+        <field name="country_id" ref="base.ar"/>
+        <field name="website">http://www.azure-interior.com</field>
+    </record>
+
+    <record id="res_partner_cliente_1_direccion_1" model="res.partner">
+        <field name="name">Direccion servicio 1</field>
+        <field name="type">service</field>
+        <field name="parent_id" ref="res_partner_cliente_1"/>
+        <field name="street">Domicilio servicio 1</field>
+    </record>
+
+    <record id="res_partner_cliente_1_direccion_2" model="res.partner">
+        <field name="name">Direccion servicio 2</field>
+        <field name="type">service</field>
+        <field name="parent_id" ref="res_partner_cliente_1"/>
+        <field name="street">Domicilio servicio 2</field>
+    </record>
+
+    <record id="res_partner_cliente_1_direccion_1_contacto_1" model="res.partner">
+        <field name="name">Jorge Rodriguez</field>
+        <field name="type">contact</field>
+        <field name="parent_id" ref="res_partner_cliente_1_direccion_1"/>
+        <field name="mobile">540000000001</field>
+        <field name="email">jorgerodrigez@empresa1.com</field>
+    </record>
+
+    <record id="res_partner_cliente_1_direccion_2_contacto_1" model="res.partner">
+        <field name="name">Juan Perez</field>
+        <field name="type">contact</field>
+        <field name="parent_id" ref="res_partner_cliente_1_direccion_2"/>
+        <field name="mobile">540000000000</field>
+        <field name="email">juanperez@empresa1.com</field>
+    </record>
+
+</odoo>

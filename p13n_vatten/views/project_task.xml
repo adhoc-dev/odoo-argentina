@@ -11,11 +11,7 @@
             </field>
             <field name="partner_id" position="attributes">
                 <attribute name="domain">[('parent_id.type', '=', 'service')]</attribute>
-                <!-- <attribute name="domain">[('parent_id', '!=', False)]</attribute> -->
             </field>
-            <!-- <field name="parent_id" position="before">
-                <field name="order_type"/>
-            </field> -->
             <field name="partner_phone" position="before">
                 <field name="partner_email"/>
             </field>
@@ -26,58 +22,24 @@
                 <attribute name="invisible">1</attribute>
             </xpath>
             <group>
-            <group>
-            <field name="fecha_validacion"/>
-            <field name="date_sampling"/>
-            <field name="user_ids" requiered="True" class="o_task_user_field" options="{'no_open': True}" widget="many2many_avatar_user" domain="[('share', '=', False), ('active', '=', True)]"/>
-            <field name="parent_id" attrs="{'invisible' : [('allow_subtasks', '=', False)]}" groups="base.group_no_one"/>
-            <field name="worksheet_template_id" domain="[('name', '=', 'Control Analítico de Aguas')]" context="{'form_view_ref': 'industry_fsm_report.worksheet_template_view_form_no_design_button', 'default_res_model': 'project.task'}" attrs="{'invisible': [('allow_worksheets', '=', False)]}"/>
-            </group>
+                <group>
+                    <field name="fecha_validacion"/>
+                    <field name="date_sampling"/>
+                    <field name="user_ids" requiered="True" class="o_task_user_field" options="{'no_open': True}" widget="many2many_avatar_user" domain="[('share', '=', False), ('active', '=', True)]"/>
+                    <field name="parent_id" attrs="{'invisible' : [('allow_subtasks', '=', False)]}" groups="base.group_no_one"/>
+                    <field name="worksheet_template_id" context="{'form_view_ref': 'industry_fsm_report.worksheet_template_view_form_no_design_button', 'default_res_model': 'project.task'}" attrs="{'invisible': [('allow_worksheets', '=', False)]}"/>
+                </group>
             </group>
 
-            <!-- <xpath expr="//notebook" position="before">
-                <notebook name="ASD">
-                        <page string="Adjuntos">
-                             <field name="adjuntos" string="Adjuntos" widget="many2many_binary" help='Documentos, fotos, etc...'/>
-                        </page>
-                </notebook>
-                <notebook>
-                    <page string="Recomendaciones al cliente">
-                        <field class="recomendacion" name="recomendaciones" help='Recomendaciones para el cliente' widget="html"/>
-                    </page>
-                    <page string="Imágenes">
-                    </page>
-                </notebook>
-            </xpath> -->
         </field>
-
-
     </record>
-
-
-    <!-- <record model="ir.ui.view" id="view_date_end_form">
-        <field name="name">project.task.date_end</field>
-        <field name="inherit_id" ref="project_enterprise.project_task_view_form"/>
-        <field name="model">project.task</field>
-        <field name="arch" type="xml">
-            <div class="w-100" position="attributes">
-                <attribute name="invisible">True</attribute>
-            </div>
-            <label for="planned_date_begin" position="after">
-                <div class="w-100_2">
-                    <div class="o_row_2">
-                        <field name="planned_date_end"/>
-                    </div>
-                </div>
-            </label>
-        </field>
-    </record> -->
 
     <record model="ir.ui.view" id="view_worksheet_completed">
         <field name="name">project.task.view_worksheet_completed</field>
         <field name="inherit_id" ref="industry_fsm_report.view_task_form2_inherit"/>
         <field name="model">project.task</field>
         <field name="arch" type="xml">
+            <!-- odoo por defecto muestra completado el worksheet ni bien se guarda, nosotros le agregamos una especie de logica de estado -->
             <xpath expr="//button[@name='action_fsm_worksheet'][hasclass('oe_stat_button')]" position="attributes">
                 <attribute name="attrs">{'invisible': ['|', '|', '|',  ('partner_id', '=', False), ('allow_worksheets', '=', False), ('worksheet_template_id', '=', False), ('fecha_validacion', '!=', False)]}</attribute>
             </xpath>

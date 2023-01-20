@@ -2,39 +2,15 @@
 <odoo>
 
     <menuitem
-        id="laboratorio_menu"
-        name="Laboratorio"
-        sequence="10"
-        web_icon="p13n_vatten,static/description/icon.png"/>
-
-    <menuitem
-        id="orden_de_servicio_menu"
-        name="Orden de servicio"
-        action="orden_de_servicio_menu_action"
-
-        parent="laboratorio_menu"
-        sequence="10"/>
-        <!-- groups="laboratorio.laboratorio_group_user" -->
-
-    <menuitem
-        id="configuracion_menu"
-        name="Configuración"
-
-        parent="laboratorio_menu"
-        sequence="10"/>
-        <!-- groups="laboratorio.laboratorio_group_user" -->
-
-    <menuitem
         id="parametros_quimicos_menu"
         name="Parámetros Químicos"
         action="parametros_quimicos_action"
 
-        parent="configuracion_menu"
+        parent="industry_fsm.fsm_menu_settings"
         sequence="10"/>
-        <!-- groups="laboratorio.laboratorio_group_user" -->
-    
+
     <menuitem id="industry_fsm.fsm_menu_root"
-        name="Laboratorio_fsm"
+        name="Laboratorio"
         sequence="80"
         web_icon="p13n_vatten,static/description/icon.png"/>
 

@@ -34,8 +34,8 @@
     </p>
 </div>
             </field>
-            <field name="report_template" ref="p13n_vatten.action_report_service_order"/>
-            <field name="report_name">{{(object.name or 'Borrador')}}</field>
+            <!-- <field name="report_template" ref="p13n_vatten.action_report_service_order"/> -->
+            <!-- <field name="report_name">{{(object.name or 'Borrador')}}</field> -->
             <field name="lang">{{object.partner_service_id.lang}}</field>
             <!-- <field name="user_signature" eval="True"/> -->
             <field name="auto_delete" eval="False"/>

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, exceptions
-from datetime import datetime
 import re
 import logging
 
@@ -21,10 +20,8 @@ class ControlAnalitico(models.Model):
                                 required=True,
                                 string='Tipo de Orden',
                                 help='Ingrese el tipo de control a realizar')
-    recomendaciones = fields.Html(string='Recomendaciones', tracking=True,
-                                  readonly=False)
-    observaciones_inf_tec = fields.Html(string='Recomendaciones', tracking=True,
-                                  readonly=False)
+    recomendaciones = fields.Html(string='Recomendaciones', readonly=False)
+    observaciones_inf_tec = fields.Html(string='Observaciones', readonly=False)
     instrucciones = fields.Html(string='Instrucciones', readonly=False)
     imagen1 = fields.Binary(string="Imágen1")
     imagen2 = fields.Binary(string="Imágen2")
@@ -34,13 +31,9 @@ class ControlAnalitico(models.Model):
     firma_cliente = fields.Binary(string="Firma y aclaración del Cliente", readonly=False)
     firma_operador = fields.Binary(string="Firma y aclaración del Responsable Técnico", readonly=False)
 
-    # TODO agrega tracking? necesario?
     determinacion_ids = fields.One2many(
         comodel_name='fsm_determinaciones', inverse_name='order_id',
         compute='_compute_determinaciones', store=True, readonly=False)
-
-    # fecha_validacion = fields.Date('Fecha Validada', tracking=True,
-    #                              copy=False, readonly=True, help="Esta es la fecha de visita realizada.")
 
     fecha_validacion = fields.Date(related="x_project_task_id.fecha_validacion")
     date_sampling = fields.Date(related="x_project_task_id.date_sampling")
@@ -80,14 +73,14 @@ class ControlAnalitico(models.Model):
 
             # self.update({'determinacion_ids':[(2,individual.id) for individual in self.determinacion_ids]})
             # crea nuevos registros
-            r=[]
+            r = []
             for muestra in self.env['muestras'].search([('partner_service_id.id', '=', self.x_project_task_id.partner_id.parent_id.id)]).sorted(key=lambda r: r.sequence):
                 for parametro in muestra.parametro_ids.sorted(key=lambda r: r.sequence):
                     r.append((0, 0, {
-                        'muestra_name': muestra.name.replace(' ','\N{NO-BREAK SPACE}'),
-                        'parametro_name': parametro.name.name.replace(' ','\N{NO-BREAK SPACE}'),
-                        'unit_name': parametro.unit.replace(' ','\N{NO-BREAK SPACE}'),
-                        'parametro_display': parametro.name.name.replace(' ','\N{NO-BREAK SPACE}') + '\n' + parametro.name.unit.replace(' ','\N{NO-BREAK SPACE}'),
+                        'muestra_name': muestra.name.replace(' ', '\N{NO-BREAK SPACE}'),
+                        'parametro_name': parametro.name.name.replace(' ', '\N{NO-BREAK SPACE}'),
+                        'unit_name': parametro.unit.replace(' ', '\N{NO-BREAK SPACE}'),
+                        'parametro_display': parametro.name.name.replace(' ', '\N{NO-BREAK SPACE}') + '\n' + parametro.name.unit.replace(' ', '\N{NO-BREAK SPACE}'),
                         'valor': '',
                         'min_value': parametro.min_value,
                         'max_value': parametro.max_value,
@@ -98,8 +91,6 @@ class ControlAnalitico(models.Model):
 
     def button_validar(self):
 
-        # if self.state in ['done','sent','cancel']:
-        #     raise exceptions.UserError('La orden no se puede validar!')
         if self.fecha_validacion:
             raise exceptions.UserError('La orden no se puede volver a validar!')
 
@@ -156,25 +147,23 @@ class ControlAnalitico(models.Model):
                 res.append(parametros[i])
             else:
                 res.append('-')
-        return(res)
+        return res
 
     def get_unidad(self, parametro=''):
         if not parametro or parametro == '' or parametro == '-':
-            return('-')
-        return(self.determinacion_ids.filtered(lambda r: r.parametro_name == parametro)[0].unit_name)
+            return '-'
+        return self.determinacion_ids.filtered(lambda r: r.parametro_name == parametro)[0].unit_name
 
     def get_valor(self, muestra='', parametro=''):
         if not muestra or muestra == '' or muestra == '-' or not parametro or parametro == '' or parametro == '-':
-            return('-')
-        return(self.determinacion_ids.filtered(lambda r: r.muestra_name == muestra and r.parametro_name == parametro).valor or '-')
+            return '-'
+        return self.determinacion_ids.filtered(lambda r: r.muestra_name == muestra and r.parametro_name == parametro).valor or '-'
 
     def get_limites(self, muestra='', parametro=''):
         if not muestra or muestra == '' or muestra == '-' or not parametro or parametro == '' or parametro == '-':
-            return('-')
-        minimo = (self.determinacion_ids.filtered(lambda r: r.muestra_name == muestra and r.parametro_name == parametro).min_value)
-        maximo = (self.determinacion_ids.filtered(lambda r: r.muestra_name == muestra and r.parametro_name == parametro).max_value)
-#        print('minimo', minimo)
-#        print('maximo', maximo)
+            return '-'
+        minimo = self.determinacion_ids.filtered(lambda r: r.muestra_name == muestra and r.parametro_name == parametro).min_value
+        maximo = self.determinacion_ids.filtered(lambda r: r.muestra_name == muestra and r.parametro_name == parametro).max_value
         res = ''
         if minimo or maximo:
             res += '('
@@ -186,7 +175,7 @@ class ControlAnalitico(models.Model):
             res += '<' + str(maximo)
         if minimo or maximo:
             res += ')'
-        return(res or '-')
+        return res or '-'
 
     def get_muestras(self, count):
         muestras = self.determinacion_ids.mapped('muestra_name')
@@ -199,4 +188,4 @@ class ControlAnalitico(models.Model):
                 res.append(muestras[i])
             else:
                 res.append('-')
-        return(res)
+        return res
