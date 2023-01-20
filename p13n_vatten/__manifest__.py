@@ -20,7 +20,7 @@
         'reports/worksheet_control_analitico_agua_report.xml',
         'reports/worksheet_custom_report_templates.xml',
         'views/worksheet_control_analitico_agua_views.xml',
-        'data/data_chemical_parameters.xml',
+        'data/chemical.parameter.csv',
         'data/laboratory_order_sequence.xml',
         'data/worksheet_template_data.xml',
         'data/vatten_mail_template.xml',
