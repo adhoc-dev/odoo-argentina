@@ -9,6 +9,7 @@
     'license': 'AGPL-3',
     'depends': [
         'mail',
+        'l10n_ar',
         'web_widget_x2many_2d_matrix',
         'industry_fsm_report',
         'mail_mobile',
@@ -17,11 +18,10 @@
     'data': [
         'security/ir.model.access.csv',
         'reports/worksheet_control_analitico_agua_report.xml',
-        'reports/fsm_vatten_report.xml',
+        'reports/worksheet_custom_report_templates.xml',
         'views/worksheet_control_analitico_agua_views.xml',
         'data/data_chemical_parameters.xml',
         'data/laboratory_order_sequence.xml',
-        'data/laboratory_mail_template_fsm.xml',
         'data/worksheet_template_data.xml',
         'data/vatten_mail_template.xml',
         'views/res_partner.xml',

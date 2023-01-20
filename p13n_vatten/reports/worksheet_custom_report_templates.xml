@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- modificamos esto si bien no es ideal, porque no nos anduvo mandar el custom_header/footer direcamente en el "industry_fsm_report.worksheet_custom_page"
+    es probable que sea porque odoo esta llamando al external_layout en este paso en vez de en el documento en si como hace en el resto de los reportes -->
+    <template id="industry_fsm_report.worksheet_custom">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <t t-set="custom_header" t-value="'l10n_ar.custom_header'"/>
+                    <t t-set="report_date" t-value="doc.fecha_validacion"/>
+                    <t t-set="report_number" t-value="doc.name"/>
+                    <!-- no tienen titulo -->
+                    <t t-set="report_name" t-value="'PROTOCOLO'"/>
+                    <t t-set="header_address" t-value="doc.company_id.partner_id"/>
+                    <t t-set="custom_footer">
+                        <div class="row" style="border-top: 2px solid #7e7a9d;">
+                            <div class="col-10 text-center">
+                                <ul class="list-inline mt8" style="margin: 0; font-size: 16px;">
+                                    <li t-if="doc.company_id.street" class="list-inline-item" style="margin:0;">
+                                        <span t-esc="doc.company_id.street.replace(' ','\N{NO-BREAK SPACE}')" />
+                                    </li>
+                                    <li t-if="doc.company_id.city" class="list-inline-item" style="margin:0;">
+                                        <span>&#8226;</span>
+                                        <span t-field="doc.company_id.city" />
+                                    </li>
+                                    <li t-if="doc.company_id.zip" class="list-inline-item" style="margin:0;">
+                                        <span> (</span>
+                                        <span t-esc="doc.company_id.zip" />
+                                        <span>)</span>
+                                    </li>
+                                    <li t-if="doc.company_id.state_id" class="list-inline-item" style="margin:0;">
+                                        <span>&#8226;</span>
+                                        <span t-esc="doc.company_id.state_id.name.replace(' ','\N{NO-BREAK SPACE}')" />
+                                    </li>
+                                    <li t-if="doc.company_id.country_id" class="list-inline-item" style="margin:0;">
+                                        <span>&#8226;</span>
+                                        <span t-esc="doc.company_id.country_id.name" />
+                                    </li>
+                                </ul>
+                                <ul class="list-inline" style="margin: 0; font-size: 16px;">
+                                    <li t-if="doc.company_id.phone" class="list-inline-item">
+                                        <i class="fa fa-phone" role="img" aria-label="Phone" title="Phone" />
+                                        <span t-esc="doc.company_id.phone.replace(' ','\N{NO-BREAK SPACE}')" />
+                                    </li>
+                                    <li t-if="doc.company_id.email" class="list-inline-item">
+                                        <span>
+                                            <i class="fa fa-envelope-o" role="img" aria-label="Email" title="Email" />
+                                        </span>
+                                        <span t-field="doc.company_id.email" />
+                                    </li>
+                                    <li t-if="doc.company_id.website" class="list-inline-item">
+                                        <span>
+                                            <i class="fa fa-globe" role="img" aria-label="Website" title="Website" />
+                                        </span>
+                                        <span t-esc="doc.company_id.website.replace('http://','').replace('https://','')" />
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-2 text-right;">
+                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('Code128', 'doc.name', 200, 30)" style="padding-left: 5px;" />
+                                <!-- 'Codabar', 'Code11', 'Code128', 'EAN13', 'EAN8', 'Extended39', 'Extended93', 'FIM', 'I2of5', 'MSI', 'POSTNET', 'QR', 'Standard39', 'Standard93', 'UPCA', 'USPS_4State' -->
+                                -->
+                            </div>
+                        </div>
+                    </t>
+                    <t t-call="industry_fsm_report.worksheet_custom_page" t-lang="doc.partner_id.lang"/>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- modificamos el diseño de la pagina para que tenga un look custom del cliente pero le mantenemos la posibilidad de que el contenido lo tome de cada worksheet por mas que usen uno solo -->
+    <template id="industry_fsm_report.worksheet_custom_page">
+        <!-- CLIENTE, DIRECCION E INTERLOCUTORES -->
+        <div style="font-size:16px;padding:2px 0px 0px 2px;margin-bottom:5px;border: 1px solid #DEE1E6;">
+            <div class="row">
+                <div class="col-2" style="padding:2px 2px 2px 15px;">Cliente:</div>
+                <div class="col-6" style="font-weight:bold;padding:2px 2px 2px 5px;"><span t-esc="doc.partner_id.name"></span></div>
+                <div class="col-2" style="padding:2px 2px 2px 5px;">Fecha muestreo:</div>
+                <div class="col-2" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="doc.date_sampling"></t></div>
+            </div>
+            <div class="row">
+                <div class="col-2" style="padding:2px 2px 2px 15px;">Interlocutor:</div>
+                <div class="col-6" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="doc.partner_id.name"></t></div>
+                <div class="col-2" style="padding:2px 2px 2px 5px;">Responsable:</div>
+                <div class="col-2" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="doc.user_ids.name"></t></div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-2" style="padding:2px 2px 2px 15px;">Copia a:</div>
+                <div class="col-6" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="doc.con_copia_a.name"></t></div>
+                <div class="col-2" style="padding:2px 2px 2px 5px;">Referencia:</div>
+                <div class="col-2" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="doc.reference"></t></div>
+            </div> -->
+            <div class="row">
+                <div class="col-2" style="padding:2px 2px 2px 15px;">Dirección:</div>
+                <div class="col-10" style="padding:2px 2px 2px 5px;"><t t-esc="doc.partner_id.street"></t></div>
+            </div>
+        </div>
+        <!-- incrustamos dinamicamente el report custom de cada worksheet tal cual hace odoo en el original pero le sacamos
+        el título worksheet -->
+        <div name="worksheet_map" t-if="doc.worksheet_template_id.report_view_id and worksheet_map.get(doc.id)" style="page-break-inside: avoid">
+            <t t-set="worksheet" t-value="worksheet_map.get(doc.id)"/>
+            <!-- <h2>Worksheet</h2> -->
+            <t t-call="#{doc.worksheet_template_id.report_view_id.id}"/>
+            <br/>
+        </div>
+    </template>
+
+</odoo>

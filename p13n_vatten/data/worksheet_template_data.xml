@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
+
     <record id="fsm_worksheet_control_aguas" model="worksheet.template" context="{'worksheet_no_generation': True}">
         <field name="name">Control Analítico de Aguas</field>
         <field name="res_model">project.task</field>

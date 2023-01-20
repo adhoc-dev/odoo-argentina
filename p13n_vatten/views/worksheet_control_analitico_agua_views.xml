@@ -5,21 +5,13 @@
         <field name="model">worksheet_control_analitico_agua</field>
         <field name="arch" type="xml">
             <form create="false">
+                <header>
+                    <button string="Validar" name="button_validar" type="object" class="oe_highlight" attrs="{'invisible': [('fecha_validacion', '!=', False)]}"/>
+                </header>
                 <sheet>
-                    <header>
-                        <button string="Validar" name="button_validar" type="object" class="oe_highlight" confirm=''/>
-                    </header>
-
-                    <!-- TODO ver -->
-                    <h1 invisible="context.get('studio') or context.get('default_x_project_task_id')">
-                        <field name="x_project_task_id"/>
-                    </h1>
                     <h1>
-                        <field name="name"/>
+                        <field name="x_project_task_id" readonly="1"/>
                     </h1>
-                    <!-- <group>
-                        <field name="comments"/>
-                    </group> -->
 
                     <field name="order_type" widget="radio" attrs="{'readonly': [('fecha_validacion', '!=', False)]}"/>
                     <notebook>

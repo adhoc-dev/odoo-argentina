@@ -8,5 +8,5 @@ _logger = logging.getLogger(__name__)
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    type = fields.Selection(selection_add=[('payment', 'Dirección de pago'), ('service', 'Dirección de servicio')])
+    type = fields.Selection(selection_add=[('service', 'Dirección de servicio')])
     muestra_ids = fields.One2many(comodel_name='muestras', inverse_name='partner_service_id', string="Puntos de Muestreo")

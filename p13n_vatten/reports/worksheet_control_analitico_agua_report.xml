@@ -1,10 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
+    <!-- contenido especifico de worksheets control analytico agua -->
     <template id="report_worksheet_control_analitico_agua">
-        <div class="row mb-3" style="page-break-inside: avoid"><div t-att-class="('col-5' if report_type == 'pdf' else 'col-lg-5 col-12') + ' font-weight-bold'">Serial Number</div><div modifiers="{}" t-att-class="'col-7' if report_type == 'pdf' else 'col-lg-7 col-12'" t-field="worksheet.comments"/></div>
-        <div class="row mb-3" style="page-break-inside: avoid"><div t-att-class="('col-5' if report_type == 'pdf' else 'col-lg-5 col-12') + ' font-weight-bold'">Serial Number</div><div modifiers="{}" t-att-class="'col-7' if report_type == 'pdf' else 'col-lg-7 col-12'" t-field="worksheet.comments"/></div>
 
+        <t t-if="doc.worksheet_id.order_type == 'control_de_aguas'">
+            <!-- TABLA CONTROL ANALITICO DE AGUAS -->
+            <table class="table table-sm o_main_table mb-0" style="font-size: 10px;">
+                <caption class="p-1 text-center" style="caption-side:top; color:black; background-color:#BEBEBE; border: 1px solid #BEBEBE;">CONTROL ANALITICO DE AGUAS</caption>
+                <thead>
+                    <tr style="background-color: #DEE1E6;">
+                        <th class="text-center pt-1 pb-0 px-0" style="font-weight: 300; border: 1px solid #DEE1E6;width:4%">ID</th>
+                        <th class="text-center pt-1 pb-0 px-0" style="font-weight: 300; width:14%">Muestra</th>
+                        <t t-foreach="doc.worksheet_id.get_parametros(11)" t-as="parametro">
+                            <th class="text-center pt-1 pb-0 px-0" style="font-weight: 300; width:7.45%">
+                                <t t-esc="parametro" />
+                            </th>
+                        </t>
+                    </tr>
+                    <tr style="background-color: #DEE1E6;">
+                        <td></td>
+                        <td></td>
+                        <t t-foreach="doc.worksheet_id.get_parametros(11)" t-as="parametro">
+                            <th class="text-center pt-0 pb-1 px-0" style="font-weight: 300; width:7.45%">
+                                <t t-esc="doc.worksheet_id.get_unidad(parametro)" />
+                            </th>
+                        </t>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-set="l" t-value="0"></t>
+                    <t t-foreach="doc.worksheet_id.get_muestras(10)" t-as="muestra">
+                        <tr>
+                            <t t-set="l" t-value="l+1"></t>
+                            <td class="text-center pt-0 pb-0 px-0" style="font-size: 14px; border: 1px solid #DEE1E6;">
+                                <span t-esc="l" />
+                            </td>
+                            <td class="text-center pt-0 pb-0 px-0" style="font-size: 14px; border: 1px solid #DEE1E6;">
+                                <span t-esc="muestra" />
+                            </td>
+                            <t t-foreach="doc.worksheet_id.get_parametros(11)" t-as="parametro">
+                                <td class="text-center pt-0 pb-0 px-0" style="font-size: 14px;">
+                                    <span t-esc="doc.worksheet_id.get_valor(muestra,parametro)" />
+                                </td>
+                            </t>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+
+            <!-- TABLA VALORES DE REFERENCIA -->
+            <table class="table table-sm o_main_table mb-0" style="font-size: 12px;">
+                <caption class="p-1 text-center" style="caption-side:top; color:black; background-color:#BEBEBE; border: 1px solid #BEBEBE;">VALORES DE REFERENCIA</caption>
+                <thead></thead>
+                <tbody>
+                    <t t-set="l" t-value="0"></t>
+                    <t t-foreach="doc.worksheet_id.get_muestras(10)" t-as="muestra">
+                        <tr>
+                            <t t-set="l" t-value="l+1"></t>
+                            <td class="text-center pt-0 pb-0 px-0" style="border: 1px solid #DEE1E6; width: 4%">
+                                <span t-esc="l" />
+                            </td>
+                            <td class="text-center pt-0 pb-0 px-0" style="border: 1px solid #DEE1E6; width: 14%">
+                                <span t-esc="muestra" />
+                            </td>
+                            <t t-foreach="doc.worksheet_id.get_parametros(11)" t-as="parametro">
+                                <td class="text-center pt-0 pb-0 px-0" style="font-size:10px;color:#505050; width:7.45%">
+                                    <span t-esc="doc.worksheet_id.get_limites(muestra,parametro)" />
+                                </td>
+                            </t>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </t>
+
+        <t t-if="doc.worksheet_id.order_type == 'informe_tecnico'">
+        <!-- CAMPO INFORME TECNICO -->
+            <div class="p-1 text-center" style="font-size: 12px; color:black; background-color:#BEBEBE; border: 1px solid #BEBEBE;">OBSERVACIONES</div>
+            <div t-field="doc.worksheet_id.observaciones_inf_tec" class="recomendacion" style="padding-left: 25px; padding-top: 10px; min-height: 250px; border: 1px solid #BEBEBE;" />
+        </t>
+
+        <!-- CAMPO OBSERVACIONES -->
+        <div class="p-1 text-center" style="font-size: 12px; color:black; background-color:#BEBEBE; border: 1px solid #BEBEBE;">RECOMENDACIONES</div>
+        <div t-field="doc.worksheet_id.recomendaciones" class="recomendacion" style="padding-left: 25px; padding-top: 10px; min-height: 250px; border: 1px solid #BEBEBE;" />
+
+        <!-- Sección de firmas #TODO-->
+        <!-- Ver como hace odoo en el propio de worksheet https://github.com/odoo/enterprise/blob/450f83c95e33d828718773a1e9ee81138689b1fa/industry_fsm_report/report/worksheet_custom_report_templates.xml#L96 -->
+        <!-- <div class="row" style="padding-top: 20px;">
+            <div class="col-6" style="text-align: center;">
+                <div style="display: inline-block; height: 90px; width: 400px; border: 1px solid #DEE1E6;">
+                    <div style="font-size: 14px;">Firma y aclaración del Responsable Técnico:</div>
+                    <img t-if="doc.worksheet_id.firma_operador" t-att-src="image_data_uri(doc.firma_operador)" style="max-height: 90px; max-width: 400px;" />
+                </div>
+            </div>
+            <div class="col-6" style="text-align: center;">
+                <div style="display: inline-block; height: 90px; width: 400px; border: 1px solid #DEE1E6;">
+                    <div style="font-size: 14px;">Firma y aclaración del Cliente:</div>
+                    <img t-if="doc.worksheet_id.firma_cliente" t-att-src="image_data_uri(doc.firma_cliente)" style="max-height: 90px; max-width: 400px;" />
+                </div>
+            </div>
+        </div> -->
     </template>
-
 </odoo>

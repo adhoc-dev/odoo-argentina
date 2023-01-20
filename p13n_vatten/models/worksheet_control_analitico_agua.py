@@ -9,10 +9,10 @@ _logger = logging.getLogger(__name__)
 class ControlAnalitico(models.Model):
     _description = 'worksheet_control_analitico_agua'
     _name = 'worksheet_control_analitico_agua'
+    _rec_name = 'x_project_task_id'
 
     comments = fields.Text()
     x_project_task_id = fields.Many2one('project.task', required=True,)
-    name = fields.Char(compute="_compute_worksheet_name")
     adjuntos = fields.Many2many('ir.attachment', string="Adjuntos", readonly=False)
     order_type = fields.Selection(selection=[('control_de_aguas', 'Control Analítico de Aguas'), (
                                 'informe_tecnico', 'Informe Técnico')],
@@ -59,11 +59,6 @@ class ControlAnalitico(models.Model):
                 if AlcOH < 0:
                     AlcOH = 0
                 alcalinidades[key]['AlcOH'].valor = str(AlcOH)
-
-    @api.depends('x_project_task_id.name')
-    def _compute_worksheet_name(self):
-        for rec in self:
-            rec.name = rec.x_project_task_id.name
 
     @api.depends('x_project_task_id.partner_id')
     def _compute_determinaciones(self):
@@ -121,7 +116,6 @@ class ControlAnalitico(models.Model):
 
         if self.check_blank(self.recomendaciones):
             raise exceptions.UserError('No hay anotaciones en las recomendaciones al cliente!')
-
 
         self.x_project_task_id.fecha_validacion = fields.Date.context_today(self)
         # self.filtered(lambda s: s.state == 'draft').write({'state': 'done'})
