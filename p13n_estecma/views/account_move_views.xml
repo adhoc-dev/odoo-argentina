@@ -6,6 +6,7 @@
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
             <field name="invoice_user_id" position="attributes">
+                <attribute name="force_save">1</attribute>
                 <attribute name="readonly">1</attribute>
             </field>
         </field>
