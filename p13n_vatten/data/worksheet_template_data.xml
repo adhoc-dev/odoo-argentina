@@ -2,12 +2,12 @@
 <odoo noupdate="1">
 
     <record id="fsm_worksheet_control_aguas" model="worksheet.template" context="{'worksheet_no_generation': True}">
-        <field name="name">Control Analítico de Aguas</field>
+        <field name="name">Laboratorio</field>
         <field name="res_model">project.task</field>
         <field name="color">2</field>
-        <field name="model_id" ref="model_worksheet_control_analitico_agua"/>
-        <field name="action_id" ref="worksheet_control_analitico_agua_act_window"/>
-        <field name="report_view_id" ref="report_worksheet_control_analitico_agua"/>
+        <field name="model_id" ref="model_worksheet_laboratorio"/>
+        <field name="action_id" ref="worksheet_laboratorio_act_window"/>
+        <field name="report_view_id" ref="report_worksheet_laboratorio"/>
     </record>
 
 </odoo>

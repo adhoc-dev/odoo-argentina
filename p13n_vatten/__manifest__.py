@@ -17,9 +17,9 @@
     ],
     'data': [
         'security/ir.model.access.csv',
-        'reports/worksheet_control_analitico_agua_report.xml',
+        'reports/worksheet_laboratorio_report.xml',
         'reports/worksheet_custom_report_templates.xml',
-        'views/worksheet_control_analitico_agua_views.xml',
+        'views/worksheet_laboratorio_views.xml',
         'data/chemical.parameter.csv',
         'data/laboratory_order_sequence.xml',
         'data/worksheet_template_data.xml',

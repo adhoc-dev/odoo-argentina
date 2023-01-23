@@ -7,8 +7,8 @@ _logger = logging.getLogger(__name__)
 
 
 class ControlAnalitico(models.Model):
-    _description = 'worksheet_control_analitico_agua'
-    _name = 'worksheet_control_analitico_agua'
+    _description = 'worksheet_laboratorio'
+    _name = 'worksheet_laboratorio'
     _rec_name = 'x_project_task_id'
 
     comments = fields.Text()

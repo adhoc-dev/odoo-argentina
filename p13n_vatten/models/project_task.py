@@ -15,7 +15,7 @@ class ProjectTask(models.Model):
                                  copy=False, readonly=True, help="Esta es la fecha de visita realizada.")
     date_sampling = fields.Date('Fecha Muestreo', required=False, index=True, readonly=False, help="Esta es la fecha de toma de muestras.")
     worksheet_id = fields.One2many(
-        'worksheet_control_analitico_agua', 'x_project_task_id', string='Worksheet ID', readonly=True,
+        'worksheet_laboratorio', 'x_project_task_id', string='Worksheet ID', readonly=True,
         help="Invoices paid using this mandate.")
 
     # def action_send_report(self):

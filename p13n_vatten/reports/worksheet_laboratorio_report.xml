@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- contenido especifico de worksheets control analytico agua -->
-    <template id="report_worksheet_control_analitico_agua">
+    <template id="report_worksheet_laboratorio">
 
         <t t-if="doc.worksheet_id.order_type == 'control_de_aguas'">
             <!-- TABLA CONTROL ANALITICO DE AGUAS -->
