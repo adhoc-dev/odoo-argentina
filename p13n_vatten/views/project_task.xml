@@ -31,4 +31,25 @@
         </field>
     </record>
 
+    <record id="industry_fsm.project_task_action_fsm" model="ir.actions.act_window">
+        <field name="name">My Tasks</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">map,kanban,gantt,calendar,tree,form,activity</field>
+        <field name="context">{
+            'fsm_mode': True,
+            'show_address': True,
+            'fsm_task_kanban_whole_date': False,
+            'default_mode': 'day',
+            'default_scale': 'day',
+        }</field>
+        <field name="help" type="html">
+            <p class='o_view_nocontent_smiling_face'>No tasks found. Let's create one!</p>
+            <p>Find here your tasks planned for the following days.</p>
+        </field>
+    </record>
+
+    <record id="industry_fsm.project_task_action_fsm_view_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+    </record>
+
 </odoo>
