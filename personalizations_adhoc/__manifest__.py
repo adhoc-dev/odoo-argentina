@@ -1,6 +1,6 @@
 {
     'name': 'personalizations_adhoc',
-    'version': "15.0.1.12.0",
+    'version': "15.0.1.13.0",
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -27,6 +27,7 @@
         'data/hr_salary_category_data.xml',
         'data/hr_seniority_data.xml',
         'security/ir.model.access.csv',
+        'wizard/project_task_create_timesheet_views.xml',
     ],
     'demo': [
     ],
