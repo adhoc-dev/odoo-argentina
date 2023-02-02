@@ -1,6 +1,6 @@
 {
     'name': 'Personalizations Estecma',
-    'version': '15.0.1.1.0',
+    'version': '15.0.1.2.0',
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [

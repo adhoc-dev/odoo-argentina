@@ -6,12 +6,19 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <xpath expr="//group[@name='sale']/field[@name='user_id']" position="attributes">
-                <attribute name="groups">
-                    p13n_estecma.salesperson_assignment
-                </attribute>
+                <attribute name="force_save">1</attribute>
+                <attribute name="readonly">1</attribute>
             </xpath>
-            <xpath expr="//group[@name='sale']/field[@name='user_id']" position="after">
-                <field name="user_id" readonly="1" groups="!p13n_estecma.salesperson_assignment"/>
+        </field>
+    </record>
+    <record id="view_partner_form_salesperson_assignment" model="ir.ui.view">
+        <field name="name">res.partner.form.salesperson.assignment</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="p13n_estecma.view_partner_form"/>
+        <field name="groups_id" eval="[(4,ref('p13n_estecma.salesperson_assignment'))]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='sale']/field[@name='user_id']" position="attributes">
+                <attribute name="readonly">0</attribute>
             </xpath>
         </field>
     </record>
