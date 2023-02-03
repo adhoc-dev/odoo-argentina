@@ -13,6 +13,8 @@ class ProjectTask(models.Model):
     planned_date_end = fields.Datetime(compute="_compute_planned_date_end", store=True, readonly=False)
     sistemas_planned_hours = fields.Float("Planned Development Hours", help='Time planned for the entire code development')
     planned_hours = fields.Float(compute='_compute_planned_hours', store=True, readonly=False)
+    sistemas_planned_lines = fields.Integer("Planned Development Lines")
+    technical_team_id = fields.Many2one(related="adhoc_product_id.technical_team_id", store=True)
 
     def name_get(self):
         result = []

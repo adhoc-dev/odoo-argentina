@@ -63,6 +63,7 @@
             </field>
             <field name="tag_ids" position="after">
                 <field name="adhoc_product_id"  widget="badge" optional="hide"/>
+                <field name="technical_team_id"  optional="hide"/>
             </field>
         </field>
     </record>
@@ -74,9 +75,11 @@
         <field name="arch" type="xml">
             <field name="user_ids" position="after">
                 <field name="adhoc_product_id"/>
+                <field name="technical_team_id"/>
             </field>
             <filter name="project" position="after">
                 <filter string="Producto Adhoc" name="group_by_adhoc_product" context="{'group_by': 'adhoc_product_id'}"/>
+                <filter string="Equipo técnico" name="group_by_technical_team_id" context="{'group_by': 'technical_team_id'}"/>
             </filter>
         </field>
     </record>
@@ -88,6 +91,9 @@
         <field name="arch" type="xml">
             <field name="planned_hours" position="after">
                 <field name="sistemas_planned_hours"  widget="timesheet_uom_no_toggle"/>
+            </field>
+            <field name="progress" position="after">
+                <field name="sistemas_planned_lines"/>
             </field>
         </field>
     </record>
