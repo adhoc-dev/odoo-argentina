@@ -84,21 +84,20 @@
         <div class="p-1 text-center" style="font-size: 12px; color:black; background-color:#BEBEBE; border: 1px solid #BEBEBE;">RECOMENDACIONES</div>
         <div t-field="doc.worksheet_id.recomendaciones" class="recomendacion" style="padding-left: 25px; padding-top: 10px; min-height: 250px; border: 1px solid #BEBEBE;" />
 
-        <!-- Sección de firmas #TODO-->
-        <!-- Ver como hace odoo en el propio de worksheet https://github.com/odoo/enterprise/blob/450f83c95e33d828718773a1e9ee81138689b1fa/industry_fsm_report/report/worksheet_custom_report_templates.xml#L96 -->
-        <!-- <div class="row" style="padding-top: 20px;">
-            <div class="col-6" style="text-align: center;">
-                <div style="display: inline-block; height: 90px; width: 400px; border: 1px solid #DEE1E6;">
-                    <div style="font-size: 14px;">Firma y aclaración del Responsable Técnico:</div>
-                    <img t-if="doc.worksheet_id.firma_operador" t-att-src="image_data_uri(doc.firma_operador)" style="max-height: 90px; max-width: 400px;" />
-                </div>
-            </div>
+        <!-- Sección de firmas-->
+        <div class="row" style="padding-top: 20px;">
             <div class="col-6" style="text-align: center;">
                 <div style="display: inline-block; height: 90px; width: 400px; border: 1px solid #DEE1E6;">
                     <div style="font-size: 14px;">Firma y aclaración del Cliente:</div>
-                    <img t-if="doc.worksheet_id.firma_cliente" t-att-src="image_data_uri(doc.firma_cliente)" style="max-height: 90px; max-width: 400px;" />
+                    <img t-if="doc.worksheet_id.firma_cliente" t-att-src="image_data_uri(doc.worksheet_id.firma_cliente)" style="max-height: 90px; max-width: 400px;" />
                 </div>
             </div>
-        </div> -->
+            <div class="col-6" style="text-align: center;">
+                <div style="display: inline-block; height: 90px; width: 400px; border: 1px solid #DEE1E6;">
+                    <div style="font-size: 14px;">Firma y aclaración del Responsable Técnico:</div>
+                    <img t-if="doc.worksheet_id.firma_operador" t-att-src="image_data_uri(doc.worksheet_id.firma_operador)" style="max-height: 90px; max-width: 400px;" />
+                </div>
+            </div>
+        </div>
     </template>
 </odoo>

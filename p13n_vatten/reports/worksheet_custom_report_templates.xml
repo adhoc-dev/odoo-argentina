@@ -75,7 +75,7 @@
         <div style="font-size:16px;padding:2px 0px 0px 2px;margin-bottom:5px;border: 1px solid #DEE1E6;">
             <div class="row">
                 <div class="col-2" style="padding:2px 2px 2px 15px;">Cliente:</div>
-                <div class="col-6" style="font-weight:bold;padding:2px 2px 2px 5px;"><span t-esc="doc.partner_id.name"></span></div>
+                <div class="col-6" style="font-weight:bold;padding:2px 2px 2px 5px;"><span t-esc="doc.lugar_de_servicio.name"></span></div>
                 <div class="col-2" style="padding:2px 2px 2px 5px;">Fecha muestreo:</div>
                 <div class="col-2" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="doc.date_sampling"></t></div>
             </div>
