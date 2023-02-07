@@ -7,6 +7,7 @@ class ProjectTask(models.Model):
 
     name = fields.Char(string='Orden', copy=False, readonly=True,
                        required=True, default=lambda self: _('New'))
+    lugar_de_servicio = fields.Many2one('res.partner', string='Lugar de Servicio', required=True, help="Dirección donde se prestará el servicio.")
     partner_email = fields.Char(related='partner_id.email', string="Email", readonly=True)
 
     instrucciones = fields.Html(string='Instrucciones', readonly=False)
