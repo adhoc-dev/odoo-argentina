@@ -40,3 +40,38 @@ class ProjectTask(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code('service.order') or _('New')
         result = super(ProjectTask, self).create(vals)
         return result
+
+
+    @api.onchange('lugar_de_servicio')
+    def _onchange_lugar_de_servicio(self):
+
+        if(not self.lugar_de_servicio):
+            return {}
+
+        # borra los registros que haya
+        self.worksheet_id.update({'determinacion_ids':[(2,individual.id) for individual in self.worksheet_id.determinacion_ids]})
+
+        # crea nuevos registros
+        r=[]
+        for muestra in self.env['muestras'].search([('partner_service_id.id', '=', self.lugar_de_servicio.id)]).sorted(key=lambda r: r.sequence):
+            for parametro in muestra.parametro_ids.sorted(key=lambda r: r.sequence):
+                r.append((0, 0, {
+                    'muestra_name': muestra.name.replace(' ','\N{NO-BREAK SPACE}'),
+                    'parametro_name': parametro.name.name.replace(' ','\N{NO-BREAK SPACE}'),
+                    'unit_name': parametro.unit.replace(' ','\N{NO-BREAK SPACE}'),
+                    'parametro_display': parametro.name.name.replace(' ','\N{NO-BREAK SPACE}') + '\n' + parametro.name.unit.replace(' ','\N{NO-BREAK SPACE}'),
+                    'valor': '',
+                    'min_value': parametro.min_value,
+                    'max_value': parametro.max_value,
+                    'in_report': parametro.in_report,
+                    'in_chart': parametro.in_chart,
+                    }))
+        self.worksheet_id.update({'determinacion_ids': r })
+
+        # set domain for interlocutor
+        self.partner_id = []
+        interlocutores =  self.env['res.partner'].search(
+                ['&',('type', '=', 'contact'),'|',('parent_id.id','=',self.lugar_de_servicio.id),('parent_id.id','=',self.lugar_de_servicio.parent_id.id)]
+            ).mapped('id')
+        res = {'domain' : {'partner_id': [('id', 'in', interlocutores)]}}
+        return res

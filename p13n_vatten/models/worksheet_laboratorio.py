@@ -60,7 +60,7 @@ class ControlAnalitico(models.Model):
                     AlcOH = 0
                 alcalinidades[key]['AlcOH'].valor = str(AlcOH)
 
-    @api.depends('x_project_task_id.partner_id')
+    @api.depends('x_project_task_id.lugar_de_servicio')
     def _compute_determinaciones(self):
         for rec in self:
             # borra los registros que haya
@@ -69,7 +69,7 @@ class ControlAnalitico(models.Model):
             # self.update({'determinacion_ids':[(2,individual.id) for individual in self.determinacion_ids]})
             # crea nuevos registros
             r = []
-            for muestra in self.env['muestras'].search([('partner_service_id.id', '=', self.x_project_task_id.partner_id.parent_id.id)]).sorted(key=lambda r: r.sequence):
+            for muestra in self.env['muestras'].search([('partner_service_id.id', '=', self.x_project_task_id.lugar_de_servicio.id)]).sorted(key=lambda r: r.sequence):
                 for parametro in muestra.parametro_ids.sorted(key=lambda r: r.sequence):
                     r.append((0, 0, {
                         'muestra_name': muestra.name.replace(' ', '\N{NO-BREAK SPACE}'),
