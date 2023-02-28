@@ -70,40 +70,22 @@
     </template>
 
     <!-- modificamos el diseño de la pagina para que tenga un look custom del cliente pero le mantenemos la posibilidad de que el contenido lo tome de cada worksheet por mas que usen uno solo -->
-    <template id="industry_fsm_report.worksheet_custom_page">
-        <!-- CLIENTE, DIRECCION E INTERLOCUTORES -->
-        <div style="font-size:16px;padding:2px 0px 0px 2px;margin-bottom:5px;border: 1px solid #DEE1E6;">
-            <div class="row">
-                <div class="col-2" style="padding:2px 2px 2px 15px;">Cliente:</div>
-                <div class="col-6" style="font-weight:bold;padding:2px 2px 2px 5px;"><span t-esc="doc.lugar_de_servicio.name"></span></div>
-                <div class="col-2" style="padding:2px 2px 2px 5px;">Fecha muestreo:</div>
-                <div class="col-2" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="doc.date_sampling"></t></div>
+    <template id="worksheet_custom_page" inherit_id="industry_fsm_report.worksheet_custom_page" priority="90">
+         <xpath expr="//div[@name='worksheet_map']//h2" position="replace"/>
+          <div class="row" position="replace">
+            <div id="informations" class="row mt8 mb8">
+                <div class="col-6">
+                    <strong>Cliente: </strong><span t-field="doc.lugar_de_servicio.name"/>
+                    <br/>
+                    <strong>Fecha muestreo: </strong><span t-field="doc.date_sampling"/>
+                </div>
+                <div class="col-6">
+                    <strong>Interlocutor: </strong><span t-field="doc.partner_id.name"/>
+                    <br/>
+                    <strong>Responsable: </strong><span t-field="doc.user_ids.name"/>
+                </div>
+              </div>
             </div>
-            <div class="row">
-                <div class="col-2" style="padding:2px 2px 2px 15px;">Interlocutor:</div>
-                <div class="col-6" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="doc.partner_id.name"></t></div>
-                <div class="col-2" style="padding:2px 2px 2px 5px;">Responsable:</div>
-                <div class="col-2" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="doc.user_ids.name"></t></div>
-            </div>
-            <!-- <div class="row">
-                <div class="col-2" style="padding:2px 2px 2px 15px;">Copia a:</div>
-                <div class="col-6" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="doc.con_copia_a.name"></t></div>
-                <div class="col-2" style="padding:2px 2px 2px 5px;">Referencia:</div>
-                <div class="col-2" style="font-weight:bold;padding:2px 2px 2px 5px;"><t t-esc="doc.reference"></t></div>
-            </div> -->
-            <div class="row">
-                <div class="col-2" style="padding:2px 2px 2px 15px;">Dirección:</div>
-                <div class="col-10" style="padding:2px 2px 2px 5px;"><t t-esc="doc.partner_id.street"></t></div>
-            </div>
-        </div>
-        <!-- incrustamos dinamicamente el report custom de cada worksheet tal cual hace odoo en el original pero le sacamos
-        el título worksheet -->
-        <div name="worksheet_map" t-if="doc.worksheet_template_id.report_view_id and worksheet_map.get(doc.id)" style="page-break-inside: avoid">
-            <t t-set="worksheet" t-value="worksheet_map.get(doc.id)"/>
-            <!-- <h2>Worksheet</h2> -->
-            <t t-call="#{doc.worksheet_template_id.report_view_id.id}"/>
-            <br/>
-        </div>
     </template>
 
 </odoo>
