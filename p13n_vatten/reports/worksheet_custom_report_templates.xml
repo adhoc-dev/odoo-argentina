@@ -82,7 +82,7 @@
                 <div class="col-6">
                     <strong>Interlocutor: </strong><span t-field="doc.partner_id.name"/>
                     <br/>
-                    <strong>Responsable: </strong><span t-field="doc.user_ids.name"/>
+                    <strong>Responsable: </strong><span t-out="', '.join(doc.user_ids.mapped('name'))"/>
                 </div>
               </div>
             </div>

@@ -77,12 +77,12 @@
         <t t-if="doc.worksheet_id.order_type == 'informe_tecnico'">
         <!-- CAMPO INFORME TECNICO -->
             <div class="p-1 text-center" style="font-size: 12px; color:black; background-color:#BEBEBE; border: 1px solid #BEBEBE;">OBSERVACIONES</div>
-            <div t-field="doc.worksheet_id.observaciones_inf_tec" class="recomendacion" style="padding-left: 25px; padding-top: 10px; min-height: 250px; border: 1px solid #BEBEBE;" />
+            <div t-field="doc.worksheet_id.observaciones_inf_tec" class="recomendacion" style="padding-left: 25px; padding-top: 10px; min-height: 150px; border: 1px solid #BEBEBE;" />
         </t>
 
         <!-- CAMPO OBSERVACIONES -->
         <div class="p-1 text-center" style="font-size: 12px; color:black; background-color:#BEBEBE; border: 1px solid #BEBEBE;">RECOMENDACIONES</div>
-        <div t-field="doc.worksheet_id.recomendaciones" class="recomendacion" style="padding-left: 25px; padding-top: 10px; min-height: 250px; border: 1px solid #BEBEBE;" />
+        <div t-field="doc.worksheet_id.recomendaciones" class="recomendacion" style="padding-left: 25px; padding-top: 10px; min-height: 150px; border: 1px solid #BEBEBE;" />
 
         <!-- Sección de firmas-->
         <div class="row" style="padding-top: 20px;">

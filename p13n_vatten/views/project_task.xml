@@ -10,7 +10,7 @@
                 <attribute name="required">True</attribute>
             </field>
             <field name="partner_id" position="before">
-                <field name="lugar_de_servicio" domain="[('type', '=', 'delivery')]"/>
+                <field name="lugar_de_servicio" required="True" domain="[('type', '=', 'delivery')]"/>
             </field>
             <field name="partner_phone" position="before">
                 <field name="partner_email"/>
@@ -27,6 +27,13 @@
             </xpath>
             <xpath expr="//button[@name='action_fsm_worksheet'][hasclass('text-success')]" position="attributes">
                 <attribute name="attrs">{'invisible': ['|', '|',  ('allow_worksheets', '=', False), ('worksheet_template_id', '=', False), ('fecha_validacion', '=', False)]}</attribute>
+            </xpath>
+            <!-- ocultamos sign report -->
+            <xpath expr="//button[@name='action_preview_worksheet'][hasclass('btn-primary')]" position="attributes">
+                <attribute name="attrs">{'invisible': True}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_preview_worksheet'][hasclass('btn-secondary')]" position="attributes">
+                <attribute name="attrs">{'invisible': True}</attribute>
             </xpath>
         </field>
     </record>
@@ -50,6 +57,18 @@
 
     <record id="industry_fsm.project_task_action_fsm_view_tree" model="ir.actions.act_window.view">
         <field name="sequence" eval="2"/>
+    </record>
+
+    <record id="quick_create_task_form_fsm_vatten" model="ir.ui.view">
+        <field name="name">project.task.form.quick_create.vatten</field>
+        <field name="model">project.task</field>
+        <field name="priority">1000</field>
+        <field name="inherit_id" ref="industry_fsm.quick_create_task_form_fsm"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="before">
+                <field name="lugar_de_servicio" required="True" domain="[('type', '=', 'delivery')]"/>
+            </field>
+        </field>
     </record>
 
 </odoo>

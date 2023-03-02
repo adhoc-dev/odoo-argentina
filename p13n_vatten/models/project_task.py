@@ -7,7 +7,7 @@ class ProjectTask(models.Model):
 
     name = fields.Char(string='Orden', copy=False, readonly=True,
                        required=True, default=lambda self: _('New'))
-    lugar_de_servicio = fields.Many2one('res.partner', string='Lugar de Servicio', required=True, help="Dirección donde se prestará el servicio.")
+    lugar_de_servicio = fields.Many2one('res.partner', string='Lugar de Servicio', help="Dirección donde se prestará el servicio.")
     partner_email = fields.Char(related='partner_id.email', string="Email", readonly=True)
 
     instrucciones = fields.Html(string='Instrucciones', readonly=False)
@@ -71,7 +71,7 @@ class ProjectTask(models.Model):
         # set domain for interlocutor
         self.partner_id = []
         interlocutores =  self.env['res.partner'].search(
-                ['&',('type', '=', 'contact'),'|',('parent_id.id','=',self.lugar_de_servicio.id),('parent_id.id','=',self.lugar_de_servicio.parent_id.id)]
+                ['&',('type', '=', 'contact'),('parent_id.id','=',self.lugar_de_servicio.id)]
             ).mapped('id')
         res = {'domain' : {'partner_id': [('id', 'in', interlocutores)]}}
         return res
