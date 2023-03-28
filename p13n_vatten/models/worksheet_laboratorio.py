@@ -171,13 +171,13 @@ class ControlAnalitico(models.Model):
             res += ')'
         return res or '-'
 
-    def get_muestras(self, count):
+    def get_muestras(self):
         muestras = self.determinacion_ids.mapped('muestra_name')
         lookup = set()
         muestras = [x for x in muestras if x not in lookup and lookup.add(x) is None]
         lmuestras = len(muestras)
         res = []
-        for i in range(count):
+        for i in range(lmuestras):
             if i < lmuestras:
                 res.append(muestras[i])
             else:

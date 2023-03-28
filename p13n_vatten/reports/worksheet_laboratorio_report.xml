@@ -29,7 +29,7 @@
                 </thead>
                 <tbody>
                     <t t-set="l" t-value="0"></t>
-                    <t t-foreach="doc.worksheet_id.get_muestras(10)" t-as="muestra">
+                    <t t-foreach="doc.worksheet_id.get_muestras()" t-as="muestra">
                         <tr>
                             <t t-set="l" t-value="l+1"></t>
                             <td class="text-center pt-0 pb-0 px-0" style="font-size: 14px; border: 1px solid #DEE1E6;">
@@ -54,7 +54,7 @@
                 <thead></thead>
                 <tbody>
                     <t t-set="l" t-value="0"></t>
-                    <t t-foreach="doc.worksheet_id.get_muestras(10)" t-as="muestra">
+                    <t t-foreach="doc.worksheet_id.get_muestras()" t-as="muestra">
                         <tr>
                             <t t-set="l" t-value="l+1"></t>
                             <td class="text-center pt-0 pb-0 px-0" style="border: 1px solid #DEE1E6; width: 4%">
