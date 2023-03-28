@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_supplierinfo_search_view" model="ir.ui.view">
+        <field name="name">product.supplierinfo.search.view</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_search_view"/>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="0" string="Group By">
+                    <filter string="Clase de producto" name="groupby_class" context="{'group_by': 'product_class'}"/>
+                    <filter string="Fabricante" name="groupby_maker" context="{'group_by': 'product_maker'}"/>
+                    <filter string="Marca de vehículo" name="groupby_brand" context="{'group_by': 'product_brand'}"/>
+                    <filter string="Modelo de vehículo" name="groupby_model" context="{'group_by': 'product_model'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

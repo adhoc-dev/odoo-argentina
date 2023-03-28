@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_class_tree" model="ir.ui.view">
+        <field name="name">product.class.tree</field>
+        <field name="model">product.class</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_product_maker_tree" model="ir.ui.view">
+        <field name="name">product.maker.tree</field>
+        <field name="model">product.maker</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_product_brand_tree" model="ir.ui.view">
+        <field name="name">product.vehicle.brand.tree</field>
+        <field name="model">product.vehicle.brand</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_product_vehicle_model_tree" model="ir.ui.view">
+        <field name="name">product.vehicle.model.tree</field>
+        <field name="model">product.vehicle.model</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_product_class" model="ir.actions.act_window">
+        <field name="name">Clases de producto</field>
+        <field name="res_model">product.class</field>
+        <field name="view_mode">tree</field>
+        <field name="context"></field>
+    </record>
+    <record id="action_product_maker" model="ir.actions.act_window">
+        <field name="name">Fabricantes</field>
+        <field name="res_model">product.maker</field>
+        <field name="view_mode">tree</field>
+        <field name="context"></field>
+    </record>
+    <record id="action_product_brand" model="ir.actions.act_window">
+        <field name="name">Marcas</field>
+        <field name="res_model">product.vehicle.brand</field>
+        <field name="view_mode">tree</field>
+        <field name="context"></field>
+    </record>
+    <record id="action_product_vehicle_model" model="ir.actions.act_window">
+        <field name="name">Modelos de vehículos</field>
+        <field name="res_model">product.vehicle.model</field>
+        <field name="view_mode">tree</field>
+        <field name="context"></field>
+    </record>
+
+    <menuitem
+        id="menu_product_class"
+        action="action_product_class"
+        name="Clases de producto" parent="stock.menu_product_in_config_stock" sequence="10"/>
+    <menuitem
+        id="menu_product_maker"
+        action="action_product_maker"
+        name="Fabricantes" parent="stock.menu_product_in_config_stock" sequence="10"/>
+    <menuitem
+        id="menu_product_brand"
+        action="action_product_brand"
+        name="Marcas de vehículos" parent="stock.menu_product_in_config_stock" sequence="10"/>
+    <menuitem
+        id="menu_product_vehicle_model"
+        action="action_product_vehicle_model"
+        name="Modelos de vehículos" parent="stock.menu_product_in_config_stock" sequence="10"/>
+</odoo>

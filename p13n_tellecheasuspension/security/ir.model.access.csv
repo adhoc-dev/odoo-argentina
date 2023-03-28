@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_class,product.class.manager,model_product_class,stock.group_stock_manager,1,1,1,1
+access_product_maker,product.maker.manager,model_product_maker,stock.group_stock_manager,1,1,1,1
+access_product_vehicle_brand,product.vehicle.brand.manager,model_product_vehicle_brand,stock.group_stock_manager,1,1,1,1
+access_product_vehicle_model,product.vehicle_model.manager,model_product_vehicle_model,stock.group_stock_manager,1,1,1,1
