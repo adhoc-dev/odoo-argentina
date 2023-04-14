@@ -12,8 +12,9 @@ class Parametros(models.Model):
 
     sequence = fields.Integer(string='Secuencia')
     muestra_id = fields.Many2one(comodel_name='muestras', ondelete='cascade')
-    name = fields.Many2one(comodel_name='chemical.parameter', string='Parámetro', required=True)
-    unit = fields.Char(string='Unidad', readonly=False, store=True, related="name.unit")
+    chemical_parameter_id = fields.Many2one(comodel_name='chemical.parameter', required=True)
+    name = fields.Char(string='Parámetro', related="chemical_parameter_id.name")
+    unit = fields.Char(string='Unidad', readonly=False, store=True, related="chemical_parameter_id.unit")
     min_value = fields.Char(string='Mínimo')
     max_value = fields.Char(string='Máximo')
     in_report = fields.Boolean(string='Se reporta', default=True)

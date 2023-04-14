@@ -24,7 +24,7 @@ class Muestras(models.Model):
 
         r = []
         for rec in recs:
-            r.append((0, 0, {'name': rec.id, 'unit': rec.unit, 'in_report': True}))
+            r.append((0, 0, {'chemical_parameter_id': rec.id, 'unit': rec.unit, 'in_report': True}))
         res["parametro_ids"] = r
 
         return res

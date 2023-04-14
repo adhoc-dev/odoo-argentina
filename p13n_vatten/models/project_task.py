@@ -57,9 +57,9 @@ class ProjectTask(models.Model):
             for parametro in muestra.parametro_ids.sorted(key=lambda r: r.sequence):
                 r.append((0, 0, {
                     'muestra_name': muestra.name.replace(' ','\N{NO-BREAK SPACE}'),
-                    'parametro_name': parametro.name.name.replace(' ','\N{NO-BREAK SPACE}'),
+                    'parametro_name': parametro.chemical_parameter_id.name.replace(' ','\N{NO-BREAK SPACE}'),
                     'unit_name': parametro.unit.replace(' ','\N{NO-BREAK SPACE}'),
-                    'parametro_display': parametro.name.name.replace(' ','\N{NO-BREAK SPACE}') + '\n' + parametro.name.unit.replace(' ','\N{NO-BREAK SPACE}'),
+                    'parametro_display': parametro.chemical_parameter_id.name.replace(' ','\N{NO-BREAK SPACE}') + '\n' + parametro.chemical_parameter_id.unit.replace(' ','\N{NO-BREAK SPACE}'),
                     'valor': '',
                     'min_value': parametro.min_value,
                     'max_value': parametro.max_value,
