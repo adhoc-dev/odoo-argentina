@@ -4,10 +4,8 @@
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
-        'base',
     ],
     'data': [
-        'views/res_partner_views.xml',
     ],
     'application': False,
     'installable': True,
