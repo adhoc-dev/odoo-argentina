@@ -1,9 +1,10 @@
 {
     'name': 'Personalizations Integra',
-    'version': "15.0.1.2.0",
+    'version': "15.0.1.3.0",
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
+        'academic',
         'account',
         'hr_timesheet',
         'payment',

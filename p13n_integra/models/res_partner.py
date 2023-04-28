@@ -5,6 +5,7 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     dv = fields.Integer()
+    dni = fields.Char()
 
     @api.constrains('dv')
     def _check_field_dv(self):
