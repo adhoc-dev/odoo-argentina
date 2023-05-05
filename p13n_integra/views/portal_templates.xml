@@ -31,4 +31,10 @@
         </xpath>
     </template>
 
+    <template id="portal_my_invoices_payment" name="Payment on My Invoices" inherit_id="account.portal_my_invoices">
+        <a t-att-href="invoice.get_portal_url()" position="after">
+            <div t-field="invoice.partner_id.name" />       
+        </a>
+    </template>
+
 </odoo>
