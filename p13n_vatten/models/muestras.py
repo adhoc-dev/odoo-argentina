@@ -20,6 +20,8 @@ class Muestras(models.Model):
     def default_get(self, fields):
         res = super(Muestras, self).default_get(fields)
 
+        #El limit viene desde versiones anteriores. Está hardcodeado para que no rompa el reporte en caso de
+        #llenarlo de parametros.
         recs = self.env['chemical.parameter'].search([('sample_type', '=', 'Agua')], limit=11)
 
         r = []

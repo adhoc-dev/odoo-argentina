@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from . import parametros_quimicos
 from . import res_partner
 from . import muestras

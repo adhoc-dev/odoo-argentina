@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from odoo import models, fields, api, exceptions
 import re
 import logging
@@ -158,17 +157,10 @@ class ControlAnalitico(models.Model):
             return '-'
         minimo = self.determinacion_ids.filtered(lambda r: r.muestra_name == muestra and r.parametro_name == parametro).min_value
         maximo = self.determinacion_ids.filtered(lambda r: r.muestra_name == muestra and r.parametro_name == parametro).max_value
-        res = ''
+        res = f' >{minimo}' if minimo else ''
+        res += f' <{maximo}' if maximo else ''
         if minimo or maximo:
-            res += '('
-        if minimo:
-            res += '>' + str(minimo)
-        if minimo and maximo:
-            res += ' '
-        if maximo:
-            res += '<' + str(maximo)
-        if minimo or maximo:
-            res += ')'
+            res = f'({res})'
         return res or '-'
 
     def get_muestras(self):
