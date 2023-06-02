@@ -131,15 +131,7 @@ class ControlAnalitico(models.Model):
 
     def get_parametros(self, count):
         parametros = self.determinacion_ids.mapped('parametro_name')
-        lookup = set()
-        parametros = [x for x in parametros if x not in lookup and lookup.add(x) is None]
-        lparametros = len(parametros)
-        res = []
-        for i in range(count):
-            if i < lparametros:
-                res.append(parametros[i])
-            else:
-                res.append('-')
+        res = parametros[:count]
         return res
 
     def get_unidad(self, parametro=''):
@@ -165,13 +157,5 @@ class ControlAnalitico(models.Model):
 
     def get_muestras(self):
         muestras = self.determinacion_ids.mapped('muestra_name')
-        lookup = set()
-        muestras = [x for x in muestras if x not in lookup and lookup.add(x) is None]
-        lmuestras = len(muestras)
-        res = []
-        for i in range(lmuestras):
-            if i < lmuestras:
-                res.append(muestras[i])
-            else:
-                res.append('-')
+        res = muestras
         return res
