@@ -157,5 +157,4 @@ class ControlAnalitico(models.Model):
 
     def get_muestras(self):
         muestras = self.determinacion_ids.mapped('muestra_name')
-        res = muestras
-        return res
+        return list(set(muestras))
