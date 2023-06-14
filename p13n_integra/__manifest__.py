@@ -1,6 +1,6 @@
 {
     'name': 'Personalizations Integra',
-    'version': "15.0.1.4.0",
+    'version': "15.0.1.5.0",
     'category': 'Personalizations',
     'author': 'ADHOC SA',
     'depends': [
@@ -18,6 +18,7 @@
         'views/portal_templates.xml',
         'views/res_partner_view.xml',
         'views/account_move_line_views.xml',
+        'views/report_payment_receipt_templates.xml',
     ],
     'installable': True,
     'application': False,
