@@ -131,8 +131,7 @@ class ControlAnalitico(models.Model):
 
     def get_parametros(self, count):
         parametros = self.determinacion_ids.mapped('parametro_name')
-        res = parametros[:count]
-        return res
+        return list(set(parametros))
 
     def get_unidad(self, parametro=''):
         if not parametro or parametro == '' or parametro == '-':
