@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_task_view_form" model="ir.ui.view">
+        <field name="name">Project task cummotorsuy</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+          <field name="user_ids" position="after">
+              <label for="odometro"/>
+              <div class="o_row">
+                <field name="odometro"/>
+                <field name="cms_uom"/>
+              </div>
+              <field name="lugar_de_reparacion"/>
+              <label for="distancia_a_campo" attrs="{'invisible': [('lugar_de_reparacion', '!=', 'campo')]}"/>
+              <div class="o_row" attrs="{'invisible': [('lugar_de_reparacion', '!=', 'campo')]}">
+                <field name="distancia_a_campo"/><span>Km</span>
+              </div>
+          </field>
+        </field>
+    </record>
+</odoo>
