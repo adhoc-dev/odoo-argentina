@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_task_view_form" model="ir.ui.view">
+        <field name="name">Project task cummotorsuy</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+          <field name="user_ids" position="after">
+              <label for="odometro"/>
+              <div class="o_row">
+                <field name="odometro"/>
+                <field name="cms_uom" nolabel="1"/>
+              </div>
+              <field name="lugar_de_reparacion"/>
+              <label for="distancia_a_campo" attrs="{'invisible': [('lugar_de_reparacion', '!=', 'campo')]}"/>
+              <div class="o_row" attrs="{'invisible': [('lugar_de_reparacion', '!=', 'campo')]}">
+                <field name="distancia_a_campo"/><span>Km</span>
+              </div>
+          </field>
+        </field>
+    </record>
+
+    <record id="project_task_view_search" model="ir.ui.view">
+        <field name="name">project_task.search</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form"/>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="0" name="group_by" string="Group By">
+                    <filter name="groupby_cms_uom" string="UdM del Odometro" domain="[]" context="{'group_by' : 'cms_uom'}"/>
+                </group>
+                <group expand="0" name="group_by" string="Group By">
+                    <filter name="groupby_lugar_de_reparacion" string="Lugar de Reparacion" domain="[]" context="{'group_by' : 'lugar_de_reparacion'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>
