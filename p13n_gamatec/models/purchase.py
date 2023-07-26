@@ -11,16 +11,11 @@ class PurchaseOrderLine(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         lines = super(PurchaseOrderLine, self).create(vals_list)
-        if lines.order_id:
-            ov_name = lines.order_id.origin
-            if ov_name:
-                ov = self.env["sale.order"].search([('name','=',ov_name)])
-                if ov:
-                    custom_line = ov.order_line.filtered(lambda x:x.product_id == lines.product_id)
-                    if custom_line:
-                        try:
-                            lines.name = custom_line.name
-                            lines.price_unit = custom_line.purchase_price
-                        except:
-                            pass
+        for line in lines:
+            ov = self.env["sale.order"].search([('name', '=', line.order_id.origin)])
+            if ov:
+                ov_lines = ov.order_line.filtered(lambda x:x.product_id == line.product_id)
+                for ov_line in ov_lines:
+                    line.name = ov_line.name
+                    line.price_unit = ov_line.purchase_price
         return lines
