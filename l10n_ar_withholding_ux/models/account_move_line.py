@@ -44,13 +44,14 @@ class AccountMoveLine(models.Model):
         for rec in self:
             rec.base_amount = abs(sum(rec.move_id.line_ids.filtered(lambda x: rec.tax_line_id.id in x.tax_ids.ids).mapped('amount_currency')))
 
-    def _tax_compute_all_helper(self):
+    @api.model
+    def _tax_compute_all_helper(self, base_amount, payment, tax):
         self.ensure_one()
         # Computes the withholding tax amount provided a base and a tax
         # It is equivalent to: amount = self.base * self.tax_id.amount / 100
-        taxes_res = self.tax_id.compute_all(
-            self.base_amount,
-            currency=self.payment_id.currency_id,
+        taxes_res = tax.compute_all(
+            base_amount,
+            currency=payment.currency_id,
             quantity=1.0,
             product=False,
             partner=False,

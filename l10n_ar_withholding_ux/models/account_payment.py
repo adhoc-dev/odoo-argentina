@@ -40,27 +40,29 @@ class AccountPayment(models.Model):
         write_off_line_vals = []
         conversion_rate = self.exchange_rate or 1.0
         sign = 1
+        l10n_ar_withholding_vals = self._context.get('l10n_ar_withholding_vals')
         if self.partner_type == 'supplier':
             sign = -1
-        for line in self.l10n_ar_withholding_ids:
+        # for line in self.l10n_ar_withholding_ids:
+        for vals in l10n_ar_withholding_vals:
             # nuestro approach esta quedando distinto al del wizard. En nuestras lineas tenemos los importes en moneda
             # de la cia, por lo cual el line.amount aca representa eso y tenemos que convertirlo para el amount_currency
-            account_id, tax_repartition_line_id = line._tax_compute_all_helper()
-            if isinstance(line.id, models.NewId):
-                amount_currency = self.currency_id.round(line.balance / conversion_rate)
-                write_off_line_vals.append({
-                        **self._get_withholding_move_line_default_values(),
-                        'name': line.name,
-                        'account_id': account_id,
-                        'amount_currency': amount_currency,
-                        'balance': line.balance,
-                        # este campo no existe mas
-                        # 'tax_base_amount': sign * line.base_amount,
-                        'tax_repartition_line_id': tax_repartition_line_id,
-                })
-            else:
-                line.account_id = account_id
-                line.tax_repartition_line_id = tax_repartition_line_id
+            account_id, tax_repartition_line_id = self.env['account.move.line']._tax_compute_all_helper(base_amount, self, self.env['account.tax'].browse(vals.get('tax_id')))
+            # if isinstance(line.id, models.NewId):
+            amount_currency = self.currency_id.round(vals.get('balance') / conversion_rate)
+            write_off_line_vals.append({
+                    **self._get_withholding_move_line_default_values(),
+                    'name': vals.get('name'),
+                    'account_id': account_id,
+                    'amount_currency': amount_currency,
+                    'balance': vals.get('balance'),
+                    # este campo no existe mas
+                    # 'tax_base_amount': sign * line.base_amount,
+                    'tax_repartition_line_id': tax_repartition_line_id,
+            })
+            # else:
+            #     line.account_id = account_id
+            #     line.tax_repartition_line_id = tax_repartition_line_id
 
         for base_amount in list(set(self.l10n_ar_withholding_ids.mapped('base_amount'))):
             withholding_lines = self.l10n_ar_withholding_ids.filtered(lambda x: x.base_amount == base_amount)
@@ -71,7 +73,7 @@ class AccountPayment(models.Model):
             write_off_line_vals.append({
                 **self._get_withholding_move_line_default_values(),
                 'name': _('Base Ret: ') + nice_base_label,
-                # 'tax_ids': [Command.set(withholding_lines.mapped('tax_id').ids)],
+                'tax_ids': [Command.set(withholding_lines.mapped('tax_id').ids)],
                 'account_id': account_id,
                 'balance': base_amount,
                 'amount_currency': base_amount_currency,
@@ -85,6 +87,13 @@ class AccountPayment(models.Model):
             })
 
         return write_off_line_vals
+
+    def write(self, vals):
+        # OVERRIDE
+        l10n_ar_withholding_vals = {'l10n_ar_withholding_ids': vals.pop('l10n_ar_withholding_ids')}
+        res = super().write(vals)
+        self.with_context(l10n_ar_withholding_vals=l10n_ar_withholding_vals)._synchronize_to_moves(set(vals.keys()))
+        return res
 
     def action_post(self):
         for line in self.l10n_ar_withholding_ids:
@@ -125,6 +134,8 @@ class AccountPayment(models.Model):
         # for line in res:
         #     if res['account_id'] in wittholding_accounts:
         #         res.pop()
+        # [[0, 'virtual_671', {'currency_id': False, 'tax_id': 150, 'name': False, 'base_amount': 10, 'balance': 100, 'automatic': False, 'withholdable_advanced_amount': 0}]]
+        # l10n_ar_withholding_vals = self._context.get('l10n_ar_withholding_vals')
         res += self._prepare_witholding_write_off_vals()
         wth_balance = sum(self.l10n_ar_withholding_ids.mapped('balance'))
         wth_amount_currency = sum(self.l10n_ar_withholding_ids.mapped('amount_currency'))
