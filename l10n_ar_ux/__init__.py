@@ -21,6 +21,7 @@ def monkey_patches():
     def _inverse_l10n_latam_document_number(self):
         """ Parche feo para poder usar liquidaciones. Eliminar al migrar a version 17 """
         orginal_method(self)
+        print("----- error estoy en el monkey patch 1")
         to_review = self.filtered(lambda x: (
             x.journal_id.l10n_ar_is_pos
             and x.l10n_latam_document_type_id
@@ -46,6 +47,7 @@ def monkey_patches():
     # monkey patch
     @api.model
     def _get_fiscal_position(self, partner, delivery=None):
+        print("----- error estoy en el monkey patch 2")
         if self.env.company.country_id.code == "AR":
             self = self.with_context(
                 company_code='AR',
@@ -53,3 +55,8 @@ def monkey_patches():
         return super(AccountFiscalPosition, self)._get_fiscal_position(partner, delivery=delivery)
 
     AccountFiscalPosition._get_fiscal_position = _get_fiscal_position
+
+
+AccountMoveAr._inverse_l10n_latam_document_number = odoo.addons.l10n_latam_invoice_document.models.account_move._inverse_l10n_latam_document_number
+
+AccountFiscalPosition._get_fiscal_position = odoo.addons.l10n_ar.models.account_fiscal_position._get_fiscal_position
