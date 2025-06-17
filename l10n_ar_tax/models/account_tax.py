@@ -1,5 +1,6 @@
 from odoo import api, fields, models
 from odoo.exceptions import UserError
+from odoo.tools.safe_eval import safe_eval
 
 
 class AccountTax(models.Model):
@@ -96,3 +97,38 @@ class AccountTax(models.Model):
             raise UserError(
                 "Error se esta usando en ws de estas cias %s" % ws.mapped("fiscal_position_id.company_id.name")
             )
+
+    @api.model
+    def _eval_tax_amount_formula(self, raw_base, evaluation_context):
+        """Evaluate the formula of the tax passed as parameter.
+
+        [!] Mirror of the same method in account_tax.js.
+        PLZ KEEP BOTH METHODS CONSISTENT WITH EACH OTHERS.
+
+        :param tax_data:          The values of a tax returned by '_prepare_taxes_computation'.
+        :param evaluation_context:  The context created by '_eval_taxes_computation_prepare_context'.
+        :return:                    The tax base amount.
+        """
+        self._check_formula()
+
+        # Safe eval.
+        # if self. soy retencion argentina
+        formula_context = {
+            "price_unit": evaluation_context["price_unit"],
+            "quantity": evaluation_context["quantity"],
+            "product": evaluation_context["product"],
+            "base": raw_base,
+            "min": min,
+            "max": max,
+            "partner": self._context.get("partner", None),
+        }
+        try:
+            return safe_eval(
+                self.formula_decoded_info["py_formula"],
+                globals_dict=formula_context,
+                locals_dict={},
+                locals_builtins=False,
+                nocopy=True,
+            )
+        except ZeroDivisionError:
+            return 0.0

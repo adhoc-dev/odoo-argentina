@@ -89,12 +89,14 @@ class l10nArPaymentWithholding(models.Model):
         else:
             net_amount = self.base_amount
         net_amount = max(0, net_amount - tax.l10n_ar_non_taxable_amount)
-        taxes_res = tax.compute_all(
+        # la pasamos por contexto para poder usarla en codigo python de retenciones
+        # ya que odoo la pierde
+        taxes_res = tax.with_context(partner=self.payment_id.partner_id).compute_all(
             net_amount,
             currency=self.payment_id.currency_id,
             quantity=1.0,
             product=False,
-            partner=False,
+            partner=self.payment_id.partner_id,
             is_refund=False,
         )
         tax_amount = taxes_res["taxes"][0]["amount"]
