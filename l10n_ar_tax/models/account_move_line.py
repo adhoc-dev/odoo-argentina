@@ -34,7 +34,7 @@ class AccountMoveLine(models.Model):
         # Force display_type='product' for Argentine withholdings to keep them editable
         rep_id_to_vals = defaultdict(list)
         for vals in vals_list:
-            if vals.get("display_type") == "tax" and (rep_id := vals.get("tax_repartition_line_id")):
+            if (rep_id := vals.get("tax_repartition_line_id")) and vals.get("display_type") != "product":
                 rep_id_to_vals[rep_id].append(vals)
 
         if rep_id_to_vals:

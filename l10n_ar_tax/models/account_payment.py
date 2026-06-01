@@ -222,6 +222,8 @@ class AccountPayment(models.Model):
             )
 
         for base_amount in list(set(lines_with_accounting_entry.mapped("base_amount"))):
+            if self.company_id.currency_id.is_zero(base_amount):
+                continue
             withholding_lines = lines_with_accounting_entry.filtered(lambda x: x.base_amount == base_amount)
             nice_base_label = ",".join(withholding_lines.filtered("name").mapped("name"))
             account_id = self.company_id.l10n_ar_tax_base_account_id.id
