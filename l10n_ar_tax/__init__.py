@@ -6,6 +6,7 @@ from . import models
 from . import wizard
 from . import demo
 from odoo.addons.l10n_ar_withholding.models.account_payment import AccountPayment
+from odoo.tools.sql import column_exists, table_exists
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -20,6 +21,32 @@ def monkey_patch_synchronize_to_moves():
         return super(AccountPayment, self)._synchronize_to_moves(changed_fields)
 
     AccountPayment._synchronize_to_moves = _synchronize_to_moves
+
+
+def _l10n_ar_tax_pre_init(env):
+    """Create the new account.payment columns before the ORM does.
+
+    `l10n_ar_fiscal_position_id` and `withholdable_advanced_amount` are stored computed fields,
+    so on install Odoo creates their column and queues a recompute for every existing payment.
+    On databases with a large payment history that sweep takes longer than the worker time limit
+    and the install dies half way through.
+
+    Creating the columns here makes Field.update_db see them as already existing and skip the
+    recompute. Historical payments keep exactly the value the compute would give them: no fiscal
+    position (it is only set on draft supplier payments of argentinian companies) and the current
+    unreconciled amount as the advance, filled in a single statement.
+    """
+    if not table_exists(env.cr, "account_payment"):
+        return
+    env.cr.execute(
+        """
+        ALTER TABLE account_payment
+            ADD COLUMN IF NOT EXISTS l10n_ar_fiscal_position_id integer,
+            ADD COLUMN IF NOT EXISTS withholdable_advanced_amount numeric
+        """
+    )
+    if column_exists(env.cr, "account_payment", "unreconciled_amount"):
+        env.cr.execute("UPDATE account_payment SET withholdable_advanced_amount = unreconciled_amount")
 
 
 def _l10n_ar_update_taxes(env):
